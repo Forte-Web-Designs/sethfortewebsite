@@ -1429,11 +1429,23 @@ footer {
     line-height: 1.5;
     font-weight: 400;
     color: var(--text-secondary);
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
     animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+
+.hero-subtext {
+    font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+    line-height: 1.5;
+    font-weight: 400;
+    color: var(--text-tertiary);
+    margin-bottom: 2rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
 }
 
 /* Section Title Alternative */
@@ -2278,4 +2290,49 @@ footer {
     .process-step {
         padding: 1.5rem;
     }
+}
+
+/* Scroll-triggered fade-in animations */
+.intro-section,
+.credibility-section,
+.pricing-section,
+.writing-section,
+.cta-section-main,
+.about-section-new,
+.case-study-item,
+.service-item-new,
+.process-step,
+.testimonial,
+.who-for,
+.who-not {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.intro-section.visible,
+.credibility-section.visible,
+.pricing-section.visible,
+.writing-section.visible,
+.cta-section-main.visible,
+.about-section-new.visible,
+.case-study-item.visible,
+.service-item-new.visible,
+.process-step.visible,
+.testimonial.visible,
+.who-for.visible,
+.who-not.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Number counting styles */
+.case-study-results li {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.case-study-results li.counted {
+    color: var(--accent-color);
+    font-weight: 600;
 }

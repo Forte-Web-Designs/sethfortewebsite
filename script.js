@@ -218,11 +218,95 @@ const modernObserver = new IntersectionObserver((entries) => {
 }, modernObserverOptions);
 
 // Observe all elements that should animate on scroll
-const animatedElements = document.querySelectorAll('.case-study-item, .service-item-new, .process-step, .testimonial, .who-for, .who-not');
+const animatedElements = document.querySelectorAll('.case-study-item, .service-item-new, .process-step, .testimonial, .who-for, .who-not, .intro-section, .credibility-section, .pricing-section, .writing-section, .cta-section-main, .about-section-new');
 animatedElements.forEach((el, index) => {
     // Add staggered delay based on index
     el.style.transitionDelay = `${index * 0.1}s`;
     modernObserver.observe(el);
+});
+
+// Number counting animation for case study metrics
+function animateNumber(element, target, duration = 2000, suffix = '') {
+    const start = 0;
+    const increment = target / (duration / 16);
+    let current = start;
+
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            current = target;
+            clearInterval(timer);
+        }
+
+        // Format the number based on size
+        let displayValue;
+        if (target >= 1000000) {
+            displayValue = (current / 1000000).toFixed(1) + 'M';
+        } else if (target >= 1000) {
+            displayValue = (current / 1000).toFixed(target >= 10000 ? 0 : 1) + 'K';
+        } else {
+            displayValue = Math.floor(current);
+        }
+
+        element.textContent = displayValue + suffix;
+    }, 16);
+}
+
+// Intersection Observer for number counting
+const numberObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+            entry.target.classList.add('counted');
+            const text = entry.target.textContent;
+
+            // Parse numbers from text
+            const match = text.match(/£?(\d+(?:,\d+)*(?:\.\d+)?)\s*(million|K|k)?/i);
+            if (match) {
+                let value = parseFloat(match[1].replace(/,/g, ''));
+                const unit = match[2];
+                const suffix = text.includes('+') ? '+' : '';
+                const prefix = text.includes('£') ? '£' : '';
+
+                if (unit && unit.toLowerCase() === 'million') {
+                    value = value * 1000000;
+                } else if (unit && (unit.toLowerCase() === 'k')) {
+                    value = value * 1000;
+                }
+
+                // Animate the number
+                let current = 0;
+                const increment = value / 100;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= value) {
+                        current = value;
+                        clearInterval(timer);
+                    }
+
+                    let displayValue;
+                    if (value >= 1000000) {
+                        displayValue = prefix + (current / 1000000).toFixed(1) + ' million';
+                    } else if (value >= 1000) {
+                        displayValue = prefix + (current / 1000).toFixed(value >= 10000 ? 0 : 1) + 'K';
+                    } else {
+                        displayValue = Math.floor(current);
+                    }
+
+                    entry.target.textContent = displayValue + suffix;
+                }, 20);
+            }
+
+            numberObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
+
+// Observe all case study result items with numbers
+const numberElements = document.querySelectorAll('.case-study-results li, .case-study-timeline, .pricing-proof, .credibility-truth');
+numberElements.forEach(el => {
+    if (/\d/.test(el.textContent)) {
+        numberObserver.observe(el);
+    }
 });
 
 // Project/case study link handlers
