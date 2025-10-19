@@ -365,6 +365,18 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+    .blog-main {
+        padding-top: 60px;
+    }
+
+    .blog-header h1 {
+        font-size: 2rem;
+    }
+
+    .blog-subtitle {
+        font-size: 1.05rem;
+    }
+
     .article-featured {
         grid-template-columns: 1fr;
     }
@@ -373,12 +385,21 @@
         min-height: 250px;
     }
 
+    .article-featured .article-content {
+        padding: 2rem 1.5rem;
+    }
+
+    .article-featured h2 {
+        font-size: 1.5rem;
+    }
+
     .grid {
         grid-template-columns: 1fr;
     }
 
     .blog-filter {
-        top: 60px;
+        top: 0;
+        padding: 1rem 0;
     }
 
     .filter-buttons {
@@ -386,10 +407,82 @@
         overflow-x: auto;
         flex-wrap: nowrap;
         padding-bottom: 0.5rem;
+        -webkit-overflow-scrolling: touch;
     }
 
     .filter-btn {
         white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .article-hero-image {
+        height: 250px;
+    }
+
+    .article-hero h1 {
+        font-size: 1.75rem;
+    }
+
+    .article-body {
+        padding: 2rem 0;
+    }
+
+    .article-body p {
+        font-size: 17px;
+    }
+
+    .related-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .share-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .share-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .blog-header {
+        padding: 2rem 0 1.5rem;
+    }
+
+    .blog-header h1 {
+        font-size: 1.75rem;
+    }
+
+    .blog-subtitle {
+        font-size: 1rem;
+    }
+
+    .article-featured .article-image {
+        min-height: 200px;
+    }
+
+    .article-card .article-image {
+        height: 180px;
+    }
+
+    .article-hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .article-body p {
+        font-size: 16px;
+        line-height: 1.65;
+    }
+
+    .filter-buttons {
+        gap: 0.5rem;
+    }
+
+    .filter-btn {
+        font-size: 0.85rem;
+        padding: 0.5rem 1rem;
     }
 }
 
