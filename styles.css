@@ -1406,7 +1406,7 @@ footer {
 .hero {
     position: relative;
     overflow: hidden;
-    padding: clamp(3rem, 8vw, 5rem) 0;
+    padding: clamp(3rem, 8vw, 5rem) 0 clamp(2rem, 4vw, 3rem) 0;
     min-height: auto;
 }
 
@@ -1469,7 +1469,7 @@ footer {
 
 /* Intro Section */
 .intro-section {
-    padding: clamp(4rem, 10vw, 8rem) 0;
+    padding: clamp(3rem, 7vw, 5rem) 0;
     background: var(--background-secondary);
     border-top: 1px solid var(--border-color);
 }

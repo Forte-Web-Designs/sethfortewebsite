@@ -257,15 +257,17 @@ const numberObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
             entry.target.classList.add('counted');
-            const text = entry.target.textContent;
+            const originalText = entry.target.textContent;
 
-            // Parse numbers from text
-            const match = text.match(/£?(\d+(?:,\d+)*(?:\.\d+)?)\s*(million|K|k)?/i);
+            // Parse numbers from text and preserve surrounding context
+            const match = originalText.match(/(.*?)(\d+(?:,\d+)*(?:\.\d+)?)\s*(million|K|k)?(\+?)(.*)/i);
             if (match) {
-                let value = parseFloat(match[1].replace(/,/g, ''));
-                const unit = match[2];
-                const suffix = text.includes('+') ? '+' : '';
-                const prefix = text.includes('£') ? '£' : '';
+                const beforeText = match[1]; // Text before the number
+                const afterText = match[5]; // Text after the number
+                let value = parseFloat(match[2].replace(/,/g, ''));
+                const unit = match[3];
+                const suffix = match[4]; // The + sign if present
+                const prefix = originalText.includes('£') ? '£' : originalText.includes('$') ? '$' : '';
 
                 if (unit && unit.toLowerCase() === 'million') {
                     value = value * 1000000;
@@ -289,10 +291,11 @@ const numberObserver = new IntersectionObserver((entries) => {
                     } else if (value >= 1000) {
                         displayValue = prefix + (current / 1000).toFixed(value >= 10000 ? 0 : 1) + 'K';
                     } else {
-                        displayValue = Math.floor(current);
+                        displayValue = prefix + Math.floor(current) + '%';
                     }
 
-                    entry.target.textContent = displayValue + suffix;
+                    // Preserve the surrounding text
+                    entry.target.textContent = beforeText + displayValue + suffix + afterText;
                 }, 20);
             }
 
