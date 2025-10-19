@@ -260,14 +260,14 @@ const numberObserver = new IntersectionObserver((entries) => {
             const originalText = entry.target.textContent;
 
             // Parse numbers from text and preserve surrounding context
-            const match = originalText.match(/(.*?)(\d+(?:,\d+)*(?:\.\d+)?)\s*(million|K|k)?(\+?)(.*)/i);
+            const match = originalText.match(/(.*?)(£|\$)?(\d+(?:,\d+)*(?:\.\d+)?)\s*(million|K|k)?(\+?)(.*)/i);
             if (match) {
                 const beforeText = match[1]; // Text before the number
-                const afterText = match[5]; // Text after the number
-                let value = parseFloat(match[2].replace(/,/g, ''));
-                const unit = match[3];
-                const suffix = match[4]; // The + sign if present
-                const prefix = originalText.includes('£') ? '£' : originalText.includes('$') ? '$' : '';
+                const currencySymbol = match[2] || ''; // £ or $ if present
+                const afterText = match[6]; // Text after the number
+                let value = parseFloat(match[3].replace(/,/g, ''));
+                const unit = match[4];
+                const suffix = match[5]; // The + sign if present
 
                 if (unit && unit.toLowerCase() === 'million') {
                     value = value * 1000000;
@@ -287,11 +287,11 @@ const numberObserver = new IntersectionObserver((entries) => {
 
                     let displayValue;
                     if (value >= 1000000) {
-                        displayValue = prefix + (current / 1000000).toFixed(1) + ' million';
+                        displayValue = currencySymbol + (current / 1000000).toFixed(1) + ' million';
                     } else if (value >= 1000) {
-                        displayValue = prefix + (current / 1000).toFixed(value >= 10000 ? 0 : 1) + 'K';
+                        displayValue = currencySymbol + (current / 1000).toFixed(value >= 10000 ? 0 : 1) + 'K';
                     } else {
-                        displayValue = prefix + Math.floor(current) + '%';
+                        displayValue = Math.floor(current) + '%';
                     }
 
                     // Preserve the surrounding text
