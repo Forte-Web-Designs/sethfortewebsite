@@ -204,8 +204,8 @@ blogCards.forEach(card => {
 
 // Modern Intersection Observer for scroll animations
 const modernObserverOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    threshold: 0.05,
+    rootMargin: '0px 0px -100px 0px'
 };
 
 const modernObserver = new IntersectionObserver((entries) => {
@@ -220,8 +220,7 @@ const modernObserver = new IntersectionObserver((entries) => {
 // Observe all elements that should animate on scroll
 const animatedElements = document.querySelectorAll('.case-study-item, .service-item-new, .process-step, .testimonial, .who-for, .who-not, .intro-section, .credibility-section, .pricing-section, .writing-section, .cta-section-main, .about-section-new');
 animatedElements.forEach((el, index) => {
-    // Add staggered delay based on index
-    el.style.transitionDelay = `${index * 0.1}s`;
+    // Remove staggered delay for faster appearance
     modernObserver.observe(el);
 });
 
