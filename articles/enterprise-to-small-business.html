@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Building Enterprise Systems Taught Me - Seth Forte</title>
+    <meta name="description" content="Working at Wells Fargo taught me lessons that make me better at small business automation. Enterprise principles work at any scale.">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../blog.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">Seth Forte</a>
+            <ul class="nav-links">
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#work">Work</a></li>
+                <li><a href="../index.html#services">Services</a></li>
+                <li><a href="../writing.html">Writing</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <button class="dark-mode-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon sun-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </span>
+                    <span class="theme-icon moon-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </span>
+                </button>
+                <a href="../index.html#contact" class="cta-btn-nav">Let's Talk</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="article-page">
+        <section class="article-hero">
+            <div class="container">
+                <div class="article-hero-image" style="background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);"></div>
+                <div class="article-meta">
+                    <span class="article-category">Building in Public</span>
+                    <span class="article-date">Sep 18, 2025</span>
+                    <span class="article-author">By Seth Forte</span>
+                </div>
+                <h1>What Building Enterprise Systems Taught Me</h1>
+            </div>
+        </section>
+
+        <section class="article-body">
+            <div class="container">
+                <p>I partner with Wells Fargo building systems that serve millions of customers. Then I build automation for small businesses with Forte Web Designs.</p>
+
+                <p>Completely different scales. But the lessons transfer.</p>
+
+                <p>Here's what working on enterprise systems taught me that makes me better at small business automation.</p>
+
+                <p><strong>Plan for failure. Because everything fails eventually.</strong></p>
+
+                <p>At enterprise scale, you can't assume anything will work perfectly. APIs go down. Databases get overloaded. Network connections drop. External services fail.</p>
+
+                <p>So you build with failure in mind. Error handling. Retries. Fallbacks. Graceful degradation. Logging.</p>
+
+                <p>Small business automation needs the same thinking. Maybe not the same complexity. But the same mindset.</p>
+
+                <p>I built an automation for a client that pulled data from their e-commerce platform. Worked perfectly during testing. Deployed it. Worked great for two weeks. Then the e-commerce platform changed their API without warning. Automation broke.</p>
+
+                <p>Client was frustrated. "Why didn't you plan for this?"</p>
+
+                <p>Fair point. I should have. At Wells Fargo, we'd have error notifications. Fallback behavior. Automatic alerts when something breaks.</p>
+
+                <p>Now I build that into small business projects too. Costs a bit more upfront. Saves massive headaches later.</p>
+
+                <p><strong>Logging isn't optional. It's mandatory.</strong></p>
+
+                <p>Enterprise systems log everything. Every transaction. Every error. Every state change. Not because we're paranoid. Because when something breaks, you need to know what happened.</p>
+
+                <p>Small businesses rarely think about logging. They just want the automation to work. But when it doesn't work, they have no visibility into why.</p>
+
+                <p>I had a client's automation mysteriously stop processing orders. No obvious errors. Just stopped working.</p>
+
+                <p>Checked the logs. Turned out their vendor changed how they formatted order confirmations. One field was now optional instead of required. Automation expected that field. Didn't find it. Failed silently.</p>
+
+                <p>Without logs, that would have taken days to diagnose. With logs, took 10 minutes.</p>
+
+                <p>Now every automation I build includes logging. Doesn't need to be fancy. Just needs to record what happened, when, and whether it succeeded.</p>
+
+                <p><strong>Security matters even when you're small.</strong></p>
+
+                <p>At Wells Fargo, security is obsessive. Every system is hardened. Every connection encrypted. Every access point authenticated. Compliance audits constantly.</p>
+
+                <p>Small businesses think they're too small to worry about security. They're not.</p>
+
+                <p>I worked with a small medical practice. Wanted to automate patient appointment reminders. Simple project. But it involved patient data. HIPAA applies regardless of business size.</p>
+
+                <p>Had to think about encryption. Access controls. Data retention. Audit trails. All the enterprise security principles. Scaled down for their context but fundamentally the same.</p>
+
+                <p>You don't need enterprise-grade security infrastructure. But you need enterprise security thinking. Encrypt sensitive data. Use proper authentication. Don't store things you don't need. Follow compliance requirements.</p>
+
+                <p>Security bugs in small systems cause the same problems as security bugs in big systems. Just because you're small doesn't mean you're safe.</p>
+
+                <p><strong>Documentation is for future you.</strong></p>
+
+                <p>Enterprise systems are documented extensively. Not because we love writing docs. Because systems last years. People change teams. Someone needs to understand how things work.</p>
+
+                <p>Small business automation projects rarely get documented. I'm guilty of this too. Build it. Deploy it. Move on. Seems fine.</p>
+
+                <p>Until six months later when the client asks for a change. I open the code. Have no memory of why I did things that way. Wish past me had written a comment explaining the logic.</p>
+
+                <p>Now I document as I build. Not lengthy explanations. Just enough so future me or future maintainers can understand the decisions.</p>
+
+                <p>Why this approach instead of that one. What assumptions I made. What edge cases exist. What integrations are fragile.</p>
+
+                <p>Takes an extra 15 minutes during development. Saves hours during maintenance.</p>
+
+                <p><strong>Version control isn't just for big teams.</strong></p>
+
+                <p>Everything at Wells Fargo is in version control. Git repositories. Commit history. Code reviews. Branches.</p>
+
+                <p>Solo consultants often skip this. Code lives on their laptop. Or maybe Dropbox. No real version control.</p>
+
+                <p>That's risky. What if you need to roll back a change? What if you want to try something experimental without breaking the working version? What if your laptop dies?</p>
+
+                <p>I use Git for everything now. Even small projects. Even solo work. Commit frequently. Write decent commit messages. Push to a remote repository.</p>
+
+                <p>Has saved me multiple times when I needed to revert changes or understand what worked before.</p>
+
+                <p><strong>Testing catches problems before clients do.</strong></p>
+
+                <p>Enterprise development includes extensive testing. Unit tests. Integration tests. End-to-end tests. Automated test suites running constantly.</p>
+
+                <p>Small business projects rarely have formal testing. Too expensive. Too time-consuming. Just test manually and ship.</p>
+
+                <p>I don't do full enterprise testing for small projects. But I do systematic manual testing. Every path. Every edge case I can think of. Every integration point.</p>
+
+                <p>And I document the test cases. So when I make changes later, I can run through the same tests and verify nothing broke.</p>
+
+                <p>Catches most bugs before they reach clients. Much cheaper to fix bugs before deployment than after.</p>
+
+                <p><strong>Simplicity scales better than complexity.</strong></p>
+
+                <p>This one surprised me. You'd think enterprise systems are necessarily complex. Some are. But the best enterprise systems are simple at their core.</p>
+
+                <p>Clear architecture. Well-defined interfaces. Minimal dependencies. Simple logic.</p>
+
+                <p>Complexity is a liability. Makes things harder to maintain. Harder to debug. Harder to modify. More likely to break.</p>
+
+                <p>When I build automation for small businesses, I aim for the simplest solution that works. Not the cleverest. Not the most feature-rich. The simplest.</p>
+
+                <p>Because simple systems are reliable. Easy to understand. Easy to fix when they break. Easy to extend when requirements change.</p>
+
+                <p>I've seen small business automation projects that are over-engineered. Someone built a complex system because they could. Not because they needed to.</p>
+
+                <p>Those systems are nightmares to maintain. Every change risks breaking something. Every bug takes forever to diagnose.</p>
+
+                <p>Simple wins. Every time.</p>
+
+                <p><strong>The lessons that matter work at any scale.</strong></p>
+
+                <p>You don't need enterprise infrastructure for small business automation. Don't need the same tools. Don't need the same budget.</p>
+
+                <p>But you need the same principles. Plan for failure. Log everything important. Think about security. Document decisions. Use version control. Test systematically. Keep it simple.</p>
+
+                <p>These aren't enterprise principles. They're good engineering principles. They apply whether you're building for millions of users or one small business.</p>
+
+                <p>Working at Wells Fargo taught me that. Makes me a better consultant. Better engineer. Better problem solver.</p>
+
+                <p>That's why I'm keeping the day job.</p>
+
+                <div class="article-share">
+                    <div class="share-buttons">
+                        <span class="share-label">Share this article:</span>
+                        <a href="https://twitter.com/intent/tweet?text=What Building Enterprise Systems Taught Me&url=https://sethforte.com/articles/enterprise-to-small-business.html" target="_blank" class="share-btn">Share on Twitter</a>
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sethforte.com/articles/enterprise-to-small-business.html" target="_blank" class="share-btn">Share on LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="related-articles">
+            <div class="container">
+                <h2>Related Articles</h2>
+                <div class="related-grid">
+                    <article class="article-card">
+                        <div class="article-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                        <div class="article-content">
+                            <span class="article-category">Consulting Life</span>
+                            <span class="article-date">Aug 3, 2025</span>
+                            <h3><a href="day-job.html">Why I Still Have a Day Job</a></h3>
+                            <p>Most consultants quit their job to go all-in. I didn't. Here's why I'm keeping the day job...</p>
+                            <a href="day-job.html" class="read-more">Read Article →</a>
+                        </div>
+                    </article>
+
+                    <article class="article-card">
+                        <div class="article-image" style="background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);"></div>
+                        <div class="article-content">
+                            <span class="article-category">Technical Insights</span>
+                            <span class="article-date">Sep 22, 2025</span>
+                            <h3><a href="simple-tools.html">Why I Don't Use the Fanciest Tools</a></h3>
+                            <p>There's always a new automation platform. A better AI model. I ignore most of them...</p>
+                            <a href="simple-tools.html" class="read-more">Read Article →</a>
+                        </div>
+                    </article>
+
+                    <article class="article-card">
+                        <div class="article-image" style="background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);"></div>
+                        <div class="article-content">
+                            <span class="article-category">AI & Automation</span>
+                            <span class="article-date">Sep 15, 2025</span>
+                            <h3><a href="reliable-automation.html">Building Automation That Doesn't Break Every Week</a></h3>
+                            <p>The difference between good automation and bad automation isn't the code...</p>
+                            <a href="reliable-automation.html" class="read-more">Read Article →</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content-new">
+                <div class="footer-main">
+                    <h3 class="footer-logo">Seth Forte</h3>
+                    <p class="footer-tagline">Software engineer turned consultant. Building automation systems that work.</p>
+                    <p class="footer-description">I help businesses eliminate manual work through AI automation and custom software. Based in Flower Mound, Texas. Working with clients nationwide.</p>
+                    <p class="footer-pitch">If you're spending 10+ hours weekly on repetitive tasks, let's talk.</p>
+                    <div class="footer-contact">
+                        <a href="mailto:seth@fortewebdesigns.com">seth@fortewebdesigns.com</a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="../index.html#home">Home</a></li>
+                            <li><a href="../index.html#about">About</a></li>
+                            <li><a href="../index.html#work">Work</a></li>
+                            <li><a href="../index.html#services">Services</a></li>
+                            <li><a href="../writing.html">Writing</a></li>
+                            <li><a href="../index.html#contact">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>More Projects</h4>
+                        <ul>
+                            <li><a href="https://fortewebdesigns.com">Forte Web Designs</a> - AI automation and web design agency</li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="https://linkedin.com/in/sethforte" target="_blank">LinkedIn</a></li>
+                            <li><a href="https://twitter.com/sethforte" target="_blank">Twitter</a></li>
+                            <li><a href="https://youtube.com/@sethforte" target="_blank">YouTube</a></li>
+                            <li><a href="https://github.com/sethforte" target="_blank">GitHub</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Seth Forte. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

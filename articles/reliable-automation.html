@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building Automation That Doesn't Break Every Week - Seth Forte</title>
+    <meta name="description" content="The difference between good automation and bad automation isn't the code. It's how you build it to handle failure. Here's how to build reliable systems.">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../blog.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">Seth Forte</a>
+            <ul class="nav-links">
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#work">Work</a></li>
+                <li><a href="../index.html#services">Services</a></li>
+                <li><a href="../writing.html">Writing</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <button class="dark-mode-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon sun-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </span>
+                    <span class="theme-icon moon-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </span>
+                </button>
+                <a href="../index.html#contact" class="cta-btn-nav">Let's Talk</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="article-page">
+        <section class="article-hero">
+            <div class="container">
+                <div class="article-hero-image" style="background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);"></div>
+                <div class="article-meta">
+                    <span class="article-category">AI & Automation</span>
+                    <span class="article-date">Sep 15, 2025</span>
+                    <span class="article-author">By Seth Forte</span>
+                </div>
+                <h1>Building Automation That Doesn't Break Every Week</h1>
+            </div>
+        </section>
+
+        <section class="article-body">
+            <div class="container">
+                <p>The difference between good automation and bad automation isn't the code. It's how you handle failure.</p>
+
+                <p>Bad automation assumes everything works perfectly. APIs are always available. Data is always formatted correctly. Networks never fail. Systems never change.</p>
+
+                <p>Good automation assumes everything will eventually break. And plans for it.</p>
+
+                <p>Here's how to build automation that keeps running even when things go wrong.</p>
+
+                <p><strong>Principle 1: Expect APIs to fail.</strong></p>
+
+                <p>You're integrating with an external service. Their API documentation says it's available 99.9% of the time. Great. That means it's down 0.1% of the time.</p>
+
+                <p>If your automation runs 1,000 times monthly, it'll hit that downtime once. If it crashes when the API is down, it'll fail once monthly. Guaranteed.</p>
+
+                <p>Add error handling. If the API call fails, retry it. Try three times with delays. If it still fails, log the failure and alert someone. Don't just crash.</p>
+
+                <p>Built an automation for a client that pulled data from their e-commerce platform's API. Platform was normally reliable. But occasionally their API went down for maintenance. Automation crashed. Orders didn't process. Client was frustrated.</p>
+
+                <p>Added retry logic. If the API fails, wait 30 seconds. Try again. Still fails? Wait 60 seconds. Try again. Still fails? Send an alert and queue the request to retry later.</p>
+
+                <p>Now when the API goes down, automation handles it gracefully. Retries automatically. Usually succeeds on the second or third attempt. No manual intervention needed.</p>
+
+                <p><strong>Principle 2: Expect data to be messy.</strong></p>
+
+                <p>You test automation with clean sample data. Perfect formatting. All required fields filled in. Everything works.</p>
+
+                <p>Then it runs in production. Real data is messy. Missing fields. Unexpected formats. Extra spaces. Special characters. Edge cases you never thought of.</p>
+
+                <p>Don't assume data is clean. Validate it. Check that required fields exist. Check that formats are correct. Clean up common issues automatically.</p>
+
+                <p>Had automation that processed invoices. Assumed invoice numbers were always numeric. Then client sent an invoice with a letter in the number. Automation crashed.</p>
+
+                <p>Updated it to handle any format. If invoice number doesn't match expected format, flag it for review instead of crashing. Log what happened so we can see patterns and adjust if needed.</p>
+
+                <p>Now it handles whatever data comes in. Unexpected formats get flagged. But automation keeps running.</p>
+
+                <p><strong>Principle 3: Log everything important.</strong></p>
+
+                <p>When automation breaks, you need to know why. Can't fix problems you can't diagnose.</p>
+
+                <p>Log what happens. Not everything. Don't need to log every successful step. But log failures. Log unexpected conditions. Log anything unusual.</p>
+
+                <p>Include enough context to diagnose. Timestamp. What step failed. What the data was. What the error was.</p>
+
+                <p>Client's automation mysteriously stopped working. No obvious errors. Just stopped processing orders. Checked the logs. None. Automation wasn't logging anything.</p>
+
+                <p>Had to rebuild parts of it with logging to figure out what was happening. Turns out the source system changed their data format slightly. Automation silently failed because it couldn't parse the data.</p>
+
+                <p>If it had logged "failed to parse order data: unexpected format in field X," would have diagnosed it in 5 minutes instead of 2 hours.</p>
+
+                <p>Now every automation I build logs failures. Saves enormous debugging time.</p>
+
+                <p><strong>Principle 4: Alert on failures, not successes.</strong></p>
+
+                <p>Don't send notifications every time automation succeeds. That's noise. People stop paying attention.</p>
+
+                <p>Send alerts when something goes wrong. When automation fails. When data looks suspicious. When error rates spike.</p>
+
+                <p>Make alerts actionable. "Automation failed" isn't helpful. "Automation failed to process 10 orders due to API timeout. Retrying in 5 minutes" is helpful.</p>
+
+                <p>Include enough information to decide if manual intervention is needed or if automatic retry will handle it.</p>
+
+                <p><strong>Principle 5: Build in manual override.</strong></p>
+
+                <p>Sometimes automation gets it wrong. Needs to handle edge cases. Needs human judgment. Don't make manual intervention impossible.</p>
+
+                <p>Include a way to manually trigger specific steps. A way to manually fix data. A way to force a retry. A way to skip problematic items and flag them for review.</p>
+
+                <p>Client's automation approved expense reports automatically under certain conditions. Worked great 99% of the time. But 1% needed human judgment. Unusual expenses. Weird categories. Borderline policy violations.</p>
+
+                <p>Built in a manual review queue. Automation flags anything uncertain. Human reviews those cases. Approves or denies manually. Rest processes automatically.</p>
+
+                <p>Best of both worlds. Automation handles the bulk. Humans handle exceptions. Neither gets in the way of the other.</p>
+
+                <p><strong>Principle 6: Test with bad data.</strong></p>
+
+                <p>Don't just test the happy path. Test failure cases. What happens if a field is missing? What if it's the wrong type? What if the value is negative when you expect positive?</p>
+
+                <p>What happens if the API times out? What if it returns an error? What if the network drops mid-request?</p>
+
+                <p>What happens if input is 10× larger than expected? What if it's empty?</p>
+
+                <p>Every one of those scenarios will happen eventually. Better to find out how your automation handles them during testing than during production.</p>
+
+                <p>I keep a collection of "bad data" test cases. Deliberately malformed inputs. Use them to test every automation I build. Find and fix issues before they hit clients.</p>
+
+                <p><strong>Principle 7: Don't trust external systems to stay the same.</strong></p>
+
+                <p>You integrate with a platform. It works perfectly. Then they update their API. Or change their data format. Or deprecate a feature you were using.</p>
+
+                <p>Suddenly your automation breaks. Not because you did anything wrong. Because they changed something.</p>
+
+                <p>Can't prevent this. But can make it less painful. Don't tightly couple your automation to specific API versions or data structures. Add abstraction layers that can adapt to changes.</p>
+
+                <p>Monitor for changes. If API responses start looking different, alert even if automation still works. Might be a sign of upcoming breaking changes.</p>
+
+                <p>Have fallback options when possible. If the primary integration breaks, can you temporarily fall back to a manual process or alternative source?</p>
+
+                <p><strong>Principle 8: Keep it simple.</strong></p>
+
+                <p>Complex automation has more failure points. More dependencies. More things that can break. More edge cases.</p>
+
+                <p>Simple automation is easier to maintain. Easier to debug. Fewer failure modes.</p>
+
+                <p>When tempted to add complexity, ask: is this necessary? Or is it nice-to-have? If it's not essential, skip it.</p>
+
+                <p>I've built complex automation that did 10 things. Broke constantly. Spent more time fixing it than it saved.</p>
+
+                <p>I've built simple automation that does 3 things. Runs for months without issues. That's the goal.</p>
+
+                <p><strong>The real test: Can it run unsupervised?</strong></p>
+
+                <p>Good automation runs without constant babysitting. You check on it occasionally. But it handles problems itself.</p>
+
+                <p>Bad automation requires constant attention. Something breaks. You fix it. Something else breaks. You fix that too. Never ends.</p>
+
+                <p>If you're fixing your automation weekly, it's not reliable enough. Either the underlying process is too complex, or you didn't build in enough error handling.</p>
+
+                <p>Go back. Add retry logic. Add better error handling. Add logging. Add alerts. Make it resilient.</p>
+
+                <p>The best automation is boring. It just works. Quietly. In the background. You forget it exists until you notice time being saved.</p>
+
+                <p>That's the goal. Build boring automation that handles failures gracefully and keeps running.</p>
+
+                <div class="article-share">
+                    <div class="share-buttons">
+                        <span class="share-label">Share this article:</span>
+                        <a href="https://twitter.com/intent/tweet?text=Building Automation That Doesn't Break Every Week&url=https://sethforte.com/articles/reliable-automation.html" target="_blank" class="share-btn">Share on Twitter</a>
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sethforte.com/articles/reliable-automation.html" target="_blank" class="share-btn">Share on LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="related-articles">
+            <div class="container">
+                <h2>Related Articles</h2>
+                <div class="related-grid">
+                    <article class="article-card">
+                        <div class="article-image" style="background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);"></div>
+                        <div class="article-content">
+                            <span class="article-category">AI & Automation</span>
+                            <span class="article-date">Oct 15, 2025</span>
+                            <h3><a href="automation-failures.html">Why Most Automation Projects Fail</a></h3>
+                            <p>Everyone thinks automation fails because of bad code or wrong tools. That's almost never the problem...</p>
+                            <a href="automation-failures.html" class="read-more">Read Article →</a>
+                        </div>
+                    </article>
+
+                    <article class="article-card">
+                        <div class="article-image" style="background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);"></div>
+                        <div class="article-content">
+                            <span class="article-category">Technical Insights</span>
+                            <span class="article-date">Sep 22, 2025</span>
+                            <h3><a href="simple-tools.html">Why I Don't Use the Fanciest Tools</a></h3>
+                            <p>There's always a new automation platform. A better AI model. I ignore most of them...</p>
+                            <a href="simple-tools.html" class="read-more">Read Article →</a>
+                        </div>
+                    </article>
+
+                    <article class="article-card">
+                        <div class="article-image" style="background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);"></div>
+                        <div class="article-content">
+                            <span class="article-category">Building in Public</span>
+                            <span class="article-date">Sep 18, 2025</span>
+                            <h3><a href="enterprise-to-small-business.html">What Building Enterprise Systems Taught Me</a></h3>
+                            <p>Working at Wells Fargo taught me lessons that make me better at small business automation...</p>
+                            <a href="enterprise-to-small-business.html" class="read-more">Read Article →</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content-new">
+                <div class="footer-main">
+                    <h3 class="footer-logo">Seth Forte</h3>
+                    <p class="footer-tagline">Software engineer turned consultant. Building automation systems that work.</p>
+                    <p class="footer-description">I help businesses eliminate manual work through AI automation and custom software. Based in Flower Mound, Texas. Working with clients nationwide.</p>
+                    <p class="footer-pitch">If you're spending 10+ hours weekly on repetitive tasks, let's talk.</p>
+                    <div class="footer-contact">
+                        <a href="mailto:seth@fortewebdesigns.com">seth@fortewebdesigns.com</a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="../index.html#home">Home</a></li>
+                            <li><a href="../index.html#about">About</a></li>
+                            <li><a href="../index.html#work">Work</a></li>
+                            <li><a href="../index.html#services">Services</a></li>
+                            <li><a href="../writing.html">Writing</a></li>
+                            <li><a href="../index.html#contact">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>More Projects</h4>
+                        <ul>
+                            <li><a href="https://fortewebdesigns.com">Forte Web Designs</a> - AI automation and web design agency</li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="https://linkedin.com/in/sethforte" target="_blank">LinkedIn</a></li>
+                            <li><a href="https://twitter.com/sethforte" target="_blank">Twitter</a></li>
+                            <li><a href="https://youtube.com/@sethforte" target="_blank">YouTube</a></li>
+                            <li><a href="https://github.com/sethforte" target="_blank">GitHub</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Seth Forte. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
