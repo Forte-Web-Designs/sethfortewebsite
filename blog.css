@@ -30,15 +30,21 @@
 
 /* Category Filter */
 .blog-filter {
-    padding: 2rem 0;
-    background: var(--background-secondary);
+    padding: 1.5rem 0;
+    background: var(--overlay-light);
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
     position: sticky;
-    top: 73px;
-    z-index: 100;
+    top: 0;
+    z-index: 999;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .blog-filter {
+    background: var(--overlay-light);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .filter-buttons {
@@ -280,15 +286,15 @@
 
 .article-body {
     padding: clamp(3rem, 6vw, 5rem) 0;
-    max-width: 800px;
+    max-width: 700px;
     margin: 0 auto;
 }
 
 .article-body p {
-    font-size: 1.15rem;
-    line-height: 1.8;
+    font-size: 18px;
+    line-height: 1.7;
     color: var(--text-color);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.75rem;
 }
 
 .article-body strong {
