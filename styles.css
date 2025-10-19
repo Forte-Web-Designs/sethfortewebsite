@@ -70,6 +70,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-y: scroll;
 }
 
 body {
@@ -82,6 +83,8 @@ body {
     -moz-osx-font-smoothing: grayscale;
     font-weight: 400;
     letter-spacing: -0.01em;
+    min-height: 100vh;
+    position: relative;
 }
 
 .container {
@@ -104,11 +107,14 @@ section {
     position: -webkit-sticky;
     position: sticky;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 9999;
     padding: 1rem 0;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: var(--shadow-sm);
     width: 100%;
+    will-change: transform;
 }
 
 [data-theme="dark"] .navbar {
