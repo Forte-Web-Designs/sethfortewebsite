@@ -2085,12 +2085,29 @@ footer {
     font-size: clamp(1.1rem, 2.5vw, 1.35rem);
     line-height: 1.7;
     color: var(--text-color);
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.featured-articles-home {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin: 3rem 0;
+    text-align: left;
 }
 
 .writing-cta {
     display: flex;
     justify-content: center;
+    margin-top: 2rem;
+}
+
+/* Mobile responsiveness for featured articles */
+@media (max-width: 1024px) {
+    .featured-articles-home {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
 }
 
 /* CTA Section Main */
