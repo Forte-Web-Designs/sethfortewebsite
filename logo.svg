@@ -5,9 +5,12 @@
   <!-- SF text in icon -->
   <text x="20" y="28" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="white" text-anchor="middle">SF</text>
 
-  <!-- Seth Forte text -->
-  <text x="50" y="16" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="currentColor">Seth</text>
-  <text x="50" y="32" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="currentColor">Forte</text>
+  <!-- Seth Forte text - now always white for visibility -->
+  <text x="50" y="16" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#0f172a" class="logo-text-light">Seth</text>
+  <text x="50" y="32" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#0f172a" class="logo-text-light">Forte</text>
+
+  <text x="50" y="16" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#f1f5f9" class="logo-text-dark" style="display: none;">Seth</text>
+  <text x="50" y="32" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#f1f5f9" class="logo-text-dark" style="display: none;">Forte</text>
 
   <!-- Gradient definition -->
   <defs>

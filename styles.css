@@ -166,6 +166,23 @@ section {
     opacity: 0.8;
 }
 
+/* Logo text visibility for light/dark mode */
+.logo svg .logo-text-light {
+    display: block;
+}
+
+.logo svg .logo-text-dark {
+    display: none;
+}
+
+[data-theme="dark"] .logo svg .logo-text-light {
+    display: none;
+}
+
+[data-theme="dark"] .logo svg .logo-text-dark {
+    display: block;
+}
+
 .nav-links {
     display: flex;
     list-style: none;
