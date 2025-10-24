@@ -412,14 +412,27 @@ function initMobileMenu() {
                 navLinks.style.top = '100%';
                 navLinks.style.left = '0';
                 navLinks.style.right = '0';
-                navLinks.style.background = 'white';
+                navLinks.style.background = 'var(--background-color)';
                 navLinks.style.padding = '1rem';
-                navLinks.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+                navLinks.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)';
+                navLinks.style.borderTop = '1px solid var(--border-color)';
                 menuToggle.innerHTML = '✕';
             } else {
                 navLinks.style.display = 'none';
                 menuToggle.innerHTML = '☰';
             }
+        });
+
+        // Close menu when a nav link is clicked
+        const navLinkItems = navLinks.querySelectorAll('a');
+        navLinkItems.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('mobile-active')) {
+                    navLinks.classList.remove('mobile-active');
+                    navLinks.style.display = 'none';
+                    menuToggle.innerHTML = '☰';
+                }
+            });
         });
     }
 }
