@@ -568,47 +568,11 @@ style.textContent = `
 document.head.appendChild(style);
 
 // Smooth counter animation for numbers in results
+// DISABLED - Conflicts with green highlighting for key results
 function animateCounters() {
-    const counters = document.querySelectorAll('.case-study-item p');
-
-    counters.forEach(counter => {
-        const text = counter.textContent;
-
-        // Match patterns like "£4M", "$52K", "20 hours", "9 email"
-        const matches = text.match(/(£|\$)?(\d+)(M|K|hours|email)?/);
-
-        if (matches) {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
-                        entry.target.classList.add('counted');
-
-                        const currency = matches[1] || '';
-                        const number = parseInt(matches[2]);
-                        const suffix = matches[3] || '';
-
-                        let current = 0;
-                        const increment = number / 50;
-                        const timer = setInterval(() => {
-                            current += increment;
-                            if (current >= number) {
-                                current = number;
-                                clearInterval(timer);
-                            }
-
-                            const displayNumber = Math.floor(current);
-                            const newText = text.replace(matches[0], `${currency}${displayNumber}${suffix}`);
-                            entry.target.textContent = newText;
-                        }, 20);
-
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.5 });
-
-            observer.observe(counter);
-        }
-    });
+    // Counter animation disabled to preserve green highlighting on key metrics
+    // The highlight-result spans would be removed by textContent replacement
+    return;
 }
 
 // Initialize everything on DOM load
