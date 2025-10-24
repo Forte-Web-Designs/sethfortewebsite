@@ -428,9 +428,11 @@ function initMobileMenu() {
 }
 
 // Initialize on load and resize
-if (window.innerWidth <= 768) {
-    initMobileMenu();
-}
+document.addEventListener('DOMContentLoaded', () => {
+    if (window.innerWidth <= 768) {
+        initMobileMenu();
+    }
+});
 
 let resizeTimer;
 window.addEventListener('resize', () => {
@@ -444,8 +446,10 @@ window.addEventListener('resize', () => {
                 mobileToggle.remove();
             }
             const navLinks = document.querySelector('.nav-links');
-            navLinks.style.display = '';
-            navLinks.classList.remove('mobile-active');
+            if (navLinks) {
+                navLinks.style.display = '';
+                navLinks.classList.remove('mobile-active');
+            }
         }
     }, 250);
 });
