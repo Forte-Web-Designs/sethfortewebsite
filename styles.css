@@ -166,21 +166,9 @@ section {
     opacity: 0.8;
 }
 
-/* Logo text visibility for light/dark mode */
-.logo svg .logo-text-light {
-    display: block !important;
-}
-
-.logo svg .logo-text-dark {
-    display: none !important;
-}
-
-[data-theme="dark"] .logo svg .logo-text-light {
-    display: none !important;
-}
-
-[data-theme="dark"] .logo svg .logo-text-dark {
-    display: block !important;
+/* Logo text color for light/dark mode */
+.logo svg .logo-text {
+    color: var(--primary-color);
 }
 
 .nav-links {
