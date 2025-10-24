@@ -168,19 +168,19 @@ section {
 
 /* Logo text visibility for light/dark mode */
 .logo svg .logo-text-light {
-    display: block;
+    display: block !important;
 }
 
 .logo svg .logo-text-dark {
-    display: none;
+    display: none !important;
 }
 
 [data-theme="dark"] .logo svg .logo-text-light {
-    display: none;
+    display: none !important;
 }
 
 [data-theme="dark"] .logo svg .logo-text-dark {
-    display: block;
+    display: block !important;
 }
 
 .nav-links {
