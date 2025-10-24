@@ -168,7 +168,11 @@ section {
 
 /* Logo text color for light/dark mode */
 .logo svg .logo-text {
-    color: var(--primary-color);
+    color: #0f172a;
+}
+
+[data-theme="dark"] .logo svg .logo-text {
+    color: #f1f5f9;
 }
 
 .nav-links {
