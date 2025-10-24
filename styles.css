@@ -2778,3 +2778,13 @@ footer a:hover {
         scroll-behavior: auto !important;
     }
 }
+
+/* Highlight results with green color */
+.highlight-result {
+    color: var(--success-color);
+    font-weight: 600;
+}
+
+[data-theme="dark"] .highlight-result {
+    color: #34d399;
+}
