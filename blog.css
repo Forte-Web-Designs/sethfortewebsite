@@ -136,8 +136,13 @@
 }
 
 .article-date {
-    color: var(--text-tertiary);
+    color: var(--text-secondary);
     font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+[data-theme="dark"] .article-date {
+    opacity: 0.9;
 }
 
 .article-featured h2 {
