@@ -162,8 +162,7 @@ ctaButtons.forEach(button => {
     });
 });
 
-// Navbar scroll effect - Apple style
-let lastScroll = 0;
+// Navbar scroll effect - Always visible with backdrop blur
 const navbar = document.querySelector('.navbar');
 
 window.addEventListener('scroll', () => {
@@ -175,18 +174,9 @@ window.addEventListener('scroll', () => {
     } else {
         navbar.classList.remove('scrolled');
     }
-
-    // Hide navbar on scroll down, show on scroll up (smooth Apple-style)
-    if (currentScroll > lastScroll && currentScroll > 200) {
-        navbar.style.transform = 'translateY(-100%)';
-    } else {
-        navbar.style.transform = 'translateY(0)';
-    }
-
-    lastScroll = currentScroll;
 });
 
-navbar.style.transition = 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, background-color 0.3s ease';
+navbar.style.transition = 'box-shadow 0.3s ease, background-color 0.3s ease';
 
 // Blog card click handlers
 blogCards.forEach(card => {
