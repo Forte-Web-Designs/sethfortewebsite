@@ -162,22 +162,22 @@ ctaButtons.forEach(button => {
     });
 });
 
-// Navbar scroll effect
+// Navbar scroll effect - Apple style
 let lastScroll = 0;
 const navbar = document.querySelector('.navbar');
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
 
-    // Add shadow on scroll
+    // Add scrolled class for backdrop blur effect
     if (currentScroll > 50) {
-        navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+        navbar.classList.add('scrolled');
     } else {
-        navbar.style.boxShadow = 'none';
+        navbar.classList.remove('scrolled');
     }
 
-    // Hide navbar on scroll down, show on scroll up
-    if (currentScroll > lastScroll && currentScroll > 100) {
+    // Hide navbar on scroll down, show on scroll up (smooth Apple-style)
+    if (currentScroll > lastScroll && currentScroll > 200) {
         navbar.style.transform = 'translateY(-100%)';
     } else {
         navbar.style.transform = 'translateY(0)';
@@ -186,7 +186,7 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-navbar.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+navbar.style.transition = 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, background-color 0.3s ease';
 
 // Blog card click handlers
 blogCards.forEach(card => {
@@ -452,10 +452,181 @@ console.log('%cSeth Forte', 'font-size: 24px; font-weight: bold; color: #667eea;
 console.log('%cAI Consultant | Software Engineer | Writer | Coach', 'font-size: 14px; color: #666;');
 console.log('\nInterested in working together? Reach out at seth@fortewebdesigns.com');
 
+// ============================================
+// MODERN SCROLL ANIMATIONS (Apple/Claude.ai)
+// ============================================
+
+// Enhanced Intersection Observer for smooth scroll reveals
+const scrollRevealOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -80px 0px'
+};
+
+const scrollRevealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+            // Add staggered delay for child elements
+            entry.target.style.opacity = '0';
+            entry.target.style.transform = 'translateY(30px)';
+
+            setTimeout(() => {
+                entry.target.style.transition = 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }, index * 100);
+
+            scrollRevealObserver.unobserve(entry.target);
+        }
+    });
+}, scrollRevealOptions);
+
+// Observe sections for scroll reveal
+document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('section:not(.hero)');
+    sections.forEach(section => {
+        scrollRevealObserver.observe(section);
+    });
+});
+
+// Parallax effect for images on scroll
+let ticking = false;
+
+function updateParallax() {
+    const scrolled = window.pageYOffset;
+
+    // Parallax for article images
+    const articleImages = document.querySelectorAll('.article-image');
+    articleImages.forEach(img => {
+        const rect = img.getBoundingClientRect();
+        const scrollPercent = (rect.top - window.innerHeight) / (rect.height + window.innerHeight);
+        const translateY = scrollPercent * 50;
+
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            img.style.transform = `translateY(${translateY}px)`;
+        }
+    });
+
+    ticking = false;
+}
+
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        window.requestAnimationFrame(updateParallax);
+        ticking = true;
+    }
+});
+
+// Smooth scale animation for case study cards on hover
+document.querySelectorAll('.case-study-item').forEach(card => {
+    card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-8px) scale(1.02)';
+    });
+
+    card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) scale(1)';
+    });
+});
+
+// Button ripple effect on click
+document.querySelectorAll('.btn-primary, .btn-secondary').forEach(button => {
+    button.addEventListener('click', function(e) {
+        const ripple = document.createElement('span');
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+
+        ripple.style.cssText = `
+            position: absolute;
+            width: ${size}px;
+            height: ${size}px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            top: ${y}px;
+            left: ${x}px;
+            transform: scale(0);
+            animation: ripple 0.6s ease-out;
+            pointer-events: none;
+        `;
+
+        this.appendChild(ripple);
+
+        setTimeout(() => ripple.remove(), 600);
+    });
+});
+
+// Add ripple animation to CSS dynamically
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes ripple {
+        to {
+            transform: scale(2);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
+
+// Smooth counter animation for numbers in results
+function animateCounters() {
+    const counters = document.querySelectorAll('.case-study-item p');
+
+    counters.forEach(counter => {
+        const text = counter.textContent;
+
+        // Match patterns like "£4M", "$52K", "20 hours", "9 email"
+        const matches = text.match(/(£|\$)?(\d+)(M|K|hours|email)?/);
+
+        if (matches) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                        entry.target.classList.add('counted');
+
+                        const currency = matches[1] || '';
+                        const number = parseInt(matches[2]);
+                        const suffix = matches[3] || '';
+
+                        let current = 0;
+                        const increment = number / 50;
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= number) {
+                                current = number;
+                                clearInterval(timer);
+                            }
+
+                            const displayNumber = Math.floor(current);
+                            const newText = text.replace(matches[0], `${currency}${displayNumber}${suffix}`);
+                            entry.target.textContent = newText;
+                        }, 20);
+
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            observer.observe(counter);
+        }
+    });
+}
+
 // Initialize everything on DOM load
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Seth Forte website loaded successfully!');
 
-    // Add any initialization code here
-    // Example: Load testimonials, initialize carousels, etc.
+    // Initialize counter animations
+    animateCounters();
+
+    // Add smooth focus states for accessibility
+    document.querySelectorAll('a, button').forEach(element => {
+        element.addEventListener('focus', function() {
+            this.style.outline = '2px solid var(--accent-color)';
+            this.style.outlineOffset = '4px';
+        });
+
+        element.addEventListener('blur', function() {
+            this.style.outline = '';
+        });
+    });
 });

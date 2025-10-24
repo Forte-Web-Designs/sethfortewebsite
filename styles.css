@@ -2505,3 +2505,276 @@ footer {
     color: var(--accent-color);
     font-weight: 600;
 }
+
+/* ============================================
+   MODERN ANIMATIONS (Apple/Claude.ai style)
+   ============================================ */
+
+/* Smooth fade-in on scroll animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Apply animations to sections */
+section {
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Stagger section animations */
+.hero {
+    animation-delay: 0s;
+}
+
+.intro-section {
+    animation-delay: 0.1s;
+}
+
+.case-studies-section {
+    animation-delay: 0.2s;
+}
+
+.writing-section {
+    animation-delay: 0.3s;
+}
+
+.services-section-new {
+    animation-delay: 0.4s;
+}
+
+.credibility-section {
+    animation-delay: 0.5s;
+}
+
+.cta-section-main {
+    animation-delay: 0.6s;
+}
+
+/* Card hover animations - smooth lift effect */
+.article-card,
+.case-study-item,
+.service-item-new {
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.article-card:hover,
+.case-study-item:hover,
+.service-item-new:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .article-card:hover,
+[data-theme="dark"] .case-study-item:hover,
+[data-theme="dark"] .service-item-new:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Button animations - Apple-style scale */
+.btn-primary,
+.btn-secondary,
+.cta-btn-nav {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before,
+.btn-secondary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-primary:hover::before,
+.btn-secondary:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover,
+.cta-btn-nav:hover {
+    transform: scale(1.05);
+}
+
+.btn-primary:active,
+.btn-secondary:active,
+.cta-btn-nav:active {
+    transform: scale(0.98);
+}
+
+/* Text link hover - smooth underline animation */
+a:not(.btn-primary):not(.btn-secondary):not(.cta-btn-nav) {
+    position: relative;
+    text-decoration: none;
+}
+
+.inline-link::after,
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.inline-link:hover::after,
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Navbar scroll effect */
+.navbar {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navbar.scrolled {
+    background: var(--overlay-light);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .navbar.scrolled {
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Logo animation */
+.logo img {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.logo:hover img {
+    transform: scale(1.05);
+}
+
+/* Dark mode toggle smooth rotation */
+.dark-mode-toggle {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark-mode-toggle:hover {
+    transform: rotate(20deg) scale(1.1);
+}
+
+.dark-mode-toggle:active {
+    transform: rotate(20deg) scale(0.95);
+}
+
+/* Heading animations - subtle scale on view */
+h1, h2, h3 {
+    animation: scaleIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Stagger heading animations */
+.hero-title-main {
+    animation-delay: 0.1s;
+}
+
+.hero-statement {
+    animation-delay: 0.2s;
+}
+
+.hero-cta {
+    animation-delay: 0.3s;
+}
+
+/* Image parallax effect on scroll */
+.article-image,
+.headshot {
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.article-card:hover .article-image {
+    transform: scale(1.05);
+}
+
+/* Smooth number counter animation */
+@keyframes countUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.case-study-item h3,
+.case-study-item p {
+    animation: countUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Footer link hover */
+footer a {
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+footer a:hover {
+    color: var(--accent-color);
+    transform: translateX(4px);
+}
+
+/* Subtle pulse for CTA sections */
+@keyframes subtlePulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+.cta-section-main .btn-primary {
+    animation: subtlePulse 3s ease-in-out infinite;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
