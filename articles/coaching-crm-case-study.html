@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How I Built A CRM System That Actually Fits How A Coach Works - Seth Forte</title>
+    <meta name="description" content="Built a complete ActiveCampaign CRM system for a coaching business with 5 specialized pipelines and lifecycle automations. Projected 8-12 hours saved weekly while maintaining personal touch.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="How I Built A CRM System That Actually Fits How A Coach Works">
+    <meta property="og:description" content="Built a complete ActiveCampaign CRM system for a coaching business with 5 specialized pipelines and lifecycle automations. Projected 8-12 hours saved weekly while maintaining personal touch.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://sethforte.com/articles/coaching-crm-case-study.html">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="How I Built A CRM System That Actually Fits How A Coach Works">
+    <meta name="twitter:description" content="Built a complete ActiveCampaign CRM system for a coaching business with 5 specialized pipelines and lifecycle automations. Projected 8-12 hours saved weekly while maintaining personal touch.">
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../blog.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html#home" class="logo">
+                <svg width="160" height="40" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="40" rx="8" fill="url(#logo-gradient)"/>
+                    <text x="20" y="28" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="white" text-anchor="middle">SF</text>
+                    <text x="50" y="16" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="currentColor" class="logo-text">Seth</text>
+                    <text x="50" y="32" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="currentColor" class="logo-text">Forte</text>
+                    <defs>
+                        <linearGradient id="logo-gradient" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#3b82f6"/>
+                            <stop offset="100%" stop-color="#8b5cf6"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu" style="display: none;">☰</button>
+            <ul class="nav-links">
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#work">Work</a></li>
+                <li><a href="../index.html#services">Services</a></li>
+                <li><a href="../writing.html">Writing</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <button class="dark-mode-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon sun-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </span>
+                    <span class="theme-icon moon-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </span>
+                </button>
+                <a href="../index.html#contact" class="cta-btn-nav">Let's Talk</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <article class="blog-post">
+            <div class="container-article">
+                <header class="article-header">
+                    <h1>How I Built A CRM System That Actually Fits How A Coach Works</h1>
+                    <p class="article-date">Oct 24, 2025</p>
+                </header>
+
+                <div class="article-content">
+                    <p>A business coach reached out with a problem I hear constantly.</p>
+
+                    <p>She was spending 8 to 12 hours every week on manual client management. Tracking where people were in her pipeline. Remembering to send check-ins. Following up on referrals. Keeping notes organized across multiple tools.</p>
+
+                    <p>She knew she needed CRM and automation. She'd tried setting up ActiveCampaign herself. Got overwhelmed. Abandoned it.</p>
+
+                    <p>Now she was back to spreadsheets and manual follow-ups. Growing her coaching business while drowning in admin work.</p>
+
+                    <h2>What Was Actually Broken</h2>
+
+                    <p>Here's what her workflow looked like.</p>
+
+                    <p>Someone expresses interest. She'd manually add them to a spreadsheet. Schedule a discovery call. After the call, move them to a different tab. If they became a client, move them again. Set reminders to check in at 30 days, 60 days, 90 days. Remember birthdays. Track referrals manually.</p>
+
+                    <p>All of this across Google Sheets, her calendar, sticky notes, and memory.</p>
+
+                    <p>It worked when she had 10 clients. At 30+ clients plus leads in various stages, it was breaking down.</p>
+
+                    <p>She'd miss check-ins. Forget to follow up on referrals. Lose track of where people were in her process.</p>
+
+                    <p>That's not a discipline problem. That's a systems problem.</p>
+
+                    <h2>The Thing About Coaching Businesses</h2>
+
+                    <p>Coaching is different from product businesses.</p>
+
+                    <p>The relationship is everything. You can't automate your way into removing the personal touch. That's literally what clients are paying for.</p>
+
+                    <p>But there's a ton of relationship maintenance work that doesn't require personal attention. Remembering to check in at the right times. Asking for referrals when clients are happy. Sending birthday messages. Following up on leads at appropriate intervals.</p>
+
+                    <p>That stuff should be automated. Not because it's not important. Because automating it means it actually happens consistently.</p>
+
+                    <h2>What I Built</h2>
+
+                    <p>I built a complete ActiveCampaign ecosystem designed around how coaches actually work.</p>
+
+                    <p>Five specialized pipelines:</p>
+
+                    <ul>
+                        <li>Lead pipeline (inquiry to discovery call to decision)</li>
+                        <li>Onboarding pipeline (new client setup)</li>
+                        <li>Active client pipeline (ongoing coaching relationship)</li>
+                        <li>Offboarding pipeline (program completion)</li>
+                        <li>Referral pipeline (turning happy clients into advocates)</li>
+                    </ul>
+
+                    <p>Each pipeline has automation that triggers at the right moments. Lead comes in, automation sends initial information and books discovery call. Client signs up, automation handles onboarding sequence. 30 days into coaching, automation sends check-in prompt.</p>
+
+                    <p>Birthday automation. Referral request automation triggered when clients hit milestones. Re-engagement sequences for leads who went cold.</p>
+
+                    <p>All connected to her other tools. Kajabi for course delivery. WordPress for her website. ClickUp for task management.</p>
+
+                    <p>The system knows where everyone is, what's happened, and what should happen next.</p>
+
+                    <h2>The Part That Was Tricky</h2>
+
+                    <p>The technical setup wasn't hard. ActiveCampaign is powerful but learnable.</p>
+
+                    <p>The hard part was designing automation that maintained her personal approach.</p>
+
+                    <p>Coaches sell relationships. If the automation feels robotic or impersonal, it damages what clients are paying for.</p>
+
+                    <p>We spent weeks on the messaging. What should be automated versus what should be personal? How do we write automated messages that still feel like they're from her?</p>
+
+                    <p>The breakthrough was realizing automation doesn't mean impersonal. It means consistent.</p>
+
+                    <p>The automated check-ins don't replace her coaching. They make sure she never forgets to reach out. The system reminds her, she adds personal context, the relationship stays strong.</p>
+
+                    <p>That's the right use of automation in a coaching business.</p>
+
+                    <h2>Why This Took Longer Than Expected</h2>
+
+                    <p>I initially estimated three weeks. It took closer to six.</p>
+
+                    <p>Not because the technical work was harder than expected. Because we kept refining the workflows as we saw how she actually used the system.</p>
+
+                    <p>First version had too much automation. Felt impersonal. Scaled back.</p>
+
+                    <p>Second version didn't capture enough information. She was still tracking stuff manually. Added more fields.</p>
+
+                    <p>Third version had the right balance. Enough automation to save serious time. Enough flexibility to maintain her personal approach.</p>
+
+                    <p>You can't design that perfectly upfront. You have to build, test, refine.</p>
+
+                    <p>The client understood that. She was patient. Gave good feedback. Participated in testing.</p>
+
+                    <p>That's why it works now.</p>
+
+                    <h2>The Projected Results</h2>
+
+                    <p>This is a newer project, so I'm talking about projected rather than proven results.</p>
+
+                    <p>Based on time tracking before and after, we're projecting 8 to 12 hours saved weekly on manual CRM tasks. That's $20K to $30K annually in recovered time she can spend coaching or growing the business.</p>
+
+                    <p>The referral automation should increase referral generation by 20 to 30%. Right now she gets referrals when she remembers to ask. Now the system asks at optimal moments automatically.</p>
+
+                    <p>Lead conversion should improve 15 to 25%. The automated follow-up sequences mean leads don't fall through cracks. Everyone gets appropriate touchpoints at the right times.</p>
+
+                    <p>We'll see actual numbers over the next few months. But early indicators look solid.</p>
+
+                    <h2>What I Learned About Coaching Businesses</h2>
+
+                    <p>Coaches need different automation than product businesses.</p>
+
+                    <p>Product businesses can automate aggressively. Nobody cares if their order confirmation is automated.</p>
+
+                    <p>Coaching businesses need careful automation. The relationship is the product. Automation needs to support that relationship, not replace it.</p>
+
+                    <p>The right approach: automate the logistics, preserve the personal connection.</p>
+
+                    <p>Automate scheduling, reminders, follow-ups, data tracking. Keep personal the actual coaching, custom advice, relationship building.</p>
+
+                    <p>That's the balance that works.</p>
+
+                    <h2>The Part I'm Proud Of</h2>
+
+                    <p>The system doesn't just save time. It makes her better at what she does.</p>
+
+                    <p>Before, she'd sometimes forget to check in with clients at important moments. Not because she didn't care. Because she's running a business and things slip through.</p>
+
+                    <p>Now the system reminds her. Client hits 60 days, she gets a notification. Time to ask for a referral, system prompts her. Lead needs follow-up, it surfaces automatically.</p>
+
+                    <p>She's still doing the personal work. The system just makes sure nothing falls through cracks.</p>
+
+                    <p>That's automation that enhances professional capability instead of just reducing costs.</p>
+
+                    <p>And because it's built on ActiveCampaign, she can modify it herself as her business evolves. Add new pipelines. Adjust automations. She's not dependent on me for every change.</p>
+
+                    <p>That's the right way to deliver this kind of system.</p>
+                </div>
+
+                <div class="article-footer">
+                    <a href="../writing.html" class="back-link">Back to Writing</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer-new">
+        <div class="container">
+            <div class="footer-content-new">
+                <div class="footer-section-new">
+                    <h3>Seth Forte</h3>
+                    <p>AI automation consultant building systems that eliminate manual work.</p>
+                </div>
+                <div class="footer-section-new">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links-new">
+                        <li><a href="../index.html#about">About</a></li>
+                        <li><a href="../index.html#work">Work</a></li>
+                        <li><a href="../index.html#services">Services</a></li>
+                        <li><a href="../writing.html">Writing</a></li>
+                        <li><a href="../index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section-new">
+                    <h4>Connect</h4>
+                    <ul class="footer-links-new">
+                        <li><a href="https://www.linkedin.com/in/seth-forte/" target="_blank" rel="noopener">LinkedIn</a></li>
+                        <li><a href="https://x.com/ForteSeth" target="_blank" rel="noopener">Twitter/X</a></li>
+                        <li><a href="https://www.youtube.com/@SethForte" target="_blank" rel="noopener">YouTube</a></li>
+                        <li><a href="https://www.instagram.com/fortewebdesigns/" target="_blank" rel="noopener">Instagram</a></li>
+                        <li><a href="mailto:seth@fortewebdesigns.com">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom-new">
+                <p>&copy; 2025 Seth Forte. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

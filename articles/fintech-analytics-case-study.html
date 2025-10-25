@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How I Analyzed 200,000 Transactions For A Fintech Company (And Found £4M In Hidden Revenue) - Seth Forte</title>
+    <meta name="description" content="Built an AI-powered analytics system that processes 200K+ transactions for a fintech company, automates 40 hours of weekly analysis, and identified £4M in growth opportunities.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="How I Analyzed 200,000 Transactions For A Fintech Company (And Found £4M In Hidden Revenue)">
+    <meta property="og:description" content="Built an AI-powered analytics system that processes 200K+ transactions for a fintech company, automates 40 hours of weekly analysis, and identified £4M in growth opportunities.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://sethforte.com/articles/fintech-analytics-case-study.html">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="How I Analyzed 200,000 Transactions For A Fintech Company (And Found £4M In Hidden Revenue)">
+    <meta name="twitter:description" content="Built an AI-powered analytics system that processes 200K+ transactions for a fintech company, automates 40 hours of weekly analysis, and identified £4M in growth opportunities.">
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../blog.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html#home" class="logo">
+                <svg width="160" height="40" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="40" rx="8" fill="url(#logo-gradient)"/>
+                    <text x="20" y="28" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="white" text-anchor="middle">SF</text>
+                    <text x="50" y="16" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="currentColor" class="logo-text">Seth</text>
+                    <text x="50" y="32" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="currentColor" class="logo-text">Forte</text>
+                    <defs>
+                        <linearGradient id="logo-gradient" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#3b82f6"/>
+                            <stop offset="100%" stop-color="#8b5cf6"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu" style="display: none;">☰</button>
+            <ul class="nav-links">
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#work">Work</a></li>
+                <li><a href="../index.html#services">Services</a></li>
+                <li><a href="../writing.html">Writing</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <button class="dark-mode-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon sun-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </span>
+                    <span class="theme-icon moon-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </span>
+                </button>
+                <a href="../index.html#contact" class="cta-btn-nav">Let's Talk</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <article class="blog-post">
+            <div class="container-article">
+                <header class="article-header">
+                    <h1>How I Analyzed 200,000 Transactions For A Fintech Company (And Found £4M In Hidden Revenue)</h1>
+                    <p class="article-date">Oct 1, 2025</p>
+                </header>
+
+                <div class="article-content">
+                    <p>A fintech company reached out last year with a problem that sounded impossible.</p>
+
+                    <p>They had 200,000+ transactions across 90 days. Messy data across multiple systems. They needed to identify what was actually driving profitability and build a growth strategy around it.</p>
+
+                    <p>Their team was spending 40 hours a week just trying to make sense of the data. Manual exports. Excel pivots. Copy-pasting between systems. By the time they finished analyzing one week, they were two weeks behind.</p>
+
+                    <p>They asked if I could automate it.</p>
+
+                    <p>I wasn't sure. This was way more complex than anything I'd built before.</p>
+
+                    <h2>The Actual Problem</h2>
+
+                    <p>Here's what made this hard.</p>
+
+                    <p>The data wasn't clean. Transactions had inconsistent formatting. Categories didn't match across systems. Missing fields. Duplicate entries. The kind of mess that happens when data comes from multiple sources over time.</p>
+
+                    <p>Before any analysis could happen, someone had to clean it manually. Hours of work just to get the data into a usable state.</p>
+
+                    <p>Then the analysis itself. Which transaction types were most profitable? Which customer segments drove revenue? Where were they losing money? What patterns existed that weren't obvious?</p>
+
+                    <p>All of that required digging through spreadsheets, building pivots, cross-referencing data points. Repeating the process every week as new data came in.</p>
+
+                    <p>They were drowning in data but couldn't extract insights fast enough to act on them.</p>
+
+                    <h2>What I Built</h2>
+
+                    <p>I built an AI-powered analytics system that handles the entire workflow automatically.</p>
+
+                    <p>Data cleaning happens first. The system pulls raw transaction data, identifies inconsistencies, standardizes formatting, removes duplicates, fills in missing fields where possible.</p>
+
+                    <p>Then automated analysis. The AI identifies patterns, calculates profitability by segment, flags anomalies, generates insights about what's driving revenue and what's costing money.</p>
+
+                    <p>Finally, executive reporting. Automated dashboards showing key metrics. Written summaries of findings. Actionable recommendations based on the data.</p>
+
+                    <p>The entire process runs automatically. New data comes in, system processes it, updated reports appear. No manual work.</p>
+
+                    <h2>The Part That Was Actually Hard</h2>
+
+                    <p>The AI integration wasn't the hard part. GPT-4 is good at analyzing structured data and generating insights.</p>
+
+                    <p>The hard part was data cleaning logic.</p>
+
+                    <p>You can't just throw messy data at AI and hope it figures it out. The AI needs clean, structured input to generate useful output.</p>
+
+                    <p>I spent weeks building the data cleaning pipeline. Rules for standardizing formats. Logic for identifying and handling duplicates. Algorithms for filling missing fields based on context.</p>
+
+                    <p>That's not sexy AI work. That's grinding through edge cases and building robust data processing logic.</p>
+
+                    <p>But it's what makes the system actually work in production.</p>
+
+                    <h2>What We Found</h2>
+
+                    <p>Once the system was running, it started surfacing insights that weren't visible before.</p>
+
+                    <p>Specific transaction types that looked profitable on the surface but had hidden costs eating margins. Customer segments that generated high volume but low value. Opportunities in underserved markets that the data showed clear demand for.</p>
+
+                    <p>The big finding: a £4 million growth pathway they hadn't identified yet. Specific product combinations and customer segments that had demonstrable demand and strong unit economics.</p>
+
+                    <p>That wasn't me being clever. That was having clean data and systematic analysis revealing patterns buried in 200,000 transactions.</p>
+
+                    <h2>The Real Numbers</h2>
+
+                    <p>90% reduction in analysis time. Work that took 40 hours a week now happens automatically.</p>
+
+                    <p>That's not just time savings. That's strategic capacity they didn't have before.</p>
+
+                    <p>Before automation, they were perpetually behind on analysis. By the time they understood last week's data, two more weeks had passed.</p>
+
+                    <p>Now they have real-time insights. Can make decisions based on current data. Can test hypotheses quickly. Can spot problems and opportunities as they emerge.</p>
+
+                    <p>That's the actual value. Not just doing the same work faster. Being able to do work that wasn't possible before.</p>
+
+                    <h2>What This Project Taught Me</h2>
+
+                    <p>You can't skip data quality work.</p>
+
+                    <p>I see people trying to throw AI at messy data and wondering why the results are garbage. AI is powerful but it's not magic. Garbage in, garbage out still applies.</p>
+
+                    <p>The most important work on this project wasn't the AI prompts or the automation logic. It was building robust data cleaning that could handle real-world messiness.</p>
+
+                    <p>That took longer than the client expected. Longer than I initially estimated.</p>
+
+                    <p>But it's why the system actually works. Why the insights are reliable. Why they trust the automated reports enough to make business decisions based on them.</p>
+
+                    <p>The other lesson: enterprise projects require different thinking than small business automation.</p>
+
+                    <p>This wasn't "save someone 5 hours a week on email." This was "enable strategic decision-making at scale with financial data."</p>
+
+                    <p>The stakes are higher. The complexity is real. The testing requirements are more rigorous.</p>
+
+                    <p>You can't rush that. You have to build it right.</p>
+
+                    <h2>Why I Don't Do More Projects Like This</h2>
+
+                    <p>This project was fascinating. Complex problem. Real impact. Good client.</p>
+
+                    <p>But it required expertise I don't usually market.</p>
+
+                    <p>I'm not a data scientist. I'm not a financial analyst. I had to learn enough about fintech operations and financial analysis to build something useful.</p>
+
+                    <p>That's doable for one project. It's not scalable as a service offering.</p>
+
+                    <p>I'm better at operational automation for small and medium businesses. Process automation. Workflow optimization. Systems that eliminate repetitive work.</p>
+
+                    <p>Projects like this one are outliers. Interesting outliers, but not my core focus.</p>
+
+                    <p>That said, I'm glad I did it. Proved to myself I could handle enterprise complexity. Built systems that process hundreds of thousands of records reliably. Delivered results that justified the investment.</p>
+
+                    <p>But my sweet spot is simpler. Businesses spending 10-20 hours a week on manual work that shouldn't exist. That's where I can deliver value consistently.</p>
+
+                    <h2>The Part That Surprised Me</h2>
+
+                    <p>The client didn't care about the technical details.</p>
+
+                    <p>They didn't ask how the data cleaning worked. They didn't want to know about the AI models or the automation architecture.</p>
+
+                    <p>They cared about one thing: can they trust the insights to make decisions?</p>
+
+                    <p>That's what I should have focused on from the start. Not explaining how clever the system was. Just demonstrating that it produced reliable, actionable insights.</p>
+
+                    <p>The system works. The insights are solid. They found £4 million in growth opportunities they weren't aware of.</p>
+
+                    <p>That's what mattered.</p>
+                </div>
+
+                <div class="article-footer">
+                    <a href="../writing.html" class="back-link">Back to Writing</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer-new">
+        <div class="container">
+            <div class="footer-content-new">
+                <div class="footer-section-new">
+                    <h3>Seth Forte</h3>
+                    <p>AI automation consultant building systems that eliminate manual work.</p>
+                </div>
+                <div class="footer-section-new">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links-new">
+                        <li><a href="../index.html#about">About</a></li>
+                        <li><a href="../index.html#work">Work</a></li>
+                        <li><a href="../index.html#services">Services</a></li>
+                        <li><a href="../writing.html">Writing</a></li>
+                        <li><a href="../index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section-new">
+                    <h4>Connect</h4>
+                    <ul class="footer-links-new">
+                        <li><a href="https://www.linkedin.com/in/seth-forte/" target="_blank" rel="noopener">LinkedIn</a></li>
+                        <li><a href="https://x.com/ForteSeth" target="_blank" rel="noopener">Twitter/X</a></li>
+                        <li><a href="https://www.youtube.com/@SethForte" target="_blank" rel="noopener">YouTube</a></li>
+                        <li><a href="https://www.instagram.com/fortewebdesigns/" target="_blank" rel="noopener">Instagram</a></li>
+                        <li><a href="mailto:seth@fortewebdesigns.com">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom-new">
+                <p>&copy; 2025 Seth Forte. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

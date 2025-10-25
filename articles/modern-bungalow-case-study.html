@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How I Saved A Furniture Company 20 Hours A Week (And Almost Screwed It Up) - Seth Forte</title>
+    <meta name="description" content="Built an email automation system for a furniture company that saves 20+ hours weekly. Here's what worked, what I got wrong, and how I fixed it.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="How I Saved A Furniture Company 20 Hours A Week (And Almost Screwed It Up)">
+    <meta property="og:description" content="Built an email automation system for a furniture company that saves 20+ hours weekly. Here's what worked, what I got wrong, and how I fixed it.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://sethforte.com/articles/modern-bungalow-case-study.html">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="How I Saved A Furniture Company 20 Hours A Week (And Almost Screwed It Up)">
+    <meta name="twitter:description" content="Built an email automation system for a furniture company that saves 20+ hours weekly. Here's what worked, what I got wrong, and how I fixed it.">
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../blog.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html#home" class="logo">
+                <svg width="160" height="40" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="40" rx="8" fill="url(#logo-gradient)"/>
+                    <text x="20" y="28" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="white" text-anchor="middle">SF</text>
+                    <text x="50" y="16" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="currentColor" class="logo-text">Seth</text>
+                    <text x="50" y="32" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="currentColor" class="logo-text">Forte</text>
+                    <defs>
+                        <linearGradient id="logo-gradient" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#3b82f6"/>
+                            <stop offset="100%" stop-color="#8b5cf6"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu" style="display: none;">☰</button>
+            <ul class="nav-links">
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#work">Work</a></li>
+                <li><a href="../index.html#services">Services</a></li>
+                <li><a href="../writing.html">Writing</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <button class="dark-mode-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon sun-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </span>
+                    <span class="theme-icon moon-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </span>
+                </button>
+                <a href="../index.html#contact" class="cta-btn-nav">Let's Talk</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <article class="blog-post">
+            <div class="container-article">
+                <header class="article-header">
+                    <h1>How I Saved A Furniture Company 20 Hours A Week (And Almost Screwed It Up)</h1>
+                    <p class="article-date">Oct 27, 2025</p>
+                </header>
+
+                <div class="article-content">
+                    <p>A furniture company in Texas reached out last month with a problem that sounded simple.</p>
+
+                    <p>They were spending 20 hours a week manually sending order update emails to customers. Someone would check Shopify, see an order moved to production, copy the customer email, write the update, send it.</p>
+
+                    <p>For hundreds of orders every month.</p>
+
+                    <p>They wanted it automated.</p>
+
+                    <h2>What They Actually Needed</h2>
+
+                    <p>Modern Bungalow sells custom furniture, lighting, and rugs. Made to order stuff that takes weeks to produce.</p>
+
+                    <p>Their workflow: Order comes in. Goes into production queue. Moves to production. Gets completed. Ready for delivery.</p>
+
+                    <p>At each stage, customers need an update. "Your order is in the queue." "Your furniture is in production." "It's complete and ready."</p>
+
+                    <p>Different products need different messaging. Lighting emails are different from furniture emails. They have three delivery partners, each needs specific information in the delivery email.</p>
+
+                    <p>All of this was being done manually. Every single email.</p>
+
+                    <p>The automation seemed straightforward. Monitor Shopify orders. When status changes, send the appropriate email.</p>
+
+                    <p>Except I made it more complicated than it needed to be.</p>
+
+                    <h2>The Part I Got Wrong</h2>
+
+                    <p>Here's what I didn't think through carefully enough.</p>
+
+                    <p>The "order is queued" email was supposed to send 24 hours after an order was placed. That buffer gives them time to check inventory before telling the customer anything.</p>
+
+                    <p>I built the logic so once that email sent, they had to manually clear a field before the next email would work.</p>
+
+                    <p>That's an extra step. The whole point was eliminating manual steps.</p>
+
+                    <p>Worse, if they forgot to clear it, the status emails wouldn't send at all. I'd built something that required the team to remember an arbitrary technical rule.</p>
+
+                    <p>That's bad automation.</p>
+
+                    <p>Three weeks after launch, I rebuilt the core logic. Now the queue check and status check are completely independent. They don't interfere with each other.</p>
+
+                    <p>The team can leave fields alone. Just update the order status and everything happens automatically.</p>
+
+                    <p>That's how it should have worked from the beginning.</p>
+
+                    <h2>What Actually Worked</h2>
+
+                    <p>The system monitors their Shopify orders every five minutes. When they update an order's status, the automation sends the right email within five minutes.</p>
+
+                    <p>Nine different email templates:</p>
+
+                    <ul>
+                        <li>Queue notification</li>
+                        <li>In production (lighting, rugs, furniture - each different)</li>
+                        <li>Production complete</li>
+                        <li>Ready for delivery (different for each delivery partner)</li>
+                    </ul>
+
+                    <p>Every email logs automatically to the order notes with a timestamp. Complete audit trail.</p>
+
+                    <p>Zero manual work. Just update Shopify like they normally would.</p>
+
+                    <h2>The Real Numbers</h2>
+
+                    <p>They're saving 20+ hours a week. That's 80+ hours a month they're not spending on email management.</p>
+
+                    <p>But the bigger impact is consistency. Before, customer communication depended on who was working and whether they remembered. Now every customer gets clear updates at the exact right time.</p>
+
+                    <p>95% reduction in manual data entry. 100% order accuracy. Zero duplicate emails.</p>
+
+                    <h2>What I'd Do Differently</h2>
+
+                    <p>I should have spent more time upfront mapping the workflow before writing code.</p>
+
+                    <p>I jumped into building too fast. Built the queue logic before fully thinking through how it would interact with status emails.</p>
+
+                    <p>That's why I had to rebuild it three weeks later.</p>
+
+                    <p>I should have drawn out the entire flow on paper first. Worked through every combination before writing a line of code.</p>
+
+                    <p>The other mistake: not testing enough edge cases before launch. The system worked fine for the happy path. But what about when someone makes a mistake? What if an order skips a step?</p>
+
+                    <p>I found those issues in production. Should have found them in testing.</p>
+
+                    <h2>The Part That Took Time</h2>
+
+                    <p>The technical build was maybe three days including testing.</p>
+
+                    <p>Everything else took way longer.</p>
+
+                    <p>Understanding their actual workflow. Mapping every scenario. Building email templates they were happy with. Writing 34 pages of documentation so they're not dependent on me.</p>
+
+                    <p>That's where the work actually is. The code is the easy part.</p>
+
+                    <p>The system saves them about $40K a year in labor costs. They paid me a fraction of that to build it.</p>
+
+                    <p>That's what good automation does. Removes manual work, makes processes reliable, pays for itself in months.</p>
+                </div>
+
+                <div class="article-footer">
+                    <a href="../writing.html" class="back-link">Back to Writing</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer-new">
+        <div class="container">
+            <div class="footer-content-new">
+                <div class="footer-section-new">
+                    <h3>Seth Forte</h3>
+                    <p>AI automation consultant building systems that eliminate manual work.</p>
+                </div>
+                <div class="footer-section-new">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links-new">
+                        <li><a href="../index.html#about">About</a></li>
+                        <li><a href="../index.html#work">Work</a></li>
+                        <li><a href="../index.html#services">Services</a></li>
+                        <li><a href="../writing.html">Writing</a></li>
+                        <li><a href="../index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section-new">
+                    <h4>Connect</h4>
+                    <ul class="footer-links-new">
+                        <li><a href="https://www.linkedin.com/in/seth-forte/" target="_blank" rel="noopener">LinkedIn</a></li>
+                        <li><a href="https://x.com/ForteSeth" target="_blank" rel="noopener">Twitter/X</a></li>
+                        <li><a href="https://www.youtube.com/@SethForte" target="_blank" rel="noopener">YouTube</a></li>
+                        <li><a href="https://www.instagram.com/fortewebdesigns/" target="_blank" rel="noopener">Instagram</a></li>
+                        <li><a href="mailto:seth@fortewebdesigns.com">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom-new">
+                <p>&copy; 2025 Seth Forte. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

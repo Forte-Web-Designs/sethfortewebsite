@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Built An Inventory System In Google Sheets (Because That's What Actually Made Sense) - Seth Forte</title>
+    <meta name="description" content="Built a Google Sheets inventory system with QR code scanning for a film production company tracking equipment across 6 locations. Simple solution, real results, 20+ hours saved weekly.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="I Built An Inventory System In Google Sheets (Because That's What Actually Made Sense)">
+    <meta property="og:description" content="Built a Google Sheets inventory system with QR code scanning for a film production company tracking equipment across 6 locations. Simple solution, real results, 20+ hours saved weekly.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://sethforte.com/articles/film-inventory-case-study.html">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="I Built An Inventory System In Google Sheets (Because That's What Actually Made Sense)">
+    <meta name="twitter:description" content="Built a Google Sheets inventory system with QR code scanning for a film production company tracking equipment across 6 locations. Simple solution, real results, 20+ hours saved weekly.">
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../blog.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html#home" class="logo">
+                <svg width="160" height="40" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="40" rx="8" fill="url(#logo-gradient)"/>
+                    <text x="20" y="28" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="white" text-anchor="middle">SF</text>
+                    <text x="50" y="16" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="currentColor" class="logo-text">Seth</text>
+                    <text x="50" y="32" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="currentColor" class="logo-text">Forte</text>
+                    <defs>
+                        <linearGradient id="logo-gradient" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#3b82f6"/>
+                            <stop offset="100%" stop-color="#8b5cf6"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu" style="display: none;">☰</button>
+            <ul class="nav-links">
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#work">Work</a></li>
+                <li><a href="../index.html#services">Services</a></li>
+                <li><a href="../writing.html">Writing</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <button class="dark-mode-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon sun-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </span>
+                    <span class="theme-icon moon-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </span>
+                </button>
+                <a href="../index.html#contact" class="cta-btn-nav">Let's Talk</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <article class="blog-post">
+            <div class="container-article">
+                <header class="article-header">
+                    <h1>I Built An Inventory System In Google Sheets (Because That's What Actually Made Sense)</h1>
+                    <p class="article-date">Oct 28, 2025</p>
+                </header>
+
+                <div class="article-content">
+                    <p>A film production company called me with an equipment tracking problem.</p>
+
+                    <p>They had hundreds of pieces of gear. Cameras, lights, sound equipment, cables, accessories. Everything spread across six different filming locations at any given time.</p>
+
+                    <p>Nobody knew where anything was. Someone would need a specific camera and spend 30 minutes calling different sets trying to find it. Equipment would get lost. Shoots would get delayed because they couldn't locate what they needed.</p>
+
+                    <p>They were tracking everything in spreadsheets that nobody updated. Because updating spreadsheets while you're actively filming is basically impossible.</p>
+
+                    <p>They asked if I could build them an app.</p>
+
+                    <p>I told them they didn't need an app.</p>
+
+                    <h2>What They Actually Needed</h2>
+
+                    <p>Here's what was broken about their process.</p>
+
+                    <p>Production assistant grabs equipment for a shoot. Drives to location. Sets up. Film. Tear down. Load equipment back in the van. Drive to the next location or back to the warehouse.</p>
+
+                    <p>At no point in that workflow does anyone have time to sit at a computer and update an inventory system.</p>
+
+                    <p>That's why the spreadsheets never got updated. Not because people were lazy. Because the workflow didn't support it.</p>
+
+                    <p>Building a fancy app wouldn't fix that. They needed something that fit into the actual workflow on set.</p>
+
+                    <h2>The Solution Nobody Expected</h2>
+
+                    <p>I built the entire system in Google Sheets.</p>
+
+                    <p>Not because I couldn't build something more sophisticated. Because Google Sheets was exactly what they needed.</p>
+
+                    <p>Here's how it works.</p>
+
+                    <p>Every piece of equipment gets a QR code. Small sticker with a unique identifier.</p>
+
+                    <p>When someone checks out equipment, they scan the QR code with their phone. Opens a simple mobile form. Select the location it's going to. Submit. Done. Takes 10 seconds.</p>
+
+                    <p>The Google Sheet updates automatically. Real-time sync across all locations. Anyone can open the sheet and see exactly where every piece of equipment is right now.</p>
+
+                    <p>When equipment moves to a different location, scan it again. Update the location. Sheet updates. Everyone has current information.</p>
+
+                    <p>No app to install. No training required. Just scan a QR code and pick a location. Simple enough to do while actively running a film set.</p>
+
+                    <h2>Why Google Sheets Was The Right Choice</h2>
+
+                    <p>I could have built a custom web app. Database backend, nice UI, mobile responsive design. Would have taken six weeks and cost them three times as much.</p>
+
+                    <p>They didn't need that.</p>
+
+                    <p>They needed something that worked with zero learning curve. That ran on any phone. That didn't require installing anything. That they could customize themselves if needed.</p>
+
+                    <p>Google Sheets does all of that.</p>
+
+                    <p>The production team already knew how to use spreadsheets. They could filter views, create custom reports, add new columns if they wanted. All without calling me.</p>
+
+                    <p>That's the right level of sophistication. Powerful enough to solve the problem. Simple enough to actually get used.</p>
+
+                    <h2>The Part That Took Time</h2>
+
+                    <p>The technical build was maybe a week.</p>
+
+                    <p>Set up the Google Sheet structure. Build the QR code system. Create the mobile scanning interface. Connect everything with Google Apps Script automation.</p>
+
+                    <p>The hard part was figuring out the workflow.</p>
+
+                    <p>I spent time on set watching how equipment actually moved. What information did they need to track? What was realistic to expect people to input while working? How could we make this fit into their existing process instead of requiring them to change their process?</p>
+
+                    <p>That observation time mattered. If I'd just built what they described in the initial call, it wouldn't have worked.</p>
+
+                    <p>They described wanting to track check-out times, check-in times, who had what equipment, condition notes, maintenance schedules.</p>
+
+                    <p>That's too much. Nobody's filling out that much information while trying to film.</p>
+
+                    <p>We stripped it down to the absolute minimum. Equipment ID. Current location. That's it.</p>
+
+                    <p>Everything else was optional fields they could use if they wanted, but the core workflow required almost zero input.</p>
+
+                    <p>That's why people actually use it.</p>
+
+                    <h2>The Real Results</h2>
+
+                    <p>They're saving 20+ hours a week on equipment tracking. No more calling around trying to find specific gear. No more delays because they couldn't locate what they needed.</p>
+
+                    <p>But the bigger win is visibility.</p>
+
+                    <p>Before, equipment would just disappear. Not stolen, just misplaced. Someone would borrow something, forget to mention it, and it would sit in their van for a month.</p>
+
+                    <p>Now everything is tracked. They can see at a glance what's at each location. What's been sitting somewhere too long. What needs to be returned to the warehouse.</p>
+
+                    <p>Six locations tracked with real-time sync. 100% visibility across all their equipment.</p>
+
+                    <p>And because it's Google Sheets, they can generate reports themselves. Equipment utilization. Location distribution. Whatever they need.</p>
+
+                    <h2>What I Learned From This One</h2>
+
+                    <p>Sometimes the simple solution is the right solution.</p>
+
+                    <p>I used to think every problem needed custom software. Database, API, frontend, the whole stack.</p>
+
+                    <p>But a lot of business problems can be solved with tools that already exist. Google Sheets, Airtable, Zapier, whatever.</p>
+
+                    <p>The question isn't "what's the most impressive thing I can build?" The question is "what actually solves the problem?"</p>
+
+                    <p>For this film production company, Google Sheets with QR code scanning solved the problem perfectly. Cost less. Built faster. Easier to maintain. They can modify it themselves.</p>
+
+                    <p>That's better than a custom app they'd be dependent on me to change.</p>
+
+                    <h2>The Client Almost Didn't Hire Me</h2>
+
+                    <p>Here's the funny part.</p>
+
+                    <p>When I told them we should build it in Google Sheets, they hesitated. They thought they were paying for custom software, not "just a spreadsheet."</p>
+
+                    <p>I had to explain that the value isn't in technical complexity. The value is in solving the problem.</p>
+
+                    <p>A spreadsheet that actually gets used and saves 20 hours a week is infinitely more valuable than a custom app that's too complicated to fit into their workflow.</p>
+
+                    <p>They got it. We built the simple version. It works great.</p>
+
+                    <p>Now they tell other production companies about it. Not because it's technically impressive. Because it actually solves a real problem without being a pain to use.</p>
+
+                    <h2>When Simple Is Actually Hard</h2>
+
+                    <p>Building this "simple" system required understanding their operation well enough to design the right workflow.</p>
+
+                    <p>That's not simple. That's the hard part of consulting.</p>
+
+                    <p>Anyone can build complex software. It's easy to add features and complexity.</p>
+
+                    <p>What's hard is understanding a business well enough to build the minimum system that actually works.</p>
+
+                    <p>I spent more time observing their workflow and thinking through the design than I did building the technical system.</p>
+
+                    <p>But that's why it works.</p>
+
+                    <p>The system fits their reality. It requires minimal effort to use. It provides the information they actually need.</p>
+
+                    <p>That's what good automation looks like. Not impressive technology. Just solving the actual problem well.</p>
+
+                    <p>They paid me $5K for this system. They're saving about 20 hours a week. That's roughly $20K+ annually in labor costs at their rates.</p>
+
+                    <p>Paid for itself in three months.</p>
+
+                    <p>And because it's built on Google Sheets, their ongoing costs are basically zero. No hosting. No maintenance. No subscription fees.</p>
+
+                    <p>Just a system that works.</p>
+                </div>
+
+                <div class="article-footer">
+                    <a href="../writing.html" class="back-link">Back to Writing</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer-new">
+        <div class="container">
+            <div class="footer-content-new">
+                <div class="footer-section-new">
+                    <h3>Seth Forte</h3>
+                    <p>AI automation consultant building systems that eliminate manual work.</p>
+                </div>
+                <div class="footer-section-new">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links-new">
+                        <li><a href="../index.html#about">About</a></li>
+                        <li><a href="../index.html#work">Work</a></li>
+                        <li><a href="../index.html#services">Services</a></li>
+                        <li><a href="../writing.html">Writing</a></li>
+                        <li><a href="../index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section-new">
+                    <h4>Connect</h4>
+                    <ul class="footer-links-new">
+                        <li><a href="https://www.linkedin.com/in/seth-forte/" target="_blank" rel="noopener">LinkedIn</a></li>
+                        <li><a href="https://x.com/ForteSeth" target="_blank" rel="noopener">Twitter/X</a></li>
+                        <li><a href="https://www.youtube.com/@SethForte" target="_blank" rel="noopener">YouTube</a></li>
+                        <li><a href="https://www.instagram.com/fortewebdesigns/" target="_blank" rel="noopener">Instagram</a></li>
+                        <li><a href="mailto:seth@fortewebdesigns.com">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom-new">
+                <p>&copy; 2025 Seth Forte. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
