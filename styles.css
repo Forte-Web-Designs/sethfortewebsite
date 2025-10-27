@@ -1312,13 +1312,33 @@ footer {
         padding: 0 1rem;
     }
 
+    .hero {
+        padding: 4rem 0 3rem;
+    }
+
+    .hero-title-main {
+        font-size: 1.875rem;
+        line-height: 1.25;
+        margin-bottom: 2rem;
+        padding: 0 1.25rem;
+    }
+
+    .hero-statement {
+        font-size: 1.0625rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        padding: 0 1.5rem;
+        max-width: 100%;
+    }
+
     .hero-cta {
         flex-direction: column;
-        gap: 0.75rem;
-        max-width: 280px;
-        padding: 0 1rem;
+        gap: 1rem;
+        max-width: 320px;
+        padding: 0 1.5rem;
         margin-left: auto;
         margin-right: auto;
+        margin-bottom: 0;
     }
 
     .hero-badge {
@@ -1333,6 +1353,24 @@ footer {
         min-height: 48px;
         font-size: 1rem;
         padding: 0.875rem 1.5rem;
+    }
+
+    /* Credibility Section Mobile */
+    .hero-credibility-section {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .credibility-text {
+        font-size: 0.9375rem;
+        line-height: 1.65;
+        margin-bottom: 1.25rem;
+        padding: 0 0.5rem;
+    }
+
+    .status-text {
+        font-size: 0.875rem;
+        line-height: 1.6;
+        padding: 0 0.5rem;
     }
 
     .newsletter-signup {
@@ -1627,6 +1665,36 @@ footer {
     margin-left: auto;
     margin-right: auto;
     animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+
+/* Hero Credibility Section */
+.hero-credibility-section {
+    padding: 3rem 0;
+    background: var(--background-secondary);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.credibility-text {
+    font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.status-text {
+    font-size: clamp(0.9rem, 1.6vw, 1rem);
+    line-height: 1.6;
+    color: var(--text-tertiary);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-style: italic;
 }
 
 .hero-subtext {
