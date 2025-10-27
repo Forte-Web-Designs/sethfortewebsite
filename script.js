@@ -368,74 +368,67 @@ if ('loading' in HTMLImageElement.prototype) {
     document.body.appendChild(script);
 }
 
-// Mobile menu toggle (for future enhancement)
+// Mobile menu toggle
 function initMobileMenu() {
-    const navContainer = document.querySelector('.nav-container');
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
     const navLinks = document.querySelector('.nav-links');
 
-    // Check if mobile menu doesn't exist
-    if (window.innerWidth <= 768 && !document.querySelector('.mobile-menu-toggle')) {
-        const menuToggle = document.createElement('button');
-        menuToggle.className = 'mobile-menu-toggle';
-        menuToggle.innerHTML = '☰';
-        menuToggle.setAttribute('aria-label', 'Toggle menu');
+    if (!menuToggle || !navLinks) return;
 
-        menuToggle.style.cssText = `
-            display: block;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0.5rem;
-            color: var(--primary-color);
-        `;
+    // Add click handler to existing menu toggle
+    menuToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        navLinks.classList.toggle('mobile-active');
 
-        navContainer.appendChild(menuToggle);
+        if (navLinks.classList.contains('mobile-active')) {
+            menuToggle.innerHTML = '✕';
+            menuToggle.setAttribute('aria-expanded', 'true');
+        } else {
+            menuToggle.innerHTML = '☰';
+            menuToggle.setAttribute('aria-expanded', 'false');
+        }
+    });
 
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('mobile-active');
-
+    // Close menu when a nav link is clicked
+    const navLinkItems = navLinks.querySelectorAll('a');
+    navLinkItems.forEach(link => {
+        link.addEventListener('click', () => {
             if (navLinks.classList.contains('mobile-active')) {
-                menuToggle.innerHTML = '✕';
-            } else {
+                navLinks.classList.remove('mobile-active');
                 menuToggle.innerHTML = '☰';
+                menuToggle.setAttribute('aria-expanded', 'false');
             }
         });
+    });
 
-        // Close menu when a nav link is clicked
-        const navLinkItems = navLinks.querySelectorAll('a');
-        navLinkItems.forEach(link => {
-            link.addEventListener('click', () => {
-                if (navLinks.classList.contains('mobile-active')) {
-                    navLinks.classList.remove('mobile-active');
-                    menuToggle.innerHTML = '☰';
-                }
-            });
-        });
-    }
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.nav-container') && navLinks.classList.contains('mobile-active')) {
+            navLinks.classList.remove('mobile-active');
+            menuToggle.innerHTML = '☰';
+            menuToggle.setAttribute('aria-expanded', 'false');
+        }
+    });
 }
 
-// Initialize on load and resize
+// Initialize on load
 document.addEventListener('DOMContentLoaded', () => {
-    if (window.innerWidth <= 768) {
-        initMobileMenu();
-    }
+    initMobileMenu();
 });
 
+// Clean up menu state on resize
 let resizeTimer;
 window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
-        if (window.innerWidth <= 768) {
-            initMobileMenu();
-        } else {
-            const mobileToggle = document.querySelector('.mobile-menu-toggle');
-            if (mobileToggle) {
-                mobileToggle.remove();
-            }
-            const navLinks = document.querySelector('.nav-links');
-            if (navLinks) {
-                navLinks.classList.remove('mobile-active');
+        const navLinks = document.querySelector('.nav-links');
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+
+        if (window.innerWidth > 768 && navLinks) {
+            navLinks.classList.remove('mobile-active');
+            if (menuToggle) {
+                menuToggle.innerHTML = '☰';
+                menuToggle.setAttribute('aria-expanded', 'false');
             }
         }
     }, 250);
