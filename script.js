@@ -134,11 +134,18 @@ ctaButtons.forEach(button => {
     button.addEventListener('click', function(e) {
         const buttonText = this.textContent.trim().toLowerCase();
 
+        // Check if button has an href attribute (it's a link)
+        const href = this.getAttribute('href');
+
+        // If it has an href and it's a valid external link, let it work normally
+        if (href && (href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('#'))) {
+            return; // Let the default behavior happen
+        }
+
         if (buttonText.includes('schedule') || buttonText.includes('call') || buttonText.includes('talk')) {
-            // Replace with your actual scheduling link (Calendly, etc.)
-            console.log('Opening scheduling page...');
-            // window.location.href = 'https://calendly.com/yourlink';
-            alert('Scheduling functionality - integrate with Calendly or similar service');
+            // Open Calendly link
+            window.open('https://calendly.com/seth-fortewebdesigns/30min', '_blank');
+            e.preventDefault();
         } else if (buttonText.includes('work') || buttonText.includes('see')) {
             // Scroll to work section
             const workSection = document.querySelector('#work');
@@ -150,14 +157,8 @@ ctaButtons.forEach(button => {
                 });
             }
         } else if (buttonText.includes('contact') || buttonText.includes('message')) {
-            // Replace with your contact form or email
-            console.log('Opening contact...');
+            // Open email
             window.location.href = 'mailto:seth@fortewebdesigns.com';
-        } else if (buttonText.includes('resume') || buttonText.includes('download')) {
-            // Replace with your actual resume PDF path
-            console.log('Downloading resume...');
-            alert('Add your resume PDF to the project and update this link');
-            // window.open('/path/to/resume.pdf', '_blank');
         }
     });
 });
