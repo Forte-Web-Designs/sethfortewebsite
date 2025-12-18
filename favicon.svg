@@ -1,34 +1,13 @@
 <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Modern gradient background -->
-  <defs>
-    <linearGradient id="modernGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
-    </linearGradient>
-  </defs>
+  <!-- White background -->
+  <rect width="512" height="512" fill="white"/>
 
-  <!-- Rounded square background with modern gradient -->
-  <rect width="512" height="512" rx="115" fill="url(#modernGradient)"/>
+  <!-- Dark navy horizontal rounded bar (bottom element) -->
+  <rect x="70" y="290" width="300" height="90" rx="45" fill="#2d3748"/>
 
-  <!-- Modern SF monogram - clean geometric design -->
-  <g transform="translate(256, 256)">
-    <!-- S - modern curved design -->
-    <path d="M -80 -100 Q -120 -100 -120 -70 Q -120 -50 -100 -40 L -40 -15 Q -20 -5 -20 15 Q -20 35 -40 45 Q -60 55 -85 55"
-          stroke="white"
-          stroke-width="35"
-          stroke-linecap="round"
-          fill="none"
-          opacity="0.95"/>
+  <!-- Blue diagonal bar (upper element) - rotated rectangle -->
+  <rect x="245" y="70" width="90" height="230" rx="45" fill="#0ea5e9" transform="rotate(45, 290, 185)"/>
 
-    <!-- F - minimalist design -->
-    <path d="M 30 -100 L 30 100 M 30 -100 L 120 -100 M 30 0 L 105 0"
-          stroke="white"
-          stroke-width="35"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          opacity="0.95"/>
-  </g>
-
-  <!-- Subtle highlight for depth -->
-  <circle cx="140" cy="140" r="60" fill="white" opacity="0.08"/>
+  <!-- Blue semi-circle/dot (right side accent) -->
+  <circle cx="355" cy="290" r="45" fill="#0ea5e9"/>
 </svg>
