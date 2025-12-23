@@ -1730,14 +1730,14 @@ footer {
 }
 
 .lead-magnet-link a {
-    color: #8b5cf6;
+    color: #d4a017;
     text-decoration: none;
     font-weight: 600;
     transition: all 0.2s ease;
 }
 
 .lead-magnet-link a:hover {
-    color: #a78bfa;
+    color: #f0b92b;
     text-decoration: underline;
 }
 
