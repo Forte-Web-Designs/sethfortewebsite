@@ -1730,15 +1730,23 @@ footer {
 }
 
 .lead-magnet-link a {
-    color: #d4a017;
+    color: #b8860b;
     text-decoration: none;
     font-weight: 600;
     transition: all 0.2s ease;
 }
 
 .lead-magnet-link a:hover {
-    color: #f0b92b;
+    color: #996f0a;
     text-decoration: underline;
+}
+
+[data-theme="dark"] .lead-magnet-link a {
+    color: #f0b92b;
+}
+
+[data-theme="dark"] .lead-magnet-link a:hover {
+    color: #ffd54f;
 }
 
 .status-text {
