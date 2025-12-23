@@ -1723,6 +1723,24 @@ footer {
     text-align: center;
 }
 
+.lead-magnet-link {
+    font-size: clamp(0.9rem, 1.6vw, 1rem);
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.lead-magnet-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+}
+
+.lead-magnet-link a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
 .status-text {
     font-size: clamp(0.9rem, 1.6vw, 1rem);
     line-height: 1.6;
