@@ -7,7 +7,12 @@
       "Bash(git add:*)",
       "Bash(git check-ignore:*)",
       "Bash(cat:*)",
-      "Bash(git fetch:*)"
+      "Bash(git fetch:*)",
+      "Bash(sips:*)",
+      "Bash(ls:*)",
+      "Bash(python3 -c \"\nfrom PIL import Image\nimport io\n\n# Open the logo\nimg = Image.open\\(''logo.jpg''\\)\n\n# Create sizes for ICO \\(16, 32, 48\\)\nsizes = [\\(16, 16\\), \\(32, 32\\), \\(48, 48\\)]\n\n# Save as ICO with multiple sizes\nimg.save\\(''favicon.ico'', format=''ICO'', sizes=sizes\\)\nprint\\(''Created favicon.ico successfully''\\)\n\")",
+      "Bash(pip3 install:*)",
+      "Bash(python3:*)"
     ],
     "deny": [],
     "ask": []
