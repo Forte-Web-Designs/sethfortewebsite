@@ -1650,6 +1650,152 @@ footer {
     /* Contact/CTA buttons already sized properly in base styles */
 }
 
+/* iPhone 15 Pro and similar (393px) */
+@media (max-width: 400px) {
+    .container {
+        padding: 0 12px;
+    }
+
+    .hero {
+        padding: 2rem 0;
+    }
+
+    .hero-title-main {
+        font-size: 1.4rem;
+        line-height: 1.25;
+        padding: 0 0.5rem;
+    }
+
+    .hero-statement {
+        font-size: 0.9rem;
+        line-height: 1.55;
+        padding: 0 0.75rem;
+    }
+
+    .hero-cta {
+        padding: 0 1rem;
+        max-width: 100%;
+    }
+
+    .hero-cta .btn-primary,
+    .hero-cta .btn-secondary {
+        font-size: 0.9rem;
+        padding: 0.75rem 1rem;
+    }
+
+    .hero-credibility-section {
+        padding: 2rem 1rem;
+    }
+
+    .credibility-text {
+        font-size: 0.875rem;
+        line-height: 1.6;
+        padding: 0;
+    }
+
+    .lead-magnet-link {
+        font-size: 0.875rem;
+    }
+
+    .section-title-alt {
+        font-size: 1.25rem;
+    }
+
+    .intro-content p {
+        font-size: 0.95rem;
+        line-height: 1.65;
+    }
+
+    .case-study-item {
+        padding: 1.25rem;
+        border-radius: 16px;
+    }
+
+    .case-study-item h3 {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+    }
+
+    .case-study-problem,
+    .case-study-results li {
+        font-size: 0.95rem;
+    }
+
+    .service-item-new {
+        padding: 1.25rem;
+        border-radius: 16px;
+    }
+
+    .service-item-new h3 {
+        font-size: 1.2rem;
+    }
+
+    .service-item-new p {
+        font-size: 0.95rem;
+    }
+
+    .testimonial {
+        padding: 1.25rem;
+        border-radius: 16px;
+    }
+
+    .testimonial p {
+        font-size: 1rem;
+    }
+
+    .cta-content-main p {
+        font-size: 1rem;
+    }
+
+    .cta-buttons {
+        max-width: 100%;
+        padding: 0 0.5rem;
+    }
+
+    .btn-large {
+        font-size: 0.9rem;
+        padding: 0.875rem 1.5rem;
+    }
+
+    .about-content-new p {
+        font-size: 1rem;
+    }
+
+    .about-image {
+        max-width: 200px;
+    }
+
+    .footer-content-new {
+        gap: 1.5rem;
+    }
+
+    .footer-logo {
+        font-size: 1.25rem;
+    }
+
+    .footer-description,
+    .footer-tagline,
+    .footer-pitch {
+        font-size: 0.9rem;
+    }
+
+    .footer-column h4 {
+        font-size: 0.875rem;
+    }
+
+    .footer-column a {
+        font-size: 0.85rem;
+    }
+
+    /* Ensure touch targets are at least 44px */
+    .nav-links.mobile-active li a {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
 /* Smooth Animations */
 @keyframes fadeInUp {
     from {
@@ -2634,6 +2780,78 @@ footer {
     .service-item-new,
     .process-step {
         padding: 1.5rem;
+    }
+}
+
+/* iPhone 15 Pro (393px) and similar small devices */
+@media (max-width: 400px) {
+    .hero-title-main {
+        font-size: 1.35rem;
+        line-height: 1.25;
+        margin-bottom: 1.5rem;
+        padding: 0 0.25rem;
+    }
+
+    .hero-statement {
+        font-size: 0.9375rem;
+        line-height: 1.55;
+        margin-bottom: 2rem;
+        padding: 0 0.5rem;
+    }
+
+    .section-title-alt {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+    }
+
+    .intro-content p {
+        font-size: 0.9375rem;
+        line-height: 1.6;
+    }
+
+    .case-study-item,
+    .service-item-new,
+    .process-step,
+    .testimonial {
+        padding: 1.25rem;
+        border-radius: 16px;
+    }
+
+    .case-study-item h3 {
+        font-size: 1.2rem;
+    }
+
+    .case-study-problem,
+    .case-study-results li,
+    .service-item-new p {
+        font-size: 0.9375rem;
+    }
+
+    .service-item-new h3 {
+        font-size: 1.15rem;
+    }
+
+    .testimonial p {
+        font-size: 0.9375rem;
+    }
+
+    .about-content-new p,
+    .cta-content-main p {
+        font-size: 0.9375rem;
+    }
+
+    .about-image {
+        max-width: 180px;
+    }
+
+    .who-for,
+    .who-not {
+        padding: 1.25rem;
+    }
+
+    .who-for li,
+    .who-not li {
+        font-size: 0.9375rem;
     }
 }
 

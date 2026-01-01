@@ -79,6 +79,7 @@
             text-decoration: underline;
         }
 
+        /* Tablet */
         @media (max-width: 600px) {
             .checklist-main h1 {
                 font-size: 1.8rem;
@@ -86,6 +87,69 @@
 
             .checklist-header {
                 padding: 15px 20px;
+            }
+        }
+
+        /* iPhone 15 Pro and smaller (393px and below) */
+        @media (max-width: 430px) {
+            .checklist-header {
+                padding: 12px 16px;
+            }
+
+            .checklist-header a {
+                font-size: 1.1rem;
+            }
+
+            .checklist-main {
+                padding: 24px 16px;
+                justify-content: flex-start;
+                padding-top: 40px;
+            }
+
+            .checklist-main h1 {
+                font-size: 1.5rem;
+                line-height: 1.3;
+                margin-bottom: 12px;
+                padding: 0 8px;
+            }
+
+            .checklist-main p {
+                font-size: 1rem;
+                line-height: 1.5;
+                margin-bottom: 24px;
+                padding: 0 8px;
+            }
+
+            .checklist-form {
+                max-width: 100%;
+                padding: 0;
+            }
+
+            .checklist-form iframe {
+                min-height: 350px;
+                max-width: 100%;
+            }
+
+            .checklist-footer {
+                padding: 16px;
+                font-size: 0.875rem;
+            }
+
+            .checklist-footer a {
+                display: inline-block;
+                padding: 12px 0;
+                min-height: 44px;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 375px) {
+            .checklist-main h1 {
+                font-size: 1.35rem;
+            }
+
+            .checklist-main p {
+                font-size: 0.9375rem;
             }
         }
 
