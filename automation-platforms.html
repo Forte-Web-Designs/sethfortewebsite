@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>n8n vs Make.com vs Zapier: Which Should You Use? | Seth Forte</title>
+    <meta name="title" content="n8n vs Make.com vs Zapier: Which Should You Use? | Seth Forte">
+    <meta name="description" content="Honest comparison from someone who builds with all three. When to use n8n, Make.com, or Zapier for your business automation - and when to skip them entirely.">
+    <meta name="keywords" content="n8n vs make, n8n vs zapier, make vs zapier, automation platform comparison, which automation tool, n8n consulting, make.com consultant, zapier expert">
+    <meta name="author" content="Seth Forte">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://sethforte.com/automation-platforms.html">
+    <meta property="og:title" content="n8n vs Make.com vs Zapier: Which Should You Use?">
+    <meta property="og:description" content="Honest comparison from someone who builds with all three. When to use n8n, Make.com, or Zapier for your business automation.">
+    <meta property="og:image" content="https://sethforte.com/Headshot.jpeg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://sethforte.com/automation-platforms.html">
+    <meta property="twitter:title" content="n8n vs Make.com vs Zapier: Which Should You Use?">
+    <meta property="twitter:description" content="Honest comparison from someone who builds with all three. When to use n8n, Make.com, or Zapier for your business automation.">
+    <meta property="twitter:image" content="https://sethforte.com/Headshot.jpeg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://sethforte.com/automation-platforms.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link rel="apple-touch-icon" href="logo.jpg">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "n8n vs Make.com vs Zapier: Which Should You Use?",
+        "description": "Honest comparison from someone who builds with all three automation platforms.",
+        "author": {
+            "@type": "Person",
+            "name": "Seth Forte",
+            "url": "https://sethforte.com"
+        },
+        "publisher": {
+            "@type": "Person",
+            "name": "Seth Forte"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://sethforte.com/automation-platforms.html"
+        }
+    }
+    </script>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="blog.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="logo">
+                <img src="logo.jpg" alt="Seth Forte" height="40">
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu" style="display: none;">☰</button>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#about">About</a></li>
+                <li><a href="/#work">Work</a></li>
+                <li><a href="/#services">Services</a></li>
+                <li><a href="/#writing">Writing</a></li>
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <button class="dark-mode-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon sun-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </span>
+                    <span class="theme-icon moon-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </span>
+                </button>
+                <a href="/#contact" class="cta-btn-nav">Let's Talk</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" style="min-height: auto; padding: 4rem 0 3rem;">
+            <div class="container">
+                <h1 class="hero-title-main">N8N VS MAKE.COM VS ZAPIER: WHICH SHOULD YOU USE?</h1>
+                <p class="hero-statement">I've built production systems with all three. Here's the honest answer - not the SEO-optimized, hedge-everything version.</p>
+            </div>
+        </section>
+
+        <!-- Quick Answer Section -->
+        <section class="intro-section">
+            <div class="container">
+                <h2 class="section-title-alt">THE SHORT VERSION</h2>
+                <div class="intro-content">
+                    <p><strong>Use Zapier if:</strong> You need simple triggers between common apps and want the easiest setup.</p>
+                    <p><strong>Use Make.com if:</strong> You need complex logic, branching workflows, or better pricing at scale.</p>
+                    <p><strong>Use n8n if:</strong> You want full control, self-hosting, or need to build something truly custom.</p>
+                    <p><strong>Skip all three if:</strong> Your problem is a broken process, not missing automation. No tool fixes bad workflows.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Zapier Section -->
+        <section class="case-studies-section">
+            <div class="container">
+                <h2 class="section-title-alt">ZAPIER</h2>
+                <div class="case-study-list">
+                    <article class="case-study-item">
+                        <h3>What It Actually Is</h3>
+                        <p>The automation platform everyone knows. Connect App A to App B with triggers and actions. 6,000+ app integrations. The largest ecosystem by far.</p>
+
+                        <h3>Where It Shines</h3>
+                        <p><strong>Simple, reliable connections.</strong> "When I get a new lead in Typeform, add them to my CRM and send a Slack notification." Zapier handles this perfectly.</p>
+                        <p><strong>Huge app library.</strong> If an app exists, Zapier probably connects to it. This matters when you're working with niche tools.</p>
+                        <p><strong>Tables and Interfaces.</strong> Their newer features let you build simple databases and forms. Good for lightweight internal tools.</p>
+
+                        <h3>Where It Struggles</h3>
+                        <p><strong>Complex logic.</strong> Branching, loops, error handling - it gets messy fast. Paths help but aren't elegant.</p>
+                        <p><strong>Cost at scale.</strong> Task-based pricing adds up. A high-volume workflow can cost $200-500/month easily.</p>
+                        <p><strong>Debugging.</strong> When something breaks in a complex Zap, finding the issue is painful.</p>
+
+                        <h3>Real Cost</h3>
+                        <p>Starts at $19.99/month. But the real cost is task consumption. A single workflow that fires 1,000 times costs more than a simple one that fires 50 times. Budget for what you'll actually use, not the sticker price.</p>
+
+                        <h3>Best For</h3>
+                        <p>Small businesses with straightforward automation needs. Marketing teams connecting their stack. Anyone who values "it just works" over maximum flexibility.</p>
+
+                        <p><a href="/zapier-consulting.html" class="btn-primary" style="display: inline-block; margin-top: 1rem;">Need help with Zapier? →</a></p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Make.com Section -->
+        <section class="intro-section">
+            <div class="container">
+                <h2 class="section-title-alt">MAKE.COM</h2>
+                <div class="case-study-list">
+                    <article class="case-study-item">
+                        <h3>What It Actually Is</h3>
+                        <p>Visual workflow builder with more power than Zapier. Formerly Integromat. Think of it as the middle ground - more flexible than Zapier, more approachable than n8n.</p>
+
+                        <h3>Where It Shines</h3>
+                        <p><strong>Visual scenario builder.</strong> You can see exactly how data flows. Complex logic is easier to understand and debug.</p>
+                        <p><strong>Operations-based pricing.</strong> Often 5-10x cheaper than Zapier for the same workflow. The math works better at scale.</p>
+                        <p><strong>Advanced features.</strong> Routers, iterators, aggregators - you can build genuinely complex automations without code.</p>
+
+                        <h3>Where It Struggles</h3>
+                        <p><strong>Smaller app library.</strong> Good coverage of major apps, but you'll hit gaps with niche tools.</p>
+                        <p><strong>Learning curve.</strong> More powerful means more to learn. Non-technical users need more ramp-up time.</p>
+                        <p><strong>Scenario complexity.</strong> Complex scenarios can become visual spaghetti. Organization matters.</p>
+
+                        <h3>Real Cost</h3>
+                        <p>Free tier available. Paid plans from $9/month. But again - budget for operations used, not the base price. Still significantly cheaper than Zapier for most use cases.</p>
+
+                        <h3>Best For</h3>
+                        <p>Businesses that outgrew Zapier's simplicity or pricing. Teams with someone technical enough to learn the interface. Complex workflows that need visual debugging.</p>
+
+                        <p><a href="/make-consulting.html" class="btn-primary" style="display: inline-block; margin-top: 1rem;">Need help with Make.com? →</a></p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- n8n Section -->
+        <section class="case-studies-section">
+            <div class="container">
+                <h2 class="section-title-alt">N8N</h2>
+                <div class="case-study-list">
+                    <article class="case-study-item">
+                        <h3>What It Actually Is</h3>
+                        <p>Open-source workflow automation. Self-host it or use their cloud. The developer's choice - maximum flexibility, maximum control.</p>
+
+                        <h3>Where It Shines</h3>
+                        <p><strong>Self-hosting option.</strong> Run it on your own servers. No per-execution fees. Full data control. This matters for compliance-heavy industries.</p>
+                        <p><strong>Custom code nodes.</strong> When you need to do something the platform doesn't support, write JavaScript. No limits.</p>
+                        <p><strong>Complex logic.</strong> Loops, conditionals, error handling - all first-class citizens. Build anything you can imagine.</p>
+
+                        <h3>Where It Struggles</h3>
+                        <p><strong>Requires technical skills.</strong> Self-hosting means managing servers. Debugging means reading logs. This isn't for non-technical teams.</p>
+                        <p><strong>Fewer native integrations.</strong> You'll build more custom connections. HTTP requests become your friend.</p>
+                        <p><strong>Maintenance overhead.</strong> Updates, backups, monitoring - it's your responsibility when self-hosting.</p>
+
+                        <h3>Real Cost</h3>
+                        <p>Self-hosted: Free (plus your server costs, typically $20-100/month). Cloud: From $20/month. The hidden cost is technical expertise to run it properly.</p>
+
+                        <h3>Best For</h3>
+                        <p>Technical teams building complex systems. Businesses with compliance requirements. Anyone who needs custom logic that off-the-shelf tools can't handle.</p>
+
+                        <p><a href="/n8n-consulting.html" class="btn-primary" style="display: inline-block; margin-top: 1rem;">Need help with n8n? →</a></p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparison Table -->
+        <section class="intro-section">
+            <div class="container">
+                <h2 class="section-title-alt">SIDE-BY-SIDE COMPARISON</h2>
+                <div class="case-study-item" style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; min-width: 500px;">
+                        <thead>
+                            <tr style="border-bottom: 2px solid var(--border-color);">
+                                <th style="text-align: left; padding: 1rem; font-weight: 700;"></th>
+                                <th style="text-align: left; padding: 1rem; font-weight: 700;">Zapier</th>
+                                <th style="text-align: left; padding: 1rem; font-weight: 700;">Make.com</th>
+                                <th style="text-align: left; padding: 1rem; font-weight: 700;">n8n</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid var(--border-color);">
+                                <td style="padding: 1rem; font-weight: 600;">Pricing Model</td>
+                                <td style="padding: 1rem;">Per task</td>
+                                <td style="padding: 1rem;">Per operation</td>
+                                <td style="padding: 1rem;">Per execution or self-host free</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid var(--border-color);">
+                                <td style="padding: 1rem; font-weight: 600;">Ease of Use</td>
+                                <td style="padding: 1rem;">Easiest</td>
+                                <td style="padding: 1rem;">Moderate</td>
+                                <td style="padding: 1rem;">Technical required</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid var(--border-color);">
+                                <td style="padding: 1rem; font-weight: 600;">Power/Flexibility</td>
+                                <td style="padding: 1rem;">Basic-Moderate</td>
+                                <td style="padding: 1rem;">Advanced</td>
+                                <td style="padding: 1rem;">Maximum</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid var(--border-color);">
+                                <td style="padding: 1rem; font-weight: 600;">Self-Hosting</td>
+                                <td style="padding: 1rem;">No</td>
+                                <td style="padding: 1rem;">No</td>
+                                <td style="padding: 1rem;">Yes</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid var(--border-color);">
+                                <td style="padding: 1rem; font-weight: 600;">App Integrations</td>
+                                <td style="padding: 1rem;">6,000+</td>
+                                <td style="padding: 1rem;">1,500+</td>
+                                <td style="padding: 1rem;">400+ (but custom code)</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 1rem; font-weight: 600;">Best For</td>
+                                <td style="padding: 1rem;">Simple automations</td>
+                                <td style="padding: 1rem;">Complex visual workflows</td>
+                                <td style="padding: 1rem;">Technical teams, custom builds</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- What I Actually Use Section -->
+        <section class="case-studies-section">
+            <div class="container">
+                <h2 class="section-title-alt">WHAT I ACTUALLY USE</h2>
+                <div class="intro-content">
+                    <p>Depends on the project. Here's the reality from actual client work:</p>
+
+                    <p><strong>n8n</strong> - For complex systems that need custom logic. The <a href="/#work" class="inline-link">KlnBros emergency recovery</a> was an n8n infrastructure. When I'm building AI pipelines or need tight control over data flow, n8n wins.</p>
+
+                    <p><strong>Make.com</strong> - For visual workflows that clients need to understand. When someone's going to maintain this after I leave, Make's visual builder makes handoff easier.</p>
+
+                    <p><strong>Zapier</strong> - For simple connections where reliability matters more than cost optimization. Sometimes the boring choice is the right one.</p>
+
+                    <p><strong>Direct API integrations</strong> - When none of these fit. Sometimes you need custom code, not another platform. The <a href="/#work" class="inline-link">Revolut analysis system</a> was built this way - AI systems often need more control than any platform provides.</p>
+
+                    <p>The platform is 20% of the decision. The other 80% is understanding the problem well enough to know what tool fits.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- When to Hire Someone Section -->
+        <section class="intro-section">
+            <div class="container">
+                <h2 class="section-title-alt">WHEN TO HIRE SOMEONE</h2>
+                <div class="intro-content">
+                    <p><strong>Build it yourself if:</strong></p>
+                    <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                        <li style="margin-bottom: 0.5rem;">It's a simple connection between 2-3 apps</li>
+                        <li style="margin-bottom: 0.5rem;">You have time to learn the platform</li>
+                        <li style="margin-bottom: 0.5rem;">The stakes are low if it breaks</li>
+                    </ul>
+
+                    <p><strong>Hire help if:</strong></p>
+                    <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                        <li style="margin-bottom: 0.5rem;">You've tried and hit a wall</li>
+                        <li style="margin-bottom: 0.5rem;">It's complex (multiple branches, error handling, data transformation)</li>
+                        <li style="margin-bottom: 0.5rem;">Your time is worth more than the consultant's fee</li>
+                        <li style="margin-bottom: 0.5rem;">It needs to work reliably - this isn't a side project</li>
+                    </ul>
+
+                    <p>I turn down projects that don't make sense. If you're asking whether to build with Zapier vs. hire someone to do it - the honest answer is often "start with Zapier yourself and call me when you hit the limits."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section-main">
+            <div class="container">
+                <h2 class="section-title-alt">NEED HELP DECIDING?</h2>
+                <div class="cta-content-main">
+                    <p>Got a specific automation challenge? Let's talk through it.</p>
+                    <p>I'll tell you which platform fits - and whether you even need one at all.</p>
+
+                    <div class="cta-buttons">
+                        <a href="https://calendly.com/seth-fortewebdesigns/30min" class="btn-primary btn-large">Schedule a Call</a>
+                        <a href="mailto:seth@fortewebdesigns.com" class="btn-secondary btn-large">seth@fortewebdesigns.com</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content-new">
+                <div class="footer-main">
+                    <h3 class="footer-logo">Seth Forte</h3>
+                    <p class="footer-tagline">Growth partner, not task executor.</p>
+                    <p class="footer-description">I solve the technical problems that hold growing businesses back. Based in Grapevine, Texas. Working with clients nationwide.</p>
+                    <p class="footer-pitch">Got a technical problem holding your business back? Let's talk.</p>
+                    <div class="footer-contact">
+                        <a href="mailto:seth@fortewebdesigns.com">seth@fortewebdesigns.com</a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/#about">About</a></li>
+                            <li><a href="/#work">Work</a></li>
+                            <li><a href="/#services">Services</a></li>
+                            <li><a href="/#writing">Writing</a></li>
+                            <li><a href="/#contact">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="/n8n-consulting.html">n8n Consulting</a></li>
+                            <li><a href="/make-consulting.html">Make.com Consulting</a></li>
+                            <li><a href="/zapier-consulting.html">Zapier Consulting</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="https://www.linkedin.com/in/seth-forte/" target="_blank">LinkedIn</a></li>
+                            <li><a href="https://x.com/ForteSeth" target="_blank">Twitter</a></li>
+                            <li><a href="https://www.youtube.com/@SethForte" target="_blank">YouTube</a></li>
+                            <li><a href="https://www.instagram.com/fortewebdesigns/" target="_blank">Instagram</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Seth Forte. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
