@@ -24,7 +24,12 @@
       "Bash(then)",
       "Bash(echo:*)",
       "Bash(fi)",
-      "Bash(done)"
+      "Bash(done)",
+      "Bash(xargs -0 -I {} sh -c 'if grep -A5 \"\"class=\\\\\"\"nav-links\\\\\"\"\"\" \"\"{}\"\" | grep -q \"\"Case Studies\"\"; then echo \"\"{} still has nav link\"\"; fi')",
+      "Bash(while read file)",
+      "Bash(do if grep -A6 'class=\"\"nav-links\"\"' \"$file\")",
+      "Bash(then echo \"$file still has nav case-studies link\")",
+      "Bash(do grep -Pzo 'ROI Calculator</a></li>\\\\n\\\\s*<li><a href=\"\"/writing.html\"\">Writing</a></li>' \"$f\")"
     ],
     "deny": [],
     "ask": []
