@@ -282,6 +282,36 @@ section {
     background: #e0e0e0;
 }
 
+/* Secondary Nav CTA Button (ROI Calculator) */
+.cta-btn-nav-secondary {
+    padding: 0.6rem 1.25rem;
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+}
+
+.cta-btn-nav-secondary:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-1px);
+}
+
+[data-theme="dark"] .cta-btn-nav-secondary {
+    color: white;
+    border-color: white;
+}
+
+[data-theme="dark"] .cta-btn-nav-secondary:hover {
+    background: white;
+    color: #000000;
+}
+
 /* Dark Mode Toggle */
 .dark-mode-toggle {
     background: var(--card-background);
@@ -2544,6 +2574,61 @@ footer {
     color: var(--secondary-color);
     font-style: normal;
     display: block;
+}
+
+/* ROI Calculator CTA Section */
+.roi-cta-section {
+    padding: clamp(3rem, 8vw, 5rem) 0;
+    background: var(--background-secondary);
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.roi-cta-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.roi-cta-content p {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    line-height: 1.7;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.roi-cta-content p:last-of-type {
+    margin-bottom: 2rem;
+}
+
+.roi-cta-content .btn-primary {
+    display: inline-block;
+}
+
+/* End-of-page ROI CTA (for service/solution/industry pages) */
+.roi-cta-inline {
+    padding: clamp(2rem, 5vw, 3rem) 0;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    margin-top: 2rem;
+}
+
+.roi-cta-inline h3 {
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    margin-bottom: 1rem;
+}
+
+.roi-cta-inline p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.roi-cta-inline .btn-secondary {
+    display: inline-block;
 }
 
 /* Writing Section */

@@ -15,7 +15,16 @@
       "Bash(python3:*)",
       "Bash(curl:*)",
       "Bash(grep:*)",
-      "Bash(pip install:*)"
+      "Bash(pip install:*)",
+      "Bash(find . -name \"*.html\" -type f ! -name \"index.html\" -exec grep -l '</button>\n                <a href=\"\"/#contact\"\" class=\"\"cta-btn-nav\"\">Let' {} ;)",
+      "Bash(find:*)",
+      "Bash(while read f)",
+      "Bash(do)",
+      "Bash(if ! grep -q \"cta-btn-nav-secondary\" \"$f\")",
+      "Bash(then)",
+      "Bash(echo:*)",
+      "Bash(fi)",
+      "Bash(done)"
     ],
     "deny": [],
     "ask": []
