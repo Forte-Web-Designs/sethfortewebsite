@@ -14,7 +14,8 @@
       "Bash(pip3 install:*)",
       "Bash(python3:*)",
       "Bash(curl:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(pip install:*)"
     ],
     "deny": [],
     "ask": []
