@@ -12,6 +12,12 @@ Disallow: /admin/
 Allow: /index.html
 Allow: /writing.html
 Allow: /articles/
+Allow: /automation.html
+Allow: /crm-integration.html
+Allow: /custom-software.html
+Allow: /ai-automation.html
+Allow: /security-infrastructure.html
+Allow: /checklist.html
 Allow: /Headshot.jpeg
 Allow: /styles.css
 Allow: /blog.css
