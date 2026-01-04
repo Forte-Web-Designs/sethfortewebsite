@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Building a Custom Inventory System When Spreadsheets Stop Working | Seth Forte</title>
+    <meta name="description" content="Spreadsheets break at scale. Here's how I built a custom inventory system with QR codes and mobile access for a film production company.">
+    <meta name="author" content="Seth Forte">
+    <meta name="keywords" content="custom inventory system, inventory management, outgrow spreadsheets, qr code inventory, equipment tracking">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://sethforte.com/articles/custom-inventory-system.html">
+    <meta property="og:title" content="Building a Custom Inventory System When Spreadsheets Stop Working">
+    <meta property="og:description" content="Spreadsheets break at scale. Here's how I built a custom inventory system with QR codes.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://sethforte.com/articles/custom-inventory-system.html">
+
+    <!-- Schema.org Article -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Building a Custom Inventory System When Spreadsheets Stop Working",
+        "author": {"@type": "Person", "name": "Seth Forte", "url": "https://sethforte.com"},
+        "datePublished": "2026-01-04",
+        "dateModified": "2026-01-04",
+        "publisher": {"@type": "Person", "name": "Seth Forte"}
+    }
+    </script>
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../blog.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo"><img src="../logo.jpg" alt="Seth Forte" height="40"></a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu" style="display: none;">☰</button>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#work">Work</a></li>
+                <li><a href="../index.html#services">Services</a></li>
+                <li><a href="../writing.html">Writing</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <button class="dark-mode-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon sun-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+                    <span class="theme-icon moon-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+                </button>
+                <a href="../index.html#contact" class="cta-btn-nav">Let's Talk</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="article-page">
+        <section class="article-hero">
+            <div class="container">
+                <div class="article-hero-image" style="background: linear-gradient(135deg, #f59e0b 0%, #84cc16 100%);"></div>
+                <div class="article-meta">
+                    <span class="article-category">Custom Software</span>
+                    <span class="article-date">Jan 4, 2026</span>
+                    <span class="article-author">By Seth Forte</span>
+                </div>
+                <h1>Building a Custom Inventory System When Spreadsheets Stop Working</h1>
+            </div>
+        </section>
+
+        <section class="article-body">
+            <div class="container">
+                <p>Spreadsheets are great. Until they're not.</p>
+
+                <p>I built a custom inventory system for <a href="film-inventory-case-study.html">Hollow Bamboo Film Productions</a> after their spreadsheet-based tracking fell apart. Hundreds of equipment items across 6 locations. Constant texting asking "where's the RED camera?" Paper lists that were always outdated.</p>
+
+                <p>Here's what I learned building the replacement.</p>
+
+                <h2>When Spreadsheets Break</h2>
+
+                <p>Spreadsheets fail when:</p>
+
+                <ul class="case-study-results">
+                    <li><strong>Multiple people update simultaneously.</strong> Conflicting versions, overwritten data.</li>
+                    <li><strong>Items move frequently.</strong> By the time you update the spreadsheet, the item moved again.</li>
+                    <li><strong>You need real-time visibility.</strong> Spreadsheets are static. Reality isn't.</li>
+                    <li><strong>You need mobile access.</strong> Editing a spreadsheet on your phone is painful.</li>
+                    <li><strong>History matters.</strong> Who checked out what? When did it come back? Spreadsheets don't track this well.</li>
+                </ul>
+
+                <p>Hollow Bamboo hit all five. They needed something purpose-built.</p>
+
+                <h2>What We Built</h2>
+
+                <p><strong>QR codes on every item.</strong> Scan with your phone to check in/out. No typing, no searching, no errors.</p>
+
+                <p><strong>Mobile-first interface.</strong> Crew members on set don't have laptops. Everything works from a phone.</p>
+
+                <p><strong>Real-time location tracking.</strong> See where every item is right now, not where it was when someone last updated a spreadsheet.</p>
+
+                <p><strong>Complete history.</strong> Full audit trail of every movement. Who, what, when, where.</p>
+
+                <p><strong>Multi-location support.</strong> Six warehouses/locations, one system.</p>
+
+                <h2>The Technical Approach</h2>
+
+                <p><strong>Database:</strong> Airtable for the backend. Easy to modify, good API, non-technical team can manage it.</p>
+
+                <p><strong>Mobile interface:</strong> Stacker for the mobile app. Connects to Airtable, provides native mobile experience.</p>
+
+                <p><strong>QR codes:</strong> Generated unique codes for each item. Printed labels that crew can scan.</p>
+
+                <p><strong>Notifications:</strong> Automated alerts when items are overdue or missing.</p>
+
+                <h2>The Results</h2>
+
+                <ul class="case-study-results">
+                    <li><strong>20+ hours weekly saved</strong> - No more texting to find equipment</li>
+                    <li><strong>Complete visibility</strong> - Know where everything is instantly</li>
+                    <li><strong>Paid for itself in the first month</strong></li>
+                </ul>
+
+                <p>Client review: <em>"Extremely attentive and responsive. Gave us an accurate timeline and met it. Highly recommend."</em></p>
+
+                <h2>When Custom Makes Sense</h2>
+
+                <p>Not every inventory problem needs custom software. Use off-the-shelf tools when:</p>
+                <ul class="case-study-results">
+                    <li>Your process is standard</li>
+                    <li>Volume is low</li>
+                    <li>You can adapt to the tool's workflow</li>
+                </ul>
+
+                <p>Build custom when:</p>
+                <ul class="case-study-results">
+                    <li>Your workflow is unique</li>
+                    <li>Off-the-shelf tools don't fit</li>
+                    <li>Scale or complexity justifies the investment</li>
+                    <li>You need specific features that don't exist</li>
+                </ul>
+
+                <p>If spreadsheets are failing you and off-the-shelf tools don't fit, <a href="https://calendly.com/seth-fortewebdesigns/30min">book a call</a>. We'll figure out what makes sense for your situation.</p>
+
+                <p>Check out my <a href="../custom-software.html">custom software services</a> to see what I build.</p>
+
+                <div class="article-share">
+                    <div class="share-buttons">
+                        <span class="share-label">Share this article:</span>
+                        <a href="https://twitter.com/intent/tweet?text=Building a Custom Inventory System&url=https://sethforte.com/articles/custom-inventory-system.html" target="_blank" class="share-btn">Share on Twitter</a>
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sethforte.com/articles/custom-inventory-system.html" target="_blank" class="share-btn">Share on LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content-new">
+                <div class="footer-main">
+                    <h3 class="footer-logo">Seth Forte</h3>
+                    <p class="footer-tagline">Growth partner, not task executor.</p>
+                    <div class="footer-contact"><a href="mailto:seth@fortewebdesigns.com">seth@fortewebdesigns.com</a></div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="../automation.html">Automation</a></li>
+                            <li><a href="../crm-integration.html">CRM Integration</a></li>
+                            <li><a href="../custom-software.html">Custom Software</a></li>
+                            <li><a href="../ai-automation.html">AI Automation</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2025 Seth Forte. All rights reserved.</p></div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

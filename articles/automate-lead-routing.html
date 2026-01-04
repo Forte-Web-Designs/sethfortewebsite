@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>How to Automate Lead Routing (So No Lead Gets Ignored) | Seth Forte</title>
+    <meta name="description" content="New leads should reach the right person in seconds, not hours. Here's how to automate lead routing based on territory, deal size, or source.">
+    <meta name="author" content="Seth Forte">
+    <meta name="keywords" content="lead routing automation, automate lead assignment, lead distribution, sales automation, crm lead routing">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://sethforte.com/articles/automate-lead-routing.html">
+    <meta property="og:title" content="How to Automate Lead Routing">
+    <meta property="og:description" content="New leads should reach the right person in seconds, not hours.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://sethforte.com/articles/automate-lead-routing.html">
+
+    <!-- Schema.org Article -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "How to Automate Lead Routing (So No Lead Gets Ignored)",
+        "author": {"@type": "Person", "name": "Seth Forte", "url": "https://sethforte.com"},
+        "datePublished": "2026-01-04",
+        "dateModified": "2026-01-04",
+        "publisher": {"@type": "Person", "name": "Seth Forte"},
+        "description": "A guide to automating lead routing and assignment."
+    }
+    </script>
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../blog.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo"><img src="../logo.jpg" alt="Seth Forte" height="40"></a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu" style="display: none;">☰</button>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#work">Work</a></li>
+                <li><a href="../index.html#services">Services</a></li>
+                <li><a href="../writing.html">Writing</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <button class="dark-mode-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon sun-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+                    <span class="theme-icon moon-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+                </button>
+                <a href="../index.html#contact" class="cta-btn-nav">Let's Talk</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="article-page">
+        <section class="article-hero">
+            <div class="container">
+                <div class="article-hero-image" style="background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);"></div>
+                <div class="article-meta">
+                    <span class="article-category">AI & Automation</span>
+                    <span class="article-date">Jan 4, 2026</span>
+                    <span class="article-author">By Seth Forte</span>
+                </div>
+                <h1>How to Automate Lead Routing (So No Lead Gets Ignored)</h1>
+            </div>
+        </section>
+
+        <section class="article-body">
+            <div class="container">
+                <p>Speed to lead matters. Studies show you're 7x more likely to qualify a lead if you respond within an hour vs. waiting 24 hours.</p>
+
+                <p>But when leads sit in a form submission queue until someone notices, hours pass. Sometimes days.</p>
+
+                <p>Automated lead routing fixes this. New leads hit the right person's inbox in seconds, not hours.</p>
+
+                <h2>What Lead Routing Actually Does</h2>
+
+                <p>When a new lead comes in (from your website, ads, referral, etc.), the system automatically:</p>
+
+                <ol>
+                    <li>Captures the lead information</li>
+                    <li>Evaluates routing rules (territory, deal size, product interest, etc.)</li>
+                    <li>Assigns to the appropriate salesperson</li>
+                    <li>Notifies that person immediately</li>
+                    <li>Logs everything to your CRM</li>
+                </ol>
+
+                <p>All within seconds of form submission.</p>
+
+                <h2>Common Routing Rules</h2>
+
+                <h3>By Territory</h3>
+                <p>Route leads based on geographic location. Northeast goes to Rep A, Southwest goes to Rep B.</p>
+
+                <h3>By Company Size</h3>
+                <p>Enterprise leads (500+ employees) go to senior reps. SMB leads go to the general queue.</p>
+
+                <h3>By Product Interest</h3>
+                <p>Leads interested in Product A go to the Product A specialist.</p>
+
+                <h3>By Lead Source</h3>
+                <p>Referral leads get priority routing. Cold leads go to the SDR team.</p>
+
+                <h3>Round Robin</h3>
+                <p>Distribute evenly across the team. Rep A gets one, then Rep B, then Rep C, repeat.</p>
+
+                <h3>Weighted Distribution</h3>
+                <p>Top performers get more leads. New reps get fewer until they ramp up.</p>
+
+                <h2>The Technical Setup</h2>
+
+                <p><strong>Step 1: Capture leads in one place</strong></p>
+                <p>All lead sources (website, ads, referrals) should flow to a central system. Usually your CRM, but can be a spreadsheet or database.</p>
+
+                <p><strong>Step 2: Define routing rules</strong></p>
+                <p>Document exactly how leads should be assigned. Be specific. "Big deals go to senior reps" isn't specific. "$50K+ annual value goes to Tier 1 reps" is.</p>
+
+                <p><strong>Step 3: Build the automation</strong></p>
+                <p>Connect your lead sources to your routing logic. When a lead comes in, evaluate the rules and assign accordingly.</p>
+
+                <p><strong>Step 4: Set up notifications</strong></p>
+                <p>Email, Slack, SMS - whatever gets your reps' attention fastest. Include the lead details so they can respond immediately.</p>
+
+                <p><strong>Step 5: Handle edge cases</strong></p>
+                <p>What if no rep matches? What if the assigned rep is on vacation? Build fallback logic.</p>
+
+                <h2>What Changes</h2>
+
+                <p><strong>Response time drops dramatically.</strong> From hours to minutes.</p>
+
+                <p><strong>No leads fall through cracks.</strong> Every lead gets assigned to someone.</p>
+
+                <p><strong>Fair distribution.</strong> No more reps cherry-picking the best leads.</p>
+
+                <p><strong>Better data.</strong> You know exactly how leads are being handled.</p>
+
+                <h2>When to Automate Lead Routing</h2>
+
+                <ul class="case-study-results">
+                    <li>You have more than 2-3 salespeople</li>
+                    <li>Leads are sitting unworked for hours</li>
+                    <li>You're manually assigning leads and it's taking time</li>
+                    <li>Distribution across the team is uneven</li>
+                    <li>You can't track who got which leads</li>
+                </ul>
+
+                <p>If any of these sound familiar, lead routing automation would help.</p>
+
+                <p>I build lead routing systems for sales teams. If leads are slipping through the cracks, <a href="https://calendly.com/seth-fortewebdesigns/30min">book a call</a> and we'll figure out the right solution.</p>
+
+                <div class="article-share">
+                    <div class="share-buttons">
+                        <span class="share-label">Share this article:</span>
+                        <a href="https://twitter.com/intent/tweet?text=How to Automate Lead Routing&url=https://sethforte.com/articles/automate-lead-routing.html" target="_blank" class="share-btn">Share on Twitter</a>
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sethforte.com/articles/automate-lead-routing.html" target="_blank" class="share-btn">Share on LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content-new">
+                <div class="footer-main">
+                    <h3 class="footer-logo">Seth Forte</h3>
+                    <p class="footer-tagline">Growth partner, not task executor.</p>
+                    <div class="footer-contact"><a href="mailto:seth@fortewebdesigns.com">seth@fortewebdesigns.com</a></div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="../automation.html">Automation</a></li>
+                            <li><a href="../crm-integration.html">CRM Integration</a></li>
+                            <li><a href="../custom-software.html">Custom Software</a></li>
+                            <li><a href="../ai-automation.html">AI Automation</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2025 Seth Forte. All rights reserved.</p></div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

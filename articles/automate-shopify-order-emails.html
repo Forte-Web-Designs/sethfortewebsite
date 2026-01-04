@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>How to Automate Shopify Order Emails (Step-by-Step) | Seth Forte</title>
+    <meta name="description" content="Stop manually sending order confirmations and shipping updates. Here's how to automate Shopify customer emails so nothing falls through the cracks.">
+    <meta name="author" content="Seth Forte">
+    <meta name="keywords" content="shopify automation, shopify email automation, automate shopify emails, shopify order emails, ecommerce automation">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://sethforte.com/articles/automate-shopify-order-emails.html">
+    <meta property="og:title" content="How to Automate Shopify Order Emails (Step-by-Step)">
+    <meta property="og:description" content="Stop manually sending order confirmations and shipping updates. Here's how to automate Shopify customer emails.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://sethforte.com/articles/automate-shopify-order-emails.html">
+
+    <!-- Schema.org Article -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "How to Automate Shopify Order Emails (Step-by-Step)",
+        "author": {
+            "@type": "Person",
+            "name": "Seth Forte",
+            "url": "https://sethforte.com"
+        },
+        "datePublished": "2026-01-04",
+        "dateModified": "2026-01-04",
+        "publisher": {
+            "@type": "Person",
+            "name": "Seth Forte"
+        },
+        "description": "A step-by-step guide to automating Shopify customer emails."
+    }
+    </script>
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../blog.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">
+                <img src="../logo.jpg" alt="Seth Forte" height="40">
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu" style="display: none;">☰</button>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#work">Work</a></li>
+                <li><a href="../index.html#services">Services</a></li>
+                <li><a href="../writing.html">Writing</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <button class="dark-mode-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon sun-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </span>
+                    <span class="theme-icon moon-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </span>
+                </button>
+                <a href="../index.html#contact" class="cta-btn-nav">Let's Talk</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="article-page">
+        <section class="article-hero">
+            <div class="container">
+                <div class="article-hero-image" style="background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);"></div>
+                <div class="article-meta">
+                    <span class="article-category">AI & Automation</span>
+                    <span class="article-date">Jan 4, 2026</span>
+                    <span class="article-author">By Seth Forte</span>
+                </div>
+                <h1>How to Automate Shopify Order Emails (Step-by-Step)</h1>
+            </div>
+        </section>
+
+        <section class="article-body">
+            <div class="container">
+                <p>If you're running a Shopify store and manually sending customer emails, you're wasting hours every week. Order confirmations, shipping updates, delivery notifications - all of this can run automatically.</p>
+
+                <p>I built this exact system for <a href="modern-bungalow-case-study.html">Modern Bungalow</a>, an e-commerce company that was manually sending 30-40 customer emails daily. Now it runs itself. Here's how.</p>
+
+                <h2>The Problem</h2>
+
+                <p>Most Shopify stores start with manual communication. Someone places an order, you send a confirmation. The item ships, you send an update. Something gets delayed, you send an apology.</p>
+
+                <p>This works when you have 5 orders a day. It breaks when you have 50.</p>
+
+                <p>Things start falling through the cracks. Customers don't get updates. Support tickets pile up. You hire someone just to manage email.</p>
+
+                <h2>What to Automate</h2>
+
+                <p>Here are the email scenarios worth automating:</p>
+
+                <ul class="case-study-results">
+                    <li><strong>Order confirmation</strong> - Immediate acknowledgment that you received the order</li>
+                    <li><strong>Payment confirmation</strong> - For orders that require manual payment processing</li>
+                    <li><strong>Order processing</strong> - "We're packing your order"</li>
+                    <li><strong>Shipping notification</strong> - With tracking number and expected delivery</li>
+                    <li><strong>Out for delivery</strong> - "Your package arrives today"</li>
+                    <li><strong>Delivered confirmation</strong> - "Your order has been delivered"</li>
+                    <li><strong>Delay notifications</strong> - Proactive communication when something's late</li>
+                    <li><strong>Review requests</strong> - Ask for feedback after delivery</li>
+                    <li><strong>Reorder reminders</strong> - For consumable products</li>
+                </ul>
+
+                <h2>Tools You'll Need</h2>
+
+                <p>For Modern Bungalow, I used:</p>
+
+                <ul class="case-study-results">
+                    <li><strong>Shopify</strong> - Obviously</li>
+                    <li><strong>n8n</strong> - For workflow automation (Make.com or Zapier work too)</li>
+                    <li><strong>Gmail or SMTP service</strong> - For sending emails</li>
+                </ul>
+
+                <p>Shopify's built-in email notifications are limited. They can't handle complex logic like "send different emails based on product type" or "wait 3 days after delivery, then ask for a review."</p>
+
+                <h2>The Basic Setup</h2>
+
+                <p><strong>Step 1: Connect Shopify to your automation platform</strong></p>
+
+                <p>Set up a webhook in Shopify that fires when order status changes. Your automation platform listens for these events.</p>
+
+                <p><strong>Step 2: Build the logic</strong></p>
+
+                <p>When an order event comes in, route it to the appropriate email template based on:</p>
+                <ul class="case-study-results">
+                    <li>Order status (paid, fulfilled, shipped, delivered)</li>
+                    <li>Product type (some products need different messaging)</li>
+                    <li>Customer type (first-time vs returning)</li>
+                    <li>Shipping method (express vs standard)</li>
+                </ul>
+
+                <p><strong>Step 3: Create email templates</strong></p>
+
+                <p>Write your emails once. Include merge fields for customer name, order details, tracking numbers, etc. The system fills these in automatically.</p>
+
+                <p><strong>Step 4: Add delays where needed</strong></p>
+
+                <p>Some emails shouldn't send immediately. Review requests should wait a few days after delivery. Reorder reminders should wait until the customer is likely running low.</p>
+
+                <h2>Real Results</h2>
+
+                <p>For Modern Bungalow, this system:</p>
+
+                <ul class="case-study-results">
+                    <li>Eliminated 30-40 daily manual emails</li>
+                    <li>Saved 15+ hours monthly</li>
+                    <li>Reduced support tickets (customers always know their order status)</li>
+                    <li>Paid for itself in under 8 weeks</li>
+                </ul>
+
+                <p>The client review: <em>"Seth is super responsive and very proactive with communication throughout the stages of the project. He's very good at thinking through the logic of how to best automate a process, and then executing on that vision."</em></p>
+
+                <h2>Common Mistakes</h2>
+
+                <p><strong>Sending too many emails.</strong> Customers don't need an update at every stage. Consolidate where it makes sense.</p>
+
+                <p><strong>Generic messaging.</strong> Personalized emails perform better. Use the customer's name, reference specific products, make it feel human.</p>
+
+                <p><strong>Ignoring edge cases.</strong> What happens when an order is partially fulfilled? When shipping is delayed? Build for these scenarios upfront.</p>
+
+                <p><strong>No error handling.</strong> What if the email fails to send? Build in retry logic and alerts so nothing slips through.</p>
+
+                <h2>Should You Build This Yourself?</h2>
+
+                <p>If you're technical and have time, yes. The concepts aren't complicated.</p>
+
+                <p>If you're busy running your business, probably not. The setup takes 10-20 hours to do right, and maintaining it takes ongoing attention.</p>
+
+                <p>I build these systems for e-commerce companies regularly. If you want customer communication that runs itself, <a href="https://calendly.com/seth-fortewebdesigns/30min">book a call</a> and we'll figure out what makes sense for your situation.</p>
+
+                <div class="article-share">
+                    <div class="share-buttons">
+                        <span class="share-label">Share this article:</span>
+                        <a href="https://twitter.com/intent/tweet?text=How to Automate Shopify Order Emails&url=https://sethforte.com/articles/automate-shopify-order-emails.html" target="_blank" class="share-btn">Share on Twitter</a>
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sethforte.com/articles/automate-shopify-order-emails.html" target="_blank" class="share-btn">Share on LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="related-articles">
+            <div class="container">
+                <h2>Related Articles</h2>
+                <div class="related-grid">
+                    <article class="article-card">
+                        <div class="article-image" style="background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);"></div>
+                        <div class="article-content">
+                            <span class="article-category">AI & Automation</span>
+                            <span class="article-date">Jan 4, 2026</span>
+                            <h3><a href="n8n-vs-make-vs-zapier.html">n8n vs Make.com vs Zapier</a></h3>
+                            <p>Which automation platform should you use?...</p>
+                            <a href="n8n-vs-make-vs-zapier.html" class="read-more">Read Article</a>
+                        </div>
+                    </article>
+                    <article class="article-card">
+                        <div class="article-image" style="background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);"></div>
+                        <div class="article-content">
+                            <span class="article-category">AI & Automation</span>
+                            <span class="article-date">Oct 8, 2025</span>
+                            <h3><a href="three-tasks.html">The Three Tasks You Should Automate First</a></h3>
+                            <p>Not everything needs automation. Here's where to start...</p>
+                            <a href="three-tasks.html" class="read-more">Read Article</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content-new">
+                <div class="footer-main">
+                    <h3 class="footer-logo">Seth Forte</h3>
+                    <p class="footer-tagline">Growth partner, not task executor.</p>
+                    <p class="footer-description">I solve the technical problems that hold growing businesses back. Based in Grapevine, Texas. Working with clients nationwide.</p>
+                    <div class="footer-contact">
+                        <a href="mailto:seth@fortewebdesigns.com">seth@fortewebdesigns.com</a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="../automation.html">Automation</a></li>
+                            <li><a href="../crm-integration.html">CRM Integration</a></li>
+                            <li><a href="../custom-software.html">Custom Software</a></li>
+                            <li><a href="../ai-automation.html">AI Automation</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="https://www.linkedin.com/in/seth-forte/" target="_blank">LinkedIn</a></li>
+                            <li><a href="https://x.com/ForteSeth" target="_blank">Twitter</a></li>
+                            <li><a href="https://www.youtube.com/@SethForte" target="_blank">YouTube</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Seth Forte. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

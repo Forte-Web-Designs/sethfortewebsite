@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>How to Connect HubSpot to Your Other Tools (Complete Guide) | Seth Forte</title>
+    <meta name="description" content="HubSpot doesn't talk to your other tools by default. Here's how to connect it to forms, accounting, project management, and more.">
+    <meta name="author" content="Seth Forte">
+    <meta name="keywords" content="hubspot integration, hubspot automation, connect hubspot, hubspot api, hubspot zapier, crm integration">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://sethforte.com/articles/hubspot-integration-guide.html">
+    <meta property="og:title" content="How to Connect HubSpot to Your Other Tools">
+    <meta property="og:description" content="HubSpot doesn't talk to your other tools by default. Here's how to connect everything.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://sethforte.com/articles/hubspot-integration-guide.html">
+
+    <!-- Schema.org Article -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "How to Connect HubSpot to Your Other Tools (Complete Guide)",
+        "author": {"@type": "Person", "name": "Seth Forte", "url": "https://sethforte.com"},
+        "datePublished": "2026-01-04",
+        "dateModified": "2026-01-04",
+        "publisher": {"@type": "Person", "name": "Seth Forte"},
+        "description": "A complete guide to integrating HubSpot with your other business tools."
+    }
+    </script>
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../blog.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo"><img src="../logo.jpg" alt="Seth Forte" height="40"></a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu" style="display: none;">☰</button>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#work">Work</a></li>
+                <li><a href="../index.html#services">Services</a></li>
+                <li><a href="../writing.html">Writing</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <button class="dark-mode-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon sun-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+                    <span class="theme-icon moon-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+                </button>
+                <a href="../index.html#contact" class="cta-btn-nav">Let's Talk</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="article-page">
+        <section class="article-hero">
+            <div class="container">
+                <div class="article-hero-image" style="background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);"></div>
+                <div class="article-meta">
+                    <span class="article-category">AI & Automation</span>
+                    <span class="article-date">Jan 4, 2026</span>
+                    <span class="article-author">By Seth Forte</span>
+                </div>
+                <h1>How to Connect HubSpot to Your Other Tools (Complete Guide)</h1>
+            </div>
+        </section>
+
+        <section class="article-body">
+            <div class="container">
+                <p>You bought HubSpot to be your "single source of truth." But six months later, you're still copying data between systems manually.</p>
+
+                <p>HubSpot is great at what it does. But it doesn't automatically talk to your accounting software, your forms, your project management tools, or your custom databases.</p>
+
+                <p>Here's how to actually connect everything.</p>
+
+                <h2>The Integration Landscape</h2>
+
+                <p>You have three options for connecting HubSpot to other tools:</p>
+
+                <p><strong>1. Native HubSpot integrations</strong> - HubSpot's built-in connections to popular tools. Easy to set up, but limited in what they can do.</p>
+
+                <p><strong>2. Third-party automation (Zapier, Make, n8n)</strong> - More flexible. Can handle complex logic. Where most real integrations happen.</p>
+
+                <p><strong>3. Custom API integration</strong> - Maximum flexibility. Required for complex requirements or tools without existing integrations.</p>
+
+                <h2>Common Integration Scenarios</h2>
+
+                <h3>Forms → HubSpot</h3>
+
+                <p>When someone fills out a Typeform, JotForm, or Webflow form, create a contact in HubSpot automatically.</p>
+
+                <p><strong>What to sync:</strong> Name, email, company, phone, form responses as custom properties.</p>
+
+                <p><strong>Watch out for:</strong> Duplicate contacts. Always check if the contact exists before creating a new one.</p>
+
+                <h3>HubSpot → Accounting</h3>
+
+                <p>When a deal closes in HubSpot, create an invoice in QuickBooks or Xero.</p>
+
+                <p><strong>What to sync:</strong> Company info, deal amount, line items, payment terms.</p>
+
+                <p><strong>Watch out for:</strong> Tax calculations, multi-currency, customer matching between systems.</p>
+
+                <h3>HubSpot → Project Management</h3>
+
+                <p>When a deal closes, create a project in Asana, Monday, or ClickUp.</p>
+
+                <p><strong>What to sync:</strong> Client info, project scope (from deal notes), timeline, assigned team members.</p>
+
+                <p><strong>Watch out for:</strong> Mapping deal stages to project templates. Different deal types might need different project structures.</p>
+
+                <h3>Email → HubSpot</h3>
+
+                <p>Log all customer emails (Gmail, Outlook) to HubSpot contact records.</p>
+
+                <p><strong>What to sync:</strong> Email content, attachments, timestamps.</p>
+
+                <p><strong>Watch out for:</strong> Privacy considerations. Some emails shouldn't be logged (personal, confidential).</p>
+
+                <h2>The Right Way to Build Integrations</h2>
+
+                <p><strong>Start with the workflow, not the tools.</strong></p>
+
+                <p>Before building anything, map out exactly what should happen. When X occurs in System A, what needs to happen in System B? What data needs to move? What happens if something fails?</p>
+
+                <p><strong>Handle duplicates.</strong></p>
+
+                <p>The biggest integration headache is duplicate records. Always check if a record exists before creating. Use email address as the unique identifier for contacts.</p>
+
+                <p><strong>Build in error handling.</strong></p>
+
+                <p>What happens when the API is down? When data is malformed? When a required field is empty? Good integrations handle these gracefully.</p>
+
+                <p><strong>Log everything.</strong></p>
+
+                <p>When something goes wrong (and it will), you need to know what happened. Keep logs of every integration run.</p>
+
+                <h2>When to DIY vs. Hire Help</h2>
+
+                <p><strong>DIY if:</strong></p>
+                <ul class="case-study-results">
+                    <li>The integration is simple (one trigger, one action)</li>
+                    <li>Native HubSpot integration exists</li>
+                    <li>You have time to learn and maintain it</li>
+                </ul>
+
+                <p><strong>Hire help if:</strong></p>
+                <ul class="case-study-results">
+                    <li>Complex logic required (conditions, branching)</li>
+                    <li>Multiple systems need to sync</li>
+                    <li>Data quality is critical</li>
+                    <li>You don't have time to maintain it</li>
+                </ul>
+
+                <p>I build HubSpot integrations for growing companies. If your systems aren't talking to each other, <a href="https://calendly.com/seth-fortewebdesigns/30min">book a call</a> and we'll figure out what needs to happen.</p>
+
+                <p>Or check out my <a href="../crm-integration.html">CRM integration services</a> to see how I can help.</p>
+
+                <div class="article-share">
+                    <div class="share-buttons">
+                        <span class="share-label">Share this article:</span>
+                        <a href="https://twitter.com/intent/tweet?text=How to Connect HubSpot to Your Other Tools&url=https://sethforte.com/articles/hubspot-integration-guide.html" target="_blank" class="share-btn">Share on Twitter</a>
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sethforte.com/articles/hubspot-integration-guide.html" target="_blank" class="share-btn">Share on LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="related-articles">
+            <div class="container">
+                <h2>Related Articles</h2>
+                <div class="related-grid">
+                    <article class="article-card">
+                        <div class="article-image" style="background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);"></div>
+                        <div class="article-content">
+                            <span class="article-category">AI & Automation</span>
+                            <h3><a href="n8n-vs-make-vs-zapier.html">n8n vs Make.com vs Zapier</a></h3>
+                            <p>Which automation platform should you use?...</p>
+                            <a href="n8n-vs-make-vs-zapier.html" class="read-more">Read Article</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content-new">
+                <div class="footer-main">
+                    <h3 class="footer-logo">Seth Forte</h3>
+                    <p class="footer-tagline">Growth partner, not task executor.</p>
+                    <div class="footer-contact"><a href="mailto:seth@fortewebdesigns.com">seth@fortewebdesigns.com</a></div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="../automation.html">Automation</a></li>
+                            <li><a href="../crm-integration.html">CRM Integration</a></li>
+                            <li><a href="../custom-software.html">Custom Software</a></li>
+                            <li><a href="../ai-automation.html">AI Automation</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2025 Seth Forte. All rights reserved.</p></div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

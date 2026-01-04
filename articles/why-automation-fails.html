@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Why Most Automation Fails in 6 Months (And How to Avoid It) | Seth Forte</title>
+    <meta name="description" content="80% of automation projects fail within 6 months. Here are the 5 most common reasons - and how to build automation that actually lasts.">
+    <meta name="author" content="Seth Forte">
+    <meta name="keywords" content="automation fails, automation mistakes, automation best practices, automation project failure, why automation fails">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://sethforte.com/articles/why-automation-fails.html">
+    <meta property="og:title" content="Why Most Automation Fails in 6 Months">
+    <meta property="og:description" content="80% of automation projects fail within 6 months. Here's why - and how to avoid it.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://sethforte.com/articles/why-automation-fails.html">
+
+    <!-- Schema.org Article -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Why Most Automation Fails in 6 Months (And How to Avoid It)",
+        "author": {"@type": "Person", "name": "Seth Forte", "url": "https://sethforte.com"},
+        "datePublished": "2026-01-04",
+        "dateModified": "2026-01-04",
+        "publisher": {"@type": "Person", "name": "Seth Forte"}
+    }
+    </script>
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../blog.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo"><img src="../logo.jpg" alt="Seth Forte" height="40"></a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu" style="display: none;">☰</button>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#work">Work</a></li>
+                <li><a href="../index.html#services">Services</a></li>
+                <li><a href="../writing.html">Writing</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <button class="dark-mode-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon sun-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+                    <span class="theme-icon moon-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+                </button>
+                <a href="../index.html#contact" class="cta-btn-nav">Let's Talk</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="article-page">
+        <section class="article-hero">
+            <div class="container">
+                <div class="article-hero-image" style="background: linear-gradient(135deg, #ef4444 0%, #f97316 100%);"></div>
+                <div class="article-meta">
+                    <span class="article-category">AI & Automation</span>
+                    <span class="article-date">Jan 4, 2026</span>
+                    <span class="article-author">By Seth Forte</span>
+                </div>
+                <h1>Why Most Automation Fails in 6 Months (And How to Avoid It)</h1>
+            </div>
+        </section>
+
+        <section class="article-body">
+            <div class="container">
+                <p>Most automation projects fail. Not dramatically - they just quietly stop working and everyone goes back to doing things manually.</p>
+
+                <p>I've seen it happen dozens of times. Company invests in automation. It works great for a few months. Then something breaks, nobody knows how to fix it, and the whole thing gets abandoned.</p>
+
+                <p>Here's why this happens - and how to build automation that actually lasts.</p>
+
+                <h2>Reason 1: Automating a Broken Process</h2>
+
+                <p>If your current process is a mess, automation makes it a faster mess.</p>
+
+                <p>I've seen companies automate workflows that had redundant steps, unclear handoffs, and conflicting requirements. The automation worked perfectly - it just automated the wrong thing.</p>
+
+                <p><strong>The fix:</strong> Before automating anything, document the current process. Identify what actually needs to happen vs. what's just "how we've always done it." Fix the process first, then automate.</p>
+
+                <h2>Reason 2: No Clear Owner</h2>
+
+                <p>Automation needs maintenance. APIs change. Requirements evolve. Edge cases appear.</p>
+
+                <p>When nobody owns the automation, nobody notices when it breaks. Or worse, everyone assumes someone else is handling it.</p>
+
+                <p><strong>The fix:</strong> Assign a clear owner for every automated workflow. This person doesn't need to be technical - they just need to know it exists, monitor it, and escalate when something's wrong.</p>
+
+                <h2>Reason 3: Building Too Complex, Too Fast</h2>
+
+                <p>The most common automation failure I see: trying to automate everything at once.</p>
+
+                <p>Complex automations have more failure points. More integrations. More things that can break. And when they break, they're harder to debug.</p>
+
+                <p><strong>The fix:</strong> Start small. Automate one simple workflow. Prove it works. Then expand. The best automation is built incrementally.</p>
+
+                <h2>Reason 4: No Error Handling</h2>
+
+                <p>Happy path automation is easy. The hard part is handling what happens when something goes wrong.</p>
+
+                <p>What if the API times out? What if the data format changes? What if a required field is empty? Automation without error handling works great until it doesn't - and then it fails silently.</p>
+
+                <p><strong>The fix:</strong> Build error handling from day one. Log failures. Send alerts. Create fallback paths. Assume things will go wrong, because they will.</p>
+
+                <h2>Reason 5: No Documentation</h2>
+
+                <p>The person who built the automation leaves. Nobody knows how it works. Nobody wants to touch it. Eventually it breaks and gets abandoned.</p>
+
+                <p>I've inherited more "mystery automations" than I can count. Workflows with no documentation, unclear logic, and dependencies that nobody remembers.</p>
+
+                <p><strong>The fix:</strong> Document every automation. What does it do? What triggers it? What systems does it connect to? What should you do if it fails? Future you (or your replacement) will thank you.</p>
+
+                <h2>The Automation That Lasts</h2>
+
+                <p>Successful automation has a few things in common:</p>
+
+                <ul class="case-study-results">
+                    <li><strong>Solves a real problem.</strong> Not automation for automation's sake.</li>
+                    <li><strong>Starts simple.</strong> Complexity comes later, if needed.</li>
+                    <li><strong>Has clear ownership.</strong> Someone is responsible.</li>
+                    <li><strong>Handles errors gracefully.</strong> Failures are expected and managed.</li>
+                    <li><strong>Is documented.</strong> Anyone can understand how it works.</li>
+                </ul>
+
+                <h2>How to Evaluate Your Current Automation</h2>
+
+                <p>Ask these questions about any automation you have running:</p>
+
+                <ol>
+                    <li>Who owns this workflow?</li>
+                    <li>When did it last fail? How did you find out?</li>
+                    <li>Where is it documented?</li>
+                    <li>Could someone else fix it if the builder left?</li>
+                    <li>Is it actually saving time, or creating different problems?</li>
+                </ol>
+
+                <p>If you can't answer these questions, your automation is at risk.</p>
+
+                <h2>Building It Right</h2>
+
+                <p>When I build automation for clients, I build it to last. That means:</p>
+
+                <ul class="case-study-results">
+                    <li>Starting with process analysis, not tool selection</li>
+                    <li>Building incrementally with clear milestones</li>
+                    <li>Error handling and alerting from day one</li>
+                    <li>Complete documentation and training</li>
+                    <li>Ongoing support to catch issues early</li>
+                </ul>
+
+                <p>It takes longer upfront. It costs more initially. But it's cheaper than building the same automation three times because the first two failed.</p>
+
+                <p>If you've been burned by automation that didn't last, or you want to do it right the first time, <a href="https://calendly.com/seth-fortewebdesigns/30min">book a call</a>. I'll help you figure out what's worth automating and how to build it to last.</p>
+
+                <p>Check out my <a href="../automation.html">automation services</a> to see my approach.</p>
+
+                <div class="article-share">
+                    <div class="share-buttons">
+                        <span class="share-label">Share this article:</span>
+                        <a href="https://twitter.com/intent/tweet?text=Why Most Automation Fails in 6 Months&url=https://sethforte.com/articles/why-automation-fails.html" target="_blank" class="share-btn">Share on Twitter</a>
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sethforte.com/articles/why-automation-fails.html" target="_blank" class="share-btn">Share on LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content-new">
+                <div class="footer-main">
+                    <h3 class="footer-logo">Seth Forte</h3>
+                    <p class="footer-tagline">Growth partner, not task executor.</p>
+                    <div class="footer-contact"><a href="mailto:seth@fortewebdesigns.com">seth@fortewebdesigns.com</a></div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="../automation.html">Automation</a></li>
+                            <li><a href="../crm-integration.html">CRM Integration</a></li>
+                            <li><a href="../custom-software.html">Custom Software</a></li>
+                            <li><a href="../ai-automation.html">AI Automation</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2025 Seth Forte. All rights reserved.</p></div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

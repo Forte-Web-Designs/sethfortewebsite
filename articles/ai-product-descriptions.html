@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>How to Use AI for Product Descriptions (Without Sounding Like AI) | Seth Forte</title>
+    <meta name="description" content="AI can write product descriptions at scale - if you prompt it right. Here's how I built a system that generates 100 listings daily.">
+    <meta name="author" content="Seth Forte">
+    <meta name="keywords" content="AI product descriptions, automate product listings, AI for ecommerce, AI copywriting, product listing automation">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://sethforte.com/articles/ai-product-descriptions.html">
+    <meta property="og:title" content="How to Use AI for Product Descriptions (Without Sounding Like AI)">
+    <meta property="og:description" content="AI can write product descriptions at scale - if you prompt it right.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://sethforte.com/articles/ai-product-descriptions.html">
+
+    <!-- Schema.org Article -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "How to Use AI for Product Descriptions (Without Sounding Like AI)",
+        "author": {"@type": "Person", "name": "Seth Forte", "url": "https://sethforte.com"},
+        "datePublished": "2026-01-04",
+        "dateModified": "2026-01-04",
+        "publisher": {"@type": "Person", "name": "Seth Forte"}
+    }
+    </script>
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../blog.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo"><img src="../logo.jpg" alt="Seth Forte" height="40"></a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu" style="display: none;">☰</button>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#work">Work</a></li>
+                <li><a href="../index.html#services">Services</a></li>
+                <li><a href="../writing.html">Writing</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <button class="dark-mode-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon sun-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+                    <span class="theme-icon moon-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+                </button>
+                <a href="../index.html#contact" class="cta-btn-nav">Let's Talk</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="article-page">
+        <section class="article-hero">
+            <div class="container">
+                <div class="article-hero-image" style="background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%);"></div>
+                <div class="article-meta">
+                    <span class="article-category">AI & Automation</span>
+                    <span class="article-date">Jan 4, 2026</span>
+                    <span class="article-author">By Seth Forte</span>
+                </div>
+                <h1>How to Use AI for Product Descriptions (Without Sounding Like AI)</h1>
+            </div>
+        </section>
+
+        <section class="article-body">
+            <div class="container">
+                <p>AI-generated product descriptions have a reputation for being obvious. Generic. Soulless.</p>
+
+                <p>That's because most people use AI wrong.</p>
+
+                <p>I built a system for <a href="cr-deals-case-study.html">CR Deals Cincinnati</a> that generates 50-100 product listings daily. The descriptions don't sound like AI. They sound like someone who actually looked at the product and understood what matters to buyers.</p>
+
+                <p>Here's how.</p>
+
+                <h2>Why Most AI Descriptions Fail</h2>
+
+                <p><strong>Generic prompts produce generic results.</strong></p>
+
+                <p>If you tell ChatGPT "write a product description for a blue chair," you get a description that could apply to any blue chair ever made.</p>
+
+                <p><strong>No context about your brand voice.</strong></p>
+
+                <p>AI doesn't know if you're casual or formal, technical or approachable, luxury or budget.</p>
+
+                <p><strong>No specific product details.</strong></p>
+
+                <p>AI can't see your product. It's guessing based on minimal information.</p>
+
+                <h2>What Actually Works</h2>
+
+                <h3>1. Feed the AI Real Product Data</h3>
+
+                <p>For CR Deals, we built a pipeline that:</p>
+                <ul class="case-study-results">
+                    <li>Analyzes product photos with vision AI</li>
+                    <li>Extracts brand, model, condition, features</li>
+                    <li>Identifies key selling points</li>
+                </ul>
+
+                <p>The AI isn't guessing. It's working from actual data about the specific product.</p>
+
+                <h3>2. Train on Your Existing Descriptions</h3>
+
+                <p>Before generating anything new, we analyzed hundreds of CR Deals' best-performing listings. What made them work? What language did they use?</p>
+
+                <p>Then we built prompts that replicated that style.</p>
+
+                <h3>3. Include Category-Specific Templates</h3>
+
+                <p>Different products need different approaches:</p>
+                <ul class="case-study-results">
+                    <li>Electronics need specs and compatibility info</li>
+                    <li>Furniture needs dimensions and materials</li>
+                    <li>Collectibles need condition details and provenance</li>
+                </ul>
+
+                <p>The system routes products to category-specific prompts.</p>
+
+                <h3>4. Quality Control in the Pipeline</h3>
+
+                <p>AI makes mistakes. The system includes:</p>
+                <ul class="case-study-results">
+                    <li>Automated checks for obvious errors</li>
+                    <li>Flagging for human review when confidence is low</li>
+                    <li>Easy editing workflow for quick fixes</li>
+                </ul>
+
+                <h2>The Results</h2>
+
+                <p>For CR Deals:</p>
+                <ul class="case-study-results">
+                    <li><strong>$52K annual savings</strong> - No more manual listing creation</li>
+                    <li><strong>1,040+ hours back</strong> - Team focuses on sourcing, not typing</li>
+                    <li><strong>50-100 products listed daily</strong> - Impossible with manual process</li>
+                    <li><strong>Paid for itself in the first month</strong></li>
+                </ul>
+
+                <h2>When to Use AI for Product Descriptions</h2>
+
+                <p><strong>Good fit:</strong></p>
+                <ul class="case-study-results">
+                    <li>High volume (50+ products/week)</li>
+                    <li>Relatively similar product types</li>
+                    <li>Descriptions follow a pattern</li>
+                    <li>Time savings outweigh quality concerns</li>
+                </ul>
+
+                <p><strong>Bad fit:</strong></p>
+                <ul class="case-study-results">
+                    <li>Low volume (AI setup cost doesn't make sense)</li>
+                    <li>Highly unique products requiring expertise</li>
+                    <li>Premium positioning where handcrafted copy matters</li>
+                </ul>
+
+                <h2>Getting Started</h2>
+
+                <p>You don't need a fully automated pipeline to start. Begin with:</p>
+
+                <ol>
+                    <li>Collect 20-30 of your best product descriptions</li>
+                    <li>Identify what makes them work</li>
+                    <li>Build a prompt template that captures your style</li>
+                    <li>Test on new products</li>
+                    <li>Iterate until quality matches human-written</li>
+                </ol>
+
+                <p>If you're drowning in product listing work and want AI to handle it, <a href="https://calendly.com/seth-fortewebdesigns/30min">book a call</a>. I'll help you figure out if AI is the right solution and what it would take to build.</p>
+
+                <p>Check out my <a href="../ai-automation.html">AI automation services</a> to see what's possible.</p>
+
+                <div class="article-share">
+                    <div class="share-buttons">
+                        <span class="share-label">Share this article:</span>
+                        <a href="https://twitter.com/intent/tweet?text=How to Use AI for Product Descriptions&url=https://sethforte.com/articles/ai-product-descriptions.html" target="_blank" class="share-btn">Share on Twitter</a>
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sethforte.com/articles/ai-product-descriptions.html" target="_blank" class="share-btn">Share on LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content-new">
+                <div class="footer-main">
+                    <h3 class="footer-logo">Seth Forte</h3>
+                    <p class="footer-tagline">Growth partner, not task executor.</p>
+                    <div class="footer-contact"><a href="mailto:seth@fortewebdesigns.com">seth@fortewebdesigns.com</a></div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="../automation.html">Automation</a></li>
+                            <li><a href="../crm-integration.html">CRM Integration</a></li>
+                            <li><a href="../custom-software.html">Custom Software</a></li>
+                            <li><a href="../ai-automation.html">AI Automation</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2025 Seth Forte. All rights reserved.</p></div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
