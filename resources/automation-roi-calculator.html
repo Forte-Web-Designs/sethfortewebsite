@@ -53,7 +53,7 @@
     <style>
         /* Calculator Specific Styles */
         .calculator-container {
-            max-width: 900px;
+            max-width: 600px;
             margin: 0 auto;
         }
 
@@ -65,41 +65,208 @@
             margin-bottom: 2rem;
         }
 
-        .calculator-intro {
-            margin-bottom: 2rem;
-        }
-
-        .calculator-intro h2 {
-            font-size: 1.75rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .calculator-intro p {
-            color: var(--text-muted);
-        }
-
-        .calculator-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
         @media (max-width: 768px) {
-            .calculator-grid {
-                grid-template-columns: 1fr;
-            }
-
             .calculator-card {
                 padding: 1.5rem;
             }
         }
 
-        .input-group {
-            margin-bottom: 1.25rem;
+        /* Slider Input */
+        .slider-group {
+            margin-bottom: 2rem;
         }
 
-        .input-group label {
+        .slider-group label {
+            display: block;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 0.75rem;
+        }
+
+        .slider-container {
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .slider-input {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: var(--background-secondary);
+            outline: none;
+            cursor: pointer;
+        }
+
+        .slider-input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.15s;
+        }
+
+        .slider-input::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+        }
+
+        .slider-input::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .slider-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-top: 0.5rem;
+        }
+
+        /* Rate Buttons */
+        .rate-group {
+            margin-bottom: 2rem;
+        }
+
+        .rate-group label {
+            display: block;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 0.75rem;
+        }
+
+        .rate-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .rate-btn {
+            padding: 0.75rem 1.25rem;
+            border: 2px solid var(--border-color, #e2e8f0);
+            border-radius: 8px;
+            background: var(--background);
+            color: var(--text);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .rate-btn:hover {
+            border-color: var(--accent-color);
+            background: var(--background-secondary);
+        }
+
+        .rate-btn.active {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            color: white;
+        }
+
+        /* Results Card */
+        .results-card {
+            background: var(--text);
+            color: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        [data-theme="dark"] .results-card {
+            background: var(--accent-color);
+        }
+
+        .results-primary {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .results-secondary {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        .results-breakdown {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+            text-align: left;
+        }
+
+        .results-breakdown-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Hidden Costs Toggle */
+        .hidden-costs-toggle {
+            width: 100%;
+            text-align: left;
+            padding: 1rem 1.25rem;
+            background: var(--background-secondary);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 1.5rem;
+            transition: background 0.15s;
+        }
+
+        .hidden-costs-toggle:hover {
+            background: var(--border-color, #e2e8f0);
+        }
+
+        .hidden-costs-toggle-text {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .hidden-costs-toggle-sub {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
+
+        /* Hidden Costs Panel */
+        .hidden-costs-panel {
+            background: var(--background-secondary);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+
+        .hidden-costs-panel.open {
+            display: block;
+        }
+
+        .hidden-costs-intro {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .hidden-input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .hidden-input-group label {
             display: block;
             font-size: 0.9rem;
             font-weight: 500;
@@ -107,189 +274,94 @@
             margin-bottom: 0.5rem;
         }
 
-        .input-group input {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border: 1px solid var(--border-color, #e2e8f0);
-            border-radius: 6px;
-            font-size: 1rem;
-            background: var(--background);
-            color: var(--text);
-            transition: border-color 0.2s, box-shadow 0.2s;
-        }
-
-        .input-group input:focus {
-            outline: none;
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
-        .input-group .input-with-prefix {
-            position: relative;
-        }
-
-        .input-group .input-with-prefix span {
-            position: absolute;
-            left: 0.75rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-muted);
-        }
-
-        .input-group .input-with-prefix input {
-            padding-left: 1.75rem;
-        }
-
-        .input-section-title {
-            font-size: 1.1rem;
+        .hidden-slider-value {
+            font-size: 1.25rem;
             font-weight: 600;
             color: var(--text);
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--accent-color);
+            margin-top: 0.25rem;
         }
 
-        /* Results Section */
-        .results-section {
-            background: var(--background-secondary);
-            border-radius: 10px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
+        .cost-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
         }
 
-        .results-section h3 {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-        }
-
-        .cost-breakdown {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .cost-breakdown {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .cost-item {
+        .cost-btn {
+            padding: 0.5rem 0.75rem;
+            border: 1px solid var(--border-color, #e2e8f0);
+            border-radius: 6px;
             background: var(--background);
-            padding: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        }
-
-        .cost-item p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 0.25rem;
-        }
-
-        .cost-item .value {
-            font-size: 1.35rem;
-            font-weight: 700;
             color: var(--text);
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.15s;
         }
 
-        .cost-item .sub {
-            font-size: 0.75rem;
-            color: var(--text-muted);
+        .cost-btn:hover {
+            border-color: var(--accent-color);
         }
 
-        .cost-item.highlight {
+        .cost-btn.active {
             background: var(--accent-color);
-        }
-
-        .cost-item.highlight p,
-        .cost-item.highlight .value,
-        .cost-item.highlight .sub {
+            border-color: var(--accent-color);
             color: white;
         }
 
-        .investment-levels {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
+        /* Investment Comparison */
+        .investment-comparison {
+            margin-bottom: 1.5rem;
         }
 
-        @media (max-width: 768px) {
-            .investment-levels {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .investment-card {
-            background: var(--background);
-            padding: 1.25rem;
-            border-radius: 8px;
-            border-left: 4px solid var(--accent-color);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        }
-
-        .investment-card .investment-amount {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 0.75rem;
-        }
-
-        .investment-card .metric {
+        .investment-row {
             display: flex;
             justify-content: space-between;
-            font-size: 0.9rem;
-            margin-bottom: 0.25rem;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            background: var(--background-secondary);
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
         }
 
-        .investment-card .metric-label {
+        .investment-amount {
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .investment-details {
+            text-align: right;
+            font-size: 0.9rem;
+        }
+
+        .investment-payback {
             color: var(--text-muted);
         }
 
-        .investment-card .metric-value {
+        .investment-savings {
+            color: #059669;
             font-weight: 600;
         }
 
-        .investment-card .metric-value.positive {
-            color: #059669;
+        /* CTA Button */
+        .calculator-cta {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent-color);
+            color: white;
+            text-align: center;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.15s, transform 0.15s;
         }
 
-        .results-note {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            font-style: italic;
-            margin-top: 1rem;
-        }
-
-        /* Calculator Actions */
-        .calculator-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            align-items: center;
-            margin-top: 1.5rem;
-        }
-
-        @media (min-width: 640px) {
-            .calculator-actions {
-                flex-direction: row;
-                justify-content: space-between;
-            }
-        }
-
-        .reset-btn {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            text-decoration: underline;
-            cursor: pointer;
-            font-size: 0.9rem;
-            padding: 0.5rem;
-        }
-
-        .reset-btn:hover {
-            color: var(--text);
+        .calculator-cta:hover {
+            background: var(--accent-color-dark, #1d4ed8);
+            transform: translateY(-1px);
         }
 
         /* Industry Tables */
@@ -383,6 +455,7 @@
                 <li class="nav-dropdown">
                     <a href="/#services" class="dropdown-toggle">Services <span class="dropdown-arrow">▾</span></a>
                     <ul class="dropdown-menu">
+                        <li><a href="/web-design.html">Web Design</a></li>
                         <li><a href="/automation.html">Automation</a></li>
                         <li><a href="/crm-integration.html">CRM Integration</a></li>
                         <li><a href="/custom-software.html">Custom Software</a></li>
@@ -443,20 +516,7 @@
         <!-- Hero Section -->
         <section class="hero" style="min-height: auto; padding: 6rem 0 3rem;">
             <div class="container">
-                <h1 class="hero-title-main">Automation ROI Calculator</h1>
-                <p class="hero-statement">Before we talk, you should know if this makes sense.<br>Here's how to figure that out.</p>
-            </div>
-        </section>
-
-        <!-- The Real Question Section -->
-        <section class="intro-section">
-            <div class="container">
-                <h2 class="section-title-alt">What Is This Problem Actually Costing You?</h2>
-                <div class="intro-content">
-                    <p>Not just in dollars - in time, energy, missed opportunities, and the things you're not doing because you're stuck doing this.</p>
-                    <p>Most people underestimate the cost. They think "it only takes 30 minutes a day" without realizing that's 125 hours a year. They forget about the mistakes. The delays. The mental load of remembering to do it at all.</p>
-                    <p><strong>Let's do the real math.</strong></p>
-                </div>
+                <h1 class="hero-title-main">What's This Costing You?</h1>
             </div>
         </section>
 
@@ -465,148 +525,128 @@
             <div class="container">
                 <div class="calculator-container">
                     <div class="calculator-card">
-                        <div class="calculator-intro">
-                            <h2>Calculate Your ROI</h2>
-                            <p>Input your numbers. See what the problem is actually costing you.</p>
+                        <!-- Hours Slider -->
+                        <div class="slider-group">
+                            <label for="hoursSlider">Hours per week</label>
+                            <div class="slider-container">
+                                <input type="range" id="hoursSlider" class="slider-input" min="1" max="40" value="5">
+                            </div>
+                            <div class="slider-value"><span id="hoursValue">5</span> hours</div>
                         </div>
 
-                        <div class="calculator-grid">
-                            <!-- The Task Inputs -->
-                            <div>
-                                <h3 class="input-section-title">The Task</h3>
-
-                                <div class="input-group">
-                                    <label for="hoursPerWeek">Hours spent per week</label>
-                                    <input type="number" id="hoursPerWeek" min="0" max="40" value="5" step="0.5">
-                                </div>
-
-                                <div class="input-group">
-                                    <label for="hourlyCost">Hourly cost (salary + ~40% for benefits)</label>
-                                    <div class="input-with-prefix">
-                                        <span>$</span>
-                                        <input type="number" id="hourlyCost" min="0" value="35" step="5">
-                                    </div>
-                                </div>
+                        <!-- Rate Buttons -->
+                        <div class="rate-group">
+                            <label>What's that time worth?</label>
+                            <div class="rate-buttons">
+                                <button class="rate-btn" data-rate="25">$25/hr</button>
+                                <button class="rate-btn" data-rate="35">$35/hr</button>
+                                <button class="rate-btn active" data-rate="50">$50/hr</button>
+                                <button class="rate-btn" data-rate="75">$75/hr</button>
+                                <button class="rate-btn" data-rate="100">$100/hr</button>
+                                <button class="rate-btn" data-rate="150">$150/hr</button>
                             </div>
+                        </div>
 
-                            <!-- Hidden Costs Inputs -->
-                            <div>
-                                <h3 class="input-section-title">The Hidden Costs</h3>
+                        <!-- Results Card -->
+                        <div class="results-card">
+                            <div class="results-primary" id="totalAnnual">$13,000</div>
+                            <div class="results-secondary">per year</div>
+                            <div class="results-secondary" id="monthlyWeekly">$1,083/month &middot; $250/week</div>
 
-                                <div class="input-group">
-                                    <label for="errorsPerMonth">Errors per month</label>
-                                    <input type="number" id="errorsPerMonth" min="0" value="2" step="1">
+                            <!-- Breakdown (shown when hidden costs active) -->
+                            <div class="results-breakdown" id="resultsBreakdown" style="display: none;">
+                                <div class="results-breakdown-row">
+                                    <span>Time</span>
+                                    <span id="breakdownTime">$13,000</span>
                                 </div>
-
-                                <div class="input-group">
-                                    <label for="costPerError">Average cost per error</label>
-                                    <div class="input-with-prefix">
-                                        <span>$</span>
-                                        <input type="number" id="costPerError" min="0" value="100" step="25">
-                                    </div>
+                                <div class="results-breakdown-row" id="breakdownErrorsRow" style="display: none;">
+                                    <span>Errors</span>
+                                    <span id="breakdownErrors">$0</span>
                                 </div>
-
-                                <div class="input-group">
-                                    <label for="lostDealsPerMonth">Deals/opportunities lost to delays (per month)</label>
-                                    <input type="number" id="lostDealsPerMonth" min="0" value="1" step="1">
-                                </div>
-
-                                <div class="input-group">
-                                    <label for="avgDealValue">Average deal value</label>
-                                    <div class="input-with-prefix">
-                                        <span>$</span>
-                                        <input type="number" id="avgDealValue" min="0" value="2000" step="100">
-                                    </div>
+                                <div class="results-breakdown-row" id="breakdownDealsRow" style="display: none;">
+                                    <span>Lost deals</span>
+                                    <span id="breakdownDeals">$0</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Results Section -->
-                        <div class="results-section">
-                            <h3>Your Results</h3>
+                        <!-- Hidden Costs Toggle -->
+                        <button class="hidden-costs-toggle" id="hiddenCostsToggle">
+                            <div class="hidden-costs-toggle-text">+ There's more to it</div>
+                            <div class="hidden-costs-toggle-sub">Errors, lost deals, delays (optional)</div>
+                        </button>
 
-                            <!-- Cost Breakdown -->
-                            <div class="cost-breakdown">
-                                <div class="cost-item">
-                                    <p>Direct Labor Cost</p>
-                                    <div class="value" id="directLaborCost">$9,100</div>
-                                    <div class="sub">per year</div>
-                                </div>
-                                <div class="cost-item">
-                                    <p>Error Cost</p>
-                                    <div class="value" id="errorCost">$2,400</div>
-                                    <div class="sub">per year</div>
-                                </div>
-                                <div class="cost-item">
-                                    <p>Lost Opportunity Cost</p>
-                                    <div class="value" id="lostOpportunityCost">$24,000</div>
-                                    <div class="sub">per year</div>
-                                </div>
-                                <div class="cost-item highlight">
-                                    <p>Total Annual Cost</p>
-                                    <div class="value" id="totalAnnualCost">$35,500</div>
-                                    <div class="sub">of this problem</div>
+                        <!-- Hidden Costs Panel -->
+                        <div class="hidden-costs-panel" id="hiddenCostsPanel">
+                            <p class="hidden-costs-intro">Skip these if they don't apply. Leave at 0.</p>
+
+                            <!-- Errors -->
+                            <div class="hidden-input-group">
+                                <label for="errorsSlider">Errors per month</label>
+                                <input type="range" id="errorsSlider" class="slider-input" min="0" max="20" value="0">
+                                <div class="hidden-slider-value"><span id="errorsValue">0</span> errors</div>
+                            </div>
+
+                            <div class="hidden-input-group" id="errorCostGroup" style="display: none;">
+                                <label>Cost per error</label>
+                                <div class="cost-buttons">
+                                    <button class="cost-btn" data-error-cost="50">$50</button>
+                                    <button class="cost-btn" data-error-cost="100">$100</button>
+                                    <button class="cost-btn active" data-error-cost="250">$250</button>
+                                    <button class="cost-btn" data-error-cost="500">$500</button>
+                                    <button class="cost-btn" data-error-cost="1000">$1,000</button>
                                 </div>
                             </div>
 
-                            <!-- Investment Levels -->
-                            <h4 style="font-size: 1.1rem; margin-bottom: 1rem;">If Automation Costs...</h4>
-                            <div class="investment-levels">
-                                <div class="investment-card">
-                                    <div class="investment-amount">$3,000</div>
-                                    <div class="metric">
-                                        <span class="metric-label">Payback:</span>
-                                        <span class="metric-value" id="payback3k">1.0 months</span>
-                                    </div>
-                                    <div class="metric">
-                                        <span class="metric-label">Year 1 savings:</span>
-                                        <span class="metric-value positive" id="savings3k">$32,500</span>
-                                    </div>
-                                    <div class="metric">
-                                        <span class="metric-label">3-year savings:</span>
-                                        <span class="metric-value positive" id="savings3k3yr">$103,500</span>
-                                    </div>
-                                </div>
-                                <div class="investment-card">
-                                    <div class="investment-amount">$5,000</div>
-                                    <div class="metric">
-                                        <span class="metric-label">Payback:</span>
-                                        <span class="metric-value" id="payback5k">1.7 months</span>
-                                    </div>
-                                    <div class="metric">
-                                        <span class="metric-label">Year 1 savings:</span>
-                                        <span class="metric-value positive" id="savings5k">$30,500</span>
-                                    </div>
-                                    <div class="metric">
-                                        <span class="metric-label">3-year savings:</span>
-                                        <span class="metric-value positive" id="savings5k3yr">$101,500</span>
-                                    </div>
-                                </div>
-                                <div class="investment-card">
-                                    <div class="investment-amount">$10,000</div>
-                                    <div class="metric">
-                                        <span class="metric-label">Payback:</span>
-                                        <span class="metric-value" id="payback10k">3.4 months</span>
-                                    </div>
-                                    <div class="metric">
-                                        <span class="metric-label">Year 1 savings:</span>
-                                        <span class="metric-value positive" id="savings10k">$25,500</span>
-                                    </div>
-                                    <div class="metric">
-                                        <span class="metric-label">3-year savings:</span>
-                                        <span class="metric-value positive" id="savings10k3yr">$96,500</span>
-                                    </div>
-                                </div>
+                            <!-- Lost Deals -->
+                            <div class="hidden-input-group">
+                                <label for="dealsSlider">Leads/deals lost per month</label>
+                                <input type="range" id="dealsSlider" class="slider-input" min="0" max="20" value="0">
+                                <div class="hidden-slider-value"><span id="dealsValue">0</span> lost</div>
                             </div>
 
-                            <p class="results-note">This doesn't include the mental load, the scaling ceiling, or the compounding value of getting those hours back. The real ROI is probably higher.</p>
+                            <div class="hidden-input-group" id="dealValueGroup" style="display: none;">
+                                <label>Average deal value</label>
+                                <div class="cost-buttons">
+                                    <button class="cost-btn" data-deal-value="500">$500</button>
+                                    <button class="cost-btn" data-deal-value="1000">$1,000</button>
+                                    <button class="cost-btn active" data-deal-value="2500">$2,500</button>
+                                    <button class="cost-btn" data-deal-value="5000">$5,000</button>
+                                    <button class="cost-btn" data-deal-value="10000">$10,000</button>
+                                </div>
+                            </div>
                         </div>
 
-                        <!-- Actions -->
-                        <div class="calculator-actions">
-                            <button class="reset-btn" onclick="resetCalculator()">Reset Calculator</button>
-                            <a href="https://calendly.com/seth-fortewebdesigns/30min" class="btn-primary btn-large">Book a Call to Discuss</a>
+                        <!-- Investment Comparison -->
+                        <div class="investment-comparison">
+                            <div class="investment-row">
+                                <span class="investment-amount">$3,000</span>
+                                <div class="investment-details">
+                                    <span class="investment-payback" id="payback3k">3 months</span>
+                                    <span> &rarr; </span>
+                                    <span class="investment-savings" id="savings3k">$10,000 Year 1</span>
+                                </div>
+                            </div>
+                            <div class="investment-row">
+                                <span class="investment-amount">$5,000</span>
+                                <div class="investment-details">
+                                    <span class="investment-payback" id="payback5k">5 months</span>
+                                    <span> &rarr; </span>
+                                    <span class="investment-savings" id="savings5k">$8,000 Year 1</span>
+                                </div>
+                            </div>
+                            <div class="investment-row">
+                                <span class="investment-amount">$8,000</span>
+                                <div class="investment-details">
+                                    <span class="investment-payback" id="payback8k">8 months</span>
+                                    <span> &rarr; </span>
+                                    <span class="investment-savings" id="savings8k">$5,000 Year 1</span>
+                                </div>
+                            </div>
                         </div>
+
+                        <!-- CTA -->
+                        <a href="https://calendly.com/seth-fortewebdesigns/30min" class="calculator-cta">Book a Call</a>
                     </div>
                 </div>
             </div>
@@ -926,16 +966,16 @@
 
     <script src="../script.js"></script>
     <script>
-        // ROI Calculator Logic
-        const defaultValues = {
-            hoursPerWeek: 5,
-            hourlyCost: 35,
-            errorsPerMonth: 2,
-            costPerError: 100,
-            lostDealsPerMonth: 1,
-            avgDealValue: 2000
-        };
+        // State
+        let hours = 5;
+        let rate = 50;
+        let errors = 0;
+        let errorCost = 250;
+        let dealsLost = 0;
+        let dealValue = 2500;
+        let hiddenCostsOpen = false;
 
+        // Format currency
         function formatCurrency(num) {
             return new Intl.NumberFormat('en-US', {
                 style: 'currency',
@@ -945,79 +985,124 @@
             }).format(num);
         }
 
-        function calculateROI() {
-            const hoursPerWeek = parseFloat(document.getElementById('hoursPerWeek').value) || 0;
-            const hourlyCost = parseFloat(document.getElementById('hourlyCost').value) || 0;
-            const errorsPerMonth = parseFloat(document.getElementById('errorsPerMonth').value) || 0;
-            const costPerError = parseFloat(document.getElementById('costPerError').value) || 0;
-            const lostDealsPerMonth = parseFloat(document.getElementById('lostDealsPerMonth').value) || 0;
-            const avgDealValue = parseFloat(document.getElementById('avgDealValue').value) || 0;
+        // Calculate and update display
+        function calculate() {
+            const timeCost = hours * rate * 52;
+            const errorsCostTotal = errors * errorCost * 12;
+            const dealsCostTotal = dealsLost * dealValue * 12;
+            const totalAnnual = timeCost + errorsCostTotal + dealsCostTotal;
 
-            // Calculate costs
-            const directLaborCost = hoursPerWeek * hourlyCost * 52;
-            const errorCost = errorsPerMonth * costPerError * 12;
-            const lostOpportunityCost = lostDealsPerMonth * avgDealValue * 12;
-            const totalAnnualCost = directLaborCost + errorCost + lostOpportunityCost;
+            const monthly = Math.round(totalAnnual / 12);
+            const weekly = Math.round(totalAnnual / 52);
 
-            // Update cost breakdown
-            document.getElementById('directLaborCost').textContent = formatCurrency(directLaborCost);
-            document.getElementById('errorCost').textContent = formatCurrency(errorCost);
-            document.getElementById('lostOpportunityCost').textContent = formatCurrency(lostOpportunityCost);
-            document.getElementById('totalAnnualCost').textContent = formatCurrency(totalAnnualCost);
+            // Update main results
+            document.getElementById('totalAnnual').textContent = formatCurrency(totalAnnual) + '/year';
+            document.getElementById('monthlyWeekly').textContent =
+                formatCurrency(monthly) + '/month \u00b7 ' + formatCurrency(weekly) + '/week';
 
-            // Calculate investment levels
-            const investments = [3000, 5000, 10000];
-            investments.forEach(investment => {
-                const monthlySavings = totalAnnualCost / 12;
-                const paybackMonths = monthlySavings > 0 ? (investment / monthlySavings).toFixed(1) : 0;
-                const year1Savings = totalAnnualCost - investment;
-                const threeYearSavings = (totalAnnualCost * 3) - investment;
+            // Update breakdown
+            document.getElementById('breakdownTime').textContent = formatCurrency(timeCost);
+            document.getElementById('breakdownErrors').textContent = formatCurrency(errorsCostTotal);
+            document.getElementById('breakdownDeals').textContent = formatCurrency(dealsCostTotal);
 
-                const suffix = investment === 3000 ? '3k' : investment === 5000 ? '5k' : '10k';
+            // Show/hide breakdown rows
+            const showBreakdown = hiddenCostsOpen && (errorsCostTotal > 0 || dealsCostTotal > 0);
+            document.getElementById('resultsBreakdown').style.display = showBreakdown ? 'block' : 'none';
+            document.getElementById('breakdownErrorsRow').style.display = errorsCostTotal > 0 ? 'flex' : 'none';
+            document.getElementById('breakdownDealsRow').style.display = dealsCostTotal > 0 ? 'flex' : 'none';
 
-                document.getElementById(`payback${suffix}`).textContent = `${paybackMonths} months`;
-                document.getElementById(`savings${suffix}`).textContent = formatCurrency(year1Savings);
-                document.getElementById(`savings${suffix}3yr`).textContent = formatCurrency(threeYearSavings);
+            // Update investment comparison
+            const investments = [
+                { amount: 3000, id: '3k' },
+                { amount: 5000, id: '5k' },
+                { amount: 8000, id: '8k' }
+            ];
 
-                // Update color based on positive/negative
-                const savingsEl = document.getElementById(`savings${suffix}`);
-                const savings3yrEl = document.getElementById(`savings${suffix}3yr`);
+            investments.forEach(inv => {
+                const paybackMonths = totalAnnual > 0 ? Math.round((inv.amount / totalAnnual) * 12 * 10) / 10 : 0;
+                const yearOneSavings = totalAnnual - inv.amount;
 
-                if (year1Savings >= 0) {
-                    savingsEl.classList.add('positive');
-                    savingsEl.classList.remove('negative');
-                } else {
-                    savingsEl.classList.remove('positive');
-                    savingsEl.classList.add('negative');
-                }
-
-                if (threeYearSavings >= 0) {
-                    savings3yrEl.classList.add('positive');
-                    savings3yrEl.classList.remove('negative');
-                } else {
-                    savings3yrEl.classList.remove('positive');
-                    savings3yrEl.classList.add('negative');
-                }
+                document.getElementById('payback' + inv.id).textContent = paybackMonths + ' months';
+                document.getElementById('savings' + inv.id).textContent = formatCurrency(yearOneSavings) + ' Year 1';
             });
         }
 
-        function resetCalculator() {
-            document.getElementById('hoursPerWeek').value = defaultValues.hoursPerWeek;
-            document.getElementById('hourlyCost').value = defaultValues.hourlyCost;
-            document.getElementById('errorsPerMonth').value = defaultValues.errorsPerMonth;
-            document.getElementById('costPerError').value = defaultValues.costPerError;
-            document.getElementById('lostDealsPerMonth').value = defaultValues.lostDealsPerMonth;
-            document.getElementById('avgDealValue').value = defaultValues.avgDealValue;
-            calculateROI();
-        }
+        // Hours slider
+        const hoursSlider = document.getElementById('hoursSlider');
+        hoursSlider.addEventListener('input', (e) => {
+            hours = parseInt(e.target.value);
+            document.getElementById('hoursValue').textContent = hours;
+            calculate();
+        });
 
-        // Add event listeners to all inputs
-        document.querySelectorAll('.calculator-card input').forEach(input => {
-            input.addEventListener('input', calculateROI);
+        // Rate buttons
+        document.querySelectorAll('.rate-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.rate-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                rate = parseInt(btn.dataset.rate);
+                calculate();
+            });
+        });
+
+        // Hidden costs toggle
+        document.getElementById('hiddenCostsToggle').addEventListener('click', () => {
+            hiddenCostsOpen = !hiddenCostsOpen;
+            const panel = document.getElementById('hiddenCostsPanel');
+            const toggle = document.getElementById('hiddenCostsToggle');
+
+            if (hiddenCostsOpen) {
+                panel.classList.add('open');
+                toggle.querySelector('.hidden-costs-toggle-text').textContent = '− There\'s more to it';
+                toggle.querySelector('.hidden-costs-toggle-sub').style.display = 'none';
+            } else {
+                panel.classList.remove('open');
+                toggle.querySelector('.hidden-costs-toggle-text').textContent = '+ There\'s more to it';
+                toggle.querySelector('.hidden-costs-toggle-sub').style.display = 'block';
+            }
+            calculate();
+        });
+
+        // Errors slider
+        const errorsSlider = document.getElementById('errorsSlider');
+        errorsSlider.addEventListener('input', (e) => {
+            errors = parseInt(e.target.value);
+            document.getElementById('errorsValue').textContent = errors;
+            document.getElementById('errorCostGroup').style.display = errors > 0 ? 'block' : 'none';
+            calculate();
+        });
+
+        // Error cost buttons
+        document.querySelectorAll('[data-error-cost]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('[data-error-cost]').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                errorCost = parseInt(btn.dataset.errorCost);
+                calculate();
+            });
+        });
+
+        // Deals slider
+        const dealsSlider = document.getElementById('dealsSlider');
+        dealsSlider.addEventListener('input', (e) => {
+            dealsLost = parseInt(e.target.value);
+            document.getElementById('dealsValue').textContent = dealsLost;
+            document.getElementById('dealValueGroup').style.display = dealsLost > 0 ? 'block' : 'none';
+            calculate();
+        });
+
+        // Deal value buttons
+        document.querySelectorAll('[data-deal-value]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('[data-deal-value]').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                dealValue = parseInt(btn.dataset.dealValue);
+                calculate();
+            });
         });
 
         // Initial calculation
-        calculateROI();
+        calculate();
     </script>
 </body>
 </html>

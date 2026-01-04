@@ -102,6 +102,13 @@
     <priority>0.7</priority>
   </url>
 
+  <url>
+    <loc>https://sethforte.com/web-design.html</loc>
+    <lastmod>2026-01-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Solution Pages -->
   <url>
     <loc>https://sethforte.com/solutions/lead-routing.html</loc>
@@ -203,6 +210,13 @@
 
   <url>
     <loc>https://sethforte.com/solutions/access-management.html</loc>
+    <lastmod>2026-01-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://sethforte.com/solutions/website-that-converts.html</loc>
     <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
