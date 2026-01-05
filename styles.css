@@ -27,6 +27,11 @@
     --text-color: #1e293b;
     --text-secondary: #475569;
     --text-tertiary: #94a3b8;
+    --text-muted: #64748b;
+
+    /* Aliases for compatibility */
+    --text: #1e293b;
+    --background: #ffffff;
 
     /* Overlays */
     --overlay-light: rgba(255, 255, 255, 0.95);
@@ -59,6 +64,11 @@
     --text-color: #f1f5f9;
     --text-secondary: #cbd5e1;
     --text-tertiary: #64748b;
+    --text-muted: #94a3b8;
+
+    /* Aliases for compatibility */
+    --text: #f1f5f9;
+    --background: #0f172a;
 
     /* Overlays */
     --overlay-light: rgba(15, 23, 42, 0.95);
@@ -2052,6 +2062,22 @@ footer {
     font-weight: 400;
 }
 
+.intro-content a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.intro-content a:hover {
+    border-bottom-color: var(--accent-color);
+}
+
+[data-theme="dark"] .intro-content a {
+    color: #93c5fd;
+}
+
 .intro-final {
     font-size: clamp(1.15rem, 2.5vw, 1.5rem);
     font-weight: 600;
@@ -2403,6 +2429,27 @@ footer {
     color: var(--secondary-color);
     padding-top: 1rem;
     border-top: 1px solid var(--border-color);
+}
+
+/* Content area links - ensure visibility in dark mode */
+.service-item-new a,
+.case-study-item a,
+.cta-content-main a:not(.btn-primary):not(.btn-secondary) {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.service-item-new a:hover,
+.case-study-item a:hover,
+.cta-content-main a:not(.btn-primary):not(.btn-secondary):hover {
+    text-decoration: underline;
+}
+
+[data-theme="dark"] .service-item-new a,
+[data-theme="dark"] .case-study-item a,
+[data-theme="dark"] .cta-content-main a:not(.btn-primary):not(.btn-secondary) {
+    color: #93c5fd;
 }
 
 /* Who Section */
@@ -3330,4 +3377,38 @@ footer a:hover {
 
 [data-theme="dark"] .highlight-result {
     color: #34d399;
+}
+
+/* Table styles for dark mode visibility */
+table {
+    color: var(--text-color);
+}
+
+table th {
+    color: var(--text-color);
+}
+
+table td {
+    color: var(--text-color);
+}
+
+[data-theme="dark"] table th {
+    color: var(--text-color);
+}
+
+[data-theme="dark"] table td {
+    color: var(--text-color);
+}
+
+[data-theme="dark"] table td strong {
+    color: #93c5fd;
+}
+
+/* General dark mode improvements */
+[data-theme="dark"] .investment-savings {
+    color: #34d399;
+}
+
+[data-theme="dark"] strong {
+    color: var(--text-color);
 }
