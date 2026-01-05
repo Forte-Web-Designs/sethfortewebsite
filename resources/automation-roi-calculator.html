@@ -319,11 +319,17 @@
             margin-bottom: 1.5rem;
         }
 
+        .investment-header {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+        }
+
         .investment-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.75rem 1rem;
+            padding: 1rem 1.25rem;
             background: var(--background-secondary);
             border-radius: 8px;
             margin-bottom: 0.5rem;
@@ -331,21 +337,53 @@
 
         .investment-amount {
             font-weight: 700;
+            font-size: 1.1rem;
             color: var(--text);
+            margin-bottom: 0.5rem;
         }
 
-        .investment-details {
-            text-align: right;
+        .investment-amount .investment-label {
+            font-weight: 400;
             font-size: 0.9rem;
-        }
-
-        .investment-payback {
             color: var(--text-muted);
         }
 
+        .investment-details {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .investment-detail-row {
+            margin-bottom: 0.25rem;
+        }
+
+        .investment-detail-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .investment-payback {
+            font-weight: 500;
+            color: var(--text);
+        }
+
         .investment-savings {
-            color: #059669;
             font-weight: 600;
+        }
+
+        .investment-savings.positive {
+            color: #059669;
+        }
+
+        .investment-savings.negative {
+            color: #dc2626;
+        }
+
+        [data-theme="dark"] .investment-savings.positive {
+            color: #34d399;
+        }
+
+        [data-theme="dark"] .investment-savings.negative {
+            color: #f87171;
         }
 
         /* CTA Button */
@@ -624,28 +662,26 @@
 
                         <!-- Investment Comparison -->
                         <div class="investment-comparison">
+                            <div class="investment-header">If you invest...</div>
                             <div class="investment-row">
-                                <span class="investment-amount">$3,000</span>
+                                <div class="investment-amount">$3,000 <span class="investment-label">automation</span></div>
                                 <div class="investment-details">
-                                    <span class="investment-payback" id="payback3k">3 months</span>
-                                    <span> &rarr; </span>
-                                    <span class="investment-savings" id="savings3k">$10,000 Year 1</span>
+                                    <div class="investment-detail-row">Pays for itself in <span class="investment-payback" id="payback3k">3 months</span></div>
+                                    <div class="investment-detail-row">Year 1 net savings: <span class="investment-savings positive" id="savings3k">$10,000</span></div>
                                 </div>
                             </div>
                             <div class="investment-row">
-                                <span class="investment-amount">$5,000</span>
+                                <div class="investment-amount">$5,000 <span class="investment-label">automation</span></div>
                                 <div class="investment-details">
-                                    <span class="investment-payback" id="payback5k">5 months</span>
-                                    <span> &rarr; </span>
-                                    <span class="investment-savings" id="savings5k">$8,000 Year 1</span>
+                                    <div class="investment-detail-row">Pays for itself in <span class="investment-payback" id="payback5k">5 months</span></div>
+                                    <div class="investment-detail-row">Year 1 net savings: <span class="investment-savings positive" id="savings5k">$8,000</span></div>
                                 </div>
                             </div>
                             <div class="investment-row">
-                                <span class="investment-amount">$8,000</span>
+                                <div class="investment-amount">$8,000 <span class="investment-label">automation</span></div>
                                 <div class="investment-details">
-                                    <span class="investment-payback" id="payback8k">8 months</span>
-                                    <span> &rarr; </span>
-                                    <span class="investment-savings" id="savings8k">$5,000 Year 1</span>
+                                    <div class="investment-detail-row">Pays for itself in <span class="investment-payback" id="payback8k">8 months</span></div>
+                                    <div class="investment-detail-row">Year 1 net savings: <span class="investment-savings positive" id="savings8k">$5,000</span></div>
                                 </div>
                             </div>
                         </div>
@@ -1026,9 +1062,13 @@
             investments.forEach(inv => {
                 const paybackMonths = totalAnnual > 0 ? Math.round((inv.amount / totalAnnual) * 12 * 10) / 10 : 0;
                 const yearOneSavings = totalAnnual - inv.amount;
+                const isNegative = yearOneSavings < 0;
 
                 document.getElementById('payback' + inv.id).textContent = paybackMonths + ' months';
-                document.getElementById('savings' + inv.id).textContent = formatCurrency(yearOneSavings) + ' Year 1';
+
+                const savingsEl = document.getElementById('savings' + inv.id);
+                savingsEl.textContent = (isNegative ? '-' : '') + formatCurrency(Math.abs(yearOneSavings));
+                savingsEl.className = 'investment-savings ' + (isNegative ? 'negative' : 'positive');
             });
         }
 
