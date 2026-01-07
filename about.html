@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>About | Seth Forte</title>
+    <meta name="description" content="5+ years building enterprise systems at Wells Fargo. I build automation systems for growing businesses that pay for themselves in the first month.">
+    <meta name="author" content="Seth Forte">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sethforte.com/about">
+    <meta property="og:title" content="About | Seth Forte">
+    <meta property="og:description" content="5+ years building enterprise systems at Wells Fargo. I build automation systems for growing businesses that pay for themselves in the first month.">
+    <meta property="og:image" content="https://sethforte.com/headshot-6.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://sethforte.com/about">
+    <meta property="twitter:title" content="About | Seth Forte">
+    <meta property="twitter:description" content="5+ years building enterprise systems at Wells Fargo. I build automation systems for growing businesses that pay for themselves in the first month.">
+    <meta property="twitter:image" content="https://sethforte.com/headshot-6.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://sethforte.com/about">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link rel="apple-touch-icon" href="logo.jpg">
+
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .about-hero {
+            padding: 5rem 0 3rem;
+            text-align: center;
+        }
+
+        .about-hero h1 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .video-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .video-link:hover {
+            text-decoration: underline;
+        }
+
+        .about-intro {
+            padding: 3rem 0;
+            background: var(--background-secondary);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 2.5rem;
+            align-items: start;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-photo {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 1px solid var(--border-color);
+        }
+
+        .about-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .about-title {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .about-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 600px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .about-photo {
+                max-width: 160px;
+                margin: 0 auto;
+            }
+
+            .about-text {
+                text-align: left;
+            }
+        }
+
+        /* Sections */
+        .about-section {
+            padding: 3rem 0;
+        }
+
+        .about-section:nth-child(even) {
+            background: var(--background-secondary);
+        }
+
+        .section-header {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .section-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section-content p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        /* Differentiators */
+        .diff-list {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .diff-item {
+            margin-bottom: 2rem;
+        }
+
+        .diff-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .diff-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .diff-desc {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        /* Connect */
+        .connect-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .connect-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .connect-links a:hover {
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="logo">
+                <img src="logo.jpg" alt="Seth Forte" height="40">
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu" style="display: none;">☰</button>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#services">Services</a></li>
+                <li><a href="/case-studies.html">Case Studies</a></li>
+                <li><a href="/writing.html">Writing</a></li>
+                <li><a href="/about.html">About</a></li>
+            </ul>
+            <div class="nav-right">
+                <button class="dark-mode-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon sun-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </span>
+                    <span class="theme-icon moon-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </span>
+                </button>
+                <a href="/#contact" class="cta-btn-nav">Book a Call</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero -->
+        <section class="about-hero">
+            <div class="container">
+                <h1>What You're Actually Paying For<br>When You Hire Me</h1>
+                <a href="#video" class="video-link">Prefer video? Here's the 2-minute version.</a>
+            </div>
+        </section>
+
+        <!-- Intro with Photo -->
+        <section class="about-intro">
+            <div class="container">
+                <div class="about-grid">
+                    <div>
+                        <img src="headshot-6.jpg" alt="Seth Forte" class="about-photo">
+                        <p class="about-name">Seth Forte</p>
+                        <p class="about-title">Automation & Systems</p>
+                    </div>
+                    <div class="about-text">
+                        <p>What are you actually paying for when you hire a consultant? Most people think it's the technical work. But the technical build is the easy part.</p>
+                        <p>The value is understanding your business. Spotting the opportunities you're missing. Building for where you're headed, not just what you think you need today.</p>
+                        <p>If you're looking for the cheapest option, I'm not your person. But if you want someone who thinks about your business like it's their own, we should talk.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Background -->
+        <section class="about-section">
+            <div class="container">
+                <div class="section-content">
+                    <h2 class="section-header">Background</h2>
+                    <p>5+ years building enterprise systems at Wells Fargo - the kind that handle millions of transactions and can't afford to break.</p>
+                    <p>I don't just build things and disappear. I care whether your systems work six months from now.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- What Makes Me Different -->
+        <section class="about-section">
+            <div class="container">
+                <div class="diff-list">
+                    <h2 class="section-header">What Makes Me Different</h2>
+
+                    <div class="diff-item">
+                        <p class="diff-title">I Tell You When You Shouldn't Automate</p>
+                        <p class="diff-desc">If fixing your process makes more sense than building something new, I'll tell you - even when it costs me revenue.</p>
+                    </div>
+
+                    <div class="diff-item">
+                        <p class="diff-title">I Think Long-Term</p>
+                        <p class="diff-desc">Even on one-off projects, I'm thinking about where your business is headed. What sets you up for scale.</p>
+                    </div>
+
+                    <div class="diff-item">
+                        <p class="diff-title">You Work Directly With Me</p>
+                        <p class="diff-desc">No account managers. No junior developers. No bait-and-switch.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Section -->
+        <section id="video" class="about-section">
+            <div class="container">
+                <div class="section-content" style="text-align: center;">
+                    <h2 class="section-header">The 2-Minute Version</h2>
+                    <!-- Replace YOUR_VIDEO_ID with your actual YouTube video ID -->
+                    <div style="max-width: 640px; margin: 0 auto;">
+                        <iframe
+                            width="100%"
+                            style="aspect-ratio: 16/9; border-radius: 8px; border: 1px solid var(--border-color);"
+                            src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+                            title="About Seth Forte"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Connect -->
+        <section class="about-section">
+            <div class="container">
+                <h2 class="section-header" style="text-align: center;">Connect</h2>
+                <div class="connect-links">
+                    <a href="https://www.linkedin.com/in/seth-forte/" target="_blank">LinkedIn</a>
+                    <a href="https://x.com/ForteSeth" target="_blank">Twitter</a>
+                    <a href="https://www.youtube.com/@SethForte" target="_blank">YouTube</a>
+                    <a href="mailto:seth@fortewebdesigns.com">Email</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA with Calendar -->
+        <section id="contact" class="calendar-section" style="padding: 5rem 0;">
+            <div class="container">
+                <h2 style="text-align: center; font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 700; margin-bottom: 2rem; color: var(--primary-color);">Let's Talk</h2>
+                <div style="max-width: 1000px; margin: 0 auto; min-height: 700px;">
+                    <!-- Calendly inline widget begin -->
+                    <div class="calendly-inline-widget" data-url="https://calendly.com/seth-fortewebdesigns/30min?hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
+                    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                    <!-- Calendly inline widget end -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-minimal">
+        <div class="container">
+            <p class="footer-tagline-minimal">I solve the technical problems that hold growing businesses back.</p>
+            <p class="footer-location-minimal">Based in Grapevine, Texas. Working with clients nationwide.</p>
+            <a href="mailto:seth@fortewebdesigns.com" class="footer-email-minimal">seth@fortewebdesigns.com</a>
+            <p class="footer-copyright-minimal">&copy; 2025 Seth Forte</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

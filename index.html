@@ -107,6 +107,144 @@
     </script>
 
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Hero Stats */
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            display: block;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            color: var(--primary-color);
+            line-height: 1;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-stat-label {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        @media (max-width: 600px) {
+            .hero-stats {
+                gap: 2rem;
+            }
+
+            .hero-stat-number {
+                font-size: 1.75rem;
+            }
+
+            .hero-stat-label {
+                font-size: 0.75rem;
+            }
+        }
+
+        /* Meet Section */
+        .meet-section {
+            padding: 5rem 0;
+            background: var(--background-secondary);
+        }
+
+        .meet-grid {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 3rem;
+            align-items: start;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .meet-photo {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 1px solid var(--border-color);
+        }
+
+        .meet-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .meet-content p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .meet-video {
+            margin-top: 1.5rem;
+        }
+
+        .meet-video iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .meet-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .meet-photo {
+                max-width: 200px;
+                margin: 0 auto;
+            }
+        }
+
+        /* Calendar Section */
+        .calendar-section {
+            padding: 5rem 0;
+        }
+
+        .calendar-section h2 {
+            text-align: center;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+
+        .calendar-embed {
+            max-width: 1000px;
+            margin: 0 auto;
+            min-height: 700px;
+        }
+
+        .calendar-embed iframe {
+            width: 100%;
+            height: 700px;
+            border: none;
+            border-radius: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .calendar-embed iframe {
+                height: 800px;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -153,10 +291,19 @@
         <section id="home" class="hero hero-minimal">
             <div class="container">
                 <h1 class="hero-title-main">I BUILD SYSTEMS THAT SCALE.</h1>
-                <p class="hero-statement">$4M found for Revolut. $52K saved for CR Deals. 20+ hours back weekly for Hollow Bamboo.</p>
-                <div class="hero-cta">
-                    <a href="#contact" class="btn-primary">Book a Call</a>
-                    <a href="#results" class="btn-secondary">See Results</a>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">$4M</span>
+                        <span class="hero-stat-label">Found</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">$52K</span>
+                        <span class="hero-stat-label">Saved</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">20+</span>
+                        <span class="hero-stat-label">Hrs/week back</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -189,37 +336,27 @@
             </div>
         </section>
 
-        <!-- Results - One-liners -->
-        <section id="results" class="results-minimal">
+        <!-- Meet Section with Photo & Video -->
+        <section class="meet-section">
             <div class="container">
-                <div class="results-list-minimal">
-                    <div class="result-item-minimal">
-                        <span class="result-client">Revolut</span>
-                        <span class="result-outcome">$4M opportunity found</span>
+                <div class="meet-grid">
+                    <img src="headshot-6.jpg" alt="Seth Forte" class="meet-photo">
+                    <div class="meet-content">
+                        <h2>Hey, I'm Seth.</h2>
+                        <p>I build automation systems for growing businesses. The kind that save 20+ hours a week and pay for themselves in the first month.</p>
+                        <p>If you've got a process that's eating your time, let's fix it.</p>
+                        <!-- Add your intro video URL here when ready -->
+                        <!--
+                        <div class="meet-video">
+                            <iframe
+                                src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+                                title="Introduction Video"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        -->
                     </div>
-                    <div class="result-item-minimal">
-                        <span class="result-client">CR Deals</span>
-                        <span class="result-outcome">$52K/year saved</span>
-                    </div>
-                    <div class="result-item-minimal">
-                        <span class="result-client">Hollow Bamboo</span>
-                        <span class="result-outcome">20 hrs/week back</span>
-                    </div>
-                    <div class="result-item-minimal">
-                        <span class="result-client">Modern Bungalow</span>
-                        <span class="result-outcome">15 hrs/month back</span>
-                    </div>
-                    <div class="result-item-minimal">
-                        <span class="result-client">Kingfisher Ads</span>
-                        <span class="result-outcome">Reports in 15 min</span>
-                    </div>
-                    <div class="result-item-minimal">
-                        <span class="result-client">Prediction Market</span>
-                        <span class="result-outcome">Research on autopilot</span>
-                    </div>
-                </div>
-                <div class="results-cta">
-                    <a href="case-studies.html" class="link-arrow">See all case studies →</a>
                 </div>
             </div>
         </section>
@@ -240,11 +377,16 @@
             </div>
         </section>
 
-        <!-- CTA -->
-        <section id="contact" class="cta-minimal">
+        <!-- Calendar Section -->
+        <section id="contact" class="calendar-section">
             <div class="container">
-                <h2>Got a problem?</h2>
-                <a href="https://calendly.com/seth-fortewebdesigns/30min" class="btn-primary btn-large">Book a Call</a>
+                <h2>Book a Call</h2>
+                <div class="calendar-embed">
+                    <!-- Calendly inline widget begin -->
+                    <div class="calendly-inline-widget" data-url="https://calendly.com/seth-fortewebdesigns/30min?hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
+                    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                    <!-- Calendly inline widget end -->
+                </div>
             </div>
         </section>
     </main>
