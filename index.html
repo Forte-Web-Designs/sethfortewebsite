@@ -106,68 +106,7 @@
     }
     </script>
 
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Seth Forte",
-        "alternateName": "Seth Forte - AI Automation Consultant",
-        "url": "https://sethforte.com",
-        "description": "Seth Forte's personal website - AI automation consultant and software engineer",
-        "author": {
-            "@type": "Person",
-            "name": "Seth Forte"
-        },
-        "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://sethforte.com/writing.html?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-        }
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "SiteNavigationElement",
-        "name": "Main Navigation",
-        "hasPart": [
-            {
-                "@type": "WebPage",
-                "name": "About Seth Forte",
-                "description": "Learn about Seth Forte - AI automation consultant and software engineer with Wells Fargo experience",
-                "url": "https://sethforte.com/#about"
-            },
-            {
-                "@type": "WebPage",
-                "name": "Work & Case Studies",
-                "description": "AI automation projects and case studies - systems built for Revolut, Modern Bungalow, and more",
-                "url": "https://sethforte.com/#work"
-            },
-            {
-                "@type": "WebPage",
-                "name": "Services",
-                "description": "AI automation and custom software development services that eliminate manual work",
-                "url": "https://sethforte.com/#services"
-            },
-            {
-                "@type": "WebPage",
-                "name": "Writing & Insights",
-                "description": "Articles and insights on AI automation, business strategy, and building systems that work",
-                "url": "https://sethforte.com/writing.html"
-            },
-            {
-                "@type": "WebPage",
-                "name": "Contact",
-                "description": "Get in touch with Seth Forte for AI automation consulting",
-                "url": "https://sethforte.com/#contact"
-            }
-        ]
-    }
-    </script>
-
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="blog.css">
 </head>
 <body>
     <nav class="navbar">
@@ -178,39 +117,10 @@
             <button class="mobile-menu-toggle" aria-label="Toggle menu" style="display: none;">☰</button>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li class="nav-dropdown">
-                    <a href="#services" class="dropdown-toggle">Services <span class="dropdown-arrow">▾</span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="automation.html">Automation</a></li>
-                        <li><a href="crm-integration.html">CRM Integration</a></li>
-                        <li><a href="custom-software.html">Custom Software</a></li>
-                        <li><a href="ai-automation.html">AI Automation</a></li>
-                        <li><a href="security-infrastructure.html">Security Infrastructure</a></li>
-                        <li><a href="web-design.html">Web Design</a></li>
-                    </ul>
-                </li>
-                <li class="nav-dropdown">
-                    <a href="/solutions.html" class="dropdown-toggle">Solutions <span class="dropdown-arrow">▾</span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/solutions/lead-routing.html">Lead Routing</a></li>
-                        <li><a href="/solutions/crm-cleanup.html">CRM Cleanup</a></li>
-                        <li><a href="/solutions/custom-dashboards.html">Custom Dashboards</a></li>
-                        <li><a href="/solutions/ai-analysis.html">AI Analysis</a></li>
-                        <li><a href="/solutions/access-management.html">Access Management</a></li>
-                        <li><a href="/solutions.html">View All Solutions</a></li>
-                    </ul>
-                </li>
-                <li class="nav-dropdown">
-                    <a href="/resources.html" class="dropdown-toggle">Resources <span class="dropdown-arrow">▾</span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/industries.html">Industries</a></li>
-                        <li><a href="/resources/what-is-business-automation.html">What is Automation?</a></li>
-                        <li><a href="/resources/automation-roi-calculator.html">ROI Calculator</a></li>
-                        <li><a href="/resources.html">All Resources</a></li>
-                    </ul>
-                </li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="case-studies.html">Case Studies</a></li>
                 <li><a href="writing.html">Writing</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="about.html">About</a></li>
             </ul>
             <div class="nav-right">
                 <button class="dark-mode-toggle" aria-label="Toggle dark mode">
@@ -233,405 +143,118 @@
                         </svg>
                     </span>
                 </button>
-                <a href="/resources/automation-roi-calculator.html" class="cta-btn-nav-secondary">ROI Calculator</a>
-                <a href="#contact" class="cta-btn-nav">Let's Talk</a>
+                <a href="#contact" class="cta-btn-nav">Book a Call</a>
             </div>
         </div>
     </nav>
 
     <main>
         <!-- Hero Section -->
-        <section id="home" class="hero">
+        <section id="home" class="hero hero-minimal">
             <div class="container">
-                <h1 class="hero-title-main">I BUILD SYSTEMS THAT SCALE YOUR BUSINESS.</h1>
-
-                <p class="hero-statement">I found $4M in growth for Revolut. Saved CR Deals $52K annually. Gave Hollow Bamboo 20+ hours back every week. Hi, I'm Seth. I solve the technical problems that hold growing businesses back.</p>
-
+                <h1 class="hero-title-main">I BUILD SYSTEMS THAT SCALE.</h1>
+                <p class="hero-statement">$4M found for Revolut. $52K saved for CR Deals. 20+ hours back weekly for Hollow Bamboo.</p>
                 <div class="hero-cta">
-                    <a href="#contact" class="btn-primary">Schedule a Call</a>
-                    <a href="#work" class="btn-secondary">See What I've Built</a>
+                    <a href="#contact" class="btn-primary">Book a Call</a>
+                    <a href="#results" class="btn-secondary">See Results</a>
                 </div>
             </div>
         </section>
 
-        <!-- Credibility Section -->
-        <section class="hero-credibility-section">
+        <!-- What I Build - 4 Service Cards -->
+        <section id="services" class="services-minimal">
             <div class="container">
-                <p class="credibility-text">5 years building enterprise systems at Wells Fargo. Featured in Dallas Innovates, BuiLT, and Orbie.</p>
-                <p class="lead-magnet-link"><a href="/checklist.html">Free: The automation audit I use with every client →</a></p>
-            </div>
-        </section>
-
-        <!-- Background Section -->
-        <section class="intro-section">
-            <div class="container">
-                <h2 class="section-title-alt">WHAT I DO</h2>
-
-                <div class="intro-content">
-                    <p><strong>Before we talk about what I'll build, I need to understand what the problem is costing you.</strong> Hours, risk, missed opportunities - once we know that number, everything else follows, including exactly when you'll see your investment back.</p>
-
-                    <p>The technical build is the easy part. What you're paying for is someone who understands your business, builds for where you're going, and turns down projects that don't make sense. I'm a growth partner, not a task executor.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Results Section -->
-        <section id="work" class="case-studies-section">
-            <div class="container">
-                <h2 class="section-title-alt">WHAT RESULTS LOOK LIKE</h2>
-
-                <div class="case-study-list">
-                    <article class="case-study-item">
-                        <h3>Revolut (Fintech)</h3>
-                        <p class="case-study-headline"><span class="highlight-result">$4M growth opportunity</span> uncovered in weeks instead of months</p>
-
-                        <p><strong>The problem:</strong> Weeks spent manually analyzing 200K+ transactions to find profitability drivers.</p>
-
-                        <p><strong>What they got:</strong> AI system that automated the entire analysis pipeline.</p>
-
-                        <p><strong>The outcome:</strong> $4M growth opportunity identified. What took weeks now takes hours.</p>
-
-                        <p><a href="videoWalkthroughs/Transforming Data Analysis with AI for Strategic Growth 🚀.mp4" class="btn-video" target="_blank">Watch the video walkthrough</a></p>
-                    </article>
-
-                    <article class="case-study-item">
-                        <h3>Modern Bungalow (E-commerce)</h3>
-                        <p class="case-study-headline"><span class="highlight-result">Customer communication that runs itself</span> - 15+ hours monthly back</p>
-
-                        <p><strong>The problem:</strong> Manually sending 30-40 customer emails daily. Things falling through the cracks.</p>
-
-                        <p><strong>What they got:</strong> System that monitors Shopify and sends the right email automatically across 9 scenarios.</p>
-
-                        <p><strong>The outcome:</strong> 15+ hours monthly back. Zero missed communications. ROI in under 8 weeks.</p>
-
-                        <p><a href="videoWalkthroughs/Automating Customer Communication for E-Commerce Success.mp4" class="btn-video" target="_blank">Watch the video walkthrough</a></p>
-
-                        <p class="case-study-timeline"><em>Client review: "Seth is super responsive and very proactive with communication throughout the stages of the project. He's very good at thinking through the logic of how to best automate a process, and then executing on that vision."</em></p>
-                    </article>
-
-                    <article class="case-study-item">
-                        <h3>Hollow Bamboo Film Productions (Operations)</h3>
-                        <p class="case-study-headline"><span class="highlight-result">Complete equipment visibility without the manual updates</span> - 20+ hours weekly back</p>
-
-                        <p><strong>The problem:</strong> Hundreds of equipment items across 6 locations tracked with paper lists. Constant texting to find things.</p>
-
-                        <p><strong>What they got:</strong> Custom inventory system with QR code mobile access. Scan in/out from phones.</p>
-
-                        <p><strong>The outcome:</strong> Complete visibility. 20+ hours weekly saved. Paid for itself in the first month.</p>
-
-                        <p><a href="videoWalkthroughs/Revolutionizing Inventory Management for Film Production.mp4" class="btn-video" target="_blank">Watch the video walkthrough</a></p>
-
-                        <p class="case-study-timeline"><em>Client review: "Extremely attentive and responsive. Gave us an accurate timeline and met it. Highly recommend."</em></p>
-                    </article>
-
-                    <article class="case-study-item">
-                        <h3>CR Deals Cincinnati (E-commerce)</h3>
-                        <p class="case-study-headline"><span class="highlight-result">$52K annual savings</span> - product listings that generate themselves</p>
-
-                        <p><strong>The problem:</strong> Drowning in product listing work. Every item needed photos analyzed, descriptions written, posted everywhere.</p>
-
-                        <p><strong>What they got:</strong> AI system that handles photography analysis, generates listings, distributes to all channels. 50-100 products daily, no human needed.</p>
-
-                        <p><strong>The outcome:</strong> $52K annual savings. 1,040+ hours back. Paid for itself in the first month.</p>
-
-                        <p><a href="videoWalkthroughs/Revolutionizing Product Listings_ Automating Auction House Operations.mp4" class="btn-video" target="_blank">Watch the video walkthrough</a></p>
-                    </article>
-
-                    <article class="case-study-item">
-                        <h3>Kingfisher Ads (Ad Spend Reporting)</h3>
-                        <p class="case-study-headline"><span class="highlight-result">Monthly reporting that takes 15 minutes</span> instead of half a day</p>
-
-                        <p><strong>The problem:</strong> Manually pulling ad spend from Meta and Google Ads monthly, organizing spreadsheets, calculating fees.</p>
-
-                        <p><strong>What they got:</strong> System that pulls from both platforms, calculates fees per client, outputs invoice-ready reports.</p>
-
-                        <p><strong>The outcome:</strong> 15 minutes instead of 2-4 hours. Runs automatically on the 1st. ROI in under 6 weeks.</p>
-
-                        <p><a href="videoWalkthroughs/Streamlining Ad Reporting_ Automation Success for Marketing Agencies 🚀.mp4" class="btn-video" target="_blank">Watch the video walkthrough</a></p>
-                    </article>
-
-                    <article class="case-study-item">
-                        <h3>Prediction Market Trader (AI Forecasting)</h3>
-                        <p class="case-study-headline"><span class="highlight-result">Hundreds of markets analyzed daily</span> - research that runs while you sleep</p>
-
-                        <p><strong>The problem:</strong> Manually researching hundreds of prediction markets. Reading reports, checking data, forecasting one at a time.</p>
-
-                        <p><strong>What they got:</strong> Pipeline that pulls markets, enriches with data, runs AI forecasting, outputs to spreadsheet.</p>
-
-                        <p><strong>The outcome:</strong> Hundreds of markets analyzed daily. Focus on decisions, not data gathering.</p>
-
-                        <p><a href="videoWalkthroughs/Revolutionizing Prediction Market Trading with AI Automation.mp4" class="btn-video" target="_blank">Watch the video walkthrough</a></p>
-
-                        <p class="case-study-timeline"><em>Client review: "Figured it out quickly and got everything working smoothly. Very responsive throughout."</em></p>
-                    </article>
-
-                    <article class="case-study-item">
-                        <h3>KlnBros Agency (Emergency Recovery)</h3>
-                        <p class="case-study-headline"><span class="highlight-result">From "everything is down" to fully operational</span> in 2 hours</p>
-
-                        <p><strong>The problem:</strong> Server crashed. 100% disk full. Entire automation infrastructure down. Couldn't even SSH in.</p>
-
-                        <p><strong>What they got:</strong> Diagnosed the issue, found creative solution, extracted all 43 workflows, restored everything.</p>
-
-                        <p><strong>The outcome:</strong> Fully operational in 2 hours. 83GB recovered. All workflows preserved.</p>
-
-                        <p><a href="videoWalkthroughs/Emergency Recovery_ Fixing a Full Disk Crisis for Automation Workflows 🚨.mp4" class="btn-video" target="_blank">Watch the video walkthrough</a></p>
-
-                        <p class="case-study-timeline"><em>Client review: "Communication was 10/10. I felt very safe throughout the entire project knowing Seth was handling it."</em></p>
-                    </article>
+                <div class="services-grid-minimal">
+                    <a href="automation.html" class="service-card-minimal">
+                        <h3>Automation</h3>
+                        <p>The work that eats your week.</p>
+                        <span class="service-arrow">→</span>
+                    </a>
+                    <a href="crm-integration.html" class="service-card-minimal">
+                        <h3>CRM & Integrations</h3>
+                        <p>One number everyone trusts.</p>
+                        <span class="service-arrow">→</span>
+                    </a>
+                    <a href="custom-software.html" class="service-card-minimal">
+                        <h3>Custom Software</h3>
+                        <p>Built around how you work.</p>
+                        <span class="service-arrow">→</span>
+                    </a>
+                    <a href="ai-automation.html" class="service-card-minimal">
+                        <h3>AI Systems</h3>
+                        <p>Analysis that used to take weeks.</p>
+                        <span class="service-arrow">→</span>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- Testimonials Section -->
-        <section class="testimonials-section">
+        <!-- Results - One-liners -->
+        <section id="results" class="results-minimal">
             <div class="container">
-                <h2 class="section-title-alt">WHAT CLIENTS SAY</h2>
-
-                <div class="testimonials-list">
-                    <article class="testimonial-item">
-                        <p class="testimonial-text">"Seth is super responsive and very proactive with communication throughout the stages of the project. He's very good at thinking through the logic of how to best automate a process, and then executing on that vision. Definitely will work with him again."</p>
-                        <p class="testimonial-author">- Modern Bungalow (customer emails that run themselves)</p>
-                    </article>
-
-                    <article class="testimonial-item">
-                        <p class="testimonial-text">"I had a frustrating n8n workflow that kept breaking. Spent way too long banging my head against it before hiring Seth. He figured out the problem immediately and fixed it in 2 hours when he quoted 3-4. And the kicker? He did this while on vacation. I told him no rush, but he just knocked it out anyway. The workflow runs perfectly now and he added error handling so it won't break again."</p>
-                        <p class="testimonial-author">- Geoff Skow (workflow fixed in 2 hours, error handling added)</p>
-                    </article>
-
-                    <article class="testimonial-item">
-                        <p class="testimonial-text">"Extremely attentive and responsive. Gave us an accurate timeline and met it. Highly recommend."</p>
-                        <p class="testimonial-author">- Hollow Bamboo Film Productions (20+ hours weekly saved)</p>
-                    </article>
-
-                    <article class="testimonial-item">
-                        <p class="testimonial-text">"Figured it out quickly and got everything working smoothly. Very responsive throughout."</p>
-                        <p class="testimonial-author">- Prediction Market Client (hundreds of markets analyzed daily)</p>
-                    </article>
-
-                    <article class="testimonial-item">
-                        <p class="testimonial-text">"Communication was 10/10. I felt very safe throughout the entire project knowing Seth was handling it."</p>
-                        <p class="testimonial-author">- Yves Klein, Germany (emergency recovery, 43 workflows saved)</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- ROI Calculator CTA Section -->
-        <section class="roi-cta-section">
-            <div class="container">
-                <h2 class="section-title-alt">IS AUTOMATION WORTH IT FOR YOU?</h2>
-                <div class="roi-cta-content">
-                    <p>The math is simple: if it costs less than the problem, do it.</p>
-                    <p>Most business owners underestimate what manual work actually costs. Hidden errors. Lost deals. Hours that could go somewhere else.</p>
-                    <p>See what your specific situation looks like.</p>
-                    <a href="/resources/automation-roi-calculator.html" class="btn-primary">Calculate Your ROI</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Writing Section -->
-        <section id="writing" class="writing-section">
-            <div class="container">
-                <h2 class="section-title-alt">WRITING AND INSIGHTS</h2>
-
-                <div class="writing-content">
-                    <p>I write about automation, software engineering, and building a consulting business. Real lessons from building real systems.</p>
-                </div>
-
-                <!-- Featured Articles Grid -->
-                <div class="featured-articles-home">
-                    <article class="article-card">
-                        <div class="article-image" style="background: url('https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&h=400&fit=crop') center/cover no-repeat;"></div>
-                        <div class="article-content">
-                            <span class="article-category">The Forte Method</span>
-                            <span class="article-date">Oct 20, 2025</span>
-                            <h3><a href="articles/fighting-friction.html">Audit Your Lifestyle</a></h3>
-                            <p>A simple friction audit framework that helps you identify and eliminate daily annoyances. The same thinking scales to business processes saving 20+ hours weekly.</p>
-                            <a href="articles/fighting-friction.html" class="read-more">Read Article</a>
-                        </div>
-                    </article>
-
-                    <article class="article-card">
-                        <div class="article-image" style="background: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=400&fit=crop') center/cover no-repeat;"></div>
-                        <div class="article-content">
-                            <span class="article-category">Consulting Life</span>
-                            <span class="article-date">Oct 29, 2025</span>
-                            <h3><a href="articles/paying-for-consultant.html">What You're Actually Paying For When You Hire A Consultant</a></h3>
-                            <p>What you're actually paying for when you hire a consultant isn't the technical work. It's understanding your business, thinking strategically, and genuine investment in your success.</p>
-                            <a href="articles/paying-for-consultant.html" class="read-more">Read Article</a>
-                        </div>
-                    </article>
-
-                    <article class="article-card">
-                        <div class="article-image" style="background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop') center/cover no-repeat;"></div>
-                        <div class="article-content">
-                            <span class="article-category">Technical Insights</span>
-                            <span class="article-date">Oct 17, 2025</span>
-                            <h3><a href="articles/technical-skills-wont-save-you.html">Technical Skills Won't Save You Anymore</a></h3>
-                            <p>The technical implementation is becoming commodity. The strategic thinking isn't.</p>
-                            <a href="articles/technical-skills-wont-save-you.html" class="read-more">Read Article</a>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="writing-cta">
-                    <a href="writing.html" class="btn-primary">View All Articles</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- How This Works Section -->
-        <section id="services" class="services-section-new">
-            <div class="container">
-                <h2 class="section-title-alt">HOW THIS WORKS</h2>
-
-                <div class="process-intro">
-                    <p>Here's how we work together.</p>
-                </div>
-
-                <div class="services-list">
-                    <div class="service-item-new">
-                        <h3>Step 1: Discovery Call (30 minutes, free)</h3>
-                        <p>We talk about what's slowing you down. I'll tell you honestly whether I can help and what the right approach is. If I can't help, I'll point you in the right direction.</p>
+                <div class="results-list-minimal">
+                    <div class="result-item-minimal">
+                        <span class="result-client">Revolut</span>
+                        <span class="result-outcome">$4M opportunity found</span>
                     </div>
-
-                    <div class="service-item-new">
-                        <h3>Step 2: Discovery & Proposal</h3>
-                        <p>You get a detailed proposal with deliverables, timeline, investment, and ROI calculation.</p>
-                        <p>For complex builds, we start with a paid discovery phase - I prove the approach works before you commit to the full build. If it won't work, you keep everything I documented. If it does, the discovery credits toward your project.</p>
+                    <div class="result-item-minimal">
+                        <span class="result-client">CR Deals</span>
+                        <span class="result-outcome">$52K/year saved</span>
                     </div>
-
-                    <div class="service-item-new">
-                        <h3>Step 3: Build (2-6 weeks depending on scope)</h3>
-                        <p>Build, test, deploy. Training and documentation included so you can manage it without me.</p>
+                    <div class="result-item-minimal">
+                        <span class="result-client">Hollow Bamboo</span>
+                        <span class="result-outcome">20 hrs/week back</span>
                     </div>
-
-                    <div class="service-item-new">
-                        <h3>Step 4: Support (optional)</h3>
-                        <p>Available if you want it. Not required if you don't.</p>
+                    <div class="result-item-minimal">
+                        <span class="result-client">Modern Bungalow</span>
+                        <span class="result-outcome">15 hrs/month back</span>
                     </div>
-
-                    <div class="service-item-new">
-                        <h3>Results timeline</h3>
-                        <p>Most clients see ROI in 4-8 weeks.</p>
+                    <div class="result-item-minimal">
+                        <span class="result-client">Kingfisher Ads</span>
+                        <span class="result-outcome">Reports in 15 min</span>
+                    </div>
+                    <div class="result-item-minimal">
+                        <span class="result-client">Prediction Market</span>
+                        <span class="result-outcome">Research on autopilot</span>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section id="contact" class="cta-section-main">
-            <div class="container">
-                <h2 class="section-title-alt">LET'S TALK</h2>
-
-                <div class="cta-content-main">
-                    <p>Got a technical problem holding your business back? Let's talk.</p>
-
-                    <p>Worst case, you get a free assessment. Best case, we build something that pays for itself in 60 days.</p>
-
-                    <div class="cta-buttons">
-                        <a href="https://calendly.com/seth-fortewebdesigns/30min" class="btn-primary btn-large">Schedule a Call</a>
-                        <a href="mailto:seth@fortewebdesigns.com" class="btn-secondary btn-large">seth@fortewebdesigns.com</a>
-                    </div>
+                <div class="results-cta">
+                    <a href="case-studies.html" class="link-arrow">See all case studies →</a>
                 </div>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="about-section-new">
+        <!-- Social Proof - 2 Quotes -->
+        <section class="testimonials-minimal">
             <div class="container">
-                <h2 class="section-title-alt">ABOUT</h2>
-
-                <div class="about-video-intro">
-                    <p><strong>Prefer video? <a href="videoWalkthroughs/Business Growth Systems & AI Automation | Forte (DFW) - 26 October 2025.mp4" class="inline-link" target="_blank">Here's the 2-minute version.</a></strong></p>
+                <div class="testimonials-grid-minimal">
+                    <blockquote class="testimonial-minimal">
+                        <p>"Very good at thinking through the logic of how to best automate a process."</p>
+                        <cite>— Modern Bungalow</cite>
+                    </blockquote>
+                    <blockquote class="testimonial-minimal">
+                        <p>"Communication was 10/10. I felt very safe throughout the entire project."</p>
+                        <cite>— KlnBros Agency</cite>
+                    </blockquote>
                 </div>
+            </div>
+        </section>
 
-                <div class="about-content-with-image">
-                    <div class="about-image">
-                        <img src="headshot-6.jpg" alt="Seth Forte headshot" class="headshot">
-                    </div>
-
-                    <div class="about-content-new">
-                        <p>I'm Seth Forte. I solve the technical problems that hold growing businesses back.</p>
-
-                        <p>Based in Grapevine, Texas with my wife and daughter. Working with clients nationwide.</p>
-
-                        <div class="about-contact">
-                            <p><strong>Want to work together?</strong></p>
-                            <p>Schedule a call: <a href="https://calendly.com/seth-fortewebdesigns/30min" class="inline-link" target="_blank" rel="noopener">calendly.com/sethforte</a></p>
-                            <p>Email: <a href="mailto:seth@fortewebdesigns.com" class="inline-link">seth@fortewebdesigns.com</a></p>
-                        </div>
-                    </div>
-                </div>
+        <!-- CTA -->
+        <section id="contact" class="cta-minimal">
+            <div class="container">
+                <h2>Got a problem?</h2>
+                <a href="https://calendly.com/seth-fortewebdesigns/30min" class="btn-primary btn-large">Book a Call</a>
             </div>
         </section>
     </main>
 
-    <footer>
+    <footer class="footer-minimal">
         <div class="container">
-            <div class="footer-content-new">
-                <div class="footer-main">
-                    <h3 class="footer-logo">Seth Forte</h3>
-                    <p class="footer-tagline">Growth partner, not task executor.</p>
-                    <p class="footer-description">I solve the technical problems that hold growing businesses back. Based in Grapevine, Texas. Working with clients nationwide.</p>
-                    <p class="footer-pitch">Got a technical problem holding your business back? Let's talk.</p>
-                    <div class="footer-contact">
-                        <a href="mailto:seth@fortewebdesigns.com">seth@fortewebdesigns.com</a>
-                    </div>
-                </div>
-
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Solutions</h4>
-                        <ul>
-                            <li><a href="/solutions/lead-routing.html">Lead Routing</a></li>
-                            <li><a href="/solutions/crm-cleanup.html">CRM Cleanup</a></li>
-                            <li><a href="/solutions/custom-dashboards.html">Custom Dashboards</a></li>
-                            <li><a href="/solutions/ai-analysis.html">AI Analysis</a></li>
-                            <li><a href="/solutions/access-management.html">Access Management</a></li>
-                            <li><a href="/solutions.html">All Solutions</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer-column">
-                        <h4>Industries</h4>
-                        <ul>
-                            <li><a href="/industries/ecommerce.html">E-commerce</a></li>
-                            <li><a href="/industries/agencies.html">Agencies</a></li>
-                            <li><a href="/industries/saas.html">SaaS</a></li>
-                            <li><a href="/industries/professional-services.html">Professional Services</a></li>
-                            <li><a href="/industries.html">All Industries</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer-column">
-                        <h4>Resources</h4>
-                        <ul>
-                            <li><a href="/case-studies.html">Case Studies</a></li>
-                            <li><a href="/resources/what-is-business-automation.html">What is Automation?</a></li>
-                            <li><a href="/resources/automation-roi-calculator.html">ROI Calculator</a></li>
-                            <li><a href="/faq.html">FAQ</a></li>
-                            <li><a href="/writing.html">Writing</a></li>
-                            <li><a href="/resources.html">All Resources</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer-column">
-                        <h4>Connect</h4>
-                        <ul>
-                            <li><a href="https://www.linkedin.com/in/seth-forte/" target="_blank">LinkedIn</a></li>
-                            <li><a href="https://x.com/ForteSeth" target="_blank">Twitter</a></li>
-                            <li><a href="https://www.youtube.com/@SethForte" target="_blank">YouTube</a></li>
-                            <li><a href="https://www.instagram.com/fortewebdesigns/" target="_blank">Instagram</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2025 Seth Forte. All rights reserved.</p>
-            </div>
+            <p class="footer-tagline-minimal">I solve the technical problems that hold growing businesses back.</p>
+            <p class="footer-location-minimal">Based in Grapevine, Texas. Working with clients nationwide.</p>
+            <a href="mailto:seth@fortewebdesigns.com" class="footer-email-minimal">seth@fortewebdesigns.com</a>
+            <p class="footer-copyright-minimal">&copy; 2025 Seth Forte</p>
         </div>
     </footer>
 

@@ -3554,3 +3554,717 @@ table td {
 [data-theme="dark"] strong {
     color: var(--text-color);
 }
+
+/* ===================================
+   MINIMAL HOMEPAGE STYLES
+   Premium, clean, lots of whitespace
+   =================================== */
+
+/* Hero Minimal */
+.hero-minimal {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 0 4rem;
+}
+
+.hero-minimal .hero-title-main {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+}
+
+.hero-minimal .hero-statement {
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+}
+
+/* Services Minimal */
+.services-minimal {
+    padding: 5rem 0;
+    background: var(--background-secondary);
+}
+
+.services-grid-minimal {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.service-card-minimal {
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem 1.5rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card-minimal:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.service-card-minimal h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.service-card-minimal p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    flex-grow: 1;
+}
+
+.service-arrow {
+    font-size: 1.25rem;
+    color: var(--accent-color);
+    transition: transform 0.2s ease;
+}
+
+.service-card-minimal:hover .service-arrow {
+    transform: translateX(4px);
+}
+
+/* Results Minimal */
+.results-minimal {
+    padding: 5rem 0;
+}
+
+.results-list-minimal {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.result-item-minimal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.result-item-minimal:last-child {
+    border-bottom: none;
+}
+
+.result-client {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+.result-outcome {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.results-cta {
+    text-align: center;
+    margin-top: 2.5rem;
+}
+
+.link-arrow {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+.link-arrow:hover {
+    color: var(--accent-hover);
+}
+
+/* Testimonials Minimal */
+.testimonials-minimal {
+    padding: 4rem 0;
+    background: var(--background-secondary);
+}
+
+.testimonials-grid-minimal {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.testimonial-minimal {
+    margin: 0;
+    padding: 0;
+}
+
+.testimonial-minimal p {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--text-color);
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+}
+
+.testimonial-minimal cite {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-style: normal;
+}
+
+/* CTA Minimal */
+.cta-minimal {
+    padding: 6rem 0;
+    text-align: center;
+}
+
+.cta-minimal h2 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+/* Footer Minimal */
+.footer-minimal {
+    padding: 4rem 0 2rem;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-tagline-minimal {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.footer-location-minimal {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.footer-email-minimal {
+    display: inline-block;
+    font-size: 0.95rem;
+    color: var(--accent-color);
+    text-decoration: none;
+    margin-bottom: 2rem;
+    transition: color 0.2s ease;
+}
+
+.footer-email-minimal:hover {
+    color: var(--accent-hover);
+}
+
+.footer-copyright-minimal {
+    font-size: 0.85rem;
+    color: var(--text-tertiary);
+}
+
+/* Minimal Homepage Responsive */
+@media (max-width: 1024px) {
+    .services-grid-minimal {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-minimal {
+        min-height: 60vh;
+        padding: 4rem 0 3rem;
+    }
+
+    .hero-minimal .hero-title-main {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero-minimal .hero-statement {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+        padding: 0 1rem;
+    }
+
+    .services-minimal {
+        padding: 3rem 0;
+    }
+
+    .services-grid-minimal {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .service-card-minimal {
+        padding: 1.5rem;
+    }
+
+    .results-minimal {
+        padding: 3rem 0;
+    }
+
+    .result-item-minimal {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+        padding: 0.875rem 0;
+    }
+
+    .testimonials-minimal {
+        padding: 3rem 0;
+    }
+
+    .testimonials-grid-minimal {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .testimonial-minimal p {
+        font-size: 1rem;
+    }
+
+    .cta-minimal {
+        padding: 4rem 0;
+    }
+
+    .cta-minimal h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .footer-minimal {
+        padding: 3rem 0 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-minimal {
+        min-height: auto;
+        padding: 3rem 0 2.5rem;
+    }
+
+    .hero-minimal .hero-title-main {
+        font-size: 1.75rem;
+        padding: 0 0.5rem;
+    }
+
+    .hero-minimal .hero-statement {
+        font-size: 0.95rem;
+    }
+
+    .services-grid-minimal {
+        gap: 0.75rem;
+    }
+
+    .service-card-minimal {
+        padding: 1.25rem;
+    }
+
+    .service-card-minimal h3 {
+        font-size: 1.1rem;
+    }
+
+    .service-card-minimal p {
+        font-size: 0.9rem;
+    }
+
+    .result-client {
+        font-size: 0.95rem;
+    }
+
+    .result-outcome {
+        font-size: 0.9rem;
+    }
+
+    .testimonial-minimal p {
+        font-size: 0.95rem;
+    }
+
+    .footer-tagline-minimal {
+        font-size: 0.9rem;
+        padding: 0 1rem;
+    }
+
+    .footer-location-minimal {
+        font-size: 0.85rem;
+    }
+}
+
+/* ===================================
+   SERVICE PAGE MINIMAL STYLES
+   =================================== */
+
+/* Section Title Minimal */
+.section-title-minimal {
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* Tools Section */
+.tools-minimal {
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.tools-text {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* Problems/When Section */
+.problems-minimal {
+    padding: 4rem 0;
+    background: var(--background-secondary);
+}
+
+.problems-list-minimal {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.problems-list-minimal li {
+    font-size: 1.05rem;
+    color: var(--text-color);
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.problems-list-minimal li:last-child {
+    border-bottom: none;
+}
+
+/* Process Section */
+.process-minimal {
+    padding: 4rem 0;
+}
+
+.process-list-minimal {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.process-step-minimal {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 0;
+}
+
+.step-number {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.step-content {
+    font-size: 1rem;
+    color: var(--text-color);
+    line-height: 1.6;
+    padding-top: 0.25rem;
+}
+
+.step-content strong {
+    color: var(--primary-color);
+}
+
+.process-note {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* Investment Section */
+.investment-minimal {
+    padding: 4rem 0;
+}
+
+.investment-list {
+    max-width: 500px;
+    margin: 0 auto 1.5rem;
+}
+
+.investment-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.875rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.investment-item:last-child {
+    border-bottom: none;
+}
+
+.investment-name {
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.investment-price {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.investment-timeline {
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+/* Alt Section */
+.alt-section-minimal {
+    padding: 4rem 0;
+    background: var(--background-secondary);
+}
+
+.section-intro-minimal {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.simple-list-minimal {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.simple-list-minimal li {
+    font-size: 1rem;
+    color: var(--text-color);
+    padding: 0.5rem 0;
+}
+
+/* Service Page Mobile */
+@media (max-width: 768px) {
+    .section-title-minimal {
+        font-size: 1.25rem;
+    }
+
+    .problems-minimal,
+    .process-minimal,
+    .investment-minimal,
+    .alt-section-minimal {
+        padding: 3rem 0;
+    }
+
+    .problems-list-minimal li {
+        font-size: 0.95rem;
+    }
+
+    .process-step-minimal {
+        gap: 0.75rem;
+    }
+
+    .step-number {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .step-content {
+        font-size: 0.95rem;
+    }
+
+    .investment-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+
+    .investment-name,
+    .investment-price {
+        font-size: 0.95rem;
+    }
+}
+
+/* ================================================
+   SOLUTIONS PAGES - MINIMAL STYLES
+   ================================================ */
+
+/* Solutions Hub Page */
+.solutions-hub-minimal {
+    padding: 4rem 0;
+}
+
+.solutions-group {
+    margin-bottom: 3rem;
+}
+
+.solutions-group:last-child {
+    margin-bottom: 0;
+}
+
+.solutions-group-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.solutions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.solution-item-minimal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.solution-item-minimal:hover {
+    border-color: var(--accent-color);
+    transform: translateX(4px);
+}
+
+.solution-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.solution-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* Explanation Section */
+.explanation-minimal {
+    padding: 3rem 0;
+    background: var(--background-secondary);
+}
+
+.explanation-text {
+    text-align: center;
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Integrations Section */
+.integrations-minimal {
+    padding: 3rem 0;
+    background: var(--background-secondary);
+}
+
+.integrations-text {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.integrations-text:last-child {
+    margin-bottom: 0;
+}
+
+.integrations-text strong {
+    color: var(--text-color);
+}
+
+/* Investment Single Line */
+.investment-single {
+    text-align: center;
+    font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* Solutions Pages Mobile Responsive */
+@media (max-width: 768px) {
+    .solutions-hub-minimal {
+        padding: 3rem 0;
+    }
+
+    .solutions-group {
+        margin-bottom: 2rem;
+    }
+
+    .solution-item-minimal {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+        padding: 1rem;
+    }
+
+    .solution-name {
+        font-size: 0.95rem;
+    }
+
+    .solution-desc {
+        font-size: 0.85rem;
+    }
+
+    .explanation-minimal,
+    .integrations-minimal {
+        padding: 2.5rem 0;
+    }
+
+    .explanation-text {
+        font-size: 0.95rem;
+    }
+
+    .integrations-text {
+        font-size: 0.9rem;
+    }
+
+    .investment-single {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .solution-item-minimal {
+        padding: 0.875rem;
+    }
+
+    .solutions-group-title {
+        font-size: 0.8rem;
+    }
+}

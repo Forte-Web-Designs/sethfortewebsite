@@ -7,7 +7,6 @@
     <!-- Primary Meta Tags -->
     <title>Automation ROI Calculator | Seth Forte</title>
     <meta name="description" content="Calculate if automation is worth it for your business. Free interactive calculator shows payback period, annual savings, and true ROI.">
-    <meta name="keywords" content="automation ROI, automation calculator, business automation ROI, workflow automation cost, automation payback">
     <meta name="author" content="Seth Forte">
 
     <!-- Open Graph / Facebook -->
@@ -58,9 +57,9 @@
         }
 
         .calculator-card {
-            background: var(--background);
+            background: var(--card-background);
+            border: 1px solid var(--border-color);
             border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             padding: 2.5rem;
             margin-bottom: 2rem;
         }
@@ -80,7 +79,7 @@
             display: block;
             font-size: 1rem;
             font-weight: 500;
-            color: var(--text);
+            color: var(--text-color);
             margin-bottom: 0.75rem;
         }
 
@@ -133,7 +132,7 @@
         .slider-value {
             font-size: 2rem;
             font-weight: 700;
-            color: var(--text);
+            color: var(--text-color);
             margin-top: 0.5rem;
         }
 
@@ -146,7 +145,7 @@
             display: block;
             font-size: 1rem;
             font-weight: 500;
-            color: var(--text);
+            color: var(--text-color);
             margin-bottom: 0.75rem;
         }
 
@@ -158,10 +157,10 @@
 
         .rate-btn {
             padding: 0.75rem 1.25rem;
-            border: 2px solid var(--border-color, #e2e8f0);
+            border: 2px solid var(--border-color);
             border-radius: 8px;
-            background: var(--background);
-            color: var(--text);
+            background: var(--card-background);
+            color: var(--text-color);
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
@@ -181,7 +180,7 @@
 
         /* Results Card */
         .results-card {
-            background: var(--text);
+            background: var(--primary-color);
             color: white;
             border-radius: 12px;
             padding: 1.5rem;
@@ -232,7 +231,7 @@
         }
 
         .hidden-costs-toggle:hover {
-            background: var(--border-color, #e2e8f0);
+            background: var(--border-color);
         }
 
         .hidden-costs-toggle-text {
@@ -242,7 +241,7 @@
         }
 
         .hidden-costs-toggle-sub {
-            color: var(--text-muted);
+            color: var(--text-secondary);
             font-size: 0.85rem;
             margin-top: 0.25rem;
         }
@@ -262,7 +261,7 @@
 
         .hidden-costs-intro {
             font-size: 0.9rem;
-            color: var(--text-muted);
+            color: var(--text-secondary);
             margin-bottom: 1.5rem;
         }
 
@@ -274,14 +273,14 @@
             display: block;
             font-size: 0.9rem;
             font-weight: 500;
-            color: var(--text);
+            color: var(--text-color);
             margin-bottom: 0.5rem;
         }
 
         .hidden-slider-value {
             font-size: 1.25rem;
             font-weight: 600;
-            color: var(--text);
+            color: var(--text-color);
             margin-top: 0.25rem;
         }
 
@@ -294,10 +293,10 @@
 
         .cost-btn {
             padding: 0.5rem 0.75rem;
-            border: 1px solid var(--border-color, #e2e8f0);
+            border: 1px solid var(--border-color);
             border-radius: 6px;
-            background: var(--background);
-            color: var(--text);
+            background: var(--card-background);
+            color: var(--text-color);
             font-size: 0.85rem;
             font-weight: 500;
             cursor: pointer;
@@ -324,7 +323,7 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            color: var(--text-muted);
+            color: var(--text-secondary);
             margin-bottom: 0.75rem;
         }
 
@@ -338,14 +337,14 @@
         .investment-amount {
             font-weight: 700;
             font-size: 1.1rem;
-            color: var(--text);
+            color: var(--text-color);
             margin-bottom: 0.5rem;
         }
 
         .investment-amount .investment-label {
             font-weight: 400;
             font-size: 0.9rem;
-            color: var(--text-muted);
+            color: var(--text-secondary);
         }
 
         .investment-details {
@@ -363,7 +362,7 @@
 
         .investment-payback {
             font-weight: 500;
-            color: var(--text);
+            color: var(--text-color);
         }
 
         .investment-savings {
@@ -391,7 +390,7 @@
             display: block;
             width: 100%;
             padding: 1rem;
-            background: var(--accent-color);
+            background: var(--primary-color);
             color: white;
             text-align: center;
             border-radius: 8px;
@@ -402,85 +401,88 @@
         }
 
         .calculator-cta:hover {
-            background: var(--accent-color-dark, #1d4ed8);
+            background: #333;
             transform: translateY(-1px);
         }
 
-        /* Industry Tables */
-        .industry-section {
-            margin-bottom: 3rem;
+        [data-theme="dark"] .calculator-cta {
+            background: white;
+            color: #000;
         }
 
-        .industry-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--text);
+        [data-theme="dark"] .calculator-cta:hover {
+            background: #e0e0e0;
         }
 
-        .industry-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 0.75rem;
-            font-size: 0.9rem;
-        }
-
-        .industry-table th,
-        .industry-table td {
-            padding: 0.75rem;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color, #e2e8f0);
-        }
-
-        .industry-table th {
+        /* Proof Section */
+        .proof-section {
+            padding: 3rem 0;
             background: var(--background-secondary);
-            font-weight: 600;
-            color: var(--text);
         }
 
-        .industry-table td {
-            color: var(--text);
-        }
-
-        .industry-note {
+        .proof-title {
             font-size: 0.85rem;
-            color: var(--text-muted);
-            font-style: italic;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 1.5rem;
         }
 
-        @media (max-width: 768px) {
-            .industry-table {
-                font-size: 0.8rem;
+        .proof-list {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .proof-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .proof-item:last-child {
+            border-bottom: none;
+        }
+
+        .proof-client {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .proof-result {
+            color: var(--text-secondary);
+            text-align: right;
+        }
+
+        .proof-link {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .proof-link a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .proof-link a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .proof-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.25rem;
             }
 
-            .industry-table th,
-            .industry-table td {
-                padding: 0.5rem;
+            .proof-result {
+                text-align: left;
+                font-size: 0.9rem;
             }
-        }
-
-        /* Who I Work With Section */
-        .work-with-list {
-            list-style: none;
-            padding: 0;
-            margin: 1.5rem 0;
-        }
-
-        .work-with-list li {
-            padding: 0.5rem 0 0.5rem 1.5rem;
-            position: relative;
-            color: var(--text);
-        }
-
-        .work-with-list li::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0.9rem;
-            width: 8px;
-            height: 8px;
-            background: var(--accent-color);
-            border-radius: 50%;
         }
     </style>
 </head>
@@ -493,40 +495,10 @@
             <button class="mobile-menu-toggle" aria-label="Toggle menu" style="display: none;">☰</button>
             <ul class="nav-links">
                 <li><a href="/">Home</a></li>
-                <li class="nav-dropdown">
-                    <a href="/#services" class="dropdown-toggle">Services <span class="dropdown-arrow">▾</span></a>
-                    <ul class="dropdown-menu">
-                        
-                        <li><a href="/automation.html">Automation</a></li>
-                        <li><a href="/crm-integration.html">CRM Integration</a></li>
-                        <li><a href="/custom-software.html">Custom Software</a></li>
-                        <li><a href="/ai-automation.html">AI Automation</a></li>
-                        <li><a href="/security-infrastructure.html">Security Infrastructure</a></li>
-                        <li><a href="/web-design.html">Web Design</a></li>
-                    </ul>
-                </li>
-                <li class="nav-dropdown">
-                    <a href="/solutions.html" class="dropdown-toggle">Solutions <span class="dropdown-arrow">▾</span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/solutions/lead-routing.html">Lead Routing</a></li>
-                        <li><a href="/solutions/crm-cleanup.html">CRM Cleanup</a></li>
-                        <li><a href="/solutions/custom-dashboards.html">Custom Dashboards</a></li>
-                        <li><a href="/solutions/ai-analysis.html">AI Analysis</a></li>
-                        <li><a href="/solutions/access-management.html">Access Management</a></li>
-                        <li><a href="/solutions.html">View All Solutions</a></li>
-                    </ul>
-                </li>
-                <li class="nav-dropdown">
-                    <a href="/resources.html" class="dropdown-toggle">Resources <span class="dropdown-arrow">▾</span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/industries.html">Industries</a></li>
-                        <li><a href="/resources/what-is-business-automation.html">What is Automation?</a></li>
-                        <li><a href="/resources/automation-roi-calculator.html">ROI Calculator</a></li>
-                        <li><a href="/resources.html">All Resources</a></li>
-                    </ul>
-                </li>
+                <li><a href="/#services">Services</a></li>
+                <li><a href="/case-studies.html">Case Studies</a></li>
                 <li><a href="/writing.html">Writing</a></li>
-                <li><a href="/#about">About</a></li>
+                <li><a href="/about.html">About</a></li>
             </ul>
             <div class="nav-right">
                 <button class="dark-mode-toggle" aria-label="Toggle dark mode">
@@ -549,22 +521,21 @@
                         </svg>
                     </span>
                 </button>
-                <a href="/resources/automation-roi-calculator.html" class="cta-btn-nav-secondary">ROI Calculator</a>
-                <a href="/#contact" class="cta-btn-nav">Let's Talk</a>
+                <a href="/#contact" class="cta-btn-nav">Book a Call</a>
             </div>
         </div>
     </nav>
 
     <main>
         <!-- Hero Section -->
-        <section class="hero" style="min-height: auto; padding: 6rem 0 3rem;">
+        <section class="hero hero-minimal">
             <div class="container">
                 <h1 class="hero-title-main">What's This Costing You?</h1>
             </div>
         </section>
 
         <!-- Interactive Calculator Section -->
-        <section class="case-studies-section" style="background: var(--background-secondary);">
+        <section style="padding: 3rem 0; background: var(--background-secondary);">
             <div class="container">
                 <div class="calculator-container">
                     <div class="calculator-card">
@@ -581,20 +552,19 @@
                         <div class="rate-group">
                             <label>What's that time worth?</label>
                             <div class="rate-buttons">
-                                <button class="rate-btn" data-rate="25">$25/hr</button>
-                                <button class="rate-btn" data-rate="35">$35/hr</button>
-                                <button class="rate-btn active" data-rate="50">$50/hr</button>
-                                <button class="rate-btn" data-rate="75">$75/hr</button>
-                                <button class="rate-btn" data-rate="100">$100/hr</button>
-                                <button class="rate-btn" data-rate="150">$150/hr</button>
+                                <button class="rate-btn" data-rate="25">$25</button>
+                                <button class="rate-btn" data-rate="35">$35</button>
+                                <button class="rate-btn active" data-rate="50">$50</button>
+                                <button class="rate-btn" data-rate="75">$75</button>
+                                <button class="rate-btn" data-rate="100">$100</button>
+                                <button class="rate-btn" data-rate="150">$150</button>
                             </div>
                         </div>
 
                         <!-- Results Card -->
                         <div class="results-card">
-                            <div class="results-primary" id="totalAnnual">$13,000</div>
-                            <div class="results-secondary">per year</div>
-                            <div class="results-secondary" id="monthlyWeekly">$1,083/month &middot; $250/week</div>
+                            <div class="results-primary" id="totalAnnual">$13,000/year</div>
+                            <div class="results-secondary" id="monthlyWeekly">$1,083/month · $250/week</div>
 
                             <!-- Breakdown (shown when hidden costs active) -->
                             <div class="results-breakdown" id="resultsBreakdown" style="display: none;">
@@ -693,315 +663,45 @@
             </div>
         </section>
 
-        <!-- Industry Examples Section -->
-        <section class="case-studies-section">
+        <!-- Proof Section -->
+        <section class="proof-section">
             <div class="container">
-                <h2 class="section-title-alt">Common Scenarios by Industry</h2>
-                <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">These are real examples of what automation typically costs - and saves.</p>
-
-                <div style="max-width: 900px; margin: 0 auto;">
-                    <!-- Real Estate -->
-                    <div class="industry-section">
-                        <h3 class="industry-title">Real Estate</h3>
-                        <table class="industry-table">
-                            <thead>
-                                <tr>
-                                    <th>Problem</th>
-                                    <th>What It's Costing</th>
-                                    <th>Typical Investment</th>
-                                    <th>Payback</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Lead follow-up & nurture sequences</td>
-                                    <td>$18,200/year + lost deals</td>
-                                    <td>$4,000-6,000</td>
-                                    <td>3-4 months</td>
-                                </tr>
-                                <tr>
-                                    <td>Transaction coordinator updates</td>
-                                    <td>$9,100/year</td>
-                                    <td>$3,000-5,000</td>
-                                    <td>4-6 months</td>
-                                </tr>
-                                <tr>
-                                    <td>Listing marketing & syndication</td>
-                                    <td>$5,250/year</td>
-                                    <td>$3,500-5,000</td>
-                                    <td>8-12 months</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <p class="industry-note">What most forget: One lost deal from slow follow-up = $8,000-15,000 in lost commission.</p>
+                <h2 class="proof-title">Clients Who Did the Math</h2>
+                <div class="proof-list">
+                    <div class="proof-item">
+                        <span class="proof-client">CR Deals</span>
+                        <span class="proof-result">Invested $5K → Saving $52K/year</span>
                     </div>
-
-                    <!-- E-commerce -->
-                    <div class="industry-section">
-                        <h3 class="industry-title">E-commerce</h3>
-                        <table class="industry-table">
-                            <thead>
-                                <tr>
-                                    <th>Problem</th>
-                                    <th>What It's Costing</th>
-                                    <th>Typical Investment</th>
-                                    <th>Payback</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Order status emails & updates</td>
-                                    <td>$18,200/year</td>
-                                    <td>$3,000-5,000</td>
-                                    <td>2-3 months</td>
-                                </tr>
-                                <tr>
-                                    <td>Inventory sync across channels</td>
-                                    <td>$9,100/year + oversell costs</td>
-                                    <td>$4,000-7,000</td>
-                                    <td>5-8 months</td>
-                                </tr>
-                                <tr>
-                                    <td>Product listing & descriptions</td>
-                                    <td>$8,750/year</td>
-                                    <td>$5,000-8,000</td>
-                                    <td>6-10 months</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <p class="industry-note">What most forget: Overselling out-of-stock items = refunds, bad reviews, reputation damage.</p>
+                    <div class="proof-item">
+                        <span class="proof-client">Modern Bungalow</span>
+                        <span class="proof-result">Invested $3K → 15 hrs/month back</span>
                     </div>
-
-                    <!-- Agencies & Professional Services -->
-                    <div class="industry-section">
-                        <h3 class="industry-title">Agencies & Professional Services</h3>
-                        <table class="industry-table">
-                            <thead>
-                                <tr>
-                                    <th>Problem</th>
-                                    <th>What It's Costing</th>
-                                    <th>Typical Investment</th>
-                                    <th>Payback</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Client reporting</td>
-                                    <td>$22,400/year</td>
-                                    <td>$4,000-7,000</td>
-                                    <td>2-4 months</td>
-                                </tr>
-                                <tr>
-                                    <td>Project kickoff & onboarding</td>
-                                    <td>$4,410/year + client friction</td>
-                                    <td>$3,000-5,000</td>
-                                    <td>8-12 months</td>
-                                </tr>
-                                <tr>
-                                    <td>Time tracking to invoicing</td>
-                                    <td>$2,100/year + cash flow delays</td>
-                                    <td>$2,500-4,000</td>
-                                    <td>12-18 months</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <p class="industry-note">What most forget: Billing delays hurt cash flow. Onboarding friction loses clients before they start.</p>
-                    </div>
-
-                    <!-- Finance & Consulting -->
-                    <div class="industry-section">
-                        <h3 class="industry-title">Finance & Consulting</h3>
-                        <table class="industry-table">
-                            <thead>
-                                <tr>
-                                    <th>Problem</th>
-                                    <th>What It's Costing</th>
-                                    <th>Typical Investment</th>
-                                    <th>Payback</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Data collection & analysis</td>
-                                    <td>$36,400/year</td>
-                                    <td>$6,000-12,000</td>
-                                    <td>2-4 months</td>
-                                </tr>
-                                <tr>
-                                    <td>Compliance documentation</td>
-                                    <td>$4,480/year + risk</td>
-                                    <td>$4,000-6,000</td>
-                                    <td>10-14 months</td>
-                                </tr>
-                                <tr>
-                                    <td>Client portal & reporting</td>
-                                    <td>$13,104/year</td>
-                                    <td>$8,000-15,000</td>
-                                    <td>7-12 months</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <p class="industry-note">What most forget: Manual analysis errors can cost six figures. Or your reputation.</p>
-                    </div>
-
-                    <!-- Healthcare & Medical Practices -->
-                    <div class="industry-section">
-                        <h3 class="industry-title">Healthcare & Medical Practices</h3>
-                        <table class="industry-table">
-                            <thead>
-                                <tr>
-                                    <th>Problem</th>
-                                    <th>What It's Costing</th>
-                                    <th>Typical Investment</th>
-                                    <th>Payback</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Appointment reminders & follow-ups</td>
-                                    <td>$27,300/year + no-shows</td>
-                                    <td>$3,000-5,000</td>
-                                    <td>1-2 months</td>
-                                </tr>
-                                <tr>
-                                    <td>Patient intake & forms</td>
-                                    <td>$18,200/year</td>
-                                    <td>$4,000-7,000</td>
-                                    <td>3-5 months</td>
-                                </tr>
-                                <tr>
-                                    <td>Insurance verification</td>
-                                    <td>$14,560/year</td>
-                                    <td>$5,000-8,000</td>
-                                    <td>4-6 months</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <p class="industry-note">What most forget: No-shows cost $150-300 each. A 10% reduction pays for the entire system.</p>
+                    <div class="proof-item">
+                        <span class="proof-client">Kingfisher Ads</span>
+                        <span class="proof-result">Invested $2.5K → 2-4 hrs/month → 15 min</span>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Beyond the Math Section -->
-        <section class="services-section-new" style="background: var(--background-secondary);">
-            <div class="container">
-                <h2 class="section-title-alt">Beyond the Spreadsheet</h2>
-                <div class="intro-content" style="max-width: 800px; margin: 0 auto;">
-                    <p>Some things are worth doing even when the ROI isn't instant.</p>
-
-                    <p><strong>Strategic value</strong> - A client portal might not save hours, but it makes you look more professional than competitors. That's positioning, not just productivity.</p>
-
-                    <p><strong>Foundation for growth</strong> - You can't scale chaos. Sometimes you fix something small so you can grow into something big.</p>
-
-                    <p><strong>Quality of life</strong> - There's value in not thinking about something anymore. In knowing it just happens. That's hard to put a dollar sign on, but it's real.</p>
-
-                    <p><strong>Compound effect</strong> - Some automations unlock others. Fix the CRM, and suddenly reporting is possible. Fix reporting, and suddenly insights emerge. One system enables the next.</p>
-
-                    <p style="margin-top: 1.5rem;"><em>The calculator is a starting point, not the whole picture.</em></p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Who I Work With Section -->
-        <section class="case-studies-section">
-            <div class="container">
-                <h2 class="section-title-alt">Who I Work With</h2>
-                <div class="intro-content" style="max-width: 800px; margin: 0 auto;">
-                    <p>I work best with people who know something's not working - even if they can't name exactly what it is.</p>
-
-                    <p>You might have a process that eats up hours every week. A system held together by memory and sticky notes. A growing business that's starting to buckle under its own weight. You feel the friction. You're just not sure what the fix looks like.</p>
-
-                    <p>That's where I come in.</p>
-
-                    <p>I'm not just here to build what you ask for. I'm here to help you figure out what you actually need. Sometimes that's a complex system. Sometimes it's a simple fix. Sometimes it's "you don't need automation, you need a better process."</p>
-
-                    <p><strong>The best projects usually look like this:</strong></p>
-                    <ul class="work-with-list">
-                        <li>You're growing and the duct tape is starting to show</li>
-                        <li>You've tried to fix it yourself but hit a wall</li>
-                        <li>You want someone who'll stick around after it's built</li>
-                        <li>You care about getting it right, not just getting it done</li>
-                    </ul>
-
-                    <p>If that sounds like you, we should talk.</p>
+                <div class="proof-link">
+                    <a href="/case-studies.html">See all case studies →</a>
                 </div>
             </div>
         </section>
 
         <!-- CTA Section -->
-        <section id="contact" class="cta-section-main">
+        <section id="contact" class="cta-minimal">
             <div class="container">
-                <h2 class="section-title-alt">Ready to Run the Real Numbers?</h2>
-                <div class="cta-content-main">
-                    <p>Book a call. We'll figure out what the problem is actually costing you - and whether I can help.</p>
-                    <p style="margin-top: 0.5rem; font-size: 0.95rem; color: var(--text-muted);">No pitch. No pressure. Just math and honesty.</p>
-                    <div class="cta-buttons">
-                        <a href="https://calendly.com/seth-fortewebdesigns/30min" class="btn-primary btn-large">Book a Call</a>
-                        <a href="mailto:seth@fortewebdesigns.com" class="btn-secondary btn-large">seth@fortewebdesigns.com</a>
-                    </div>
-                </div>
+                <h2>The math works. Let's talk.</h2>
+                <a href="https://calendly.com/seth-fortewebdesigns/30min" class="btn-primary btn-large">Book a Call</a>
             </div>
         </section>
     </main>
 
-    <footer>
+    <footer class="footer-minimal">
         <div class="container">
-            <div class="footer-content-new">
-                <div class="footer-main">
-                    <h3 class="footer-logo">Seth Forte</h3>
-                    <p class="footer-tagline">Growth partner, not task executor.</p>
-                    <p class="footer-description">I solve the technical problems that hold growing businesses back. Based in Grapevine, Texas. Working with clients nationwide.</p>
-                    <div class="footer-contact">
-                        <a href="mailto:seth@fortewebdesigns.com">seth@fortewebdesigns.com</a>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Solutions</h4>
-                        <ul>
-                            <li><a href="/solutions/lead-routing.html">Lead Routing</a></li>
-                            <li><a href="/solutions/crm-cleanup.html">CRM Cleanup</a></li>
-                            <li><a href="/solutions/custom-dashboards.html">Custom Dashboards</a></li>
-                            <li><a href="/solutions/ai-analysis.html">AI Analysis</a></li>
-                            <li><a href="/solutions/access-management.html">Access Management</a></li>
-                            <li><a href="/solutions.html">All Solutions</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Industries</h4>
-                        <ul>
-                            <li><a href="/industries/ecommerce.html">E-commerce</a></li>
-                            <li><a href="/industries/agencies.html">Agencies</a></li>
-                            <li><a href="/industries/saas.html">SaaS</a></li>
-                            <li><a href="/industries/professional-services.html">Professional Services</a></li>
-                            <li><a href="/industries.html">All Industries</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Resources</h4>
-                        <ul>
-                            <li><a href="/case-studies.html">Case Studies</a></li>
-                            <li><a href="/resources/what-is-business-automation.html">What is Automation?</a></li>
-                            <li><a href="/resources/automation-roi-calculator.html">ROI Calculator</a></li>
-                            <li><a href="/faq.html">FAQ</a></li>
-                            <li><a href="/writing.html">Writing</a></li>
-                            <li><a href="/resources.html">All Resources</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Connect</h4>
-                        <ul>
-                            <li><a href="https://www.linkedin.com/in/seth-forte/" target="_blank">LinkedIn</a></li>
-                            <li><a href="https://x.com/ForteSeth" target="_blank">Twitter</a></li>
-                            <li><a href="https://www.youtube.com/@SethForte" target="_blank">YouTube</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Seth Forte. All rights reserved.</p>
-            </div>
+            <p class="footer-tagline-minimal">I solve the technical problems that hold growing businesses back.</p>
+            <p class="footer-location-minimal">Based in Grapevine, Texas. Working with clients nationwide.</p>
+            <a href="mailto:seth@fortewebdesigns.com" class="footer-email-minimal">seth@fortewebdesigns.com</a>
+            <p class="footer-copyright-minimal">&copy; 2025 Seth Forte</p>
         </div>
     </footer>
 
@@ -1039,7 +739,7 @@
             // Update main results
             document.getElementById('totalAnnual').textContent = formatCurrency(totalAnnual) + '/year';
             document.getElementById('monthlyWeekly').textContent =
-                formatCurrency(monthly) + '/month \u00b7 ' + formatCurrency(weekly) + '/week';
+                formatCurrency(monthly) + '/month · ' + formatCurrency(weekly) + '/week';
 
             // Update breakdown
             document.getElementById('breakdownTime').textContent = formatCurrency(timeCost);
