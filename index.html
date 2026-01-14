@@ -58,17 +58,94 @@
     <style>
         /* Personal site styles */
         .personal-hero {
-            padding: 8rem 0 4rem;
-            text-align: center;
+            padding: 6rem 0 4rem;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .hero-content {
+            text-align: left;
+        }
+
+        .hero-greeting {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
         }
 
         .personal-hero h1 {
-            font-size: clamp(1.5rem, 4vw, 2.25rem);
-            font-weight: 400;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-description {
+            font-size: 1.125rem;
+            line-height: 1.75;
             color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.5;
+            margin-bottom: 2rem;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 0.875rem 1.75rem;
+            background: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .hero-cta:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .hero-content {
+                text-align: center;
+                order: 2;
+            }
+
+            .hero-image {
+                order: 1;
+            }
+
+            .hero-image img {
+                max-width: 280px;
+            }
         }
 
         .personal-section {
@@ -201,20 +278,24 @@
         <!-- Hero -->
         <section class="personal-hero">
             <div class="container">
-                <h1>The technical problems holding your business back... I fix those.</h1>
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <p class="hero-greeting">Hey there!</p>
+                        <h1>I'm Seth. I fix the technical problems holding your business back.</h1>
+                        <p class="hero-description">Automation. CRM cleanup. Custom tools when off-the-shelf doesn't cut it. I like problems where the answer isn't obvious yet.</p>
+                        <a href="/contact.html" class="hero-cta">Get in Touch</a>
+                    </div>
+                    <div class="hero-image">
+                        <img src="headshot-6.jpg" alt="Seth Forte">
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Main content -->
         <section class="personal-section">
             <div class="container">
-                <p>I'm Seth.</p>
-
-                <p>I spend most of my time building things that make businesses run better. Automation. CRM cleanup. Custom tools when off-the-shelf doesn't cut it.</p>
-
                 <p>The work varies. Sometimes it's connecting systems that should've talked to each other years ago. Sometimes it's replacing a spreadsheet that's held together by hope and one person who "just knows how it works."</p>
-
-                <p>I like problems where the answer isn't obvious yet.</p>
 
                 <hr>
 
