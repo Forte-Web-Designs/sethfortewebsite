@@ -55,6 +55,110 @@
     </script>
 
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Personal site styles */
+        .personal-hero {
+            padding: 8rem 0 4rem;
+            text-align: center;
+        }
+
+        .personal-hero h1 {
+            font-size: clamp(1.5rem, 4vw, 2.25rem);
+            font-weight: 400;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        .personal-section {
+            padding: 4rem 0;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .personal-section p {
+            font-size: 1.125rem;
+            line-height: 1.75;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .personal-section hr {
+            border: none;
+            border-top: 1px solid var(--border-color);
+            margin: 3rem 0;
+        }
+
+        .personal-section h2 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            text-transform: lowercase;
+        }
+
+        .personal-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem 0;
+        }
+
+        .personal-section ul li {
+            font-size: 1.125rem;
+            line-height: 1.75;
+            color: var(--text-color);
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .personal-section ul li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--text-secondary);
+        }
+
+        .personal-cta {
+            padding: 4rem 0 6rem;
+            text-align: center;
+        }
+
+        .personal-cta a {
+            font-size: 1.125rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            border-bottom: 1px solid var(--accent-color);
+            padding-bottom: 2px;
+        }
+
+        .personal-cta a:hover {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .footer-personal {
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-personal a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .footer-personal a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-personal p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
