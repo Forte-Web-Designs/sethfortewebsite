@@ -5,235 +5,342 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Writing - Seth Forte</title>
     <meta name="description" content="Writing about work, building things, and figuring it out as I go.">
-    <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/jpeg" href="logo.jpg">
     <link rel="apple-touch-icon" href="logo.jpg">
     <style>
-        .writing-hero {
-            padding: 6rem 0 3rem;
-            max-width: 680px;
-            margin: 0 auto;
-        }
-
-        .writing-hero h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--primary-color);
-        }
-
-        .writing-hero p {
-            font-size: 1.125rem;
-            line-height: 1.75;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-        }
-
-        .writing-section {
-            padding: 2rem 0 4rem;
-            max-width: 680px;
-            margin: 0 auto;
-        }
-
-        .writing-section hr {
-            border: none;
-            border-top: 1px solid var(--border-color);
-            margin: 3rem 0;
-        }
-
-        .writing-section h2 {
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 1.5rem;
-        }
-
-        .article-list {
-            list-style: none;
-            padding: 0;
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .article-list li {
-            margin-bottom: 1rem;
+        :root {
+            --text-primary: #1a1a1a;
+            --text-secondary: #666;
+            --text-muted: #999;
+            --accent: #4a7c91;
+            --background: #ffffff;
+            --border: #e5e5e5;
         }
 
-        .article-list a {
-            font-size: 1.125rem;
-            color: var(--text-color);
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            font-size: 17px;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: var(--background);
+        }
+
+        a {
+            color: var(--accent);
             text-decoration: none;
-            line-height: 1.5;
         }
 
-        .article-list a:hover {
-            color: var(--accent-color);
+        a:hover {
+            text-decoration: underline;
         }
 
-        .writing-note {
-            font-size: 1rem;
+        /* Layout */
+        .site-wrapper {
+            display: flex;
+            min-height: 100vh;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            padding: 3rem 2rem;
+            border-right: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-tagline {
+            font-size: 0.95rem;
             color: var(--text-secondary);
-            margin-top: 3rem;
             margin-bottom: 2rem;
         }
 
-        .newsletter-signup {
-            background: var(--background-secondary);
-            padding: 2rem;
-            border-radius: 8px;
-            margin-top: 2rem;
+        .nav-links {
+            list-style: none;
+            margin-bottom: auto;
         }
 
-        .newsletter-signup p {
+        .nav-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
             font-size: 1rem;
-            color: var(--text-color);
-            margin-bottom: 1rem;
         }
 
-        .newsletter-form {
-            display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-        }
-
-        .newsletter-form input[type="email"] {
-            flex: 1;
-            min-width: 200px;
-            padding: 0.75rem 1rem;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            font-size: 1rem;
-            background: var(--background-color);
-            color: var(--text-color);
-        }
-
-        .newsletter-form button {
-            padding: 0.75rem 1.5rem;
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 1rem;
-            cursor: pointer;
-        }
-
-        .newsletter-form button:hover {
-            background: var(--accent-color);
-        }
-
-        .newsletter-note {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            margin-top: 0.75rem;
-        }
-
-        .footer-personal {
-            padding: 3rem 0;
-            text-align: center;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .footer-personal a {
-            color: var(--text-secondary);
+        .nav-links a:hover {
+            color: var(--accent);
             text-decoration: none;
         }
 
-        .footer-personal a:hover {
-            color: var(--primary-color);
+        .nav-links a.active {
+            color: var(--accent);
         }
 
-        .footer-personal p {
+        .sidebar-email {
+            font-size: 0.9rem;
             color: var(--text-secondary);
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .sidebar-email a {
+            color: var(--text-secondary);
+        }
+
+        .sidebar-email a:hover {
+            color: var(--accent);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 4rem 4rem 6rem;
+            max-width: 680px;
+        }
+
+        .page-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .page-intro {
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            font-size: 1.05rem;
+        }
+
+        .section-divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 3rem 0;
+        }
+
+        /* Writing List */
+        .writing-list {
+            list-style: none;
+        }
+
+        .writing-item {
+            margin-bottom: 2.5rem;
+        }
+
+        .writing-item h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .writing-item p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .writing-item .read-link {
+            font-size: 0.95rem;
+            color: var(--accent);
+        }
+
+        .writing-note {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-style: italic;
+            margin-top: 3rem;
+        }
+
+        /* Footer */
+        .footer-section {
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-email {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .copyright {
+            color: var(--text-muted);
             font-size: 0.9rem;
             margin-top: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .site-wrapper {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+                padding: 2rem;
+            }
+
+            .profile-photo {
+                width: 80px;
+                height: 80px;
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 1.5rem;
+                margin-bottom: 0;
+            }
+
+            .nav-links li {
+                margin-bottom: 0;
+            }
+
+            .sidebar-email {
+                display: none;
+            }
+
+            .main-content {
+                padding: 3rem 2rem 4rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .main-content {
+                padding: 2rem 1.5rem 3rem;
+            }
+
+            .page-title {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="/" class="logo">
-                <img src="logo.jpg" alt="Seth Forte" height="40">
-            </a>
-            <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/writing.html">Writing</a></li>
-                <li><a href="/about.html">About</a></li>
-                <li><a href="/contact.html">Contact</a></li>
-            </ul>
-            <div class="nav-right">
-                <button class="dark-mode-toggle" aria-label="Toggle dark mode">
-                    <span class="theme-icon sun-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="5"></circle>
-                            <line x1="12" y1="1" x2="12" y2="3"></line>
-                            <line x1="12" y1="21" x2="12" y2="23"></line>
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                            <line x1="1" y1="12" x2="3" y2="12"></line>
-                            <line x1="21" y1="12" x2="23" y2="12"></line>
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                        </svg>
-                    </span>
-                    <span class="theme-icon moon-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                        </svg>
-                    </span>
-                </button>
-            </div>
-        </div>
-    </nav>
+    <div class="site-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <img src="headshot-6.jpg" alt="Seth Forte" class="profile-photo">
+            <h1 class="profile-name">Seth Forte</h1>
+            <p class="profile-tagline">Automation & Custom Software</p>
 
-    <main>
-        <section class="writing-hero">
-            <div class="container">
-                <h1>Writing</h1>
-                <p>I write about work, mostly. Building things. Running a small business. Figuring it out as I go.</p>
-                <p>Some of it's practical. Some of it's just me trying to understand something by putting words to it.</p>
-            </div>
-        </section>
-
-        <section class="writing-section">
-            <div class="container">
-                <hr>
-
-                <h2>Recent</h2>
-
-                <ul class="article-list">
-                    <li><a href="/articles/day-job.html">Why I Don't Take Every Project (And That's Fine)</a></li>
-                    <li><a href="/articles/enterprise-to-small-business.html">What Building Enterprise Systems Taught Me</a></li>
-                    <li><a href="/articles/ai-overkill.html">When AI Is Overkill (Most of the Time)</a></li>
-                    <li><a href="/articles/turn-down-calls.html">Why I Turn Down Half My Discovery Calls</a></li>
-                    <li><a href="/articles/zero-marketing.html">What I Learned Spending $0 on Marketing</a></li>
-                    <li><a href="/articles/real-cost-manual-work.html">The Real Cost of Manual Work</a></li>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/writing.html" class="active">Writing</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
                 </ul>
+            </nav>
 
-                <hr>
-
-                <p class="writing-note">I don't write on a schedule. Just when something's worth saying.</p>
-
-                <div class="newsletter-signup">
-                    <p>If you want to know when I post something new:</p>
-                    <form class="newsletter-form" action="#" method="post">
-                        <input type="email" placeholder="Your email" required>
-                        <button type="submit">Subscribe</button>
-                    </form>
-                    <p class="newsletter-note">No spam. Unsubscribe whenever.</p>
-                </div>
+            <div class="sidebar-email">
+                <a href="mailto:seth@fortewebdesigns.com">seth@fortewebdesigns.com</a>
             </div>
-        </section>
-    </main>
+        </aside>
 
-    <footer class="footer-personal">
-        <div class="container">
-            <a href="mailto:seth@fortewebdesigns.com">seth@fortewebdesigns.com</a>
-            <p>&copy; 2026 Seth Forte</p>
-        </div>
-    </footer>
+        <!-- Main Content -->
+        <main class="main-content">
+            <h1 class="page-title">Writing</h1>
+            <p class="page-intro">I write about work, mostly. Building things. Running a small business. Figuring it out as I go. Some of it's practical. Some of it's just me trying to understand something by putting words to it.</p>
 
-    <script src="script.js"></script>
+            <hr class="section-divider">
+
+            <ul class="writing-list">
+                <li class="writing-item">
+                    <h3>Why I Don't Take Every Project (And That's Fine)</h3>
+                    <p>Not every project is a good fit. Learning to say no has been one of the most valuable business skills I've developed.</p>
+                    <a href="/articles/day-job.html" class="read-link">→ Read</a>
+                </li>
+
+                <li class="writing-item">
+                    <h3>What Building Enterprise Systems Taught Me</h3>
+                    <p>Five years at Wells Fargo taught me more about reliability and edge cases than any course ever could.</p>
+                    <a href="/articles/enterprise-to-small-business.html" class="read-link">→ Read</a>
+                </li>
+
+                <li class="writing-item">
+                    <h3>When AI Is Overkill (Most of the Time)</h3>
+                    <p>Everyone wants AI until they realize a simple script would've done the job better.</p>
+                    <a href="/articles/ai-overkill.html" class="read-link">→ Read</a>
+                </li>
+
+                <li class="writing-item">
+                    <h3>Why I Turn Down Half My Discovery Calls</h3>
+                    <p>If I can tell in the first five minutes we're not a fit, I'll say so. Saves everyone time.</p>
+                    <a href="/articles/turn-down-calls.html" class="read-link">→ Read</a>
+                </li>
+
+                <li class="writing-item">
+                    <h3>What I Learned Spending $0 on Marketing</h3>
+                    <p>Referrals and good work have been enough. Here's why I haven't felt the need to change that.</p>
+                    <a href="/articles/zero-marketing.html" class="read-link">→ Read</a>
+                </li>
+
+                <li class="writing-item">
+                    <h3>The Real Cost of Manual Work</h3>
+                    <p>That thing you do manually every week? It's probably costing more than you think.</p>
+                    <a href="/articles/real-cost-manual-work.html" class="read-link">→ Read</a>
+                </li>
+
+                <li class="writing-item">
+                    <h3>Audit Your Lifestyle</h3>
+                    <p>A simple friction audit framework that helps you identify and eliminate daily annoyances. The same thinking scales to business processes.</p>
+                    <a href="/articles/fighting-friction.html" class="read-link">→ Read</a>
+                </li>
+
+                <li class="writing-item">
+                    <h3>What You're Actually Paying For When You Hire A Consultant</h3>
+                    <p>What you're actually paying for isn't the technical work. It's understanding your business and genuine investment in your success.</p>
+                    <a href="/articles/paying-for-consultant.html" class="read-link">→ Read</a>
+                </li>
+
+                <li class="writing-item">
+                    <h3>Technical Skills Won't Save You Anymore</h3>
+                    <p>The technical implementation is becoming commodity. The strategic thinking isn't.</p>
+                    <a href="/articles/technical-skills-wont-save-you.html" class="read-link">→ Read</a>
+                </li>
+            </ul>
+
+            <p class="writing-note">I don't write on a schedule. Just when something's worth saying.</p>
+
+            <div class="footer-section">
+                <a href="mailto:seth@fortewebdesigns.com" class="footer-email">seth@fortewebdesigns.com</a>
+                <p class="copyright">© 2026 Seth Forte</p>
+            </div>
+        </main>
+    </div>
 </body>
 </html>

@@ -5,169 +5,289 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Seth Forte</title>
     <meta name="description" content="Best way to reach me: seth@fortewebdesigns.com">
-    <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/jpeg" href="logo.jpg">
     <link rel="apple-touch-icon" href="logo.jpg">
     <style>
-        .contact-hero {
-            padding: 6rem 0 3rem;
-            max-width: 680px;
-            margin: 0 auto;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .contact-hero h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--primary-color);
+        :root {
+            --text-primary: #1a1a1a;
+            --text-secondary: #666;
+            --text-muted: #999;
+            --accent: #4a7c91;
+            --background: #ffffff;
+            --border: #e5e5e5;
         }
 
-        .contact-section {
-            padding: 0 0 4rem;
-            max-width: 680px;
-            margin: 0 auto;
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            font-size: 17px;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: var(--background);
         }
 
-        .contact-section p {
-            font-size: 1.125rem;
-            line-height: 1.75;
-            color: var(--text-color);
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-section hr {
-            border: none;
-            border-top: 1px solid var(--border-color);
-            margin: 3rem 0;
-        }
-
-        .contact-section a {
-            color: var(--accent-color);
+        a {
+            color: var(--accent);
             text-decoration: none;
         }
 
-        .contact-section a:hover {
+        a:hover {
             text-decoration: underline;
+        }
+
+        /* Layout */
+        .site-wrapper {
+            display: flex;
+            min-height: 100vh;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            padding: 3rem 2rem;
+            border-right: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-tagline {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .nav-links {
+            list-style: none;
+            margin-bottom: auto;
+        }
+
+        .nav-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .sidebar-email {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .sidebar-email a {
+            color: var(--text-secondary);
+        }
+
+        .sidebar-email a:hover {
+            color: var(--accent);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 4rem 4rem 6rem;
+            max-width: 680px;
+        }
+
+        .page-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
         }
 
         .email-main {
             font-size: 1.25rem;
-            font-weight: 500;
+            margin-bottom: 2rem;
         }
 
         .email-main a {
-            color: var(--text-color);
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .email-main a:hover {
+            color: var(--accent);
+        }
+
+        .body-text {
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 3rem 0;
         }
 
         .book-link {
             display: inline-block;
-            margin-top: 1rem;
-            color: var(--text-secondary);
-            font-size: 1rem;
+            color: var(--accent);
+            margin-top: 0.5rem;
         }
 
         .location {
-            color: var(--text-secondary);
-            font-size: 1rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
             margin-top: 3rem;
         }
 
-        .footer-personal {
-            padding: 3rem 0;
-            text-align: center;
-            border-top: 1px solid var(--border-color);
+        /* Footer */
+        .footer-section {
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border);
         }
 
-        .footer-personal a {
+        .footer-email {
             color: var(--text-secondary);
-            text-decoration: none;
+            font-size: 0.95rem;
         }
 
-        .footer-personal a:hover {
-            color: var(--primary-color);
-        }
-
-        .footer-personal p {
-            color: var(--text-secondary);
+        .copyright {
+            color: var(--text-muted);
             font-size: 0.9rem;
             margin-top: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .site-wrapper {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+                padding: 2rem;
+            }
+
+            .profile-photo {
+                width: 80px;
+                height: 80px;
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 1.5rem;
+                margin-bottom: 0;
+            }
+
+            .nav-links li {
+                margin-bottom: 0;
+            }
+
+            .sidebar-email {
+                display: none;
+            }
+
+            .main-content {
+                padding: 3rem 2rem 4rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .main-content {
+                padding: 2rem 1.5rem 3rem;
+            }
+
+            .page-title {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="/" class="logo">
-                <img src="logo.jpg" alt="Seth Forte" height="40">
-            </a>
-            <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/writing.html">Writing</a></li>
-                <li><a href="/about.html">About</a></li>
-                <li><a href="/contact.html">Contact</a></li>
-            </ul>
-            <div class="nav-right">
-                <button class="dark-mode-toggle" aria-label="Toggle dark mode">
-                    <span class="theme-icon sun-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="5"></circle>
-                            <line x1="12" y1="1" x2="12" y2="3"></line>
-                            <line x1="12" y1="21" x2="12" y2="23"></line>
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                            <line x1="1" y1="12" x2="3" y2="12"></line>
-                            <line x1="21" y1="12" x2="23" y2="12"></line>
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                        </svg>
-                    </span>
-                    <span class="theme-icon moon-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                        </svg>
-                    </span>
-                </button>
+    <div class="site-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <img src="headshot-6.jpg" alt="Seth Forte" class="profile-photo">
+            <h1 class="profile-name">Seth Forte</h1>
+            <p class="profile-tagline">Automation & Custom Software</p>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/writing.html">Writing</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-email">
+                <a href="mailto:seth@fortewebdesigns.com">seth@fortewebdesigns.com</a>
             </div>
-        </div>
-    </nav>
+        </aside>
 
-    <main>
-        <section class="contact-hero">
-            <div class="container">
-                <h1>Contact</h1>
+        <!-- Main Content -->
+        <main class="main-content">
+            <h1 class="page-title">Contact</h1>
+
+            <p class="email-main">Best way to reach me: <a href="mailto:seth@fortewebdesigns.com">seth@fortewebdesigns.com</a></p>
+
+            <p class="body-text">I read everything. Might take a day or two to reply, but I will.</p>
+
+            <hr class="section-divider">
+
+            <p class="body-text">If you want to talk about a project, just tell me what's going on. No need for a formal brief. A few sentences about what's not working is plenty to start.</p>
+
+            <hr class="section-divider">
+
+            <p class="body-text">If you'd rather schedule a call:</p>
+
+            <a href="https://calendly.com/seth-fortewebdesigns/30min" class="book-link">Book 30 minutes</a>
+
+            <p class="body-text" style="margin-top: 1.5rem;">But honestly, email works great. Sometimes better. You can think through what you want to say, and I can give you a thoughtful response instead of making something up on the spot.</p>
+
+            <p class="location">Based in Grapevine, Texas. Working with people everywhere.</p>
+
+            <div class="footer-section">
+                <a href="mailto:seth@fortewebdesigns.com" class="footer-email">seth@fortewebdesigns.com</a>
+                <p class="copyright">© 2026 Seth Forte</p>
             </div>
-        </section>
-
-        <section class="contact-section">
-            <div class="container">
-                <p class="email-main">Best way to reach me: <a href="mailto:seth@fortewebdesigns.com">seth@fortewebdesigns.com</a></p>
-
-                <p>I read everything. Might take a day or two to reply, but I will.</p>
-
-                <hr>
-
-                <p>If you want to talk about a project, just tell me what's going on. No need for a formal brief. A few sentences about what's not working is plenty to start.</p>
-
-                <hr>
-
-                <p>If you'd rather schedule a call:</p>
-
-                <p><a href="https://calendly.com/seth-fortewebdesigns/30min" class="book-link">Book 30 minutes</a></p>
-
-                <p>But honestly, email works great. Sometimes better. You can think through what you want to say, and I can give you a thoughtful response instead of making something up on the spot.</p>
-
-                <p class="location">Based in Grapevine, Texas. Working with people everywhere.</p>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer-personal">
-        <div class="container">
-            <a href="mailto:seth@fortewebdesigns.com">seth@fortewebdesigns.com</a>
-            <p>&copy; 2026 Seth Forte</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+        </main>
+    </div>
 </body>
 </html>
