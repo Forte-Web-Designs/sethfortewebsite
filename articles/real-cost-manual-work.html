@@ -5,60 +5,516 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Real Cost of Manual Work - Seth Forte</title>
     <meta name="description" content="The time spent isn't the real cost. It's the opportunity cost, error cost, and mental overhead. Here's what manual work actually costs your business.">
-    <link rel="stylesheet" href="../styles.css">
-    <link rel="stylesheet" href="../blog.css">
+    <meta name="author" content="Seth Forte">
+    <link rel="icon" type="image/jpeg" href="../logo.jpg">
+    <link rel="apple-touch-icon" href="../logo.jpg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --text-primary: #1a1a1a;
+            --text-secondary: #666;
+            --text-muted: #999;
+            --accent: #4a7c91;
+            --background: #ffffff;
+            --border: #e5e5e5;
+        }
+
+        [data-theme="dark"] {
+            --text-primary: #e5e5e5;
+            --text-secondary: #a0a0a0;
+            --text-muted: #777;
+            --accent: #6ba3b8;
+            --background: #1a1a1a;
+            --border: #333;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            font-size: 17px;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: var(--background);
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        .animate-fade-up {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
+        .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
+
+        /* Layout */
+        .site-wrapper {
+            display: flex;
+            min-height: 100vh;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            padding: 3rem 2rem;
+            border-right: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .profile-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-tagline {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .nav-links {
+            list-style: none;
+            margin-bottom: auto;
+            width: 100%;
+        }
+
+        .nav-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            font-size: 1rem;
+            display: block;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+            background: var(--border);
+            text-decoration: none;
+        }
+
+        .nav-links a.active {
+            color: var(--accent);
+            background: var(--border);
+        }
+
+        .sidebar-email {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            width: 100%;
+        }
+
+        .sidebar-email a {
+            color: var(--text-secondary);
+        }
+
+        .sidebar-email a:hover {
+            color: var(--accent);
+        }
+
+        /* Dark Mode Toggle */
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+
+        .theme-toggle:hover {
+            color: var(--text-primary);
+            border-color: var(--text-secondary);
+        }
+
+        .theme-toggle svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .theme-toggle .sun-icon {
+            display: none;
+        }
+
+        [data-theme="dark"] .theme-toggle .sun-icon {
+            display: block;
+        }
+
+        [data-theme="dark"] .theme-toggle .moon-icon {
+            display: none;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 4rem 4rem 6rem;
+            max-width: 720px;
+        }
+
+        /* Article Styles */
+        .back-link {
+            display: inline-block;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+        }
+
+        .article-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        .article-meta {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 3rem;
+        }
+
+        .article-body p {
+            margin-bottom: 1.5rem;
+        }
+
+        .article-body h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-body h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-body strong {
+            font-weight: 600;
+        }
+
+        .article-body ul, .article-body ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .article-body li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        .footer-section {
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-email {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        /* Site Header */
+        .site-header {
+            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--border);
+            background: var(--background);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-logo {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .header-logo:hover {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .header-nav a {
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            text-decoration: none;
+        }
+
+        .header-nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .site-header {
+                display: none;
+            }
+
+            .site-wrapper {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: none;
+                padding: 2.5rem 2rem;
+                text-align: center;
+                align-items: center;
+                background: var(--background);
+            }
+
+            .profile-photo {
+                width: 100px;
+                height: 100px;
+                margin-bottom: 1rem;
+            }
+
+            .profile-name {
+                font-size: 1.5rem;
+            }
+
+            .profile-tagline {
+                margin-bottom: 1.5rem;
+            }
+
+            .nav-links {
+                display: flex;
+                justify-content: center;
+                gap: 1.5rem;
+                margin-bottom: 1.5rem;
+                padding: 1rem 0;
+                border-top: 1px solid var(--border);
+                border-bottom: 1px solid var(--border);
+                width: 100%;
+            }
+
+            .nav-links li {
+                margin-bottom: 0;
+            }
+
+            .sidebar-email {
+                display: block;
+                margin-top: 0;
+                padding-top: 0;
+                border-top: none;
+            }
+
+            .theme-toggle {
+                margin-top: 1rem;
+                width: auto;
+                padding: 0.5rem 1rem;
+            }
+
+            .main-content {
+                padding: 3rem 2rem 4rem;
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .site-header {
+                padding: 1rem 1.5rem;
+            }
+
+            .header-nav {
+                gap: 1rem;
+            }
+
+            .header-nav a {
+                font-size: 0.9rem;
+            }
+
+            .sidebar {
+                padding: 2rem 1.5rem;
+            }
+
+            .profile-photo {
+                width: 90px;
+                height: 90px;
+            }
+
+            .profile-name {
+                font-size: 1.35rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+
+            .main-content {
+                padding: 2rem 1.5rem 3rem;
+            }
+
+            .article-title {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="../index.html" class="logo"><img src="../logo.jpg" alt="Seth Forte" height="40"></a>
-            <button class="mobile-menu-toggle" aria-label="Toggle menu" style="display: none;">☰</button>
-            <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/writing.html">Writing</a></li>
-                <li><a href="/about.html">About</a></li>
-                <li><a href="/contact.html">Contact</a></li>
-            </ul>
-            <div class="nav-right">
-                <button class="dark-mode-toggle" aria-label="Toggle dark mode">
-                    <span class="theme-icon sun-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="5"></circle>
-                            <line x1="12" y1="1" x2="12" y2="3"></line>
-                            <line x1="12" y1="21" x2="12" y2="23"></line>
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                            <line x1="1" y1="12" x2="3" y2="12"></line>
-                            <line x1="21" y1="12" x2="23" y2="12"></line>
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                        </svg>
-                    </span>
-                    <span class="theme-icon moon-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                        </svg>
-                    </span>
-                </button>
-            </div>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="header-logo">Seth Forte</a>
+            <nav class="header-nav">
+                <a href="/">Home</a>
+                <a href="/writing.html">Writing</a>
+                <a href="/about.html">About</a>
+                <a href="/contact.html">Contact</a>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-    <main class="article-page">
-        <section class="article-hero">
-            <div class="container">
-                <div class="article-hero-image" style="background: url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1200&h=400&fit=crop') center/cover no-repeat;"></div>
-                <div class="article-meta">
-                    <span class="article-category">Business Strategy</span>
-                    <span class="article-date">Oct 1, 2025</span>
-                    <span class="article-author">By Seth Forte</span>
-                </div>
-                <h1>The Real Cost of Manual Work</h1>
+    <div class="site-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <img src="../headshot-6.jpg" alt="Seth Forte" class="profile-photo animate-fade-in">
+            <h1 class="profile-name">Seth Forte</h1>
+            <p class="profile-tagline">Automation & Custom Software</p>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/writing.html" class="active">Writing</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-email">
+                <a href="mailto:seth@fortewebdesigns.com">seth@fortewebdesigns.com</a>
             </div>
-        </section>
 
-        <section class="article-body">
-            <div class="container">
+            <button class="theme-toggle" aria-label="Toggle dark mode">
+                <span class="moon-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </span>
+                <span class="sun-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </span>
+            </button>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <a href="/writing.html" class="back-link animate-fade-up">&larr; Back to Writing</a>
+
+            <h1 class="article-title animate-fade-up animate-delay-1">The Real Cost of Manual Work</h1>
+            <p class="article-meta animate-fade-up animate-delay-2">Oct 1, 2025</p>
+
+            <div class="article-body">
                 <p>Business owners know manual work costs time. If someone spends 10 hours weekly on data entry, that's 10 hours you're paying for.</p>
 
                 <p>But that's not the real cost. The real cost is hidden. And it's usually 3-5 times higher than the obvious time cost.</p>
@@ -93,7 +549,7 @@
 
                 <p>The actual order entry cost was maybe $30 weekly in labor. The error correction cost was $400+ weekly. Plus lost customers. Plus reputation damage.</p>
 
-                <p>That's a 13× multiplier on the apparent cost.</p>
+                <p>That's a 13x multiplier on the apparent cost.</p>
 
                 <p><strong>Mental overhead: Context switching and stress.</strong></p>
 
@@ -149,7 +605,7 @@
 
                 <p><strong>How to calculate the real cost.</strong></p>
 
-                <p>Take the obvious time cost. Multiply by 3-5× depending on these factors:</p>
+                <p>Take the obvious time cost. Multiply by 3-5x depending on these factors:</p>
 
                 <p>Add 50% if the work is done by expensive people (managers, specialists) who could be doing higher-value work.</p>
 
@@ -167,7 +623,7 @@
 
                 <p>But it's the owner doing it (+50%). Error rate is 5% and errors are expensive (+100%). Requires constant interruptions (+50%). Limiting growth (+100%).</p>
 
-                <p>Real cost multiplier: 3×. Real cost: $1,500 weekly. $78,000 annually.</p>
+                <p>Real cost multiplier: 3x. Real cost: $1,500 weekly. $78,000 annually.</p>
 
                 <p>Now automation that costs $10K to build and $100 monthly to maintain has a 2-month payback. Not a 20-month payback based on obvious costs alone.</p>
 
@@ -182,109 +638,36 @@
                 <p>Next time someone says "it only takes 30 minutes daily," do the full calculation. Include the hidden costs. Then decide if it's worth automating.</p>
 
                 <p>Usually the answer is yes.</p>
-
-                <div class="article-share">
-                    <div class="share-buttons">
-                        <span class="share-label">Share this article:</span>
-                        <a href="https://twitter.com/intent/tweet?text=The Real Cost of Manual Work&url=https://sethforte.com/articles/real-cost-manual-work.html" target="_blank" class="share-btn">Share on Twitter</a>
-                        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sethforte.com/articles/real-cost-manual-work.html" target="_blank" class="share-btn">Share on LinkedIn</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="related-articles">
-            <div class="container">
-                <h2>Related Articles</h2>
-                <div class="related-grid">
-                    <article class="article-card">
-                        <div class="article-image" style="background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);"></div>
-                        <div class="article-content">
-                            <span class="article-category">Business Strategy</span>
-                            <span class="article-date">Sep 20, 2025</span>
-                            <h3><a href="ready-for-automation.html">How to Know If You're Ready for Automation</a></h3>
-                            <p>Not every business is ready for automation. Here's how to tell if you're ready...</p>
-                            <a href="ready-for-automation.html" class="read-more">Read Article </a>
-                        </div>
-                    </article>
-
-                    <article class="article-card">
-                        <div class="article-image" style="background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);"></div>
-                        <div class="article-content">
-                            <span class="article-category">AI & Automation</span>
-                            <span class="article-date">Oct 8, 2025</span>
-                            <h3><a href="three-tasks.html">The Three Tasks You Should Automate First</a></h3>
-                            <p>Not everything needs automation. But there are three types of work that are almost always worth automating...</p>
-                            <a href="three-tasks.html" class="read-more">Read Article </a>
-                        </div>
-                    </article>
-
-                    <article class="article-card">
-                        <div class="article-image" style="background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);"></div>
-                        <div class="article-content">
-                            <span class="article-category">Business Strategy</span>
-                            <span class="article-date">Oct 22, 2025</span>
-                            <h3><a href="small-business-advantage.html">Why Small Businesses Beat Big Companies at Automation</a></h3>
-                            <p>Big companies have more resources but small businesses move faster. Here's why that matters for automation...</p>
-                            <a href="small-business-advantage.html" class="read-more">Read Article </a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content-new">
-                <div class="footer-main">
-                    <h3 class="footer-logo">Seth Forte</h3>
-                    <p class="footer-tagline">Software engineer turned consultant. Building automation systems that work.</p>
-                    <p class="footer-description">I help businesses eliminate manual work through AI automation and custom software. Based in Grapevine, Texas. Working with clients nationwide.</p>
-                    <p class="footer-pitch">If you're spending 10+ hours weekly on repetitive tasks, let's talk.</p>
-                    <div class="footer-contact">
-                        <a href="mailto:seth@fortewebdesigns.com">seth@fortewebdesigns.com</a>
-                    </div>
-                </div>
-
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Navigation</h4>
-                        <ul>
-                            <li><a href="../index.html#home">Home</a></li>
-                            <li><a href="../index.html#about">About</a></li>
-                            <li><a href="../index.html#work">Work</a></li>
-                            <li><a href="../index.html#services">Services</a></li>
-                            <li><a href="../writing.html">Writing</a></li>
-                            <li><a href="../index.html#contact">Contact</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer-column">
-                        <h4>More Projects</h4>
-                        <ul>
-                            <li><a href="https://fortewebdesigns.com">Forte Web Designs</a> - AI automation and web design agency</li>
-                        </ul>
-                    </div>
-
-                    <div class="footer-column">
-                        <h4>Connect</h4>
-                        <ul>
-                            <li><a href="https://linkedin.com/in/sethforte" target="_blank">LinkedIn</a></li>
-                            <li><a href="https://twitter.com/sethforte" target="_blank">Twitter</a></li>
-                            <li><a href="https://youtube.com/@sethforte" target="_blank">YouTube</a></li>
-                            <li><a href="https://github.com/sethforte" target="_blank">GitHub</a></li>
-                        </ul>
-                    </div>
-                </div>
             </div>
 
-            <div class="footer-bottom">
-                <p>&copy; 2026 Seth Forte. All rights reserved.</p>
+            <div class="footer-section">
+                <a href="mailto:seth@fortewebdesigns.com" class="footer-email">seth@fortewebdesigns.com</a>
+                <p class="copyright">&copy; 2026 Seth Forte</p>
             </div>
-        </div>
-    </footer>
+        </main>
+    </div>
 
-    <script src="../script.js"></script>
+    <script>
+        // Dark mode toggle
+        const toggle = document.querySelector('.theme-toggle');
+        const html = document.documentElement;
+
+        // Check for saved preference or system preference
+        const savedTheme = localStorage.getItem('theme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme) {
+            html.setAttribute('data-theme', savedTheme);
+        } else if (systemDark) {
+            html.setAttribute('data-theme', 'dark');
+        }
+
+        toggle.addEventListener('click', () => {
+            const current = html.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+        });
+    </script>
 </body>
 </html>

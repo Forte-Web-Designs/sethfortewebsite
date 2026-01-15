@@ -5,247 +5,677 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amazon's AI Glasses Show What Good Automation Actually Looks Like - Seth Forte</title>
     <meta name="description" content="Amazon's AI-powered delivery glasses show how automation should work: removing tedious tasks so humans can focus on work that actually matters.">
+    <meta name="author" content="Seth Forte">
+    <link rel="icon" type="image/jpeg" href="../logo.jpg">
+    <link rel="apple-touch-icon" href="../logo.jpg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Amazon's AI Glasses Show What Good Automation Actually Looks Like">
-    <meta property="og:description" content="Amazon's AI-powered delivery glasses show how automation should work: removing tedious tasks so humans can focus on work that actually matters.">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://sethforte.com/articles/amazon-ai-glasses.html">
+        :root {
+            --text-primary: #1a1a1a;
+            --text-secondary: #666;
+            --text-muted: #999;
+            --accent: #4a7c91;
+            --background: #ffffff;
+            --border: #e5e5e5;
+        }
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Amazon's AI Glasses Show What Good Automation Actually Looks Like">
-    <meta name="twitter:description" content="Amazon's AI-powered delivery glasses show how automation should work: removing tedious tasks so humans can focus on work that actually matters.">
+        [data-theme="dark"] {
+            --text-primary: #e5e5e5;
+            --text-secondary: #a0a0a0;
+            --text-muted: #777;
+            --accent: #6ba3b8;
+            --background: #1a1a1a;
+            --border: #333;
+        }
 
-    <link rel="stylesheet" href="../styles.css">
-    <link rel="stylesheet" href="../blog.css">
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            font-size: 17px;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: var(--background);
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        .animate-fade-up {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
+        .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
+
+        /* Layout */
+        .site-wrapper {
+            display: flex;
+            min-height: 100vh;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            padding: 3rem 2rem;
+            border-right: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .profile-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-tagline {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .nav-links {
+            list-style: none;
+            margin-bottom: auto;
+            width: 100%;
+        }
+
+        .nav-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            font-size: 1rem;
+            display: block;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+            background: var(--border);
+            text-decoration: none;
+        }
+
+        .nav-links a.active {
+            color: var(--accent);
+            background: var(--border);
+        }
+
+        .sidebar-email {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            width: 100%;
+        }
+
+        .sidebar-email a {
+            color: var(--text-secondary);
+        }
+
+        .sidebar-email a:hover {
+            color: var(--accent);
+        }
+
+        /* Dark Mode Toggle */
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+
+        .theme-toggle:hover {
+            color: var(--text-primary);
+            border-color: var(--text-secondary);
+        }
+
+        .theme-toggle svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .theme-toggle .sun-icon {
+            display: none;
+        }
+
+        [data-theme="dark"] .theme-toggle .sun-icon {
+            display: block;
+        }
+
+        [data-theme="dark"] .theme-toggle .moon-icon {
+            display: none;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 4rem 4rem 6rem;
+            max-width: 720px;
+        }
+
+        /* Article Styles */
+        .back-link {
+            display: inline-block;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+        }
+
+        .article-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        .article-meta {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 3rem;
+        }
+
+        .article-body p {
+            margin-bottom: 1.5rem;
+        }
+
+        .article-body h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-body h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-body strong {
+            font-weight: 600;
+        }
+
+        .article-body ul, .article-body ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .article-body li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        .footer-section {
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-email {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        /* Site Header */
+        .site-header {
+            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--border);
+            background: var(--background);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-logo {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .header-logo:hover {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .header-nav a {
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            text-decoration: none;
+        }
+
+        .header-nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .site-header {
+                display: none;
+            }
+
+            .site-wrapper {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: none;
+                padding: 2.5rem 2rem;
+                text-align: center;
+                align-items: center;
+                background: var(--background);
+            }
+
+            .profile-photo {
+                width: 100px;
+                height: 100px;
+                margin-bottom: 1rem;
+            }
+
+            .profile-name {
+                font-size: 1.5rem;
+            }
+
+            .profile-tagline {
+                margin-bottom: 1.5rem;
+            }
+
+            .nav-links {
+                display: flex;
+                justify-content: center;
+                gap: 1.5rem;
+                margin-bottom: 1.5rem;
+                padding: 1rem 0;
+                border-top: 1px solid var(--border);
+                border-bottom: 1px solid var(--border);
+                width: 100%;
+            }
+
+            .nav-links li {
+                margin-bottom: 0;
+            }
+
+            .sidebar-email {
+                display: block;
+                margin-top: 0;
+                padding-top: 0;
+                border-top: none;
+            }
+
+            .theme-toggle {
+                margin-top: 1rem;
+                width: auto;
+                padding: 0.5rem 1rem;
+            }
+
+            .main-content {
+                padding: 3rem 2rem 4rem;
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .site-header {
+                padding: 1rem 1.5rem;
+            }
+
+            .header-nav {
+                gap: 1rem;
+            }
+
+            .header-nav a {
+                font-size: 0.9rem;
+            }
+
+            .sidebar {
+                padding: 2rem 1.5rem;
+            }
+
+            .profile-photo {
+                width: 90px;
+                height: 90px;
+            }
+
+            .profile-name {
+                font-size: 1.35rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+
+            .main-content {
+                padding: 2rem 1.5rem 3rem;
+            }
+
+            .article-title {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="../index.html" class="logo"><img src="../logo.jpg" alt="Seth Forte" height="40"></a>
-            <button class="mobile-menu-toggle" aria-label="Toggle menu" style="display: none;">☰</button>
-            <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/writing.html">Writing</a></li>
-                <li><a href="/about.html">About</a></li>
-                <li><a href="/contact.html">Contact</a></li>
-            </ul>
-            <div class="nav-right">
-                <button class="dark-mode-toggle" aria-label="Toggle dark mode">
-                    <span class="theme-icon sun-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="5"></circle>
-                            <line x1="12" y1="1" x2="12" y2="3"></line>
-                            <line x1="12" y1="21" x2="12" y2="23"></line>
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                            <line x1="1" y1="12" x2="3" y2="12"></line>
-                            <line x1="21" y1="12" x2="23" y2="12"></line>
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                        </svg>
-                    </span>
-                    <span class="theme-icon moon-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                        </svg>
-                    </span>
-                </button>
-            </div>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="header-logo">Seth Forte</a>
+            <nav class="header-nav">
+                <a href="/">Home</a>
+                <a href="/writing.html">Writing</a>
+                <a href="/about.html">About</a>
+                <a href="/contact.html">Contact</a>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-    <main class="article-page">
-        <!-- Article Hero -->
-        <section class="article-hero">
-            <div class="container">
-                <div class="article-hero-image" style="background: url('https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=1200&h=400&fit=crop') center/cover no-repeat;"></div>
+    <div class="site-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <img src="../headshot-6.jpg" alt="Seth Forte" class="profile-photo animate-fade-in">
+            <h1 class="profile-name">Seth Forte</h1>
+            <p class="profile-tagline">Automation & Custom Software</p>
 
-                <div class="article-meta">
-                    <span class="article-category">AI & Automation</span>
-                    <span class="article-date">Oct 24, 2025</span>
-                    <span class="article-author">By Seth Forte</span>
-                </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/writing.html" class="active">Writing</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+            </nav>
 
-                <h1>Amazon's AI Glasses Show What Good Automation Actually Looks Like</h1>
+            <div class="sidebar-email">
+                <a href="mailto:seth@fortewebdesigns.com">seth@fortewebdesigns.com</a>
             </div>
-        </section>
 
-        <!-- Article Body -->
-        <section class="article-body">
-            <div class="container">
-                    <p>Amazon announced this week they're building AI-powered smart glasses for delivery drivers.</p>
+            <button class="theme-toggle" aria-label="Toggle dark mode">
+                <span class="moon-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </span>
+                <span class="sun-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </span>
+            </button>
+        </aside>
 
-                    <p>The glasses will scan packages, show navigation directions, and document deliveries without drivers needing to touch their phones. Cameras and sensors create an augmented reality display showing hazards, building numbers, and delivery instructions.</p>
+        <!-- Main Content -->
+        <main class="main-content">
+            <a href="/writing.html" class="back-link animate-fade-up">← Back to Writing</a>
 
-                    <p>The immediate reaction from most people? "Great, Amazon is replacing drivers with robots."</p>
+            <h1 class="article-title animate-fade-up animate-delay-1">Amazon's AI Glasses Show What Good Automation Actually Looks Like</h1>
+            <p class="article-meta animate-fade-up animate-delay-2">Oct 24, 2025</p>
 
-                    <p>That's not what's happening here. And it's worth understanding why.</p>
+            <div class="article-body">
+                <p>Amazon announced this week they're building AI-powered smart glasses for delivery drivers.</p>
 
-                    <h2>This Is What Enhancement Actually Means</h2>
+                <p>The glasses will scan packages, show navigation directions, and document deliveries without drivers needing to touch their phones. Cameras and sensors create an augmented reality display showing hazards, building numbers, and delivery instructions.</p>
 
-                    <p>Here's what Amazon delivery drivers do now.</p>
+                <p>The immediate reaction from most people? "Great, Amazon is replacing drivers with robots."</p>
 
-                    <p>They park. Pull out their phone. Check which packages go where. Navigate to the right building. Find the right unit number. Take a photo for proof of delivery. Update the app. Walk back to the truck. Repeat 27 times per hour.</p>
+                <p>That's not what's happening here. And it's worth understanding why.</p>
 
-                    <p>Half of that is just managing the logistics of delivery. The other half is actually delivering packages.</p>
+                <h2>This Is What Enhancement Actually Means</h2>
 
-                    <p>The glasses eliminate the first half. No more pulling out your phone between every delivery. No more stopping to check directions. No more fumbling with your device while carrying packages.</p>
+                <p>Here's what Amazon delivery drivers do now.</p>
 
-                    <p>You just deliver. The glasses handle the rest.</p>
+                <p>They park. Pull out their phone. Check which packages go where. Navigate to the right building. Find the right unit number. Take a photo for proof of delivery. Update the app. Walk back to the truck. Repeat 27 times per hour.</p>
 
-                    <p>That's not replacing the driver. That's removing the annoying parts of the job so they can focus on the actual delivery.</p>
+                <p>Half of that is just managing the logistics of delivery. The other half is actually delivering packages.</p>
 
-                    <p>I see this pattern constantly with the automation I build for clients.</p>
+                <p>The glasses eliminate the first half. No more pulling out your phone between every delivery. No more stopping to check directions. No more fumbling with your device while carrying packages.</p>
 
-                    <h2>The Work That Actually Matters</h2>
+                <p>You just deliver. The glasses handle the rest.</p>
 
-                    <p>I had a client who ran a small manufacturing operation. Their warehouse manager spent 15 hours a week updating spreadsheets with inventory data.</p>
+                <p>That's not replacing the driver. That's removing the annoying parts of the job so they can focus on the actual delivery.</p>
 
-                    <p>We automated the inventory tracking. Now it takes 30 minutes a week.</p>
+                <p>I see this pattern constantly with the automation I build for clients.</p>
 
-                    <p>Did we eliminate his job? No. He still manages the warehouse. He just doesn't spend three hours a day doing data entry anymore.</p>
+                <h2>The Work That Actually Matters</h2>
 
-                    <p>Now he spends that time actually managing. Optimizing processes. Training staff. Solving problems that pop up.</p>
+                <p>I had a client who ran a small manufacturing operation. Their warehouse manager spent 15 hours a week updating spreadsheets with inventory data.</p>
 
-                    <p>The boring repetitive work went away. The work that requires human judgment stayed.</p>
+                <p>We automated the inventory tracking. Now it takes 30 minutes a week.</p>
 
-                    <p>That's what good automation does. It handles the tedious stuff so humans can do the work that actually needs a human.</p>
+                <p>Did we eliminate his job? No. He still manages the warehouse. He just doesn't spend three hours a day doing data entry anymore.</p>
 
-                    <p>Amazon drivers still need to navigate weird apartment complexes. Still need to deal with dogs in yards. Still need to make judgment calls about where to leave packages safely.</p>
+                <p>Now he spends that time actually managing. Optimizing processes. Training staff. Solving problems that pop up.</p>
 
-                    <p>The glasses just remove the part where they're constantly checking their phone and taking photos.</p>
+                <p>The boring repetitive work went away. The work that requires human judgment stayed.</p>
 
-                    <h2>Why This Actually Helps Workers</h2>
+                <p>That's what good automation does. It handles the tedious stuff so humans can do the work that actually needs a human.</p>
 
-                    <p>Here's what people miss when they panic about automation.</p>
+                <p>Amazon drivers still need to navigate weird apartment complexes. Still need to deal with dogs in yards. Still need to make judgment calls about where to leave packages safely.</p>
 
-                    <p>Nobody likes the repetitive parts of their job.</p>
+                <p>The glasses just remove the part where they're constantly checking their phone and taking photos.</p>
 
-                    <p>Amazon drivers don't love pulling out their phone 200 times a day. Warehouse workers don't love lifting heavy boxes. Office workers don't love manual data entry.</p>
+                <h2>Why This Actually Helps Workers</h2>
 
-                    <p>These aren't the fulfilling parts of work. They're the parts you have to do to get to the actual work.</p>
+                <p>Here's what people miss when they panic about automation.</p>
 
-                    <p>When I automate a process for a client, the employees are usually relieved. They're not losing their jobs. They're losing the part of their job they hated.</p>
+                <p>Nobody likes the repetitive parts of their job.</p>
 
-                    <p>One client automated their customer intake process. The admin who used to do manual data entry was worried at first.</p>
+                <p>Amazon drivers don't love pulling out their phone 200 times a day. Warehouse workers don't love lifting heavy boxes. Office workers don't love manual data entry.</p>
 
-                    <p>Then she realized she now had time to actually help customers instead of just processing forms. Her job got better, not worse.</p>
+                <p>These aren't the fulfilling parts of work. They're the parts you have to do to get to the actual work.</p>
 
-                    <p>That's what the Amazon glasses do. Drivers can carry more packages because their hands are free. They can move faster because they're not stopping to check navigation. They can focus on the delivery instead of managing the technology.</p>
+                <p>When I automate a process for a client, the employees are usually relieved. They're not losing their jobs. They're losing the part of their job they hated.</p>
 
-                    <p>The job becomes more efficient. Not eliminated. Enhanced.</p>
+                <p>One client automated their customer intake process. The admin who used to do manual data entry was worried at first.</p>
 
-                    <h2>The Problems Are Real But Solvable</h2>
+                <p>Then she realized she now had time to actually help customers instead of just processing forms. Her job got better, not worse.</p>
 
-                    <p>The glasses might not last a full 10-hour shift on one battery charge. Drivers might find them uncomfortable or distracting.</p>
+                <p>That's what the Amazon glasses do. Drivers can carry more packages because their hands are free. They can move faster because they're not stopping to check navigation. They can focus on the delivery instead of managing the technology.</p>
 
-                    <p>These are real concerns. But they're the kind of problems you solve through iteration, not reasons to not build the technology.</p>
+                <p>The job becomes more efficient. Not eliminated. Enhanced.</p>
 
-                    <p>I run into similar issues with every automation project. The first version has problems. You fix them. You make it better.</p>
+                <h2>The Problems Are Real But Solvable</h2>
 
-                    <p>A client's first automated workflow had issues with edge cases. We refined it. Now it handles 95% of scenarios automatically and flags the 5% that need human review.</p>
+                <p>The glasses might not last a full 10-hour shift on one battery charge. Drivers might find them uncomfortable or distracting.</p>
 
-                    <p>That's the process. Build, test, improve. Not "it's not perfect so don't do it."</p>
+                <p>These are real concerns. But they're the kind of problems you solve through iteration, not reasons to not build the technology.</p>
 
-                    <p>The battery issue will get solved. The comfort issue will get addressed. That's engineering, not a fundamental flaw with the concept.</p>
+                <p>I run into similar issues with every automation project. The first version has problems. You fix them. You make it better.</p>
 
-                    <h2>What This Means For Other Industries</h2>
+                <p>A client's first automated workflow had issues with edge cases. We refined it. Now it handles 95% of scenarios automatically and flags the 5% that need human review.</p>
 
-                    <p>If you're running a business, this is the pattern to watch.</p>
+                <p>That's the process. Build, test, improve. Not "it's not perfect so don't do it."</p>
 
-                    <p>Automation isn't about replacing entire jobs. It's about removing the repetitive, mundane parts so your team can focus on work that creates actual value.</p>
+                <p>The battery issue will get solved. The comfort issue will get addressed. That's engineering, not a fundamental flaw with the concept.</p>
 
-                    <p>I work with businesses every week who are drowning in manual tasks. Invoice processing. Data entry. Scheduling. Customer intake. Inventory tracking.</p>
+                <h2>What This Means For Other Industries</h2>
 
-                    <p>None of those tasks require human creativity or judgment. They're just necessary busywork.</p>
+                <p>If you're running a business, this is the pattern to watch.</p>
 
-                    <p>When we automate them, the team doesn't shrink. The team gets more productive.</p>
+                <p>Automation isn't about replacing entire jobs. It's about removing the repetitive, mundane parts so your team can focus on work that creates actual value.</p>
 
-                    <p>They spend less time on administrative work and more time on customer relationships, strategic decisions, and actual problem-solving.</p>
+                <p>I work with businesses every week who are drowning in manual tasks. Invoice processing. Data entry. Scheduling. Customer intake. Inventory tracking.</p>
 
-                    <p>The same number of people doing more valuable work. That's the goal.</p>
+                <p>None of those tasks require human creativity or judgment. They're just necessary busywork.</p>
 
-                    <h2>The Bigger Picture</h2>
+                <p>When we automate them, the team doesn't shrink. The team gets more productive.</p>
 
-                    <p>Here's what good automation actually does.</p>
+                <p>They spend less time on administrative work and more time on customer relationships, strategic decisions, and actual problem-solving.</p>
 
-                    <p>It removes the parts of work that feel like work and leaves the parts that feel like contribution.</p>
+                <p>The same number of people doing more valuable work. That's the goal.</p>
 
-                    <p>Amazon drivers don't go to work excited about checking their phones 200 times. They go to work to deliver packages and get stuff to people who need it.</p>
+                <h2>The Bigger Picture</h2>
 
-                    <p>The glasses let them do more of the second thing and less of the first thing.</p>
+                <p>Here's what good automation actually does.</p>
 
-                    <p>Your business probably has the same split. Tasks that require human judgment, creativity, and decision-making. And tasks that are just repetitive processes that have to get done.</p>
+                <p>It removes the parts of work that feel like work and leaves the parts that feel like contribution.</p>
 
-                    <p>Automate the second category. Let your team focus on the first.</p>
+                <p>Amazon drivers don't go to work excited about checking their phones 200 times. They go to work to deliver packages and get stuff to people who need it.</p>
 
-                    <p>I had a client who was hesitant about automation because they didn't want to reduce headcount. I told them that's not the point.</p>
+                <p>The glasses let them do more of the second thing and less of the first thing.</p>
 
-                    <p>The point is letting your current team do more valuable work. Work that actually moves the business forward instead of just keeping the lights on.</p>
+                <p>Your business probably has the same split. Tasks that require human judgment, creativity, and decision-making. And tasks that are just repetitive processes that have to get done.</p>
 
-                    <p>We automated their reporting process. Saved 20 hours a week. They didn't lay anyone off. They redirected that time to business development and customer success.</p>
+                <p>Automate the second category. Let your team focus on the first.</p>
 
-                    <p>Revenue went up. Team stayed the same size. Everyone was happier because they were doing more interesting work.</p>
+                <p>I had a client who was hesitant about automation because they didn't want to reduce headcount. I told them that's not the point.</p>
 
-                    <p>That's what happens when you use automation to enhance instead of replace.</p>
+                <p>The point is letting your current team do more valuable work. Work that actually moves the business forward instead of just keeping the lights on.</p>
 
-                    <h2>This Is The Right Direction</h2>
+                <p>We automated their reporting process. Saved 20 hours a week. They didn't lay anyone off. They redirected that time to business development and customer success.</p>
 
-                    <p>I'm genuinely optimistic about where this is going.</p>
+                <p>Revenue went up. Team stayed the same size. Everyone was happier because they were doing more interesting work.</p>
 
-                    <p>Not because I think AI will solve everything. Because I think we're finally building tools that remove the tedious parts of work.</p>
+                <p>That's what happens when you use automation to enhance instead of replace.</p>
 
-                    <p>Nobody's job should be lifting heavy boxes all day when a robot can do that. Nobody should spend half their day managing logistics software when AI can handle it.</p>
+                <h2>This Is The Right Direction</h2>
 
-                    <p>The work that's uniquely human is problem-solving, decision-making, creativity, and human connection. That's the work worth protecting and emphasizing.</p>
+                <p>I'm genuinely optimistic about where this is going.</p>
 
-                    <p>Everything else? Automate it and let people focus on work that actually matters.</p>
+                <p>Not because I think AI will solve everything. Because I think we're finally building tools that remove the tedious parts of work.</p>
 
-                    <p>Amazon's glasses aren't replacing drivers. They're making the job better by removing the annoying parts.</p>
+                <p>Nobody's job should be lifting heavy boxes all day when a robot can do that. Nobody should spend half their day managing logistics software when AI can handle it.</p>
 
-                    <p>That's what good automation looks like. And that's the future worth building toward.</p>
+                <p>The work that's uniquely human is problem-solving, decision-making, creativity, and human connection. That's the work worth protecting and emphasizing.</p>
 
-                <div class="article-footer">
-                    <a href="../writing.html" class="back-link">Back to Writing</a>
-                </div>
+                <p>Everything else? Automate it and let people focus on work that actually matters.</p>
+
+                <p>Amazon's glasses aren't replacing drivers. They're making the job better by removing the annoying parts.</p>
+
+                <p>That's what good automation looks like. And that's the future worth building toward.</p>
             </div>
-        </section>
-    </main>
 
-    <footer class="footer-new">
-        <div class="container">
-            <div class="footer-content-new">
-                <div class="footer-section-new">
-                    <h3>Seth Forte</h3>
-                    <p>AI automation consultant building systems that eliminate manual work.</p>
-                </div>
-                <div class="footer-section-new">
-                    <h4>Quick Links</h4>
-                    <ul class="footer-links-new">
-                        <li><a href="../index.html#about">About</a></li>
-                        <li><a href="../index.html#work">Work</a></li>
-                        <li><a href="../index.html#services">Services</a></li>
-                        <li><a href="../writing.html">Writing</a></li>
-                        <li><a href="../index.html#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section-new">
-                    <h4>Connect</h4>
-                    <ul class="footer-links-new">
-                        <li><a href="https://www.linkedin.com/in/seth-forte/" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 4px;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a></li>
-                        <li><a href="https://www.instagram.com/fortewebdesigns/" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 4px;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>Instagram</a></li>
-                        <li><a href="mailto:seth@fortewebdesigns.com"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>Email</a></li>
-                    </ul>
-                </div>
+            <div class="footer-section">
+                <a href="mailto:seth@fortewebdesigns.com" class="footer-email">seth@fortewebdesigns.com</a>
+                <p class="copyright">© 2026 Seth Forte</p>
             </div>
-            <div class="footer-bottom-new">
-                <p>&copy; 2026 Seth Forte. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+        </main>
+    </div>
 
-    <script src="../script.js"></script>
+    <script>
+        // Dark mode toggle
+        const toggle = document.querySelector('.theme-toggle');
+        const html = document.documentElement;
+
+        // Check for saved preference or system preference
+        const savedTheme = localStorage.getItem('theme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme) {
+            html.setAttribute('data-theme', savedTheme);
+        } else if (systemDark) {
+            html.setAttribute('data-theme', 'dark');
+        }
+
+        toggle.addEventListener('click', () => {
+            const current = html.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+        });
+    </script>
 </body>
 </html>

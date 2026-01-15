@@ -5,245 +5,675 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How I Built A CRM System That Actually Fits How A Coach Works - Seth Forte</title>
     <meta name="description" content="Built a complete ActiveCampaign CRM system for a coaching business with 5 specialized pipelines and lifecycle automations. Projected 8-12 hours saved weekly while maintaining personal touch.">
+    <meta name="author" content="Seth Forte">
+    <link rel="icon" type="image/jpeg" href="../logo.jpg">
+    <link rel="apple-touch-icon" href="../logo.jpg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="How I Built A CRM System That Actually Fits How A Coach Works">
-    <meta property="og:description" content="Built a complete ActiveCampaign CRM system for a coaching business with 5 specialized pipelines and lifecycle automations. Projected 8-12 hours saved weekly while maintaining personal touch.">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://sethforte.com/articles/coaching-crm-case-study.html">
+        :root {
+            --text-primary: #1a1a1a;
+            --text-secondary: #666;
+            --text-muted: #999;
+            --accent: #4a7c91;
+            --background: #ffffff;
+            --border: #e5e5e5;
+        }
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="How I Built A CRM System That Actually Fits How A Coach Works">
-    <meta name="twitter:description" content="Built a complete ActiveCampaign CRM system for a coaching business with 5 specialized pipelines and lifecycle automations. Projected 8-12 hours saved weekly while maintaining personal touch.">
+        [data-theme="dark"] {
+            --text-primary: #e5e5e5;
+            --text-secondary: #a0a0a0;
+            --text-muted: #777;
+            --accent: #6ba3b8;
+            --background: #1a1a1a;
+            --border: #333;
+        }
 
-    <link rel="stylesheet" href="../styles.css">
-    <link rel="stylesheet" href="../blog.css">
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            font-size: 17px;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: var(--background);
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        .animate-fade-up {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
+        .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
+
+        /* Layout */
+        .site-wrapper {
+            display: flex;
+            min-height: 100vh;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            padding: 3rem 2rem;
+            border-right: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .profile-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-tagline {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .nav-links {
+            list-style: none;
+            margin-bottom: auto;
+            width: 100%;
+        }
+
+        .nav-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            font-size: 1rem;
+            display: block;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+            background: var(--border);
+            text-decoration: none;
+        }
+
+        .nav-links a.active {
+            color: var(--accent);
+            background: var(--border);
+        }
+
+        .sidebar-email {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            width: 100%;
+        }
+
+        .sidebar-email a {
+            color: var(--text-secondary);
+        }
+
+        .sidebar-email a:hover {
+            color: var(--accent);
+        }
+
+        /* Dark Mode Toggle */
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+
+        .theme-toggle:hover {
+            color: var(--text-primary);
+            border-color: var(--text-secondary);
+        }
+
+        .theme-toggle svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .theme-toggle .sun-icon {
+            display: none;
+        }
+
+        [data-theme="dark"] .theme-toggle .sun-icon {
+            display: block;
+        }
+
+        [data-theme="dark"] .theme-toggle .moon-icon {
+            display: none;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 4rem 4rem 6rem;
+            max-width: 720px;
+        }
+
+        /* Article Styles */
+        .back-link {
+            display: inline-block;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+        }
+
+        .article-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        .article-meta {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 3rem;
+        }
+
+        .article-body p {
+            margin-bottom: 1.5rem;
+        }
+
+        .article-body h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-body h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-body strong {
+            font-weight: 600;
+        }
+
+        .article-body ul, .article-body ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .article-body li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        .footer-section {
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-email {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        /* Site Header */
+        .site-header {
+            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--border);
+            background: var(--background);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-logo {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .header-logo:hover {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .header-nav a {
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            text-decoration: none;
+        }
+
+        .header-nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .site-header {
+                display: none;
+            }
+
+            .site-wrapper {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: none;
+                padding: 2.5rem 2rem;
+                text-align: center;
+                align-items: center;
+                background: var(--background);
+            }
+
+            .profile-photo {
+                width: 100px;
+                height: 100px;
+                margin-bottom: 1rem;
+            }
+
+            .profile-name {
+                font-size: 1.5rem;
+            }
+
+            .profile-tagline {
+                margin-bottom: 1.5rem;
+            }
+
+            .nav-links {
+                display: flex;
+                justify-content: center;
+                gap: 1.5rem;
+                margin-bottom: 1.5rem;
+                padding: 1rem 0;
+                border-top: 1px solid var(--border);
+                border-bottom: 1px solid var(--border);
+                width: 100%;
+            }
+
+            .nav-links li {
+                margin-bottom: 0;
+            }
+
+            .sidebar-email {
+                display: block;
+                margin-top: 0;
+                padding-top: 0;
+                border-top: none;
+            }
+
+            .theme-toggle {
+                margin-top: 1rem;
+                width: auto;
+                padding: 0.5rem 1rem;
+            }
+
+            .main-content {
+                padding: 3rem 2rem 4rem;
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .site-header {
+                padding: 1rem 1.5rem;
+            }
+
+            .header-nav {
+                gap: 1rem;
+            }
+
+            .header-nav a {
+                font-size: 0.9rem;
+            }
+
+            .sidebar {
+                padding: 2rem 1.5rem;
+            }
+
+            .profile-photo {
+                width: 90px;
+                height: 90px;
+            }
+
+            .profile-name {
+                font-size: 1.35rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+
+            .main-content {
+                padding: 2rem 1.5rem 3rem;
+            }
+
+            .article-title {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="../index.html" class="logo"><img src="../logo.jpg" alt="Seth Forte" height="40"></a>
-            <button class="mobile-menu-toggle" aria-label="Toggle menu" style="display: none;">☰</button>
-            <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/writing.html">Writing</a></li>
-                <li><a href="/about.html">About</a></li>
-                <li><a href="/contact.html">Contact</a></li>
-            </ul>
-            <div class="nav-right">
-                <button class="dark-mode-toggle" aria-label="Toggle dark mode">
-                    <span class="theme-icon sun-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="5"></circle>
-                            <line x1="12" y1="1" x2="12" y2="3"></line>
-                            <line x1="12" y1="21" x2="12" y2="23"></line>
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                            <line x1="1" y1="12" x2="3" y2="12"></line>
-                            <line x1="21" y1="12" x2="23" y2="12"></line>
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                        </svg>
-                    </span>
-                    <span class="theme-icon moon-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                        </svg>
-                    </span>
-                </button>
-            </div>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="header-logo">Seth Forte</a>
+            <nav class="header-nav">
+                <a href="/">Home</a>
+                <a href="/writing.html">Writing</a>
+                <a href="/about.html">About</a>
+                <a href="/contact.html">Contact</a>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-    <main class="article-page">
-        <!-- Article Hero -->
-        <section class="article-hero">
-            <div class="container">
-                <div class="article-hero-image" style="background: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=400&fit=crop') center/cover no-repeat;"></div>
+    <div class="site-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <img src="../headshot-6.jpg" alt="Seth Forte" class="profile-photo animate-fade-in">
+            <h1 class="profile-name">Seth Forte</h1>
+            <p class="profile-tagline">Automation & Custom Software</p>
 
-                <div class="article-meta">
-                    <span class="article-category">Building in Public</span>
-                    <span class="article-date">Oct 24, 2025</span>
-                    <span class="article-author">By Seth Forte</span>
-                </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/writing.html" class="active">Writing</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+            </nav>
 
-                <h1>How I Built A CRM System That Actually Fits How A Coach Works</h1>
+            <div class="sidebar-email">
+                <a href="mailto:seth@fortewebdesigns.com">seth@fortewebdesigns.com</a>
             </div>
-        </section>
 
-        <!-- Article Body -->
-        <section class="article-body">
-            <div class="container">
-                    <p>A business coach reached out with a problem I hear constantly.</p>
+            <button class="theme-toggle" aria-label="Toggle dark mode">
+                <span class="moon-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </span>
+                <span class="sun-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </span>
+            </button>
+        </aside>
 
-                    <p>She was spending 8 to 12 hours every week on manual client management. Tracking where people were in her pipeline. Remembering to send check-ins. Following up on referrals. Keeping notes organized across multiple tools.</p>
+        <!-- Main Content -->
+        <main class="main-content">
+            <a href="/writing.html" class="back-link animate-fade-up">← Back to Writing</a>
 
-                    <p>She knew she needed CRM and automation. She'd tried setting up ActiveCampaign herself. Got overwhelmed. Abandoned it.</p>
+            <h1 class="article-title animate-fade-up animate-delay-1">How I Built A CRM System That Actually Fits How A Coach Works</h1>
+            <p class="article-meta animate-fade-up animate-delay-2">Oct 24, 2025</p>
 
-                    <p>Now she was back to spreadsheets and manual follow-ups. Growing her coaching business while drowning in admin work.</p>
+            <div class="article-body">
+                <p>A business coach reached out with a problem I hear constantly.</p>
 
-                    <h2>What Was Actually Broken</h2>
+                <p>She was spending 8 to 12 hours every week on manual client management. Tracking where people were in her pipeline. Remembering to send check-ins. Following up on referrals. Keeping notes organized across multiple tools.</p>
 
-                    <p>Here's what her workflow looked like.</p>
+                <p>She knew she needed CRM and automation. She'd tried setting up ActiveCampaign herself. Got overwhelmed. Abandoned it.</p>
 
-                    <p>Someone expresses interest. She'd manually add them to a spreadsheet. Schedule a discovery call. After the call, move them to a different tab. If they became a client, move them again. Set reminders to check in at 30 days, 60 days, 90 days. Remember birthdays. Track referrals manually.</p>
+                <p>Now she was back to spreadsheets and manual follow-ups. Growing her coaching business while drowning in admin work.</p>
 
-                    <p>All of this across Google Sheets, her calendar, sticky notes, and memory.</p>
+                <h2>What Was Actually Broken</h2>
 
-                    <p>It worked when she had 10 clients. At 30+ clients plus leads in various stages, it was breaking down.</p>
+                <p>Here's what her workflow looked like.</p>
 
-                    <p>She'd miss check-ins. Forget to follow up on referrals. Lose track of where people were in her process.</p>
+                <p>Someone expresses interest. She'd manually add them to a spreadsheet. Schedule a discovery call. After the call, move them to a different tab. If they became a client, move them again. Set reminders to check in at 30 days, 60 days, 90 days. Remember birthdays. Track referrals manually.</p>
 
-                    <p>That's not a discipline problem. That's a systems problem.</p>
+                <p>All of this across Google Sheets, her calendar, sticky notes, and memory.</p>
 
-                    <h2>The Thing About Coaching Businesses</h2>
+                <p>It worked when she had 10 clients. At 30+ clients plus leads in various stages, it was breaking down.</p>
 
-                    <p>Coaching is different from product businesses.</p>
+                <p>She'd miss check-ins. Forget to follow up on referrals. Lose track of where people were in her process.</p>
 
-                    <p>The relationship is everything. You can't automate your way into removing the personal touch. That's literally what clients are paying for.</p>
+                <p>That's not a discipline problem. That's a systems problem.</p>
 
-                    <p>But there's a ton of relationship maintenance work that doesn't require personal attention. Remembering to check in at the right times. Asking for referrals when clients are happy. Sending birthday messages. Following up on leads at appropriate intervals.</p>
+                <h2>The Thing About Coaching Businesses</h2>
 
-                    <p>That stuff should be automated. Not because it's not important. Because automating it means it actually happens consistently.</p>
+                <p>Coaching is different from product businesses.</p>
 
-                    <h2>What I Built</h2>
+                <p>The relationship is everything. You can't automate your way into removing the personal touch. That's literally what clients are paying for.</p>
 
-                    <p>I built a complete ActiveCampaign ecosystem designed around how coaches actually work.</p>
+                <p>But there's a ton of relationship maintenance work that doesn't require personal attention. Remembering to check in at the right times. Asking for referrals when clients are happy. Sending birthday messages. Following up on leads at appropriate intervals.</p>
 
-                    <p>Five specialized pipelines:</p>
+                <p>That stuff should be automated. Not because it's not important. Because automating it means it actually happens consistently.</p>
 
-                    <ul>
-                        <li>Lead pipeline (inquiry to discovery call to decision)</li>
-                        <li>Onboarding pipeline (new client setup)</li>
-                        <li>Active client pipeline (ongoing coaching relationship)</li>
-                        <li>Offboarding pipeline (program completion)</li>
-                        <li>Referral pipeline (turning happy clients into advocates)</li>
-                    </ul>
+                <h2>What I Built</h2>
 
-                    <p>Each pipeline has automation that triggers at the right moments. Lead comes in, automation sends initial information and books discovery call. Client signs up, automation handles onboarding sequence. 30 days into coaching, automation sends check-in prompt.</p>
+                <p>I built a complete ActiveCampaign ecosystem designed around how coaches actually work.</p>
 
-                    <p>Birthday automation. Referral request automation triggered when clients hit milestones. Re-engagement sequences for leads who went cold.</p>
+                <p>Five specialized pipelines:</p>
 
-                    <p>All connected to her other tools. Kajabi for course delivery. WordPress for her website. ClickUp for task management.</p>
+                <ul>
+                    <li>Lead pipeline (inquiry to discovery call to decision)</li>
+                    <li>Onboarding pipeline (new client setup)</li>
+                    <li>Active client pipeline (ongoing coaching relationship)</li>
+                    <li>Offboarding pipeline (program completion)</li>
+                    <li>Referral pipeline (turning happy clients into advocates)</li>
+                </ul>
 
-                    <p>The system knows where everyone is, what's happened, and what should happen next.</p>
+                <p>Each pipeline has automation that triggers at the right moments. Lead comes in, automation sends initial information and books discovery call. Client signs up, automation handles onboarding sequence. 30 days into coaching, automation sends check-in prompt.</p>
 
-                    <h2>The Part That Was Tricky</h2>
+                <p>Birthday automation. Referral request automation triggered when clients hit milestones. Re-engagement sequences for leads who went cold.</p>
 
-                    <p>The technical setup wasn't hard. ActiveCampaign is powerful but learnable.</p>
+                <p>All connected to her other tools. Kajabi for course delivery. WordPress for her website. ClickUp for task management.</p>
 
-                    <p>The hard part was designing automation that maintained her personal approach.</p>
+                <p>The system knows where everyone is, what's happened, and what should happen next.</p>
 
-                    <p>Coaches sell relationships. If the automation feels robotic or impersonal, it damages what clients are paying for.</p>
+                <h2>The Part That Was Tricky</h2>
 
-                    <p>We spent weeks on the messaging. What should be automated versus what should be personal? How do we write automated messages that still feel like they're from her?</p>
+                <p>The technical setup wasn't hard. ActiveCampaign is powerful but learnable.</p>
 
-                    <p>The breakthrough was realizing automation doesn't mean impersonal. It means consistent.</p>
+                <p>The hard part was designing automation that maintained her personal approach.</p>
 
-                    <p>The automated check-ins don't replace her coaching. They make sure she never forgets to reach out. The system reminds her, she adds personal context, the relationship stays strong.</p>
+                <p>Coaches sell relationships. If the automation feels robotic or impersonal, it damages what clients are paying for.</p>
 
-                    <p>That's the right use of automation in a coaching business.</p>
+                <p>We spent weeks on the messaging. What should be automated versus what should be personal? How do we write automated messages that still feel like they're from her?</p>
 
-                    <h2>Why This Took Longer Than Expected</h2>
+                <p>The breakthrough was realizing automation doesn't mean impersonal. It means consistent.</p>
 
-                    <p>I initially estimated three weeks. It took closer to six.</p>
+                <p>The automated check-ins don't replace her coaching. They make sure she never forgets to reach out. The system reminds her, she adds personal context, the relationship stays strong.</p>
 
-                    <p>Not because the technical work was harder than expected. Because we kept refining the workflows as we saw how she actually used the system.</p>
+                <p>That's the right use of automation in a coaching business.</p>
 
-                    <p>First version had too much automation. Felt impersonal. Scaled back.</p>
+                <h2>Why This Took Longer Than Expected</h2>
 
-                    <p>Second version didn't capture enough information. She was still tracking stuff manually. Added more fields.</p>
+                <p>I initially estimated three weeks. It took closer to six.</p>
 
-                    <p>Third version had the right balance. Enough automation to save serious time. Enough flexibility to maintain her personal approach.</p>
+                <p>Not because the technical work was harder than expected. Because we kept refining the workflows as we saw how she actually used the system.</p>
 
-                    <p>You can't design that perfectly upfront. You have to build, test, refine.</p>
+                <p>First version had too much automation. Felt impersonal. Scaled back.</p>
 
-                    <p>The client understood that. She was patient. Gave good feedback. Participated in testing.</p>
+                <p>Second version didn't capture enough information. She was still tracking stuff manually. Added more fields.</p>
 
-                    <p>That's why it works now.</p>
+                <p>Third version had the right balance. Enough automation to save serious time. Enough flexibility to maintain her personal approach.</p>
 
-                    <h2>The Projected Results</h2>
+                <p>You can't design that perfectly upfront. You have to build, test, refine.</p>
 
-                    <p>This is a newer project, so I'm talking about projected rather than proven results.</p>
+                <p>The client understood that. She was patient. Gave good feedback. Participated in testing.</p>
 
-                    <p>Based on time tracking before and after, we're projecting 8 to 12 hours saved weekly on manual CRM tasks. That's $20K to $30K annually in recovered time she can spend coaching or growing the business.</p>
+                <p>That's why it works now.</p>
 
-                    <p>The referral automation should increase referral generation by 20 to 30%. Right now she gets referrals when she remembers to ask. Now the system asks at optimal moments automatically.</p>
+                <h2>The Projected Results</h2>
 
-                    <p>Lead conversion should improve 15 to 25%. The automated follow-up sequences mean leads don't fall through cracks. Everyone gets appropriate touchpoints at the right times.</p>
+                <p>This is a newer project, so I'm talking about projected rather than proven results.</p>
 
-                    <p>We'll see actual numbers over the next few months. But early indicators look solid.</p>
+                <p>Based on time tracking before and after, we're projecting 8 to 12 hours saved weekly on manual CRM tasks. That's $20K to $30K annually in recovered time she can spend coaching or growing the business.</p>
 
-                    <h2>What I Learned About Coaching Businesses</h2>
+                <p>The referral automation should increase referral generation by 20 to 30%. Right now she gets referrals when she remembers to ask. Now the system asks at optimal moments automatically.</p>
 
-                    <p>Coaches need different automation than product businesses.</p>
+                <p>Lead conversion should improve 15 to 25%. The automated follow-up sequences mean leads don't fall through cracks. Everyone gets appropriate touchpoints at the right times.</p>
 
-                    <p>Product businesses can automate aggressively. Nobody cares if their order confirmation is automated.</p>
+                <p>We'll see actual numbers over the next few months. But early indicators look solid.</p>
 
-                    <p>Coaching businesses need careful automation. The relationship is the product. Automation needs to support that relationship, not replace it.</p>
+                <h2>What I Learned About Coaching Businesses</h2>
 
-                    <p>The right approach: automate the logistics, preserve the personal connection.</p>
+                <p>Coaches need different automation than product businesses.</p>
 
-                    <p>Automate scheduling, reminders, follow-ups, data tracking. Keep personal the actual coaching, custom advice, relationship building.</p>
+                <p>Product businesses can automate aggressively. Nobody cares if their order confirmation is automated.</p>
 
-                    <p>That's the balance that works.</p>
+                <p>Coaching businesses need careful automation. The relationship is the product. Automation needs to support that relationship, not replace it.</p>
 
-                    <h2>The Part I'm Proud Of</h2>
+                <p>The right approach: automate the logistics, preserve the personal connection.</p>
 
-                    <p>The system doesn't just save time. It makes her better at what she does.</p>
+                <p>Automate scheduling, reminders, follow-ups, data tracking. Keep personal the actual coaching, custom advice, relationship building.</p>
 
-                    <p>Before, she'd sometimes forget to check in with clients at important moments. Not because she didn't care. Because she's running a business and things slip through.</p>
+                <p>That's the balance that works.</p>
 
-                    <p>Now the system reminds her. Client hits 60 days, she gets a notification. Time to ask for a referral, system prompts her. Lead needs follow-up, it surfaces automatically.</p>
+                <h2>The Part I'm Proud Of</h2>
 
-                    <p>She's still doing the personal work. The system just makes sure nothing falls through cracks.</p>
+                <p>The system doesn't just save time. It makes her better at what she does.</p>
 
-                    <p>That's automation that enhances professional capability instead of just reducing costs.</p>
+                <p>Before, she'd sometimes forget to check in with clients at important moments. Not because she didn't care. Because she's running a business and things slip through.</p>
 
-                    <p>And because it's built on ActiveCampaign, she can modify it herself as her business evolves. Add new pipelines. Adjust automations. She's not dependent on me for every change.</p>
+                <p>Now the system reminds her. Client hits 60 days, she gets a notification. Time to ask for a referral, system prompts her. Lead needs follow-up, it surfaces automatically.</p>
 
-                    <p>That's the right way to deliver this kind of system.</p>
+                <p>She's still doing the personal work. The system just makes sure nothing falls through cracks.</p>
 
-                <div class="article-footer">
-                    <a href="../writing.html" class="back-link">Back to Writing</a>
-                </div>
+                <p>That's automation that enhances professional capability instead of just reducing costs.</p>
+
+                <p>And because it's built on ActiveCampaign, she can modify it herself as her business evolves. Add new pipelines. Adjust automations. She's not dependent on me for every change.</p>
+
+                <p>That's the right way to deliver this kind of system.</p>
             </div>
-        </section>
-    </main>
 
-    <footer class="footer-new">
-        <div class="container">
-            <div class="footer-content-new">
-                <div class="footer-section-new">
-                    <h3>Seth Forte</h3>
-                    <p>AI automation consultant building systems that eliminate manual work.</p>
-                </div>
-                <div class="footer-section-new">
-                    <h4>Quick Links</h4>
-                    <ul class="footer-links-new">
-                        <li><a href="../index.html#about">About</a></li>
-                        <li><a href="../index.html#work">Work</a></li>
-                        <li><a href="../index.html#services">Services</a></li>
-                        <li><a href="../writing.html">Writing</a></li>
-                        <li><a href="../index.html#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section-new">
-                    <h4>Connect</h4>
-                    <ul class="footer-links-new">
-                        <li><a href="https://www.linkedin.com/in/seth-forte/" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 4px;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a></li>
-                        <li><a href="https://www.instagram.com/fortewebdesigns/" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 4px;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>Instagram</a></li>
-                        <li><a href="mailto:seth@fortewebdesigns.com"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>Email</a></li>
-                    </ul>
-                </div>
+            <div class="footer-section">
+                <a href="mailto:seth@fortewebdesigns.com" class="footer-email">seth@fortewebdesigns.com</a>
+                <p class="copyright">© 2026 Seth Forte</p>
             </div>
-            <div class="footer-bottom-new">
-                <p>&copy; 2026 Seth Forte. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+        </main>
+    </div>
 
-    <script src="../script.js"></script>
+    <script>
+        // Dark mode toggle
+        const toggle = document.querySelector('.theme-toggle');
+        const html = document.documentElement;
+
+        // Check for saved preference or system preference
+        const savedTheme = localStorage.getItem('theme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme) {
+            html.setAttribute('data-theme', savedTheme);
+        } else if (systemDark) {
+            html.setAttribute('data-theme', 'dark');
+        }
+
+        toggle.addEventListener('click', () => {
+            const current = html.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+        });
+    </script>
 </body>
 </html>
