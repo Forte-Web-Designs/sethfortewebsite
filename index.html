@@ -441,6 +441,22 @@
             display: inline-block;
         }
 
+        /* Rotating Tagline */
+        .rotating-tagline {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .rotating-word {
+            display: inline-block;
+            color: var(--accent);
+            font-weight: 700;
+            transition: opacity 0.4s ease;
+        }
+
         .trust-line {
             text-align: center;
             color: var(--text-secondary);
@@ -792,6 +808,7 @@
         <main class="main-content">
             <!-- Hero Section -->
             <div class="hero-section">
+                <p class="rotating-tagline animate-fade-up animate-delay-1">Business Growth Isn't Luck. It's <span class="rotating-word">A System</span></p>
                 <h2 class="hero-text animate-fade-up animate-delay-1">I build the systems that make growing businesses run.</h2>
                 <p class="hero-body animate-fade-up animate-delay-2">Automation, CRM pipelines, reporting dashboards, and the infrastructure that holds it all together. Most of the work I do is invisible... it just makes everything else work the way it should.</p>
                 <div class="hero-cta animate-fade-up animate-delay-3">
@@ -835,28 +852,28 @@
 
             <p class="body-text">Most businesses that come to me are dealing with one of three things: they have no systems at all, they have systems that don't talk to each other, or they've outgrown what they built and it's starting to break.</p>
 
-            <p class="body-text" style="margin-bottom: 2.5rem;">The fix depends on where you are. Some businesses need the foundation first. Others are ready to grow but their infrastructure can't keep up. And some need the full stack connected and running.</p>
+            <p class="body-text" style="margin-bottom: 2.5rem;">The fix depends on where you are.</p>
 
             <div class="stage-grid">
                 <a href="/foundation.html" class="stage-card stage-foundation">
                     <div class="stage-title">Foundation</div>
-                    <div class="stage-tagline">Stop losing leads. Start running on a real system.</div>
+                    <div class="stage-tagline">Get your system built and your first leads flowing.</div>
                     <div class="stage-subtitle">1-2 weeks</div>
-                    <p>CRM with a sales pipeline, payment processing, email that actually lands, booking and intake forms, and tracking so you know what's working. The system every business needs before anything else makes sense.</p>
+                    <p>CRM with a real sales pipeline. Payment processing. Email that actually lands in inboxes. Booking and intake forms. Tracking so you know where leads come from. And your first lead source connected and producing, because nobody should walk away with an empty system.</p>
                     <span class="stage-link">Learn more &rarr;</span>
                 </a>
                 <a href="/growth.html" class="stage-card stage-growth">
                     <div class="stage-title">Growth</div>
-                    <div class="stage-tagline">Fill your pipeline. Turn leads into revenue.</div>
+                    <div class="stage-tagline">Turn leads into revenue. Know what's working.</div>
                     <div class="stage-subtitle">2-3 weeks</div>
-                    <p>Lead generation, automated follow-up sequences, booking systems, sales funnels, SMS, and the integrations that make it all run without you touching it. Built on top of your foundation.</p>
+                    <p>Leads mean nothing if you don't know where they came from, can't follow up fast enough, or have no way to tell what's actually converting. Growth adds automated follow-up sequences, sales funnels, booking systems, SMS, and the tracking and attribution that shows you exactly which channels produce revenue and which ones waste money.</p>
                     <span class="stage-link">Learn more &rarr;</span>
                 </a>
                 <a href="/scale.html" class="stage-card stage-scale">
                     <div class="stage-title">Scale</div>
                     <div class="stage-tagline">Optimize what's working. Grow without adding headcount.</div>
                     <div class="stage-subtitle">3-4 weeks</div>
-                    <p>Reporting dashboards, multi-channel expansion, outbound systems, AI agents, content engines, and monthly management. For businesses that already have leads coming in and want to do more of what's working.</p>
+                    <p>Reporting dashboards so you stop guessing. Outbound systems to find prospects instead of waiting for them. AI agents that answer calls and chat 24/7. Content engines that keep you visible. And monthly management so someone's actually watching the machine. Built for businesses that already have leads and want to multiply what's working.</p>
                     <span class="stage-link">Learn more &rarr;</span>
                 </a>
             </div>
@@ -1000,5 +1017,20 @@
             </div>
         </main>
     </div>
+    <script>
+        const words = ["A System", "Using The Right Data", "A Framework", "A Process", "Execution"];
+        let index = 0;
+        const el = document.querySelector('.rotating-word');
+        if (el) {
+            setInterval(() => {
+                el.style.opacity = 0;
+                setTimeout(() => {
+                    index = (index + 1) % words.length;
+                    el.textContent = words[index];
+                    el.style.opacity = 1;
+                }, 400);
+            }, 3000);
+        }
+    </script>
 </body>
 </html>
