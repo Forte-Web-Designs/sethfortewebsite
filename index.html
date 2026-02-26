@@ -61,27 +61,15 @@
         }
 
         :root {
-            --text-primary: #1a1a1a;
-            --text-secondary: #666;
-            --text-muted: #999;
-            --accent: #4a7c91;
-            --accent-warm: #c9845b;
-            --background: #ffffff;
-            --border: #e5e5e5;
-            --card-bg: #f9f9f9;
-            --newsletter-bg: #f7f5f3;
-        }
-
-        [data-theme="dark"] {
             --text-primary: #e5e5e5;
             --text-secondary: #a0a0a0;
             --text-muted: #777;
             --accent: #6ba3b8;
             --accent-warm: #d4956a;
-            --background: #1a1a1a;
-            --border: #333;
-            --card-bg: #222;
-            --newsletter-bg: #242220;
+            --background: #111111;
+            --background-alt: #181818;
+            --border: #2a2a2a;
+            --card-bg: #1a1a1a;
         }
 
         body {
@@ -90,7 +78,6 @@
             line-height: 1.7;
             color: var(--text-primary);
             background: var(--background);
-            transition: background 0.3s ease, color 0.3s ease;
         }
 
         a {
@@ -105,14 +92,8 @@
 
         /* Animations */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes fadeIn {
@@ -120,19 +101,11 @@
             to { opacity: 1; }
         }
 
-        .animate-fade-in {
-            animation: fadeIn 0.6s ease forwards;
-        }
-
-        .animate-fade-up {
-            animation: fadeInUp 0.6s ease forwards;
-        }
-
+        .animate-fade-in { animation: fadeIn 0.6s ease forwards; }
+        .animate-fade-up { animation: fadeInUp 0.6s ease forwards; }
         .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
         .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
         .animate-delay-3 { animation-delay: 0.3s; opacity: 0; }
-        .animate-delay-4 { animation-delay: 0.4s; opacity: 0; }
-        .animate-delay-5 { animation-delay: 0.5s; opacity: 0; }
 
         /* Layout */
         .site-wrapper {
@@ -167,20 +140,21 @@
 
         .profile-photo:hover {
             transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         }
 
         .profile-name {
             font-size: 1.25rem;
             font-weight: 600;
             color: var(--text-primary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
         }
 
         .profile-tagline {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
+            font-size: 0.85rem;
+            color: var(--text-muted);
             margin-bottom: 2rem;
+            line-height: 1.4;
         }
 
         .nav-links {
@@ -189,13 +163,11 @@
             width: 100%;
         }
 
-        .nav-links li {
-            margin-bottom: 0.5rem;
-        }
+        .nav-links li { margin-bottom: 0.25rem; }
 
         .nav-links a {
-            color: var(--text-primary);
-            font-size: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
             display: block;
             padding: 0.5rem 1rem;
             border-radius: 6px;
@@ -203,134 +175,145 @@
         }
 
         .nav-links a:hover {
-            color: var(--accent);
-            background: var(--border);
+            color: var(--text-primary);
+            background: var(--card-bg);
             text-decoration: none;
         }
 
         .nav-links a.active {
-            color: var(--accent);
-            background: var(--border);
+            color: var(--text-primary);
+            background: var(--card-bg);
         }
 
         .sidebar-email {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
+            font-size: 0.8rem;
+            color: var(--text-muted);
             margin-top: 2rem;
             padding-top: 1.5rem;
             border-top: 1px solid var(--border);
             width: 100%;
         }
 
-        .sidebar-email a {
-            color: var(--text-secondary);
-        }
-
-        .sidebar-email a:hover {
-            color: var(--accent);
-        }
-
-        /* Dark Mode Toggle */
-        .theme-toggle {
-            background: none;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-            color: var(--text-secondary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 1rem;
-            transition: all 0.2s;
-            font-size: 0.85rem;
-        }
-
-        .theme-toggle:hover {
-            color: var(--text-primary);
-            border-color: var(--text-secondary);
-        }
-
-        .theme-toggle svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        .theme-toggle .sun-icon {
-            display: none;
-        }
-
-        [data-theme="dark"] .theme-toggle .sun-icon {
-            display: block;
-        }
-
-        [data-theme="dark"] .theme-toggle .moon-icon {
-            display: none;
-        }
+        .sidebar-email a { color: var(--text-muted); }
+        .sidebar-email a:hover { color: var(--accent); }
 
         /* Main Content */
         .main-content {
             flex: 1;
-            padding: 4rem 4rem 6rem;
-            max-width: 680px;
+            padding: 5rem 4rem 6rem;
+            max-width: 780px;
         }
 
-        /* Homepage Sections */
+        /* Hero */
         .hero-text {
-            font-size: 1.5rem;
-            font-weight: 600;
+            font-size: 1.75rem;
+            font-weight: 700;
             color: var(--text-primary);
-            line-height: 1.4;
-            margin-bottom: 0.75rem;
-        }
-
-        .hero-subtext {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 3rem;
-        }
-
-        .section-divider {
-            border: none;
-            border-top: 1px solid var(--border);
-            margin: 3rem 0;
+            line-height: 1.3;
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.02em;
         }
 
         .body-text {
-            color: var(--text-primary);
-            margin-bottom: 1.5rem;
-        }
-
-        .note-text {
             color: var(--text-secondary);
-            font-size: 1rem;
+            margin-bottom: 1.75rem;
+            line-height: 1.8;
         }
 
-        /* Section Title */
-        .section-title {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 2rem;
+        .body-text-primary {
+            color: var(--text-primary);
+            margin-bottom: 1.75rem;
+            line-height: 1.8;
         }
 
-        /* Hero CTA Buttons */
         .hero-cta {
             display: flex;
             gap: 1rem;
-            margin-top: 1.5rem;
-            margin-bottom: 1rem;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
             flex-wrap: wrap;
         }
 
+        .hero-qualifier {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 1.5rem;
+        }
+
+        .hero-subtext {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-top: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Credibility Bar */
+        .credibility-bar {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 1.25rem;
+            margin: 2.5rem 0 2rem;
+        }
+
+        .credibility-item {
+            text-align: center;
+            padding: 1rem 0.5rem;
+        }
+
+        .credibility-item .stat {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .credibility-item .label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            line-height: 1.4;
+        }
+
+        /* Client Row */
+        .client-row {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            letter-spacing: 0.03em;
+            margin-bottom: 1.5rem;
+        }
+
+        .client-row .divider {
+            margin: 0 0.5rem;
+            opacity: 0.4;
+        }
+
+        /* Featured In */
+        .featured-in {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .featured-in a {
+            color: var(--text-muted);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .featured-in a:hover {
+            color: var(--accent);
+        }
+
+        /* Buttons */
         .btn-primary {
             display: inline-block;
             background: var(--accent);
             color: #ffffff;
-            padding: 0.65rem 1.5rem;
+            padding: 0.75rem 1.75rem;
             border-radius: 6px;
             font-size: 0.95rem;
             font-weight: 500;
@@ -338,15 +321,15 @@
         }
 
         .btn-primary:hover {
-            opacity: 0.9;
+            opacity: 0.85;
             text-decoration: none;
         }
 
         .btn-secondary {
             display: inline-block;
             border: 1px solid var(--border);
-            color: var(--text-primary);
-            padding: 0.65rem 1.5rem;
+            color: var(--text-secondary);
+            padding: 0.75rem 1.75rem;
             border-radius: 6px;
             font-size: 0.95rem;
             font-weight: 500;
@@ -359,216 +342,223 @@
             text-decoration: none;
         }
 
-        /* Service Category */
-        .service-category {
+        /* Section Styles */
+        .section-divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
             margin-bottom: 2.5rem;
         }
 
-        .service-category h3 {
-            font-size: 1.1rem;
+        /* Service Cards */
+        .service-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.75rem;
+            transition: border-color 0.2s ease, transform 0.15s ease;
+        }
+
+        .service-card:hover {
+            border-color: var(--text-muted);
+            transform: translateY(-2px);
+        }
+
+        .service-card h3 {
+            font-size: 1.05rem;
             font-weight: 600;
             color: var(--text-primary);
             margin-bottom: 0.5rem;
         }
 
-        .service-category > p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .service-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .service-list li {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            padding: 0.25rem 0;
-            padding-left: 1.25rem;
-            position: relative;
-        }
-
-        .service-list li::before {
-            content: "–";
-            position: absolute;
-            left: 0;
+        .service-card p {
             color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
         }
 
         /* Audit Section */
         .audit-section {
-            background: var(--newsletter-bg);
-            border-radius: 8px;
-            padding: 2.5rem;
-            margin: 3rem 0;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
             border-left: 4px solid var(--accent-warm);
+            border-radius: 10px;
+            padding: 2.5rem;
+            margin: 2rem 0;
         }
 
         .audit-section h2 {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
         }
 
-        .audit-section .body-text:last-of-type {
-            margin-bottom: 0.5rem;
-        }
-
-        .audit-price {
-            font-weight: 600;
-            color: var(--text-primary);
+        /* Result Cards */
+        .result-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.25rem;
             margin-bottom: 1.5rem;
         }
 
-        /* Results Section */
-        .result-item {
-            margin-bottom: 2rem;
-            padding: 1.25rem;
-            margin-left: -1.25rem;
-            margin-right: -1.25rem;
-            border-radius: 8px;
-            transition: background 0.2s ease, transform 0.2s ease;
+        .result-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.75rem;
+            text-align: left;
+            transition: border-color 0.2s ease, transform 0.15s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
 
-        .result-item:hover {
-            background: var(--border);
-            transform: translateX(4px);
+        .result-card:hover {
+            border-color: var(--text-muted);
+            transform: translateY(-2px);
+            text-decoration: none;
         }
 
-        .result-item h3 {
-            font-size: 1rem;
+        .result-stat {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--accent-warm);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .result-card h3 {
+            font-size: 0.95rem;
             font-weight: 600;
             color: var(--text-primary);
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.35rem;
         }
 
-        .result-item .result-stat {
-            color: var(--accent-warm);
-            font-weight: 600;
-            font-size: 0.9rem;
+        .result-card p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 1.5;
         }
 
-        .result-item p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        /* Writing Section */
-        .writing-list {
-            list-style: none;
-        }
+        /* Writing Items */
+        .writing-list { list-style: none; }
 
         .writing-item {
-            margin-bottom: 2.5rem;
-            padding: 1.25rem;
-            margin-left: -1.25rem;
-            margin-right: -1.25rem;
-            border-radius: 8px;
-            transition: background 0.2s ease, transform 0.2s ease;
+            margin-bottom: 0.5rem;
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: background 0.2s ease;
         }
 
         .writing-item:hover {
-            background: var(--border);
-            transform: translateX(4px);
+            background: var(--card-bg);
         }
 
         .writing-item h3 {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 600;
             color: var(--text-primary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.35rem;
             line-height: 1.4;
             transition: color 0.2s ease;
         }
 
-        .writing-item:hover h3 {
-            color: var(--accent);
-        }
+        .writing-item:hover h3 { color: var(--accent); }
 
         .writing-item p {
-            color: var(--text-secondary);
-            font-size: 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
             margin-bottom: 0.5rem;
+            line-height: 1.6;
         }
 
         .writing-item .read-link {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--accent);
-            transition: transform 0.2s ease;
             display: inline-block;
-        }
-
-        .writing-item:hover .read-link {
-            transform: translateX(4px);
         }
 
         .view-all-link {
             display: inline-block;
             margin-top: 1rem;
             color: var(--accent);
-            font-size: 1rem;
+            font-size: 0.95rem;
+        }
+
+        /* Newsletter */
+        .newsletter-section {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .newsletter-section iframe {
+            max-width: 100%;
         }
 
         /* CTA Section */
         .cta-section {
             background: var(--card-bg);
-            border-radius: 8px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
             padding: 2.5rem;
-            margin: 3rem 0;
-        }
-
-        .cta-section .body-text:last-of-type {
-            margin-bottom: 1.5rem;
+            margin: 2rem 0;
         }
 
         /* Footer */
         .footer-section {
-            margin-top: 4rem;
+            margin-top: 5rem;
             padding-top: 3rem;
             border-top: 1px solid var(--border);
         }
 
         .footer-email-main {
-            color: var(--text-primary);
+            color: var(--text-secondary);
             font-size: 1rem;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            display: block;
         }
 
         .footer-columns {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             gap: 2rem;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
 
         .footer-col h4 {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 600;
             color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.75rem;
+            letter-spacing: 0.08em;
+            margin-bottom: 1rem;
         }
 
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col li {
-            margin-bottom: 0.4rem;
-        }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 0.5rem; }
 
         .footer-col a {
             color: var(--text-secondary);
             font-size: 0.9rem;
         }
 
-        .footer-col a:hover {
-            color: var(--accent);
-        }
+        .footer-col a:hover { color: var(--accent); }
 
         .footer-bottom {
             padding-top: 1.5rem;
@@ -577,152 +567,16 @@
 
         .footer-location {
             color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            margin-bottom: 0.35rem;
         }
 
         .copyright {
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
-        /* Responsive */
-        @media (max-width: 900px) {
-            .site-header {
-                display: none;
-            }
-
-            .site-wrapper {
-                flex-direction: column;
-            }
-
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-                border-right: none;
-                border-bottom: none;
-                padding: 2.5rem 2rem;
-                text-align: center;
-                align-items: center;
-                background: var(--background);
-            }
-
-            .profile-photo {
-                width: 100px;
-                height: 100px;
-                margin-bottom: 1rem;
-            }
-
-            .profile-name {
-                font-size: 1.5rem;
-            }
-
-            .profile-tagline {
-                margin-bottom: 1.5rem;
-            }
-
-            .nav-links {
-                display: flex;
-                justify-content: center;
-                gap: 1.5rem;
-                margin-bottom: 1.5rem;
-                padding: 1rem 0;
-                border-top: 1px solid var(--border);
-                border-bottom: 1px solid var(--border);
-                width: 100%;
-            }
-
-            .nav-links li {
-                margin-bottom: 0;
-            }
-
-            .sidebar-email {
-                display: block;
-                margin-top: 0;
-                padding-top: 0;
-                border-top: none;
-            }
-
-            .theme-toggle {
-                margin-top: 1rem;
-                width: auto;
-                padding: 0.5rem 1rem;
-            }
-
-            .main-content {
-                padding: 3rem 2rem 4rem;
-                text-align: left;
-            }
-
-            .writing-item,
-            .result-item {
-                margin-left: 0;
-                margin-right: 0;
-                padding: 1rem;
-            }
-
-            .footer-columns {
-                grid-template-columns: 1fr 1fr;
-                gap: 1.5rem;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .sidebar {
-                padding: 2rem 1.5rem;
-            }
-
-            .profile-photo {
-                width: 90px;
-                height: 90px;
-            }
-
-            .profile-name {
-                font-size: 1.35rem;
-            }
-
-            .nav-links {
-                gap: 1rem;
-                flex-wrap: wrap;
-            }
-
-            .main-content {
-                padding: 2rem 1.5rem 3rem;
-            }
-
-            .hero-text {
-                font-size: 1.3rem;
-            }
-
-            .writing-item,
-            .result-item {
-                padding: 0.75rem;
-            }
-
-            .section-divider {
-                margin: 2rem 0;
-            }
-
-            .footer-columns {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-cta {
-                flex-direction: column;
-            }
-
-            .hero-cta a {
-                text-align: center;
-            }
-
-            .audit-section,
-            .cta-section {
-                padding: 1.5rem;
-            }
-        }
-
-        /* Site Header */
+        /* Site Header (mobile top bar replacement) */
         .site-header {
             padding: 1rem 2rem;
             border-bottom: 1px solid var(--border);
@@ -744,10 +598,7 @@
             text-decoration: none;
         }
 
-        .header-logo:hover {
-            color: var(--accent);
-            text-decoration: none;
-        }
+        .header-logo:hover { color: var(--accent); text-decoration: none; }
 
         .header-nav {
             display: flex;
@@ -755,27 +606,84 @@
         }
 
         .header-nav a {
-            color: var(--text-primary);
-            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
             text-decoration: none;
         }
 
-        .header-nav a:hover {
-            color: var(--accent);
+        .header-nav a:hover { color: var(--text-primary); }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .site-header { display: none; }
+
+            .site-wrapper { flex-direction: column; }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                padding: 2.5rem 2rem;
+                text-align: center;
+                align-items: center;
+            }
+
+            .profile-photo { width: 100px; height: 100px; margin-bottom: 1rem; }
+            .profile-name { font-size: 1.5rem; }
+            .profile-tagline { margin-bottom: 1.5rem; }
+
+            .nav-links {
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+                margin-bottom: 1.5rem;
+                padding: 1rem 0;
+                border-top: 1px solid var(--border);
+                border-bottom: 1px solid var(--border);
+                width: 100%;
+                flex-wrap: wrap;
+            }
+
+            .nav-links li { margin-bottom: 0; }
+
+            .sidebar-email {
+                display: block;
+                margin-top: 0;
+                padding-top: 0;
+                border-top: none;
+            }
+
+            .main-content { padding: 3rem 2rem 4rem; text-align: left; }
+
+            .service-grid { grid-template-columns: 1fr; }
+            .result-grid { grid-template-columns: 1fr; }
+            .credibility-bar { grid-template-columns: 1fr 1fr; }
+
+            .footer-columns { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+
+            .writing-item { margin-left: 0; margin-right: 0; padding: 1rem; }
         }
 
         @media (max-width: 600px) {
-            .site-header {
-                padding: 1rem 1.5rem;
-            }
+            .sidebar { padding: 2rem 1.5rem; }
+            .profile-photo { width: 90px; height: 90px; }
+            .profile-name { font-size: 1.35rem; }
+            .nav-links { gap: 0.75rem; }
+            .main-content { padding: 2rem 1.5rem 3rem; }
+            .hero-text { font-size: 1.4rem; }
+            .section-divider { margin: 3rem 0; }
+            .footer-columns { grid-template-columns: 1fr; }
+            .hero-cta { flex-direction: column; }
+            .hero-cta a { text-align: center; }
+            .audit-section, .cta-section { padding: 1.75rem; }
+            .service-card { padding: 1.25rem; }
+            .result-grid { grid-template-columns: 1fr; }
+            .credibility-bar { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
 
-            .header-nav {
-                gap: 1rem;
-            }
-
-            .header-nav a {
-                font-size: 0.9rem;
-            }
+            .site-header { padding: 1rem 1.5rem; }
+            .header-nav { gap: 1rem; }
+            .header-nav a { font-size: 0.85rem; }
         }
     </style>
 </head>
@@ -798,7 +706,7 @@
         <aside class="sidebar">
             <img src="headshot-6.jpg" alt="Seth Forte" class="profile-photo animate-fade-in">
             <h1 class="profile-name">Seth Forte</h1>
-            <p class="profile-tagline">Automation & Custom Software</p>
+            <p class="profile-tagline">Systems Architect &<br>Automation Consultant</p>
 
             <nav>
                 <ul class="nav-links">
@@ -813,27 +721,6 @@
             <div class="sidebar-email">
                 <a href="mailto:seth@fortewebdesigns.com">seth@fortewebdesigns.com</a>
             </div>
-
-            <button class="theme-toggle" aria-label="Toggle dark mode">
-                <span class="moon-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                </span>
-                <span class="sun-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </span>
-            </button>
         </aside>
 
         <!-- Main Content -->
@@ -845,6 +732,36 @@
                 <a href="/contact.html" class="btn-primary">Book a Call</a>
                 <a href="/case-studies.html" class="btn-secondary">See My Work</a>
             </div>
+            <p class="hero-qualifier animate-fade-up animate-delay-3">Agencies, service businesses, clinics, consultants, and operators with real revenue.</p>
+            <p class="hero-subtext animate-fade-up animate-delay-3">5+ years building enterprise automation at scale. Now I help growing businesses get that same infrastructure without the enterprise price tag.</p>
+
+            <!-- Credibility Stats -->
+            <div class="credibility-bar animate-fade-up animate-delay-3">
+                <div class="credibility-item">
+                    <span class="stat">5+ Years</span>
+                    <span class="label">Enterprise Systems</span>
+                </div>
+                <div class="credibility-item">
+                    <span class="stat">6+ Industries</span>
+                    <span class="label">Clients Served</span>
+                </div>
+                <div class="credibility-item">
+                    <span class="stat">Worldwide</span>
+                    <span class="label">Projects Delivered</span>
+                </div>
+                <div class="credibility-item">
+                    <span class="stat">$4M+</span>
+                    <span class="label">Client Value Identified</span>
+                </div>
+            </div>
+
+            <!-- Client Names -->
+            <div class="client-row animate-fade-up animate-delay-3">
+                Revolut<span class="divider">|</span>Modern Bungalow<span class="divider">|</span>Eden Medical<span class="divider">|</span>Kingfisher Ads<span class="divider">|</span>CR Deals Cincinnati<span class="divider">|</span>Hollow Bamboo<span class="divider">|</span>UDI Group
+            </div>
+
+            <!-- Featured In -->
+            <p class="featured-in animate-fade-up animate-delay-3">As Featured in <a href="https://voyagedallas.com/interview/community-highlights-meet-seth-forte-of-forte-web-designs/" target="_blank" rel="noopener">Voyage Dallas Magazine</a></p>
 
             <hr class="section-divider">
 
@@ -855,58 +772,31 @@
 
             <p class="body-text" style="margin-bottom: 2.5rem;">I fix that. Here's what that looks like.</p>
 
-            <div class="service-category">
-                <h3>Client Generation</h3>
-                <p>The part everyone cares about first. Getting more leads, getting them faster, and making sure they actually turn into conversations. Whether that's inbound from ads, outbound through cold email, or just making sure the leads you already have don't fall through the cracks.</p>
-                <ul class="service-list">
-                    <li>Meta Lead Ads to CRM Pipeline</li>
-                    <li>Inbound Lead Capture</li>
-                    <li>Outbound Cold Email Systems</li>
-                </ul>
-            </div>
-
-            <div class="service-category">
-                <h3>Booking and Payment Systems</h3>
-                <p>Turn leads into booked calls and completed payments. Tracking, reminders, and CRM updates handled.</p>
-                <ul class="service-list">
-                    <li>Booking Systems with Meta Tracking</li>
-                    <li>Stripe Payment Integrations</li>
-                </ul>
-            </div>
-
-            <div class="service-category">
-                <h3>Reporting and Dashboards</h3>
-                <p>One place to see what's working. Ad spend, lead sources, pipeline status... pulled together automatically instead of someone spending half a day in spreadsheets.</p>
-                <ul class="service-list">
-                    <li>Ad Spend Reporting Dashboards</li>
-                </ul>
-            </div>
-
-            <div class="service-category">
-                <h3>Onboarding and Retention</h3>
-                <p>What happens after someone says yes. Welcome sequences, intake workflows, review requests... the stuff that keeps clients around and brings new ones in.</p>
-                <ul class="service-list">
-                    <li>Client Onboarding Automation</li>
-                    <li>Review and Reputation Automation</li>
-                </ul>
-            </div>
-
-            <div class="service-category">
-                <h3>Chat, Support, and Routing</h3>
-                <p>Intake bots, ticket routing, auto-responses. Customers get answers faster and your team stops drowning in the same questions.</p>
-                <ul class="service-list">
-                    <li>WhatsApp and Chat Intake Bots</li>
-                    <li>Customer Support Routing</li>
-                </ul>
-            </div>
-
-            <div class="service-category">
-                <h3>Operations and Internal Tools</h3>
-                <p>Social media scheduling, Power Platform fixes, and the internal automation that keeps your team's week from getting eaten alive.</p>
-                <ul class="service-list">
-                    <li>Social Media Scheduling Automation</li>
-                    <li>Power Platform Fix and Build</li>
-                </ul>
+            <div class="service-grid">
+                <div class="service-card">
+                    <h3>Client Generation</h3>
+                    <p>More leads, faster follow-up, and making sure nothing falls through the cracks.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Booking and Payment Systems</h3>
+                    <p>Turn leads into booked calls and completed payments. Tracking, reminders, and CRM updates handled.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Reporting and Dashboards</h3>
+                    <p>One place to see what's working. Ad spend, lead sources, pipeline status... pulled together automatically.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Onboarding and Retention</h3>
+                    <p>What happens after someone says yes. Welcome sequences, intake workflows, review requests.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Chat, Support, and Routing</h3>
+                    <p>Intake bots, ticket routing, auto-responses. Customers get answers faster.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Operations and Internal Tools</h3>
+                    <p>Internal automation that keeps your team's week from getting eaten alive.</p>
+                </div>
             </div>
 
             <hr class="section-divider">
@@ -924,70 +814,32 @@
             <!-- Results -->
             <h2 class="section-title">Results</h2>
 
-            <a href="/work/cr-deals.html" style="color: inherit; text-decoration: none;">
-                <div class="result-item">
-                    <span class="result-stat">$52K/year saved</span>
+            <div class="result-grid">
+                <a href="/work/cr-deals.html" class="result-card">
+                    <span class="result-stat">$52K/yr saved</span>
                     <h3>CR Deals Cincinnati</h3>
-                    <p>Product listings that generate themselves.</p>
-                </div>
-            </a>
-
-            <a href="/work/modern-bungalow.html" style="color: inherit; text-decoration: none;">
-                <div class="result-item">
-                    <span class="result-stat">15 hrs/month back</span>
-                    <h3>Modern Bungalow</h3>
-                    <p>Customer emails that send themselves.</p>
-                </div>
-            </a>
-
-            <a href="/work/hollow-bamboo.html" style="color: inherit; text-decoration: none;">
-                <div class="result-item">
-                    <span class="result-stat">20 hrs/week back</span>
+                    <p>AI-powered product listings across marketplaces</p>
+                </a>
+                <a href="/work/hollow-bamboo.html" class="result-card">
+                    <span class="result-stat">20 hrs/wk back</span>
                     <h3>Hollow Bamboo</h3>
-                    <p>Equipment tracking across 6 locations.</p>
-                </div>
-            </a>
-
-            <a href="/work/revolut.html" style="color: inherit; text-decoration: none;">
-                <div class="result-item">
-                    <span class="result-stat">$4M opportunity found</span>
+                    <p>Equipment tracking across 6 film locations</p>
+                </a>
+                <a href="/work/revolut.html" class="result-card">
+                    <span class="result-stat">$4M found</span>
                     <h3>Revolut</h3>
-                    <p>Transaction analysis in hours, not weeks.</p>
-                </div>
-            </a>
+                    <p>Transaction analysis that used to take weeks</p>
+                </a>
+            </div>
 
-            <a href="/work/prediction-market.html" style="color: inherit; text-decoration: none;">
-                <div class="result-item">
-                    <span class="result-stat">Research on autopilot</span>
-                    <h3>Prediction Market Trader</h3>
-                    <p>Hundreds of markets analyzed daily.</p>
-                </div>
-            </a>
-
-            <a href="/work/kingfisher-ads.html" style="color: inherit; text-decoration: none;">
-                <div class="result-item">
-                    <span class="result-stat">Reports in 15 min</span>
-                    <h3>Kingfisher Ads</h3>
-                    <p>Monthly reporting that runs itself.</p>
-                </div>
-            </a>
-
-            <a href="/work/klnbros.html" style="color: inherit; text-decoration: none;">
-                <div class="result-item">
-                    <span class="result-stat">Back online in 2 hours</span>
-                    <h3>KlnBros Agency</h3>
-                    <p>Emergency recovery, 43 workflows restored.</p>
-                </div>
-            </a>
-
-            <a href="/case-studies.html" class="view-all-link">See all case studies</a>
+            <a href="/case-studies.html" class="view-all-link">See all results</a>
 
             <hr class="section-divider">
 
             <!-- Writing Section -->
             <h2 class="section-title">Writing</h2>
 
-            <p class="body-text" style="margin-bottom: 2rem;">I write about freelancing, time, and the questions that come up when you're trying to build something that matters.</p>
+            <p class="body-text" style="margin-bottom: 2rem;">I write about freelancing, systems, and the stuff nobody talks about... like what you're actually building all of this for.</p>
 
             <ul class="writing-list">
                 <li class="writing-item">
@@ -995,13 +847,11 @@
                     <p>A simple friction audit framework that helps you identify and eliminate daily annoyances. The same thinking scales to business processes.</p>
                     <a href="/articles/fighting-friction.html" class="read-link">Read</a>
                 </li>
-
                 <li class="writing-item">
                     <h3>What You're Paying For When You Hire A Consultant</h3>
                     <p>It's not the technical work. It's understanding your business and genuine investment in your success.</p>
                     <a href="/articles/paying-for-consultant.html" class="read-link">Read</a>
                 </li>
-
                 <li class="writing-item">
                     <h3>Technical Skills Won't Save You Anymore</h3>
                     <p>The technical implementation is becoming commodity. The strategic thinking isn't.</p>
@@ -1013,10 +863,18 @@
 
             <hr class="section-divider">
 
+            <!-- Newsletter Section -->
+            <div class="newsletter-section">
+                <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
+                <iframe src="https://subscribe-forms.beehiiv.com/5add37af-295e-4226-a8ac-e104c1213e0e" class="beehiiv-embed" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width: 507px; height: 387px; margin: 0; border-radius: 0px 0px 0px 0px !important; background-color: transparent; box-shadow: 0 0 #0000; max-width: 100%;"></iframe>
+            </div>
+
+            <hr class="section-divider">
+
             <!-- About Section -->
             <h2 class="section-title">About</h2>
 
-            <p class="body-text">I'm Seth. I live in Texas with my family.</p>
+            <p class="body-text-primary">I'm Seth. I live in Texas with my family.</p>
 
             <p class="body-text">I spent a long time in a career that made sense on paper... good job, good paycheck, all the right boxes checked. But there was this quiet gap between what I was doing and what I actually wanted to be doing. Freelancing was how I started closing that gap.</p>
 
@@ -1026,20 +884,10 @@
 
             <hr class="section-divider">
 
-            <!-- Newsletter Section -->
-            <h2 class="section-title">Newsletter</h2>
-
-            <p class="body-text" style="margin-bottom: 1.5rem;">I write once a week about freelancing, time, and the questions that don't have clean answers.</p>
-
-            <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
-            <iframe src="https://subscribe-forms.beehiiv.com/5add37af-295e-4226-a8ac-e104c1213e0e" class="beehiiv-embed" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width: 100%; max-width: 507px; height: 387px; margin: 0; border-radius: 0px; background-color: transparent; box-shadow: 0 0 #0000;"></iframe>
-
-            <hr class="section-divider">
-
             <!-- CTA Section -->
             <div class="cta-section">
                 <p class="body-text">Most of the businesses I work with have the same story. Things are growing, which is good... but the way things run day to day hasn't kept up. Something that worked fine at one size starts breaking at the next one.</p>
-                <p class="body-text">If that sounds familiar, that's usually where I come in.</p>
+                <p class="body-text" style="margin-bottom: 1.75rem;">If that sounds familiar, that's usually where I come in.</p>
                 <a href="/contact.html" class="btn-primary">Book a Call</a>
             </div>
 
@@ -1051,12 +899,12 @@
                     <div class="footer-col">
                         <h4>Services</h4>
                         <ul>
-                            <li><a href="#" onclick="return false;">Client Generation</a></li>
-                            <li><a href="#" onclick="return false;">Booking and Payments</a></li>
-                            <li><a href="#" onclick="return false;">Reporting and Dashboards</a></li>
-                            <li><a href="#" onclick="return false;">Onboarding and Retention</a></li>
-                            <li><a href="#" onclick="return false;">Chat and Support</a></li>
-                            <li><a href="#" onclick="return false;">Operations and Internal Tools</a></li>
+                            <li><a href="#">Client Generation</a></li>
+                            <li><a href="#">Booking and Payments</a></li>
+                            <li><a href="#">Reporting and Dashboards</a></li>
+                            <li><a href="#">Onboarding and Retention</a></li>
+                            <li><a href="#">Chat and Support</a></li>
+                            <li><a href="#">Operations and Internal Tools</a></li>
                             <li><a href="/contact.html">Automation Audit</a></li>
                         </ul>
                     </div>
@@ -1086,28 +934,5 @@
             </div>
         </main>
     </div>
-
-    <script>
-        // Dark mode toggle
-        const toggle = document.querySelector('.theme-toggle');
-        const html = document.documentElement;
-
-        // Check for saved preference or system preference
-        const savedTheme = localStorage.getItem('theme');
-        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-        if (savedTheme) {
-            html.setAttribute('data-theme', savedTheme);
-        } else if (systemDark) {
-            html.setAttribute('data-theme', 'dark');
-        }
-
-        toggle.addEventListener('click', () => {
-            const current = html.getAttribute('data-theme');
-            const next = current === 'dark' ? 'light' : 'dark';
-            html.setAttribute('data-theme', next);
-            localStorage.setItem('theme', next);
-        });
-    </script>
 </body>
 </html>

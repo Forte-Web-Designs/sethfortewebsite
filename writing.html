@@ -15,21 +15,15 @@
         }
 
         :root {
-            --text-primary: #1a1a1a;
-            --text-secondary: #666;
-            --text-muted: #999;
-            --accent: #4a7c91;
-            --background: #ffffff;
-            --border: #e5e5e5;
-        }
-
-        [data-theme="dark"] {
             --text-primary: #e5e5e5;
             --text-secondary: #a0a0a0;
             --text-muted: #777;
             --accent: #6ba3b8;
-            --background: #1a1a1a;
-            --border: #333;
+            --accent-warm: #d4956a;
+            --background: #111111;
+            --background-alt: #181818;
+            --border: #2a2a2a;
+            --card-bg: #1a1a1a;
         }
 
         body {
@@ -38,7 +32,6 @@
             line-height: 1.7;
             color: var(--text-primary);
             background: var(--background);
-            transition: background 0.3s ease, color 0.3s ease;
         }
 
         a {
@@ -53,14 +46,8 @@
 
         /* Animations */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes fadeIn {
@@ -68,14 +55,8 @@
             to { opacity: 1; }
         }
 
-        .animate-fade-in {
-            animation: fadeIn 0.6s ease forwards;
-        }
-
-        .animate-fade-up {
-            animation: fadeInUp 0.6s ease forwards;
-        }
-
+        .animate-fade-in { animation: fadeIn 0.6s ease forwards; }
+        .animate-fade-up { animation: fadeInUp 0.6s ease forwards; }
         .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
         .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
 
@@ -112,20 +93,21 @@
 
         .profile-photo:hover {
             transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         }
 
         .profile-name {
             font-size: 1.25rem;
             font-weight: 600;
             color: var(--text-primary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
         }
 
         .profile-tagline {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
+            font-size: 0.85rem;
+            color: var(--text-muted);
             margin-bottom: 2rem;
+            line-height: 1.4;
         }
 
         .nav-links {
@@ -134,13 +116,11 @@
             width: 100%;
         }
 
-        .nav-links li {
-            margin-bottom: 0.5rem;
-        }
+        .nav-links li { margin-bottom: 0.25rem; }
 
         .nav-links a {
-            color: var(--text-primary);
-            font-size: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
             display: block;
             padding: 0.5rem 1rem;
             border-radius: 6px;
@@ -148,96 +128,54 @@
         }
 
         .nav-links a:hover {
-            color: var(--accent);
-            background: var(--border);
+            color: var(--text-primary);
+            background: var(--card-bg);
             text-decoration: none;
         }
 
         .nav-links a.active {
-            color: var(--accent);
-            background: var(--border);
+            color: var(--text-primary);
+            background: var(--card-bg);
         }
 
         .sidebar-email {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
+            font-size: 0.8rem;
+            color: var(--text-muted);
             margin-top: 2rem;
             padding-top: 1.5rem;
             border-top: 1px solid var(--border);
             width: 100%;
         }
 
-        .sidebar-email a {
-            color: var(--text-secondary);
-        }
-
-        .sidebar-email a:hover {
-            color: var(--accent);
-        }
-
-        /* Dark Mode Toggle */
-        .theme-toggle {
-            background: none;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-            color: var(--text-secondary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 1rem;
-            transition: all 0.2s;
-            font-size: 0.85rem;
-        }
-
-        .theme-toggle:hover {
-            color: var(--text-primary);
-            border-color: var(--text-secondary);
-        }
-
-        .theme-toggle svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        .theme-toggle .sun-icon {
-            display: none;
-        }
-
-        [data-theme="dark"] .theme-toggle .sun-icon {
-            display: block;
-        }
-
-        [data-theme="dark"] .theme-toggle .moon-icon {
-            display: none;
-        }
+        .sidebar-email a { color: var(--text-muted); }
+        .sidebar-email a:hover { color: var(--accent); }
 
         /* Main Content */
         .main-content {
             flex: 1;
-            padding: 4rem 4rem 6rem;
-            max-width: 680px;
+            padding: 5rem 4rem 6rem;
+            max-width: 780px;
         }
 
         .page-title {
             font-size: 1.75rem;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.02em;
         }
 
         .page-intro {
             color: var(--text-secondary);
             margin-bottom: 3rem;
             font-size: 1.05rem;
+            line-height: 1.8;
         }
 
         .section-divider {
             border: none;
             border-top: 1px solid var(--border);
-            margin: 3rem 0;
+            margin: 6rem 0;
         }
 
         /* Writing List */
@@ -246,24 +184,21 @@
         }
 
         .writing-item {
-            margin-bottom: 2.5rem;
-            padding: 1.25rem;
-            margin-left: -1.25rem;
-            margin-right: -1.25rem;
-            border-radius: 8px;
-            transition: background 0.2s ease, transform 0.2s ease;
+            margin-bottom: 0.5rem;
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: background 0.2s ease;
         }
 
         .writing-item:hover {
-            background: var(--border);
-            transform: translateX(4px);
+            background: var(--card-bg);
         }
 
         .writing-item h3 {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 600;
             color: var(--text-primary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.35rem;
             line-height: 1.4;
             transition: color 0.2s ease;
         }
@@ -273,20 +208,16 @@
         }
 
         .writing-item p {
-            color: var(--text-secondary);
-            font-size: 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
             margin-bottom: 0.5rem;
+            line-height: 1.6;
         }
 
         .writing-item .read-link {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--accent);
-            transition: transform 0.2s ease;
             display: inline-block;
-        }
-
-        .writing-item:hover .read-link {
-            transform: translateX(4px);
         }
 
         .writing-note {
@@ -298,132 +229,58 @@
 
         /* Footer */
         .footer-section {
-            margin-top: 4rem;
+            margin-top: 5rem;
             padding-top: 3rem;
             border-top: 1px solid var(--border);
         }
 
-        .footer-email {
+        .footer-email-main {
             color: var(--text-secondary);
-            font-size: 0.95rem;
+            font-size: 1rem;
+            margin-bottom: 2.5rem;
+            display: block;
+        }
+
+        .footer-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-col h4 {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 1rem;
+        }
+
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 0.5rem; }
+
+        .footer-col a {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer-col a:hover { color: var(--accent); }
+
+        .footer-bottom {
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-location {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 0.35rem;
         }
 
         .copyright {
             color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-top: 1rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 900px) {
-            .site-header {
-                display: none;
-            }
-
-            .site-wrapper {
-                flex-direction: column;
-            }
-
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-                border-right: none;
-                border-bottom: none;
-                padding: 2.5rem 2rem;
-                text-align: center;
-                align-items: center;
-                background: var(--background);
-            }
-
-            .profile-photo {
-                width: 100px;
-                height: 100px;
-                margin-bottom: 1rem;
-            }
-
-            .profile-name {
-                font-size: 1.5rem;
-            }
-
-            .profile-tagline {
-                margin-bottom: 1.5rem;
-            }
-
-            .nav-links {
-                display: flex;
-                justify-content: center;
-                gap: 1.5rem;
-                margin-bottom: 1.5rem;
-                padding: 1rem 0;
-                border-top: 1px solid var(--border);
-                border-bottom: 1px solid var(--border);
-                width: 100%;
-            }
-
-            .nav-links li {
-                margin-bottom: 0;
-            }
-
-            .sidebar-email {
-                display: block;
-                margin-top: 0;
-                padding-top: 0;
-                border-top: none;
-            }
-
-            .theme-toggle {
-                margin-top: 1rem;
-                width: auto;
-                padding: 0.5rem 1rem;
-            }
-
-            .main-content {
-                padding: 3rem 2rem 4rem;
-                text-align: left;
-            }
-
-            .writing-item {
-                margin-left: 0;
-                margin-right: 0;
-                padding: 1rem;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .sidebar {
-                padding: 2rem 1.5rem;
-            }
-
-            .profile-photo {
-                width: 90px;
-                height: 90px;
-            }
-
-            .profile-name {
-                font-size: 1.35rem;
-            }
-
-            .nav-links {
-                gap: 1rem;
-                flex-wrap: wrap;
-            }
-
-            .main-content {
-                padding: 2rem 1.5rem 3rem;
-            }
-
-            .page-title {
-                font-size: 1.5rem;
-            }
-
-            .writing-item {
-                padding: 0.75rem;
-            }
-
-            .section-divider {
-                margin: 2rem 0;
-            }
+            font-size: 0.85rem;
         }
 
         /* Site Header */
@@ -448,10 +305,7 @@
             text-decoration: none;
         }
 
-        .header-logo:hover {
-            color: var(--accent);
-            text-decoration: none;
-        }
+        .header-logo:hover { color: var(--accent); text-decoration: none; }
 
         .header-nav {
             display: flex;
@@ -459,27 +313,73 @@
         }
 
         .header-nav a {
-            color: var(--text-primary);
-            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
             text-decoration: none;
         }
 
-        .header-nav a:hover {
-            color: var(--accent);
+        .header-nav a:hover { color: var(--text-primary); }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .site-header { display: none; }
+
+            .site-wrapper { flex-direction: column; }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                padding: 2.5rem 2rem;
+                text-align: center;
+                align-items: center;
+            }
+
+            .profile-photo { width: 100px; height: 100px; margin-bottom: 1rem; }
+            .profile-name { font-size: 1.5rem; }
+            .profile-tagline { margin-bottom: 1.5rem; }
+
+            .nav-links {
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+                margin-bottom: 1.5rem;
+                padding: 1rem 0;
+                border-top: 1px solid var(--border);
+                border-bottom: 1px solid var(--border);
+                width: 100%;
+                flex-wrap: wrap;
+            }
+
+            .nav-links li { margin-bottom: 0; }
+
+            .sidebar-email {
+                display: block;
+                margin-top: 0;
+                padding-top: 0;
+                border-top: none;
+            }
+
+            .main-content { padding: 3rem 2rem 4rem; text-align: left; }
+
+            .footer-columns { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+
+            .writing-item { margin-left: 0; margin-right: 0; padding: 1rem; }
         }
 
         @media (max-width: 600px) {
-            .site-header {
-                padding: 1rem 1.5rem;
-            }
+            .sidebar { padding: 2rem 1.5rem; }
+            .profile-photo { width: 90px; height: 90px; }
+            .profile-name { font-size: 1.35rem; }
+            .nav-links { gap: 0.75rem; }
+            .main-content { padding: 2rem 1.5rem 3rem; }
+            .section-divider { margin: 3rem 0; }
+            .footer-columns { grid-template-columns: 1fr; }
 
-            .header-nav {
-                gap: 1rem;
-            }
-
-            .header-nav a {
-                font-size: 0.9rem;
-            }
+            .site-header { padding: 1rem 1.5rem; }
+            .header-nav { gap: 1rem; }
+            .header-nav a { font-size: 0.85rem; }
         }
     </style>
 </head>
@@ -489,6 +389,7 @@
             <a href="/" class="header-logo">Seth Forte</a>
             <nav class="header-nav">
                 <a href="/">Home</a>
+                <a href="/case-studies.html">Work</a>
                 <a href="/writing.html">Writing</a>
                 <a href="/about.html">About</a>
                 <a href="/contact.html">Contact</a>
@@ -501,11 +402,12 @@
         <aside class="sidebar">
             <img src="headshot-6.jpg" alt="Seth Forte" class="profile-photo animate-fade-in">
             <h1 class="profile-name">Seth Forte</h1>
-            <p class="profile-tagline">Automation & Custom Software</p>
+            <p class="profile-tagline">Systems Architect &<br>Automation Consultant</p>
 
             <nav>
                 <ul class="nav-links">
                     <li><a href="/">Home</a></li>
+                    <li><a href="/case-studies.html">Work</a></li>
                     <li><a href="/writing.html" class="active">Writing</a></li>
                     <li><a href="/about.html">About</a></li>
                     <li><a href="/contact.html">Contact</a></li>
@@ -515,27 +417,6 @@
             <div class="sidebar-email">
                 <a href="mailto:seth@fortewebdesigns.com">seth@fortewebdesigns.com</a>
             </div>
-
-            <button class="theme-toggle" aria-label="Toggle dark mode">
-                <span class="moon-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                </span>
-                <span class="sun-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </span>
-            </button>
         </aside>
 
         <!-- Main Content -->
@@ -549,88 +430,102 @@
                 <li class="writing-item">
                     <h3>Why I Don't Take Every Project (And That's Fine)</h3>
                     <p>Not every project is a good fit. Learning to say no has been one of the most valuable business skills I've developed.</p>
-                    <a href="/articles/day-job.html" class="read-link">→ Read</a>
+                    <a href="/articles/day-job.html" class="read-link">Read</a>
                 </li>
 
                 <li class="writing-item">
                     <h3>What Building Enterprise Systems Taught Me</h3>
                     <p>Five years at Wells Fargo taught me more about reliability and edge cases than any course ever could.</p>
-                    <a href="/articles/enterprise-to-small-business.html" class="read-link">→ Read</a>
+                    <a href="/articles/enterprise-to-small-business.html" class="read-link">Read</a>
                 </li>
 
                 <li class="writing-item">
                     <h3>When AI Is Overkill (Most of the Time)</h3>
                     <p>Everyone wants AI until they realize a simple script would've done the job better.</p>
-                    <a href="/articles/ai-overkill.html" class="read-link">→ Read</a>
+                    <a href="/articles/ai-overkill.html" class="read-link">Read</a>
                 </li>
 
                 <li class="writing-item">
                     <h3>Why I Turn Down Half My Discovery Calls</h3>
                     <p>If I can tell in the first five minutes we're not a fit, I'll say so. Saves everyone time.</p>
-                    <a href="/articles/turn-down-calls.html" class="read-link">→ Read</a>
+                    <a href="/articles/turn-down-calls.html" class="read-link">Read</a>
                 </li>
 
                 <li class="writing-item">
                     <h3>What I Learned Spending $0 on Marketing</h3>
                     <p>Referrals and good work have been enough. Here's why I haven't felt the need to change that.</p>
-                    <a href="/articles/zero-marketing.html" class="read-link">→ Read</a>
+                    <a href="/articles/zero-marketing.html" class="read-link">Read</a>
                 </li>
 
                 <li class="writing-item">
                     <h3>The Real Cost of Manual Work</h3>
                     <p>That thing you do manually every week? It's probably costing more than you think.</p>
-                    <a href="/articles/real-cost-manual-work.html" class="read-link">→ Read</a>
+                    <a href="/articles/real-cost-manual-work.html" class="read-link">Read</a>
                 </li>
 
                 <li class="writing-item">
                     <h3>Audit Your Lifestyle</h3>
                     <p>A simple friction audit framework that helps you identify and eliminate daily annoyances. The same thinking scales to business processes.</p>
-                    <a href="/articles/fighting-friction.html" class="read-link">→ Read</a>
+                    <a href="/articles/fighting-friction.html" class="read-link">Read</a>
                 </li>
 
                 <li class="writing-item">
                     <h3>What You're Actually Paying For When You Hire A Consultant</h3>
                     <p>What you're actually paying for isn't the technical work. It's understanding your business and genuine investment in your success.</p>
-                    <a href="/articles/paying-for-consultant.html" class="read-link">→ Read</a>
+                    <a href="/articles/paying-for-consultant.html" class="read-link">Read</a>
                 </li>
 
                 <li class="writing-item">
                     <h3>Technical Skills Won't Save You Anymore</h3>
                     <p>The technical implementation is becoming commodity. The strategic thinking isn't.</p>
-                    <a href="/articles/technical-skills-wont-save-you.html" class="read-link">→ Read</a>
+                    <a href="/articles/technical-skills-wont-save-you.html" class="read-link">Read</a>
                 </li>
             </ul>
 
             <p class="writing-note">I don't write on a schedule. Just when something's worth saying.</p>
 
+            <!-- Footer -->
             <div class="footer-section">
-                <a href="mailto:seth@fortewebdesigns.com" class="footer-email">seth@fortewebdesigns.com</a>
-                <p class="copyright">© 2026 Seth Forte</p>
+                <a href="mailto:seth@fortewebdesigns.com" class="footer-email-main">seth@fortewebdesigns.com</a>
+
+                <div class="footer-columns">
+                    <div class="footer-col">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#">Client Generation</a></li>
+                            <li><a href="#">Booking and Payments</a></li>
+                            <li><a href="#">Reporting and Dashboards</a></li>
+                            <li><a href="#">Onboarding and Retention</a></li>
+                            <li><a href="#">Chat and Support</a></li>
+                            <li><a href="#">Operations and Internal Tools</a></li>
+                            <li><a href="/contact.html">Automation Audit</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="/about.html">About</a></li>
+                            <li><a href="/case-studies.html">Case Studies</a></li>
+                            <li><a href="/writing.html">Writing</a></li>
+                            <li><a href="/contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="https://www.linkedin.com/in/seth-forte/" target="_blank" rel="noopener">LinkedIn</a></li>
+                            <li><a href="https://www.upwork.com/freelancers/sethforte" target="_blank" rel="noopener">Upwork</a></li>
+                            <li><a href="mailto:seth@fortewebdesigns.com">Email</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p class="footer-location">Based in Dallas, Texas. Serving clients nationwide.</p>
+                    <p class="copyright">&copy; 2026 Seth Forte. All rights reserved.</p>
+                </div>
             </div>
         </main>
     </div>
-
-    <script>
-        // Dark mode toggle
-        const toggle = document.querySelector('.theme-toggle');
-        const html = document.documentElement;
-
-        // Check for saved preference or system preference
-        const savedTheme = localStorage.getItem('theme');
-        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-        if (savedTheme) {
-            html.setAttribute('data-theme', savedTheme);
-        } else if (systemDark) {
-            html.setAttribute('data-theme', 'dark');
-        }
-
-        toggle.addEventListener('click', () => {
-            const current = html.getAttribute('data-theme');
-            const next = current === 'dark' ? 'light' : 'dark';
-            html.setAttribute('data-theme', next);
-            localStorage.setItem('theme', next);
-        });
-    </script>
 </body>
 </html>
