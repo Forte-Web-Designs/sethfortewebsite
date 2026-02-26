@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Growth - Seth Forte</title>
-    <meta name="description" content="Lead generation, automated follow-up, booking systems, sales funnels, and the integrations that make it all run without you touching it.">
+    <meta name="description" content="Leads don't pay bills. Customers do. Lead generation, automated follow-up, booking systems, sales funnels, and the integrations that make it all run.">
     <meta name="author" content="Seth Forte">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sethforte.com/growth">
     <meta property="og:title" content="Growth - Seth Forte">
-    <meta property="og:description" content="Your infrastructure works. Now let's make it produce revenue.">
+    <meta property="og:description" content="Leads don't pay bills. Customers do.">
     <meta property="og:image" content="https://sethforte.com/headshot-6.jpg">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/jpeg" href="logo.jpg">
@@ -67,48 +67,76 @@
         .page-subtitle { font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 3rem; line-height: 1.8; }
         .body-text { color: var(--text-secondary); margin-bottom: 1.75rem; line-height: 1.8; }
 
-        .section-divider { border: none; border-top: 1px solid var(--border); margin: 4rem 0; }
-        .section-label { font-size: 0.8rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2rem; }
+        .section-divider { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
+        .section-label { font-size: 0.8rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
 
         /* Outcome Cards */
         .outcome-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.5rem; }
-
         .outcome-card {
             background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
-            padding: 2rem 1.75rem;
+            padding: 1.75rem;
         }
         .outcome-card h3 {
-            font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;
+            font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;
         }
-        .outcome-card > p {
-            color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem;
-        }
-        .outcome-card .product-list {
-            list-style: none; border-top: 1px solid var(--border); padding-top: 0.75rem;
-        }
-        .outcome-card .product-list li {
-            color: var(--text-muted); font-size: 0.8rem; padding: 0.25rem 0;
-            padding-left: 1rem; position: relative;
-        }
-        .outcome-card .product-list li::before {
-            content: ""; position: absolute; left: 0; top: 0.65rem;
-            width: 4px; height: 4px; background: var(--accent); border-radius: 50%;
+        .outcome-card p {
+            color: var(--text-secondary); font-size: 0.88rem; line-height: 1.6;
         }
 
-        /* How it works */
-        .how-it-works {
-            background: var(--background-alt); border: 1px solid var(--border); border-radius: 10px;
-            padding: 2rem; margin: 2rem 0;
+        /* Expandable What Gets Built */
+        .build-item {
+            background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px;
+            margin-bottom: 0.75rem; overflow: hidden;
         }
-        .how-it-works p { color: var(--text-secondary); line-height: 1.8; }
+        .build-header {
+            padding: 1rem 1.25rem; cursor: pointer; display: flex;
+            justify-content: space-between; align-items: center;
+            transition: background 0.2s ease;
+        }
+        .build-header:hover { background: var(--background-alt); }
+        .build-header h3 {
+            font-size: 0.95rem; font-weight: 600; color: var(--text-primary); margin: 0;
+        }
+        .build-toggle {
+            color: var(--text-muted); font-size: 0.8rem; transition: transform 0.3s ease;
+            user-select: none;
+        }
+        .build-item.open .build-toggle { transform: rotate(180deg); }
+        .build-body {
+            max-height: 0; overflow: hidden; transition: max-height 0.3s ease;
+        }
+        .build-item.open .build-body { max-height: 200px; }
+        .build-body-inner {
+            padding: 0 1.25rem 1rem;
+            color: var(--text-secondary); font-size: 0.88rem; line-height: 1.6;
+        }
+
+        /* The Math */
+        .math-section {
+            background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
+            padding: 2rem; margin: 1.5rem 0;
+        }
+        .math-section p { color: var(--text-secondary); line-height: 1.8; font-size: 0.95rem; }
+        .math-section strong { color: var(--text-primary); }
+
+        /* Timeline */
+        .timeline-compact {
+            display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;
+        }
+        .timeline-item { text-align: center; }
+        .timeline-item strong {
+            color: var(--text-primary); display: block; font-size: 0.9rem; margin-bottom: 0.25rem;
+        }
+        .timeline-item span { color: var(--text-secondary); font-size: 0.85rem; }
 
         .next-step {
             background: var(--background-alt); border: 1px solid var(--border); border-radius: 10px;
-            padding: 2rem; margin: 2rem 0;
+            padding: 1.75rem; margin: 2rem 0;
         }
-        .next-step p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem; }
+        .next-step p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 0.75rem; font-size: 0.95rem; }
 
-        .cta-section { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; padding: 2.5rem; margin: 2rem 0; }
+        .cta-section { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; padding: 2.5rem; margin: 2rem 0; text-align: center; }
+        .cta-section h2 { font-size: 1.2rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.75rem; }
         .cta-section p { color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.8; }
         .cta-muted { font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem; }
 
@@ -147,6 +175,7 @@
             .sidebar-email { display: block; margin-top: 0; padding-top: 0; border-top: none; }
             .main-content { padding: 3rem 2rem 4rem; text-align: left; }
             .outcome-grid { grid-template-columns: 1fr; }
+            .timeline-compact { grid-template-columns: 1fr; gap: 0.75rem; }
             .footer-columns { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
         }
         @media (max-width: 600px) {
@@ -156,7 +185,7 @@
             .nav-links { gap: 0.75rem; }
             .main-content { padding: 2rem 1.5rem 3rem; }
             .page-title { font-size: 1.4rem; }
-            .section-divider { margin: 3rem 0; }
+            .section-divider { margin: 2.5rem 0; }
             .footer-columns { grid-template-columns: 1fr; }
             .cta-section { padding: 1.75rem; }
             .site-header { padding: 1rem 1.5rem; }
@@ -201,68 +230,142 @@
         </aside>
 
         <main class="main-content">
-            <h1 class="page-title animate-fade-up animate-delay-1">Your infrastructure works. Now let's make it produce revenue.</h1>
-            <p class="page-subtitle animate-fade-up animate-delay-2">Foundation got your first leads flowing. Growth is about multiplying that: more channels, smarter follow-up, automated funnels, and systems that convert without you doing it manually.</p>
+            <h1 class="page-title animate-fade-up animate-delay-1">Leads don't pay bills. Customers do.</h1>
+            <p class="page-subtitle animate-fade-up animate-delay-2">Foundation got your system running. Growth turns that into revenue: more channels, smarter follow-up, and systems that convert without you doing it manually.</p>
 
             <hr class="section-divider">
 
-            <!-- What Are You Trying to Do -->
-            <h2 class="section-label animate-fade-up animate-delay-3">Most clients come to me wanting one of these</h2>
+            <!-- What You're Trying to Do -->
+            <h2 class="section-label animate-fade-up animate-delay-3">What you're trying to solve</h2>
 
             <div class="outcome-grid">
                 <div class="outcome-card">
-                    <h3>"Get me MORE leads"</h3>
-                    <p>Foundation got your first source running. Now add more: inbound capture from multiple channels, outbound cold email to find new prospects, or both.</p>
-                    <ul class="product-list">
-                        <li>Inbound Lead Capture System</li>
-                        <li>Meta Lead Ads to CRM Pipeline</li>
-                        <li>Outbound Cold Email System</li>
-                    </ul>
+                    <h3>More Leads</h3>
+                    <p>You have one source working. Now add more: inbound capture from multiple channels, outbound cold email, or both running simultaneously.</p>
                 </div>
                 <div class="outcome-card">
-                    <h3>"Get me booked appointments"</h3>
-                    <p>Traffic turns into booked calls on your calendar. Automatically.</p>
-                    <ul class="product-list">
-                        <li>Booking System with Meta Tracking</li>
-                        <li>Email/SMS Nurture Sequences</li>
-                        <li>AI Voice Agent (24/7, books directly)</li>
-                        <li>WhatsApp/Chat Intake Bot</li>
-                    </ul>
+                    <h3>Booked Appointments</h3>
+                    <p>Traffic turns into booked calls on your calendar. Automatically. No manual scheduling, no missed follow-ups.</p>
                 </div>
                 <div class="outcome-card">
-                    <h3>"Build me a sales funnel"</h3>
-                    <p>Landing page to opt-in to lead magnet to nurture sequence to offer to purchase. The whole path automated.</p>
-                    <ul class="product-list">
-                        <li>Sales Funnel Automation</li>
-                        <li>Lead Magnet Delivery</li>
-                        <li>Nurture Sequences (email + SMS)</li>
-                    </ul>
+                    <h3>A Sales Funnel</h3>
+                    <p>Landing page to opt-in to lead magnet to nurture sequence to offer. The whole path automated from first click to purchase.</p>
                 </div>
                 <div class="outcome-card">
-                    <h3>"Help me follow up and stop losing leads"</h3>
-                    <p>Automated sequences so every lead gets a response in under 60 seconds and follow-up for weeks after.</p>
-                    <ul class="product-list">
-                        <li>Email/SMS Nurture Sequence Automation</li>
-                        <li>Review and Reputation Automation</li>
-                        <li>Client Onboarding Automation</li>
-                    </ul>
+                    <h3>Stop Losing Leads</h3>
+                    <p>Every lead gets a response in under 60 seconds. Automated follow-up for weeks after. Nobody falls through the cracks.</p>
                 </div>
             </div>
 
             <hr class="section-divider">
 
-            <!-- How It Works -->
-            <h2 class="section-label">How it works</h2>
+            <!-- What Gets Built -->
+            <h2 class="section-label">What gets built</h2>
 
-            <div class="how-it-works">
-                <p>Growth systems plug into the foundation you already have (or we build together). I scope what you need based on the outcome you want, build it in 2-3 weeks, and hand it off with documentation and training.</p>
+            <div class="build-item">
+                <div class="build-header" onclick="this.parentElement.classList.toggle('open')">
+                    <h3>Inbound Lead Capture System</h3>
+                    <span class="build-toggle">&#9660;</span>
+                </div>
+                <div class="build-body">
+                    <div class="build-body-inner">Multi-channel lead capture from forms, landing pages, and ad platforms. Every lead tagged by source and routed into your CRM pipeline automatically.</div>
+                </div>
+            </div>
+
+            <div class="build-item">
+                <div class="build-header" onclick="this.parentElement.classList.toggle('open')">
+                    <h3>Meta Lead Ads to CRM Pipeline</h3>
+                    <span class="build-toggle">&#9660;</span>
+                </div>
+                <div class="build-body">
+                    <div class="build-body-inner">Facebook and Instagram lead ads connected directly to your CRM. Leads appear instantly, tagged by campaign, with automated follow-up triggered on arrival.</div>
+                </div>
+            </div>
+
+            <div class="build-item">
+                <div class="build-header" onclick="this.parentElement.classList.toggle('open')">
+                    <h3>Outbound Cold Email System</h3>
+                    <span class="build-toggle">&#9660;</span>
+                </div>
+                <div class="build-body">
+                    <div class="build-body-inner">Find your ideal prospects, personalize outreach with AI, and route positive replies directly to your CRM. Proactive pipeline on top of inbound.</div>
+                </div>
+            </div>
+
+            <div class="build-item">
+                <div class="build-header" onclick="this.parentElement.classList.toggle('open')">
+                    <h3>Email/SMS Nurture Sequences</h3>
+                    <span class="build-toggle">&#9660;</span>
+                </div>
+                <div class="build-body">
+                    <div class="build-body-inner">Automated follow-up sequences across email and SMS. Triggered by lead actions, timed for maximum conversion, running in the background 24/7.</div>
+                </div>
+            </div>
+
+            <div class="build-item">
+                <div class="build-header" onclick="this.parentElement.classList.toggle('open')">
+                    <h3>Booking System with Tracking</h3>
+                    <span class="build-toggle">&#9660;</span>
+                </div>
+                <div class="build-body">
+                    <div class="build-body-inner">Calendar booking connected to your CRM with full attribution tracking. Know exactly which channel, campaign, and touchpoint produced each booked call.</div>
+                </div>
+            </div>
+
+            <div class="build-item">
+                <div class="build-header" onclick="this.parentElement.classList.toggle('open')">
+                    <h3>Sales Funnel Automation</h3>
+                    <span class="build-toggle">&#9660;</span>
+                </div>
+                <div class="build-body">
+                    <div class="build-body-inner">Landing pages, lead magnets, nurture sequences, and offer pages connected end-to-end. One automated path from stranger to customer.</div>
+                </div>
+            </div>
+
+            <div class="build-item">
+                <div class="build-header" onclick="this.parentElement.classList.toggle('open')">
+                    <h3>Review and Reputation Automation</h3>
+                    <span class="build-toggle">&#9660;</span>
+                </div>
+                <div class="build-body">
+                    <div class="build-body-inner">Automated review requests sent after service delivery. Route happy customers to Google, handle concerns privately before they go public.</div>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- The Math -->
+            <h2 class="section-label">The math</h2>
+
+            <div class="math-section">
+                <p>If you're closing 10% of leads and your average customer is worth a few thousand dollars, even a small increase in lead volume or conversion rate compounds fast. Most Growth systems pay for themselves within the first 30-60 days.</p>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- Timeline -->
+            <h2 class="section-label">Timeline</h2>
+
+            <div class="timeline-compact">
+                <div class="timeline-item">
+                    <strong>2-3 Weeks</strong>
+                    <span>Scoped to your outcome</span>
+                </div>
+                <div class="timeline-item">
+                    <strong>Full Ownership</strong>
+                    <span>Documentation and training</span>
+                </div>
+                <div class="timeline-item">
+                    <strong>Post-Delivery</strong>
+                    <span>Support included</span>
+                </div>
             </div>
 
             <hr class="section-divider">
 
             <!-- After Growth -->
             <div class="next-step">
-                <p>Once leads are flowing and converting, the next question is usually: what's working best, and how do I do more of it? That's where Scale comes in: reporting, optimization, and expansion.</p>
+                <p>Once leads are flowing and converting, the next question is: what's working best, and how do I do more of it? That's Scale: reporting, optimization, and expansion.</p>
                 <a href="/scale.html">See what Scale looks like &rarr;</a>
             </div>
 
@@ -270,9 +373,9 @@
 
             <!-- CTA -->
             <div class="cta-section">
-                <p>Not sure which Growth systems you need?</p>
+                <h2>Not sure which Growth systems you need?</h2>
+                <p>The audit identifies your highest-ROI automation opportunities. Credits toward any project.</p>
                 <a href="/audit.html" class="btn-primary">Book an Automation Audit</a>
-                <p class="cta-muted">Identifies your highest-ROI automation opportunities. Credits toward any project.</p>
             </div>
 
             <!-- Footer -->

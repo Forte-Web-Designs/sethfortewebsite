@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Foundation - Seth Forte</title>
-    <meta name="description" content="CRM, pipeline, payments, email infrastructure, and tracking. The system every business needs before anything else makes sense.">
+    <meta name="description" content="Everything you're building is leaking. CRM, pipeline, payments, email infrastructure, and tracking. The system every business needs before anything else makes sense.">
     <meta name="author" content="Seth Forte">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sethforte.com/foundation">
     <meta property="og:title" content="Foundation - Seth Forte">
-    <meta property="og:description" content="Your system, built. Your first leads, flowing.">
+    <meta property="og:description" content="Everything you're building is leaking. Get the infrastructure right.">
     <meta property="og:image" content="https://sethforte.com/headshot-6.jpg">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/jpeg" href="logo.jpg">
@@ -91,46 +91,80 @@
         }
         .body-text { color: var(--text-secondary); margin-bottom: 1.75rem; line-height: 1.8; }
 
-        .section-divider { border: none; border-top: 1px solid var(--border); margin: 4rem 0; }
+        .section-divider { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
 
         .section-label {
             font-size: 0.8rem; font-weight: 600; color: var(--text-muted);
-            text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2rem;
+            text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem;
         }
 
-        /* Situation Cards */
-        .situation-list { list-style: none; margin-bottom: 1rem; }
-        .situation-item {
-            padding: 1rem 1.25rem; border-left: 3px solid var(--border); margin-bottom: 0.75rem;
-            color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;
-            background: var(--card-bg); border-radius: 0 8px 8px 0;
+        /* Cost of Doing Nothing */
+        .cost-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;
+        }
+        .cost-item {
+            padding: 1.25rem; background: var(--card-bg); border: 1px solid var(--border);
+            border-radius: 8px; border-left: 3px solid var(--accent-warm);
+        }
+        .cost-item p {
+            color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;
         }
 
-        /* Deliverable Cards */
-        .deliverable-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.5rem;
+        /* Expandable Deliverables */
+        .deliverable-item {
+            background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px;
+            margin-bottom: 0.75rem; overflow: hidden;
         }
-        .deliverable-card {
-            background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; padding: 1.75rem;
+        .deliverable-header {
+            padding: 1rem 1.25rem; cursor: pointer; display: flex;
+            justify-content: space-between; align-items: center;
+            transition: background 0.2s ease;
         }
-        .deliverable-card h3 {
-            font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;
+        .deliverable-header:hover { background: var(--background-alt); }
+        .deliverable-header h3 {
+            font-size: 0.95rem; font-weight: 600; color: var(--text-primary); margin: 0;
         }
-        .deliverable-card p {
+        .deliverable-toggle {
+            color: var(--text-muted); font-size: 0.8rem; transition: transform 0.3s ease;
+            user-select: none;
+        }
+        .deliverable-item.open .deliverable-toggle { transform: rotate(180deg); }
+        .deliverable-body {
+            max-height: 0; overflow: hidden; transition: max-height 0.3s ease;
+        }
+        .deliverable-item.open .deliverable-body { max-height: 200px; }
+        .deliverable-body-inner {
+            padding: 0 1.25rem 1rem;
             color: var(--text-secondary); font-size: 0.88rem; line-height: 1.6;
         }
 
-        /* Process Section */
-        .process-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+        /* Sound Familiar */
+        .familiar-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.5rem;
         }
-        .process-item { color: var(--text-secondary); font-size: 0.95rem; }
-        .process-item strong { color: var(--text-primary); display: block; margin-bottom: 0.25rem; }
+        .familiar-item {
+            padding: 0.85rem 1rem; border-left: 3px solid var(--border);
+            color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5;
+            background: var(--card-bg); border-radius: 0 8px 8px 0;
+        }
+
+        /* Timeline */
+        .timeline-compact {
+            display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;
+        }
+        .timeline-item { text-align: center; }
+        .timeline-item strong {
+            color: var(--text-primary); display: block; font-size: 0.9rem; margin-bottom: 0.25rem;
+        }
+        .timeline-item span { color: var(--text-secondary); font-size: 0.85rem; }
 
         /* CTA */
         .cta-section {
             background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
-            padding: 2.5rem; margin: 2rem 0;
+            padding: 2.5rem; margin: 2rem 0; text-align: center;
+        }
+        .cta-section h2 {
+            font-size: 1.2rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.75rem;
         }
         .cta-section p { color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.8; }
         .cta-muted { font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem; }
@@ -144,9 +178,9 @@
 
         .next-step {
             background: var(--background-alt); border: 1px solid var(--border); border-radius: 10px;
-            padding: 2rem; margin: 2rem 0;
+            padding: 1.75rem; margin: 2rem 0;
         }
-        .next-step p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem; }
+        .next-step p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 0.75rem; font-size: 0.95rem; }
         .next-step a { font-size: 0.95rem; }
 
         /* Footer */
@@ -181,8 +215,9 @@
             .nav-links li { margin-bottom: 0; }
             .sidebar-email { display: block; margin-top: 0; padding-top: 0; border-top: none; }
             .main-content { padding: 3rem 2rem 4rem; text-align: left; }
-            .deliverable-grid { grid-template-columns: 1fr; }
-            .process-grid { grid-template-columns: 1fr; }
+            .cost-grid { grid-template-columns: 1fr; }
+            .familiar-grid { grid-template-columns: 1fr; }
+            .timeline-compact { grid-template-columns: 1fr; gap: 0.75rem; }
             .footer-columns { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
         }
         @media (max-width: 600px) {
@@ -192,7 +227,7 @@
             .nav-links { gap: 0.75rem; }
             .main-content { padding: 2rem 1.5rem 3rem; }
             .page-title { font-size: 1.4rem; }
-            .section-divider { margin: 3rem 0; }
+            .section-divider { margin: 2.5rem 0; }
             .footer-columns { grid-template-columns: 1fr; }
             .cta-section { padding: 1.75rem; }
             .site-header { padding: 1rem 1.5rem; }
@@ -237,88 +272,147 @@
         </aside>
 
         <main class="main-content">
-            <h1 class="page-title animate-fade-up animate-delay-1">Your system, built. Your first leads, flowing.</h1>
-            <p class="page-subtitle animate-fade-up animate-delay-2">Most businesses come to me with contacts in spreadsheets, a CRM nobody set up, and no system to capture leads. Foundation fixes all of it. You get the infrastructure AND leads start coming in from day one.</p>
+            <h1 class="page-title animate-fade-up animate-delay-1">Everything you're building is leaking.</h1>
+            <p class="page-subtitle animate-fade-up animate-delay-2">Leads fall through cracks. Emails land in spam. Nobody knows what's converting. Foundation fixes the infrastructure so the rest of it actually works.</p>
 
             <hr class="section-divider">
 
-            <!-- Is This You -->
-            <h2 class="section-label animate-fade-up animate-delay-3">Common situations I see</h2>
+            <!-- Cost of Doing Nothing -->
+            <h2 class="section-label animate-fade-up animate-delay-3">The cost of doing nothing</h2>
 
-            <ul class="situation-list">
-                <li class="situation-item">We have thousands of contacts but no pipeline or segmentation</li>
-                <li class="situation-item">We're paying for a CRM but nobody configured it properly</li>
-                <li class="situation-item">Our tracking is broken and we can't tell which marketing actually works</li>
-                <li class="situation-item">We need to accept payments, book calls, and manage leads in one place</li>
-                <li class="situation-item">We just hired a marketing person and they have no system to work in</li>
-                <li class="situation-item">We're running everything on spreadsheets and manual follow-up</li>
-                <li class="situation-item">We built a CRM but we have zero leads in it</li>
-                <li class="situation-item">We don't know how to get our first leads coming in</li>
-                <li class="situation-item">We need a system AND traffic, not just the system</li>
-            </ul>
+            <div class="cost-grid">
+                <div class="cost-item">
+                    <p>Every lead that hits a broken form or dead inbox is revenue you already paid for and lost.</p>
+                </div>
+                <div class="cost-item">
+                    <p>Every email that lands in spam burns the sender reputation you'll need later.</p>
+                </div>
+                <div class="cost-item">
+                    <p>Every week without tracking is a week you're spending money blind.</p>
+                </div>
+                <div class="cost-item">
+                    <p>Every manual follow-up you forget is a customer your competitor gets instead.</p>
+                </div>
+            </div>
 
             <hr class="section-divider">
 
             <!-- What Gets Built -->
             <h2 class="section-label">What you walk away with</h2>
 
-            <div class="deliverable-grid">
-                <div class="deliverable-card">
+            <div class="deliverable-item">
+                <div class="deliverable-header" onclick="this.parentElement.classList.toggle('open')">
                     <h3>Lead Capture</h3>
-                    <p>Your first lead source connected and producing. Whether that's a Meta ad, a website form, or a landing page opt-in, leads flow directly into your CRM, tagged by source, with an instant auto-response and team notification. No empty pipelines.</p>
+                    <span class="deliverable-toggle">&#9660;</span>
                 </div>
-                <div class="deliverable-card">
-                    <h3>CRM and Pipeline</h3>
-                    <p>Sales pipeline with stages that match how you actually sell. Contact tags, custom fields, and segmentation so you can find anyone and know where they are.</p>
-                </div>
-                <div class="deliverable-card">
-                    <h3>Payment Processing</h3>
-                    <p>Stripe or your processor connected. Products configured. Receipts and confirmations automated. You can take money on day one.</p>
-                </div>
-                <div class="deliverable-card">
-                    <h3>Email Infrastructure</h3>
-                    <p>Domain authentication (SPF, DKIM, DMARC) so your emails land in inboxes, not spam. Sending domain verified and deliverability confirmed.</p>
-                </div>
-                <div class="deliverable-card">
-                    <h3>Booking and Intake</h3>
-                    <p>Calendar connected for scheduling. Intake forms or applications built and routed. No more back-and-forth emails to book a call.</p>
-                </div>
-                <div class="deliverable-card">
-                    <h3>Tracking</h3>
-                    <p>Google Analytics or Meta Pixel installed. Basic conversion events configured. You'll know where traffic is coming from and what it's doing.</p>
-                </div>
-                <div class="deliverable-card">
-                    <h3>Integrations</h3>
-                    <p>1-2 core integrations connecting your most important tools. Calendar, forms, payment processor, whatever needs to talk to the CRM.</p>
+                <div class="deliverable-body">
+                    <div class="deliverable-body-inner">Your first lead source connected and producing. Whether that's a Meta ad, a website form, or a landing page opt-in, leads flow directly into your CRM, tagged by source, with an instant auto-response and team notification.</div>
                 </div>
             </div>
 
-            <div class="deliverable-card" style="margin-bottom: 1.5rem;">
-                <h3>Documentation and Training</h3>
-                <p>System overview document, credentials, a Loom walkthrough of everything, and post-handoff support so you're not lost after delivery.</p>
+            <div class="deliverable-item">
+                <div class="deliverable-header" onclick="this.parentElement.classList.toggle('open')">
+                    <h3>CRM and Pipeline</h3>
+                    <span class="deliverable-toggle">&#9660;</span>
+                </div>
+                <div class="deliverable-body">
+                    <div class="deliverable-body-inner">Sales pipeline with stages that match how you actually sell. Contact tags, custom fields, and segmentation so you can find anyone and know where they are.</div>
+                </div>
+            </div>
+
+            <div class="deliverable-item">
+                <div class="deliverable-header" onclick="this.parentElement.classList.toggle('open')">
+                    <h3>Payment Processing</h3>
+                    <span class="deliverable-toggle">&#9660;</span>
+                </div>
+                <div class="deliverable-body">
+                    <div class="deliverable-body-inner">Stripe or your processor connected. Products configured. Receipts and confirmations automated. You can take money on day one.</div>
+                </div>
+            </div>
+
+            <div class="deliverable-item">
+                <div class="deliverable-header" onclick="this.parentElement.classList.toggle('open')">
+                    <h3>Email Infrastructure</h3>
+                    <span class="deliverable-toggle">&#9660;</span>
+                </div>
+                <div class="deliverable-body">
+                    <div class="deliverable-body-inner">Domain authentication (SPF, DKIM, DMARC) so your emails land in inboxes, not spam. Sending domain verified and deliverability confirmed.</div>
+                </div>
+            </div>
+
+            <div class="deliverable-item">
+                <div class="deliverable-header" onclick="this.parentElement.classList.toggle('open')">
+                    <h3>Booking and Intake</h3>
+                    <span class="deliverable-toggle">&#9660;</span>
+                </div>
+                <div class="deliverable-body">
+                    <div class="deliverable-body-inner">Calendar connected for scheduling. Intake forms or applications built and routed. No more back-and-forth emails to book a call.</div>
+                </div>
+            </div>
+
+            <div class="deliverable-item">
+                <div class="deliverable-header" onclick="this.parentElement.classList.toggle('open')">
+                    <h3>Tracking</h3>
+                    <span class="deliverable-toggle">&#9660;</span>
+                </div>
+                <div class="deliverable-body">
+                    <div class="deliverable-body-inner">Google Analytics or Meta Pixel installed. Basic conversion events configured. You'll know where traffic is coming from and what it's doing.</div>
+                </div>
+            </div>
+
+            <div class="deliverable-item">
+                <div class="deliverable-header" onclick="this.parentElement.classList.toggle('open')">
+                    <h3>Integrations</h3>
+                    <span class="deliverable-toggle">&#9660;</span>
+                </div>
+                <div class="deliverable-body">
+                    <div class="deliverable-body-inner">1-2 core integrations connecting your most important tools. Calendar, forms, payment processor, whatever needs to talk to the CRM.</div>
+                </div>
+            </div>
+
+            <div class="deliverable-item">
+                <div class="deliverable-header" onclick="this.parentElement.classList.toggle('open')">
+                    <h3>Documentation and Training</h3>
+                    <span class="deliverable-toggle">&#9660;</span>
+                </div>
+                <div class="deliverable-body">
+                    <div class="deliverable-body-inner">System overview document, credentials, a Loom walkthrough of everything, and post-handoff support so you're not lost after delivery.</div>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- Sound Familiar? -->
+            <h2 class="section-label">Sound familiar?</h2>
+
+            <div class="familiar-grid">
+                <div class="familiar-item">Contacts in spreadsheets, no pipeline</div>
+                <div class="familiar-item">Paying for a CRM nobody configured</div>
+                <div class="familiar-item">Tracking is broken, can't tell what works</div>
+                <div class="familiar-item">Emails landing in spam</div>
+                <div class="familiar-item">Running everything on manual follow-up</div>
+                <div class="familiar-item">Built a CRM but have zero leads in it</div>
+                <div class="familiar-item">Just hired marketing with no system to work in</div>
+                <div class="familiar-item">Need a system AND traffic, not just the system</div>
             </div>
 
             <hr class="section-divider">
 
             <!-- Timeline -->
-            <h2 class="section-label">Timeline and Process</h2>
+            <h2 class="section-label">Timeline</h2>
 
-            <div class="process-grid">
-                <div class="process-item">
-                    <strong>Timeline</strong>
-                    1-2 weeks
+            <div class="timeline-compact">
+                <div class="timeline-item">
+                    <strong>1-2 Weeks</strong>
+                    <span>Discovery to handoff</span>
                 </div>
-                <div class="process-item">
-                    <strong>Process</strong>
-                    Discovery call, system build, testing, documentation, handoff
+                <div class="timeline-item">
+                    <strong>Full Ownership</strong>
+                    <span>Everything documented</span>
                 </div>
-                <div class="process-item">
-                    <strong>Support</strong>
-                    7-14 days post-delivery included
-                </div>
-                <div class="process-item">
-                    <strong>Ownership</strong>
-                    You own everything I build. Full documentation, credentials, and training included.
+                <div class="timeline-item">
+                    <strong>Post-Delivery</strong>
+                    <span>7-14 days support included</span>
                 </div>
             </div>
 
@@ -326,7 +420,7 @@
 
             <!-- After Foundation -->
             <div class="next-step">
-                <p>Your system is live and leads are coming in. The next step is usually Growth: scaling the pipeline with more channels, building automated follow-up sequences, adding sales funnels, and turning that initial lead flow into consistent revenue. Most clients move to Growth within 30-60 days.</p>
+                <p>Once your system is live and leads are coming in, the next step is Growth: more channels, automated follow-up, and systems that convert without you doing it manually.</p>
                 <a href="/growth.html">See what Growth looks like &rarr;</a>
             </div>
 
@@ -334,9 +428,9 @@
 
             <!-- CTA -->
             <div class="cta-section">
-                <p>Not sure if Foundation is where you need to start?</p>
+                <h2>Not sure if Foundation is where you start?</h2>
+                <p>The audit identifies exactly where you are and what to build first. It credits toward any project.</p>
                 <a href="/audit.html" class="btn-primary">Book an Automation Audit</a>
-                <p class="cta-muted">The audit identifies exactly where you are and what to build first. It credits toward any project.</p>
             </div>
 
             <!-- Footer -->

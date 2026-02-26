@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Automation Audit - Seth Forte</title>
-    <meta name="description" content="A deep-dive into your current setup. Top automation opportunities identified, ROI estimated, prioritized roadmap delivered. Credits toward any project.">
+    <meta name="description" content="You know something's broken. You're just not sure what to fix first. A deep-dive into your setup with prioritized recommendations and ROI estimates.">
     <meta name="author" content="Seth Forte">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sethforte.com/audit">
     <meta property="og:title" content="Automation Audit - Seth Forte">
-    <meta property="og:description" content="Not sure where to start? Start here.">
+    <meta property="og:description" content="You know something's broken. You're just not sure what to fix first.">
     <meta property="og:image" content="https://sethforte.com/headshot-6.jpg">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/jpeg" href="logo.jpg">
@@ -65,10 +65,21 @@
 
         .page-title { font-size: 1.75rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; letter-spacing: -0.02em; }
         .page-subtitle { font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 3rem; line-height: 1.8; }
-        .body-text { color: var(--text-secondary); margin-bottom: 1.75rem; line-height: 1.8; }
 
-        .section-divider { border: none; border-top: 1px solid var(--border); margin: 4rem 0; }
-        .section-label { font-size: 0.8rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2rem; }
+        .section-divider { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
+        .section-label { font-size: 0.8rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+
+        /* Steps */
+        .step-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.25rem; margin-bottom: 1.5rem; }
+        .step-card {
+            background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
+            padding: 1.75rem; text-align: center;
+        }
+        .step-number {
+            font-size: 1.75rem; font-weight: 700; color: var(--accent); margin-bottom: 0.75rem; display: block;
+        }
+        .step-card h3 { font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem; }
+        .step-card p { color: var(--text-secondary); font-size: 0.85rem; line-height: 1.5; }
 
         /* What You Get */
         .deliverable-list { list-style: none; margin-bottom: 1.5rem; }
@@ -82,24 +93,12 @@
             width: 6px; height: 6px; background: var(--accent); border-radius: 50%;
         }
 
-        /* Steps */
-        .step-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; margin-bottom: 1.5rem; }
-        .step-card {
-            background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
-            padding: 1.75rem; display: flex; gap: 1.25rem;
+        /* Why People Start Here */
+        .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+        .why-item {
+            padding: 1.25rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px;
         }
-        .step-number {
-            font-size: 1.5rem; font-weight: 700; color: var(--accent); min-width: 2rem;
-        }
-        .step-content h3 { font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.35rem; }
-        .step-content p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; }
-
-        /* Who section */
-        .who-section {
-            background: var(--background-alt); border: 1px solid var(--border); border-radius: 10px;
-            padding: 2rem; margin: 2rem 0;
-        }
-        .who-section p { color: var(--text-secondary); line-height: 1.8; }
+        .why-item p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; }
 
         /* CTA */
         .cta-section {
@@ -108,7 +107,7 @@
             padding: 2.5rem; margin: 2rem 0; text-align: center;
         }
         .cta-section h2 { font-size: 1.3rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; }
-        .cta-pricing { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem; }
+        .cta-details { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem; }
 
         .btn-primary { display: inline-block; background: var(--accent); color: #ffffff; padding: 0.75rem 1.75rem; border-radius: 6px; font-size: 0.95rem; font-weight: 500; transition: opacity 0.2s ease; }
         .btn-primary:hover { opacity: 0.85; text-decoration: none; }
@@ -144,6 +143,8 @@
             .nav-links li { margin-bottom: 0; }
             .sidebar-email { display: block; margin-top: 0; padding-top: 0; border-top: none; }
             .main-content { padding: 3rem 2rem 4rem; text-align: left; }
+            .step-grid { grid-template-columns: 1fr; }
+            .why-grid { grid-template-columns: 1fr; }
             .footer-columns { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
         }
         @media (max-width: 600px) {
@@ -153,10 +154,9 @@
             .nav-links { gap: 0.75rem; }
             .main-content { padding: 2rem 1.5rem 3rem; }
             .page-title { font-size: 1.4rem; }
-            .section-divider { margin: 3rem 0; }
+            .section-divider { margin: 2.5rem 0; }
             .footer-columns { grid-template-columns: 1fr; }
             .cta-section { padding: 1.75rem; }
-            .step-card { flex-direction: column; gap: 0.5rem; }
             .site-header { padding: 1rem 1.5rem; }
             .header-nav { gap: 1rem; }
             .header-nav a { font-size: 0.85rem; }
@@ -199,13 +199,36 @@
         </aside>
 
         <main class="main-content">
-            <h1 class="page-title animate-fade-up animate-delay-1">Not sure where to start? Start here.</h1>
-            <p class="page-subtitle animate-fade-up animate-delay-2">The Automation Audit is a deep-dive into your current setup. I identify the biggest opportunities, estimate the ROI, and give you a prioritized roadmap. If you move forward with a build, the audit fee applies as credit.</p>
+            <h1 class="page-title animate-fade-up animate-delay-1">You know something's broken. You're just not sure what to fix first.</h1>
+            <p class="page-subtitle animate-fade-up animate-delay-2">The Automation Audit is a deep-dive into your current setup. I find the biggest opportunities, estimate the ROI, and give you a prioritized roadmap. If you move forward, the audit fee credits toward your project.</p>
+
+            <hr class="section-divider">
+
+            <!-- How It Works - 3 Step Visual -->
+            <h2 class="section-label animate-fade-up animate-delay-3">How it works</h2>
+
+            <div class="step-grid">
+                <div class="step-card">
+                    <span class="step-number">1</span>
+                    <h3>Book the Call</h3>
+                    <p>30-45 minutes going through your current setup, what's working, and where you're wasting time.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">2</span>
+                    <h3>Get the Roadmap</h3>
+                    <p>Within 3 business days: top automation opportunities, what each would look like, and estimated ROI.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">3</span>
+                    <h3>Decide What to Build</h3>
+                    <p>Move forward on the roadmap and the audit fee credits toward your project. Or keep the roadmap.</p>
+                </div>
+            </div>
 
             <hr class="section-divider">
 
             <!-- What You Get -->
-            <h2 class="section-label animate-fade-up animate-delay-3">What you get</h2>
+            <h2 class="section-label">What you get</h2>
 
             <ul class="deliverable-list">
                 <li>30-45 minute discovery call</li>
@@ -218,40 +241,22 @@
 
             <hr class="section-divider">
 
-            <!-- How It Works -->
-            <h2 class="section-label">How it works</h2>
+            <!-- Why People Start Here -->
+            <h2 class="section-label">Why people start here</h2>
 
-            <div class="step-grid">
-                <div class="step-card">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Book the call</h3>
-                        <p>We spend 30-45 minutes going through your current setup, what's working, what's broken, and where you're wasting time.</p>
-                    </div>
+            <div class="why-grid">
+                <div class="why-item">
+                    <p>You know you're wasting time on manual work but aren't sure what to automate first.</p>
                 </div>
-                <div class="step-card">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>Get the roadmap</h3>
-                        <p>Within 3 business days, you get a prioritized document with the top automation opportunities, what each one would look like, and estimated ROI.</p>
-                    </div>
+                <div class="why-item">
+                    <p>You have tools in place but aren't sure if they're set up correctly or talking to each other.</p>
                 </div>
-                <div class="step-card">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>Decide what to build</h3>
-                        <p>If you want to move forward on anything in the roadmap, the audit fee applies as credit toward the project. If not, you still have the roadmap.</p>
-                    </div>
+                <div class="why-item">
+                    <p>You've been quoted projects before but had no way to evaluate if the scope or approach made sense.</p>
                 </div>
-            </div>
-
-            <hr class="section-divider">
-
-            <!-- Who This Is For -->
-            <h2 class="section-label">Who this is for</h2>
-
-            <div class="who-section">
-                <p>The audit is for business owners who know they're wasting time on manual work but aren't sure what to automate first, what order to do things in, or what it should cost. It's also for businesses that have tools in place but aren't sure if they're set up correctly.</p>
+                <div class="why-item">
+                    <p>You want a clear plan before committing to a build, not a sales pitch disguised as a consultation.</p>
+                </div>
             </div>
 
             <hr class="section-divider">
@@ -259,7 +264,7 @@
             <!-- CTA -->
             <div class="cta-section">
                 <h2>Book an Automation Audit</h2>
-                <p class="cta-pricing">3-day turnaround | Credits toward any project</p>
+                <p class="cta-details">3-day turnaround | Credits toward any project</p>
                 <a href="/contact.html" class="btn-primary">Book Now</a>
             </div>
 
