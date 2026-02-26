@@ -205,6 +205,11 @@
         }
 
         /* Hero */
+        .hero-section {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
         .hero-text {
             font-size: 1.75rem;
             font-weight: 700;
@@ -226,22 +231,29 @@
             line-height: 1.8;
         }
 
+        .hero-body {
+            color: var(--text-secondary);
+            margin-bottom: 1.75rem;
+            line-height: 1.8;
+        }
+
         .hero-cta {
             display: flex;
             gap: 1rem;
             margin-top: 2rem;
             margin-bottom: 0.75rem;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         .hero-qualifier {
             font-size: 0.9rem;
-            color: var(--text-muted);
+            color: #999;
             margin-top: 1.5rem;
         }
 
         .hero-subtext {
-            color: var(--text-secondary);
+            color: #c0c0c0;
             font-size: 0.95rem;
             margin-top: 1rem;
             line-height: 1.7;
@@ -251,55 +263,59 @@
         .credibility-bar {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr;
-            gap: 1.25rem;
+            gap: 1rem;
             margin: 2.5rem 0 2rem;
+            padding: 1.5rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
 
         .credibility-item {
             text-align: center;
-            padding: 1rem 0.5rem;
+            padding: 0.5rem 0.25rem;
         }
 
         .credibility-item .stat {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 700;
-            color: var(--text-primary);
+            color: #f0f0f0;
             display: block;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.3rem;
         }
 
         .credibility-item .label {
-            font-size: 0.75rem;
-            color: var(--text-muted);
+            font-size: 0.7rem;
+            color: #999;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.06em;
             line-height: 1.4;
         }
 
         /* Client Row */
         .client-row {
             text-align: center;
-            color: var(--text-muted);
+            color: #999;
             font-size: 0.85rem;
             letter-spacing: 0.03em;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
+            line-height: 2;
         }
 
         .client-row .divider {
-            margin: 0 0.5rem;
-            opacity: 0.4;
+            margin: 0 0.4rem;
+            opacity: 0.35;
         }
 
         /* Featured In */
         .featured-in {
             text-align: center;
             font-size: 0.85rem;
-            color: var(--text-muted);
+            color: #999;
             margin-bottom: 1rem;
         }
 
         .featured-in a {
-            color: var(--text-muted);
+            color: #bbb;
             text-decoration: underline;
             text-underline-offset: 2px;
         }
@@ -658,7 +674,8 @@
 
             .service-grid { grid-template-columns: 1fr; }
             .result-grid { grid-template-columns: 1fr; }
-            .credibility-bar { grid-template-columns: 1fr 1fr; }
+            .credibility-bar { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+            .client-row { font-size: 0.8rem; }
 
             .footer-columns { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
 
@@ -679,7 +696,12 @@
             .audit-section, .cta-section { padding: 1.75rem; }
             .service-card { padding: 1.25rem; }
             .result-grid { grid-template-columns: 1fr; }
-            .credibility-bar { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+            .credibility-bar { grid-template-columns: 1fr 1fr; gap: 0.5rem; padding: 1rem 0; }
+            .credibility-item .stat { font-size: 1rem; }
+            .credibility-item .label { font-size: 0.65rem; }
+            .client-row { font-size: 0.75rem; line-height: 2.2; }
+            .client-row .divider { margin: 0 0.25rem; }
+            .hero-subtext { font-size: 0.9rem; }
 
             .site-header { padding: 1rem 1.5rem; }
             .header-nav { gap: 1rem; }
@@ -726,42 +748,44 @@
         <!-- Main Content -->
         <main class="main-content">
             <!-- Hero Section -->
-            <h2 class="hero-text animate-fade-up animate-delay-1">I build the systems that make growing businesses run.</h2>
-            <p class="body-text animate-fade-up animate-delay-2">Automation, CRM pipelines, reporting dashboards, and the infrastructure that holds it all together. Most of the work I do is invisible... it just makes everything else work the way it should.</p>
-            <div class="hero-cta animate-fade-up animate-delay-3">
-                <a href="/contact.html" class="btn-primary">Book a Call</a>
-                <a href="/case-studies.html" class="btn-secondary">See My Work</a>
-            </div>
-            <p class="hero-qualifier animate-fade-up animate-delay-3">Agencies, service businesses, clinics, consultants, and operators with real revenue.</p>
-            <p class="hero-subtext animate-fade-up animate-delay-3">5+ years building enterprise automation at scale. Now I help growing businesses get that same infrastructure without the enterprise price tag.</p>
+            <div class="hero-section">
+                <h2 class="hero-text animate-fade-up animate-delay-1">I build the systems that make growing businesses run.</h2>
+                <p class="hero-body animate-fade-up animate-delay-2">Automation, CRM pipelines, reporting dashboards, and the infrastructure that holds it all together. Most of the work I do is invisible... it just makes everything else work the way it should.</p>
+                <div class="hero-cta animate-fade-up animate-delay-3">
+                    <a href="/contact.html" class="btn-primary">Book a Call</a>
+                    <a href="/case-studies.html" class="btn-secondary">See My Work</a>
+                </div>
+                <p class="hero-qualifier animate-fade-up animate-delay-3">Agencies, service businesses, clinics, consultants, and operators with real revenue.</p>
+                <p class="hero-subtext animate-fade-up animate-delay-3">5+ years building enterprise automation at scale. Now I help growing businesses get that same infrastructure without the enterprise price tag.</p>
 
-            <!-- Credibility Stats -->
-            <div class="credibility-bar animate-fade-up animate-delay-3">
-                <div class="credibility-item">
-                    <span class="stat">5+ Years</span>
-                    <span class="label">Enterprise Systems</span>
+                <!-- Credibility Stats -->
+                <div class="credibility-bar animate-fade-up animate-delay-3">
+                    <div class="credibility-item">
+                        <span class="stat">5+ Years</span>
+                        <span class="label">Enterprise Systems</span>
+                    </div>
+                    <div class="credibility-item">
+                        <span class="stat">11+</span>
+                        <span class="label">Projects Delivered</span>
+                    </div>
+                    <div class="credibility-item">
+                        <span class="stat">Worldwide</span>
+                        <span class="label">Clients Served</span>
+                    </div>
+                    <div class="credibility-item">
+                        <span class="stat">$4M+</span>
+                        <span class="label">Client Value Identified</span>
+                    </div>
                 </div>
-                <div class="credibility-item">
-                    <span class="stat">6+ Industries</span>
-                    <span class="label">Clients Served</span>
-                </div>
-                <div class="credibility-item">
-                    <span class="stat">Worldwide</span>
-                    <span class="label">Projects Delivered</span>
-                </div>
-                <div class="credibility-item">
-                    <span class="stat">$4M+</span>
-                    <span class="label">Client Value Identified</span>
-                </div>
-            </div>
 
-            <!-- Client Names -->
-            <div class="client-row animate-fade-up animate-delay-3">
-                Revolut<span class="divider">|</span>Modern Bungalow<span class="divider">|</span>Eden Medical<span class="divider">|</span>Kingfisher Ads<span class="divider">|</span>CR Deals Cincinnati<span class="divider">|</span>Hollow Bamboo<span class="divider">|</span>UDI Group
-            </div>
+                <!-- Client Names -->
+                <div class="client-row animate-fade-up animate-delay-3">
+                    Revolut<span class="divider">|</span>Modern Bungalow<span class="divider">|</span>Eden Medical<span class="divider">|</span>Kingfisher Ads<span class="divider">|</span>CR Deals Cincinnati<span class="divider">|</span>Hollow Bamboo<span class="divider">|</span>UDI Group
+                </div>
 
-            <!-- Featured In -->
-            <p class="featured-in animate-fade-up animate-delay-3">As Featured in <a href="https://voyagedallas.com/interview/community-highlights-meet-seth-forte-of-forte-web-designs/" target="_blank" rel="noopener">Voyage Dallas Magazine</a></p>
+                <!-- Featured In -->
+                <p class="featured-in animate-fade-up animate-delay-3">As Featured in <a href="https://voyagedallas.com/interview/community-highlights-meet-seth-forte-of-forte-web-designs/" target="_blank" rel="noopener">Voyage Dallas Magazine</a></p>
+            </div>
 
             <hr class="section-divider">
 
