@@ -22,6 +22,7 @@
         '#sticky-cta-bar.visible{transform:translateY(0)}' +
         '#sticky-cta-link{display:inline-block;background:#6ba3b8;color:#fff;padding:0.6rem 2rem;border-radius:6px;font-size:0.9rem;font-weight:500;text-decoration:none;transition:opacity 0.2s ease;letter-spacing:0.01em}' +
         '#sticky-cta-link:hover{opacity:0.85;text-decoration:none}' +
+        'body{padding-bottom:3.5rem}' +
         '@media(max-width:600px){#scroll-top-btn{bottom:4.5rem;right:1.25rem;width:40px;height:40px;font-size:0.9rem}#sticky-cta-bar{padding:0.6rem 1.5rem}#sticky-cta-link{padding:0.55rem 1.5rem;font-size:0.85rem}}';
     document.head.appendChild(style);
 
