@@ -3,35 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Primary Meta Tags -->
-    <title>Revolut Case Study: $4M Growth Opportunity | Seth Forte</title>
-    <meta name="description" content="How AI-powered analysis of 200K+ transactions uncovered a $4M growth opportunity for Revolut. Case study in fintech automation.">
-    <meta name="keywords" content="revolut case study, fintech automation, AI data analysis, transaction analysis, growth automation">
+    <title>Foundation - Seth Forte</title>
+    <meta name="description" content="CRM, pipeline, payments, email infrastructure, and tracking. The system every business needs before anything else makes sense.">
     <meta name="author" content="Seth Forte">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://sethforte.com/work/revolut">
-    <meta property="og:title" content="Revolut Case Study: $4M Growth Opportunity | Seth Forte">
-    <meta property="og:description" content="How AI-powered analysis of 200K+ transactions uncovered a $4M growth opportunity.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sethforte.com/foundation">
+    <meta property="og:title" content="Foundation - Seth Forte">
+    <meta property="og:description" content="Before you can grow, you need a system that works.">
     <meta property="og:image" content="https://sethforte.com/headshot-6.jpg">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://sethforte.com/work/revolut">
-    <meta property="twitter:title" content="Revolut Case Study: $4M Growth Opportunity | Seth Forte">
-    <meta property="twitter:description" content="How AI-powered analysis uncovered a $4M growth opportunity.">
-    <meta property="twitter:image" content="https://sethforte.com/headshot-6.jpg">
-
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://sethforte.com/work/revolut">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../favicon.ico">
-    <link rel="icon" type="image/jpeg" href="../logo.jpg">
-    <link rel="apple-touch-icon" href="../logo.jpg">
-
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link rel="apple-touch-icon" href="logo.jpg">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -70,76 +52,102 @@
         .animate-fade-up { animation: fadeInUp 0.6s ease forwards; }
         .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
         .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
+        .animate-delay-3 { animation-delay: 0.3s; opacity: 0; }
 
         .site-wrapper { display: flex; min-height: 100vh; max-width: 1200px; margin: 0 auto; }
 
         .sidebar {
             width: 280px; padding: 3rem 2rem; border-right: 1px solid var(--border);
-            position: sticky; top: 0; height: 100vh;
-            display: flex; flex-direction: column; align-items: center; text-align: center;
+            position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column;
+            align-items: center; text-align: center;
         }
-
         .profile-photo {
             width: 120px; height: 120px; border-radius: 50%; object-fit: cover;
             margin-bottom: 1.5rem; transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .profile-photo:hover { transform: scale(1.05); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); }
-
+        .profile-photo:hover { transform: scale(1.05); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
         .profile-name { font-size: 1.25rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.25rem; }
         .profile-tagline { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.4; }
-
         .nav-links { list-style: none; margin-bottom: auto; width: 100%; }
         .nav-links li { margin-bottom: 0.25rem; }
         .nav-links a {
             color: var(--text-secondary); font-size: 0.95rem; display: block;
-            padding: 0.5rem 1rem; border-radius: 6px;
-            transition: background 0.2s ease, color 0.2s ease;
+            padding: 0.5rem 1rem; border-radius: 6px; transition: background 0.2s ease, color 0.2s ease;
         }
         .nav-links a:hover { color: var(--text-primary); background: var(--card-bg); text-decoration: none; }
         .nav-links a.active { color: var(--text-primary); background: var(--card-bg); }
-
         .sidebar-email { font-size: 0.8rem; color: var(--text-muted); margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border); width: 100%; }
         .sidebar-email a { color: var(--text-muted); }
         .sidebar-email a:hover { color: var(--accent); }
 
         .main-content { flex: 1; padding: 5rem 4rem 6rem; max-width: 780px; }
 
-        .back-link { display: inline-block; color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 2rem; }
-        .back-link:hover { color: var(--accent); }
-
-        .case-title { font-size: 2rem; font-weight: 700; color: var(--text-primary); line-height: 1.3; margin-bottom: 1rem; letter-spacing: -0.02em; }
-        .case-subtitle { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 3rem; line-height: 1.6; }
+        .page-title {
+            font-size: 1.75rem; font-weight: 700; color: var(--text-primary);
+            margin-bottom: 0.5rem; letter-spacing: -0.02em;
+        }
+        .page-subtitle {
+            font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 3rem; line-height: 1.8;
+        }
+        .body-text { color: var(--text-secondary); margin-bottom: 1.75rem; line-height: 1.8; }
 
         .section-divider { border: none; border-top: 1px solid var(--border); margin: 4rem 0; }
 
-        .case-section { margin-bottom: 3rem; }
-        .case-section h2 { font-size: 1.4rem; font-weight: 600; color: var(--text-primary); margin-bottom: 1rem; }
-        .case-section h3 { font-size: 1.15rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.75rem; margin-top: 2rem; }
-        .case-section p { color: var(--text-secondary); margin-bottom: 1.5rem; }
-        .case-section ul, .case-section ol { color: var(--text-secondary); margin-bottom: 1.5rem; padding-left: 1.5rem; }
-        .case-section li { margin-bottom: 0.5rem; }
-        .case-section strong { color: var(--text-primary); }
-
-        .result-card {
-            background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
-            padding: 1.5rem; margin-bottom: 1rem;
+        .section-label {
+            font-size: 0.8rem; font-weight: 600; color: var(--text-muted);
+            text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2rem;
         }
-        .result-card .stat { font-size: 1.5rem; font-weight: 700; color: var(--accent); margin-bottom: 0.25rem; }
-        .result-card .label { color: var(--text-secondary); font-size: 0.95rem; }
+
+        /* Situation Cards */
+        .situation-list { list-style: none; margin-bottom: 1rem; }
+        .situation-item {
+            padding: 1rem 1.25rem; border-left: 3px solid var(--border); margin-bottom: 0.75rem;
+            color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;
+            background: var(--card-bg); border-radius: 0 8px 8px 0;
+        }
+
+        /* Deliverable Cards */
+        .deliverable-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.5rem;
+        }
+        .deliverable-card {
+            background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; padding: 1.75rem;
+        }
+        .deliverable-card h3 {
+            font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;
+        }
+        .deliverable-card p {
+            color: var(--text-secondary); font-size: 0.88rem; line-height: 1.6;
+        }
+
+        /* Process Section */
+        .process-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+        }
+        .process-item { color: var(--text-secondary); font-size: 0.95rem; }
+        .process-item strong { color: var(--text-primary); display: block; margin-bottom: 0.25rem; }
+
+        /* CTA */
+        .cta-section {
+            background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
+            padding: 2.5rem; margin: 2rem 0;
+        }
+        .cta-section p { color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.8; }
+        .cta-muted { font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem; }
 
         .btn-primary {
             display: inline-block; background: var(--accent); color: #ffffff;
-            padding: 0.75rem 1.75rem; border-radius: 6px; font-size: 0.95rem; font-weight: 500;
-            transition: opacity 0.2s ease;
+            padding: 0.75rem 1.75rem; border-radius: 6px; font-size: 0.95rem;
+            font-weight: 500; transition: opacity 0.2s ease;
         }
         .btn-primary:hover { opacity: 0.85; text-decoration: none; }
 
-        .cta-card {
-            background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px;
-            padding: 2.5rem; text-align: center; margin-top: 4rem;
+        .next-step {
+            background: var(--background-alt); border: 1px solid var(--border); border-radius: 10px;
+            padding: 2rem; margin: 2rem 0;
         }
-        .cta-card h3 { font-size: 1.3rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.75rem; }
-        .cta-card p { color: var(--text-secondary); margin-bottom: 1.5rem; }
+        .next-step p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem; }
+        .next-step a { font-size: 0.95rem; }
 
         /* Footer */
         .footer-section { margin-top: 5rem; padding-top: 3rem; border-top: 1px solid var(--border); }
@@ -154,7 +162,6 @@
         .footer-location { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.35rem; }
         .copyright { color: var(--text-muted); font-size: 0.85rem; }
 
-        /* Site Header */
         .site-header { padding: 1rem 2rem; border-bottom: 1px solid var(--border); background: var(--background); }
         .header-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
         .header-logo { font-size: 1.1rem; font-weight: 600; color: var(--text-primary); text-decoration: none; }
@@ -163,7 +170,6 @@
         .header-nav a { color: var(--text-secondary); font-size: 0.9rem; text-decoration: none; }
         .header-nav a:hover { color: var(--text-primary); }
 
-        /* Responsive */
         @media (max-width: 900px) {
             .site-header { display: none; }
             .site-wrapper { flex-direction: column; }
@@ -175,17 +181,20 @@
             .nav-links li { margin-bottom: 0; }
             .sidebar-email { display: block; margin-top: 0; padding-top: 0; border-top: none; }
             .main-content { padding: 3rem 2rem 4rem; text-align: left; }
+            .deliverable-grid { grid-template-columns: 1fr; }
+            .process-grid { grid-template-columns: 1fr; }
             .footer-columns { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
         }
-
         @media (max-width: 600px) {
             .sidebar { padding: 2rem 1.5rem; }
             .profile-photo { width: 90px; height: 90px; }
             .profile-name { font-size: 1.35rem; }
             .nav-links { gap: 0.75rem; }
             .main-content { padding: 2rem 1.5rem 3rem; }
-            .case-title { font-size: 1.6rem; }
+            .page-title { font-size: 1.4rem; }
+            .section-divider { margin: 3rem 0; }
             .footer-columns { grid-template-columns: 1fr; }
+            .cta-section { padding: 1.75rem; }
             .site-header { padding: 1rem 1.5rem; }
             .header-nav { gap: 1rem; }
             .header-nav a { font-size: 0.85rem; }
@@ -209,14 +218,14 @@
 
     <div class="site-wrapper">
         <aside class="sidebar">
-            <img src="../headshot-6.jpg" alt="Seth Forte" class="profile-photo animate-fade-in">
+            <img src="headshot-6.jpg" alt="Seth Forte" class="profile-photo animate-fade-in">
             <h1 class="profile-name">Seth Forte</h1>
             <p class="profile-tagline">Systems Architect &<br>Automation Consultant</p>
             <nav>
                 <ul class="nav-links">
                     <li><a href="/">Home</a></li>
                     <li><a href="/services.html">Services</a></li>
-                    <li><a href="/case-studies.html" class="active">Work</a></li>
+                    <li><a href="/case-studies.html">Work</a></li>
                     <li><a href="/writing.html">Writing</a></li>
                     <li><a href="/about.html">About</a></li>
                     <li><a href="/contact.html">Contact</a></li>
@@ -228,57 +237,102 @@
         </aside>
 
         <main class="main-content">
-            <a href="/case-studies.html" class="back-link animate-fade-up">&larr; Back to Work</a>
+            <h1 class="page-title animate-fade-up animate-delay-1">Before you can grow, you need a system that works.</h1>
+            <p class="page-subtitle animate-fade-up animate-delay-2">Most businesses come to me with contacts in spreadsheets, a CRM nobody set up, and tools that don't talk to each other. Foundation fixes that.</p>
 
-            <h1 class="case-title animate-fade-up animate-delay-1">Revolut: $4M Growth Opportunity Identified</h1>
-            <p class="case-subtitle animate-fade-up animate-delay-2">AI-powered analysis of 200K+ transactions revealed profitability drivers that manual analysis would have taken weeks to find.</p>
+            <hr class="section-divider">
 
-            <div class="case-section">
-                <h2>The Challenge</h2>
-                <p>Revolut needed to analyze over 200,000 transactions to understand profitability drivers. The manual approach - spreadsheets, pivot tables, analyst hours - would take weeks and still might miss patterns in the data.</p>
-                <p>They needed insights faster, and they needed to find patterns that human analysts might overlook.</p>
+            <!-- Is This You -->
+            <h2 class="section-label animate-fade-up animate-delay-3">Common situations I see</h2>
+
+            <ul class="situation-list">
+                <li class="situation-item">We have thousands of contacts but no pipeline or segmentation</li>
+                <li class="situation-item">We're paying for a CRM but nobody configured it properly</li>
+                <li class="situation-item">Our tracking is broken and we can't tell which marketing actually works</li>
+                <li class="situation-item">We need to accept payments, book calls, and manage leads in one place</li>
+                <li class="situation-item">We just hired a marketing person and they have no system to work in</li>
+                <li class="situation-item">We're running everything on spreadsheets and manual follow-up</li>
+            </ul>
+
+            <hr class="section-divider">
+
+            <!-- What Gets Built -->
+            <h2 class="section-label">What you walk away with</h2>
+
+            <div class="deliverable-grid">
+                <div class="deliverable-card">
+                    <h3>CRM and Pipeline</h3>
+                    <p>Sales pipeline with stages that match how you actually sell. Contact tags, custom fields, and segmentation so you can find anyone and know where they are.</p>
+                </div>
+                <div class="deliverable-card">
+                    <h3>Payment Processing</h3>
+                    <p>Stripe or your processor connected. Products configured. Receipts and confirmations automated. You can take money on day one.</p>
+                </div>
+                <div class="deliverable-card">
+                    <h3>Email Infrastructure</h3>
+                    <p>Domain authentication (SPF, DKIM, DMARC) so your emails land in inboxes, not spam. Sending domain verified and deliverability confirmed.</p>
+                </div>
+                <div class="deliverable-card">
+                    <h3>Booking and Intake</h3>
+                    <p>Calendar connected for scheduling. Intake forms or applications built and routed. No more back-and-forth emails to book a call.</p>
+                </div>
+                <div class="deliverable-card">
+                    <h3>Tracking</h3>
+                    <p>Google Analytics or Meta Pixel installed. Basic conversion events configured. You'll know where traffic is coming from and what it's doing.</p>
+                </div>
+                <div class="deliverable-card">
+                    <h3>Integrations</h3>
+                    <p>1-2 core integrations connecting your most important tools. Calendar, forms, payment processor, whatever needs to talk to the CRM.</p>
+                </div>
+            </div>
+
+            <div class="deliverable-card" style="margin-bottom: 1.5rem;">
+                <h3>Documentation and Training</h3>
+                <p>System overview document, credentials, a Loom walkthrough of everything, and post-handoff support so you're not lost after delivery.</p>
             </div>
 
             <hr class="section-divider">
 
-            <div class="case-section">
-                <h2>The Solution</h2>
+            <!-- Timeline -->
+            <h2 class="section-label">Timeline and Process</h2>
 
-                <h3>AI-Powered Analysis Pipeline</h3>
-                <p>Built a system that could process the entire transaction dataset, applying AI to identify patterns, correlations, and anomalies.</p>
-
-                <h3>Automated Pattern Recognition</h3>
-                <p>The AI identified profitability drivers across customer segments, transaction types, and time periods - insights that would be nearly impossible to find manually.</p>
-
-                <h3>Actionable Insights Delivery</h3>
-                <p>Findings packaged into clear recommendations with supporting data. Not just "what" but "why" and "what to do about it."</p>
+            <div class="process-grid">
+                <div class="process-item">
+                    <strong>Timeline</strong>
+                    1-2 weeks
+                </div>
+                <div class="process-item">
+                    <strong>Process</strong>
+                    Discovery call, system build, testing, documentation, handoff
+                </div>
+                <div class="process-item">
+                    <strong>Support</strong>
+                    7-14 days post-delivery included
+                </div>
+                <div class="process-item">
+                    <strong>Ownership</strong>
+                    You own everything I build. Full documentation, credentials, and training included.
+                </div>
             </div>
 
             <hr class="section-divider">
 
-            <div class="case-section">
-                <h2>The Results</h2>
-                <ul>
-                    <li><strong>$4M growth opportunity</strong> identified through pattern analysis</li>
-                    <li><strong>Weeks of work compressed</strong> into hours</li>
-                    <li><strong>Patterns discovered</strong> that manual analysis would have missed</li>
-                    <li><strong>Repeatable process</strong> for ongoing analysis</li>
-                </ul>
+            <!-- After Foundation -->
+            <div class="next-step">
+                <p>Once your foundation is solid, the next step is usually growth: filling the pipeline with leads and automating follow-up so nothing falls through the cracks. Most clients move to a Growth engagement within 30-60 days of Foundation.</p>
+                <a href="/growth.html">See what Growth looks like &rarr;</a>
             </div>
 
             <hr class="section-divider">
 
-            <div class="case-section">
-                <h2>Watch the Walkthrough</h2>
-                <p><a href="/videoWalkthroughs/Transforming Data Analysis with AI for Strategic Growth 🚀.mp4" class="btn-primary" target="_blank">Watch Video Walkthrough</a></p>
+            <!-- CTA -->
+            <div class="cta-section">
+                <p>Not sure if Foundation is where you need to start?</p>
+                <a href="/audit.html" class="btn-primary">Book an Automation Audit</a>
+                <p class="cta-muted">The $500 audit identifies exactly where you are and what to build first. It credits toward any project.</p>
             </div>
 
-            <div class="cta-card">
-                <h3>Want Results Like These?</h3>
-                <p>Let's talk about what automation could do for your business.</p>
-                <a href="/contact.html" class="btn-primary">Get in Touch</a>
-            </div>
-
+            <!-- Footer -->
             <div class="footer-section">
                 <a href="mailto:seth@fortewebdesigns.com" class="footer-email-main">seth@fortewebdesigns.com</a>
                 <div class="footer-columns">
