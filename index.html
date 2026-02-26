@@ -62,8 +62,8 @@
 
         :root {
             --text-primary: #e5e5e5;
-            --text-secondary: #a0a0a0;
-            --text-muted: #777;
+            --text-secondary: #b0b0b0;
+            --text-muted: #999;
             --accent: #6ba3b8;
             --accent-warm: #d4956a;
             --background: #111111;
@@ -366,38 +366,79 @@
             margin-bottom: 2.5rem;
         }
 
-        /* Service Cards */
-        .service-grid {
+        /* Stage Cards */
+        .stage-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
             gap: 1.25rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
-        .service-card {
+        .stage-card {
             background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 10px;
-            padding: 1.75rem;
+            padding: 2rem 1.75rem;
             transition: border-color 0.2s ease, transform 0.15s ease;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
         }
 
-        .service-card:hover {
+        .stage-card:hover {
             border-color: var(--text-muted);
             transform: translateY(-2px);
+            text-decoration: none;
         }
 
-        .service-card h3 {
-            font-size: 1.05rem;
-            font-weight: 600;
+        .stage-card.stage-foundation {
+            border-top: 3px solid var(--border);
+        }
+
+        .stage-card.stage-growth {
+            border-top: 3px solid var(--accent);
+        }
+
+        .stage-card.stage-scale {
+            border-top: 3px solid var(--accent-warm);
+        }
+
+        .stage-card .stage-title {
+            font-size: 1.15rem;
+            font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
         }
 
-        .service-card p {
+        .stage-card .stage-subtitle {
+            font-size: 0.8rem;
             color: var(--text-muted);
-            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .stage-card p {
+            color: var(--text-secondary);
+            font-size: 0.88rem;
             line-height: 1.6;
+            flex: 1;
+        }
+
+        .stage-card .stage-link {
+            font-size: 0.85rem;
+            color: var(--accent);
+            margin-top: 1.25rem;
+            display: inline-block;
+        }
+
+        .trust-line {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-style: italic;
         }
 
         /* Audit Section */
@@ -664,7 +705,7 @@
 
             .main-content { padding: 3rem 2rem 4rem; text-align: left; }
 
-            .service-grid { grid-template-columns: 1fr; }
+            .stage-grid { grid-template-columns: 1fr; }
             .result-grid { grid-template-columns: 1fr; }
             .credibility-bar { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
             .client-row { font-size: 0.8rem; }
@@ -686,7 +727,7 @@
             .hero-cta { flex-direction: column; }
             .hero-cta a { text-align: center; }
             .audit-section, .cta-section { padding: 1.75rem; }
-            .service-card { padding: 1.25rem; }
+            .stage-card { padding: 1.5rem; }
             .result-grid { grid-template-columns: 1fr; }
             .credibility-section { margin-top: 3rem; }
             .credibility-bar { grid-template-columns: 1fr 1fr; gap: 0.5rem; padding: 1rem 0; }
@@ -782,36 +823,32 @@
             <!-- What I Build -->
             <h2 class="section-title">What I Build</h2>
 
-            <p class="body-text">I work with growing businesses that have real revenue and real friction. Things like leads that don't get followed up, reports that take hours to pull, onboarding that depends on one person who "just knows how it works."</p>
+            <p class="body-text">Most businesses that come to me are dealing with one of three things: they have no systems at all, they have systems that don't talk to each other, or they've outgrown what they built and it's starting to break.</p>
 
-            <p class="body-text" style="margin-bottom: 2.5rem;">I fix that. Here's what that looks like.</p>
+            <p class="body-text" style="margin-bottom: 2.5rem;">The fix depends on where you are. Some businesses need the foundation first. Others are ready to grow but their infrastructure can't keep up. And some need the full stack connected and running.</p>
 
-            <div class="service-grid">
-                <div class="service-card">
-                    <h3>Client Generation</h3>
-                    <p>More leads, faster follow-up, and making sure nothing falls through the cracks.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Booking and Payment Systems</h3>
-                    <p>Turn leads into booked calls and completed payments. Tracking, reminders, and CRM updates handled.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Reporting and Dashboards</h3>
-                    <p>One place to see what's working. Ad spend, lead sources, pipeline status... pulled together automatically.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Onboarding and Retention</h3>
-                    <p>What happens after someone says yes. Welcome sequences, intake workflows, review requests.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Chat, Support, and Routing</h3>
-                    <p>Intake bots, ticket routing, auto-responses. Customers get answers faster.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Operations and Internal Tools</h3>
-                    <p>Internal automation that keeps your team's week from getting eaten alive.</p>
-                </div>
+            <div class="stage-grid">
+                <a href="/contact.html" class="stage-card stage-foundation">
+                    <div class="stage-title">Foundation</div>
+                    <div class="stage-subtitle">1-2 weeks</div>
+                    <p>CRM setup, contact pipeline, payment processing, email infrastructure, and your first integrations. The minimum viable system every business needs to stop losing leads and start tracking what matters.</p>
+                    <span class="stage-link">Learn more &rarr;</span>
+                </a>
+                <a href="/contact.html" class="stage-card stage-growth">
+                    <div class="stage-title">Growth</div>
+                    <div class="stage-subtitle">2-3 weeks</div>
+                    <p>Everything in Foundation plus SMS, calendar booking, 3-5 integrations, tracking and attribution, contact migration, and the automation that turns leads into revenue without manual work.</p>
+                    <span class="stage-link">Learn more &rarr;</span>
+                </a>
+                <a href="/contact.html" class="stage-card stage-scale">
+                    <div class="stage-title">Scale</div>
+                    <div class="stage-subtitle">3-4 weeks</div>
+                    <p>Full infrastructure. Multi-pipeline CRM, 5-10+ integrations, multi-channel communication, complete attribution stack, team training, and SOPs. Built for businesses with marketing teams and complex operations.</p>
+                    <span class="stage-link">Learn more &rarr;</span>
+                </a>
             </div>
+
+            <p class="trust-line">Every system is scoped, documented, tested, and handed off with training. You own everything I build.</p>
 
             <hr class="section-divider">
 
@@ -913,12 +950,9 @@
                     <div class="footer-col">
                         <h4>Services</h4>
                         <ul>
-                            <li><a href="#">Client Generation</a></li>
-                            <li><a href="#">Booking and Payments</a></li>
-                            <li><a href="#">Reporting and Dashboards</a></li>
-                            <li><a href="#">Onboarding and Retention</a></li>
-                            <li><a href="#">Chat and Support</a></li>
-                            <li><a href="#">Operations and Internal Tools</a></li>
+                            <li><a href="/contact.html">Foundation Systems</a></li>
+                            <li><a href="/contact.html">Growth Systems</a></li>
+                            <li><a href="/contact.html">Scale Infrastructure</a></li>
                             <li><a href="/contact.html">Automation Audit</a></li>
                         </ul>
                     </div>
