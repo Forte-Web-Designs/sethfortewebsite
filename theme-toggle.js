@@ -22,12 +22,13 @@
         '[data-theme="light"] .sidebar-email a{color:#666}' +
         '[data-theme="light"] .site-header{background:#f5f5f5;border-bottom-color:#ddd}';
 
-    // Toggle button styles - always visible, fixed top-right
-    var toggleCSS = '#theme-toggle{position:fixed;top:1.25rem;right:1.25rem;width:40px;height:40px;border-radius:50%;border:1px solid #2a2a2a;background:#1a1a1a;color:#b0b0b0;font-size:1.1rem;cursor:pointer;z-index:1001;display:flex;align-items:center;justify-content:center;transition:background 0.2s ease,color 0.2s ease,border-color 0.2s ease;box-shadow:0 2px 8px rgba(0,0,0,0.3);line-height:1}' +
+    // Toggle button styles - starts top-right, moves to bottom-right on scroll
+    var toggleCSS = '#theme-toggle{position:fixed;top:1.25rem;right:1.25rem;width:40px;height:40px;border-radius:50%;border:1px solid #2a2a2a;background:#1a1a1a;color:#b0b0b0;font-size:1.1rem;cursor:pointer;z-index:1001;display:flex;align-items:center;justify-content:center;transition:top 0.3s ease,bottom 0.3s ease,background 0.2s ease,color 0.2s ease,border-color 0.2s ease;box-shadow:0 2px 8px rgba(0,0,0,0.3);line-height:1}' +
+        '#theme-toggle.scrolled{top:auto;bottom:8.5rem;right:2rem}' +
         '#theme-toggle:hover{background:#6ba3b8;color:#fff;border-color:#6ba3b8}' +
         '[data-theme="light"] #theme-toggle{background:#fff;border-color:#ddd;color:#666;box-shadow:0 2px 8px rgba(0,0,0,0.1)}' +
         '[data-theme="light"] #theme-toggle:hover{background:#4a8a9f;color:#fff;border-color:#4a8a9f}' +
-        '@media(max-width:600px){#theme-toggle{top:1rem;right:1rem;width:36px;height:36px;font-size:1rem}}';
+        '@media(max-width:600px){#theme-toggle{top:1rem;right:1rem;width:36px;height:36px;font-size:1rem}#theme-toggle.scrolled{right:1.25rem;bottom:8rem}}';
 
     // Inject styles
     var style = document.createElement('style');
@@ -54,5 +55,14 @@
     toggle.addEventListener('click', function() {
         var current = document.documentElement.getAttribute('data-theme');
         applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+
+    // Move toggle position based on scroll
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            toggle.classList.add('scrolled');
+        } else {
+            toggle.classList.remove('scrolled');
+        }
     });
 })();
