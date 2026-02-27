@@ -144,42 +144,6 @@
             line-height: 1.8;
         }
 
-        .upwork-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 3rem;
-        }
-        .upwork-link:hover { color: var(--accent); text-decoration: none; }
-
-        /* Stats bar */
-        .stats-bar {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 3.5rem;
-            padding: 1.5rem 2rem;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-        }
-
-        .stat-item { text-align: center; }
-        .stat-number {
-            display: block;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent-warm);
-        }
-        .stat-label {
-            display: block;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-        }
-
         /* Review Cards */
         .review-card {
             background: var(--card-bg);
@@ -195,44 +159,23 @@
         .review-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: center;
             gap: 1rem;
             margin-bottom: 0.75rem;
             flex-wrap: wrap;
         }
 
         .review-job {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--text-primary);
+            font-size: 0.9rem;
+            color: var(--text-muted);
             line-height: 1.4;
-        }
-
-        .review-meta {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            flex-shrink: 0;
         }
 
         .review-stars {
             color: var(--accent-warm);
             font-size: 0.85rem;
             letter-spacing: 0.05em;
-        }
-
-        .review-amount {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            background: var(--border);
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-        }
-
-        .review-date {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-bottom: 0.85rem;
+            flex-shrink: 0;
         }
 
         .review-text {
@@ -360,7 +303,6 @@
             .sidebar-email { display: block; margin-top: 0; padding-top: 0; border-top: none; }
             .main-content { padding: 3rem 2rem 4rem; text-align: left; }
             .footer-columns { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-            .stats-bar { flex-wrap: wrap; gap: 1.25rem; }
         }
 
         @media (max-width: 600px) {
@@ -373,7 +315,6 @@
             .footer-columns { grid-template-columns: 1fr; }
             .cta-section { padding: 1.75rem; }
             .review-card { padding: 1.25rem 1.5rem; }
-            .review-header { flex-direction: column; gap: 0.5rem; }
             .stats-bar { padding: 1.25rem; }
             .site-header { padding: 1rem 1.5rem; }
             .header-nav { gap: 1rem; }
@@ -421,40 +362,15 @@
 
         <main class="main-content">
             <h1 class="page-title animate-fade-up animate-delay-1">Client Reviews</h1>
-            <p class="page-intro animate-fade-up animate-delay-2">Every review below is from a completed Upwork project. 23 jobs, 5.0 average rating.</p>
-
-            <a href="https://www.upwork.com/freelancers/sethforte" target="_blank" rel="noopener" class="upwork-link">View profile on Upwork &rarr;</a>
-
-            <div class="stats-bar">
-                <div class="stat-item">
-                    <span class="stat-number">5.0</span>
-                    <span class="stat-label">Average Rating</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">23</span>
-                    <span class="stat-label">Jobs Completed</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">100%</span>
-                    <span class="stat-label">Job Success</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">Top Rated</span>
-                    <span class="stat-label">Upwork Status</span>
-                </div>
-            </div>
+            <p class="page-intro animate-fade-up animate-delay-2">What clients say after the work is done.</p>
 
             <!-- Reviews -->
 
             <div class="review-card">
                 <div class="review-header">
-                    <div class="review-job">Product Sync Automation — Shopify to Xero</div>
-                    <div class="review-meta">
-                        <span class="review-stars">★★★★★</span>
-                        <span class="review-amount">$850</span>
-                    </div>
+                    <div class="review-job">Shopify → Xero product sync automation</div>
+                    <span class="review-stars">★★★★★</span>
                 </div>
-                <div class="review-date">Feb 2026</div>
                 <p class="review-text">"Seth is my go-to for all of my automation projects now and he's making my business run so much more smoothly and efficiently! His work is top-notch and he sticks with it until I'm happy with how things are running. His process in defining the project scope ahead of time ensures that I get everything I need and we're on the same page throughout the process."</p>
                 <div class="review-tags">
                     <span class="review-tag">Collaborative</span>
@@ -466,13 +382,9 @@
 
             <div class="review-card">
                 <div class="review-header">
-                    <div class="review-job">Power Apps & Automate Review System Development</div>
-                    <div class="review-meta">
-                        <span class="review-stars">★★★★★</span>
-                        <span class="review-amount">$3,000</span>
-                    </div>
+                    <div class="review-job">Custom review system built in Power Apps & Power Automate</div>
+                    <span class="review-stars">★★★★★</span>
                 </div>
-                <div class="review-date">Jan–Feb 2026</div>
                 <p class="review-text">"Seth was amazing. Extremely knowledgeable and patient. He thought outside the box to offer us solutions we did not consider. Highly recommend Seth and we will use him in the future."</p>
                 <div class="review-tags">
                     <span class="review-tag">Committed to Quality</span>
@@ -484,14 +396,10 @@
 
             <div class="review-card">
                 <div class="review-header">
-                    <div class="review-job">Automation Engineer (Maintenance & Improvements)</div>
-                    <div class="review-meta">
-                        <span class="review-stars">★★★★★</span>
-                        <span class="review-amount">$75</span>
-                    </div>
+                    <div class="review-job">Ongoing automation consulting & scoping</div>
+                    <span class="review-stars">★★★★★</span>
                 </div>
-                <div class="review-date">Jan–Feb 2026</div>
-                <p class="review-text">"We initially started working together, but due to shifting timelines and changes in availability, we weren't able to move forward with the full collaboration. That said, the experience we had up to that point was genuinely excellent. The support and consultancy he provided were thoughtful, practical, and immediately helpful. Communication was always clear and timely, and it was easy to schedule calls and stay aligned. He mapped out the project scope in a way that was structured, realistic, and very easy to follow. The cost estimates were also transparent and well organized, which made decision-making straightforward on our end. Even though we couldn't continue for timing reasons, I truly appreciated the professionalism and care he brought to the process. Based on our experience, I would absolutely recommend starting a collaboration with him."</p>
+                <p class="review-text">"The support and consultancy he provided were thoughtful, practical, and immediately helpful. Communication was always clear and timely, and it was easy to schedule calls and stay aligned. He mapped out the project scope in a way that was structured, realistic, and very easy to follow. The cost estimates were also transparent and well organized, which made decision-making straightforward on our end. Based on our experience, I would absolutely recommend starting a collaboration with him."</p>
                 <div class="review-tags">
                     <span class="review-tag">Solution Oriented</span>
                     <span class="review-tag">Clear Communicator</span>
@@ -502,13 +410,9 @@
 
             <div class="review-card">
                 <div class="review-header">
-                    <div class="review-job">Voiceflow + Phorest API Integration — Fix Booking/Cancellation Flows</div>
-                    <div class="review-meta">
-                        <span class="review-stars">★★★★★</span>
-                        <span class="review-amount">$1,200</span>
-                    </div>
+                    <div class="review-job">AI booking & cancellation flow via Voiceflow + Phorest API</div>
+                    <span class="review-stars">★★★★★</span>
                 </div>
-                <div class="review-date">Jan–Feb 2026</div>
                 <p class="review-text">"It was a great experience working with Seth. He is professional, organised, talented and friendly. It is enjoyable to work with him, he is proficient at analysing AI workflows and API issues. I intend on working with Seth again."</p>
                 <div class="review-tags">
                     <span class="review-tag">Collaborative</span>
@@ -519,12 +423,9 @@
 
             <div class="review-card">
                 <div class="review-header">
-                    <div class="review-job">AWS Integration Specialist for Asset Management Platform</div>
-                    <div class="review-meta">
-                        <span class="review-stars">★★★★★</span>
-                    </div>
+                    <div class="review-job">AWS SSO integration for an asset management platform</div>
+                    <span class="review-stars">★★★★★</span>
                 </div>
-                <div class="review-date">Dec 2025–Jan 2026</div>
                 <p class="review-text">"Seth is an amazing rare breed. He is not just focused on what is asked of him, he actually scopes the need to make sure the work meets your need to the maximum level. Brilliant Developer and the kind of man you wished was your neighbor."</p>
                 <div class="review-tags">
                     <span class="review-tag">Committed to Quality</span>
@@ -535,13 +436,9 @@
 
             <div class="review-card">
                 <div class="review-header">
-                    <div class="review-job">Copilot Studio Agent Completion Assistance</div>
-                    <div class="review-meta">
-                        <span class="review-stars">★★★★★</span>
-                        <span class="review-amount">$157.50</span>
-                    </div>
+                    <div class="review-job">Copilot Studio agent debugging & Power Automate fix</div>
+                    <span class="review-stars">★★★★★</span>
                 </div>
-                <div class="review-date">Jan 2026</div>
                 <p class="review-text">"If you are looking for an expert in Copilot and Power Automate troubleshooting, Seth is the person to call. After I spent hours struggling with various foundation models to fix my agent, Seth resolved the issue in just 30 minutes. I highly recommend his services; should our current proposal succeed, we fully intend to bring him on for larger engagements and organizational training."</p>
                 <div class="review-tags">
                     <span class="review-tag">Reliable</span>
@@ -551,13 +448,9 @@
 
             <div class="review-card">
                 <div class="review-header">
-                    <div class="review-job">ActiveCampaign Integration Recovery — Facebook Lead Ads Pipeline</div>
-                    <div class="review-meta">
-                        <span class="review-stars">★★★★★</span>
-                        <span class="review-amount">$105</span>
-                    </div>
+                    <div class="review-job">Facebook lead ads → ActiveCampaign pipeline recovery</div>
+                    <span class="review-stars">★★★★★</span>
                 </div>
-                <div class="review-date">Jan 2026</div>
                 <p class="review-text">"Great to work with, worked with me to meet a tight deadline and is a great bloke!"</p>
                 <div class="review-tags">
                     <span class="review-tag">Reliable</span>
@@ -570,13 +463,9 @@
 
             <div class="review-card">
                 <div class="review-header">
-                    <div class="review-job">Squarespace Website with Acuity Scheduling</div>
-                    <div class="review-meta">
-                        <span class="review-stars">★★★★★</span>
-                        <span class="review-amount">$525</span>
-                    </div>
+                    <div class="review-job">Meta pixel, Conversion API & Acuity Scheduling setup</div>
+                    <span class="review-stars">★★★★★</span>
                 </div>
-                <div class="review-date">Jan 2026</div>
                 <p class="review-text">"Seth went above and beyond for me and my business. He helped me setup my meta pixel and meta conversion API through Acuity Scheduling. So basically now my leads get booked directly on my schedule on my website and the lead gets recorded in Meta's algorithm. Also anyone that views my website now gets retargeted, which really helps bring in more leads. Seth is honest and has integrity in his work. I will definitely continue to do business with him in the future."</p>
                 <div class="review-tags">
                     <span class="review-tag">Clear Communicator</span>
@@ -588,13 +477,9 @@
 
             <div class="review-card">
                 <div class="review-header">
-                    <div class="review-job">Stripe Integration</div>
-                    <div class="review-meta">
-                        <span class="review-stars">★★★★★</span>
-                        <span class="review-amount">$400</span>
-                    </div>
+                    <div class="review-job">Stripe payment integration</div>
+                    <span class="review-stars">★★★★★</span>
                 </div>
-                <div class="review-date">Jan 2026</div>
                 <p class="review-text">"Great experience working with Seth!"</p>
                 <div class="review-tags">
                     <span class="review-tag">Collaborative</span>
@@ -605,13 +490,9 @@
 
             <div class="review-card">
                 <div class="review-header">
-                    <div class="review-job">Small Business Workflow Automations</div>
-                    <div class="review-meta">
-                        <span class="review-stars">★★★★★</span>
-                        <span class="review-amount">$1,400 · 26 hrs</span>
-                    </div>
+                    <div class="review-job">Ongoing workflow automation for a small business</div>
+                    <span class="review-stars">★★★★★</span>
                 </div>
-                <div class="review-date">Oct 2025–Feb 2026</div>
                 <p class="review-text">"Seth is skillful and creative in all the work we've done so far. I can just detail my process and pain points and he figures out how to streamline and then automate. He's communicative and forthcoming with all of the details along the way, and stays with it until we get the tech working perfectly. Highly recommend."</p>
                 <div class="review-tags">
                     <span class="review-tag">Committed to Quality</span>
@@ -622,13 +503,9 @@
 
             <div class="review-card">
                 <div class="review-header">
-                    <div class="review-job">Data Labeling</div>
-                    <div class="review-meta">
-                        <span class="review-stars">★★★★★</span>
-                        <span class="review-amount">$400</span>
-                    </div>
+                    <div class="review-job">Data structuring & labeling project</div>
+                    <span class="review-stars">★★★★★</span>
                 </div>
-                <div class="review-date">Dec 2025–Jan 2026</div>
                 <p class="review-text">"Seth is very knowledgeable and detail oriented. If your looking for someone who is trustworthy, smart and upfront then look no further. He wont continue a project unless you are satisfied with the work. Highly recommend."</p>
                 <div class="review-tags">
                     <span class="review-tag">Detail Oriented</span>
@@ -637,25 +514,17 @@
 
             <div class="review-card">
                 <div class="review-header">
-                    <div class="review-job">WI Courts Automation Discovery</div>
-                    <div class="review-meta">
-                        <span class="review-stars">★★★★★</span>
-                        <span class="review-amount">$800</span>
-                    </div>
+                    <div class="review-job">Court records scraper — 130+ hours saved monthly</div>
+                    <span class="review-stars">★★★★★</span>
                 </div>
-                <div class="review-date">Dec 2025</div>
                 <p class="review-text">"Seth delivered an exceptional automation that transformed a key aspect of our daily operations, increasing efficiency and accuracy. He not only built the system, but also guided us through it in real-time, ensuring we were fully comfortable. Professional, incredibly responsive, and has tons of ideas. I highly recommend him and look forward to collaborating again!"</p>
             </div>
 
             <div class="review-card">
                 <div class="review-header">
-                    <div class="review-job">ActiveCampaign Strategist for Automation and CRM Optimization</div>
-                    <div class="review-meta">
-                        <span class="review-stars">★★★★★</span>
-                        <span class="review-amount">$709 · 15 hrs</span>
-                    </div>
+                    <div class="review-job">ActiveCampaign CRM build & automation strategy</div>
+                    <span class="review-stars">★★★★★</span>
                 </div>
-                <div class="review-date">Oct–Dec 2025</div>
                 <p class="review-text">"Seth is incredible to work with. Not only does Seth do great work, he completes projects on time or early and he is excellent at communicating progress."</p>
                 <div class="review-tags">
                     <span class="review-tag">Reliable</span>
@@ -668,13 +537,9 @@
 
             <div class="review-card">
                 <div class="review-header">
-                    <div class="review-job">Automation Problem Solver for Ad Agency</div>
-                    <div class="review-meta">
-                        <span class="review-stars">★★★★★</span>
-                        <span class="review-amount">$400 · 10 hrs</span>
-                    </div>
+                    <div class="review-job">Automation systems for a marketing agency</div>
+                    <span class="review-stars">★★★★★</span>
                 </div>
-                <div class="review-date">Oct–Dec 2025</div>
                 <p class="review-text">"If you need an automation specialist, stop looking right now and hire Seth. He will blow your mind with his knowledge and his ability to take your idea and execute on it."</p>
                 <div class="review-tags">
                     <span class="review-tag">Solution Oriented</span>
@@ -685,13 +550,9 @@
 
             <div class="review-card">
                 <div class="review-header">
-                    <div class="review-job">n8n Workflow Fix — OpenAI Structured Output Parsing</div>
-                    <div class="review-meta">
-                        <span class="review-stars">★★★★★</span>
-                        <span class="review-amount">$106 · 2 hrs</span>
-                    </div>
+                    <div class="review-job">n8n workflow debugging — OpenAI structured output fix</div>
+                    <span class="review-stars">★★★★★</span>
                 </div>
-                <div class="review-date">Dec 2025</div>
                 <p class="review-text">"I had a frustrating n8n workflow that kept breaking when trying to parse OpenAI API responses. Spent way too long banging my head against it before hiring Seth. He figured out the problem immediately — it was a structured output configuration issue that I didn't even know was a thing. Fixed it in 2 hours when he quoted 3–4. And the kicker? He did this while on vacation. I told him no rush, but he just knocked it out anyway. Super easy to work with. Explained things in a way that actually made sense instead of throwing jargon at me. Clearly knows his stuff — this wasn't his first rodeo with this kind of problem. The workflow runs perfectly now and he added error handling so it won't break again. Fair price, fast turnaround, went above and beyond. Can't really ask for more than that."</p>
                 <div class="review-tags">
                     <span class="review-tag">Solution Oriented</span>
@@ -704,13 +565,9 @@
 
             <div class="review-card">
                 <div class="review-header">
-                    <div class="review-job">Classic Docker n8n Disk Bloat Recovery</div>
-                    <div class="review-meta">
-                        <span class="review-stars">★★★★★</span>
-                        <span class="review-amount">$100</span>
-                    </div>
+                    <div class="review-job">Emergency n8n server recovery — 83GB disk bloat</div>
+                    <span class="review-stars">★★★★★</span>
                 </div>
-                <div class="review-date">Dec 2025</div>
                 <p class="review-text">"Great experience working with Seth. Communication is 10/10 and I have felt very safe throughout the project. Looking forward to many more collaborations."</p>
                 <div class="review-tags">
                     <span class="review-tag">Collaborative</span>
@@ -722,13 +579,9 @@
 
             <div class="review-card">
                 <div class="review-header">
-                    <div class="review-job">Google Sheets Expert for Custom Inventory Tracking System</div>
-                    <div class="review-meta">
-                        <span class="review-stars">★★★★★</span>
-                        <span class="review-amount">$530</span>
-                    </div>
+                    <div class="review-job">Custom inventory tracking system in Google Sheets</div>
+                    <span class="review-stars">★★★★★</span>
                 </div>
-                <div class="review-date">Oct–Nov 2025</div>
                 <p class="review-text">"Seth was extremely attentive and responsive. He worked quickly while providing accurate turnaround estimates. Nothing ever felt rushed or overlooked. Everything that was agreed upon was delivered exactly as promised. He clearly takes pride in his work, communicates clearly, and makes sure his clients feel supported every step of the way. Highly recommend."</p>
                 <div class="review-tags">
                     <span class="review-tag">Reliable</span>
@@ -741,21 +594,10 @@
 
             <div class="review-card">
                 <div class="review-header">
-                    <div class="review-job">Custom n8n Workflow Tool Development for Shopify and Email</div>
-                    <div class="review-meta">
-                        <span class="review-stars">★★★★★</span>
-                    </div>
+                    <div class="review-job">n8n automation tools for Shopify & email workflows</div>
+                    <span class="review-stars">★★★★★</span>
                 </div>
-                <div class="review-date">Oct 2025</div>
                 <p class="review-text">"Seth is super responsive and very proactive with communication throughout the stages of the project. He's super knowledgeable about automations, n8n, scripting and webhooks. He's very good at thinking through the logic of how to best automate a process, and then executing on that vision. Definitely will work with him again."</p>
-            </div>
-
-            <hr class="section-divider">
-
-            <div class="cta-section">
-                <p>Every project listed here was scoped, built, documented, and handed off. If you're looking for the same, let's talk.</p>
-                <a href="https://calendly.com/seth-fortewebdesigns/30min" target="_blank" rel="noopener" class="btn-primary">Book a Call</a>
-                <a href="mailto:seth@fortewebdesigns.com" class="btn-secondary-link">seth@fortewebdesigns.com</a>
             </div>
 
             <!-- Footer -->
