@@ -61,15 +61,15 @@
         }
 
         :root {
-            --text-primary: #e5e5e5;
-            --text-secondary: #b0b0b0;
-            --text-muted: #999;
-            --accent: #6ba3b8;
-            --accent-warm: #d4956a;
-            --background: #111111;
-            --background-alt: #181818;
-            --border: #2a2a2a;
-            --card-bg: #1a1a1a;
+            --text-primary: #f0ece4;
+            --text-secondary: #b8b2a8;
+            --text-muted: #8a8578;
+            --accent: #e8734a;
+            --accent-warm: #f0b866;
+            --background: #0f1117;
+            --background-alt: #161922;
+            --border: #2b2f3d;
+            --card-bg: #1c1f2b;
         }
 
         body {
@@ -78,8 +78,8 @@
             line-height: 1.7;
             color: var(--text-primary);
             background: var(--background);
-            background-image: radial-gradient(ellipse at 20% 0%, rgba(107,163,184,0.06) 0%, transparent 50%),
-                              radial-gradient(ellipse at 80% 100%, rgba(212,149,106,0.04) 0%, transparent 50%);
+            background-image: radial-gradient(ellipse at 20% 0%, rgba(232,115,74,0.06) 0%, transparent 50%),
+                              radial-gradient(ellipse at 80% 100%, rgba(240,184,102,0.04) 0%, transparent 50%);
             background-attachment: fixed;
         }
 
@@ -281,12 +281,12 @@
             color: var(--accent);
             display: block;
             margin-bottom: 0.3rem;
-            text-shadow: 0 0 20px rgba(107,163,184,0.3);
+            text-shadow: 0 0 20px rgba(232,115,74,0.3);
         }
 
         .credibility-item .label {
             font-size: 0.7rem;
-            color: #b0b0b0;
+            color: var(--text-secondary);
             text-transform: uppercase;
             letter-spacing: 0.06em;
             line-height: 1.4;
@@ -295,7 +295,7 @@
         /* Client Row */
         .client-row {
             text-align: center;
-            color: #999;
+            color: var(--text-muted);
             font-size: 0.85rem;
             letter-spacing: 0.03em;
             margin-bottom: 1.25rem;
@@ -311,12 +311,12 @@
         .featured-in {
             text-align: center;
             font-size: 0.85rem;
-            color: #999;
+            color: var(--text-muted);
             margin-bottom: 1rem;
         }
 
         .featured-in a {
-            color: #bbb;
+            color: var(--text-secondary);
             text-decoration: underline;
             text-underline-offset: 2px;
         }
@@ -339,7 +339,7 @@
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(107,163,184,0.35);
+            box-shadow: 0 6px 20px rgba(232,115,74,0.35);
             text-decoration: none;
         }
 
@@ -402,12 +402,12 @@
         }
 
         .stage-card.stage-foundation {
-            border-top: 3px solid #7a8a8f;
+            border-top: 3px solid #8a8578;
         }
 
         .stage-card.stage-foundation:hover {
-            border-color: #7a8a8f;
-            box-shadow: 0 8px 30px rgba(122,138,143,0.15), 0 0 0 1px rgba(122,138,143,0.2);
+            border-color: #8a8578;
+            box-shadow: 0 8px 30px rgba(138,133,120,0.15), 0 0 0 1px rgba(138,133,120,0.2);
         }
 
         .stage-card.stage-growth {
@@ -416,7 +416,7 @@
 
         .stage-card.stage-growth:hover {
             border-color: var(--accent);
-            box-shadow: 0 8px 30px rgba(107,163,184,0.2), 0 0 0 1px rgba(107,163,184,0.25);
+            box-shadow: 0 8px 30px rgba(232,115,74,0.2), 0 0 0 1px rgba(232,115,74,0.25);
         }
 
         .stage-card.stage-scale {
@@ -425,7 +425,7 @@
 
         .stage-card.stage-scale:hover {
             border-color: var(--accent-warm);
-            box-shadow: 0 8px 30px rgba(212,149,106,0.2), 0 0 0 1px rgba(212,149,106,0.25);
+            box-shadow: 0 8px 30px rgba(240,184,102,0.2), 0 0 0 1px rgba(240,184,102,0.25);
         }
 
         .stage-card .stage-title {
@@ -478,7 +478,7 @@
         .rotating-word {
             display: inline-block;
             font-weight: 700;
-            background: linear-gradient(135deg, #6ba3b8, #8ec5d6, #d4956a, #6ba3b8);
+            background: linear-gradient(135deg, #e8734a, #f0b866, #e8734a, #f0b866);
             background-size: 300% 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -536,7 +536,7 @@
             border-color: var(--accent-warm);
             transform: translateY(-4px);
             text-decoration: none;
-            box-shadow: 0 8px 30px rgba(212,149,106,0.15), 0 0 0 1px rgba(212,149,106,0.2);
+            box-shadow: 0 8px 30px rgba(240,184,102,0.15), 0 0 0 1px rgba(240,184,102,0.2);
         }
 
         .result-stat {
