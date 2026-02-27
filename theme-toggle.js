@@ -60,7 +60,7 @@
 
     function applyTheme(t) {
         document.documentElement.setAttribute('data-theme', t);
-        toggle.innerHTML = t === 'dark' ? '\u2600' : '\u263E';
+        toggle.innerHTML = t === 'dark' ? '\u2600\uFE0F' : '\uD83C\uDF19';
         localStorage.setItem('theme', t);
     }
 

@@ -379,7 +379,7 @@
         /* Stage Cards */
         .stage-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 1.25rem;
             margin-bottom: 1.5rem;
         }
@@ -410,13 +410,22 @@
             box-shadow: 0 8px 30px rgba(138,133,120,0.15), 0 0 0 1px rgba(138,133,120,0.2);
         }
 
-        .stage-card.stage-growth {
+        .stage-card.stage-launch {
             border-top: 3px solid var(--accent);
         }
 
-        .stage-card.stage-growth:hover {
+        .stage-card.stage-launch:hover {
             border-color: var(--accent);
             box-shadow: 0 8px 30px rgba(232,115,74,0.2), 0 0 0 1px rgba(232,115,74,0.25);
+        }
+
+        .stage-card.stage-growth {
+            border-top: 3px solid #5fb88a;
+        }
+
+        .stage-card.stage-growth:hover {
+            border-color: #5fb88a;
+            box-shadow: 0 8px 30px rgba(95,184,138,0.2), 0 0 0 1px rgba(95,184,138,0.25);
         }
 
         .stage-card.stage-scale {
@@ -888,23 +897,30 @@
             <!-- What I Build -->
             <h2 class="section-title">What I Build</h2>
 
-            <p class="body-text">Most businesses that come to me are dealing with one of three things: they have no systems at all, they have systems that don't talk to each other, or they've outgrown what they built and it's starting to break.</p>
+            <p class="body-text">Every business I work with is at one of four stages. Some need infrastructure before anything else works. Some have the system but no traffic. Some have one channel working and want more. And some need to optimize and scale what's already running.</p>
 
             <p class="body-text" style="margin-bottom: 2.5rem;">The fix depends on where you are.</p>
 
             <div class="stage-grid">
                 <a href="/foundation.html" class="stage-card stage-foundation">
                     <div class="stage-title">Foundation</div>
-                    <div class="stage-tagline">Get your system built and your first leads flowing.</div>
+                    <div class="stage-tagline">Get your system built and everything connected.</div>
                     <div class="stage-subtitle">1-2 weeks</div>
-                    <p>CRM with a real sales pipeline. Payment processing. Email that actually lands in inboxes. Booking and intake forms. Tracking so you know where leads come from. And your first lead source connected and producing, because nobody should walk away with an empty system.</p>
+                    <p>CRM with a real sales pipeline. Payment processing. Email that actually lands in inboxes. Booking and intake forms. Tracking so you know where leads come from. And your first lead source connected so you're not starting with an empty system.</p>
+                    <span class="stage-link">Learn more &rarr;</span>
+                </a>
+                <a href="/launch.html" class="stage-card stage-launch">
+                    <div class="stage-title">Launch</div>
+                    <div class="stage-tagline">Get people into the system. Start generating revenue.</div>
+                    <div class="stage-subtitle">1-3 weeks</div>
+                    <p>Foundation gave you the platform. Launch gives you the campaigns. Ad strategy, sales funnels, nurture sequences, and booking automation that turn strangers into leads and leads into customers, automatically.</p>
                     <span class="stage-link">Learn more &rarr;</span>
                 </a>
                 <a href="/growth.html" class="stage-card stage-growth">
                     <div class="stage-title">Growth</div>
-                    <div class="stage-tagline">Turn leads into revenue. Know what's working.</div>
+                    <div class="stage-tagline">Add channels. Convert more. Handle the volume.</div>
                     <div class="stage-subtitle">2-3 weeks</div>
-                    <p>Leads mean nothing if you don't know where they came from, can't follow up fast enough, or have no way to tell what's actually converting. Growth adds automated follow-up sequences, sales funnels, booking systems, SMS, and the tracking and attribution that shows you exactly which channels produce revenue and which ones waste money.</p>
+                    <p>One channel is working. Now multiply it. Add more lead sources, AI agents for after-hours response, outbound prospecting, review automation, and the integrations that let you run more without hiring more.</p>
                     <span class="stage-link">Learn more &rarr;</span>
                 </a>
                 <a href="/scale.html" class="stage-card stage-scale">
@@ -1024,6 +1040,7 @@
                         <h4>Services</h4>
                         <ul>
                             <li><a href="/foundation.html">Foundation</a></li>
+                            <li><a href="/launch.html">Launch</a></li>
                             <li><a href="/growth.html">Growth</a></li>
                             <li><a href="/scale.html">Scale</a></li>
                             <li><a href="/review.html">Infrastructure Review</a></li>

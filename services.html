@@ -80,8 +80,9 @@
             display: flex; flex-direction: column; text-decoration: none; color: inherit;
         }
         .stage-card:hover { border-color: var(--text-muted); transform: translateY(-2px); text-decoration: none; }
-        .stage-card.stage-foundation { border-left: 4px solid var(--border); }
-        .stage-card.stage-growth { border-left: 4px solid var(--accent); }
+        .stage-card.stage-foundation { border-left: 4px solid #8a8578; }
+        .stage-card.stage-launch { border-left: 4px solid var(--accent); }
+        .stage-card.stage-growth { border-left: 4px solid #5fb88a; }
         .stage-card.stage-scale { border-left: 4px solid var(--accent-warm); }
 
         .stage-card .stage-title { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem; }
@@ -190,23 +191,30 @@
         <main class="main-content">
             <h1 class="page-title animate-fade-up animate-delay-1">Services</h1>
 
-            <p class="body-text animate-fade-up animate-delay-2">Most businesses that come to me are dealing with one of three things: they have no systems at all, they have systems that don't talk to each other, or they've outgrown what they built and it's starting to break.</p>
+            <p class="body-text animate-fade-up animate-delay-2">Every business I work with is at one of four stages. Some need infrastructure before anything else works. Some have the system but no traffic. Some have one channel working and want more. And some need to optimize and scale what's already running.</p>
 
-            <p class="body-text animate-fade-up animate-delay-2" style="margin-bottom: 2.5rem;">The fix depends on where you are. Some businesses need the foundation first. Others are ready to grow but their infrastructure can't keep up. And some need the full stack connected and running.</p>
+            <p class="body-text animate-fade-up animate-delay-2" style="margin-bottom: 2.5rem;">The fix depends on where you are.</p>
 
             <div class="stage-grid animate-fade-up animate-delay-3">
                 <a href="/foundation.html" class="stage-card stage-foundation">
                     <div class="stage-title">Foundation</div>
-                    <div class="stage-tagline">Stop losing leads. Start running on a real system.</div>
+                    <div class="stage-tagline">Get your system built and everything connected.</div>
                     <div class="stage-subtitle">1-2 weeks</div>
-                    <p>CRM with a sales pipeline, payment processing, email that actually lands, booking and intake forms, and tracking so you know what's working. The system every business needs before anything else makes sense.</p>
+                    <p>CRM with a real sales pipeline. Payment processing. Email that actually lands in inboxes. Booking and intake forms. Tracking so you know where leads come from. And your first lead source connected so you're not starting with an empty system.</p>
+                    <span class="stage-link">Learn more &rarr;</span>
+                </a>
+                <a href="/launch.html" class="stage-card stage-launch">
+                    <div class="stage-title">Launch</div>
+                    <div class="stage-tagline">Get people into the system. Start generating revenue.</div>
+                    <div class="stage-subtitle">1-3 weeks</div>
+                    <p>Foundation gave you the platform. Launch gives you the campaigns. Ad strategy, sales funnels, nurture sequences, and booking automation that turn strangers into leads and leads into customers, automatically.</p>
                     <span class="stage-link">Learn more &rarr;</span>
                 </a>
                 <a href="/growth.html" class="stage-card stage-growth">
                     <div class="stage-title">Growth</div>
-                    <div class="stage-tagline">Fill your pipeline. Turn leads into revenue.</div>
+                    <div class="stage-tagline">Add channels. Convert more. Handle the volume.</div>
                     <div class="stage-subtitle">2-3 weeks</div>
-                    <p>Lead generation, automated follow-up sequences, booking systems, sales funnels, SMS, and the integrations that make it all run without you touching it. Built on top of your foundation.</p>
+                    <p>One channel is working. Now multiply it. Add more lead sources, AI agents for after-hours response, outbound prospecting, review automation, and the integrations that let you run more without hiring more.</p>
                     <span class="stage-link">Learn more &rarr;</span>
                 </a>
                 <a href="/scale.html" class="stage-card stage-scale">
@@ -238,6 +246,7 @@
                         <h4>Services</h4>
                         <ul>
                             <li><a href="/foundation.html">Foundation</a></li>
+                            <li><a href="/launch.html">Launch</a></li>
                             <li><a href="/growth.html">Growth</a></li>
                             <li><a href="/scale.html">Scale</a></li>
                             <li><a href="/review.html">Infrastructure Review</a></li>
