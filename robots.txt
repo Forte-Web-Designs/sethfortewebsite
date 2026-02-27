@@ -19,6 +19,7 @@ Allow: /launch.html
 Allow: /growth.html
 Allow: /scale.html
 Allow: /review.html
+Allow: /upwork.html
 Allow: /articles/
 Allow: /work/
 Allow: /automation.html
