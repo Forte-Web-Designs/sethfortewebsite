@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Reviews - Seth Forte</title>
+    <meta name="description" content="23 completed projects. 5-star average. Real client reviews from Upwork for automation, AI, and systems work.">
+    <meta name="author" content="Seth Forte">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sethforte.com/reviews">
+    <meta property="og:title" content="Client Reviews - Seth Forte">
+    <meta property="og:description" content="23 completed projects. 5-star average. Real client reviews.">
+    <meta property="og:image" content="https://sethforte.com/headshot-6.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Client Reviews - Seth Forte">
+    <meta property="twitter:description" content="23 completed projects. 5-star average. Real client reviews.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link rel="apple-touch-icon" href="logo.jpg">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --text-primary: #f0ece4;
+            --text-secondary: #b8b2a8;
+            --text-muted: #8a8578;
+            --accent: #e8734a;
+            --accent-warm: #f0b866;
+            --background: #0f1117;
+            --background-alt: #161922;
+            --border: #2b2f3d;
+            --card-bg: #1c1f2b;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            font-size: 17px;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: var(--background);
+            background-image: radial-gradient(ellipse at 20% 0%, rgba(232,115,74,0.06) 0%, transparent 50%),
+                              radial-gradient(ellipse at 80% 100%, rgba(240,184,102,0.04) 0%, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        a { color: var(--accent); text-decoration: none; transition: color 0.2s ease; }
+        a:hover { text-decoration: underline; }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .animate-fade-in { animation: fadeIn 0.6s ease forwards; }
+        .animate-fade-up { animation: fadeInUp 0.6s ease forwards; }
+        .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
+        .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
+
+        /* Layout */
+        .site-wrapper {
+            display: flex;
+            min-height: 100vh;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            padding: 3rem 2rem;
+            border-right: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .profile-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .profile-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-name { font-size: 1.25rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.25rem; }
+        .profile-tagline { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.4; }
+
+        .nav-links { list-style: none; margin-bottom: auto; width: 100%; }
+        .nav-links li { margin-bottom: 0.25rem; }
+        .nav-links a {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            display: block;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+        .nav-links a:hover { color: var(--text-primary); background: var(--card-bg); text-decoration: none; }
+        .nav-links a.active { color: var(--text-primary); background: var(--card-bg); }
+
+        .sidebar-email { font-size: 0.8rem; color: var(--text-muted); margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border); width: 100%; }
+        .sidebar-email a { color: var(--text-muted); }
+        .sidebar-email a:hover { color: var(--accent); }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 5rem 4rem 6rem;
+            max-width: 780px;
+        }
+
+        .page-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .page-intro {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .upwork-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 3rem;
+        }
+        .upwork-link:hover { color: var(--accent); text-decoration: none; }
+
+        /* Stats bar */
+        .stats-bar {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3.5rem;
+            padding: 1.5rem 2rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+
+        .stat-item { text-align: center; }
+        .stat-number {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-warm);
+        }
+        .stat-label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        /* Review Cards */
+        .review-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.75rem 2rem;
+            margin-bottom: 1rem;
+            transition: border-color 0.2s ease;
+        }
+
+        .review-card:hover { border-color: var(--text-muted); }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .review-job {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+
+        .review-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .review-stars {
+            color: var(--accent-warm);
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+
+        .review-amount {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            background: var(--border);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+        }
+
+        .review-date {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 0.85rem;
+        }
+
+        .review-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.75;
+            margin-bottom: 1rem;
+        }
+
+        .review-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .review-tag {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: rgba(43, 47, 61, 0.6);
+            border: 1px solid var(--border);
+            padding: 0.15rem 0.55rem;
+            border-radius: 4px;
+        }
+
+        .section-divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 4rem 0;
+        }
+
+        /* CTA */
+        .cta-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+        }
+
+        .cta-section p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--accent);
+            color: #ffffff;
+            padding: 0.75rem 1.75rem;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(232,115,74,0.35); text-decoration: none; }
+
+        .btn-secondary-link {
+            display: inline-block;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-left: 1.5rem;
+        }
+
+        /* Footer */
+        .footer-section {
+            margin-top: 5rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-email-main { color: var(--text-secondary); font-size: 1rem; margin-bottom: 2.5rem; display: block; }
+
+        .footer-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-col h4 {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 1rem;
+        }
+
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 0.5rem; }
+        .footer-col a { color: var(--text-secondary); font-size: 0.9rem; }
+        .footer-col a:hover { color: var(--accent); }
+
+        .footer-bottom { padding-top: 1.5rem; border-top: 1px solid var(--border); }
+        .footer-location { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.35rem; }
+        .copyright { color: var(--text-muted); font-size: 0.85rem; }
+
+        /* Site Header */
+        .site-header { padding: 1rem 2rem; border-bottom: 1px solid var(--border); background: var(--background); }
+        .header-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .header-logo { font-size: 1.1rem; font-weight: 600; color: var(--text-primary); text-decoration: none; }
+        .header-logo:hover { color: var(--accent); text-decoration: none; }
+        .header-nav { display: flex; gap: 1.5rem; }
+        .header-nav a { color: var(--text-secondary); font-size: 0.9rem; text-decoration: none; }
+        .header-nav a:hover { color: var(--text-primary); }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .site-header { display: none; }
+            .site-wrapper { flex-direction: column; }
+            .sidebar {
+                width: 100%; height: auto; position: relative; border-right: none;
+                padding: 2.5rem 2rem; text-align: center; align-items: center;
+            }
+            .profile-photo { width: 100px; height: 100px; margin-bottom: 1rem; }
+            .profile-name { font-size: 1.5rem; }
+            .profile-tagline { margin-bottom: 1.5rem; }
+            .nav-links {
+                display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem;
+                padding: 1rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+                width: 100%; flex-wrap: wrap;
+            }
+            .nav-links li { margin-bottom: 0; }
+            .sidebar-email { display: block; margin-top: 0; padding-top: 0; border-top: none; }
+            .main-content { padding: 3rem 2rem 4rem; text-align: left; }
+            .footer-columns { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+            .stats-bar { flex-wrap: wrap; gap: 1.25rem; }
+        }
+
+        @media (max-width: 600px) {
+            .sidebar { padding: 2rem 1.5rem; }
+            .profile-photo { width: 90px; height: 90px; }
+            .profile-name { font-size: 1.35rem; }
+            .nav-links { gap: 0.75rem; }
+            .main-content { padding: 2rem 1.5rem 3rem; }
+            .page-title { font-size: 1.4rem; }
+            .footer-columns { grid-template-columns: 1fr; }
+            .cta-section { padding: 1.75rem; }
+            .review-card { padding: 1.25rem 1.5rem; }
+            .review-header { flex-direction: column; gap: 0.5rem; }
+            .stats-bar { padding: 1.25rem; }
+            .site-header { padding: 1rem 1.5rem; }
+            .header-nav { gap: 1rem; }
+            .header-nav a { font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="header-logo">Seth Forte</a>
+            <nav class="header-nav">
+                <a href="/">Home</a>
+                <a href="/services.html">Services</a>
+                <a href="/case-studies.html">Work</a>
+                <a href="/writing.html">Writing</a>
+                <a href="/about.html">About</a>
+                <a href="/contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="site-wrapper">
+        <aside class="sidebar">
+            <img src="headshot-6.jpg" alt="Seth Forte" class="profile-photo animate-fade-in">
+            <h1 class="profile-name">Seth Forte</h1>
+            <p class="profile-tagline">Systems Architect &<br>Automation Consultant</p>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/services.html">Services</a></li>
+                    <li><a href="/case-studies.html">Work</a></li>
+                    <li><a href="/reviews.html" class="active">Reviews</a></li>
+                    <li><a href="/writing.html">Writing</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-email">
+                <a href="mailto:seth@fortewebdesigns.com">seth@fortewebdesigns.com</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <h1 class="page-title animate-fade-up animate-delay-1">Client Reviews</h1>
+            <p class="page-intro animate-fade-up animate-delay-2">Every review below is from a completed Upwork project. 23 jobs, 5.0 average rating.</p>
+
+            <a href="https://www.upwork.com/freelancers/sethforte" target="_blank" rel="noopener" class="upwork-link">View profile on Upwork &rarr;</a>
+
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <span class="stat-number">5.0</span>
+                    <span class="stat-label">Average Rating</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">23</span>
+                    <span class="stat-label">Jobs Completed</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Job Success</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">Top Rated</span>
+                    <span class="stat-label">Upwork Status</span>
+                </div>
+            </div>
+
+            <!-- Reviews -->
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-job">Product Sync Automation — Shopify to Xero</div>
+                    <div class="review-meta">
+                        <span class="review-stars">★★★★★</span>
+                        <span class="review-amount">$850</span>
+                    </div>
+                </div>
+                <div class="review-date">Feb 2026</div>
+                <p class="review-text">"Seth is my go-to for all of my automation projects now and he's making my business run so much more smoothly and efficiently! His work is top-notch and he sticks with it until I'm happy with how things are running. His process in defining the project scope ahead of time ensures that I get everything I need and we're on the same page throughout the process."</p>
+                <div class="review-tags">
+                    <span class="review-tag">Collaborative</span>
+                    <span class="review-tag">Committed to Quality</span>
+                    <span class="review-tag">Clear Communicator</span>
+                    <span class="review-tag">Accountable for Outcomes</span>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-job">Power Apps & Automate Review System Development</div>
+                    <div class="review-meta">
+                        <span class="review-stars">★★★★★</span>
+                        <span class="review-amount">$3,000</span>
+                    </div>
+                </div>
+                <div class="review-date">Jan–Feb 2026</div>
+                <p class="review-text">"Seth was amazing. Extremely knowledgeable and patient. He thought outside the box to offer us solutions we did not consider. Highly recommend Seth and we will use him in the future."</p>
+                <div class="review-tags">
+                    <span class="review-tag">Committed to Quality</span>
+                    <span class="review-tag">Solution Oriented</span>
+                    <span class="review-tag">Detail Oriented</span>
+                    <span class="review-tag">Accountable for Outcomes</span>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-job">Automation Engineer (Maintenance & Improvements)</div>
+                    <div class="review-meta">
+                        <span class="review-stars">★★★★★</span>
+                        <span class="review-amount">$75</span>
+                    </div>
+                </div>
+                <div class="review-date">Jan–Feb 2026</div>
+                <p class="review-text">"We initially started working together, but due to shifting timelines and changes in availability, we weren't able to move forward with the full collaboration. That said, the experience we had up to that point was genuinely excellent. The support and consultancy he provided were thoughtful, practical, and immediately helpful. Communication was always clear and timely, and it was easy to schedule calls and stay aligned. He mapped out the project scope in a way that was structured, realistic, and very easy to follow. The cost estimates were also transparent and well organized, which made decision-making straightforward on our end. Even though we couldn't continue for timing reasons, I truly appreciated the professionalism and care he brought to the process. Based on our experience, I would absolutely recommend starting a collaboration with him."</p>
+                <div class="review-tags">
+                    <span class="review-tag">Solution Oriented</span>
+                    <span class="review-tag">Clear Communicator</span>
+                    <span class="review-tag">Detail Oriented</span>
+                    <span class="review-tag">Professional</span>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-job">Voiceflow + Phorest API Integration — Fix Booking/Cancellation Flows</div>
+                    <div class="review-meta">
+                        <span class="review-stars">★★★★★</span>
+                        <span class="review-amount">$1,200</span>
+                    </div>
+                </div>
+                <div class="review-date">Jan–Feb 2026</div>
+                <p class="review-text">"It was a great experience working with Seth. He is professional, organised, talented and friendly. It is enjoyable to work with him, he is proficient at analysing AI workflows and API issues. I intend on working with Seth again."</p>
+                <div class="review-tags">
+                    <span class="review-tag">Collaborative</span>
+                    <span class="review-tag">Committed to Quality</span>
+                    <span class="review-tag">Professional</span>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-job">AWS Integration Specialist for Asset Management Platform</div>
+                    <div class="review-meta">
+                        <span class="review-stars">★★★★★</span>
+                    </div>
+                </div>
+                <div class="review-date">Dec 2025–Jan 2026</div>
+                <p class="review-text">"Seth is an amazing rare breed. He is not just focused on what is asked of him, he actually scopes the need to make sure the work meets your need to the maximum level. Brilliant Developer and the kind of man you wished was your neighbor."</p>
+                <div class="review-tags">
+                    <span class="review-tag">Committed to Quality</span>
+                    <span class="review-tag">Solution Oriented</span>
+                    <span class="review-tag">Accountable for Outcomes</span>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-job">Copilot Studio Agent Completion Assistance</div>
+                    <div class="review-meta">
+                        <span class="review-stars">★★★★★</span>
+                        <span class="review-amount">$157.50</span>
+                    </div>
+                </div>
+                <div class="review-date">Jan 2026</div>
+                <p class="review-text">"If you are looking for an expert in Copilot and Power Automate troubleshooting, Seth is the person to call. After I spent hours struggling with various foundation models to fix my agent, Seth resolved the issue in just 30 minutes. I highly recommend his services; should our current proposal succeed, we fully intend to bring him on for larger engagements and organizational training."</p>
+                <div class="review-tags">
+                    <span class="review-tag">Reliable</span>
+                    <span class="review-tag">Solution Oriented</span>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-job">ActiveCampaign Integration Recovery — Facebook Lead Ads Pipeline</div>
+                    <div class="review-meta">
+                        <span class="review-stars">★★★★★</span>
+                        <span class="review-amount">$105</span>
+                    </div>
+                </div>
+                <div class="review-date">Jan 2026</div>
+                <p class="review-text">"Great to work with, worked with me to meet a tight deadline and is a great bloke!"</p>
+                <div class="review-tags">
+                    <span class="review-tag">Reliable</span>
+                    <span class="review-tag">Collaborative</span>
+                    <span class="review-tag">Solution Oriented</span>
+                    <span class="review-tag">Clear Communicator</span>
+                    <span class="review-tag">Detail Oriented</span>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-job">Squarespace Website with Acuity Scheduling</div>
+                    <div class="review-meta">
+                        <span class="review-stars">★★★★★</span>
+                        <span class="review-amount">$525</span>
+                    </div>
+                </div>
+                <div class="review-date">Jan 2026</div>
+                <p class="review-text">"Seth went above and beyond for me and my business. He helped me setup my meta pixel and meta conversion API through Acuity Scheduling. So basically now my leads get booked directly on my schedule on my website and the lead gets recorded in Meta's algorithm. Also anyone that views my website now gets retargeted, which really helps bring in more leads. Seth is honest and has integrity in his work. I will definitely continue to do business with him in the future."</p>
+                <div class="review-tags">
+                    <span class="review-tag">Clear Communicator</span>
+                    <span class="review-tag">Accountable for Outcomes</span>
+                    <span class="review-tag">Detail Oriented</span>
+                    <span class="review-tag">Professional</span>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-job">Stripe Integration</div>
+                    <div class="review-meta">
+                        <span class="review-stars">★★★★★</span>
+                        <span class="review-amount">$400</span>
+                    </div>
+                </div>
+                <div class="review-date">Jan 2026</div>
+                <p class="review-text">"Great experience working with Seth!"</p>
+                <div class="review-tags">
+                    <span class="review-tag">Collaborative</span>
+                    <span class="review-tag">Solution Oriented</span>
+                    <span class="review-tag">Clear Communicator</span>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-job">Small Business Workflow Automations</div>
+                    <div class="review-meta">
+                        <span class="review-stars">★★★★★</span>
+                        <span class="review-amount">$1,400 · 26 hrs</span>
+                    </div>
+                </div>
+                <div class="review-date">Oct 2025–Feb 2026</div>
+                <p class="review-text">"Seth is skillful and creative in all the work we've done so far. I can just detail my process and pain points and he figures out how to streamline and then automate. He's communicative and forthcoming with all of the details along the way, and stays with it until we get the tech working perfectly. Highly recommend."</p>
+                <div class="review-tags">
+                    <span class="review-tag">Committed to Quality</span>
+                    <span class="review-tag">Clear Communicator</span>
+                    <span class="review-tag">Accountable for Outcomes</span>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-job">Data Labeling</div>
+                    <div class="review-meta">
+                        <span class="review-stars">★★★★★</span>
+                        <span class="review-amount">$400</span>
+                    </div>
+                </div>
+                <div class="review-date">Dec 2025–Jan 2026</div>
+                <p class="review-text">"Seth is very knowledgeable and detail oriented. If your looking for someone who is trustworthy, smart and upfront then look no further. He wont continue a project unless you are satisfied with the work. Highly recommend."</p>
+                <div class="review-tags">
+                    <span class="review-tag">Detail Oriented</span>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-job">WI Courts Automation Discovery</div>
+                    <div class="review-meta">
+                        <span class="review-stars">★★★★★</span>
+                        <span class="review-amount">$800</span>
+                    </div>
+                </div>
+                <div class="review-date">Dec 2025</div>
+                <p class="review-text">"Seth delivered an exceptional automation that transformed a key aspect of our daily operations, increasing efficiency and accuracy. He not only built the system, but also guided us through it in real-time, ensuring we were fully comfortable. Professional, incredibly responsive, and has tons of ideas. I highly recommend him and look forward to collaborating again!"</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-job">ActiveCampaign Strategist for Automation and CRM Optimization</div>
+                    <div class="review-meta">
+                        <span class="review-stars">★★★★★</span>
+                        <span class="review-amount">$709 · 15 hrs</span>
+                    </div>
+                </div>
+                <div class="review-date">Oct–Dec 2025</div>
+                <p class="review-text">"Seth is incredible to work with. Not only does Seth do great work, he completes projects on time or early and he is excellent at communicating progress."</p>
+                <div class="review-tags">
+                    <span class="review-tag">Reliable</span>
+                    <span class="review-tag">Collaborative</span>
+                    <span class="review-tag">Committed to Quality</span>
+                    <span class="review-tag">Solution Oriented</span>
+                    <span class="review-tag">Clear Communicator</span>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-job">Automation Problem Solver for Ad Agency</div>
+                    <div class="review-meta">
+                        <span class="review-stars">★★★★★</span>
+                        <span class="review-amount">$400 · 10 hrs</span>
+                    </div>
+                </div>
+                <div class="review-date">Oct–Dec 2025</div>
+                <p class="review-text">"If you need an automation specialist, stop looking right now and hire Seth. He will blow your mind with his knowledge and his ability to take your idea and execute on it."</p>
+                <div class="review-tags">
+                    <span class="review-tag">Solution Oriented</span>
+                    <span class="review-tag">Clear Communicator</span>
+                    <span class="review-tag">Detail Oriented</span>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-job">n8n Workflow Fix — OpenAI Structured Output Parsing</div>
+                    <div class="review-meta">
+                        <span class="review-stars">★★★★★</span>
+                        <span class="review-amount">$106 · 2 hrs</span>
+                    </div>
+                </div>
+                <div class="review-date">Dec 2025</div>
+                <p class="review-text">"I had a frustrating n8n workflow that kept breaking when trying to parse OpenAI API responses. Spent way too long banging my head against it before hiring Seth. He figured out the problem immediately — it was a structured output configuration issue that I didn't even know was a thing. Fixed it in 2 hours when he quoted 3–4. And the kicker? He did this while on vacation. I told him no rush, but he just knocked it out anyway. Super easy to work with. Explained things in a way that actually made sense instead of throwing jargon at me. Clearly knows his stuff — this wasn't his first rodeo with this kind of problem. The workflow runs perfectly now and he added error handling so it won't break again. Fair price, fast turnaround, went above and beyond. Can't really ask for more than that."</p>
+                <div class="review-tags">
+                    <span class="review-tag">Solution Oriented</span>
+                    <span class="review-tag">Reliable</span>
+                    <span class="review-tag">Accountable for Outcomes</span>
+                    <span class="review-tag">Clear Communicator</span>
+                    <span class="review-tag">Collaborative</span>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-job">Classic Docker n8n Disk Bloat Recovery</div>
+                    <div class="review-meta">
+                        <span class="review-stars">★★★★★</span>
+                        <span class="review-amount">$100</span>
+                    </div>
+                </div>
+                <div class="review-date">Dec 2025</div>
+                <p class="review-text">"Great experience working with Seth. Communication is 10/10 and I have felt very safe throughout the project. Looking forward to many more collaborations."</p>
+                <div class="review-tags">
+                    <span class="review-tag">Collaborative</span>
+                    <span class="review-tag">Committed to Quality</span>
+                    <span class="review-tag">Solution Oriented</span>
+                    <span class="review-tag">Clear Communicator</span>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-job">Google Sheets Expert for Custom Inventory Tracking System</div>
+                    <div class="review-meta">
+                        <span class="review-stars">★★★★★</span>
+                        <span class="review-amount">$530</span>
+                    </div>
+                </div>
+                <div class="review-date">Oct–Nov 2025</div>
+                <p class="review-text">"Seth was extremely attentive and responsive. He worked quickly while providing accurate turnaround estimates. Nothing ever felt rushed or overlooked. Everything that was agreed upon was delivered exactly as promised. He clearly takes pride in his work, communicates clearly, and makes sure his clients feel supported every step of the way. Highly recommend."</p>
+                <div class="review-tags">
+                    <span class="review-tag">Reliable</span>
+                    <span class="review-tag">Collaborative</span>
+                    <span class="review-tag">Committed to Quality</span>
+                    <span class="review-tag">Clear Communicator</span>
+                    <span class="review-tag">Detail Oriented</span>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-job">Custom n8n Workflow Tool Development for Shopify and Email</div>
+                    <div class="review-meta">
+                        <span class="review-stars">★★★★★</span>
+                    </div>
+                </div>
+                <div class="review-date">Oct 2025</div>
+                <p class="review-text">"Seth is super responsive and very proactive with communication throughout the stages of the project. He's super knowledgeable about automations, n8n, scripting and webhooks. He's very good at thinking through the logic of how to best automate a process, and then executing on that vision. Definitely will work with him again."</p>
+            </div>
+
+            <hr class="section-divider">
+
+            <div class="cta-section">
+                <p>Every project listed here was scoped, built, documented, and handed off. If you're looking for the same, let's talk.</p>
+                <a href="https://calendly.com/seth-fortewebdesigns/30min" target="_blank" rel="noopener" class="btn-primary">Book a Call</a>
+                <a href="mailto:seth@fortewebdesigns.com" class="btn-secondary-link">seth@fortewebdesigns.com</a>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer-section">
+                <a href="mailto:seth@fortewebdesigns.com" class="footer-email-main">seth@fortewebdesigns.com</a>
+
+                <div class="footer-columns">
+                    <div class="footer-col">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="/foundation.html">Foundation</a></li>
+                            <li><a href="/launch.html">Launch</a></li>
+                            <li><a href="/growth.html">Growth</a></li>
+                            <li><a href="/scale.html">Scale</a></li>
+                            <li><a href="/review.html">Infrastructure Review</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="/about.html">About</a></li>
+                            <li><a href="/case-studies.html">Case Studies</a></li>
+                            <li><a href="/reviews.html">Reviews</a></li>
+                            <li><a href="/writing.html">Writing</a></li>
+                            <li><a href="/contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="https://www.linkedin.com/in/seth-forte/" target="_blank" rel="noopener">LinkedIn</a></li>
+                            <li><a href="https://www.upwork.com/freelancers/sethforte" target="_blank" rel="noopener">Upwork</a></li>
+                            <li><a href="mailto:seth@fortewebdesigns.com">Email</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p class="footer-location">Based in Dallas, Texas. Serving clients nationwide.</p>
+                    <p class="copyright">&copy; 2026 Seth Forte. All rights reserved.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/theme-toggle.js"></script>
+    <script src="/scroll-reveal.js"></script>
+    <script src="/scroll-top.js"></script>
+</body>
+</html>

@@ -23,13 +23,13 @@
         '[data-theme="light"] .site-header{background:#faf8f5;border-bottom-color:#e0dbd3}' +
         '[data-theme="light"] body{background-image:radial-gradient(ellipse at 20% 0%,rgba(212,96,58,0.04) 0%,transparent 50%),radial-gradient(ellipse at 80% 100%,rgba(200,146,46,0.03) 0%,transparent 50%)}';
 
-    // Toggle button styles - inline in header by default, fixed bottom-right on scroll
+    // Toggle button styles
     var toggleCSS = '#theme-toggle{width:36px;height:36px;border-radius:50%;border:1px solid #2b2f3d;background:#1c1f2b;color:#b8b2a8;font-size:1rem;cursor:pointer;z-index:1001;display:flex;align-items:center;justify-content:center;transition:background 0.2s ease,color 0.2s ease,border-color 0.2s ease;box-shadow:0 2px 8px rgba(0,0,0,0.3);line-height:1;flex-shrink:0;margin-left:1rem}' +
         '#theme-toggle.scrolled{position:fixed;top:auto;bottom:8.5rem;right:2rem;margin-left:0}' +
         '#theme-toggle:hover{background:#e8734a;color:#fff;border-color:#e8734a}' +
         '[data-theme="light"] #theme-toggle{background:#fff;border-color:#e0dbd3;color:#666;box-shadow:0 2px 8px rgba(0,0,0,0.1)}' +
         '[data-theme="light"] #theme-toggle:hover{background:#d4603a;color:#fff;border-color:#d4603a}' +
-        '@media(max-width:900px){#theme-toggle{position:fixed;top:1rem;right:1rem}}' +
+        '@media(max-width:900px){#theme-toggle{position:fixed;top:1rem;right:1rem;margin-left:0}}' +
         '@media(max-width:600px){#theme-toggle{width:34px;height:34px;font-size:0.95rem}#theme-toggle.scrolled{right:1.25rem;bottom:8rem}}';
 
     // Inject styles
@@ -42,14 +42,14 @@
     toggle.id = 'theme-toggle';
     toggle.setAttribute('aria-label', 'Toggle light/dark mode');
 
-    // Place inside header-container on desktop, or body as fallback
+    var isMobile = window.innerWidth <= 900;
     var headerContainer = document.querySelector('.header-container');
-    if (headerContainer) {
+
+    // On mobile the site-header is display:none, so always place on body
+    // so the fixed positioning in the CSS actually works
+    if (headerContainer && !isMobile) {
         headerContainer.appendChild(toggle);
     } else {
-        toggle.style.position = 'fixed';
-        toggle.style.top = '1rem';
-        toggle.style.right = '1rem';
         document.body.appendChild(toggle);
     }
 
@@ -76,8 +76,8 @@
             if (!isScrolled) {
                 isScrolled = true;
                 toggle.classList.add('scrolled');
-                // Move to body for fixed positioning when scrolled
-                if (headerContainer && toggle.parentNode === headerContainer) {
+                // Move to body for fixed positioning when scrolled (desktop only — mobile is already on body)
+                if (!isMobile && headerContainer && toggle.parentNode === headerContainer) {
                     document.body.appendChild(toggle);
                 }
             }
@@ -85,8 +85,8 @@
             if (isScrolled) {
                 isScrolled = false;
                 toggle.classList.remove('scrolled');
-                // Move back into header when at top
-                if (headerContainer) {
+                // Move back into header when at top (desktop only)
+                if (!isMobile && headerContainer) {
                     toggle.style.position = '';
                     toggle.style.top = '';
                     toggle.style.right = '';
