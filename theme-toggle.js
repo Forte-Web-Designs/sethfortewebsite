@@ -15,12 +15,13 @@
         '[data-theme="light"] #scroll-top-btn:hover{background:#4a8a9f;color:#fff;border-color:#4a8a9f}' +
         '[data-theme="light"] #sticky-cta-bar{background:#fff;border-top-color:#ddd;box-shadow:0 -2px 12px rgba(0,0,0,0.08)}' +
         '[data-theme="light"] #sticky-cta-link{background:#4a8a9f}' +
-        '[data-theme="light"] .credibility-item .stat{color:#1a1a1a}' +
+        '[data-theme="light"] .credibility-item .stat{color:#4a8a9f;text-shadow:0 0 15px rgba(74,138,159,0.2)}' +
         '[data-theme="light"] .credibility-item .label{color:#666}' +
         '[data-theme="light"] .client-row{color:#666}' +
         '[data-theme="light"] .result-stat{color:#c07a3e}' +
         '[data-theme="light"] .sidebar-email a{color:#666}' +
-        '[data-theme="light"] .site-header{background:#f5f5f5;border-bottom-color:#ddd}';
+        '[data-theme="light"] .site-header{background:#f5f5f5;border-bottom-color:#ddd}' +
+        '[data-theme="light"] body{background-image:radial-gradient(ellipse at 20% 0%,rgba(74,138,159,0.05) 0%,transparent 50%),radial-gradient(ellipse at 80% 100%,rgba(192,122,62,0.04) 0%,transparent 50%)}';
 
     // Toggle button styles - inline in header by default, fixed bottom-right on scroll
     var toggleCSS = '#theme-toggle{width:36px;height:36px;border-radius:50%;border:1px solid #2a2a2a;background:#1a1a1a;color:#b0b0b0;font-size:1rem;cursor:pointer;z-index:1001;display:flex;align-items:center;justify-content:center;transition:background 0.2s ease,color 0.2s ease,border-color 0.2s ease;box-shadow:0 2px 8px rgba(0,0,0,0.3);line-height:1;flex-shrink:0;margin-left:1rem}' +

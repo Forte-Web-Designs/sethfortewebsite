@@ -78,6 +78,9 @@
             line-height: 1.7;
             color: var(--text-primary);
             background: var(--background);
+            background-image: radial-gradient(ellipse at 20% 0%, rgba(107,163,184,0.06) 0%, transparent 50%),
+                              radial-gradient(ellipse at 80% 100%, rgba(212,149,106,0.04) 0%, transparent 50%);
+            background-attachment: fixed;
         }
 
         a {
@@ -99,6 +102,11 @@
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         .animate-fade-in { animation: fadeIn 0.6s ease forwards; }
@@ -270,9 +278,10 @@
         .credibility-item .stat {
             font-size: 1.15rem;
             font-weight: 700;
-            color: #f0f0f0;
+            color: var(--accent);
             display: block;
             margin-bottom: 0.3rem;
+            text-shadow: 0 0 20px rgba(107,163,184,0.3);
         }
 
         .credibility-item .label {
@@ -325,11 +334,12 @@
             border-radius: 6px;
             font-size: 0.95rem;
             font-weight: 500;
-            transition: opacity 0.2s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
         }
 
         .btn-primary:hover {
-            opacity: 0.85;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(107,163,184,0.35);
             text-decoration: none;
         }
 
@@ -379,7 +389,7 @@
             border: 1px solid var(--border);
             border-radius: 10px;
             padding: 2rem 1.75rem;
-            transition: border-color 0.2s ease, transform 0.15s ease;
+            transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
             text-decoration: none;
@@ -387,21 +397,35 @@
         }
 
         .stage-card:hover {
-            border-color: var(--text-muted);
-            transform: translateY(-2px);
+            transform: translateY(-4px);
             text-decoration: none;
         }
 
         .stage-card.stage-foundation {
-            border-top: 3px solid var(--border);
+            border-top: 3px solid #7a8a8f;
+        }
+
+        .stage-card.stage-foundation:hover {
+            border-color: #7a8a8f;
+            box-shadow: 0 8px 30px rgba(122,138,143,0.15), 0 0 0 1px rgba(122,138,143,0.2);
         }
 
         .stage-card.stage-growth {
             border-top: 3px solid var(--accent);
         }
 
+        .stage-card.stage-growth:hover {
+            border-color: var(--accent);
+            box-shadow: 0 8px 30px rgba(107,163,184,0.2), 0 0 0 1px rgba(107,163,184,0.25);
+        }
+
         .stage-card.stage-scale {
             border-top: 3px solid var(--accent-warm);
+        }
+
+        .stage-card.stage-scale:hover {
+            border-color: var(--accent-warm);
+            box-shadow: 0 8px 30px rgba(212,149,106,0.2), 0 0 0 1px rgba(212,149,106,0.25);
         }
 
         .stage-card .stage-title {
@@ -453,8 +477,13 @@
 
         .rotating-word {
             display: inline-block;
-            color: var(--accent);
             font-weight: 700;
+            background: linear-gradient(135deg, #6ba3b8, #8ec5d6, #d4956a, #6ba3b8);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 6s ease infinite;
             transition: opacity 0.4s ease;
         }
 
@@ -497,16 +526,17 @@
             border-radius: 10px;
             padding: 1.75rem;
             text-align: left;
-            transition: border-color 0.2s ease, transform 0.15s ease;
+            transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
             text-decoration: none;
             color: inherit;
             display: block;
         }
 
         .result-card:hover {
-            border-color: var(--text-muted);
-            transform: translateY(-2px);
+            border-color: var(--accent-warm);
+            transform: translateY(-4px);
             text-decoration: none;
+            box-shadow: 0 8px 30px rgba(212,149,106,0.15), 0 0 0 1px rgba(212,149,106,0.2);
         }
 
         .result-stat {
@@ -820,7 +850,7 @@
                 <h1 class="rotating-tagline animate-fade-up animate-delay-1">Business Growth Isn't Luck. It's <span class="rotating-word">A System</span></h1>
                 <p class="hero-body animate-fade-up animate-delay-2">Automation, CRM pipelines, reporting dashboards, and the infrastructure that holds it all together. Most of the work I do is invisible... it just makes everything else work the way it should.</p>
                 <div class="hero-cta animate-fade-up animate-delay-3">
-                    <a href="/contact.html" class="btn-primary">Book a Call</a>
+                    <a href="https://calendly.com/seth-fortewebdesigns/30min" target="_blank" rel="noopener" class="btn-primary">Book a Call</a>
                     <a href="/case-studies.html" class="btn-secondary">See My Work</a>
                 </div>
             </div>
@@ -895,7 +925,7 @@
                 <h2>Not sure where to start?</h2>
                 <p class="body-text">Most people aren't. That's what the Infrastructure Review is for.</p>
                 <p class="body-text">I review your current setup, identify the biggest opportunities, and give you a prioritized roadmap with ROI estimates. If you decide to move forward with a build, the review fee applies as credit toward the project.</p>
-                <a href="/review.html" class="btn-primary">Book a Review</a>
+                <a href="https://calendly.com/seth-fortewebdesigns/30min" target="_blank" rel="noopener" class="btn-primary">Book a Review</a>
             </div>
 
             <hr class="section-divider">
@@ -975,7 +1005,7 @@
             <div class="cta-section">
                 <p class="body-text">Most of the businesses I work with have the same story. Things are growing, which is good... but the way things run day to day hasn't kept up. Something that worked fine at one size starts breaking at the next one.</p>
                 <p class="body-text" style="margin-bottom: 1.75rem;">If that sounds familiar, that's usually where I come in.</p>
-                <a href="/contact.html" class="btn-primary">Book a Call</a>
+                <a href="https://calendly.com/seth-fortewebdesigns/30min" target="_blank" rel="noopener" class="btn-primary">Book a Call</a>
             </div>
 
             <hr class="section-divider">
@@ -1041,6 +1071,7 @@
         }
     </script>
 <script src="/theme-toggle.js"></script>
+<script src="/scroll-reveal.js"></script>
 <script src="/scroll-top.js"></script>
 </body>
 </html>

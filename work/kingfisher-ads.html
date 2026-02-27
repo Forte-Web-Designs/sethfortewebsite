@@ -53,6 +53,9 @@
             line-height: 1.7;
             color: var(--text-primary);
             background: var(--background);
+            background-image: radial-gradient(ellipse at 20% 0%, rgba(107,163,184,0.06) 0%, transparent 50%),
+                              radial-gradient(ellipse at 80% 100%, rgba(212,149,106,0.04) 0%, transparent 50%);
+            background-attachment: fixed;
         }
 
         a { color: var(--accent); text-decoration: none; transition: color 0.2s ease; }
@@ -130,9 +133,9 @@
         .btn-primary {
             display: inline-block; background: var(--accent); color: #ffffff;
             padding: 0.75rem 1.75rem; border-radius: 6px; font-size: 0.95rem; font-weight: 500;
-            transition: opacity 0.2s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
         }
-        .btn-primary:hover { opacity: 0.85; text-decoration: none; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(107,163,184,0.35); text-decoration: none; }
 
         .cta-card {
             background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px;
@@ -324,6 +327,7 @@
         </main>
     </div>
 <script src="/theme-toggle.js"></script>
+<script src="/scroll-reveal.js"></script>
 <script src="/scroll-top.js"></script>
 </body>
 </html>

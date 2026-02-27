@@ -31,7 +31,8 @@
       "Bash(then echo \"$file still has nav case-studies link\")",
       "Bash(do grep -Pzo 'ROI Calculator</a></li>\\\\n\\\\s*<li><a href=\"\"/writing.html\"\">Writing</a></li>' \"$f\")",
       "Bash(perl -i -0777 -pe:*)",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "Bash(open \"/Users/fortewebdesigns/Library/Mobile Documents/com~apple~CloudDocs/Workspace/SethForteWebsite/index.html\")"
     ],
     "deny": [],
     "ask": []
