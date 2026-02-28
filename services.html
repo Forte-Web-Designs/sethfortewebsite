@@ -104,13 +104,40 @@
         .stage-card.stage-growth { border-left: 4px solid #5fb88a; }
         .stage-card.stage-scale { border-left: 4px solid var(--accent-warm); }
 
+        .stage-card .stage-number { width:30px; height:30px; border-radius:50%; font-size:0.85rem; font-weight:700; color:#fff; display:flex; align-items:center; justify-content:center; margin-bottom:1rem; flex-shrink:0; }
+        .stage-card.stage-foundation .stage-number { background: #8a8578; }
+        .stage-card.stage-launch .stage-number { background: var(--accent); }
+        .stage-card.stage-growth .stage-number { background: #5fb88a; }
+        .stage-card.stage-scale .stage-number { background: var(--accent-warm); }
         .stage-card .stage-title { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem; }
         .stage-card .stage-tagline { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.5rem; font-style: italic; }
-        .stage-card .stage-subtitle { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; }
         .stage-card p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.6; flex: 1; }
         .stage-card .stage-link { font-size: 0.85rem; color: var(--accent); margin-top: 1.25rem; display: inline-block; }
 
         .trust-line { text-align: center; color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem; font-style: italic; }
+
+        /* Pricing Table */
+        .pricing-section { margin-bottom: 2rem; }
+        .pricing-stage { margin-bottom: 2.5rem; }
+        .pricing-stage-header { display:flex; align-items:center; gap:0.75rem; margin-bottom:0.75rem; }
+        .pricing-stage-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+        .pricing-stage-dot.dot-foundation { background:#8a8578; }
+        .pricing-stage-dot.dot-launch     { background:var(--accent); }
+        .pricing-stage-dot.dot-growth     { background:#5fb88a; }
+        .pricing-stage-dot.dot-scale      { background:var(--accent-warm); }
+        .pricing-stage-label { font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; }
+        .pricing-stage-label.lbl-foundation { color:#8a8578; }
+        .pricing-stage-label.lbl-launch     { color:var(--accent); }
+        .pricing-stage-label.lbl-growth     { color:#5fb88a; }
+        .pricing-stage-label.lbl-scale      { color:var(--accent-warm); }
+        .pricing-table { background:var(--card-bg); border:1px solid var(--border); border-radius:10px; overflow:hidden; }
+        .pricing-row { display:flex; justify-content:space-between; align-items:center; padding:0.75rem 1.5rem; border-bottom:1px solid var(--border); transition:background 0.15s ease; }
+        .pricing-row:last-child { border-bottom:none; }
+        .pricing-row:hover { background:rgba(255,255,255,0.03); }
+        .pricing-name { font-size:0.9rem; color:var(--text-secondary); }
+        .pricing-price { font-size:0.85rem; font-weight:600; color:var(--text-primary); white-space:nowrap; margin-left:1rem; }
+        .pricing-footer { margin-top:2.5rem; padding:1.25rem 1.5rem; background:var(--card-bg); border:1px solid var(--border); border-left:4px solid var(--accent-warm); border-radius:10px; font-size:0.88rem; color:var(--text-muted); line-height:1.7; }
+        .pricing-footer strong { color:var(--text-secondary); }
 
         /* Audit Section */
         .audit-section {
@@ -217,36 +244,137 @@
 
             <div class="stage-grid animate-fade-up animate-delay-3">
                 <a href="/foundation.html" class="stage-card stage-foundation">
+                    <div class="stage-number">1</div>
                     <div class="stage-title">Foundation</div>
-                    <div class="stage-tagline">Get your system built and everything connected.</div>
-                    <div class="stage-subtitle">1-2 weeks</div>
-                    <p>CRM with a real sales pipeline. Payment processing. Email that actually lands in inboxes. Booking and intake forms. Tracking so you know where leads come from. And your first lead source connected so you're not starting with an empty system.</p>
-                    <span class="stage-link">Learn more &rarr;</span>
+                    <div class="stage-tagline">Build the system that receives, tracks, and closes leads.</div>
+                    <p>CRM with a real sales pipeline. Payment processing. Email that actually lands in inboxes. Booking and intake forms. Tracking so you know where leads come from.</p>
+                    <span class="stage-link">See all services &darr;</span>
                 </a>
                 <a href="/launch.html" class="stage-card stage-launch">
+                    <div class="stage-number">2</div>
                     <div class="stage-title">Launch</div>
-                    <div class="stage-tagline">Get people into the system. Start generating revenue.</div>
-                    <div class="stage-subtitle">1-3 weeks</div>
-                    <p>Foundation gave you the platform. Launch gives you the campaigns. Ad strategy, sales funnels, nurture sequences, and booking automation that turn strangers into leads and leads into customers, automatically.</p>
-                    <span class="stage-link">Learn more &rarr;</span>
+                    <div class="stage-tagline">Turn on lead flow and convert your first prospects into paying clients.</div>
+                    <p>Ad strategy, sales funnels, nurture sequences, and booking automation that turn strangers into leads and leads into customers, automatically.</p>
+                    <span class="stage-link">See all services &darr;</span>
                 </a>
                 <a href="/growth.html" class="stage-card stage-growth">
+                    <div class="stage-number">3</div>
                     <div class="stage-title">Growth</div>
-                    <div class="stage-tagline">Add channels. Convert more. Handle the volume.</div>
-                    <div class="stage-subtitle">2-3 weeks</div>
-                    <p>One channel is working. Now multiply it. Add more lead sources, AI agents for after-hours response, outbound prospecting, review automation, and the integrations that let you run more without hiring more.</p>
-                    <span class="stage-link">Learn more &rarr;</span>
+                    <div class="stage-tagline">Add lead channels, capture more, and let AI handle the follow-up.</div>
+                    <p>Add more lead sources, AI agents for after-hours response, outbound prospecting, review automation, and the integrations that let you run more without hiring more.</p>
+                    <span class="stage-link">See all services &darr;</span>
                 </a>
                 <a href="/scale.html" class="stage-card stage-scale">
+                    <div class="stage-number">4</div>
                     <div class="stage-title">Scale</div>
-                    <div class="stage-tagline">Optimize what's working. Grow without adding headcount.</div>
-                    <div class="stage-subtitle">3-4 weeks</div>
-                    <p>Reporting dashboards, multi-channel expansion, outbound systems, AI agents, content engines, and monthly management. For businesses that already have leads coming in and want to do more of what's working.</p>
-                    <span class="stage-link">Learn more &rarr;</span>
+                    <div class="stage-tagline">Maximize revenue from every lead without adding headcount.</div>
+                    <p>Reporting dashboards, multi-channel expansion, outbound systems, AI agents, content engines, and monthly management.</p>
+                    <span class="stage-link">See all services &darr;</span>
                 </a>
             </div>
 
             <p class="trust-line">Every system is scoped, documented, tested, and handed off with training. You own everything I build.</p>
+
+            <hr class="section-divider">
+
+            <!-- Full Services & Pricing -->
+            <h2 class="page-title" style="font-size:1.3rem; margin-bottom:0.5rem;">Services &amp; Pricing</h2>
+            <p class="body-text" style="margin-bottom:2.5rem;">All prices are project-based — no hourly billing, no scope creep. You know exactly what you're getting before we start.</p>
+
+            <div class="pricing-section">
+
+                <!-- FOUNDATION -->
+                <div class="pricing-stage">
+                    <div class="pricing-stage-header">
+                        <div class="pricing-stage-dot dot-foundation"></div>
+                        <span class="pricing-stage-label lbl-foundation">Stage 1 — Foundation</span>
+                    </div>
+                    <div class="pricing-table">
+                        <div class="pricing-row"><span class="pricing-name">CRM Setup &amp; Lead Pipeline Configuration</span><span class="pricing-price">from $3,500</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Contact Form &amp; Inbound Lead Routing</span><span class="pricing-price">from $2,000</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Booking &amp; Scheduling System</span><span class="pricing-price">from $2,000</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Email Domain &amp; Deliverability Setup</span><span class="pricing-price">from $2,000</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Lead Tracking &amp; Source Attribution</span><span class="pricing-price">from $2,000</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Client Onboarding Automation</span><span class="pricing-price">from $2,500</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Proposal &amp; Quote Automation</span><span class="pricing-price">from $2,000</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Contract &amp; E-Signature Automation</span><span class="pricing-price">from $2,000</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Stripe &amp; Payment Integration</span><span class="pricing-price">from $2,000</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Internal Lead Alert &amp; Notification Routing</span><span class="pricing-price">from $2,000</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Power Platform Fix &amp; Build</span><span class="pricing-price">from $2,500</span></div>
+                    </div>
+                </div>
+
+                <!-- LAUNCH -->
+                <div class="pricing-stage">
+                    <div class="pricing-stage-header">
+                        <div class="pricing-stage-dot dot-launch"></div>
+                        <span class="pricing-stage-label lbl-launch">Stage 2 — Launch</span>
+                    </div>
+                    <div class="pricing-table">
+                        <div class="pricing-row"><span class="pricing-name">Google &amp; Meta Ads — First Leads Setup</span><span class="pricing-price">from $2,500</span></div>
+                        <div class="pricing-row"><span class="pricing-name">High-Converting Landing Page</span><span class="pricing-price">from $2,500</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Lead Magnet &amp; Opt-In Funnel</span><span class="pricing-price">from $2,500</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Sales Funnel Automation</span><span class="pricing-price">from $3,500</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Email/SMS Nurture Sequences</span><span class="pricing-price">from $2,500</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Automated Follow-Up Sequences</span><span class="pricing-price">from $2,500</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Booking Funnel + Calendar Integration</span><span class="pricing-price">from $2,500</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Lead-to-Close CRM Pipeline</span><span class="pricing-price">from $3,000</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Referral &amp; Word-of-Mouth Program</span><span class="pricing-price">from $2,500</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Conversion Rate Optimization</span><span class="pricing-price">from $2,500</span></div>
+                    </div>
+                </div>
+
+                <!-- GROWTH -->
+                <div class="pricing-stage">
+                    <div class="pricing-stage-header">
+                        <div class="pricing-stage-dot dot-growth"></div>
+                        <span class="pricing-stage-label lbl-growth">Stage 3 — Growth</span>
+                    </div>
+                    <div class="pricing-table">
+                        <div class="pricing-row"><span class="pricing-name">Meta Lead Ads → CRM Auto-Sync</span><span class="pricing-price">from $2,000</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Google Ads Lead Generation</span><span class="pricing-price">from $2,500</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Outbound Cold Email Campaign</span><span class="pricing-price">from $4,500</span></div>
+                        <div class="pricing-row"><span class="pricing-name">LinkedIn Outreach Automation</span><span class="pricing-price">from $3,500</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Inbound Lead Capture &amp; Qualification</span><span class="pricing-price">from $2,500</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Missed Call Text-Back</span><span class="pricing-price">from $2,000</span></div>
+                        <div class="pricing-row"><span class="pricing-name">AI Voice Agent — After-Hours Lead Response</span><span class="pricing-price">$3,500+/mo</span></div>
+                        <div class="pricing-row"><span class="pricing-name">WhatsApp / Chat Bot</span><span class="pricing-price">from $2,500</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Lead Scoring &amp; Automatic Routing</span><span class="pricing-price">from $2,500</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Appointment Reminder &amp; No-Show Reduction</span><span class="pricing-price">from $2,000</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Re-Engagement &amp; Win-Back Campaigns</span><span class="pricing-price">from $2,500</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Review &amp; Reputation Automation</span><span class="pricing-price">from $2,000</span></div>
+                        <div class="pricing-row"><span class="pricing-name">SMS Broadcast Campaigns</span><span class="pricing-price">from $2,000</span></div>
+                    </div>
+                </div>
+
+                <!-- SCALE -->
+                <div class="pricing-stage">
+                    <div class="pricing-stage-header">
+                        <div class="pricing-stage-dot dot-scale"></div>
+                        <span class="pricing-stage-label lbl-scale">Stage 4 — Scale</span>
+                    </div>
+                    <div class="pricing-table">
+                        <div class="pricing-row"><span class="pricing-name">Lead Source Attribution &amp; Revenue Dashboard</span><span class="pricing-price">from $3,000</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Ad Performance &amp; ROAS Reporting</span><span class="pricing-price">from $2,500</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Revenue Forecasting &amp; Pipeline Reporting</span><span class="pricing-price">from $3,500</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Cross-Sell &amp; Upsell Automation</span><span class="pricing-price">from $2,500</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Customer Retention &amp; Churn Prevention</span><span class="pricing-price">from $3,000</span></div>
+                        <div class="pricing-row"><span class="pricing-name">AI Content Generation Pipeline</span><span class="pricing-price">from $3,500</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Content Repurposing &amp; Distribution</span><span class="pricing-price">from $2,500</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Social Media Scheduling &amp; Automation</span><span class="pricing-price">from $2,000</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Customer Support Routing &amp; Ticketing</span><span class="pricing-price">from $2,500</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Recruiting &amp; Hiring Pipeline</span><span class="pricing-price">from $3,500</span></div>
+                        <div class="pricing-row"><span class="pricing-name">Multi-Location &amp; Franchise Lead Routing</span><span class="pricing-price">from $4,500</span></div>
+                        <div class="pricing-row"><span class="pricing-name">E-Commerce &amp; Order Automation</span><span class="pricing-price">from $3,000</span></div>
+                    </div>
+                </div>
+
+                <div class="pricing-footer">
+                    <strong>Not sure where to start?</strong> The Foundation Review ($750) covers your current setup, biggest opportunities, and a prioritized roadmap — fee credits toward your first project.<br>
+                    Ongoing management retainers available at <strong>$1,000–$3,500/month</strong>.
+                </div>
+
+            </div>
 
             <hr class="section-divider">
 

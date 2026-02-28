@@ -296,12 +296,29 @@
         }
 
         /* Client Row */
+        .trusted-by-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .trusted-by-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-muted);
+            opacity: 0.6;
+        }
+
         .client-row {
             text-align: center;
             color: var(--text-muted);
             font-size: 0.85rem;
             letter-spacing: 0.03em;
-            margin-bottom: 1.25rem;
+            margin-bottom: 0;
             line-height: 2;
         }
 
@@ -890,8 +907,11 @@
                     </div>
                 </div>
 
-                <div class="client-row">
-                    Revolut<span class="divider">|</span>Modern Bungalow<span class="divider">|</span>Eden Medical<span class="divider">|</span>Kingfisher Ads<span class="divider">|</span>CR Deals Cincinnati<span class="divider">|</span>Hollow Bamboo<span class="divider">|</span>UDI Group
+                <div class="trusted-by-wrap">
+                    <span class="trusted-by-label">Trusted by</span>
+                    <div class="client-row">
+                        Revolut<span class="divider">|</span>Modern Bungalow<span class="divider">|</span>Eden Medical<span class="divider">|</span>Kingfisher Ads<span class="divider">|</span>CR Deals Cincinnati<span class="divider">|</span>Hollow Bamboo<span class="divider">|</span>UDI Group
+                    </div>
                 </div>
 
                 <p class="featured-in">As Featured in <a href="https://voyagedallas.com/interview/community-highlights-meet-seth-forte-of-forte-web-designs/" target="_blank" rel="noopener">Voyage Dallas Magazine</a></p>
