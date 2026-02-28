@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Writing - Seth Forte</title>
+    <title>All Writing - Seth Forte</title>
     <meta name="description" content="Writing about work, building things, and figuring it out as I go.">
     <link rel="icon" type="image/jpeg" href="logo.jpg">
     <link rel="apple-touch-icon" href="logo.jpg">
@@ -168,12 +168,14 @@
             letter-spacing: -0.02em;
         }
 
-        .page-intro {
-            color: var(--text-secondary);
-            margin-bottom: 3rem;
-            font-size: 1.05rem;
-            line-height: 1.8;
+        .back-link {
+            display: inline-block;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
         }
+
+        .back-link:hover { color: var(--accent); }
 
         .section-divider {
             border: none;
@@ -222,16 +224,6 @@
             color: var(--accent);
             display: inline-block;
         }
-
-        .view-all-link {
-            display: inline-block;
-            margin-top: 1.5rem;
-            color: var(--accent);
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-
-        .view-all-link:hover { text-decoration: underline; }
 
         /* Footer */
         .footer-section {
@@ -411,7 +403,6 @@
             <img src="headshot-6.jpg" alt="Seth Forte" class="profile-photo animate-fade-in">
             <h1 class="profile-name">Seth Forte</h1>
             <p class="profile-tagline">Systems Architect &<br>Automation Consultant</p>
-
             <nav>
                 <ul class="nav-links">
                     <li><a href="/">Home</a></li>
@@ -422,7 +413,6 @@
                     <li><a href="/contact.html">Contact</a></li>
                 </ul>
             </nav>
-
             <div class="sidebar-email">
                 <a href="mailto:seth@fortewebdesigns.com">seth@fortewebdesigns.com</a>
             </div>
@@ -430,10 +420,8 @@
 
         <!-- Main Content -->
         <main class="main-content">
-            <h1 class="page-title animate-fade-up animate-delay-1">Writing</h1>
-            <p class="page-intro animate-fade-up animate-delay-2">I write about work, mostly. Building things. Running a small business. Figuring it out as I go. Some of it's practical. Some of it's just me trying to understand something by putting words to it.</p>
-
-            <hr class="section-divider">
+            <a href="/writing.html" class="back-link">← Back</a>
+            <h1 class="page-title animate-fade-up animate-delay-1">All Posts</h1>
 
             <ul class="writing-list">
                 <li class="writing-item">
@@ -459,14 +447,41 @@
                     <p>If I can tell in the first five minutes we're not a fit, I'll say so. Saves everyone time.</p>
                     <a href="/articles/turn-down-calls.html" class="read-link">Read</a>
                 </li>
-            </ul>
 
-            <a href="/posts.html" class="view-all-link">All posts →</a>
+                <li class="writing-item">
+                    <h3>What I Learned Spending $0 on Marketing</h3>
+                    <p>Referrals and good work have been enough. Here's why I haven't felt the need to change that.</p>
+                    <a href="/articles/zero-marketing.html" class="read-link">Read</a>
+                </li>
+
+                <li class="writing-item">
+                    <h3>The Real Cost of Manual Work</h3>
+                    <p>That thing you do manually every week? It's probably costing more than you think.</p>
+                    <a href="/articles/real-cost-manual-work.html" class="read-link">Read</a>
+                </li>
+
+                <li class="writing-item">
+                    <h3>Audit Your Lifestyle</h3>
+                    <p>A simple friction audit framework that helps you identify and eliminate daily annoyances. The same thinking scales to business processes.</p>
+                    <a href="/articles/fighting-friction.html" class="read-link">Read</a>
+                </li>
+
+                <li class="writing-item">
+                    <h3>What You're Actually Paying For When You Hire A Consultant</h3>
+                    <p>What you're actually paying for isn't the technical work. It's understanding your business and genuine investment in your success.</p>
+                    <a href="/articles/paying-for-consultant.html" class="read-link">Read</a>
+                </li>
+
+                <li class="writing-item">
+                    <h3>Technical Skills Won't Save You Anymore</h3>
+                    <p>The technical implementation is becoming commodity. The strategic thinking isn't.</p>
+                    <a href="/articles/technical-skills-wont-save-you.html" class="read-link">Read</a>
+                </li>
+            </ul>
 
             <!-- Footer -->
             <div class="footer-section">
                 <a href="mailto:seth@fortewebdesigns.com" class="footer-email-main">seth@fortewebdesigns.com</a>
-
                 <div class="footer-columns">
                     <div class="footer-col">
                         <h4>Services</h4>
@@ -496,7 +511,6 @@
                         </ul>
                     </div>
                 </div>
-
                 <div class="footer-bottom">
                     <p class="footer-location">Based in Dallas, Texas. Serving clients nationwide.</p>
                     <p class="copyright">&copy; 2026 Seth Forte. All rights reserved.</p>
