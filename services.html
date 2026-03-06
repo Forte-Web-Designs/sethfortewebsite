@@ -116,28 +116,25 @@
 
         .trust-line { text-align: center; color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem; font-style: italic; }
 
-        /* Pricing Table */
-        .pricing-section { margin-bottom: 2rem; }
-        .pricing-stage { margin-bottom: 2.5rem; }
-        .pricing-stage-header { display:flex; align-items:center; gap:0.75rem; margin-bottom:0.75rem; }
-        .pricing-stage-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
-        .pricing-stage-dot.dot-foundation { background:#8a8578; }
-        .pricing-stage-dot.dot-launch     { background:var(--accent); }
-        .pricing-stage-dot.dot-growth     { background:#5fb88a; }
-        .pricing-stage-dot.dot-scale      { background:var(--accent-warm); }
-        .pricing-stage-label { font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; }
-        .pricing-stage-label.lbl-foundation { color:#8a8578; }
-        .pricing-stage-label.lbl-launch     { color:var(--accent); }
-        .pricing-stage-label.lbl-growth     { color:#5fb88a; }
-        .pricing-stage-label.lbl-scale      { color:var(--accent-warm); }
-        .pricing-table { background:var(--card-bg); border:1px solid var(--border); border-radius:10px; overflow:hidden; }
-        .pricing-row { display:flex; justify-content:space-between; align-items:center; padding:0.75rem 1.5rem; border-bottom:1px solid var(--border); transition:background 0.15s ease; }
-        .pricing-row:last-child { border-bottom:none; }
-        .pricing-row:hover { background:rgba(255,255,255,0.03); }
-        .pricing-name { font-size:0.9rem; color:var(--text-secondary); }
-        .pricing-price { font-size:0.85rem; font-weight:600; color:var(--text-primary); white-space:nowrap; margin-left:1rem; }
-        .pricing-footer { margin-top:2.5rem; padding:1.25rem 1.5rem; background:var(--card-bg); border:1px solid var(--border); border-left:4px solid var(--accent-warm); border-radius:10px; font-size:0.88rem; color:var(--text-muted); line-height:1.7; }
-        .pricing-footer strong { color:var(--text-secondary); }
+        /* Stage Sections */
+        .stage-section { margin-bottom: 4rem; }
+        .stage-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.75rem; }
+        .stage-label-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+        .stage-label.label-foundation { color: #8a8578; }
+        .stage-label.label-foundation .stage-label-dot { background: #8a8578; }
+        .stage-label.label-launch { color: var(--accent); }
+        .stage-label.label-launch .stage-label-dot { background: var(--accent); }
+        .stage-label.label-growth { color: #5fb88a; }
+        .stage-label.label-growth .stage-label-dot { background: #5fb88a; }
+        .stage-label.label-scale { color: var(--accent-warm); }
+        .stage-label.label-scale .stage-label-dot { background: var(--accent-warm); }
+        .stage-headline { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1rem; }
+        .stage-body { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.75rem; }
+        .capability-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+        .capability-item { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem 1.5rem; }
+        .capability-title { font-size: 0.95rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.35rem; }
+        .capability-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+        .page-subtitle { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; margin-bottom: 3rem; }
 
         /* Audit Section */
         .audit-section {
@@ -236,108 +233,131 @@
         </aside>
 
         <main class="main-content">
-            <h1 class="page-title animate-fade-up animate-delay-1">Services</h1>
+            <h1 class="page-title animate-fade-up animate-delay-1">Every business is at one of four stages. The stage tells me exactly what to build.</h1>
+            <p class="page-subtitle animate-fade-up animate-delay-2">Most businesses don't have a growth problem. They have a systems problem. I build the infrastructure that fixes it.</p>
 
-            <!-- Full Services List -->
-
-            <div class="pricing-section">
-
-                <!-- FOUNDATION -->
-                <div class="pricing-stage">
-                    <div class="pricing-stage-header">
-                        <div class="pricing-stage-dot dot-foundation"></div>
-                        <span class="pricing-stage-label lbl-foundation">Stage 1 — Foundation</span>
+            <!-- STAGE 1 — FOUNDATION -->
+            <div class="stage-section">
+                <div class="stage-label label-foundation"><span class="stage-label-dot"></span>Stage 1 — Foundation</div>
+                <h2 class="stage-headline">Your tools don't talk to each other. I fix that.</h2>
+                <p class="stage-body">You have a CRM nobody configured, a Calendly that isn't connected to anything, payments running through Stripe with no automation on the other side, and emails landing in spam. Your team is doing everything manually because nobody built the system those tools were supposed to plug into. I build the operating system your business runs on.</p>
+                <div class="capability-grid">
+                    <div class="capability-item">
+                        <div class="capability-title">CRM and Pipeline Setup</div>
+                        <div class="capability-desc">Sales stages, contact tags, custom fields, and pipeline automation matched to your actual sales process.</div>
                     </div>
-                    <div class="pricing-table">
-                        <div class="pricing-row"><span class="pricing-name">CRM Setup &amp; Lead Pipeline Configuration</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Contact Form &amp; Inbound Lead Routing</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Booking &amp; Scheduling System</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Email Domain &amp; Deliverability Setup</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Lead Tracking &amp; Source Attribution</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Client Onboarding Automation</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Proposal &amp; Quote Automation</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Contract &amp; E-Signature Automation</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Stripe &amp; Payment Integration</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Internal Lead Alert &amp; Notification Routing</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Power Platform Fix &amp; Build</span></div>
+                    <div class="capability-item">
+                        <div class="capability-title">Payments and Contracts</div>
+                        <div class="capability-desc">Stripe connected, products configured, receipts automated, contracts and e-signatures built in.</div>
+                    </div>
+                    <div class="capability-item">
+                        <div class="capability-title">Email and Scheduling</div>
+                        <div class="capability-desc">Domain authentication so your emails land, calendar and booking connected, intake forms routing to the right place.</div>
+                    </div>
+                    <div class="capability-item">
+                        <div class="capability-title">Tracking and Attribution</div>
+                        <div class="capability-desc">Google Analytics, Meta Pixel, conversion events verified. Know where your leads come from.</div>
+                    </div>
+                    <div class="capability-item">
+                        <div class="capability-title">Workflow Automation</div>
+                        <div class="capability-desc">Take a manual process that eats hours every week and make it run itself. Data entry, follow-ups, approvals, notifications.</div>
                     </div>
                 </div>
-
-                <!-- LAUNCH -->
-                <div class="pricing-stage">
-                    <div class="pricing-stage-header">
-                        <div class="pricing-stage-dot dot-launch"></div>
-                        <span class="pricing-stage-label lbl-launch">Stage 2 — Launch</span>
-                    </div>
-                    <div class="pricing-table">
-                        <div class="pricing-row"><span class="pricing-name">Google &amp; Meta Ads — First Leads Setup</span></div>
-                        <div class="pricing-row"><span class="pricing-name">High-Converting Landing Page</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Lead Magnet &amp; Opt-In Funnel</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Sales Funnel Automation</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Email/SMS Nurture Sequences</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Automated Follow-Up Sequences</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Booking Funnel + Calendar Integration</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Lead-to-Close CRM Pipeline</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Referral &amp; Word-of-Mouth Program</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Conversion Rate Optimization</span></div>
-                    </div>
-                </div>
-
-                <!-- GROWTH -->
-                <div class="pricing-stage">
-                    <div class="pricing-stage-header">
-                        <div class="pricing-stage-dot dot-growth"></div>
-                        <span class="pricing-stage-label lbl-growth">Stage 3 — Growth</span>
-                    </div>
-                    <div class="pricing-table">
-                        <div class="pricing-row"><span class="pricing-name">Meta Lead Ads → CRM Auto-Sync</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Google Ads Lead Generation</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Outbound Cold Email Campaign</span></div>
-                        <div class="pricing-row"><span class="pricing-name">LinkedIn Outreach Automation</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Inbound Lead Capture &amp; Qualification</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Missed Call Text-Back</span></div>
-                        <div class="pricing-row"><span class="pricing-name">AI Voice Agent — After-Hours Lead Response</span></div>
-                        <div class="pricing-row"><span class="pricing-name">WhatsApp / Chat Bot</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Lead Scoring &amp; Automatic Routing</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Appointment Reminder &amp; No-Show Reduction</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Re-Engagement &amp; Win-Back Campaigns</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Review &amp; Reputation Automation</span></div>
-                        <div class="pricing-row"><span class="pricing-name">SMS Broadcast Campaigns</span></div>
-                    </div>
-                </div>
-
-                <!-- SCALE -->
-                <div class="pricing-stage">
-                    <div class="pricing-stage-header">
-                        <div class="pricing-stage-dot dot-scale"></div>
-                        <span class="pricing-stage-label lbl-scale">Stage 4 — Scale</span>
-                    </div>
-                    <div class="pricing-table">
-                        <div class="pricing-row"><span class="pricing-name">Lead Source Attribution &amp; Revenue Dashboard</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Ad Performance &amp; ROAS Reporting</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Revenue Forecasting &amp; Pipeline Reporting</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Cross-Sell &amp; Upsell Automation</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Customer Retention &amp; Churn Prevention</span></div>
-                        <div class="pricing-row"><span class="pricing-name">AI Content Generation Pipeline</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Content Repurposing &amp; Distribution</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Social Media Scheduling &amp; Automation</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Customer Support Routing &amp; Ticketing</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Recruiting &amp; Hiring Pipeline</span></div>
-                        <div class="pricing-row"><span class="pricing-name">Multi-Location &amp; Franchise Lead Routing</span></div>
-                        <div class="pricing-row"><span class="pricing-name">E-Commerce &amp; Order Automation</span></div>
-                    </div>
-                </div>
-
             </div>
 
             <hr class="section-divider">
 
-            <!-- Audit Section -->
+            <!-- STAGE 2 — LAUNCH -->
+            <div class="stage-section">
+                <div class="stage-label label-launch"><span class="stage-label-dot"></span>Stage 2 — Launch</div>
+                <h2 class="stage-headline">System is built. Now fill it.</h2>
+                <p class="stage-body">Your CRM is ready but there's nobody in it. No ads running, no funnel converting, no sequences following up. You have the system but zero leads entering it. I get your first campaigns live and your first revenue flowing through the infrastructure we just built.</p>
+                <div class="capability-grid">
+                    <div class="capability-item">
+                        <div class="capability-title">Paid Traffic Setup</div>
+                        <div class="capability-desc">Meta and Google ad campaigns built to generate leads from day one. Audience targeting, ad copy, lead forms connected to your CRM.</div>
+                    </div>
+                    <div class="capability-item">
+                        <div class="capability-title">Sales Funnels</div>
+                        <div class="capability-desc">Opt-in page, lead magnet delivery, nurture sequence, offer page, booking or purchase. The complete path from stranger to customer.</div>
+                    </div>
+                    <div class="capability-item">
+                        <div class="capability-title">Email and SMS Sequences</div>
+                        <div class="capability-desc">Welcome series, sales sequences, re-engagement campaigns, and behavior-triggered follow-ups so no lead sits untouched.</div>
+                    </div>
+                    <div class="capability-item">
+                        <div class="capability-title">Booking and Conversion Tracking</div>
+                        <div class="capability-desc">Scheduling tools configured, Meta Pixel and Conversion API installed, so you know which ads actually book appointments.</div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- STAGE 3 — GROWTH -->
+            <div class="stage-section">
+                <div class="stage-label label-growth"><span class="stage-label-dot"></span>Stage 3 — Growth</div>
+                <h2 class="stage-headline">One channel is working. I add more.</h2>
+                <p class="stage-body">Leads are coming in from one source. That source goes down, your pipeline goes dry. I add channels so you're pulling leads from multiple directions at once. Inbound captures people already looking for you. Outbound goes and finds new ones. AI handles the volume around the clock.</p>
+                <div class="capability-grid">
+                    <div class="capability-item">
+                        <div class="capability-title">Outbound Cold Email</div>
+                        <div class="capability-desc">Prospect scraping, AI personalization, automated sequences, reply routing to CRM. 15-50 meetings per month at scale.</div>
+                    </div>
+                    <div class="capability-item">
+                        <div class="capability-title">AI Voice Agent</div>
+                        <div class="capability-desc">Answers calls 24/7, qualifies leads, books appointments, answers FAQs, routes complex calls to your team. Captures the calls you're currently missing.</div>
+                    </div>
+                    <div class="capability-item">
+                        <div class="capability-title">Inbound Lead Capture</div>
+                        <div class="capability-desc">Website forms, chat widgets, landing pages all flowing into CRM with instant notification and auto-response. Stop losing the leads you're already paying for.</div>
+                    </div>
+                    <div class="capability-item">
+                        <div class="capability-title">Review and Reputation Automation</div>
+                        <div class="capability-desc">Automated review requests after service, sentiment routing (happy customers to Google, unhappy ones to a private form), follow-up reminders.</div>
+                    </div>
+                    <div class="capability-item">
+                        <div class="capability-title">Dispatch and Assignment</div>
+                        <div class="capability-desc">Job comes in, system matches the best contractor or worker, sends outreach in priority order, confirms the assignment. For staffing, field services, and legal operations.</div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- STAGE 4 — SCALE -->
+            <div class="stage-section">
+                <div class="stage-label label-scale"><span class="stage-label-dot"></span>Stage 4 — Scale</div>
+                <h2 class="stage-headline">Everything is running. Make it visible and hands-off.</h2>
+                <p class="stage-body">Multiple channels running, leads converting, revenue growing. But you can't tell which channel has the best ROI, content takes 10 hours a week, and support requests are piling up. I add the reporting, content engines, and support systems that let you grow without adding headcount.</p>
+                <div class="capability-grid">
+                    <div class="capability-item">
+                        <div class="capability-title">Ad Reporting Dashboards</div>
+                        <div class="capability-desc">Meta and Google Ads data pulled automatically into one dashboard. Weekly refresh, email delivery, no more manual report assembly.</div>
+                    </div>
+                    <div class="capability-item">
+                        <div class="capability-title">Content Repurposing</div>
+                        <div class="capability-desc">One video or blog post turns into 10-15 social posts, a newsletter draft, and short-form clips. AI writes, automation distributes.</div>
+                    </div>
+                    <div class="capability-item">
+                        <div class="capability-title">Support Routing</div>
+                        <div class="capability-desc">Incoming requests get AI-categorized, auto-responded with relevant help content, and routed to the right team member. Urgent issues get flagged instantly.</div>
+                    </div>
+                    <div class="capability-item">
+                        <div class="capability-title">Recruiting Pipeline</div>
+                        <div class="capability-desc">AI screens resumes, scores candidates against job requirements, routes qualified matches to your team, and automates interview scheduling.</div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- Foundation Review Section -->
             <div class="audit-section">
                 <h2>Not sure where to start?</h2>
-                <p class="body-text">Most people aren't. That's what the Infrastructure Review is for.</p>
-                <p class="body-text">I review your current setup, identify the biggest opportunities, and give you a prioritized roadmap with ROI estimates. If you decide to move forward with a build, the review fee applies as credit toward the project.</p>
-                <a href="https://calendly.com/seth-launchforte/30min" target="_blank" rel="noopener" class="btn-primary">Book a Review</a>
+                <p class="body-text">Most people aren't. That's what the Foundation Review is for.</p>
+                <p class="body-text">I review your current setup, identify the biggest automation opportunities, and give you a prioritized roadmap with ROI estimates. If you move forward with a build, the review fee applies as credit toward the project.</p>
+                <a href="https://calendly.com/seth-launchforte/30min" target="_blank" rel="noopener" class="btn-primary">Book a Foundation Review</a>
             </div>
 
             <!-- Footer -->
@@ -351,7 +371,7 @@
                             <li><a href="/launch.html">Launch</a></li>
                             <li><a href="/growth.html">Growth</a></li>
                             <li><a href="/scale.html">Scale</a></li>
-                            <li><a href="/review.html">Infrastructure Review</a></li>
+                            <li><a href="/review.html">Foundation Review</a></li>
                         </ul>
                     </div>
                     <div class="footer-col">
@@ -367,13 +387,13 @@
                         <h4>Connect</h4>
                         <ul>
                             <li><a href="https://www.linkedin.com/in/seth-forte/" target="_blank" rel="noopener">LinkedIn</a></li>
-                            <li><a href="https://www.upwork.com/freelancers/sethforte" target="_blank" rel="noopener">Upwork</a></li>
+                            <li><a href="https://www.upwork.com/freelancers/sethforte" target="_blank" rel="noopener">Upwork Portfolio</a></li>
                             <li><a href="mailto:seth@launchforte.com">Email</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="footer-bottom">
-                    <p class="footer-location">Based in Dallas, Texas. Serving clients nationwide.</p>
+                    <p class="footer-location">Based in Grapevine, Texas. Serving clients nationwide.</p>
                     <p class="copyright">&copy; 2026 Seth Forte. All rights reserved.</p>
                 </div>
             </div>
