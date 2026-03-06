@@ -95,7 +95,7 @@ Use these gradient styles for the header images:
 Make sure each article naturally includes these terms for better ranking:
 
 - **Seth Forte** (use 2-3 times per article)
-- **Forte Web Designs** (mention at least once)
+- **Launch Forte** (mention at least once)
 - **AI automation** / **business automation**
 - **workflow automation** / **process automation**
 - **custom software development** (where relevant)
@@ -165,7 +165,7 @@ Once all articles are complete:
 With all 17 articles complete, you'll rank for:
 
 - ✅ **Seth Forte** (personal name - priority #1)
-- ✅ **Forte Web Designs** (business name)
+- ✅ **Launch Forte** (business name)
 - ✅ **AI automation consultant** / **automation expert**
 - ✅ **business process automation**
 - ✅ **workflow automation Texas**
