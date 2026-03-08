@@ -1,15 +1,16 @@
 (function() {
-    var css = '.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s cubic-bezier(0.16,1,0.3,1),transform 0.6s cubic-bezier(0.16,1,0.3,1)}' +
+    var css = '.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1)}' +
         '.reveal.revealed{opacity:1;transform:translateY(0)}' +
-        '.reveal-delay-1{transition-delay:0.1s}' +
-        '.reveal-delay-2{transition-delay:0.2s}' +
-        '.reveal-delay-3{transition-delay:0.3s}' +
-        '.reveal-delay-4{transition-delay:0.4s}';
+        '.reveal-delay-1{transition-delay:0.15s}' +
+        '.reveal-delay-2{transition-delay:0.3s}' +
+        '.reveal-delay-3{transition-delay:0.45s}' +
+        '.reveal-delay-4{transition-delay:0.6s}';
     var style = document.createElement('style');
     style.textContent = css;
     document.head.appendChild(style);
 
     var selectors = [
+        '.section-heading',
         '.section-label',
         '.stage-card',
         '.result-card',
@@ -57,7 +58,7 @@
     if ('IntersectionObserver' in window) {
         var observer = new IntersectionObserver(onIntersect, {
             threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            rootMargin: '0px 0px -80px 0px'
         });
 
         function init() {
