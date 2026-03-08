@@ -69,13 +69,14 @@
         }
 
         :root {
-            --text-primary: #f5f5f7;
-            --text-secondary: #86868b;
-            --text-muted: #6e6e73;
+            --text-primary: #f0f4f8;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
             --accent: #0088DB;
-            --accent-hover: #2997ff;
-            --background: #000000;
-            --background-alt: #0a0a0a;
+            --accent-hover: #0099f0;
+            --accent-warm: #38b2f5;
+            --background: #0a0e17;
+            --background-alt: #111827;
             --border: rgba(255,255,255,0.08);
             --border-light: rgba(255,255,255,0.12);
             --radius-pill: 980px;
@@ -127,7 +128,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(0, 0, 0, 0.72);
+            background: rgba(10, 14, 23, 0.8);
             backdrop-filter: blur(20px) saturate(1.8);
             -webkit-backdrop-filter: blur(20px) saturate(1.8);
             border-bottom: 1px solid var(--border);
@@ -399,7 +400,7 @@
         }
 
         .stage-card {
-            background: var(--background);
+            background: var(--background-alt);
             padding: 3rem 2.5rem;
             transition: background 0.3s ease;
             display: flex;
