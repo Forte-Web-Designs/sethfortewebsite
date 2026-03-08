@@ -35,7 +35,7 @@
     <link rel="apple-touch-icon" href="logo.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -46,64 +46,48 @@
             --accent: #0088DB;
             --accent-hover: #0099f0;
             --accent-warm: #38b2f5;
-            --accent-glow: rgba(0,136,219,0.15);
             --background: #0a0e17;
             --background-alt: #111827;
-            --border: #1e293b;
-            --border-light: #2a3a50;
-            --card-bg: rgba(17,24,39,0.7);
-            --card-bg-solid: #111827;
-            --gradient-start: #0088DB;
-            --gradient-end: #38b2f5;
-            --radius-sm: 8px;
+            --border: rgba(255,255,255,0.08);
+            --border-light: rgba(255,255,255,0.12);
+            --radius-pill: 980px;
             --radius-md: 12px;
         }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            font-size: 16px;
-            line-height: 1.7;
+            font-size: 17px;
+            line-height: 1.47;
             color: var(--text-primary);
             background: var(--background);
             min-height: 100vh;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(ellipse at 20% 0%, rgba(0,136,219,0.06) 0%, transparent 50%),
-                          radial-gradient(ellipse at 80% 100%, rgba(56,178,245,0.04) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: -1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         a { color: var(--accent); text-decoration: none; transition: color 0.2s ease; }
-        a:hover { text-decoration: underline; }
+        a:hover { color: var(--accent-hover); text-decoration: none; }
 
         /* Animations */
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        .animate-fade-in { animation: fadeIn 0.6s ease forwards; }
-        .animate-fade-up { animation: fadeInUp 0.6s ease forwards; }
-        .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
-        .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
-        .animate-delay-3 { animation-delay: 0.3s; opacity: 0; }
+        .animate-fade-in { animation: fadeIn 0.8s cubic-bezier(0.16,1,0.3,1) forwards; }
+        .animate-fade-up { animation: fadeInUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards; }
+        .animate-delay-1 { animation-delay: 0.15s; opacity: 0; }
+        .animate-delay-2 { animation-delay: 0.45s; opacity: 0; }
+        .animate-delay-3 { animation-delay: 0.45s; opacity: 0; }
 
         /* Scroll reveal */
         .reveal {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
         }
         .reveal.visible {
             opacity: 1;
@@ -126,14 +110,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
-            height: 64px;
+            height: 48px;
         }
 
         .header-logo {
-            font-size: 1.1rem;
-            font-weight: 700;
+            font-size: 1rem;
+            font-weight: 600;
             color: var(--text-primary);
             text-decoration: none;
             letter-spacing: -0.02em;
@@ -151,29 +135,27 @@
         }
 
         .nav-link {
-            padding: 0.5rem 1rem;
-            border-radius: var(--radius-sm);
+            padding: 0.35rem 0.75rem;
             color: var(--text-secondary);
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
+            font-size: 0.8125rem;
+            font-weight: 400;
+            transition: color 0.3s ease;
             text-decoration: none;
         }
 
         .nav-link:hover {
-            background: rgba(255,255,255,0.05);
             color: var(--text-primary);
             text-decoration: none;
         }
 
         .nav-link.active {
-            background: var(--accent-glow);
-            color: var(--accent);
+            color: var(--text-primary);
+            font-weight: 500;
         }
 
         /* Main wrapper */
         .main-wrapper {
-            max-width: 780px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 4rem 2rem 6rem;
         }
@@ -181,7 +163,7 @@
         /* Page title */
         .page-title {
             font-size: 1.75rem;
-            font-weight: 700;
+            font-weight: 600;
             color: var(--text-primary);
             margin-bottom: 1rem;
             letter-spacing: -0.02em;
@@ -197,15 +179,13 @@
 
         /* Section divider */
         .section-divider {
-            border: none;
-            border-top: 1px solid var(--border);
-            margin: 3rem 0;
+            display: none;
         }
 
         /* Section label with accent bar */
         .section-label {
             font-size: 0.75rem;
-            font-weight: 700;
+            font-weight: 600;
             color: var(--accent);
             text-transform: uppercase;
             letter-spacing: 0.1em;
@@ -233,9 +213,7 @@
         }
 
         .scale-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.03);
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
             padding: 1.25rem;
@@ -261,9 +239,7 @@
 
         /* Who Section */
         .who-section {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.03);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent-warm);
             border-radius: var(--radius-md);
@@ -279,9 +255,7 @@
 
         /* CTA */
         .cta-section {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.03);
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
             padding: 2.5rem;
@@ -301,39 +275,23 @@
             align-items: center;
             gap: 0.5rem;
             padding: 0.75rem 1.75rem;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            background: var(--accent);
             color: #fff;
             border: none;
-            border-radius: var(--radius-sm);
+            border-radius: var(--radius-pill);
             font-size: 0.95rem;
             font-weight: 600;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: background 0.3s ease;
             text-decoration: none;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
-        .btn-primary::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-            transition: left 0.5s ease;
-        }
-
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,136,219,0.35);
+            background: var(--accent-hover);
             text-decoration: none;
+            color: #fff;
         }
 
-        .btn-primary:hover::after {
-            left: 100%;
-        }
 
         /* Secondary button */
         .btn-secondary {
@@ -342,7 +300,7 @@
             padding: 0.75rem 1.75rem;
             border: 1px solid var(--border-light);
             color: var(--text-secondary);
-            border-radius: var(--radius-sm);
+            border-radius: var(--radius-pill);
             font-size: 0.95rem;
             font-weight: 500;
             transition: all 0.2s ease;
@@ -404,17 +362,20 @@
 
         .footer-location {
             color: var(--text-muted);
-            font-size: 0.85rem;
+            font-size: 0.8125rem;
+            font-weight: 300;
             margin-bottom: 0.35rem;
         }
 
         .copyright {
             color: var(--text-muted);
-            font-size: 0.85rem;
+            font-size: 0.8125rem;
+            font-weight: 300;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
+            .header-nav { display: none; }
             .main-wrapper { padding: 3rem 1.5rem 4rem; }
             .page-title { font-size: 1.4rem; }
             .scale-grid { grid-template-columns: 1fr; }
@@ -435,51 +396,57 @@
         <div class="header-container">
             <a href="/" class="header-logo">Seth Forte</a>
             <nav class="header-nav">
-                <a href="/" class="nav-link">Home</a>
                 <a href="/services.html" class="nav-link active">Services</a>
                 <a href="/case-studies.html" class="nav-link">Work</a>
                 <a href="/writing.html" class="nav-link">Writing</a>
                 <a href="/about.html" class="nav-link">About</a>
-                <a href="/reviews.html" class="nav-link">Reviews</a>
                 <a href="/contact.html" class="nav-link">Contact</a>
             </nav>
         </div>
     </header>
 
     <main class="main-wrapper">
-        <h1 class="page-title animate-fade-up animate-delay-1">You've proven what works. Now multiply it.</h1>
-        <p class="page-subtitle animate-fade-up animate-delay-2">Better data, smarter systems, and growth without adding headcount.</p>
+        <h1 class="page-title animate-fade-up animate-delay-1">Optimize what's working. Grow without adding headcount.</h1>
+        <p class="page-subtitle animate-fade-up animate-delay-2">Multiple channels running, leads converting, revenue growing. But you can't tell which channel has the best ROI, content takes 10 hours a week, and support tickets are piling up. I add the reporting, content engines, and support systems that let you grow without burning out your team.</p>
 
         <hr class="section-divider">
 
-        <!-- What Scale Looks Like -->
-        <h2 class="section-label reveal">Systems I build at this stage</h2>
+        <!-- Service Sections -->
+        <h2 class="section-label reveal">What I build</h2>
 
         <div class="scale-grid reveal">
             <div class="scale-card">
-                <h3>Reporting and Dashboards</h3>
-                <p>One place to see what's working. Ad spend, lead sources, pipeline, revenue. Pulled together automatically.</p>
+                <h3>Ad Reporting Dashboards</h3>
+                <p>Every Monday someone copies numbers from Meta Ads Manager into a spreadsheet, switches to Google Ads, copies more, and two hours later has a report that's already outdated. I pull the data automatically, combine metrics, and deliver formatted reports on a schedule.</p>
             </div>
             <div class="scale-card">
-                <h3>Outbound Prospecting</h3>
-                <p>Cold email that finds prospects, personalizes with AI, and routes replies to your CRM.</p>
+                <h3>Content Repurposing Pipeline</h3>
+                <p>You spend 2 hours on a video that gets posted once and forgotten. That video has enough material for 10-15 social posts and a newsletter draft. I build a pipeline where you submit one piece of content and AI generates platform-specific posts, captions, and hashtags, queued for your approval.</p>
             </div>
             <div class="scale-card">
-                <h3>AI Voice and Chat Agents</h3>
-                <p>AI that answers your phone 24/7, qualifies callers, and books appointments directly.</p>
+                <h3>Social Media Scheduling</h3>
+                <p>You write three posts, then spend 20 minutes copying and pasting across LinkedIn, Instagram, and Facebook. Multiply that by 3-5 times a week. I build a content calendar that feeds an automated workflow. You fill in the posts. The system publishes everywhere on schedule.</p>
             </div>
             <div class="scale-card">
-                <h3>Content Engine</h3>
-                <p>Turn one video or post into 10-15 pieces. AI writes, automation distributes.</p>
+                <h3>Customer Support Routing</h3>
+                <p>A customer emails about billing. It sits in a shared inbox for 6 hours because nobody knew it was their job. I build a system where incoming requests get AI-categorized, auto-responded with relevant help content, and routed to the right team member.</p>
             </div>
             <div class="scale-card">
-                <h3>Monthly Management</h3>
-                <p>I run the system so you don't have to. Monitoring, optimization, reporting, and support.</p>
+                <h3>Recruiting Pipeline</h3>
+                <p>A recruiter gets 200 resumes and spends 8-10 hours per role on screening and scheduling. I build an AI pipeline that scores resumes against your requirements, routes qualified candidates to your team, and automates interview scheduling.</p>
             </div>
             <div class="scale-card">
-                <h3>Multi-Channel Expansion</h3>
-                <p>Add SMS, WhatsApp, new ad platforms, or outbound channels on top of what's working.</p>
+                <h3>E-Commerce Automation</h3>
+                <p>A customer abandons $120 in their cart and nobody follows up. After purchase, nothing happens. I automate cart recovery, inventory alerts, order notifications, and post-purchase sequences. Recovering 15% of abandoned carts at $75 average order from 500/month is $5,625 in recovered revenue.</p>
             </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Retainer Callout -->
+        <div class="who-section reveal">
+            <h3 style="color: var(--text-primary); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem;">Ongoing Management</h3>
+            <p>Most clients at this stage don't want to run these systems themselves. I offer monthly retainers for ongoing management, optimization, and expansion. Retainers start at $1,000/month.</p>
         </div>
 
         <hr class="section-divider">
@@ -488,16 +455,16 @@
         <h2 class="section-label reveal">Who this is for</h2>
 
         <div class="who-section reveal">
-            <p>Businesses already generating leads and revenue. You know what's working but need better visibility, more channels, or someone to manage the machine. If you're still building your foundation, start with <a href="/foundation.html">Foundation</a> or <a href="/growth.html">Growth</a>.</p>
+            <p>Businesses that can't tell which channels produce the best ROI. Teams spending hours assembling reports manually. Companies where content creation isn't consistent. E-commerce stores losing revenue to abandoned carts. Anyone who wants the systems managed monthly.</p>
         </div>
 
         <hr class="section-divider">
 
         <!-- CTA -->
         <div class="cta-section reveal">
-            <p>Ready to scale what's working?</p>
+            <h2>Ready to scale what's working?</h2>
+            <p>30-minute call. I'll tell you exactly what needs to happen and what it costs.</p>
             <a href="https://calendly.com/seth-fortewebdesigns/30min" target="_blank" rel="noopener" class="btn-primary">Book a Call</a>
-            <a href="/review.html" class="btn-secondary">Start with a Review</a>
         </div>
 
         <!-- Footer -->

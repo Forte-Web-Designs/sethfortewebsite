@@ -27,14 +27,10 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
             --text-primary: #f0f4f8;
@@ -43,352 +39,90 @@
             --accent: #0088DB;
             --accent-hover: #0099f0;
             --accent-warm: #38b2f5;
-            --accent-glow: rgba(0,136,219,0.15);
             --background: #0a0e17;
             --background-alt: #111827;
-            --border: #1e293b;
-            --border-light: #2a3a50;
-            --card-bg: rgba(17,24,39,0.7);
-            --card-bg-solid: #111827;
-            --card-hover: rgba(30,41,59,0.5);
-            --gradient-start: #0088DB;
-            --gradient-end: #38b2f5;
-            --radius-sm: 8px;
+            --border: rgba(255,255,255,0.08);
+            --border-light: rgba(255,255,255,0.12);
+            --radius-pill: 980px;
             --radius-md: 12px;
         }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            font-size: 16px;
-            line-height: 1.7;
+            font-size: 17px;
+            line-height: 1.47;
             color: var(--text-primary);
             background: var(--background);
             min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(ellipse at 20% 0%, rgba(0,136,219,0.06) 0%, transparent 50%),
-                        radial-gradient(ellipse at 80% 100%, rgba(56,178,245,0.04) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: -1;
-        }
+        a { color: var(--accent); text-decoration: none; transition: color 0.3s ease; }
+        a:hover { color: var(--accent-hover); text-decoration: none; }
 
-        a {
-            color: var(--accent);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .animate-fade-in { animation: fadeIn 0.6s ease forwards; }
-        .animate-fade-up { animation: fadeInUp 0.6s ease forwards; }
-        .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
-        .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .animate-fade-in { animation: fadeIn 0.8s ease forwards; }
+        .animate-fade-up { animation: fadeInUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards; }
+        .animate-delay-1 { animation-delay: 0.15s; opacity: 0; }
+        .animate-delay-2 { animation-delay: 0.3s; opacity: 0; }
 
         /* Header */
-        .site-header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(10,14,23,0.8);
-            backdrop-filter: blur(20px) saturate(1.2);
-            -webkit-backdrop-filter: blur(20px) saturate(1.2);
-            border-bottom: 1px solid var(--border);
-            padding: 0 2rem;
-        }
+        .site-header { position: sticky; top: 0; z-index: 100; background: rgba(10, 14, 23, 0.8); backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); border-bottom: 1px solid var(--border); padding: 0 2rem; }
+        .header-container { display: flex; justify-content: space-between; align-items: center; max-width: 1000px; margin: 0 auto; height: 48px; }
+        .header-logo { font-size: 1rem; font-weight: 600; color: var(--text-primary); text-decoration: none; letter-spacing: -0.01em; }
+        .header-logo:hover { color: var(--text-primary); text-decoration: none; opacity: 0.8; }
+        .header-nav { display: flex; gap: 0.25rem; }
+        .nav-link { padding: 0.35rem 0.75rem; color: var(--text-secondary); font-size: 0.8125rem; font-weight: 400; transition: color 0.3s ease; text-decoration: none; }
+        .nav-link:hover { color: var(--text-primary); text-decoration: none; }
+        .nav-link.active { color: var(--text-primary); font-weight: 500; }
 
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            height: 64px;
-        }
-
-        .header-logo {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            text-decoration: none;
-            letter-spacing: -0.02em;
-        }
-
-        .header-logo:hover {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        .header-nav {
-            display: flex;
-            gap: 0.25rem;
-            align-items: center;
-        }
-
-        .nav-link {
-            padding: 0.5rem 1rem;
-            border-radius: var(--radius-sm);
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            text-decoration: none;
-        }
-
-        .nav-link:hover {
-            background: rgba(255,255,255,0.05);
-            color: var(--text-primary);
-            text-decoration: none;
-        }
-
-        .nav-link.active {
-            background: var(--accent-glow);
-            color: var(--accent);
-        }
-
-        /* Main Content */
-        .main-wrapper {
-            max-width: 780px;
-            margin: 0 auto;
-            padding: 4rem 2rem 6rem;
-        }
-
-        .page-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
-        }
-
-        .page-intro {
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            font-size: 1.05rem;
-            line-height: 1.8;
-        }
+        .main-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 2rem 8rem; }
+        .page-title { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.5rem; padding-top: 4rem; }
+        .page-intro { color: var(--text-secondary); font-size: 1.125rem; font-weight: 300; line-height: 1.6; margin-bottom: 2rem; }
 
         /* Review Cards */
         .review-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.03);
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
             padding: 1.75rem 2rem;
             margin-bottom: 1rem;
-            transition: border-color 0.2s ease;
+            transition: border-color 0.3s ease;
         }
+        .review-card:hover { border-color: var(--border-light); }
+        .review-header { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+        .review-job { font-size: 0.9rem; color: var(--text-muted); line-height: 1.4; }
+        .review-stars { color: var(--accent-warm); font-size: 0.85rem; letter-spacing: 0.05em; flex-shrink: 0; }
+        .review-text { color: var(--text-secondary); font-size: 0.95rem; font-weight: 300; line-height: 1.75; margin-bottom: 1rem; }
+        .review-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .review-tag { font-size: 0.75rem; color: var(--text-muted); background: rgba(255,255,255,0.04); border: 1px solid var(--border); padding: 0.15rem 0.55rem; border-radius: 4px; }
 
-        .review-card:hover {
-            border-color: var(--border-light);
-        }
-
-        .review-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 0.75rem;
-            flex-wrap: wrap;
-        }
-
-        .review-job {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            line-height: 1.4;
-        }
-
-        .review-stars {
-            color: var(--accent-warm);
-            font-size: 0.85rem;
-            letter-spacing: 0.05em;
-            flex-shrink: 0;
-        }
-
-        .review-text {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.75;
-            margin-bottom: 1rem;
-        }
-
-        .review-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-        }
-
-        .review-tag {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            background: rgba(30,41,59,0.6);
-            border: 1px solid var(--border);
-            padding: 0.15rem 0.55rem;
-            border-radius: 4px;
-        }
-
-        .section-divider {
-            border: none;
-            border-top: 1px solid var(--border);
-            margin: 4rem 0;
-        }
-
-        /* CTA */
-        .cta-section {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: 2.5rem;
-            margin: 2rem 0;
-            transition: border-color 0.2s ease;
-        }
-
-        .cta-section:hover {
-            border-color: var(--border-light);
-        }
-
-        .cta-section p {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        /* Buttons */
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.75rem;
-            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
-            color: #fff;
-            border: none;
-            border-radius: var(--radius-sm);
-            font-size: 0.95rem;
-            font-weight: 600;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            text-decoration: none;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        }
-
-        .btn-primary::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,136,219,0.35);
-            text-decoration: none;
-        }
-
-        .btn-primary:hover::after {
-            left: 100%;
-        }
-
-        .btn-secondary-link {
-            display: inline-block;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-left: 1.5rem;
-        }
+        .section-divider { display: none; }
 
         /* Footer */
-        .footer-section {
-            margin-top: 5rem;
-            padding-top: 3rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-email-main {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            margin-bottom: 2.5rem;
-            display: block;
-        }
-
-        .footer-columns {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .footer-col h4 {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 1rem;
-        }
-
+        .footer-section { margin-top: 8rem; padding-top: 4rem; border-top: 1px solid var(--border); }
+        .footer-email-main { color: var(--text-secondary); font-size: 1rem; font-weight: 300; margin-bottom: 3rem; display: block; }
+        .footer-columns { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2.5rem; }
+        .footer-col h4 { font-size: 0.6875rem; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.25rem; }
         .footer-col ul { list-style: none; }
         .footer-col li { margin-bottom: 0.5rem; }
-
-        .footer-col a {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
+        .footer-col a { color: var(--text-secondary); font-size: 0.875rem; font-weight: 300; }
         .footer-col a:hover { color: var(--accent); }
+        .footer-bottom { padding-top: 2rem; border-top: 1px solid var(--border); }
+        .footer-location { color: var(--text-muted); font-size: 0.8125rem; font-weight: 300; margin-bottom: 0.35rem; }
+        .copyright { color: var(--text-muted); font-size: 0.8125rem; font-weight: 300; }
 
-        .footer-bottom {
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-location {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-bottom: 0.35rem;
-        }
-
-        .copyright {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
-            .main-wrapper { padding: 3rem 1.5rem 4rem; }
-            .page-title { font-size: 1.4rem; }
+            .header-nav { display: none; }
+            .main-wrapper { padding: 0 2rem 6rem; }
             .footer-columns { grid-template-columns: 1fr 1fr; }
             .review-card { padding: 1.25rem 1.5rem; }
         }
-
         @media (max-width: 480px) {
-            .main-wrapper { padding: 2rem 1.25rem 3rem; }
+            .site-header { padding: 0 1.5rem; }
+            .main-wrapper { padding: 0 1.5rem 4rem; }
             .footer-columns { grid-template-columns: 1fr; }
         }
     </style>
@@ -398,12 +132,10 @@
         <div class="header-container">
             <a href="/" class="header-logo">Seth Forte</a>
             <nav class="header-nav">
-                <a href="/" class="nav-link">Home</a>
                 <a href="/services.html" class="nav-link">Services</a>
-                <a href="/case-studies.html" class="nav-link">Work</a>
+                <a href="/case-studies.html" class="nav-link active">Work</a>
                 <a href="/writing.html" class="nav-link">Writing</a>
                 <a href="/about.html" class="nav-link">About</a>
-                <a href="/reviews.html" class="nav-link active">Reviews</a>
                 <a href="/contact.html" class="nav-link">Contact</a>
             </nav>
         </div>
@@ -417,8 +149,8 @@
 
         <div class="review-card">
             <div class="review-header">
-                <div class="review-job">Shopify → Xero product sync automation</div>
-                <span class="review-stars">★★★★★</span>
+                <div class="review-job">Shopify &rarr; Xero product sync automation</div>
+                <span class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             </div>
             <p class="review-text">"Seth is my go-to for all of my automation projects now and he's making my business run so much more smoothly and efficiently! His work is top-notch and he sticks with it until I'm happy with how things are running. His process in defining the project scope ahead of time ensures that I get everything I need and we're on the same page throughout the process."</p>
             <div class="review-tags">
@@ -432,7 +164,7 @@
         <div class="review-card">
             <div class="review-header">
                 <div class="review-job">Custom review system built in Power Apps & Power Automate</div>
-                <span class="review-stars">★★★★★</span>
+                <span class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             </div>
             <p class="review-text">"Seth was amazing. Extremely knowledgeable and patient. He thought outside the box to offer us solutions we did not consider. Highly recommend Seth and we will use him in the future."</p>
             <div class="review-tags">
@@ -446,7 +178,7 @@
         <div class="review-card">
             <div class="review-header">
                 <div class="review-job">Ongoing automation consulting & scoping</div>
-                <span class="review-stars">★★★★★</span>
+                <span class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             </div>
             <p class="review-text">"The support and consultancy he provided were thoughtful, practical, and immediately helpful. Communication was always clear and timely, and it was easy to schedule calls and stay aligned. He mapped out the project scope in a way that was structured, realistic, and very easy to follow. The cost estimates were also transparent and well organized, which made decision-making straightforward on our end. Based on our experience, I would absolutely recommend starting a collaboration with him."</p>
             <div class="review-tags">
@@ -460,7 +192,7 @@
         <div class="review-card">
             <div class="review-header">
                 <div class="review-job">AI booking & cancellation flow via Voiceflow + Phorest API</div>
-                <span class="review-stars">★★★★★</span>
+                <span class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             </div>
             <p class="review-text">"It was a great experience working with Seth. He is professional, organised, talented and friendly. It is enjoyable to work with him, he is proficient at analysing AI workflows and API issues. I intend on working with Seth again."</p>
             <div class="review-tags">
@@ -473,7 +205,7 @@
         <div class="review-card">
             <div class="review-header">
                 <div class="review-job">AWS SSO integration for an asset management platform</div>
-                <span class="review-stars">★★★★★</span>
+                <span class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             </div>
             <p class="review-text">"Seth is an amazing rare breed. He is not just focused on what is asked of him, he actually scopes the need to make sure the work meets your need to the maximum level. Brilliant Developer and the kind of man you wished was your neighbor."</p>
             <div class="review-tags">
@@ -486,7 +218,7 @@
         <div class="review-card">
             <div class="review-header">
                 <div class="review-job">Copilot Studio agent debugging & Power Automate fix</div>
-                <span class="review-stars">★★★★★</span>
+                <span class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             </div>
             <p class="review-text">"If you are looking for an expert in Copilot and Power Automate troubleshooting, Seth is the person to call. After I spent hours struggling with various foundation models to fix my agent, Seth resolved the issue in just 30 minutes. I highly recommend his services; should our current proposal succeed, we fully intend to bring him on for larger engagements and organizational training."</p>
             <div class="review-tags">
@@ -497,8 +229,8 @@
 
         <div class="review-card">
             <div class="review-header">
-                <div class="review-job">Facebook lead ads → ActiveCampaign pipeline recovery</div>
-                <span class="review-stars">★★★★★</span>
+                <div class="review-job">Facebook lead ads &rarr; ActiveCampaign pipeline recovery</div>
+                <span class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             </div>
             <p class="review-text">"Great to work with, worked with me to meet a tight deadline and is a great bloke!"</p>
             <div class="review-tags">
@@ -513,7 +245,7 @@
         <div class="review-card">
             <div class="review-header">
                 <div class="review-job">Meta pixel, Conversion API & Acuity Scheduling setup</div>
-                <span class="review-stars">★★★★★</span>
+                <span class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             </div>
             <p class="review-text">"Seth went above and beyond for me and my business. He helped me setup my meta pixel and meta conversion API through Acuity Scheduling. So basically now my leads get booked directly on my schedule on my website and the lead gets recorded in Meta's algorithm. Also anyone that views my website now gets retargeted, which really helps bring in more leads. Seth is honest and has integrity in his work. I will definitely continue to do business with him in the future."</p>
             <div class="review-tags">
@@ -527,7 +259,7 @@
         <div class="review-card">
             <div class="review-header">
                 <div class="review-job">Stripe payment integration</div>
-                <span class="review-stars">★★★★★</span>
+                <span class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             </div>
             <p class="review-text">"Great experience working with Seth!"</p>
             <div class="review-tags">
@@ -540,7 +272,7 @@
         <div class="review-card">
             <div class="review-header">
                 <div class="review-job">Ongoing workflow automation for a small business</div>
-                <span class="review-stars">★★★★★</span>
+                <span class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             </div>
             <p class="review-text">"Seth is skillful and creative in all the work we've done so far. I can just detail my process and pain points and he figures out how to streamline and then automate. He's communicative and forthcoming with all of the details along the way, and stays with it until we get the tech working perfectly. Highly recommend."</p>
             <div class="review-tags">
@@ -553,7 +285,7 @@
         <div class="review-card">
             <div class="review-header">
                 <div class="review-job">Data structuring & labeling project</div>
-                <span class="review-stars">★★★★★</span>
+                <span class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             </div>
             <p class="review-text">"Seth is very knowledgeable and detail oriented. If your looking for someone who is trustworthy, smart and upfront then look no further. He wont continue a project unless you are satisfied with the work. Highly recommend."</p>
             <div class="review-tags">
@@ -563,8 +295,8 @@
 
         <div class="review-card">
             <div class="review-header">
-                <div class="review-job">Court records scraper — 130+ hours saved monthly</div>
-                <span class="review-stars">★★★★★</span>
+                <div class="review-job">Court records scraper &mdash; 130+ hours saved monthly</div>
+                <span class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             </div>
             <p class="review-text">"Seth delivered an exceptional automation that transformed a key aspect of our daily operations, increasing efficiency and accuracy. He not only built the system, but also guided us through it in real-time, ensuring we were fully comfortable. Professional, incredibly responsive, and has tons of ideas. I highly recommend him and look forward to collaborating again!"</p>
         </div>
@@ -572,7 +304,7 @@
         <div class="review-card">
             <div class="review-header">
                 <div class="review-job">ActiveCampaign CRM build & automation strategy</div>
-                <span class="review-stars">★★★★★</span>
+                <span class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             </div>
             <p class="review-text">"Seth is incredible to work with. Not only does Seth do great work, he completes projects on time or early and he is excellent at communicating progress."</p>
             <div class="review-tags">
@@ -587,7 +319,7 @@
         <div class="review-card">
             <div class="review-header">
                 <div class="review-job">Automation systems for a marketing agency</div>
-                <span class="review-stars">★★★★★</span>
+                <span class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             </div>
             <p class="review-text">"If you need an automation specialist, stop looking right now and hire Seth. He will blow your mind with his knowledge and his ability to take your idea and execute on it."</p>
             <div class="review-tags">
@@ -599,10 +331,10 @@
 
         <div class="review-card">
             <div class="review-header">
-                <div class="review-job">n8n workflow debugging — OpenAI structured output fix</div>
-                <span class="review-stars">★★★★★</span>
+                <div class="review-job">n8n workflow debugging &mdash; OpenAI structured output fix</div>
+                <span class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             </div>
-            <p class="review-text">"I had a frustrating n8n workflow that kept breaking when trying to parse OpenAI API responses. Spent way too long banging my head against it before hiring Seth. He figured out the problem immediately — it was a structured output configuration issue that I didn't even know was a thing. Fixed it in 2 hours when he quoted 3–4. And the kicker? He did this while on vacation. I told him no rush, but he just knocked it out anyway. Super easy to work with. Explained things in a way that actually made sense instead of throwing jargon at me. Clearly knows his stuff — this wasn't his first rodeo with this kind of problem. The workflow runs perfectly now and he added error handling so it won't break again. Fair price, fast turnaround, went above and beyond. Can't really ask for more than that."</p>
+            <p class="review-text">"I had a frustrating n8n workflow that kept breaking when trying to parse OpenAI API responses. Spent way too long banging my head against it before hiring Seth. He figured out the problem immediately &mdash; it was a structured output configuration issue that I didn't even know was a thing. Fixed it in 2 hours when he quoted 3&ndash;4. And the kicker? He did this while on vacation. I told him no rush, but he just knocked it out anyway. Super easy to work with. Explained things in a way that actually made sense instead of throwing jargon at me. Clearly knows his stuff &mdash; this wasn't his first rodeo with this kind of problem. The workflow runs perfectly now and he added error handling so it won't break again. Fair price, fast turnaround, went above and beyond. Can't really ask for more than that."</p>
             <div class="review-tags">
                 <span class="review-tag">Solution Oriented</span>
                 <span class="review-tag">Reliable</span>
@@ -614,8 +346,8 @@
 
         <div class="review-card">
             <div class="review-header">
-                <div class="review-job">Emergency n8n server recovery — 83GB disk bloat</div>
-                <span class="review-stars">★★★★★</span>
+                <div class="review-job">Emergency n8n server recovery &mdash; 83GB disk bloat</div>
+                <span class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             </div>
             <p class="review-text">"Great experience working with Seth. Communication is 10/10 and I have felt very safe throughout the project. Looking forward to many more collaborations."</p>
             <div class="review-tags">
@@ -629,7 +361,7 @@
         <div class="review-card">
             <div class="review-header">
                 <div class="review-job">Custom inventory tracking system in Google Sheets</div>
-                <span class="review-stars">★★★★★</span>
+                <span class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             </div>
             <p class="review-text">"Seth was extremely attentive and responsive. He worked quickly while providing accurate turnaround estimates. Nothing ever felt rushed or overlooked. Everything that was agreed upon was delivered exactly as promised. He clearly takes pride in his work, communicates clearly, and makes sure his clients feel supported every step of the way. Highly recommend."</p>
             <div class="review-tags">
@@ -644,7 +376,7 @@
         <div class="review-card">
             <div class="review-header">
                 <div class="review-job">n8n automation tools for Shopify & email workflows</div>
-                <span class="review-stars">★★★★★</span>
+                <span class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             </div>
             <p class="review-text">"Seth is super responsive and very proactive with communication throughout the stages of the project. He's super knowledgeable about automations, n8n, scripting and webhooks. He's very good at thinking through the logic of how to best automate a process, and then executing on that vision. Definitely will work with him again."</p>
         </div>
@@ -669,7 +401,6 @@
                     <ul>
                         <li><a href="/about.html">About</a></li>
                         <li><a href="/case-studies.html">Case Studies</a></li>
-                        <li><a href="/reviews.html">Reviews</a></li>
                         <li><a href="/writing.html">Writing</a></li>
                         <li><a href="/contact.html">Contact</a></li>
                     </ul>

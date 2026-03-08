@@ -35,7 +35,7 @@
     <link rel="apple-touch-icon" href="logo.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -46,193 +46,66 @@
             --accent: #0088DB;
             --accent-hover: #0099f0;
             --accent-warm: #38b2f5;
-            --accent-glow: rgba(0,136,219,0.15);
             --background: #0a0e17;
             --background-alt: #111827;
-            --border: #1e293b;
-            --border-light: #2a3a50;
-            --card-bg: rgba(17,24,39,0.7);
-            --card-bg-solid: #111827;
-            --card-hover: rgba(30,41,59,0.5);
-            --gradient-start: #0088DB;
-            --gradient-end: #38b2f5;
-            --radius-sm: 8px;
+            --border: rgba(255,255,255,0.08);
+            --border-light: rgba(255,255,255,0.12);
+            --radius-pill: 980px;
             --radius-md: 12px;
-            --radius-lg: 16px;
         }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            font-size: 16px;
-            line-height: 1.7;
+            font-size: 17px;
+            line-height: 1.47;
             color: var(--text-primary);
             background: var(--background);
             min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(ellipse at 20% 0%, rgba(0,136,219,0.06) 0%, transparent 50%),
-                          radial-gradient(ellipse at 80% 100%, rgba(56,178,245,0.04) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        a { color: var(--accent); text-decoration: none; transition: color 0.2s ease; }
-        a:hover { text-decoration: underline; }
+        a { color: var(--accent); text-decoration: none; transition: color 0.3s ease; }
+        a:hover { color: var(--accent-hover); text-decoration: none; }
 
         /* Animations */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .animate-fade-in { animation: fadeIn 0.6s ease forwards; }
-        .animate-fade-up { animation: fadeInUp 0.6s ease forwards; }
-        .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
-        .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
-        .animate-delay-3 { animation-delay: 0.3s; opacity: 0; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .animate-fade-in { animation: fadeIn 0.8s ease forwards; }
+        .animate-fade-up { animation: fadeInUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards; }
+        .animate-delay-1 { animation-delay: 0.15s; opacity: 0; }
+        .animate-delay-2 { animation-delay: 0.3s; opacity: 0; }
+        .animate-delay-3 { animation-delay: 0.45s; opacity: 0; }
 
         /* Scroll reveal */
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
 
         /* Header */
-        .site-header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(10,14,23,0.8);
-            backdrop-filter: blur(20px) saturate(1.2);
-            -webkit-backdrop-filter: blur(20px) saturate(1.2);
-            border-bottom: 1px solid var(--border);
-            padding: 0 2rem;
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            height: 64px;
-        }
-
-        .header-logo {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            text-decoration: none;
-            letter-spacing: -0.02em;
-        }
-
-        .header-logo:hover {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        .header-nav {
-            display: flex;
-            gap: 0.25rem;
-            align-items: center;
-        }
-
-        .nav-link {
-            padding: 0.5rem 1rem;
-            border-radius: var(--radius-sm);
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            text-decoration: none;
-        }
-
-        .nav-link:hover {
-            background: rgba(255,255,255,0.05);
-            color: var(--text-primary);
-            text-decoration: none;
-        }
-
-        .nav-link.active {
-            background: var(--accent-glow);
-            color: var(--accent);
-        }
+        .site-header { position: sticky; top: 0; z-index: 100; background: rgba(10, 14, 23, 0.8); backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); border-bottom: 1px solid var(--border); padding: 0 2rem; }
+        .header-container { display: flex; justify-content: space-between; align-items: center; max-width: 1000px; margin: 0 auto; height: 48px; }
+        .header-logo { font-size: 1rem; font-weight: 600; color: var(--text-primary); text-decoration: none; letter-spacing: -0.01em; }
+        .header-logo:hover { color: var(--text-primary); text-decoration: none; opacity: 0.8; }
+        .header-nav { display: flex; gap: 0.25rem; }
+        .nav-link { padding: 0.35rem 0.75rem; color: var(--text-secondary); font-size: 0.8125rem; font-weight: 400; transition: color 0.3s ease; text-decoration: none; }
+        .nav-link:hover { color: var(--text-primary); text-decoration: none; }
+        .nav-link.active { color: var(--text-primary); font-weight: 500; }
 
         /* Main wrapper */
-        .main-wrapper {
-            max-width: 780px;
-            margin: 0 auto;
-            padding: 4rem 2rem 6rem;
-        }
+        .main-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 2rem 8rem; }
 
         /* Page title */
-        .page-title {
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
-            line-height: 1.3;
-        }
-
-        .page-subtitle {
-            color: var(--text-secondary);
-            font-size: 1.05rem;
-            line-height: 1.8;
-            margin-bottom: 3rem;
-        }
-
-        .body-text {
-            color: var(--text-secondary);
-            margin-bottom: 1.75rem;
-            line-height: 1.8;
-        }
+        .page-title { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.5rem; padding-top: 4rem; }
+        .page-subtitle { color: var(--text-secondary); font-size: 1.125rem; font-weight: 300; line-height: 1.5; margin-bottom: 3rem; }
+        .body-text { color: var(--text-secondary); font-size: 1.125rem; font-weight: 300; line-height: 1.6; margin-bottom: 1.75rem; }
 
         /* Section divider */
-        .section-divider {
-            border: none;
-            border-top: 1px solid var(--border);
-            margin: 4rem 0;
-        }
+        .section-divider { display: none; }
 
         /* Stage sections */
-        .stage-section {
-            margin-bottom: 4rem;
-        }
-
-        .stage-label {
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .stage-label-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
+        .stage-section { margin-bottom: 4rem; }
+        .stage-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.75rem; }
+        .stage-label-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
         .stage-label.label-foundation { color: var(--text-muted); }
         .stage-label.label-foundation .stage-label-dot { background: var(--text-muted); }
         .stage-label.label-launch { color: var(--accent); }
@@ -242,182 +115,68 @@
         .stage-label.label-scale { color: #f0b866; }
         .stage-label.label-scale .stage-label-dot { background: #f0b866; }
 
-        /* Stage headlines + body */
-        .stage-headline {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-        }
+        .stage-headline { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1rem; }
+        .stage-body { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.75rem; font-weight: 300; }
 
-        .stage-body {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.8;
-            margin-bottom: 1.75rem;
-        }
-
-        /* Capability items (glassmorphism cards) */
-        .capability-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-        }
-
+        /* Capability items */
+        .capability-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
         .capability-item {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.03);
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
             padding: 1.25rem 1.5rem;
             transition: border-color 0.2s ease;
         }
+        .capability-item:hover { border-color: var(--border-light); }
+        .capability-title { font-size: 0.95rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.35rem; }
+        .capability-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
 
-        .capability-item:hover {
-            border-color: var(--border-light);
-        }
-
-        .capability-title {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.35rem;
-        }
-
-        .capability-desc {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        /* Audit section (glassmorphism card) */
+        /* Audit section */
         .audit-section {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.03);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent-warm);
             border-radius: var(--radius-md);
             padding: 2.5rem;
             margin: 2rem 0;
         }
+        .audit-section h2 { font-size: 1.3rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1.25rem; }
 
-        .audit-section h2 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 1.25rem;
-        }
-
-        /* Gradient button */
+        /* Buttons */
         .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.75rem;
-            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
-            color: #fff;
-            border: none;
-            border-radius: var(--radius-sm);
-            font-size: 0.95rem;
-            font-weight: 600;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            text-decoration: none;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 2rem;
+            background: var(--accent); color: #ffffff; border: none; border-radius: var(--radius-pill);
+            font-size: 1rem; font-weight: 500; cursor: pointer; transition: background 0.3s ease;
+            text-decoration: none; font-family: inherit; letter-spacing: -0.01em;
         }
-
-        .btn-primary::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,136,219,0.35);
-            text-decoration: none;
-        }
-
-        .btn-primary:hover::after {
-            left: 100%;
-        }
+        .btn-primary:hover { background: var(--accent-hover); text-decoration: none; color: #ffffff; }
 
         /* Footer */
-        .footer-section {
-            margin-top: 5rem;
-            padding-top: 3rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-email-main {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            margin-bottom: 2.5rem;
-            display: block;
-        }
-
-        .footer-columns {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .footer-col h4 {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 1rem;
-        }
-
+        .footer-section { margin-top: 8rem; padding-top: 4rem; border-top: 1px solid var(--border); }
+        .footer-email-main { color: var(--text-secondary); font-size: 1rem; font-weight: 300; margin-bottom: 3rem; display: block; }
+        .footer-columns { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-bottom: 3rem; }
+        .footer-col h4 { font-size: 0.6875rem; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.25rem; }
         .footer-col ul { list-style: none; }
         .footer-col li { margin-bottom: 0.5rem; }
-
-        .footer-col a {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
+        .footer-col a { color: var(--text-secondary); font-size: 0.875rem; font-weight: 300; }
         .footer-col a:hover { color: var(--accent); }
-
-        .footer-bottom {
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-location {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-bottom: 0.35rem;
-        }
-
-        .copyright {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
+        .footer-bottom { padding-top: 2rem; border-top: 1px solid var(--border); }
+        .footer-location { color: var(--text-muted); font-size: 0.8125rem; font-weight: 300; margin-bottom: 0.35rem; }
+        .copyright { color: var(--text-muted); font-size: 0.8125rem; font-weight: 300; }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .main-wrapper { padding: 3rem 1.5rem 4rem; }
-            .page-title { font-size: 1.4rem; }
+            .header-nav { display: none; }
+            .main-wrapper { padding: 0 2rem 6rem; }
+            .page-title { font-size: clamp(1.75rem, 6vw, 2.5rem); padding-top: 3rem; }
             .footer-columns { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
             .audit-section { padding: 1.75rem; }
         }
 
         @media (max-width: 480px) {
-            .main-wrapper { padding: 2rem 1.25rem 3rem; }
+            .site-header { padding: 0 1.5rem; }
+            .main-wrapper { padding: 0 1.5rem 4rem; }
             .footer-columns { grid-template-columns: 1fr; }
-            .section-divider { margin: 3rem 0; }
         }
     </style>
 </head>
@@ -426,12 +185,10 @@
         <div class="header-container">
             <a href="/" class="header-logo">Seth Forte</a>
             <nav class="header-nav">
-                <a href="/" class="nav-link">Home</a>
                 <a href="/services.html" class="nav-link active">Services</a>
                 <a href="/case-studies.html" class="nav-link">Work</a>
                 <a href="/writing.html" class="nav-link">Writing</a>
                 <a href="/about.html" class="nav-link">About</a>
-                <a href="/reviews.html" class="nav-link">Reviews</a>
                 <a href="/contact.html" class="nav-link">Contact</a>
             </nav>
         </div>
@@ -447,26 +204,11 @@
             <h2 class="stage-headline">Your tools don't talk to each other. I fix that.</h2>
             <p class="stage-body">You have a CRM nobody configured, a Calendly that isn't connected to anything, payments running through Stripe with no automation on the other side, and emails landing in spam. Your team is doing everything manually because nobody built the system those tools were supposed to plug into. I build the operating system your business runs on.</p>
             <div class="capability-grid">
-                <div class="capability-item">
-                    <div class="capability-title">CRM and Pipeline Setup</div>
-                    <div class="capability-desc">Sales stages, contact tags, custom fields, and pipeline automation matched to your actual sales process.</div>
-                </div>
-                <div class="capability-item">
-                    <div class="capability-title">Payments and Contracts</div>
-                    <div class="capability-desc">Stripe connected, products configured, receipts automated, contracts and e-signatures built in.</div>
-                </div>
-                <div class="capability-item">
-                    <div class="capability-title">Email and Scheduling</div>
-                    <div class="capability-desc">Domain authentication so your emails land, calendar and booking connected, intake forms routing to the right place.</div>
-                </div>
-                <div class="capability-item">
-                    <div class="capability-title">Tracking and Attribution</div>
-                    <div class="capability-desc">Google Analytics, Meta Pixel, conversion events verified. Know where your leads come from.</div>
-                </div>
-                <div class="capability-item">
-                    <div class="capability-title">Workflow Automation</div>
-                    <div class="capability-desc">Take a manual process that eats hours every week and make it run itself. Data entry, follow-ups, approvals, notifications.</div>
-                </div>
+                <div class="capability-item"><div class="capability-title">CRM and Pipeline Setup</div><div class="capability-desc">Sales stages, contact tags, custom fields, and pipeline automation matched to your actual sales process.</div></div>
+                <div class="capability-item"><div class="capability-title">Payments and Contracts</div><div class="capability-desc">Stripe connected, products configured, receipts automated, contracts and e-signatures built in.</div></div>
+                <div class="capability-item"><div class="capability-title">Email and Scheduling</div><div class="capability-desc">Domain authentication so your emails land, calendar and booking connected, intake forms routing to the right place.</div></div>
+                <div class="capability-item"><div class="capability-title">Tracking and Attribution</div><div class="capability-desc">Google Analytics, Meta Pixel, conversion events verified. Know where your leads come from.</div></div>
+                <div class="capability-item"><div class="capability-title">Workflow Automation</div><div class="capability-desc">Take a manual process that eats hours every week and make it run itself. Data entry, follow-ups, approvals, notifications.</div></div>
             </div>
         </div>
 
@@ -478,22 +220,10 @@
             <h2 class="stage-headline">System is built. Now fill it.</h2>
             <p class="stage-body">Your CRM is ready but there's nobody in it. No ads running, no funnel converting, no sequences following up. You have the system but zero leads entering it. I get your first campaigns live and your first revenue flowing through the infrastructure we just built.</p>
             <div class="capability-grid">
-                <div class="capability-item">
-                    <div class="capability-title">Paid Traffic Setup</div>
-                    <div class="capability-desc">Meta and Google ad campaigns built to generate leads from day one. Audience targeting, ad copy, lead forms connected to your CRM.</div>
-                </div>
-                <div class="capability-item">
-                    <div class="capability-title">Sales Funnels</div>
-                    <div class="capability-desc">Opt-in page, lead magnet delivery, nurture sequence, offer page, booking or purchase. The complete path from stranger to customer.</div>
-                </div>
-                <div class="capability-item">
-                    <div class="capability-title">Email and SMS Sequences</div>
-                    <div class="capability-desc">Welcome series, sales sequences, re-engagement campaigns, and behavior-triggered follow-ups so no lead sits untouched.</div>
-                </div>
-                <div class="capability-item">
-                    <div class="capability-title">Booking and Conversion Tracking</div>
-                    <div class="capability-desc">Scheduling tools configured, Meta Pixel and Conversion API installed, so you know which ads actually book appointments.</div>
-                </div>
+                <div class="capability-item"><div class="capability-title">Paid Traffic Setup</div><div class="capability-desc">Meta and Google ad campaigns built to generate leads from day one. Audience targeting, ad copy, lead forms connected to your CRM.</div></div>
+                <div class="capability-item"><div class="capability-title">Sales Funnels</div><div class="capability-desc">Opt-in page, lead magnet delivery, nurture sequence, offer page, booking or purchase. The complete path from stranger to customer.</div></div>
+                <div class="capability-item"><div class="capability-title">Email and SMS Sequences</div><div class="capability-desc">Welcome series, sales sequences, re-engagement campaigns, and behavior-triggered follow-ups so no lead sits untouched.</div></div>
+                <div class="capability-item"><div class="capability-title">Booking and Conversion Tracking</div><div class="capability-desc">Scheduling tools configured, Meta Pixel and Conversion API installed, so you know which ads actually book appointments.</div></div>
             </div>
         </div>
 
@@ -505,26 +235,11 @@
             <h2 class="stage-headline">One channel is working. I add more.</h2>
             <p class="stage-body">Leads are coming in from one source. That source goes down, your pipeline goes dry. I add channels so you're pulling leads from multiple directions at once. Inbound captures people already looking for you. Outbound goes and finds new ones. AI handles the volume around the clock.</p>
             <div class="capability-grid">
-                <div class="capability-item">
-                    <div class="capability-title">Outbound Cold Email</div>
-                    <div class="capability-desc">Prospect scraping, AI personalization, automated sequences, reply routing to CRM. 15-50 meetings per month at scale.</div>
-                </div>
-                <div class="capability-item">
-                    <div class="capability-title">AI Voice Agent</div>
-                    <div class="capability-desc">Answers calls 24/7, qualifies leads, books appointments, answers FAQs, routes complex calls to your team. Captures the calls you're currently missing.</div>
-                </div>
-                <div class="capability-item">
-                    <div class="capability-title">Inbound Lead Capture</div>
-                    <div class="capability-desc">Website forms, chat widgets, landing pages all flowing into CRM with instant notification and auto-response. Stop losing the leads you're already paying for.</div>
-                </div>
-                <div class="capability-item">
-                    <div class="capability-title">Review and Reputation Automation</div>
-                    <div class="capability-desc">Automated review requests after service, sentiment routing (happy customers to Google, unhappy ones to a private form), follow-up reminders.</div>
-                </div>
-                <div class="capability-item">
-                    <div class="capability-title">Dispatch and Assignment</div>
-                    <div class="capability-desc">Job comes in, system matches the best contractor or worker, sends outreach in priority order, confirms the assignment. For staffing, field services, and legal operations.</div>
-                </div>
+                <div class="capability-item"><div class="capability-title">Outbound Cold Email</div><div class="capability-desc">Prospect scraping, AI personalization, automated sequences, reply routing to CRM. 15-50 meetings per month at scale.</div></div>
+                <div class="capability-item"><div class="capability-title">AI Voice Agent</div><div class="capability-desc">Answers calls 24/7, qualifies leads, books appointments, answers FAQs, routes complex calls to your team. Captures the calls you're currently missing.</div></div>
+                <div class="capability-item"><div class="capability-title">Inbound Lead Capture</div><div class="capability-desc">Website forms, chat widgets, landing pages all flowing into CRM with instant notification and auto-response. Stop losing the leads you're already paying for.</div></div>
+                <div class="capability-item"><div class="capability-title">Review and Reputation Automation</div><div class="capability-desc">Automated review requests after service, sentiment routing (happy customers to Google, unhappy ones to a private form), follow-up reminders.</div></div>
+                <div class="capability-item"><div class="capability-title">Dispatch and Assignment</div><div class="capability-desc">Job comes in, system matches the best contractor or worker, sends outreach in priority order, confirms the assignment. For staffing, field services, and legal operations.</div></div>
             </div>
         </div>
 
@@ -536,22 +251,10 @@
             <h2 class="stage-headline">Everything is running. Make it visible and hands-off.</h2>
             <p class="stage-body">Multiple channels running, leads converting, revenue growing. But you can't tell which channel has the best ROI, content takes 10 hours a week, and support requests are piling up. I add the reporting, content engines, and support systems that let you grow without adding headcount.</p>
             <div class="capability-grid">
-                <div class="capability-item">
-                    <div class="capability-title">Ad Reporting Dashboards</div>
-                    <div class="capability-desc">Meta and Google Ads data pulled automatically into one dashboard. Weekly refresh, email delivery, no more manual report assembly.</div>
-                </div>
-                <div class="capability-item">
-                    <div class="capability-title">Content Repurposing</div>
-                    <div class="capability-desc">One video or blog post turns into 10-15 social posts, a newsletter draft, and short-form clips. AI writes, automation distributes.</div>
-                </div>
-                <div class="capability-item">
-                    <div class="capability-title">Support Routing</div>
-                    <div class="capability-desc">Incoming requests get AI-categorized, auto-responded with relevant help content, and routed to the right team member. Urgent issues get flagged instantly.</div>
-                </div>
-                <div class="capability-item">
-                    <div class="capability-title">Recruiting Pipeline</div>
-                    <div class="capability-desc">AI screens resumes, scores candidates against job requirements, routes qualified matches to your team, and automates interview scheduling.</div>
-                </div>
+                <div class="capability-item"><div class="capability-title">Ad Reporting Dashboards</div><div class="capability-desc">Meta and Google Ads data pulled automatically into one dashboard. Weekly refresh, email delivery, no more manual report assembly.</div></div>
+                <div class="capability-item"><div class="capability-title">Content Repurposing</div><div class="capability-desc">One video or blog post turns into 10-15 social posts, a newsletter draft, and short-form clips. AI writes, automation distributes.</div></div>
+                <div class="capability-item"><div class="capability-title">Support Routing</div><div class="capability-desc">Incoming requests get AI-categorized, auto-responded with relevant help content, and routed to the right team member. Urgent issues get flagged instantly.</div></div>
+                <div class="capability-item"><div class="capability-title">Recruiting Pipeline</div><div class="capability-desc">AI screens resumes, scores candidates against job requirements, routes qualified matches to your team, and automates interview scheduling.</div></div>
             </div>
         </div>
 

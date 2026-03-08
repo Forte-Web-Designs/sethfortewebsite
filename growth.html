@@ -35,7 +35,7 @@
     <link rel="apple-touch-icon" href="logo.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -46,58 +46,42 @@
             --accent: #0088DB;
             --accent-hover: #0099f0;
             --accent-warm: #38b2f5;
-            --accent-glow: rgba(0,136,219,0.15);
             --background: #0a0e17;
             --background-alt: #111827;
-            --border: #1e293b;
-            --border-light: #2a3a50;
-            --card-bg: rgba(17,24,39,0.7);
-            --card-bg-solid: #111827;
-            --gradient-start: #0088DB;
-            --gradient-end: #38b2f5;
-            --radius-sm: 8px;
+            --border: rgba(255,255,255,0.08);
+            --border-light: rgba(255,255,255,0.12);
+            --radius-pill: 980px;
             --radius-md: 12px;
         }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            font-size: 16px;
-            line-height: 1.7;
+            font-size: 17px;
+            line-height: 1.47;
             color: var(--text-primary);
             background: var(--background);
             min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(ellipse at 20% 0%, rgba(0,136,219,0.06) 0%, transparent 50%),
-                          radial-gradient(ellipse at 80% 100%, rgba(56,178,245,0.04) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        a { color: var(--accent); text-decoration: none; transition: color 0.2s ease; }
-        a:hover { text-decoration: underline; }
+        a { color: var(--accent); text-decoration: none; transition: color 0.3s ease; }
+        a:hover { color: var(--accent-hover); text-decoration: none; }
 
         /* Animations */
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        .animate-fade-in { animation: fadeIn 0.6s ease forwards; }
-        .animate-fade-up { animation: fadeInUp 0.6s ease forwards; }
-        .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
-        .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
-        .animate-delay-3 { animation-delay: 0.3s; opacity: 0; }
+        .animate-fade-in { animation: fadeIn 0.8s ease forwards; }
+        .animate-fade-up { animation: fadeInUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards; }
+        .animate-delay-1 { animation-delay: 0.15s; opacity: 0; }
+        .animate-delay-2 { animation-delay: 0.3s; opacity: 0; }
+        .animate-delay-3 { animation-delay: 0.45s; opacity: 0; }
 
         /* Scroll reveal */
         .reveal {
@@ -126,14 +110,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
-            height: 64px;
+            height: 48px;
         }
 
         .header-logo {
-            font-size: 1.1rem;
-            font-weight: 700;
+            font-size: 1rem;
+            font-weight: 600;
             color: var(--text-primary);
             text-decoration: none;
             letter-spacing: -0.02em;
@@ -151,29 +135,27 @@
         }
 
         .nav-link {
-            padding: 0.5rem 1rem;
-            border-radius: var(--radius-sm);
+            padding: 0.35rem 0.75rem;
             color: var(--text-secondary);
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
+            font-size: 0.8125rem;
+            font-weight: 400;
+            transition: color 0.3s ease;
             text-decoration: none;
         }
 
         .nav-link:hover {
-            background: rgba(255,255,255,0.05);
             color: var(--text-primary);
             text-decoration: none;
         }
 
         .nav-link.active {
-            background: var(--accent-glow);
-            color: var(--accent);
+            color: var(--text-primary);
+            font-weight: 500;
         }
 
         /* Main wrapper */
         .main-wrapper {
-            max-width: 780px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 4rem 2rem 6rem;
         }
@@ -181,7 +163,7 @@
         /* Page title */
         .page-title {
             font-size: 1.75rem;
-            font-weight: 700;
+            font-weight: 600;
             color: var(--text-primary);
             margin-bottom: 1rem;
             letter-spacing: -0.02em;
@@ -203,15 +185,13 @@
 
         /* Section divider */
         .section-divider {
-            border: none;
-            border-top: 1px solid var(--border);
-            margin: 3rem 0;
+            display: none;
         }
 
         /* Section label with accent bar */
         .section-label {
             font-size: 0.75rem;
-            font-weight: 700;
+            font-weight: 600;
             color: var(--accent);
             text-transform: uppercase;
             letter-spacing: 0.1em;
@@ -239,9 +219,7 @@
         }
 
         .outcome-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.03);
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
             padding: 1.75rem;
@@ -254,7 +232,7 @@
 
         .outcome-card h3 {
             font-size: 1.05rem;
-            font-weight: 700;
+            font-weight: 600;
             color: var(--text-primary);
             margin-bottom: 0.5rem;
         }
@@ -267,9 +245,7 @@
 
         /* Expandable What Gets Built */
         .build-item {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.03);
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
             margin-bottom: 0.75rem;
@@ -331,9 +307,7 @@
 
         /* The Math */
         .math-section {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.03);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent-warm);
             border-radius: var(--radius-md);
@@ -361,9 +335,7 @@
 
         .timeline-item {
             text-align: center;
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.03);
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
             padding: 1.25rem;
@@ -383,9 +355,7 @@
 
         /* Next step */
         .next-step {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.03);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent-warm);
             border-radius: var(--radius-md);
@@ -402,9 +372,7 @@
 
         /* CTA */
         .cta-section {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.03);
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
             padding: 2.5rem;
@@ -414,7 +382,7 @@
 
         .cta-section h2 {
             font-size: 1.2rem;
-            font-weight: 700;
+            font-weight: 600;
             color: var(--text-primary);
             margin-bottom: 0.75rem;
         }
@@ -437,39 +405,23 @@
             align-items: center;
             gap: 0.5rem;
             padding: 0.75rem 1.75rem;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            background: var(--accent);
             color: #fff;
             border: none;
-            border-radius: var(--radius-sm);
+            border-radius: var(--radius-pill);
             font-size: 0.95rem;
             font-weight: 600;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: background 0.3s ease;
             text-decoration: none;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
-        .btn-primary::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-            transition: left 0.5s ease;
-        }
-
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,136,219,0.35);
+            background: var(--accent-hover);
             text-decoration: none;
+            color: #fff;
         }
 
-        .btn-primary:hover::after {
-            left: 100%;
-        }
 
         /* Footer */
         .footer-section {
@@ -518,17 +470,20 @@
 
         .footer-location {
             color: var(--text-muted);
-            font-size: 0.85rem;
+            font-size: 0.8125rem;
+            font-weight: 300;
             margin-bottom: 0.35rem;
         }
 
         .copyright {
             color: var(--text-muted);
-            font-size: 0.85rem;
+            font-size: 0.8125rem;
+            font-weight: 300;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
+            .header-nav { display: none; }
             .main-wrapper { padding: 3rem 1.5rem 4rem; }
             .page-title { font-size: 1.4rem; }
             .outcome-grid { grid-template-columns: 1fr; }
@@ -549,108 +504,72 @@
         <div class="header-container">
             <a href="/" class="header-logo">Seth Forte</a>
             <nav class="header-nav">
-                <a href="/" class="nav-link">Home</a>
                 <a href="/services.html" class="nav-link active">Services</a>
                 <a href="/case-studies.html" class="nav-link">Work</a>
                 <a href="/writing.html" class="nav-link">Writing</a>
                 <a href="/about.html" class="nav-link">About</a>
-                <a href="/reviews.html" class="nav-link">Reviews</a>
                 <a href="/contact.html" class="nav-link">Contact</a>
             </nav>
         </div>
     </header>
 
     <main class="main-wrapper">
-        <h1 class="page-title animate-fade-up animate-delay-1">Leads don't pay bills. Customers do.</h1>
-        <p class="page-subtitle animate-fade-up animate-delay-2">Launch got leads flowing. Growth multiplies what's working: more channels, AI engagement, outbound prospecting, and systems that let you scale without adding headcount.</p>
+        <h1 class="page-title animate-fade-up animate-delay-1">Add channels. Convert more. Handle the volume.</h1>
+        <p class="page-subtitle animate-fade-up animate-delay-2">Leads come from one source. If that source goes down, your pipeline goes dry overnight. I add channels so you're pulling leads from multiple directions. Inbound captures people looking for you. Outbound goes and finds new ones. AI handles volume around the clock.</p>
 
         <hr class="section-divider">
 
-        <!-- What You're Trying to Do -->
-        <h2 class="section-label reveal">What you're trying to solve</h2>
-
-        <div class="outcome-grid reveal">
-            <div class="outcome-card">
-                <h3>More Leads</h3>
-                <p>You have one source working. Now add more: inbound capture from multiple channels, outbound cold email, or both running simultaneously.</p>
-            </div>
-            <div class="outcome-card">
-                <h3>Booked Appointments</h3>
-                <p>Traffic turns into booked calls on your calendar. Automatically. No manual scheduling, no missed follow-ups.</p>
-            </div>
-            <div class="outcome-card">
-                <h3>A Sales Funnel</h3>
-                <p>Landing page to opt-in to lead magnet to nurture sequence to offer. The whole path automated from first click to purchase.</p>
-            </div>
-            <div class="outcome-card">
-                <h3>Stop Losing Leads</h3>
-                <p>Every lead gets a response in under 60 seconds. Automated follow-up for weeks after. Nobody falls through the cracks.</p>
-            </div>
-        </div>
-
-        <hr class="section-divider">
-
-        <!-- What Gets Built -->
-        <h2 class="section-label reveal">What gets built</h2>
+        <!-- Service Sections -->
+        <h2 class="section-label reveal">What I build</h2>
 
         <div class="reveal">
             <div class="build-item">
                 <div class="build-header" onclick="this.parentElement.classList.toggle('open')">
-                    <h3>Inbound Lead Capture System</h3>
+                    <h3>Meta Lead Ads to CRM</h3>
                     <span class="build-toggle">&#9660;</span>
                 </div>
                 <div class="build-body">
-                    <div class="build-body-inner">Multi-channel lead capture from forms, landing pages, and ad platforms. Every lead tagged by source and routed into your CRM pipeline automatically.</div>
+                    <div class="build-body-inner">You're running Meta ads and leads are sitting in a Facebook tab nobody checks. By the time you see them, they've already talked to your competitor. I connect your lead forms directly to your CRM with instant tagging, auto-response within 60 seconds, and follow-up that starts automatically.</div>
                 </div>
             </div>
 
             <div class="build-item">
                 <div class="build-header" onclick="this.parentElement.classList.toggle('open')">
-                    <h3>Meta Lead Ads to CRM Pipeline</h3>
+                    <h3>Inbound Lead Capture</h3>
                     <span class="build-toggle">&#9660;</span>
                 </div>
                 <div class="build-body">
-                    <div class="build-body-inner">Facebook and Instagram lead ads connected directly to your CRM. Leads appear instantly, tagged by campaign, with automated follow-up triggered on arrival.</div>
+                    <div class="build-body-inner">A lead fills out your form at 2 PM. Nobody sees it until 5 PM. Your competitor responded in 3 minutes. I route every inbound source into one CRM with instant notifications, auto-response, missed lead alerts, and follow-up sequences. No lead sits untouched.</div>
                 </div>
             </div>
 
             <div class="build-item">
                 <div class="build-header" onclick="this.parentElement.classList.toggle('open')">
-                    <h3>Outbound Cold Email System</h3>
+                    <h3>Outbound Cold Email</h3>
                     <span class="build-toggle">&#9660;</span>
                 </div>
                 <div class="build-body">
-                    <div class="build-body-inner">Find your ideal prospects, personalize outreach with AI, and route positive replies directly to your CRM. Proactive pipeline on top of inbound.</div>
+                    <div class="build-body-inner">Inbound is great until referrals dry up and ad costs climb. Outbound flips it: you go find them. I build the full pipeline with Apollo, AI personalization, verified sending, and reply routing to your CRM. 15-50 meetings per month at scale. Only makes sense at $3,000+ deal sizes.</div>
                 </div>
             </div>
 
             <div class="build-item">
                 <div class="build-header" onclick="this.parentElement.classList.toggle('open')">
-                    <h3>Email/SMS Nurture Sequences</h3>
+                    <h3>AI Voice Agent</h3>
                     <span class="build-toggle">&#9660;</span>
                 </div>
                 <div class="build-body">
-                    <div class="build-body-inner">Automated follow-up sequences across email and SMS. Triggered by lead actions, timed for maximum conversion, running in the background 24/7.</div>
+                    <div class="build-body-inner">Every missed call is a potential customer going to your competitor. I build an AI phone agent that answers 24/7, qualifies callers, answers FAQs, and books appointments on your calendar. Every call transcribed and logged in your CRM.</div>
                 </div>
             </div>
 
             <div class="build-item">
                 <div class="build-header" onclick="this.parentElement.classList.toggle('open')">
-                    <h3>Booking System with Tracking</h3>
+                    <h3>WhatsApp and Chat Intake</h3>
                     <span class="build-toggle">&#9660;</span>
                 </div>
                 <div class="build-body">
-                    <div class="build-body-inner">Calendar booking connected to your CRM with full attribution tracking. Know exactly which channel, campaign, and touchpoint produced each booked call.</div>
-                </div>
-            </div>
-
-            <div class="build-item">
-                <div class="build-header" onclick="this.parentElement.classList.toggle('open')">
-                    <h3>Sales Funnel Automation</h3>
-                    <span class="build-toggle">&#9660;</span>
-                </div>
-                <div class="build-body">
-                    <div class="build-body-inner">Landing pages, lead magnets, nurture sequences, and offer pages connected end-to-end. One automated path from stranger to customer.</div>
+                    <div class="build-body-inner">Someone lands on your site at 9 PM with a question. No chat, no bot, no way to get an answer. They leave. I build a chat widget or WhatsApp integration with routing logic that captures leads and gets the right question to the right person, even when nobody's in the office.</div>
                 </div>
             </div>
 
@@ -660,55 +579,50 @@
                     <span class="build-toggle">&#9660;</span>
                 </div>
                 <div class="build-body">
-                    <div class="build-body-inner">Automated review requests sent after service delivery. Route happy customers to Google, handle concerns privately before they go public.</div>
+                    <div class="build-body-inner">You have 12 Google reviews. Your competitor has 87. Guess who gets the call. I automate review requests after service. Happy customers go to Google. Unhappy ones go to a private form so you handle it before it goes public.</div>
+                </div>
+            </div>
+
+            <div class="build-item">
+                <div class="build-header" onclick="this.parentElement.classList.toggle('open')">
+                    <h3>Dispatch and Assignment</h3>
+                    <span class="build-toggle">&#9660;</span>
+                </div>
+                <div class="build-body">
+                    <div class="build-body-inner">A job comes in and someone spends 30 minutes searching a database, emailing people, and hoping for a response. I build a system that matches jobs to the best available worker, sends outreach in priority order, and confirms the assignment. I've built this for legal services, staffing, and mobile service dispatch.</div>
+                </div>
+            </div>
+
+            <div class="build-item">
+                <div class="build-header" onclick="this.parentElement.classList.toggle('open')">
+                    <h3>AI Document Search</h3>
+                    <span class="build-toggle">&#9660;</span>
+                </div>
+                <div class="build-body">
+                    <div class="build-body-inner">Your most important information is buried in PDFs nobody can find and SOPs on one person's desktop. I build an AI search layer where your team asks questions in plain English and gets answers with the source document cited. Contract review that took an afternoon takes minutes.</div>
                 </div>
             </div>
         </div>
 
         <hr class="section-divider">
 
-        <!-- The Math -->
-        <h2 class="section-label reveal">The math</h2>
+        <!-- Who This Is For -->
+        <h2 class="section-label reveal">Who this is for</h2>
 
-        <div class="math-section reveal">
-            <p>If you're closing 10% of leads and your average customer is worth a few thousand dollars, even a small increase in lead volume or conversion rate compounds fast. Most Growth systems pay for themselves within the first 30-60 days.</p>
-        </div>
-
-        <hr class="section-divider">
-
-        <!-- Timeline -->
-        <h2 class="section-label reveal">Timeline</h2>
-
-        <div class="timeline-compact reveal">
-            <div class="timeline-item">
-                <strong>2-3 Weeks</strong>
-                <span>Scoped to your outcome</span>
-            </div>
-            <div class="timeline-item">
-                <strong>Full Ownership</strong>
-                <span>Documentation and training</span>
-            </div>
-            <div class="timeline-item">
-                <strong>Post-Delivery</strong>
-                <span>Support included</span>
-            </div>
-        </div>
-
-        <hr class="section-divider">
-
-        <!-- After Growth -->
-        <div class="next-step reveal">
-            <p>Once leads are flowing and converting, the next question is: what's working best, and how do I do more of it? That's Scale: reporting, optimization, and expansion.</p>
-            <a href="/scale.html">See what Scale looks like &rarr;</a>
+        <div class="familiar-grid reveal">
+            <div class="familiar-item">Businesses that want more lead sources beyond one channel</div>
+            <div class="familiar-item">Teams missing leads because nobody responded fast enough</div>
+            <div class="familiar-item">Companies that want outbound but don't have the system to run it</div>
+            <div class="familiar-item">Service businesses missing calls during busy hours or after hours</div>
         </div>
 
         <hr class="section-divider">
 
         <!-- CTA -->
         <div class="cta-section reveal">
-            <h2>Not sure which Growth systems you need?</h2>
-            <p>The review identifies your highest-ROI automation opportunities. Credits toward any project.</p>
-            <a href="https://calendly.com/seth-fortewebdesigns/30min" target="_blank" rel="noopener" class="btn-primary">Book an Infrastructure Review</a>
+            <h2>Ready to add more channels?</h2>
+            <p>30-minute call. I'll tell you exactly what needs to happen and what it costs.</p>
+            <a href="https://calendly.com/seth-fortewebdesigns/30min" target="_blank" rel="noopener" class="btn-primary">Book a Call</a>
         </div>
 
         <!-- Footer -->

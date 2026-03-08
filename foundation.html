@@ -35,7 +35,7 @@
     <link rel="apple-touch-icon" href="logo.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -46,64 +46,48 @@
             --accent: #0088DB;
             --accent-hover: #0099f0;
             --accent-warm: #38b2f5;
-            --accent-glow: rgba(0,136,219,0.15);
             --background: #0a0e17;
             --background-alt: #111827;
-            --border: #1e293b;
-            --border-light: #2a3a50;
-            --card-bg: rgba(17,24,39,0.7);
-            --card-bg-solid: #111827;
-            --gradient-start: #0088DB;
-            --gradient-end: #38b2f5;
-            --radius-sm: 8px;
+            --border: rgba(255,255,255,0.08);
+            --border-light: rgba(255,255,255,0.12);
+            --radius-pill: 980px;
             --radius-md: 12px;
         }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            font-size: 16px;
-            line-height: 1.7;
+            font-size: 17px;
+            line-height: 1.47;
             color: var(--text-primary);
             background: var(--background);
             min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(ellipse at 20% 0%, rgba(0,136,219,0.06) 0%, transparent 50%),
-                          radial-gradient(ellipse at 80% 100%, rgba(56,178,245,0.04) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        a { color: var(--accent); text-decoration: none; transition: color 0.2s ease; }
-        a:hover { text-decoration: underline; }
+        a { color: var(--accent); text-decoration: none; transition: color 0.3s ease; }
+        a:hover { color: var(--accent-hover); text-decoration: none; }
 
         /* Animations */
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        .animate-fade-in { animation: fadeIn 0.6s ease forwards; }
-        .animate-fade-up { animation: fadeInUp 0.6s ease forwards; }
-        .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
-        .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
-        .animate-delay-3 { animation-delay: 0.3s; opacity: 0; }
+        .animate-fade-in { animation: fadeIn 0.8s cubic-bezier(0.16,1,0.3,1) forwards; }
+        .animate-fade-up { animation: fadeInUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards; }
+        .animate-delay-1 { animation-delay: 0.15s; opacity: 0; }
+        .animate-delay-2 { animation-delay: 0.3s; opacity: 0; }
+        .animate-delay-3 { animation-delay: 0.45s; opacity: 0; }
 
         /* Scroll reveal */
         .reveal {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
         }
         .reveal.visible {
             opacity: 1;
@@ -126,14 +110,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
-            height: 64px;
+            height: 48px;
         }
 
         .header-logo {
-            font-size: 1.1rem;
-            font-weight: 700;
+            font-size: 1rem;
+            font-weight: 600;
             color: var(--text-primary);
             text-decoration: none;
             letter-spacing: -0.02em;
@@ -151,29 +135,27 @@
         }
 
         .nav-link {
-            padding: 0.5rem 1rem;
-            border-radius: var(--radius-sm);
+            padding: 0.35rem 0.75rem;
             color: var(--text-secondary);
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
+            font-size: 0.8125rem;
+            font-weight: 400;
+            transition: color 0.3s ease;
             text-decoration: none;
         }
 
         .nav-link:hover {
-            background: rgba(255,255,255,0.05);
             color: var(--text-primary);
             text-decoration: none;
         }
 
         .nav-link.active {
-            background: var(--accent-glow);
-            color: var(--accent);
+            color: var(--text-primary);
+            font-weight: 500;
         }
 
         /* Main wrapper */
         .main-wrapper {
-            max-width: 780px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 4rem 2rem 6rem;
         }
@@ -203,9 +185,7 @@
 
         /* Section divider */
         .section-divider {
-            border: none;
-            border-top: 1px solid var(--border);
-            margin: 3rem 0;
+            display: none;
         }
 
         /* Section label with accent bar */
@@ -239,9 +219,7 @@
 
         .cost-item {
             padding: 1.25rem;
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.03);
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
             border-left: 3px solid var(--accent-warm);
@@ -255,11 +233,9 @@
 
         /* Expandable Deliverables */
         .deliverable-item {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.03);
             border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
+            border-radius: var(--radius-md);
             margin-bottom: 0.75rem;
             overflow: hidden;
         }
@@ -326,8 +302,8 @@
             color: var(--text-secondary);
             font-size: 0.9rem;
             line-height: 1.5;
-            background: var(--card-bg);
-            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            background: rgba(255,255,255,0.03);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
         }
 
         /* Timeline */
@@ -340,9 +316,7 @@
 
         .timeline-item {
             text-align: center;
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.03);
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
             padding: 1.25rem;
@@ -362,9 +336,7 @@
 
         /* Next Step */
         .next-step {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.03);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent-warm);
             border-radius: var(--radius-md);
@@ -385,9 +357,7 @@
 
         /* CTA */
         .cta-section {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.03);
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
             padding: 2.5rem;
@@ -420,38 +390,21 @@
             align-items: center;
             gap: 0.5rem;
             padding: 0.75rem 1.75rem;
-            background: linear-gradient(135deg, var(--gradient-start), var(--accent-hover));
+            background: var(--accent);
             color: #fff;
             border: none;
-            border-radius: var(--radius-sm);
+            border-radius: var(--radius-pill);
             font-size: 0.95rem;
-            font-weight: 600;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            font-weight: 500;
+            transition: background 0.3s ease;
             text-decoration: none;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
-        .btn-primary::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-            transition: left 0.5s ease;
-        }
-
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,136,219,0.35);
+            background: var(--accent-hover);
             text-decoration: none;
-        }
-
-        .btn-primary:hover::after {
-            left: 100%;
+            color: #fff;
         }
 
         /* Footer */
@@ -501,17 +454,20 @@
 
         .footer-location {
             color: var(--text-muted);
-            font-size: 0.85rem;
+            font-size: 0.8125rem;
+            font-weight: 300;
             margin-bottom: 0.35rem;
         }
 
         .copyright {
             color: var(--text-muted);
-            font-size: 0.85rem;
+            font-size: 0.8125rem;
+            font-weight: 300;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
+            .header-nav { display: none; }
             .main-wrapper { padding: 3rem 1.5rem 4rem; }
             .page-title { font-size: 1.4rem; }
             .cost-grid { grid-template-columns: 1fr; }
@@ -532,64 +488,32 @@
         <div class="header-container">
             <a href="/" class="header-logo">Seth Forte</a>
             <nav class="header-nav">
-                <a href="/" class="nav-link">Home</a>
                 <a href="/services.html" class="nav-link active">Services</a>
                 <a href="/case-studies.html" class="nav-link">Work</a>
                 <a href="/writing.html" class="nav-link">Writing</a>
                 <a href="/about.html" class="nav-link">About</a>
-                <a href="/reviews.html" class="nav-link">Reviews</a>
                 <a href="/contact.html" class="nav-link">Contact</a>
             </nav>
         </div>
     </header>
 
     <main class="main-wrapper">
-        <h1 class="page-title animate-fade-up animate-delay-1">Everything you're building is leaking.</h1>
-        <p class="page-subtitle animate-fade-up animate-delay-2">Leads fall through cracks. Emails land in spam. Nobody knows what's converting. Foundation fixes the infrastructure so the rest of it actually works.</p>
+        <h1 class="page-title animate-fade-up animate-delay-1">Get your system built and everything connected.</h1>
+        <p class="page-subtitle animate-fade-up animate-delay-2">Most businesses are running on duct tape. A CRM nobody configured, emails landing in spam, a booking tool connected to nothing. I build the infrastructure first. Everything else plugs into it.</p>
 
         <hr class="section-divider">
 
-        <!-- Cost of Doing Nothing -->
-        <h2 class="section-label animate-fade-up animate-delay-3">The cost of doing nothing</h2>
-
-        <div class="cost-grid reveal">
-            <div class="cost-item">
-                <p>Every lead that hits a broken form or dead inbox is revenue you already paid for and lost.</p>
-            </div>
-            <div class="cost-item">
-                <p>Every email that lands in spam burns the sender reputation you'll need later.</p>
-            </div>
-            <div class="cost-item">
-                <p>Every week without tracking is a week you're spending money blind.</p>
-            </div>
-            <div class="cost-item">
-                <p>Every manual follow-up you forget is a customer your competitor gets instead.</p>
-            </div>
-        </div>
-
-        <hr class="section-divider">
-
-        <!-- What Gets Built -->
-        <h2 class="section-label reveal">What you walk away with</h2>
+        <!-- Service Sections -->
+        <h2 class="section-label animate-fade-up animate-delay-3">What I build</h2>
 
         <div class="reveal">
             <div class="deliverable-item">
                 <div class="deliverable-header" onclick="this.parentElement.classList.toggle('open')">
-                    <h3>Lead Capture</h3>
+                    <h3>CRM and Sales Pipeline</h3>
                     <span class="deliverable-toggle">&#9660;</span>
                 </div>
                 <div class="deliverable-body">
-                    <div class="deliverable-body-inner">Your first lead source connected and producing. Whether that's a Meta ad, a website form, or a landing page opt-in, leads flow directly into your CRM, tagged by source, with an instant auto-response and team notification.</div>
-                </div>
-            </div>
-
-            <div class="deliverable-item">
-                <div class="deliverable-header" onclick="this.parentElement.classList.toggle('open')">
-                    <h3>CRM and Pipeline</h3>
-                    <span class="deliverable-toggle">&#9660;</span>
-                </div>
-                <div class="deliverable-body">
-                    <div class="deliverable-body-inner">Sales pipeline with stages that match how you actually sell. Contact tags, custom fields, and segmentation so you can find anyone and know where they are.</div>
+                    <div class="deliverable-body-inner">Having a CRM login is not the same as having a CRM. If your pipeline is a mental model and leads get added manually when you remember, you don't have a system. I build the real thing: stages, tags, custom fields, and automation that moves deals forward without you touching it.</div>
                 </div>
             </div>
 
@@ -599,7 +523,7 @@
                     <span class="deliverable-toggle">&#9660;</span>
                 </div>
                 <div class="deliverable-body">
-                    <div class="deliverable-body-inner">Stripe or your processor connected. Products configured. Receipts and confirmations automated. You can take money on day one.</div>
+                    <div class="deliverable-body-inner">A customer pays through Stripe. Nothing happens. No CRM update, no team notification, no next step triggered. I connect your payment processor to the rest of your stack so every transaction fires the right action automatically.</div>
                 </div>
             </div>
 
@@ -609,102 +533,89 @@
                     <span class="deliverable-toggle">&#9660;</span>
                 </div>
                 <div class="deliverable-body">
-                    <div class="deliverable-body-inner">Domain authentication (SPF, DKIM, DMARC) so your emails land in inboxes, not spam. Sending domain verified and deliverability confirmed.</div>
+                    <div class="deliverable-body-inner">Your emails are landing in spam because nobody configured SPF, DKIM, and DMARC on your domain. I fix that before you send a single campaign so your messages actually reach the inbox.</div>
                 </div>
             </div>
 
             <div class="deliverable-item">
                 <div class="deliverable-header" onclick="this.parentElement.classList.toggle('open')">
-                    <h3>Booking and Intake</h3>
+                    <h3>Booking and Scheduling</h3>
                     <span class="deliverable-toggle">&#9660;</span>
                 </div>
                 <div class="deliverable-body">
-                    <div class="deliverable-body-inner">Calendar connected for scheduling. Intake forms or applications built and routed. No more back-and-forth emails to book a call.</div>
+                    <div class="deliverable-body-inner">Your booking tool isn't connected to your CRM. Someone books, you get an email you might see in time, and there's no intake form, no reminder, no pipeline record. I wire scheduling into everything else so bookings are tracked, confirmed, and followed up automatically.</div>
                 </div>
             </div>
 
             <div class="deliverable-item">
                 <div class="deliverable-header" onclick="this.parentElement.classList.toggle('open')">
-                    <h3>Tracking</h3>
+                    <h3>Tracking and Attribution</h3>
                     <span class="deliverable-toggle">&#9660;</span>
                 </div>
                 <div class="deliverable-body">
-                    <div class="deliverable-body-inner">Google Analytics or Meta Pixel installed. Basic conversion events configured. You'll know where traffic is coming from and what it's doing.</div>
+                    <div class="deliverable-body-inner">You're spending money on ads and you can't tell which ones work. I install analytics, pixels, conversion events, and UTM tracking so every lead source is identifiable in your CRM. Decisions based on data, not gut feel.</div>
                 </div>
             </div>
 
             <div class="deliverable-item">
                 <div class="deliverable-header" onclick="this.parentElement.classList.toggle('open')">
-                    <h3>Integrations</h3>
+                    <h3>Workflow Automation</h3>
                     <span class="deliverable-toggle">&#9660;</span>
                 </div>
                 <div class="deliverable-body">
-                    <div class="deliverable-body-inner">1-2 core integrations connecting your most important tools. Calendar, forms, payment processor, whatever needs to talk to the CRM.</div>
+                    <div class="deliverable-body-inner">Someone on your team checks a spreadsheet, sends emails based on what they see, and logs what they did. Every week. That entire loop can run itself. I automate the repetitive processes that eat hours of manual work.</div>
                 </div>
             </div>
 
             <div class="deliverable-item">
                 <div class="deliverable-header" onclick="this.parentElement.classList.toggle('open')">
-                    <h3>Documentation and Training</h3>
+                    <h3>Client Onboarding</h3>
                     <span class="deliverable-toggle">&#9660;</span>
                 </div>
                 <div class="deliverable-body">
-                    <div class="deliverable-body-inner">System overview document, credentials, a Loom walkthrough of everything, and post-handoff support so you're not lost after delivery.</div>
+                    <div class="deliverable-body-inner">You close a new client and then spend two days chasing credentials, sending welcome emails manually, and forgetting to set up the project. I automate the full sequence so contract signed triggers everything: welcome email, intake form, kickoff scheduling, project setup, team notification.</div>
+                </div>
+            </div>
+
+            <div class="deliverable-item">
+                <div class="deliverable-header" onclick="this.parentElement.classList.toggle('open')">
+                    <h3>Integrations and Data Sync</h3>
+                    <span class="deliverable-toggle">&#9660;</span>
+                </div>
+                <div class="deliverable-body">
+                    <div class="deliverable-body-inner">You're paying for six tools that don't know the other five exist. I connect them so data flows where it needs to go. When something happens in one system, the rest of your stack knows about it.</div>
                 </div>
             </div>
         </div>
 
         <hr class="section-divider">
 
-        <!-- Sound Familiar? -->
-        <h2 class="section-label reveal">Sound familiar?</h2>
+        <!-- Foundation Review Callout -->
+        <div class="next-step reveal">
+            <h3 style="color: var(--text-primary); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem;">Not sure where to start?</h3>
+            <p>Book a Foundation Review for $750. I review your setup, identify the biggest opportunities, and give you a prioritized roadmap with ROI estimates. If you move forward with a build, the $750 applies as credit toward the project.</p>
+            <a href="https://calendly.com/seth-fortewebdesigns/30min" target="_blank" rel="noopener">Book a Foundation Review &#8250;</a>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Who This Is For -->
+        <h2 class="section-label reveal">Who this is for</h2>
 
         <div class="familiar-grid reveal">
-            <div class="familiar-item">Contacts in spreadsheets, no pipeline</div>
-            <div class="familiar-item">Paying for a CRM nobody configured</div>
-            <div class="familiar-item">Tracking is broken, can't tell what works</div>
-            <div class="familiar-item">Emails landing in spam</div>
-            <div class="familiar-item">Running everything on manual follow-up</div>
-            <div class="familiar-item">Built a CRM but have zero leads in it</div>
-            <div class="familiar-item">Just hired marketing with no system to work in</div>
-            <div class="familiar-item">Need a system AND traffic, not just the system</div>
-        </div>
-
-        <hr class="section-divider">
-
-        <!-- Timeline -->
-        <h2 class="section-label reveal">Timeline</h2>
-
-        <div class="timeline-compact reveal">
-            <div class="timeline-item">
-                <strong>1-2 Weeks</strong>
-                <span>Discovery to handoff</span>
-            </div>
-            <div class="timeline-item">
-                <strong>Full Ownership</strong>
-                <span>Everything documented</span>
-            </div>
-            <div class="timeline-item">
-                <strong>Post-Delivery</strong>
-                <span>7-14 days support included</span>
-            </div>
-        </div>
-
-        <hr class="section-divider">
-
-        <!-- After Foundation -->
-        <div class="next-step reveal">
-            <p>Once your system is live, the next step is Launch: traffic, funnels, follow-up sequences, and the lead flow that turns your infrastructure into revenue.</p>
-            <a href="/launch.html">See what Launch looks like &rarr;</a>
+            <div class="familiar-item">New businesses building their tech stack from scratch</div>
+            <div class="familiar-item">Businesses running everything manually with no real system</div>
+            <div class="familiar-item">Companies that switched tools and need everything reconnected</div>
+            <div class="familiar-item">Anyone spending on ads before they have a system to handle the leads</div>
         </div>
 
         <hr class="section-divider">
 
         <!-- CTA -->
         <div class="cta-section reveal">
-            <h2>Not sure if Foundation is where you start?</h2>
-            <p>The review identifies exactly where you are and what to build first. It credits toward any project.</p>
-            <a href="https://calendly.com/seth-fortewebdesigns/30min" target="_blank" rel="noopener" class="btn-primary">Book an Infrastructure Review</a>
+            <h2>Ready to build your system?</h2>
+            <p>30-minute call. I'll tell you exactly what needs to happen and what it costs.</p>
+            <a href="https://calendly.com/seth-fortewebdesigns/30min" target="_blank" rel="noopener" class="btn-primary">Book a Call</a>
         </div>
 
         <!-- Footer -->

@@ -20,7 +20,7 @@
     <link rel="apple-touch-icon" href="logo.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -31,347 +31,125 @@
             --accent: #0088DB;
             --accent-hover: #0099f0;
             --accent-warm: #38b2f5;
-            --accent-glow: rgba(0,136,219,0.15);
             --background: #0a0e17;
             --background-alt: #111827;
-            --border: #1e293b;
-            --border-light: #2a3a50;
-            --card-bg: rgba(17,24,39,0.7);
-            --card-bg-solid: #111827;
-            --gradient-start: #0088DB;
-            --gradient-end: #38b2f5;
-            --radius-sm: 8px;
+            --border: rgba(255,255,255,0.08);
+            --border-light: rgba(255,255,255,0.12);
+            --radius-pill: 980px;
             --radius-md: 12px;
         }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            font-size: 16px;
-            line-height: 1.7;
+            font-size: 17px;
+            line-height: 1.47;
             color: var(--text-primary);
             background: var(--background);
             min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(ellipse at 20% 0%, rgba(0,136,219,0.06) 0%, transparent 50%),
-                          radial-gradient(ellipse at 80% 100%, rgba(56,178,245,0.04) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        a {
-            color: var(--accent);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        a:hover {
-            color: var(--accent-hover);
-            text-decoration: underline;
-            text-underline-offset: 2px;
-        }
+        a { color: var(--accent); text-decoration: none; transition: color 0.3s ease; }
+        a:hover { color: var(--accent-hover); text-decoration: none; }
 
         /* Animations */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .animate-fade-in { animation: fadeIn 0.8s ease forwards; }
+        .animate-fade-up { animation: fadeInUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards; }
+        .animate-delay-1 { animation-delay: 0.15s; opacity: 0; }
+        .animate-delay-2 { animation-delay: 0.3s; opacity: 0; }
+        .animate-delay-3 { animation-delay: 0.45s; opacity: 0; }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .animate-fade-in { animation: fadeIn 0.6s ease forwards; }
-        .animate-fade-up { animation: fadeInUp 0.6s ease forwards; }
-        .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
-        .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
-        .animate-delay-3 { animation-delay: 0.3s; opacity: 0; }
-
-        /* Glassmorphism Header */
+        /* Header */
         .site-header {
             position: sticky;
             top: 0;
             z-index: 100;
-            padding: 1rem 2rem;
             background: rgba(10, 14, 23, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px) saturate(1.8);
+            -webkit-backdrop-filter: blur(20px) saturate(1.8);
             border-bottom: 1px solid var(--border);
+            padding: 0 2rem;
         }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .header-logo {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            text-decoration: none;
-            letter-spacing: -0.02em;
-        }
-
-        .header-logo:hover {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        .header-nav {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .nav-link {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            font-weight: 500;
-            text-decoration: none;
-            transition: color 0.2s ease;
-            position: relative;
-        }
-
-        .nav-link:hover {
-            color: var(--text-primary);
-            text-decoration: none;
-        }
-
-        .nav-link.active {
-            color: var(--accent);
-        }
-
-        .nav-link.active::after {
-            content: '';
-            position: absolute;
-            bottom: -0.5rem;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--accent);
-            border-radius: 1px;
-        }
+        .header-container { display: flex; justify-content: space-between; align-items: center; max-width: 1000px; margin: 0 auto; height: 48px; }
+        .header-logo { font-size: 1rem; font-weight: 600; color: var(--text-primary); text-decoration: none; letter-spacing: -0.01em; }
+        .header-logo:hover { color: var(--text-primary); text-decoration: none; opacity: 0.8; }
+        .header-nav { display: flex; gap: 0.25rem; }
+        .nav-link { padding: 0.35rem 0.75rem; color: var(--text-secondary); font-size: 0.8125rem; font-weight: 400; transition: color 0.3s ease; text-decoration: none; }
+        .nav-link:hover { color: var(--text-primary); text-decoration: none; }
+        .nav-link.active { color: var(--text-primary); font-weight: 500; }
 
         /* Main Wrapper */
-        .main-wrapper {
-            max-width: 780px;
-            margin: 0 auto;
-            padding: 4rem 2rem 6rem;
-        }
+        .main-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 2rem 8rem; }
 
         /* Page Title */
-        .page-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 3rem;
-            letter-spacing: -0.02em;
-        }
+        .page-title { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.5rem; padding-top: 4rem; }
 
         /* How I Work */
         .how-i-work {
-            background: var(--card-bg);
+            background: rgba(255,255,255,0.03);
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
             padding: 2rem 2.25rem;
             margin-bottom: 3rem;
         }
 
-        .section-label {
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .section-label::before {
-            content: '';
-            width: 20px;
-            height: 2px;
-            background: var(--accent);
-            border-radius: 1px;
-        }
+        .section-label { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 700; text-transform: none; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 1.5rem; padding-top: 4rem; }
+        .section-label::before { display: none; }
 
         .how-i-work p {
             color: var(--text-secondary);
-            line-height: 1.8;
+            font-size: 1.125rem;
+            font-weight: 300;
+            line-height: 1.6;
             margin-bottom: 1.25rem;
         }
-
-        .how-i-work p:last-child {
-            margin-bottom: 0;
-        }
+        .how-i-work p:last-child { margin-bottom: 0; }
 
         /* Section Divider */
-        .section-divider {
-            border: none;
-            border-top: 1px solid var(--border);
-            margin: 4rem 0;
-        }
+        .section-divider { display: none; }
 
         /* Email Main */
-        .email-main {
-            font-size: 1.35rem;
-            margin-bottom: 3rem;
-            line-height: 1.8;
-        }
-
-        .email-main a {
-            color: var(--text-primary);
-            font-weight: 600;
-            font-size: 1.4rem;
-        }
-
-        .email-main a:hover {
-            color: var(--accent);
-            text-decoration: none;
-        }
+        .email-main { font-size: 1.35rem; margin-bottom: 3rem; line-height: 1.8; }
+        .email-main a { color: var(--text-primary); font-weight: 600; font-size: 1.4rem; }
+        .email-main a:hover { color: var(--accent); text-decoration: none; }
 
         /* Body Text */
-        .body-text {
-            color: var(--text-secondary);
-            margin-bottom: 1.75rem;
-            line-height: 1.8;
-        }
-
-        .body-text-spaced {
-            color: var(--text-secondary);
-            margin-bottom: 3rem;
-            line-height: 1.8;
-        }
+        .body-text { color: var(--text-secondary); font-size: 1.125rem; font-weight: 300; line-height: 1.6; margin-bottom: 1.75rem; }
+        .body-text-spaced { color: var(--text-secondary); font-size: 1.125rem; font-weight: 300; line-height: 1.6; margin-bottom: 3rem; }
 
         /* Buttons */
-        .btn-primary {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            color: #ffffff;
-            padding: 0.75rem 1.75rem;
-            border-radius: var(--radius-sm);
-            font-size: 0.95rem;
-            font-weight: 600;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,136,219,0.35);
-            text-decoration: none;
-            color: #ffffff;
-        }
-
-        .btn-primary:hover::before {
-            left: 100%;
-        }
+        .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 2rem; background: var(--accent); color: #ffffff; border: none; border-radius: var(--radius-pill); font-size: 1rem; font-weight: 500; cursor: pointer; transition: background 0.3s ease; text-decoration: none; font-family: inherit; letter-spacing: -0.01em; }
+        .btn-primary:hover { background: var(--accent-hover); text-decoration: none; color: #ffffff; }
 
         /* Location */
-        .location {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-top: 6rem;
-        }
+        .location { color: var(--text-muted); font-size: 0.95rem; font-weight: 300; margin-top: 6rem; }
 
         /* Footer */
-        .footer-section {
-            margin-top: 5rem;
-            padding-top: 3rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-email-main {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            margin-bottom: 2.5rem;
-            display: block;
-        }
-
-        .footer-email-main:hover {
-            color: var(--accent);
-        }
-
-        .footer-columns {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .footer-col h4 {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 1rem;
-        }
-
+        .footer-section { margin-top: 8rem; padding-top: 4rem; border-top: 1px solid var(--border); }
+        .footer-email-main { color: var(--text-secondary); font-size: 1rem; font-weight: 300; margin-bottom: 3rem; display: block; }
+        .footer-email-main:hover { color: var(--accent); }
+        .footer-columns { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2.5rem; }
+        .footer-col h4 { font-size: 0.6875rem; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.25rem; }
         .footer-col ul { list-style: none; }
         .footer-col li { margin-bottom: 0.5rem; }
-
-        .footer-col a {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        .footer-col a:hover {
-            color: var(--accent);
-        }
-
-        .footer-bottom {
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-location {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-bottom: 0.35rem;
-        }
-
-        .copyright {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
+        .footer-col a { color: var(--text-secondary); font-size: 0.875rem; font-weight: 300; }
+        .footer-col a:hover { color: var(--accent); }
+        .footer-bottom { padding-top: 2rem; border-top: 1px solid var(--border); }
+        .footer-location { color: var(--text-muted); font-size: 0.8125rem; font-weight: 300; margin-bottom: 0.35rem; }
+        .copyright { color: var(--text-muted); font-size: 0.8125rem; font-weight: 300; }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .main-wrapper { padding: 3rem 1.5rem 4rem; }
-            .page-title { font-size: 1.5rem; }
+            .header-nav { display: none; }
+            .main-wrapper { padding: 0 2rem 6rem; }
             .footer-columns { grid-template-columns: 1fr 1fr; }
-            .site-header { padding: 1rem 1.5rem; }
-            .header-nav { gap: 1rem; }
-            .nav-link { font-size: 0.85rem; }
         }
-
         @media (max-width: 480px) {
-            .main-wrapper { padding: 2rem 1.25rem 3rem; }
+            .site-header { padding: 0 1.5rem; }
+            .main-wrapper { padding: 0 1.5rem 4rem; }
             .footer-columns { grid-template-columns: 1fr; }
             .email-main { font-size: 1.15rem; }
             .email-main a { font-size: 1.2rem; }
@@ -384,12 +162,10 @@
         <div class="header-container">
             <a href="/" class="header-logo">Seth Forte</a>
             <nav class="header-nav">
-                <a href="/" class="nav-link">Home</a>
                 <a href="/services.html" class="nav-link">Services</a>
                 <a href="/case-studies.html" class="nav-link">Work</a>
                 <a href="/writing.html" class="nav-link">Writing</a>
                 <a href="/about.html" class="nav-link">About</a>
-                <a href="/reviews.html" class="nav-link">Reviews</a>
                 <a href="/contact.html" class="nav-link active">Contact</a>
             </nav>
         </div>
@@ -400,7 +176,7 @@
 
         <!-- How I Work -->
         <div class="how-i-work animate-fade-up animate-delay-2">
-            <h2 class="section-label">How I Work</h2>
+            <h2 class="section-label" style="padding-top: 0; font-size: 1.15rem; margin-bottom: 1.25rem;">How I Work</h2>
             <p>Every project starts with a scoping call. I ask a lot of questions about how your business actually runs day to day, not just what you think you need built. Most of the time, the real problem is different from what people expect.</p>
             <p>From there, I put together a clear scope with deliverables, timeline, and pricing. No hourly billing, no scope creep. You know exactly what you're getting before we start.</p>
             <p>Once we kick off, I build in weekly check-ins so you always know where things stand. When the project wraps, I hand everything off with documentation and training. You own everything I build.</p>
