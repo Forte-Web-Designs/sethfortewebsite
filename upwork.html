@@ -150,6 +150,12 @@
         .step-card h3 { font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.4rem; }
         .step-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
 
+        /* Services Menu */
+        .services-menu { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 1.5rem; }
+        .services-group h3 { font-size: 0.875rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.75rem; }
+        .services-group ul { list-style: none; }
+        .services-group li { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; padding: 0.25rem 0; }
+
         /* Buttons */
         .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 2rem; background: var(--accent); color: #ffffff; border: none; border-radius: var(--radius-pill); font-size: 1rem; font-weight: 500; cursor: pointer; transition: background 0.3s ease; text-decoration: none; font-family: inherit; letter-spacing: -0.01em; }
         .btn-primary:hover { background: var(--accent-hover); text-decoration: none; color: #ffffff; }
@@ -179,6 +185,7 @@
             .main-wrapper { padding: 0 2rem 6rem; }
             .capability-grid { grid-template-columns: 1fr; }
             .steps-grid { grid-template-columns: 1fr; }
+            .services-menu { grid-template-columns: 1fr; }
             .footer-columns { grid-template-columns: 1fr 1fr; }
             .review-card { padding: 1.25rem 1.5rem; }
         }
@@ -206,8 +213,8 @@
 
     <main class="main-wrapper">
         <div class="page-hero">
-            <h1 class="page-title animate-fade-up animate-delay-1">You know what's broken. I know how to fix it.</h1>
-            <p class="page-subtitle animate-fade-up animate-delay-2">I build the systems that keep your business from running on manual work and duct tape. CRM, automation, AI, lead gen... if it should be running itself and it's not, that's what I do.</p>
+            <h1 class="page-title animate-fade-up animate-delay-1">I build the systems your business should have had six months ago.</h1>
+            <p class="page-subtitle animate-fade-up animate-delay-2">CRM infrastructure, workflow automation, AI tools, and lead generation pipelines. I've built 60+ of these for businesses across 12 industries... most of them came to me after the first person they hired couldn't get it done.</p>
             <div class="page-badges animate-fade-up animate-delay-3">
                 <span class="page-badge">Top Rated</span>
                 <span class="page-badge">100% Job Success</span>
@@ -327,6 +334,57 @@
                 <div class="step-number">Step 3</div>
                 <h3>Handoff</h3>
                 <p>You get the working system, a walkthrough on video, and documentation that makes sense. You own everything I build.</p>
+            </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <h2 class="section-label">What I Get Hired For</h2>
+
+        <div class="services-menu">
+            <div class="services-group">
+                <h3>CRM and Infrastructure</h3>
+                <ul>
+                    <li>CRM setup and pipeline builds (HubSpot, GoHighLevel, ActiveCampaign, Pipedrive)</li>
+                    <li>Payment processing and Stripe integration</li>
+                    <li>Email deliverability (SPF, DKIM, DMARC)</li>
+                    <li>Booking and scheduling automation</li>
+                    <li>Contact migration and data cleanup</li>
+                    <li>Client onboarding automation</li>
+                </ul>
+            </div>
+            <div class="services-group">
+                <h3>Lead Generation</h3>
+                <ul>
+                    <li>Meta and Google ad campaign setup</li>
+                    <li>Sales funnel builds (opt-in to purchase)</li>
+                    <li>Email and SMS nurture sequences</li>
+                    <li>Landing pages and conversion tracking</li>
+                    <li>Inbound lead capture and routing</li>
+                    <li>Meta Lead Ads to CRM integration</li>
+                </ul>
+            </div>
+            <div class="services-group">
+                <h3>AI and Automation</h3>
+                <ul>
+                    <li>AI voice agents (Vapi, Synthflow, Voiceflow)</li>
+                    <li>Chat and WhatsApp intake bots</li>
+                    <li>AI document search and data extraction</li>
+                    <li>Content repurposing pipelines</li>
+                    <li>Workflow automation (n8n, Make, Zapier, Power Automate)</li>
+                    <li>Back-office process automation</li>
+                </ul>
+            </div>
+            <div class="services-group">
+                <h3>Reporting and Operations</h3>
+                <ul>
+                    <li>Ad spend reporting dashboards</li>
+                    <li>Social media scheduling automation</li>
+                    <li>Customer support routing</li>
+                    <li>Recruiting pipeline automation</li>
+                    <li>E-commerce automation (Shopify, WooCommerce)</li>
+                    <li>Dispatch and contractor assignment systems</li>
+                </ul>
             </div>
         </div>
 
