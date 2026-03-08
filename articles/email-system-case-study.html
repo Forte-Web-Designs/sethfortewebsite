@@ -8,698 +8,217 @@
     <meta name="author" content="Seth Forte">
     <link rel="icon" type="image/jpeg" href="../logo.jpg">
     <link rel="apple-touch-icon" href="../logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --text-primary: #f0ece4;
-            --text-secondary: #b8b2a8;
-            --text-muted: #8a8578;
-            --accent: #e8734a;
-            --accent-warm: #f0b866;
-            --background: #0f1117;
-            --background-alt: #161922;
-            --border: #2b2f3d;
-            --card-bg: #1c1f2b;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            font-size: 17px;
-            line-height: 1.7;
-            color: var(--text-primary);
-            background: var(--background);
-            background-image: radial-gradient(ellipse at 20% 0%, rgba(232,115,74,0.06) 0%, transparent 50%),
-                              radial-gradient(ellipse at 80% 100%, rgba(240,184,102,0.04) 0%, transparent 50%);
-            background-attachment: fixed;
-        }
-
-        a {
-            color: var(--accent);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .animate-fade-in {
-            animation: fadeIn 0.6s ease forwards;
-        }
-
-        .animate-fade-up {
-            animation: fadeInUp 0.6s ease forwards;
-        }
-
-        .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
-        .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
-
-        /* Layout */
-        .site-wrapper {
-            display: flex;
-            min-height: 100vh;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Sidebar */
-        .sidebar {
-            width: 280px;
-            padding: 3rem 2rem;
-            border-right: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .profile-photo {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 1.5rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .profile-photo:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        .profile-name {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.25rem;
-        }
-
-        .profile-tagline {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            line-height: 1.4;
-        }
-
-        .nav-links {
-            list-style: none;
-            margin-bottom: auto;
-            width: 100%;
-        }
-
-        .nav-links li {
-            margin-bottom: 0.5rem;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            display: block;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            transition: background 0.2s ease, color 0.2s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--text-primary);
-            background: var(--card-bg);
-            text-decoration: none;
-        }
-
-        .nav-links a.active {
-            color: var(--text-primary);
-            background: var(--card-bg);
-        }
-
-        .sidebar-email {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
-            width: 100%;
-        }
-
-        .sidebar-email a {
-            color: var(--text-muted);
-        }
-
-        .sidebar-email a:hover {
-            color: var(--accent);
-        }
-
-        /* Main Content */
-        .main-content {
-            flex: 1;
-            padding: 5rem 4rem 6rem;
-            max-width: 780px;
-        }
-
-        /* Article Styles */
-        .back-link {
-            display: inline-block;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 2rem;
-        }
-
-        .back-link:hover {
-            color: var(--accent);
-        }
-
-        .article-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            line-height: 1.3;
-            margin-bottom: 1rem;
-        }
-
-        .article-meta {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 3rem;
-        }
-
-        .article-body p {
-            margin-bottom: 1.5rem;
-        }
-
-        .article-body h2 {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-top: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .article-body h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .article-body strong {
-            font-weight: 600;
-        }
-
-        .article-body ul, .article-body ol {
-            margin-bottom: 1.5rem;
-            padding-left: 1.5rem;
-        }
-
-        .article-body li {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Footer */
-        .footer-section {
-            margin-top: 5rem;
-            padding-top: 3rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-email {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        .copyright {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-top: 1rem;
-        }
-
-        /* Site Header */
-        .site-header {
-            padding: 1rem 2rem;
-            border-bottom: 1px solid var(--border);
-            background: var(--background);
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .header-logo {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            text-decoration: none;
-        }
-
-        .header-logo:hover {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        .header-nav {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .header-nav a {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            text-decoration: none;
-        }
-
-        .header-nav a:hover {
-            color: var(--text-primary);
-        }
-        .footer-email-main {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            margin-bottom: 2.5rem;
-            display: block;
-        }
-
-        .footer-columns {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .footer-col h4 {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 1rem;
-        }
-
-        .footer-col ul { list-style: none; }
-        .footer-col li { margin-bottom: 0.5rem; }
-
-        .footer-col a {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        .footer-col a:hover { color: var(--accent); }
-
-        .footer-bottom {
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-location {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-bottom: 0.35rem;
-        }
-
-
-        /* Responsive */
-        @media (max-width: 900px) {
-            .site-header {
-                display: none;
-            }
-
-            .site-wrapper {
-                flex-direction: column;
-            }
-
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-                border-right: none;
-                border-bottom: none;
-                padding: 2.5rem 2rem;
-                text-align: center;
-                align-items: center;
-                background: var(--background);
-            }
-
-            .profile-photo {
-                width: 100px;
-                height: 100px;
-                margin-bottom: 1rem;
-            }
-
-            .profile-name {
-                font-size: 1.5rem;
-            }
-
-            .profile-tagline {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            line-height: 1.4;
-        }
-
-            .nav-links {
-                display: flex;
-                justify-content: center;
-                gap: 1rem;
-                flex-wrap: wrap;
-                margin-bottom: 1.5rem;
-                padding: 1rem 0;
-                border-top: 1px solid var(--border);
-                border-bottom: 1px solid var(--border);
-                width: 100%;
-            }
-
-            .nav-links li {
-                margin-bottom: 0;
-            }
-
-            .sidebar-email {
-                display: block;
-                margin-top: 0;
-                padding-top: 0;
-                border-top: none;
-            }
-
-            .main-content {
-                padding: 3rem 2rem 4rem;
-                text-align: left;
-            }
-
-            .footer-columns { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-        }
-
-        @media (max-width: 600px) {
-            .site-header {
-                padding: 1rem 1.5rem;
-            }
-
-            .header-nav {
-                gap: 1rem;
-            }
-
-            .header-nav a {
-                font-size: 0.9rem;
-            }
-
-            .sidebar {
-                padding: 2rem 1.5rem;
-            }
-
-            .profile-photo {
-                width: 90px;
-                height: 90px;
-            }
-
-            .profile-name {
-                font-size: 1.35rem;
-            }
-
-            .nav-links {
-                gap: 0.75rem;
-                flex-wrap: wrap;
-            }
-
-            .main-content {
-                padding: 2rem 1.5rem 3rem;
-            }
-
-            .footer-columns { grid-template-columns: 1fr; }
-
-            .article-title {
-                font-size: 1.6rem;
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --text-primary: #f0f4f8; --text-secondary: #94a3b8; --text-muted: #64748b; --accent: #0088DB; --accent-hover: #0099f0; --accent-warm: #38b2f5; --accent-glow: rgba(0,136,219,0.15); --background: #0a0e17; --background-alt: #111827; --border: #1e293b; --border-light: #2a3a50; --card-bg: rgba(17,24,39,0.7); --card-bg-solid: #111827; --gradient-start: #0088DB; --gradient-end: #38b2f5; --radius-sm: 8px; --radius-md: 12px; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 17px; line-height: 1.7; color: var(--text-primary); background: var(--background); min-height: 100vh; }
+        body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 20% 0%, rgba(0,136,219,0.06) 0%, transparent 50%), radial-gradient(ellipse at 80% 100%, rgba(56,178,245,0.04) 0%, transparent 50%); pointer-events: none; z-index: -1; }
+        a { color: var(--accent); text-decoration: none; transition: color 0.2s ease; } a:hover { text-decoration: underline; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } } @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .animate-fade-in { animation: fadeIn 0.6s ease forwards; } .animate-fade-up { animation: fadeInUp 0.6s ease forwards; } .animate-delay-1 { animation-delay: 0.1s; opacity: 0; } .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
+        .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; } .reveal.visible { opacity: 1; transform: translateY(0); }
+        .site-header { position: sticky; top: 0; z-index: 100; background: rgba(10,14,23,0.8); backdrop-filter: blur(20px) saturate(1.2); -webkit-backdrop-filter: blur(20px) saturate(1.2); border-bottom: 1px solid var(--border); padding: 0 2rem; }
+        .header-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; height: 64px; }
+        .header-logo { font-size: 1.1rem; font-weight: 700; color: var(--text-primary); text-decoration: none; letter-spacing: -0.02em; } .header-logo:hover { color: var(--accent); text-decoration: none; }
+        .header-nav { display: flex; gap: 0.25rem; align-items: center; }
+        .nav-link { padding: 0.5rem 1rem; border-radius: var(--radius-sm); color: var(--text-secondary); font-size: 0.875rem; font-weight: 500; transition: all 0.2s ease; text-decoration: none; } .nav-link:hover { background: rgba(255,255,255,0.05); color: var(--text-primary); text-decoration: none; } .nav-link.active { background: var(--accent-glow); color: var(--accent); }
+        .main-wrapper { max-width: 780px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+        .back-link { display: inline-block; color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 2rem; } .back-link:hover { color: var(--accent); }
+        .article-title { font-size: 2rem; font-weight: 700; color: var(--text-primary); line-height: 1.3; margin-bottom: 1rem; letter-spacing: -0.02em; }
+        .article-meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 3rem; }
+        .article-body p { margin-bottom: 1.5rem; } .article-body h2 { font-size: 1.4rem; font-weight: 600; color: var(--text-primary); margin-top: 3rem; margin-bottom: 1rem; } .article-body h3 { font-size: 1.2rem; font-weight: 600; color: var(--text-primary); margin-top: 2rem; margin-bottom: 1rem; } .article-body strong { font-weight: 600; } .article-body ul, .article-body ol { margin-bottom: 1.5rem; padding-left: 1.5rem; } .article-body li { margin-bottom: 0.5rem; }
+        .footer-section { margin-top: 5rem; padding-top: 3rem; border-top: 1px solid var(--border); } .footer-email-main { color: var(--text-secondary); font-size: 1rem; margin-bottom: 2.5rem; display: block; }
+        .footer-columns { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2.5rem; }
+        .footer-col h4 { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem; } .footer-col ul { list-style: none; } .footer-col li { margin-bottom: 0.5rem; } .footer-col a { color: var(--text-secondary); font-size: 0.9rem; } .footer-col a:hover { color: var(--accent); }
+        .footer-bottom { padding-top: 1.5rem; border-top: 1px solid var(--border); } .footer-location { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.35rem; } .copyright { color: var(--text-muted); font-size: 0.9rem; margin-top: 1rem; }
+        @media (max-width: 768px) { .main-wrapper { padding: 3rem 1.5rem 4rem; } .article-title { font-size: 1.6rem; } .footer-columns { grid-template-columns: 1fr 1fr; gap: 1.5rem; } }
+        @media (max-width: 480px) { .main-wrapper { padding: 2rem 1.25rem 3rem; } .footer-columns { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
-    <header class="site-header">
-        <div class="header-container">
-            <a href="/" class="header-logo">Seth Forte</a>
-            <nav class="header-nav">
-                <a href="/">Home</a>
-                <a href="/services.html">Services</a>
-                <a href="/case-studies.html">Work</a>
-                <a href="/writing.html">Writing</a>
-                <a href="/about.html">About</a>
-                <a href="/reviews.html">Reviews</a>
-                <a href="/contact.html">Contact</a>
-            </nav>
+    <header class="site-header"><div class="header-container"><a href="/" class="header-logo">Seth Forte</a><nav class="header-nav"><a href="/" class="nav-link">Home</a><a href="/services.html" class="nav-link">Services</a><a href="/case-studies.html" class="nav-link">Work</a><a href="/writing.html" class="nav-link active">Writing</a><a href="/about.html" class="nav-link">About</a><a href="/reviews.html" class="nav-link">Reviews</a><a href="/contact.html" class="nav-link">Contact</a></nav></div></header>
+
+    <main class="main-wrapper">
+        <a href="/writing.html" class="back-link animate-fade-up">&larr; Back to Writing</a>
+
+        <h1 class="article-title animate-fade-up animate-delay-1">Building An Email System That Actually Works (And The Part I Got Wrong The First Time)</h1>
+        <p class="article-meta animate-fade-up animate-delay-2">Oct 26, 2025</p>
+
+        <div class="article-body">
+            <p>A furniture company came to me with a problem that sounds simple.</p>
+
+            <p>They needed to send customers updates when their custom orders moved through production. In production. Complete. Ready for delivery.</p>
+
+            <p>They were doing it manually. Someone would check Shopify, see an order was ready, copy the customer's email, write the update, send it.</p>
+
+            <p>For hundreds of orders a month. Every single one manually.</p>
+
+            <p>They wanted it automated.</p>
+
+            <h2>What We Built</h2>
+
+            <p>The system monitors their Shopify orders every five minutes. When the team updates an order's status in Shopify, the automation sends the appropriate email to the customer automatically.</p>
+
+            <p>No buttons to click. No extra steps. Just update the order like you normally would and the customer gets notified.</p>
+
+            <p>Nine different email templates depending on what's happening:</p>
+
+            <ul>
+                <li>Order is queued for production</li>
+                <li>In production (different versions for lighting, rugs, furniture)</li>
+                <li>Production complete</li>
+                <li>Ready for delivery (different versions for each delivery partner)</li>
+            </ul>
+
+            <p>Every email logs automatically to the order notes with a timestamp. Complete audit trail of what was sent when.</p>
+
+            <p>Sounds straightforward. It mostly was. Except for the part I got wrong.</p>
+
+            <h2>The Thing I Messed Up</h2>
+
+            <p>Here's what I didn't think through carefully enough at first.</p>
+
+            <p>The "order is in the queue" email was supposed to send 24 hours after an order was placed. That buffer gives them time to check inventory and make adjustments before telling the customer anything.</p>
+
+            <p>Once that email sent, the system tracked it by setting a field called "last email sent" to "Queued."</p>
+
+            <p>Then when the order went into production, they'd update the status and a different email would send.</p>
+
+            <p>Simple logic: if the current status doesn't match what was last sent, send the new email.</p>
+
+            <p>Except that logic created a problem I didn't anticipate.</p>
+
+            <p>The queue email trigger was based on a field called "fulfillment type" being set to "Made to Order." Once that queue email sent, I told the team they needed to clear that field so the status emails would work properly.</p>
+
+            <p>That's an extra manual step. The whole point was to eliminate manual steps.</p>
+
+            <p>Worse, if they forgot to clear it, the status emails wouldn't send at all. The system would see "Made to Order" was still set and get confused about what email to send next.</p>
+
+            <p>I'd built something that required the team to remember an arbitrary technical rule that existed only because of how I'd structured the logic.</p>
+
+            <p>That's bad automation.</p>
+
+            <h2>How I Fixed It</h2>
+
+            <p>Three weeks after launch, I rebuilt the core logic.</p>
+
+            <p>Now the queue check and the status check are completely independent. They don't interfere with each other at all.</p>
+
+            <p>Queue email: only sends if NO email has been sent yet and the order is 24+ hours old.</p>
+
+            <p>Status emails: send whenever the status changes, regardless of what the "fulfillment type" field says.</p>
+
+            <p>The team can leave "Made to Order" set permanently. It doesn't matter. The status emails work anyway.</p>
+
+            <p>No more manual clearing of fields. No more remembering technical rules. Just update the order status and everything happens automatically.</p>
+
+            <p>That's how it should have worked from the beginning.</p>
+
+            <h2>What Actually Took Time</h2>
+
+            <p>The technical part was straightforward. Pull order data from Shopify. Check if status changed. Route to correct email template. Send email. Update tracking.</p>
+
+            <p>That's maybe three days of work including testing.</p>
+
+            <p>The part that took time was everything around that.</p>
+
+            <p>Understanding their actual workflow. They have three different delivery partners. Each partner needs slightly different messaging in the email. Orders go through different production timelines depending on whether it's lighting, furniture, or rugs.</p>
+
+            <p>None of that was documented anywhere. I had to sit with the team and map out every scenario. "What happens if this?" "What do you tell customers when that happens?"</p>
+
+            <p>Then building the email templates. Not the technical part of building them. The actual messaging. What tone do they want? What information do customers need at each stage? What questions does this email need to answer?</p>
+
+            <p>I went through probably six drafts of each email with their team before we landed on versions that felt right.</p>
+
+            <p>Then there's the edge cases. What if someone changes the delivery partner after the first delivery email already sent? What if they need to move an order backwards in status? What if an order sits in queue for more than 24 hours but the status never gets updated?</p>
+
+            <p>All of that requires thinking through the logic and making decisions about how the system should behave.</p>
+
+            <p>The code is the easy part. Figuring out what the code should actually do is where the work is.</p>
+
+            <h2>Why This Actually Matters</h2>
+
+            <p>The system saves them probably 15 hours a week. That's 60 hours a month they're not spending on manual email management.</p>
+
+            <p>But the bigger impact is consistency.</p>
+
+            <p>Before, customer communication depended on who was working that day and whether they remembered to send the update. Some customers got detailed information. Some got one-sentence emails. Some got nothing and had to reach out asking for updates.</p>
+
+            <p>Now every customer gets the same clear communication at the exact right time. Every single order. Without anyone having to remember to do it.</p>
+
+            <p>That's what good automation does. It removes the manual work and makes the process reliable.</p>
+
+            <h2>What I'd Do Differently</h2>
+
+            <p>If I built this again from scratch, I'd spend more time upfront mapping the workflow before writing any code.</p>
+
+            <p>I jumped into building too fast. Built the queue email logic before fully thinking through how it would interact with the status emails.</p>
+
+            <p>That's why I had to rebuild it three weeks later.</p>
+
+            <p>I should have drawn out the entire flow on paper first. "If this field is set and that field is set, what happens?" Work through every combination before writing a line of code.</p>
+
+            <p>Would have saved me the rebuild work.</p>
+
+            <p>The other thing: I should have tested more edge cases before launch. The system worked fine for the happy path. Order goes from new to queued to in production to complete to delivery. Perfect.</p>
+
+            <p>But what about the unhappy paths? What if someone makes a mistake and needs to change things? What if an order skips a step? What if they need to send a delivery email twice because the first delivery attempt failed?</p>
+
+            <p>I found those issues during the first few weeks of production. Would have been better to find them during testing.</p>
+
+            <h2>The Documentation Problem</h2>
+
+            <p>The other time-consuming part was documentation.</p>
+
+            <p>I built a 34-page manual for this system. User guide, technical documentation, troubleshooting guide, maintenance plan.</p>
+
+            <p>That took almost as long as building the system itself.</p>
+
+            <p>But it's necessary. The team needs to know how to use it. They need to know what to do when something breaks. They need to know how the system actually works so they're not just blindly trusting a black box.</p>
+
+            <p>I see consultants skip this part all the time. They build something, show the client how it works once, then disappear.</p>
+
+            <p>Six months later the client has questions. Or something breaks. Or they want to modify it. And they have no idea how anything works because there's no documentation.</p>
+
+            <p>That's not doing the job completely.</p>
+
+            <h2>What This Project Taught Me</h2>
+
+            <p>You can't just automate a process. You have to understand the process first.</p>
+
+            <p>I thought I understood their workflow from our initial conversations. I didn't. Not really. I understood the basics but not all the nuances.</p>
+
+            <p>That's why the first version had issues. I built what I thought they needed instead of what they actually needed.</p>
+
+            <p>The rebuild worked better because by then I'd seen the system run in production for three weeks. I'd seen the edge cases. I'd talked to the team about what was annoying them.</p>
+
+            <p>That's when I actually understood the workflow well enough to build the right solution.</p>
+
+            <p>The lesson: spend more time in discovery. Ask more questions. Map out more scenarios. Don't start building until you actually understand the problem.</p>
+
+            <p>The technical skills matter. But understanding the problem matters more.</p>
         </div>
-    </header>
 
-    <div class="site-wrapper">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <img src="../headshot-6.jpg" alt="Seth Forte" class="profile-photo animate-fade-in">
-            <h1 class="profile-name">Seth Forte</h1>
-            <p class="profile-tagline">Systems Architect &<br>Automation Consultant</p>
-
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/services.html">Services</a></li>
-                    <li><a href="/case-studies.html">Work</a></li>
-                    <li><a href="/writing.html" class="active">Writing</a></li>
-                    <li><a href="/about.html">About</a></li>
-                    <li><a href="/contact.html">Contact</a></li>
-                </ul>
-            </nav>
-
-            <div class="sidebar-email">
-                <a href="mailto:seth@launchforte.com">seth@launchforte.com</a>
+        <div class="footer-section">
+            <a href="mailto:seth@launchforte.com" class="footer-email-main">seth@launchforte.com</a>
+            <div class="footer-columns">
+                <div class="footer-col"><h4>Services</h4><ul><li><a href="/foundation.html">Foundation</a></li><li><a href="/launch.html">Launch</a></li><li><a href="/growth.html">Growth</a></li><li><a href="/scale.html">Scale</a></li><li><a href="/review.html">Infrastructure Review</a></li></ul></div>
+                <div class="footer-col"><h4>Company</h4><ul><li><a href="/about.html">About</a></li><li><a href="/case-studies.html">Case Studies</a></li><li><a href="/writing.html">Writing</a></li><li><a href="/contact.html">Contact</a></li></ul></div>
+                <div class="footer-col"><h4>Connect</h4><ul><li><a href="https://www.linkedin.com/in/seth-forte/" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="/upwork.html">Upwork Portfolio</a></li><li><a href="https://www.upwork.com/freelancers/sethf5" target="_blank" rel="noopener">Upwork Profile</a></li><li><a href="mailto:seth@launchforte.com">Email</a></li></ul></div>
             </div>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <a href="/writing.html" class="back-link animate-fade-up">&larr; Back to Writing</a>
-
-            <h1 class="article-title animate-fade-up animate-delay-1">Building An Email System That Actually Works (And The Part I Got Wrong The First Time)</h1>
-            <p class="article-meta animate-fade-up animate-delay-2">Oct 26, 2025</p>
-
-            <div class="article-body">
-                <p>A furniture company came to me with a problem that sounds simple.</p>
-
-                <p>They needed to send customers updates when their custom orders moved through production. In production. Complete. Ready for delivery.</p>
-
-                <p>They were doing it manually. Someone would check Shopify, see an order was ready, copy the customer's email, write the update, send it.</p>
-
-                <p>For hundreds of orders a month. Every single one manually.</p>
-
-                <p>They wanted it automated.</p>
-
-                <h2>What We Built</h2>
-
-                <p>The system monitors their Shopify orders every five minutes. When the team updates an order's status in Shopify, the automation sends the appropriate email to the customer automatically.</p>
-
-                <p>No buttons to click. No extra steps. Just update the order like you normally would and the customer gets notified.</p>
-
-                <p>Nine different email templates depending on what's happening:</p>
-
-                <ul>
-                    <li>Order is queued for production</li>
-                    <li>In production (different versions for lighting, rugs, furniture)</li>
-                    <li>Production complete</li>
-                    <li>Ready for delivery (different versions for each delivery partner)</li>
-                </ul>
-
-                <p>Every email logs automatically to the order notes with a timestamp. Complete audit trail of what was sent when.</p>
-
-                <p>Sounds straightforward. It mostly was. Except for the part I got wrong.</p>
-
-                <h2>The Thing I Messed Up</h2>
-
-                <p>Here's what I didn't think through carefully enough at first.</p>
-
-                <p>The "order is in the queue" email was supposed to send 24 hours after an order was placed. That buffer gives them time to check inventory and make adjustments before telling the customer anything.</p>
-
-                <p>Once that email sent, the system tracked it by setting a field called "last email sent" to "Queued."</p>
-
-                <p>Then when the order went into production, they'd update the status and a different email would send.</p>
-
-                <p>Simple logic: if the current status doesn't match what was last sent, send the new email.</p>
-
-                <p>Except that logic created a problem I didn't anticipate.</p>
-
-                <p>The queue email trigger was based on a field called "fulfillment type" being set to "Made to Order." Once that queue email sent, I told the team they needed to clear that field so the status emails would work properly.</p>
-
-                <p>That's an extra manual step. The whole point was to eliminate manual steps.</p>
-
-                <p>Worse, if they forgot to clear it, the status emails wouldn't send at all. The system would see "Made to Order" was still set and get confused about what email to send next.</p>
-
-                <p>I'd built something that required the team to remember an arbitrary technical rule that existed only because of how I'd structured the logic.</p>
-
-                <p>That's bad automation.</p>
-
-                <h2>How I Fixed It</h2>
-
-                <p>Three weeks after launch, I rebuilt the core logic.</p>
-
-                <p>Now the queue check and the status check are completely independent. They don't interfere with each other at all.</p>
-
-                <p>Queue email: only sends if NO email has been sent yet and the order is 24+ hours old.</p>
-
-                <p>Status emails: send whenever the status changes, regardless of what the "fulfillment type" field says.</p>
-
-                <p>The team can leave "Made to Order" set permanently. It doesn't matter. The status emails work anyway.</p>
-
-                <p>No more manual clearing of fields. No more remembering technical rules. Just update the order status and everything happens automatically.</p>
-
-                <p>That's how it should have worked from the beginning.</p>
-
-                <h2>What Actually Took Time</h2>
-
-                <p>The technical part was straightforward. Pull order data from Shopify. Check if status changed. Route to correct email template. Send email. Update tracking.</p>
-
-                <p>That's maybe three days of work including testing.</p>
-
-                <p>The part that took time was everything around that.</p>
-
-                <p>Understanding their actual workflow. They have three different delivery partners. Each partner needs slightly different messaging in the email. Orders go through different production timelines depending on whether it's lighting, furniture, or rugs.</p>
-
-                <p>None of that was documented anywhere. I had to sit with the team and map out every scenario. "What happens if this?" "What do you tell customers when that happens?"</p>
-
-                <p>Then building the email templates. Not the technical part of building them. The actual messaging. What tone do they want? What information do customers need at each stage? What questions does this email need to answer?</p>
-
-                <p>I went through probably six drafts of each email with their team before we landed on versions that felt right.</p>
-
-                <p>Then there's the edge cases. What if someone changes the delivery partner after the first delivery email already sent? What if they need to move an order backwards in status? What if an order sits in queue for more than 24 hours but the status never gets updated?</p>
-
-                <p>All of that requires thinking through the logic and making decisions about how the system should behave.</p>
-
-                <p>The code is the easy part. Figuring out what the code should actually do is where the work is.</p>
-
-                <h2>Why This Actually Matters</h2>
-
-                <p>The system saves them probably 15 hours a week. That's 60 hours a month they're not spending on manual email management.</p>
-
-                <p>But the bigger impact is consistency.</p>
-
-                <p>Before, customer communication depended on who was working that day and whether they remembered to send the update. Some customers got detailed information. Some got one-sentence emails. Some got nothing and had to reach out asking for updates.</p>
-
-                <p>Now every customer gets the same clear communication at the exact right time. Every single order. Without anyone having to remember to do it.</p>
-
-                <p>That's what good automation does. It removes the manual work and makes the process reliable.</p>
-
-                <h2>What I'd Do Differently</h2>
-
-                <p>If I built this again from scratch, I'd spend more time upfront mapping the workflow before writing any code.</p>
-
-                <p>I jumped into building too fast. Built the queue email logic before fully thinking through how it would interact with the status emails.</p>
-
-                <p>That's why I had to rebuild it three weeks later.</p>
-
-                <p>I should have drawn out the entire flow on paper first. "If this field is set and that field is set, what happens?" Work through every combination before writing a line of code.</p>
-
-                <p>Would have saved me the rebuild work.</p>
-
-                <p>The other thing: I should have tested more edge cases before launch. The system worked fine for the happy path. Order goes from new to queued to in production to complete to delivery. Perfect.</p>
-
-                <p>But what about the unhappy paths? What if someone makes a mistake and needs to change things? What if an order skips a step? What if they need to send a delivery email twice because the first delivery attempt failed?</p>
-
-                <p>I found those issues during the first few weeks of production. Would have been better to find them during testing.</p>
-
-                <h2>The Documentation Problem</h2>
-
-                <p>The other time-consuming part was documentation.</p>
-
-                <p>I built a 34-page manual for this system. User guide, technical documentation, troubleshooting guide, maintenance plan.</p>
-
-                <p>That took almost as long as building the system itself.</p>
-
-                <p>But it's necessary. The team needs to know how to use it. They need to know what to do when something breaks. They need to know how the system actually works so they're not just blindly trusting a black box.</p>
-
-                <p>I see consultants skip this part all the time. They build something, show the client how it works once, then disappear.</p>
-
-                <p>Six months later the client has questions. Or something breaks. Or they want to modify it. And they have no idea how anything works because there's no documentation.</p>
-
-                <p>That's not doing the job completely.</p>
-
-                <h2>What This Project Taught Me</h2>
-
-                <p>You can't just automate a process. You have to understand the process first.</p>
-
-                <p>I thought I understood their workflow from our initial conversations. I didn't. Not really. I understood the basics but not all the nuances.</p>
-
-                <p>That's why the first version had issues. I built what I thought they needed instead of what they actually needed.</p>
-
-                <p>The rebuild worked better because by then I'd seen the system run in production for three weeks. I'd seen the edge cases. I'd talked to the team about what was annoying them.</p>
-
-                <p>That's when I actually understood the workflow well enough to build the right solution.</p>
-
-                <p>The lesson: spend more time in discovery. Ask more questions. Map out more scenarios. Don't start building until you actually understand the problem.</p>
-
-                <p>The technical skills matter. But understanding the problem matters more.</p>
+            <div class="footer-bottom">
+                <p class="footer-location">Based in Dallas, Texas. Serving clients nationwide.</p>
+                <p class="copyright">&copy; 2026 Seth Forte. All rights reserved.</p>
             </div>
+        </div>
+    </main>
 
-            <div class="footer-section">
-                <a href="mailto:seth@launchforte.com" class="footer-email-main">seth@launchforte.com</a>
-
-                <div class="footer-columns">
-                    <div class="footer-col">
-                        <h4>Services</h4>
-                        <ul>
-                            <li><a href="/foundation.html">Foundation</a></li>
-                            <li><a href="/launch.html">Launch</a></li>
-                            <li><a href="/growth.html">Growth</a></li>
-                            <li><a href="/scale.html">Scale</a></li>
-                            <li><a href="/review.html">Infrastructure Review</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Company</h4>
-                        <ul>
-                            <li><a href="/about.html">About</a></li>
-                            <li><a href="/case-studies.html">Case Studies</a></li>
-                            <li><a href="/writing.html">Writing</a></li>
-                            <li><a href="/contact.html">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Connect</h4>
-                        <ul>
-                            <li><a href="https://www.linkedin.com/in/seth-forte/" target="_blank" rel="noopener">LinkedIn</a></li>
-                            <li><a href="/upwork.html">Upwork Portfolio</a></li>
-                            <li><a href="https://www.upwork.com/freelancers/sethf5" target="_blank" rel="noopener">Upwork Profile</a></li>
-                            <li><a href="mailto:seth@launchforte.com">Email</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="footer-bottom">
-                    <p class="footer-location">Based in Dallas, Texas. Serving clients nationwide.</p>
-                    <p class="copyright">&copy; 2026 Seth Forte. All rights reserved.</p>
-                </div>
-            </div>
-        </main>
-    </div>
-<script src="/theme-toggle.js"></script>
 <script src="/scroll-reveal.js"></script>
+<script src="/theme-toggle.js"></script>
 <script src="/scroll-top.js"></script>
+<script src="/hamburger.js"></script>
 </body>
 </html>

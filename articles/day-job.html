@@ -8,642 +8,160 @@
     <meta name="author" content="Seth Forte">
     <link rel="icon" type="image/jpeg" href="../logo.jpg">
     <link rel="apple-touch-icon" href="../logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --text-primary: #f0ece4;
-            --text-secondary: #b8b2a8;
-            --text-muted: #8a8578;
-            --accent: #e8734a;
-            --accent-warm: #f0b866;
-            --background: #0f1117;
-            --background-alt: #161922;
-            --border: #2b2f3d;
-            --card-bg: #1c1f2b;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            font-size: 17px;
-            line-height: 1.7;
-            color: var(--text-primary);
-            background: var(--background);
-            background-image: radial-gradient(ellipse at 20% 0%, rgba(232,115,74,0.06) 0%, transparent 50%),
-                              radial-gradient(ellipse at 80% 100%, rgba(240,184,102,0.04) 0%, transparent 50%);
-            background-attachment: fixed;
-
-        }
-
-        a {
-            color: var(--accent);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .animate-fade-in {
-            animation: fadeIn 0.6s ease forwards;
-        }
-
-        .animate-fade-up {
-            animation: fadeInUp 0.6s ease forwards;
-        }
-
-        .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
-        .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
-
-        /* Layout */
-        .site-wrapper {
-            display: flex;
-            min-height: 100vh;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Sidebar */
-        .sidebar {
-            width: 280px;
-            padding: 3rem 2rem;
-            border-right: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .profile-photo {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 1.5rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .profile-photo:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        .profile-name {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.25rem;
-        }
-
-        .profile-tagline {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            line-height: 1.4;
-        }
-
-        .nav-links {
-            list-style: none;
-            margin-bottom: auto;
-            width: 100%;
-        }
-
-        .nav-links li {
-            margin-bottom: 0.5rem;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            display: block;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            transition: background 0.2s ease, color 0.2s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--text-primary);
-            background: var(--card-bg);
-            text-decoration: none;
-        }
-
-        .nav-links a.active {
-            color: var(--text-primary);
-            background: var(--card-bg);
-        }
-
-        .sidebar-email {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
-            width: 100%;
-        }
-
-        .sidebar-email a {
-            color: var(--text-muted);
-        }
-
-        .sidebar-email a:hover {
-            color: var(--accent);
-        }
-
-        /* Main Content */
-        .main-content {
-            flex: 1;
-            padding: 5rem 4rem 6rem;
-            max-width: 780px;
-        }
-
-        /* Article Styles */
-        .back-link {
-            display: inline-block;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 2rem;
-        }
-
-        .back-link:hover {
-            color: var(--accent);
-        }
-
-        .article-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            line-height: 1.3;
-            margin-bottom: 1rem;
-        }
-
-        .article-meta {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 3rem;
-        }
-
-        .article-body p {
-            margin-bottom: 1.5rem;
-        }
-
-        .article-body h2 {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-top: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .article-body h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .article-body strong {
-            font-weight: 600;
-        }
-
-        .article-body ul, .article-body ol {
-            margin-bottom: 1.5rem;
-            padding-left: 1.5rem;
-        }
-
-        .article-body li {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Footer */
-        .footer-section {
-            margin-top: 5rem;
-            padding-top: 3rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-email {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        .copyright {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-top: 1rem;
-        }
-
-        /* Site Header */
-        .site-header {
-            padding: 1rem 2rem;
-            border-bottom: 1px solid var(--border);
-            background: var(--background);
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .header-logo {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            text-decoration: none;
-        }
-
-        .header-logo:hover {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        .header-nav {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .header-nav a {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            text-decoration: none;
-        }
-
-        .header-nav a:hover {
-            color: var(--text-primary);
-        }
-        .footer-email-main {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            margin-bottom: 2.5rem;
-            display: block;
-        }
-
-        .footer-columns {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .footer-col h4 {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 1rem;
-        }
-
-        .footer-col ul { list-style: none; }
-        .footer-col li { margin-bottom: 0.5rem; }
-
-        .footer-col a {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        .footer-col a:hover { color: var(--accent); }
-
-        .footer-bottom {
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-location {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-bottom: 0.35rem;
-        }
-
-
-        /* Responsive */
-        @media (max-width: 900px) {
-            .site-header {
-                display: none;
-            }
-
-            .site-wrapper {
-                flex-direction: column;
-            }
-
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-                border-right: none;
-                border-bottom: none;
-                padding: 2.5rem 2rem;
-                text-align: center;
-                align-items: center;
-                background: var(--background);
-            }
-
-            .profile-photo {
-                width: 100px;
-                height: 100px;
-                margin-bottom: 1rem;
-            }
-
-            .profile-name {
-                font-size: 1.5rem;
-            }
-
-            .profile-tagline {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            line-height: 1.4;
-        }
-
-            .nav-links {
-                display: flex;
-                justify-content: center;
-                gap: 1rem;
-                flex-wrap: wrap;
-                margin-bottom: 1.5rem;
-                padding: 1rem 0;
-                border-top: 1px solid var(--border);
-                border-bottom: 1px solid var(--border);
-                width: 100%;
-            }
-
-            .nav-links li {
-                margin-bottom: 0;
-            }
-
-            .sidebar-email {
-                display: block;
-                margin-top: 0;
-                padding-top: 0;
-                border-top: none;
-            }
-
-            .main-content {
-                padding: 3rem 2rem 4rem;
-                text-align: left;
-            }
-
-            .footer-columns { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-        }
-
-        @media (max-width: 600px) {
-            .site-header {
-                padding: 1rem 1.5rem;
-            }
-
-            .header-nav {
-                gap: 1rem;
-            }
-
-            .header-nav a {
-                font-size: 0.9rem;
-            }
-
-            .sidebar {
-                padding: 2rem 1.5rem;
-            }
-
-            .profile-photo {
-                width: 90px;
-                height: 90px;
-            }
-
-            .profile-name {
-                font-size: 1.35rem;
-            }
-
-            .nav-links {
-                gap: 0.75rem;
-                flex-wrap: wrap;
-            }
-
-            .main-content {
-                padding: 2rem 1.5rem 3rem;
-            }
-
-            .footer-columns { grid-template-columns: 1fr; }
-
-            .article-title {
-                font-size: 1.6rem;
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --text-primary: #f0f4f8; --text-secondary: #94a3b8; --text-muted: #64748b; --accent: #0088DB; --accent-hover: #0099f0; --accent-warm: #38b2f5; --accent-glow: rgba(0,136,219,0.15); --background: #0a0e17; --background-alt: #111827; --border: #1e293b; --border-light: #2a3a50; --card-bg: rgba(17,24,39,0.7); --card-bg-solid: #111827; --gradient-start: #0088DB; --gradient-end: #38b2f5; --radius-sm: 8px; --radius-md: 12px; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 17px; line-height: 1.7; color: var(--text-primary); background: var(--background); min-height: 100vh; }
+        body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 20% 0%, rgba(0,136,219,0.06) 0%, transparent 50%), radial-gradient(ellipse at 80% 100%, rgba(56,178,245,0.04) 0%, transparent 50%); pointer-events: none; z-index: -1; }
+        a { color: var(--accent); text-decoration: none; transition: color 0.2s ease; } a:hover { text-decoration: underline; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } } @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .animate-fade-in { animation: fadeIn 0.6s ease forwards; } .animate-fade-up { animation: fadeInUp 0.6s ease forwards; } .animate-delay-1 { animation-delay: 0.1s; opacity: 0; } .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
+        .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; } .reveal.visible { opacity: 1; transform: translateY(0); }
+        .site-header { position: sticky; top: 0; z-index: 100; background: rgba(10,14,23,0.8); backdrop-filter: blur(20px) saturate(1.2); -webkit-backdrop-filter: blur(20px) saturate(1.2); border-bottom: 1px solid var(--border); padding: 0 2rem; }
+        .header-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; height: 64px; }
+        .header-logo { font-size: 1.1rem; font-weight: 700; color: var(--text-primary); text-decoration: none; letter-spacing: -0.02em; } .header-logo:hover { color: var(--accent); text-decoration: none; }
+        .header-nav { display: flex; gap: 0.25rem; align-items: center; }
+        .nav-link { padding: 0.5rem 1rem; border-radius: var(--radius-sm); color: var(--text-secondary); font-size: 0.875rem; font-weight: 500; transition: all 0.2s ease; text-decoration: none; } .nav-link:hover { background: rgba(255,255,255,0.05); color: var(--text-primary); text-decoration: none; } .nav-link.active { background: var(--accent-glow); color: var(--accent); }
+        .main-wrapper { max-width: 780px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+        .back-link { display: inline-block; color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 2rem; } .back-link:hover { color: var(--accent); }
+        .article-title { font-size: 2rem; font-weight: 700; color: var(--text-primary); line-height: 1.3; margin-bottom: 1rem; letter-spacing: -0.02em; }
+        .article-meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 3rem; }
+        .article-body p { margin-bottom: 1.5rem; } .article-body h2 { font-size: 1.4rem; font-weight: 600; color: var(--text-primary); margin-top: 3rem; margin-bottom: 1rem; } .article-body h3 { font-size: 1.2rem; font-weight: 600; color: var(--text-primary); margin-top: 2rem; margin-bottom: 1rem; } .article-body strong { font-weight: 600; } .article-body ul, .article-body ol { margin-bottom: 1.5rem; padding-left: 1.5rem; } .article-body li { margin-bottom: 0.5rem; }
+        .footer-section { margin-top: 5rem; padding-top: 3rem; border-top: 1px solid var(--border); } .footer-email-main { color: var(--text-secondary); font-size: 1rem; margin-bottom: 2.5rem; display: block; }
+        .footer-columns { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2.5rem; }
+        .footer-col h4 { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem; } .footer-col ul { list-style: none; } .footer-col li { margin-bottom: 0.5rem; } .footer-col a { color: var(--text-secondary); font-size: 0.9rem; } .footer-col a:hover { color: var(--accent); }
+        .footer-bottom { padding-top: 1.5rem; border-top: 1px solid var(--border); } .footer-location { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.35rem; } .copyright { color: var(--text-muted); font-size: 0.9rem; margin-top: 1rem; }
+        @media (max-width: 768px) { .main-wrapper { padding: 3rem 1.5rem 4rem; } .article-title { font-size: 1.6rem; } .footer-columns { grid-template-columns: 1fr 1fr; gap: 1.5rem; } }
+        @media (max-width: 480px) { .main-wrapper { padding: 2rem 1.25rem 3rem; } .footer-columns { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
-    <header class="site-header">
-        <div class="header-container">
-            <a href="/" class="header-logo">Seth Forte</a>
-            <nav class="header-nav">
-                <a href="/">Home</a>
-                <a href="/services.html">Services</a>
-                <a href="/case-studies.html">Work</a>
-                <a href="/writing.html">Writing</a>
-                <a href="/about.html">About</a>
-                <a href="/reviews.html">Reviews</a>
-                <a href="/contact.html">Contact</a>
-            </nav>
+    <header class="site-header"><div class="header-container"><a href="/" class="header-logo">Seth Forte</a><nav class="header-nav"><a href="/" class="nav-link">Home</a><a href="/services.html" class="nav-link">Services</a><a href="/case-studies.html" class="nav-link">Work</a><a href="/writing.html" class="nav-link active">Writing</a><a href="/about.html" class="nav-link">About</a><a href="/reviews.html" class="nav-link">Reviews</a><a href="/contact.html" class="nav-link">Contact</a></nav></div></header>
+
+    <main class="main-wrapper">
+        <a href="/writing.html" class="back-link animate-fade-up">&larr; Back to Writing</a>
+
+        <h1 class="article-title animate-fade-up animate-delay-1">Why I Don't Take Every Project (And That's Fine)</h1>
+        <p class="article-meta animate-fade-up animate-delay-2">Aug 3, 2025</p>
+
+        <div class="article-body">
+            <p>I don't take every project. I don't want to.</p>
+
+            <p>I'd rather do fewer projects that actually move the needle... and do them right.</p>
+
+            <p>And yeah, that means I say no a lot.</p>
+
+            <p>Here's why that's actually better for everyone.</p>
+
+            <p><strong>Financial stability removes desperation.</strong></p>
+
+            <p>When your consulting income needs to pay all your bills, you can't afford to be selective. Every potential client becomes essential. You take projects that aren't quite right because you need the money.</p>
+
+            <p>I don't have that pressure. My baseline was covered, which took the pressure off. The consulting money is extra. Nice to have but not necessary.</p>
+
+            <p>That freedom changes everything. I can turn down bad-fit projects. Can be honest when automation isn't the solution. Can recommend clients wait until they're ready instead of pushing to close a deal.</p>
+
+            <p>My clients get better service because I'm not desperate for their business. Sounds counterintuitive. But it's true.</p>
+
+            <p><strong>I stay sharp on enterprise systems.</strong></p>
+
+            <p>Enterprise environments run massive systems. Millions of customers. Complex infrastructure. High security requirements. Regulatory compliance.</p>
+
+            <p>Working in that environment teaches you things you can't learn building small business tools. How to design for scale. How to handle edge cases. How to think about security and compliance.</p>
+
+            <p>Those lessons transfer to consulting work. Even small businesses benefit from enterprise thinking. Better architecture. Cleaner code. More reliable systems.</p>
+
+            <p>If I went full-time consulting, I'd only work on small to medium projects. Valuable work. But I'd lose touch with enterprise-level problems. My skills would narrow.</p>
+
+            <p><strong>I get exposure to new technology.</strong></p>
+
+            <p>Large companies invest in tools and platforms you'd never justify for consulting projects. Enterprise software. Advanced monitoring. Cutting-edge infrastructure.</p>
+
+            <p>I learn those systems. Understand their strengths and limitations. Sometimes find ways to apply concepts to smaller projects.</p>
+
+            <p>That cross-pollination works both ways. I learn things in consulting that improve how I think about enterprise problems. And enterprise experience helps me recognize patterns in client work.</p>
+
+            <p>Each job makes me better at the other.</p>
+
+            <p><strong>I have colleagues and mentors.</strong></p>
+
+            <p>Consulting is lonely. You work alone. Make decisions alone. Solve problems alone. No team to bounce ideas off. No senior engineers to learn from.</p>
+
+            <p>In enterprise environments, you're surrounded by smart people. Engineers who've been doing this for decades. Architects who design systems you'd never encounter in consulting.</p>
+
+            <p>I learn from them. Ask questions. Get feedback. That's valuable. More valuable than people realize when they're eager to quit and work for themselves.</p>
+
+            <p>If you ever decide to go all-in, you'll lose that. It's a trade-off worth considering.</p>
+
+            <p><strong>I'm building consulting slowly.</strong></p>
+
+            <p>If consulting was my only income, I'd need to grow fast. Take on more clients. Build a team. Scale up. That's the only way to make full-time consulting financially viable.</p>
+
+            <p>But I don't want that. At least not yet. I like being a solo consultant. Small client base. Deep work on interesting problems. No management overhead.</p>
+
+            <p>Having a stable base lets you keep consulting small and sustainable. Take your time. Choose projects carefully. Maintain quality.</p>
+
+            <p>No pressure to scale before I'm ready.</p>
+
+            <p><strong>There are downsides.</strong></p>
+
+            <p>I'm not pretending this is perfect.</p>
+
+            <p>Working two jobs is tiring. Even when one is part-time. Some weeks I'm stretched thin. Juggling deadlines from both. Saying no to personal plans because I have client work.</p>
+
+            <p>And there's a ceiling. I can only take so many consulting projects while working full-time. That limits growth. Limits income potential.</p>
+
+            <p>If I went all-in, I could probably make more money. Could take on bigger clients. Could hire people and build an agency.</p>
+
+            <p>Maybe that's the eventual path. But I'm not in a rush.</p>
+
+            <p><strong>This works for me. Might not work for you.</strong></p>
+
+            <p>If you hate your day job, quit. Life's too short to be miserable forty hours weekly just for stability.</p>
+
+            <p>If you have dependents who rely on your income, maybe you need the security. Maybe you can't afford the risk of full-time consulting.</p>
+
+            <p>If you're young with low expenses, now's the time to take risks. Try consulting full-time. Worst case, you can always get another job.</p>
+
+            <p>If you're close to retirement, probably not the time to leave a stable job with good benefits.</p>
+
+            <p>Everyone's situation is different. There's no universal right answer.</p>
+
+            <p><strong>For me, right now, this is right.</strong></p>
+
+            <p>I like the variety. Enterprise-level engineering. Consulting work with small businesses. Different problems. Different scales. Keeps things interesting.</p>
+
+            <p>I like the stability. Knowing my bills are covered no matter what happens with consulting. No financial stress. No pressure to compromise on project quality for cash flow.</p>
+
+            <p>I like the learning. Enterprise experience informing consulting work. Consulting work informing enterprise experience. Getting better at both.</p>
+
+            <p>Eventually I might go full-time consulting. When Launch Forte is bigger. When I've built enough client base that growth feels natural. When I'm ready for that next chapter.</p>
+
+            <p>But there's no deadline. No rush. I'm building this the way I want to build it.</p>
+
+            <p>And that mindset is still the point.</p>
         </div>
-    </header>
 
-    <div class="site-wrapper">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <img src="../headshot-6.jpg" alt="Seth Forte" class="profile-photo animate-fade-in">
-            <h1 class="profile-name">Seth Forte</h1>
-            <p class="profile-tagline">Systems Architect &<br>Automation Consultant</p>
-
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/services.html">Services</a></li>
-                    <li><a href="/case-studies.html">Work</a></li>
-                    <li><a href="/writing.html" class="active">Writing</a></li>
-                    <li><a href="/about.html">About</a></li>
-                    <li><a href="/contact.html">Contact</a></li>
-                </ul>
-            </nav>
-
-            <div class="sidebar-email">
-                <a href="mailto:seth@launchforte.com">seth@launchforte.com</a>
+        <div class="footer-section">
+            <a href="mailto:seth@launchforte.com" class="footer-email-main">seth@launchforte.com</a>
+            <div class="footer-columns">
+                <div class="footer-col"><h4>Services</h4><ul><li><a href="/foundation.html">Foundation</a></li><li><a href="/launch.html">Launch</a></li><li><a href="/growth.html">Growth</a></li><li><a href="/scale.html">Scale</a></li><li><a href="/review.html">Infrastructure Review</a></li></ul></div>
+                <div class="footer-col"><h4>Company</h4><ul><li><a href="/about.html">About</a></li><li><a href="/case-studies.html">Case Studies</a></li><li><a href="/writing.html">Writing</a></li><li><a href="/contact.html">Contact</a></li></ul></div>
+                <div class="footer-col"><h4>Connect</h4><ul><li><a href="https://www.linkedin.com/in/seth-forte/" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="/upwork.html">Upwork Portfolio</a></li><li><a href="https://www.upwork.com/freelancers/sethf5" target="_blank" rel="noopener">Upwork Profile</a></li><li><a href="mailto:seth@launchforte.com">Email</a></li></ul></div>
             </div>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <a href="/writing.html" class="back-link animate-fade-up">← Back to Writing</a>
-
-            <h1 class="article-title animate-fade-up animate-delay-1">Why I Don't Take Every Project (And That's Fine)</h1>
-            <p class="article-meta animate-fade-up animate-delay-2">Aug 3, 2025</p>
-
-            <div class="article-body">
-                <p>I don't take every project. I don't want to.</p>
-
-                <p>I'd rather do fewer projects that actually move the needle... and do them right.</p>
-
-                <p>And yeah, that means I say no a lot.</p>
-
-                <p>Here's why that's actually better for everyone.</p>
-
-                <p><strong>Financial stability removes desperation.</strong></p>
-
-                <p>When your consulting income needs to pay all your bills, you can't afford to be selective. Every potential client becomes essential. You take projects that aren't quite right because you need the money.</p>
-
-                <p>I don't have that pressure. My baseline was covered, which took the pressure off. The consulting money is extra. Nice to have but not necessary.</p>
-
-                <p>That freedom changes everything. I can turn down bad-fit projects. Can be honest when automation isn't the solution. Can recommend clients wait until they're ready instead of pushing to close a deal.</p>
-
-                <p>My clients get better service because I'm not desperate for their business. Sounds counterintuitive. But it's true.</p>
-
-                <p><strong>I stay sharp on enterprise systems.</strong></p>
-
-                <p>Enterprise environments run massive systems. Millions of customers. Complex infrastructure. High security requirements. Regulatory compliance.</p>
-
-                <p>Working in that environment teaches you things you can't learn building small business tools. How to design for scale. How to handle edge cases. How to think about security and compliance.</p>
-
-                <p>Those lessons transfer to consulting work. Even small businesses benefit from enterprise thinking. Better architecture. Cleaner code. More reliable systems.</p>
-
-                <p>If I went full-time consulting, I'd only work on small to medium projects. Valuable work. But I'd lose touch with enterprise-level problems. My skills would narrow.</p>
-
-                <p><strong>I get exposure to new technology.</strong></p>
-
-                <p>Large companies invest in tools and platforms you'd never justify for consulting projects. Enterprise software. Advanced monitoring. Cutting-edge infrastructure.</p>
-
-                <p>I learn those systems. Understand their strengths and limitations. Sometimes find ways to apply concepts to smaller projects.</p>
-
-                <p>That cross-pollination works both ways. I learn things in consulting that improve how I think about enterprise problems. And enterprise experience helps me recognize patterns in client work.</p>
-
-                <p>Each job makes me better at the other.</p>
-
-                <p><strong>I have colleagues and mentors.</strong></p>
-
-                <p>Consulting is lonely. You work alone. Make decisions alone. Solve problems alone. No team to bounce ideas off. No senior engineers to learn from.</p>
-
-                <p>In enterprise environments, you're surrounded by smart people. Engineers who've been doing this for decades. Architects who design systems you'd never encounter in consulting.</p>
-
-                <p>I learn from them. Ask questions. Get feedback. That's valuable. More valuable than people realize when they're eager to quit and work for themselves.</p>
-
-                <p>If you ever decide to go all-in, you'll lose that. It's a trade-off worth considering.</p>
-
-                <p><strong>I'm building consulting slowly.</strong></p>
-
-                <p>If consulting was my only income, I'd need to grow fast. Take on more clients. Build a team. Scale up. That's the only way to make full-time consulting financially viable.</p>
-
-                <p>But I don't want that. At least not yet. I like being a solo consultant. Small client base. Deep work on interesting problems. No management overhead.</p>
-
-                <p>Having a stable base lets you keep consulting small and sustainable. Take your time. Choose projects carefully. Maintain quality.</p>
-
-                <p>No pressure to scale before I'm ready.</p>
-
-                <p><strong>There are downsides.</strong></p>
-
-                <p>I'm not pretending this is perfect.</p>
-
-                <p>Working two jobs is tiring. Even when one is part-time. Some weeks I'm stretched thin. Juggling deadlines from both. Saying no to personal plans because I have client work.</p>
-
-                <p>And there's a ceiling. I can only take so many consulting projects while working full-time. That limits growth. Limits income potential.</p>
-
-                <p>If I went all-in, I could probably make more money. Could take on bigger clients. Could hire people and build an agency.</p>
-
-                <p>Maybe that's the eventual path. But I'm not in a rush.</p>
-
-                <p><strong>This works for me. Might not work for you.</strong></p>
-
-                <p>If you hate your day job, quit. Life's too short to be miserable forty hours weekly just for stability.</p>
-
-                <p>If you have dependents who rely on your income, maybe you need the security. Maybe you can't afford the risk of full-time consulting.</p>
-
-                <p>If you're young with low expenses, now's the time to take risks. Try consulting full-time. Worst case, you can always get another job.</p>
-
-                <p>If you're close to retirement, probably not the time to leave a stable job with good benefits.</p>
-
-                <p>Everyone's situation is different. There's no universal right answer.</p>
-
-                <p><strong>For me, right now, this is right.</strong></p>
-
-                <p>I like the variety. Enterprise-level engineering. Consulting work with small businesses. Different problems. Different scales. Keeps things interesting.</p>
-
-                <p>I like the stability. Knowing my bills are covered no matter what happens with consulting. No financial stress. No pressure to compromise on project quality for cash flow.</p>
-
-                <p>I like the learning. Enterprise experience informing consulting work. Consulting work informing enterprise experience. Getting better at both.</p>
-
-                <p>Eventually I might go full-time consulting. When Launch Forte is bigger. When I've built enough client base that growth feels natural. When I'm ready for that next chapter.</p>
-
-                <p>But there's no deadline. No rush. I'm building this the way I want to build it.</p>
-
-                <p>And that mindset is still the point.</p>
+            <div class="footer-bottom">
+                <p class="footer-location">Based in Dallas, Texas. Serving clients nationwide.</p>
+                <p class="copyright">&copy; 2026 Seth Forte. All rights reserved.</p>
             </div>
+        </div>
+    </main>
 
-            <div class="footer-section">
-                <a href="mailto:seth@launchforte.com" class="footer-email-main">seth@launchforte.com</a>
-
-                <div class="footer-columns">
-                    <div class="footer-col">
-                        <h4>Services</h4>
-                        <ul>
-                            <li><a href="/foundation.html">Foundation</a></li>
-                            <li><a href="/launch.html">Launch</a></li>
-                            <li><a href="/growth.html">Growth</a></li>
-                            <li><a href="/scale.html">Scale</a></li>
-                            <li><a href="/review.html">Infrastructure Review</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Company</h4>
-                        <ul>
-                            <li><a href="/about.html">About</a></li>
-                            <li><a href="/case-studies.html">Case Studies</a></li>
-                            <li><a href="/writing.html">Writing</a></li>
-                            <li><a href="/contact.html">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Connect</h4>
-                        <ul>
-                            <li><a href="https://www.linkedin.com/in/seth-forte/" target="_blank" rel="noopener">LinkedIn</a></li>
-                            <li><a href="/upwork.html">Upwork Portfolio</a></li>
-                            <li><a href="https://www.upwork.com/freelancers/sethf5" target="_blank" rel="noopener">Upwork Profile</a></li>
-                            <li><a href="mailto:seth@launchforte.com">Email</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="footer-bottom">
-                    <p class="footer-location">Based in Dallas, Texas. Serving clients nationwide.</p>
-                    <p class="copyright">&copy; 2026 Seth Forte. All rights reserved.</p>
-                </div>
-            </div>
-        </main>
-    </div>
-<script src="/theme-toggle.js"></script>
 <script src="/scroll-reveal.js"></script>
+<script src="/theme-toggle.js"></script>
 <script src="/scroll-top.js"></script>
+<script src="/hamburger.js"></script>
 </body>
 </html>

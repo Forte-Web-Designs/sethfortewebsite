@@ -8,611 +8,119 @@
     <meta name="author" content="Seth Forte">
     <link rel="icon" type="image/jpeg" href="../logo.jpg">
     <link rel="apple-touch-icon" href="../logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --text-primary: #f0ece4;
-            --text-secondary: #b8b2a8;
-            --text-muted: #8a8578;
-            --accent: #e8734a;
-            --accent-warm: #f0b866;
-            --background: #0f1117;
-            --background-alt: #161922;
-            --border: #2b2f3d;
-            --card-bg: #1c1f2b;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            font-size: 17px;
-            line-height: 1.7;
-            color: var(--text-primary);
-            background: var(--background);
-            background-image: radial-gradient(ellipse at 20% 0%, rgba(232,115,74,0.06) 0%, transparent 50%),
-                              radial-gradient(ellipse at 80% 100%, rgba(240,184,102,0.04) 0%, transparent 50%);
-            background-attachment: fixed;
-        }
-
-        a {
-            color: var(--accent);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .animate-fade-in {
-            animation: fadeIn 0.6s ease forwards;
-        }
-
-        .animate-fade-up {
-            animation: fadeInUp 0.6s ease forwards;
-        }
-
-        .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
-        .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
-
-        /* Layout */
-        .site-wrapper {
-            display: flex;
-            min-height: 100vh;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Sidebar */
-        .sidebar {
-            width: 280px;
-            padding: 3rem 2rem;
-            border-right: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .profile-photo {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 1.5rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .profile-photo:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        .profile-name {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.25rem;
-        }
-
-        .profile-tagline {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            line-height: 1.4;
-        }
-
-        .nav-links {
-            list-style: none;
-            margin-bottom: auto;
-            width: 100%;
-        }
-
-        .nav-links li {
-            margin-bottom: 0.5rem;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            display: block;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            transition: background 0.2s ease, color 0.2s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--text-primary);
-            background: var(--card-bg);
-            text-decoration: none;
-        }
-
-        .nav-links a.active {
-            color: var(--text-primary);
-            background: var(--card-bg);
-        }
-
-        .sidebar-email {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
-            width: 100%;
-        }
-
-        .sidebar-email a {
-            color: var(--text-muted);
-        }
-
-        .sidebar-email a:hover {
-            color: var(--accent);
-        }
-
-        /* Main Content */
-        .main-content {
-            flex: 1;
-            padding: 5rem 4rem 6rem;
-            max-width: 780px;
-        }
-
-        /* Article Styles */
-        .back-link {
-            display: inline-block;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 2rem;
-        }
-
-        .back-link:hover {
-            color: var(--accent);
-        }
-
-        .article-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            line-height: 1.3;
-            margin-bottom: 1rem;
-        }
-
-        .article-meta {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 3rem;
-        }
-
-        .article-body p {
-            margin-bottom: 1.5rem;
-        }
-
-        .article-body h2 {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-top: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .article-body h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .article-body strong {
-            font-weight: 600;
-        }
-
-        .article-body ul, .article-body ol {
-            margin-bottom: 1.5rem;
-            padding-left: 1.5rem;
-        }
-
-        .article-body li {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Footer */
-        .footer-section {
-            margin-top: 5rem;
-            padding-top: 3rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-email {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        .copyright {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-top: 1rem;
-        }
-
-        /* Site Header */
-        .site-header {
-            padding: 1rem 2rem;
-            border-bottom: 1px solid var(--border);
-            background: var(--background);
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .header-logo {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            text-decoration: none;
-        }
-
-        .header-logo:hover {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        .header-nav {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .header-nav a {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            text-decoration: none;
-        }
-
-        .header-nav a:hover {
-            color: var(--text-primary);
-        }
-        .footer-email-main {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            margin-bottom: 2.5rem;
-            display: block;
-        }
-
-        .footer-columns {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .footer-col h4 {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 1rem;
-        }
-
-        .footer-col ul { list-style: none; }
-        .footer-col li { margin-bottom: 0.5rem; }
-
-        .footer-col a {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        .footer-col a:hover { color: var(--accent); }
-
-        .footer-bottom {
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-location {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-bottom: 0.35rem;
-        }
-
-
-        /* Responsive */
-        @media (max-width: 900px) {
-            .site-header {
-                display: none;
-            }
-
-            .site-wrapper {
-                flex-direction: column;
-            }
-
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-                border-right: none;
-                border-bottom: none;
-                padding: 2.5rem 2rem;
-                text-align: center;
-                align-items: center;
-                background: var(--background);
-            }
-
-            .profile-photo {
-                width: 100px;
-                height: 100px;
-                margin-bottom: 1rem;
-            }
-
-            .profile-name {
-                font-size: 1.5rem;
-            }
-
-            .profile-tagline {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            line-height: 1.4;
-        }
-
-            .nav-links {
-                display: flex;
-                justify-content: center;
-                gap: 1rem;
-                flex-wrap: wrap;
-                margin-bottom: 1.5rem;
-                padding: 1rem 0;
-                border-top: 1px solid var(--border);
-                border-bottom: 1px solid var(--border);
-                width: 100%;
-            }
-
-            .nav-links li {
-                margin-bottom: 0;
-            }
-
-            .sidebar-email {
-                display: block;
-                margin-top: 0;
-                padding-top: 0;
-                border-top: none;
-            }
-
-            .main-content {
-                padding: 3rem 2rem 4rem;
-                text-align: left;
-            }
-
-            .footer-columns { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-        }
-
-        @media (max-width: 600px) {
-            .site-header {
-                padding: 1rem 1.5rem;
-            }
-
-            .header-nav {
-                gap: 1rem;
-            }
-
-            .header-nav a {
-                font-size: 0.9rem;
-            }
-
-            .sidebar {
-                padding: 2rem 1.5rem;
-            }
-
-            .profile-photo {
-                width: 90px;
-                height: 90px;
-            }
-
-            .profile-name {
-                font-size: 1.35rem;
-            }
-
-            .nav-links {
-                gap: 0.75rem;
-                flex-wrap: wrap;
-            }
-
-            .main-content {
-                padding: 2rem 1.5rem 3rem;
-            }
-
-            .footer-columns { grid-template-columns: 1fr; }
-
-            .article-title {
-                font-size: 1.6rem;
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --text-primary: #f0f4f8; --text-secondary: #94a3b8; --text-muted: #64748b; --accent: #0088DB; --accent-hover: #0099f0; --accent-warm: #38b2f5; --accent-glow: rgba(0,136,219,0.15); --background: #0a0e17; --background-alt: #111827; --border: #1e293b; --border-light: #2a3a50; --card-bg: rgba(17,24,39,0.7); --card-bg-solid: #111827; --gradient-start: #0088DB; --gradient-end: #38b2f5; --radius-sm: 8px; --radius-md: 12px; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 17px; line-height: 1.7; color: var(--text-primary); background: var(--background); }
+        body::before { content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(ellipse at 20% 0%, rgba(0,136,219,0.08) 0%, transparent 50%), radial-gradient(ellipse at 80% 100%, rgba(56,178,245,0.05) 0%, transparent 50%); pointer-events: none; z-index: 0; }
+        a { color: var(--accent); text-decoration: none; transition: color 0.2s ease; } a:hover { color: var(--accent-hover); text-decoration: underline; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } } @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .animate-fade-in { animation: fadeIn 0.6s ease forwards; } .animate-fade-up { animation: fadeInUp 0.6s ease forwards; } .animate-delay-1 { animation-delay: 0.1s; opacity: 0; } .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
+        .site-header { position: sticky; top: 0; z-index: 100; backdrop-filter: blur(20px) saturate(1.2); -webkit-backdrop-filter: blur(20px) saturate(1.2); background: rgba(10,14,23,0.8); border-bottom: 1px solid var(--border); }
+        .header-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 2rem; height: 64px; }
+        .header-logo { font-size: 1.1rem; font-weight: 700; color: var(--text-primary); text-decoration: none; } .header-logo:hover { color: var(--accent); text-decoration: none; }
+        .header-nav { display: flex; gap: 1.5rem; } .nav-link { color: var(--text-secondary); font-size: 0.9rem; font-weight: 500; text-decoration: none; transition: color 0.2s ease; } .nav-link:hover { color: var(--text-primary); text-decoration: none; } .nav-link.active { color: var(--accent); }
+        .main-wrapper { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+        .back-link { display: inline-block; color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 2rem; } .back-link:hover { color: var(--accent); }
+        .article-title { font-size: 2rem; font-weight: 700; color: var(--text-primary); line-height: 1.3; margin-bottom: 1rem; } .article-meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 3rem; }
+        .article-body p { margin-bottom: 1.5rem; } .article-body h2 { font-size: 1.4rem; font-weight: 600; color: var(--text-primary); margin-top: 3rem; margin-bottom: 1rem; } .article-body h3 { font-size: 1.2rem; font-weight: 600; color: var(--text-primary); margin-top: 2rem; margin-bottom: 1rem; } .article-body strong { font-weight: 600; } .article-body ul, .article-body ol { margin-bottom: 1.5rem; padding-left: 1.5rem; } .article-body li { margin-bottom: 0.5rem; }
+        .footer-section { margin-top: 5rem; padding-top: 3rem; border-top: 1px solid var(--border); } .footer-email-main { color: var(--text-secondary); font-size: 1rem; margin-bottom: 2.5rem; display: block; }
+        .footer-columns { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2.5rem; } .footer-col h4 { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem; } .footer-col ul { list-style: none; } .footer-col li { margin-bottom: 0.5rem; } .footer-col a { color: var(--text-secondary); font-size: 0.9rem; } .footer-col a:hover { color: var(--accent); }
+        .footer-bottom { padding-top: 1.5rem; border-top: 1px solid var(--border); } .footer-location { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.35rem; } .copyright { color: var(--text-muted); font-size: 0.9rem; margin-top: 1rem; }
+        @media (max-width: 768px) { .header-nav { gap: 1rem; } .nav-link { font-size: 0.85rem; } .main-wrapper { padding: 3rem 1.5rem 4rem; } .footer-columns { grid-template-columns: 1fr 1fr; gap: 1.5rem; } .article-title { font-size: 1.75rem; } }
+        @media (max-width: 480px) { .header-container { padding: 0 1rem; } .header-nav { gap: 0.75rem; } .nav-link { font-size: 0.8rem; } .main-wrapper { padding: 2rem 1rem 3rem; } .footer-columns { grid-template-columns: 1fr; } .article-title { font-size: 1.5rem; } }
     </style>
 </head>
 <body>
-    <header class="site-header">
-        <div class="header-container">
-            <a href="/" class="header-logo">Seth Forte</a>
-            <nav class="header-nav">
-                <a href="/">Home</a>
-                <a href="/services.html">Services</a>
-                <a href="/case-studies.html">Work</a>
-                <a href="/writing.html">Writing</a>
-                <a href="/about.html">About</a>
-                <a href="/reviews.html">Reviews</a>
-                <a href="/contact.html">Contact</a>
-            </nav>
+    <header class="site-header"><div class="header-container"><a href="/" class="header-logo">Seth Forte</a><nav class="header-nav"><a href="/" class="nav-link">Home</a><a href="/services.html" class="nav-link">Services</a><a href="/case-studies.html" class="nav-link">Work</a><a href="/writing.html" class="nav-link active">Writing</a><a href="/about.html" class="nav-link">About</a><a href="/reviews.html" class="nav-link">Reviews</a><a href="/contact.html" class="nav-link">Contact</a></nav></div></header>
+
+    <main class="main-wrapper">
+        <a href="/writing.html" class="back-link animate-fade-up">&larr; Back to Writing</a>
+        <h1 class="article-title animate-fade-up animate-delay-1">When AI Is Overkill (Most of the Time)</h1>
+        <p class="article-meta animate-fade-up animate-delay-2">Sep 28, 2025</p>
+
+        <div class="article-body">
+            <p>Everyone wants to use AI for everything now. It's the new shiny object.</p>
+
+            <p>But most business problems don't need AI. They need a simple workflow.</p>
+
+            <p>I had a client who wanted GPT-4 to process invoices. They'd heard about AI document processing. Thought it would solve their problem. Were ready to pay for it.</p>
+
+            <p>I asked what the invoices looked like. Same format every time. Same fields in the same places. From the same three vendors.</p>
+
+            <p>Turns out they didn't need AI. They needed a basic extraction template and an IF/THEN statement. Built it in 20 minutes. Saved them $40 per month in API costs. Works better than AI would have.</p>
+
+            <p>This happens constantly. People hear about AI and think that's the answer. Often it's not.</p>
+
+            <p><strong>Here's when you actually need AI.</strong> When the input is unpredictable. When context matters. When you need understanding, not just processing.</p>
+
+            <p>Customer support messages. Content generation. Complex data analysis. Document summarization from varied sources. Those are good AI use cases.</p>
+
+            <p>But routing emails based on keywords? That's not AI. That's filters.</p>
+
+            <p>Extracting data from standard forms? Not AI. That's template matching.</p>
+
+            <p>Scheduling appointments? Not AI. That's calendar logic.</p>
+
+            <p>Categorizing expenses? Not AI. That's rules.</p>
+
+            <p>I'm not against AI. I use it constantly. But I use it when it's actually needed.</p>
+
+            <p>The problem with AI is it costs more, runs slower, and sometimes gets things wrong. If a simple rule works 100% of the time, why use AI that works 95% of the time and costs more?</p>
+
+            <p><strong>Here's my decision framework.</strong> Start with the simplest solution that could work. Usually that's a basic workflow. IF/THEN logic. Filters. Rules.</p>
+
+            <p>Try that first. If it works, you're done. If it doesn't, add complexity.</p>
+
+            <p>Maybe you need data lookups. API calls. Conditional logic. Try those.</p>
+
+            <p>Still doesn't work? Now consider AI.</p>
+
+            <p>But don't start with AI. That's like using a sledgehammer to hang a picture. Sure, it'll work. But it's overkill.</p>
+
+            <p>I worked with an auction house processing thousands of products monthly. They wanted AI to write product descriptions. Made sense on the surface. Lots of products. Varied content. Good AI use case.</p>
+
+            <p>Except when I looked closer, 80% of their products fit standard templates. Electronics. Furniture. Tools. Same descriptions every time with different specs.</p>
+
+            <p>We built templates for the 80%. Used AI for the 20% that were unique or collectible. Saved them thousands in API costs. Faster processing. Better results.</p>
+
+            <p>That's the pattern. Use the simplest tool that works for each part of the problem.</p>
+
+            <p>Another client wanted AI to analyze customer feedback. Sentiment analysis. Topic extraction. The whole deal.</p>
+
+            <p>I asked how many feedback messages they got. About 30 per month.</p>
+
+            <p>You don't need AI for 30 messages. You need a human to read them and note patterns. Takes 20 minutes. Costs nothing. Probably more accurate.</p>
+
+            <p>The AI industry wants you to think AI is the answer to everything. It's not. It's a tool. A good one. But just a tool.</p>
+
+            <p>Use it when you need understanding, context, or handling unpredictable input. Don't use it when simple rules work fine.</p>
+
+            <p><strong>Here's the test.</strong> Can you write down the exact steps to handle this task? If yes, you probably don't need AI. Build a workflow.</p>
+
+            <p>If the steps change based on context you can't predict, now you might need AI.</p>
+
+            <p>Most business processes fall into the first category. They're predictable. They follow patterns. They can be handled with rules.</p>
+
+            <p>Save AI for the stuff that actually needs it. Your costs will be lower. Your systems will be faster. And they'll probably work better.</p>
+
+            <p>Simple beats complex almost every time.</p>
         </div>
-    </header>
 
-    <div class="site-wrapper">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <img src="../headshot-6.jpg" alt="Seth Forte" class="profile-photo animate-fade-in">
-            <h1 class="profile-name">Seth Forte</h1>
-            <p class="profile-tagline">Systems Architect &<br>Automation Consultant</p>
-
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/services.html">Services</a></li>
-                    <li><a href="/case-studies.html">Work</a></li>
-                    <li><a href="/writing.html" class="active">Writing</a></li>
-                    <li><a href="/about.html">About</a></li>
-                    <li><a href="/contact.html">Contact</a></li>
-                </ul>
-            </nav>
-
-            <div class="sidebar-email">
-                <a href="mailto:seth@launchforte.com">seth@launchforte.com</a>
+        <div class="footer-section">
+            <a href="mailto:seth@launchforte.com" class="footer-email-main">seth@launchforte.com</a>
+            <div class="footer-columns">
+                <div class="footer-col"><h4>Services</h4><ul><li><a href="/foundation.html">Foundation</a></li><li><a href="/launch.html">Launch</a></li><li><a href="/growth.html">Growth</a></li><li><a href="/scale.html">Scale</a></li><li><a href="/review.html">Infrastructure Review</a></li></ul></div>
+                <div class="footer-col"><h4>Company</h4><ul><li><a href="/about.html">About</a></li><li><a href="/case-studies.html">Case Studies</a></li><li><a href="/writing.html">Writing</a></li><li><a href="/contact.html">Contact</a></li></ul></div>
+                <div class="footer-col"><h4>Connect</h4><ul><li><a href="https://www.linkedin.com/in/seth-forte/" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="/upwork.html">Upwork Portfolio</a></li><li><a href="https://www.upwork.com/freelancers/sethf5" target="_blank" rel="noopener">Upwork Profile</a></li><li><a href="mailto:seth@launchforte.com">Email</a></li></ul></div>
             </div>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <a href="/writing.html" class="back-link animate-fade-up">&larr; Back to Writing</a>
-
-            <h1 class="article-title animate-fade-up animate-delay-1">When AI Is Overkill (Most of the Time)</h1>
-            <p class="article-meta animate-fade-up animate-delay-2">Sep 28, 2025</p>
-
-            <div class="article-body">
-                <p>Everyone wants to use AI for everything now. It's the new shiny object.</p>
-
-                <p>But most business problems don't need AI. They need a simple workflow.</p>
-
-                <p>I had a client who wanted GPT-4 to process invoices. They'd heard about AI document processing. Thought it would solve their problem. Were ready to pay for it.</p>
-
-                <p>I asked what the invoices looked like. Same format every time. Same fields in the same places. From the same three vendors.</p>
-
-                <p>Turns out they didn't need AI. They needed a basic extraction template and an IF/THEN statement. Built it in 20 minutes. Saved them $40 per month in API costs. Works better than AI would have.</p>
-
-                <p>This happens constantly. People hear about AI and think that's the answer. Often it's not.</p>
-
-                <p><strong>Here's when you actually need AI.</strong> When the input is unpredictable. When context matters. When you need understanding, not just processing.</p>
-
-                <p>Customer support messages. Content generation. Complex data analysis. Document summarization from varied sources. Those are good AI use cases.</p>
-
-                <p>But routing emails based on keywords? That's not AI. That's filters.</p>
-
-                <p>Extracting data from standard forms? Not AI. That's template matching.</p>
-
-                <p>Scheduling appointments? Not AI. That's calendar logic.</p>
-
-                <p>Categorizing expenses? Not AI. That's rules.</p>
-
-                <p>I'm not against AI. I use it constantly. But I use it when it's actually needed.</p>
-
-                <p>The problem with AI is it costs more, runs slower, and sometimes gets things wrong. If a simple rule works 100% of the time, why use AI that works 95% of the time and costs more?</p>
-
-                <p><strong>Here's my decision framework.</strong> Start with the simplest solution that could work. Usually that's a basic workflow. IF/THEN logic. Filters. Rules.</p>
-
-                <p>Try that first. If it works, you're done. If it doesn't, add complexity.</p>
-
-                <p>Maybe you need data lookups. API calls. Conditional logic. Try those.</p>
-
-                <p>Still doesn't work? Now consider AI.</p>
-
-                <p>But don't start with AI. That's like using a sledgehammer to hang a picture. Sure, it'll work. But it's overkill.</p>
-
-                <p>I worked with an auction house processing thousands of products monthly. They wanted AI to write product descriptions. Made sense on the surface. Lots of products. Varied content. Good AI use case.</p>
-
-                <p>Except when I looked closer, 80% of their products fit standard templates. Electronics. Furniture. Tools. Same descriptions every time with different specs.</p>
-
-                <p>We built templates for the 80%. Used AI for the 20% that were unique or collectible. Saved them thousands in API costs. Faster processing. Better results.</p>
-
-                <p>That's the pattern. Use the simplest tool that works for each part of the problem.</p>
-
-                <p>Another client wanted AI to analyze customer feedback. Sentiment analysis. Topic extraction. The whole deal.</p>
-
-                <p>I asked how many feedback messages they got. About 30 per month.</p>
-
-                <p>You don't need AI for 30 messages. You need a human to read them and note patterns. Takes 20 minutes. Costs nothing. Probably more accurate.</p>
-
-                <p>The AI industry wants you to think AI is the answer to everything. It's not. It's a tool. A good one. But just a tool.</p>
-
-                <p>Use it when you need understanding, context, or handling unpredictable input. Don't use it when simple rules work fine.</p>
-
-                <p><strong>Here's the test.</strong> Can you write down the exact steps to handle this task? If yes, you probably don't need AI. Build a workflow.</p>
-
-                <p>If the steps change based on context you can't predict, now you might need AI.</p>
-
-                <p>Most business processes fall into the first category. They're predictable. They follow patterns. They can be handled with rules.</p>
-
-                <p>Save AI for the stuff that actually needs it. Your costs will be lower. Your systems will be faster. And they'll probably work better.</p>
-
-                <p>Simple beats complex almost every time.</p>
-            </div>
-
-            <div class="footer-section">
-                <a href="mailto:seth@launchforte.com" class="footer-email-main">seth@launchforte.com</a>
-
-                <div class="footer-columns">
-                    <div class="footer-col">
-                        <h4>Services</h4>
-                        <ul>
-                            <li><a href="/foundation.html">Foundation</a></li>
-                            <li><a href="/launch.html">Launch</a></li>
-                            <li><a href="/growth.html">Growth</a></li>
-                            <li><a href="/scale.html">Scale</a></li>
-                            <li><a href="/review.html">Infrastructure Review</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Company</h4>
-                        <ul>
-                            <li><a href="/about.html">About</a></li>
-                            <li><a href="/case-studies.html">Case Studies</a></li>
-                            <li><a href="/writing.html">Writing</a></li>
-                            <li><a href="/contact.html">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Connect</h4>
-                        <ul>
-                            <li><a href="https://www.linkedin.com/in/seth-forte/" target="_blank" rel="noopener">LinkedIn</a></li>
-                            <li><a href="/upwork.html">Upwork Portfolio</a></li>
-                            <li><a href="https://www.upwork.com/freelancers/sethf5" target="_blank" rel="noopener">Upwork Profile</a></li>
-                            <li><a href="mailto:seth@launchforte.com">Email</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="footer-bottom">
-                    <p class="footer-location">Based in Dallas, Texas. Serving clients nationwide.</p>
-                    <p class="copyright">&copy; 2026 Seth Forte. All rights reserved.</p>
-                </div>
-            </div>
-        </main>
-    </div>
-<script src="/theme-toggle.js"></script>
+            <div class="footer-bottom"><p class="footer-location">Based in Dallas, Texas. Serving clients nationwide.</p><p class="copyright">&copy; 2026 Seth Forte. All rights reserved.</p></div>
+        </div>
+    </main>
 <script src="/scroll-reveal.js"></script>
+<script src="/theme-toggle.js"></script>
 <script src="/scroll-top.js"></script>
+<script src="/hamburger.js"></script>
 </body>
 </html>

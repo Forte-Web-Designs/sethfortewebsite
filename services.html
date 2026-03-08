@@ -33,166 +33,391 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/jpeg" href="logo.jpg">
     <link rel="apple-touch-icon" href="logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --text-primary: #f0ece4;
-            --text-secondary: #b8b2a8;
-            --text-muted: #8a8578;
-            --accent: #e8734a;
-            --accent-warm: #f0b866;
-            --background: #0f1117;
-            --background-alt: #161922;
-            --border: #2b2f3d;
-            --card-bg: #1c1f2b;
+            --text-primary: #f0f4f8;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent: #0088DB;
+            --accent-hover: #0099f0;
+            --accent-warm: #38b2f5;
+            --accent-glow: rgba(0,136,219,0.15);
+            --background: #0a0e17;
+            --background-alt: #111827;
+            --border: #1e293b;
+            --border-light: #2a3a50;
+            --card-bg: rgba(17,24,39,0.7);
+            --card-bg-solid: #111827;
+            --card-hover: rgba(30,41,59,0.5);
+            --gradient-start: #0088DB;
+            --gradient-end: #38b2f5;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            font-size: 17px; line-height: 1.7; color: var(--text-primary); background: var(--background);
-            background-image: radial-gradient(ellipse at 20% 0%, rgba(232,115,74,0.06) 0%, transparent 50%),
-                              radial-gradient(ellipse at 80% 100%, rgba(240,184,102,0.04) 0%, transparent 50%);
-            background-attachment: fixed;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: var(--background);
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at 20% 0%, rgba(0,136,219,0.06) 0%, transparent 50%),
+                          radial-gradient(ellipse at 80% 100%, rgba(56,178,245,0.04) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
         }
 
         a { color: var(--accent); text-decoration: none; transition: color 0.2s ease; }
         a:hover { text-decoration: underline; }
 
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
         .animate-fade-in { animation: fadeIn 0.6s ease forwards; }
         .animate-fade-up { animation: fadeInUp 0.6s ease forwards; }
         .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
         .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
         .animate-delay-3 { animation-delay: 0.3s; opacity: 0; }
 
-        .site-wrapper { display: flex; min-height: 100vh; max-width: 1200px; margin: 0 auto; }
-
-        .sidebar { width: 280px; padding: 3rem 2rem; border-right: 1px solid var(--border); position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; align-items: center; text-align: center; }
-        .profile-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 1.5rem; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .profile-photo:hover { transform: scale(1.05); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
-        .profile-name { font-size: 1.25rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.25rem; }
-        .profile-tagline { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.4; }
-        .nav-links { list-style: none; margin-bottom: auto; width: 100%; }
-        .nav-links li { margin-bottom: 0.25rem; }
-        .nav-links a { color: var(--text-secondary); font-size: 0.95rem; display: block; padding: 0.5rem 1rem; border-radius: 6px; transition: background 0.2s ease, color 0.2s ease; }
-        .nav-links a:hover { color: var(--text-primary); background: var(--card-bg); text-decoration: none; }
-        .nav-links a.active { color: var(--text-primary); background: var(--card-bg); }
-        .sidebar-email { font-size: 0.8rem; color: var(--text-muted); margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border); width: 100%; }
-        .sidebar-email a { color: var(--text-muted); }
-        .sidebar-email a:hover { color: var(--accent); }
-
-        .main-content { flex: 1; padding: 5rem 4rem 6rem; max-width: 780px; }
-
-        .page-title { font-size: 1.75rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1rem; letter-spacing: -0.02em; }
-        .body-text { color: var(--text-secondary); margin-bottom: 1.75rem; line-height: 1.8; }
-
-        .section-divider { border: none; border-top: 1px solid var(--border); margin: 4rem 0; }
-
-        /* Stage Cards */
-        .stage-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
-
-        .stage-card {
-            background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
-            padding: 2rem 2rem; transition: border-color 0.2s ease, transform 0.15s ease;
-            display: flex; flex-direction: column; text-decoration: none; color: inherit;
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
-        .stage-card:hover { border-color: var(--text-muted); transform: translateY(-2px); text-decoration: none; }
-        .stage-card.stage-foundation { border-left: 4px solid #8a8578; }
-        .stage-card.stage-launch { border-left: 4px solid var(--accent); }
-        .stage-card.stage-growth { border-left: 4px solid #5fb88a; }
-        .stage-card.stage-scale { border-left: 4px solid var(--accent-warm); }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-        .stage-card .stage-number { width:30px; height:30px; border-radius:50%; font-size:0.85rem; font-weight:700; color:#fff; display:flex; align-items:center; justify-content:center; margin-bottom:1rem; flex-shrink:0; }
-        .stage-card.stage-foundation .stage-number { background: #8a8578; }
-        .stage-card.stage-launch .stage-number { background: var(--accent); }
-        .stage-card.stage-growth .stage-number { background: #5fb88a; }
-        .stage-card.stage-scale .stage-number { background: var(--accent-warm); }
-        .stage-card .stage-title { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem; }
-        .stage-card .stage-tagline { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.5rem; font-style: italic; }
-        .stage-card p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.6; flex: 1; }
-        .stage-card .stage-link { font-size: 0.85rem; color: var(--accent); margin-top: 1.25rem; display: inline-block; }
+        /* Header */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10,14,23,0.8);
+            backdrop-filter: blur(20px) saturate(1.2);
+            -webkit-backdrop-filter: blur(20px) saturate(1.2);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2rem;
+        }
 
-        .trust-line { text-align: center; color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem; font-style: italic; }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 64px;
+        }
 
-        /* Stage Sections */
-        .stage-section { margin-bottom: 4rem; }
-        .stage-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.75rem; }
-        .stage-label-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-        .stage-label.label-foundation { color: #8a8578; }
-        .stage-label.label-foundation .stage-label-dot { background: #8a8578; }
+        .header-logo {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .header-logo:hover {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 0.25rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-sm);
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .nav-link:hover {
+            background: rgba(255,255,255,0.05);
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .nav-link.active {
+            background: var(--accent-glow);
+            color: var(--accent);
+        }
+
+        /* Main wrapper */
+        .main-wrapper {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 4rem 2rem 6rem;
+        }
+
+        /* Page title */
+        .page-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+        }
+
+        .page-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+        }
+
+        .body-text {
+            color: var(--text-secondary);
+            margin-bottom: 1.75rem;
+            line-height: 1.8;
+        }
+
+        /* Section divider */
+        .section-divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 4rem 0;
+        }
+
+        /* Stage sections */
+        .stage-section {
+            margin-bottom: 4rem;
+        }
+
+        .stage-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .stage-label-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .stage-label.label-foundation { color: var(--text-muted); }
+        .stage-label.label-foundation .stage-label-dot { background: var(--text-muted); }
         .stage-label.label-launch { color: var(--accent); }
         .stage-label.label-launch .stage-label-dot { background: var(--accent); }
-        .stage-label.label-growth { color: #5fb88a; }
-        .stage-label.label-growth .stage-label-dot { background: #5fb88a; }
-        .stage-label.label-scale { color: var(--accent-warm); }
-        .stage-label.label-scale .stage-label-dot { background: var(--accent-warm); }
-        .stage-headline { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1rem; }
-        .stage-body { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.75rem; }
-        .capability-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
-        .capability-item { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem 1.5rem; }
-        .capability-title { font-size: 0.95rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.35rem; }
-        .capability-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
-        .page-subtitle { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; margin-bottom: 3rem; }
+        .stage-label.label-growth { color: var(--accent-warm); }
+        .stage-label.label-growth .stage-label-dot { background: var(--accent-warm); }
+        .stage-label.label-scale { color: #f0b866; }
+        .stage-label.label-scale .stage-label-dot { background: #f0b866; }
 
-        /* Audit Section */
-        .audit-section {
-            background: var(--card-bg); border: 1px solid var(--border);
-            border-left: 4px solid var(--accent-warm); border-radius: 10px;
-            padding: 2.5rem; margin: 2rem 0;
+        /* Stage headlines + body */
+        .stage-headline {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
         }
-        .audit-section h2 { font-size: 1.3rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1.25rem; }
 
-        .btn-primary { display: inline-block; background: var(--accent); color: #ffffff; padding: 0.75rem 1.75rem; border-radius: 6px; font-size: 0.95rem; font-weight: 500; transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease; }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(232,115,74,0.35); text-decoration: none; }
+        .stage-body {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 1.75rem;
+        }
 
-        .footer-section { margin-top: 5rem; padding-top: 3rem; border-top: 1px solid var(--border); }
-        .footer-email-main { color: var(--text-secondary); font-size: 1rem; margin-bottom: 2.5rem; display: block; }
-        .footer-columns { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2.5rem; }
-        .footer-col h4 { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem; }
+        /* Capability items (glassmorphism cards) */
+        .capability-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .capability-item {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 1.25rem 1.5rem;
+            transition: border-color 0.2s ease;
+        }
+
+        .capability-item:hover {
+            border-color: var(--border-light);
+        }
+
+        .capability-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.35rem;
+        }
+
+        .capability-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Audit section (glassmorphism card) */
+        .audit-section {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent-warm);
+            border-radius: var(--radius-md);
+            padding: 2.5rem;
+            margin: 2rem 0;
+        }
+
+        .audit-section h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1.25rem;
+        }
+
+        /* Gradient button */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.75rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+            color: #fff;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,136,219,0.35);
+            text-decoration: none;
+        }
+
+        .btn-primary:hover::after {
+            left: 100%;
+        }
+
+        /* Footer */
+        .footer-section {
+            margin-top: 5rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-email-main {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 2.5rem;
+            display: block;
+        }
+
+        .footer-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-col h4 {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 1rem;
+        }
+
         .footer-col ul { list-style: none; }
         .footer-col li { margin-bottom: 0.5rem; }
-        .footer-col a { color: var(--text-secondary); font-size: 0.9rem; }
-        .footer-col a:hover { color: var(--accent); }
-        .footer-bottom { padding-top: 1.5rem; border-top: 1px solid var(--border); }
-        .footer-location { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.35rem; }
-        .copyright { color: var(--text-muted); font-size: 0.85rem; }
 
-        .site-header { padding: 1rem 2rem; border-bottom: 1px solid var(--border); background: var(--background); }
-        .header-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
-        .header-logo { font-size: 1.1rem; font-weight: 600; color: var(--text-primary); text-decoration: none; }
-        .header-logo:hover { color: var(--accent); text-decoration: none; }
-        .header-nav { display: flex; gap: 1.5rem; }
-        .header-nav a { color: var(--text-secondary); font-size: 0.9rem; text-decoration: none; }
-        .header-nav a:hover { color: var(--text-primary); }
-
-        @media (max-width: 900px) {
-            .site-header { display: none; }
-            .site-wrapper { flex-direction: column; }
-            .sidebar { width: 100%; height: auto; position: relative; border-right: none; padding: 2.5rem 2rem; text-align: center; align-items: center; }
-            .profile-photo { width: 100px; height: 100px; margin-bottom: 1rem; }
-            .profile-name { font-size: 1.5rem; }
-            .profile-tagline { margin-bottom: 1.5rem; }
-            .nav-links { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; padding: 1rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); width: 100%; flex-wrap: wrap; }
-            .nav-links li { margin-bottom: 0; }
-            .sidebar-email { display: block; margin-top: 0; padding-top: 0; border-top: none; }
-            .main-content { padding: 3rem 2rem 4rem; text-align: left; }
-            .footer-columns { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .footer-col a {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
         }
-        @media (max-width: 600px) {
-            .sidebar { padding: 2rem 1.5rem; }
-            .profile-photo { width: 90px; height: 90px; }
-            .profile-name { font-size: 1.35rem; }
-            .nav-links { gap: 0.75rem; }
-            .main-content { padding: 2rem 1.5rem 3rem; }
+
+        .footer-col a:hover { color: var(--accent); }
+
+        .footer-bottom {
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-location {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-wrapper { padding: 3rem 1.5rem 4rem; }
             .page-title { font-size: 1.4rem; }
-            .section-divider { margin: 3rem 0; }
-            .footer-columns { grid-template-columns: 1fr; }
+            .footer-columns { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
             .audit-section { padding: 1.75rem; }
-            .site-header { padding: 1rem 1.5rem; }
-            .header-nav { gap: 1rem; }
-            .header-nav a { font-size: 0.85rem; }
+        }
+
+        @media (max-width: 480px) {
+            .main-wrapper { padding: 2rem 1.25rem 3rem; }
+            .footer-columns { grid-template-columns: 1fr; }
+            .section-divider { margin: 3rem 0; }
         }
     </style>
 </head>
@@ -201,207 +426,188 @@
         <div class="header-container">
             <a href="/" class="header-logo">Seth Forte</a>
             <nav class="header-nav">
-                <a href="/">Home</a>
-                <a href="/services.html">Services</a>
-                <a href="/case-studies.html">Work</a>
-                <a href="/writing.html">Writing</a>
-                <a href="/about.html">About</a>
-                <a href="/reviews.html">Reviews</a>
-                <a href="/contact.html">Contact</a>
+                <a href="/" class="nav-link">Home</a>
+                <a href="/services.html" class="nav-link active">Services</a>
+                <a href="/case-studies.html" class="nav-link">Work</a>
+                <a href="/writing.html" class="nav-link">Writing</a>
+                <a href="/about.html" class="nav-link">About</a>
+                <a href="/reviews.html" class="nav-link">Reviews</a>
+                <a href="/contact.html" class="nav-link">Contact</a>
             </nav>
         </div>
     </header>
 
-    <div class="site-wrapper">
-        <aside class="sidebar">
-            <img src="headshot-6.jpg" alt="Seth Forte" class="profile-photo animate-fade-in">
-            <h1 class="profile-name">Seth Forte</h1>
-            <p class="profile-tagline">Systems Architect &<br>Automation Consultant</p>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/services.html" class="active">Services</a></li>
-                    <li><a href="/case-studies.html">Work</a></li>
-                    <li><a href="/writing.html">Writing</a></li>
-                    <li><a href="/about.html">About</a></li>
-                    <li><a href="/contact.html">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="sidebar-email">
-                <a href="mailto:seth@launchforte.com">seth@launchforte.com</a>
-            </div>
-        </aside>
+    <main class="main-wrapper">
+        <h1 class="page-title animate-fade-up animate-delay-1">Every business is at one of four stages. The stage tells me exactly what to build.</h1>
+        <p class="page-subtitle animate-fade-up animate-delay-2">Most businesses don't have a growth problem. They have a systems problem. I build the infrastructure that fixes it.</p>
 
-        <main class="main-content">
-            <h1 class="page-title animate-fade-up animate-delay-1">Every business is at one of four stages. The stage tells me exactly what to build.</h1>
-            <p class="page-subtitle animate-fade-up animate-delay-2">Most businesses don't have a growth problem. They have a systems problem. I build the infrastructure that fixes it.</p>
-
-            <!-- STAGE 1 — FOUNDATION -->
-            <div class="stage-section">
-                <div class="stage-label label-foundation"><span class="stage-label-dot"></span>Stage 1 — Foundation</div>
-                <h2 class="stage-headline">Your tools don't talk to each other. I fix that.</h2>
-                <p class="stage-body">You have a CRM nobody configured, a Calendly that isn't connected to anything, payments running through Stripe with no automation on the other side, and emails landing in spam. Your team is doing everything manually because nobody built the system those tools were supposed to plug into. I build the operating system your business runs on.</p>
-                <div class="capability-grid">
-                    <div class="capability-item">
-                        <div class="capability-title">CRM and Pipeline Setup</div>
-                        <div class="capability-desc">Sales stages, contact tags, custom fields, and pipeline automation matched to your actual sales process.</div>
-                    </div>
-                    <div class="capability-item">
-                        <div class="capability-title">Payments and Contracts</div>
-                        <div class="capability-desc">Stripe connected, products configured, receipts automated, contracts and e-signatures built in.</div>
-                    </div>
-                    <div class="capability-item">
-                        <div class="capability-title">Email and Scheduling</div>
-                        <div class="capability-desc">Domain authentication so your emails land, calendar and booking connected, intake forms routing to the right place.</div>
-                    </div>
-                    <div class="capability-item">
-                        <div class="capability-title">Tracking and Attribution</div>
-                        <div class="capability-desc">Google Analytics, Meta Pixel, conversion events verified. Know where your leads come from.</div>
-                    </div>
-                    <div class="capability-item">
-                        <div class="capability-title">Workflow Automation</div>
-                        <div class="capability-desc">Take a manual process that eats hours every week and make it run itself. Data entry, follow-ups, approvals, notifications.</div>
-                    </div>
+        <!-- STAGE 1 — FOUNDATION -->
+        <div class="stage-section reveal">
+            <div class="stage-label label-foundation"><span class="stage-label-dot"></span>Stage 1 — Foundation</div>
+            <h2 class="stage-headline">Your tools don't talk to each other. I fix that.</h2>
+            <p class="stage-body">You have a CRM nobody configured, a Calendly that isn't connected to anything, payments running through Stripe with no automation on the other side, and emails landing in spam. Your team is doing everything manually because nobody built the system those tools were supposed to plug into. I build the operating system your business runs on.</p>
+            <div class="capability-grid">
+                <div class="capability-item">
+                    <div class="capability-title">CRM and Pipeline Setup</div>
+                    <div class="capability-desc">Sales stages, contact tags, custom fields, and pipeline automation matched to your actual sales process.</div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-title">Payments and Contracts</div>
+                    <div class="capability-desc">Stripe connected, products configured, receipts automated, contracts and e-signatures built in.</div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-title">Email and Scheduling</div>
+                    <div class="capability-desc">Domain authentication so your emails land, calendar and booking connected, intake forms routing to the right place.</div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-title">Tracking and Attribution</div>
+                    <div class="capability-desc">Google Analytics, Meta Pixel, conversion events verified. Know where your leads come from.</div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-title">Workflow Automation</div>
+                    <div class="capability-desc">Take a manual process that eats hours every week and make it run itself. Data entry, follow-ups, approvals, notifications.</div>
                 </div>
             </div>
+        </div>
 
-            <hr class="section-divider">
+        <hr class="section-divider">
 
-            <!-- STAGE 2 — LAUNCH -->
-            <div class="stage-section">
-                <div class="stage-label label-launch"><span class="stage-label-dot"></span>Stage 2 — Launch</div>
-                <h2 class="stage-headline">System is built. Now fill it.</h2>
-                <p class="stage-body">Your CRM is ready but there's nobody in it. No ads running, no funnel converting, no sequences following up. You have the system but zero leads entering it. I get your first campaigns live and your first revenue flowing through the infrastructure we just built.</p>
-                <div class="capability-grid">
-                    <div class="capability-item">
-                        <div class="capability-title">Paid Traffic Setup</div>
-                        <div class="capability-desc">Meta and Google ad campaigns built to generate leads from day one. Audience targeting, ad copy, lead forms connected to your CRM.</div>
-                    </div>
-                    <div class="capability-item">
-                        <div class="capability-title">Sales Funnels</div>
-                        <div class="capability-desc">Opt-in page, lead magnet delivery, nurture sequence, offer page, booking or purchase. The complete path from stranger to customer.</div>
-                    </div>
-                    <div class="capability-item">
-                        <div class="capability-title">Email and SMS Sequences</div>
-                        <div class="capability-desc">Welcome series, sales sequences, re-engagement campaigns, and behavior-triggered follow-ups so no lead sits untouched.</div>
-                    </div>
-                    <div class="capability-item">
-                        <div class="capability-title">Booking and Conversion Tracking</div>
-                        <div class="capability-desc">Scheduling tools configured, Meta Pixel and Conversion API installed, so you know which ads actually book appointments.</div>
-                    </div>
+        <!-- STAGE 2 — LAUNCH -->
+        <div class="stage-section reveal">
+            <div class="stage-label label-launch"><span class="stage-label-dot"></span>Stage 2 — Launch</div>
+            <h2 class="stage-headline">System is built. Now fill it.</h2>
+            <p class="stage-body">Your CRM is ready but there's nobody in it. No ads running, no funnel converting, no sequences following up. You have the system but zero leads entering it. I get your first campaigns live and your first revenue flowing through the infrastructure we just built.</p>
+            <div class="capability-grid">
+                <div class="capability-item">
+                    <div class="capability-title">Paid Traffic Setup</div>
+                    <div class="capability-desc">Meta and Google ad campaigns built to generate leads from day one. Audience targeting, ad copy, lead forms connected to your CRM.</div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-title">Sales Funnels</div>
+                    <div class="capability-desc">Opt-in page, lead magnet delivery, nurture sequence, offer page, booking or purchase. The complete path from stranger to customer.</div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-title">Email and SMS Sequences</div>
+                    <div class="capability-desc">Welcome series, sales sequences, re-engagement campaigns, and behavior-triggered follow-ups so no lead sits untouched.</div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-title">Booking and Conversion Tracking</div>
+                    <div class="capability-desc">Scheduling tools configured, Meta Pixel and Conversion API installed, so you know which ads actually book appointments.</div>
                 </div>
             </div>
+        </div>
 
-            <hr class="section-divider">
+        <hr class="section-divider">
 
-            <!-- STAGE 3 — GROWTH -->
-            <div class="stage-section">
-                <div class="stage-label label-growth"><span class="stage-label-dot"></span>Stage 3 — Growth</div>
-                <h2 class="stage-headline">One channel is working. I add more.</h2>
-                <p class="stage-body">Leads are coming in from one source. That source goes down, your pipeline goes dry. I add channels so you're pulling leads from multiple directions at once. Inbound captures people already looking for you. Outbound goes and finds new ones. AI handles the volume around the clock.</p>
-                <div class="capability-grid">
-                    <div class="capability-item">
-                        <div class="capability-title">Outbound Cold Email</div>
-                        <div class="capability-desc">Prospect scraping, AI personalization, automated sequences, reply routing to CRM. 15-50 meetings per month at scale.</div>
-                    </div>
-                    <div class="capability-item">
-                        <div class="capability-title">AI Voice Agent</div>
-                        <div class="capability-desc">Answers calls 24/7, qualifies leads, books appointments, answers FAQs, routes complex calls to your team. Captures the calls you're currently missing.</div>
-                    </div>
-                    <div class="capability-item">
-                        <div class="capability-title">Inbound Lead Capture</div>
-                        <div class="capability-desc">Website forms, chat widgets, landing pages all flowing into CRM with instant notification and auto-response. Stop losing the leads you're already paying for.</div>
-                    </div>
-                    <div class="capability-item">
-                        <div class="capability-title">Review and Reputation Automation</div>
-                        <div class="capability-desc">Automated review requests after service, sentiment routing (happy customers to Google, unhappy ones to a private form), follow-up reminders.</div>
-                    </div>
-                    <div class="capability-item">
-                        <div class="capability-title">Dispatch and Assignment</div>
-                        <div class="capability-desc">Job comes in, system matches the best contractor or worker, sends outreach in priority order, confirms the assignment. For staffing, field services, and legal operations.</div>
-                    </div>
+        <!-- STAGE 3 — GROWTH -->
+        <div class="stage-section reveal">
+            <div class="stage-label label-growth"><span class="stage-label-dot"></span>Stage 3 — Growth</div>
+            <h2 class="stage-headline">One channel is working. I add more.</h2>
+            <p class="stage-body">Leads are coming in from one source. That source goes down, your pipeline goes dry. I add channels so you're pulling leads from multiple directions at once. Inbound captures people already looking for you. Outbound goes and finds new ones. AI handles the volume around the clock.</p>
+            <div class="capability-grid">
+                <div class="capability-item">
+                    <div class="capability-title">Outbound Cold Email</div>
+                    <div class="capability-desc">Prospect scraping, AI personalization, automated sequences, reply routing to CRM. 15-50 meetings per month at scale.</div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-title">AI Voice Agent</div>
+                    <div class="capability-desc">Answers calls 24/7, qualifies leads, books appointments, answers FAQs, routes complex calls to your team. Captures the calls you're currently missing.</div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-title">Inbound Lead Capture</div>
+                    <div class="capability-desc">Website forms, chat widgets, landing pages all flowing into CRM with instant notification and auto-response. Stop losing the leads you're already paying for.</div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-title">Review and Reputation Automation</div>
+                    <div class="capability-desc">Automated review requests after service, sentiment routing (happy customers to Google, unhappy ones to a private form), follow-up reminders.</div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-title">Dispatch and Assignment</div>
+                    <div class="capability-desc">Job comes in, system matches the best contractor or worker, sends outreach in priority order, confirms the assignment. For staffing, field services, and legal operations.</div>
                 </div>
             </div>
+        </div>
 
-            <hr class="section-divider">
+        <hr class="section-divider">
 
-            <!-- STAGE 4 — SCALE -->
-            <div class="stage-section">
-                <div class="stage-label label-scale"><span class="stage-label-dot"></span>Stage 4 — Scale</div>
-                <h2 class="stage-headline">Everything is running. Make it visible and hands-off.</h2>
-                <p class="stage-body">Multiple channels running, leads converting, revenue growing. But you can't tell which channel has the best ROI, content takes 10 hours a week, and support requests are piling up. I add the reporting, content engines, and support systems that let you grow without adding headcount.</p>
-                <div class="capability-grid">
-                    <div class="capability-item">
-                        <div class="capability-title">Ad Reporting Dashboards</div>
-                        <div class="capability-desc">Meta and Google Ads data pulled automatically into one dashboard. Weekly refresh, email delivery, no more manual report assembly.</div>
-                    </div>
-                    <div class="capability-item">
-                        <div class="capability-title">Content Repurposing</div>
-                        <div class="capability-desc">One video or blog post turns into 10-15 social posts, a newsletter draft, and short-form clips. AI writes, automation distributes.</div>
-                    </div>
-                    <div class="capability-item">
-                        <div class="capability-title">Support Routing</div>
-                        <div class="capability-desc">Incoming requests get AI-categorized, auto-responded with relevant help content, and routed to the right team member. Urgent issues get flagged instantly.</div>
-                    </div>
-                    <div class="capability-item">
-                        <div class="capability-title">Recruiting Pipeline</div>
-                        <div class="capability-desc">AI screens resumes, scores candidates against job requirements, routes qualified matches to your team, and automates interview scheduling.</div>
-                    </div>
+        <!-- STAGE 4 — SCALE -->
+        <div class="stage-section reveal">
+            <div class="stage-label label-scale"><span class="stage-label-dot"></span>Stage 4 — Scale</div>
+            <h2 class="stage-headline">Everything is running. Make it visible and hands-off.</h2>
+            <p class="stage-body">Multiple channels running, leads converting, revenue growing. But you can't tell which channel has the best ROI, content takes 10 hours a week, and support requests are piling up. I add the reporting, content engines, and support systems that let you grow without adding headcount.</p>
+            <div class="capability-grid">
+                <div class="capability-item">
+                    <div class="capability-title">Ad Reporting Dashboards</div>
+                    <div class="capability-desc">Meta and Google Ads data pulled automatically into one dashboard. Weekly refresh, email delivery, no more manual report assembly.</div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-title">Content Repurposing</div>
+                    <div class="capability-desc">One video or blog post turns into 10-15 social posts, a newsletter draft, and short-form clips. AI writes, automation distributes.</div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-title">Support Routing</div>
+                    <div class="capability-desc">Incoming requests get AI-categorized, auto-responded with relevant help content, and routed to the right team member. Urgent issues get flagged instantly.</div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-title">Recruiting Pipeline</div>
+                    <div class="capability-desc">AI screens resumes, scores candidates against job requirements, routes qualified matches to your team, and automates interview scheduling.</div>
                 </div>
             </div>
+        </div>
 
-            <hr class="section-divider">
+        <hr class="section-divider">
 
-            <!-- Foundation Review Section -->
-            <div class="audit-section">
-                <h2>Not sure where to start?</h2>
-                <p class="body-text">Most people aren't. That's what the Foundation Review is for.</p>
-                <p class="body-text">I review your current setup, identify the biggest automation opportunities, and give you a prioritized roadmap with ROI estimates. If you move forward with a build, the review fee applies as credit toward the project.</p>
-                <a href="https://calendly.com/seth-fortewebdesigns/30min" target="_blank" rel="noopener" class="btn-primary">Book a Foundation Review</a>
-            </div>
+        <!-- Foundation Review Section -->
+        <div class="audit-section reveal">
+            <h2>Not sure where to start?</h2>
+            <p class="body-text">Most people aren't. That's what the Foundation Review is for.</p>
+            <p class="body-text">I review your current setup, identify the biggest automation opportunities, and give you a prioritized roadmap with ROI estimates. If you move forward with a build, the review fee applies as credit toward the project.</p>
+            <a href="https://calendly.com/seth-fortewebdesigns/30min" target="_blank" rel="noopener" class="btn-primary">Book a Foundation Review</a>
+        </div>
 
-            <!-- Footer -->
-            <div class="footer-section">
-                <a href="mailto:seth@launchforte.com" class="footer-email-main">seth@launchforte.com</a>
-                <div class="footer-columns">
-                    <div class="footer-col">
-                        <h4>Services</h4>
-                        <ul>
-                            <li><a href="/foundation.html">Foundation</a></li>
-                            <li><a href="/launch.html">Launch</a></li>
-                            <li><a href="/growth.html">Growth</a></li>
-                            <li><a href="/scale.html">Scale</a></li>
-                            <li><a href="/review.html">Foundation Review</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Company</h4>
-                        <ul>
-                            <li><a href="/about.html">About</a></li>
-                            <li><a href="/case-studies.html">Case Studies</a></li>
-                            <li><a href="/writing.html">Writing</a></li>
-                            <li><a href="/contact.html">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Connect</h4>
-                        <ul>
-                            <li><a href="https://www.linkedin.com/in/seth-forte/" target="_blank" rel="noopener">LinkedIn</a></li>
-                            <li><a href="/upwork.html">Upwork Portfolio</a></li>
-                            <li><a href="https://www.upwork.com/freelancers/sethf5" target="_blank" rel="noopener">Upwork Profile</a></li>
-                            <li><a href="mailto:seth@launchforte.com">Email</a></li>
-                        </ul>
-                    </div>
+        <!-- Footer -->
+        <div class="footer-section">
+            <a href="mailto:seth@launchforte.com" class="footer-email-main">seth@launchforte.com</a>
+            <div class="footer-columns">
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="/foundation.html">Foundation</a></li>
+                        <li><a href="/launch.html">Launch</a></li>
+                        <li><a href="/growth.html">Growth</a></li>
+                        <li><a href="/scale.html">Scale</a></li>
+                        <li><a href="/review.html">Foundation Review</a></li>
+                    </ul>
                 </div>
-                <div class="footer-bottom">
-                    <p class="footer-location">Based in Grapevine, Texas. Serving clients nationwide.</p>
-                    <p class="copyright">&copy; 2026 Seth Forte. All rights reserved.</p>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/about.html">About</a></li>
+                        <li><a href="/case-studies.html">Case Studies</a></li>
+                        <li><a href="/writing.html">Writing</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="https://www.linkedin.com/in/seth-forte/" target="_blank" rel="noopener">LinkedIn</a></li>
+                        <li><a href="/upwork.html">Upwork Portfolio</a></li>
+                        <li><a href="https://www.upwork.com/freelancers/sethf5" target="_blank" rel="noopener">Upwork Profile</a></li>
+                        <li><a href="mailto:seth@launchforte.com">Email</a></li>
+                    </ul>
                 </div>
             </div>
-        </main>
-    </div>
-<script src="/theme-toggle.js"></script>
+            <div class="footer-bottom">
+                <p class="footer-location">Based in Grapevine, Texas. Serving clients nationwide.</p>
+                <p class="copyright">&copy; 2026 Seth Forte. All rights reserved.</p>
+            </div>
+        </div>
+    </main>
+
 <script src="/scroll-reveal.js"></script>
+<script src="/theme-toggle.js"></script>
 <script src="/scroll-top.js"></script>
+<script src="/hamburger.js"></script>
 </body>
 </html>

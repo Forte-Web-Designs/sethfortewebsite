@@ -8,789 +8,318 @@
     <meta name="author" content="Seth Forte">
     <link rel="icon" type="image/jpeg" href="../logo.jpg">
     <link rel="apple-touch-icon" href="../logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --text-primary: #f0ece4;
-            --text-secondary: #b8b2a8;
-            --text-muted: #8a8578;
-            --accent: #e8734a;
-            --accent-warm: #f0b866;
-            --background: #0f1117;
-            --background-alt: #161922;
-            --border: #2b2f3d;
-            --card-bg: #1c1f2b;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            font-size: 17px;
-            line-height: 1.7;
-            color: var(--text-primary);
-            background: var(--background);
-            background-image: radial-gradient(ellipse at 20% 0%, rgba(232,115,74,0.06) 0%, transparent 50%),
-                              radial-gradient(ellipse at 80% 100%, rgba(240,184,102,0.04) 0%, transparent 50%);
-            background-attachment: fixed;
-        }
-
-        a {
-            color: var(--accent);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .animate-fade-in {
-            animation: fadeIn 0.6s ease forwards;
-        }
-
-        .animate-fade-up {
-            animation: fadeInUp 0.6s ease forwards;
-        }
-
-        .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
-        .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
-
-        .site-wrapper {
-            display: flex;
-            min-height: 100vh;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .sidebar {
-            width: 280px;
-            padding: 3rem 2rem;
-            border-right: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .profile-photo {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 1.5rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .profile-photo:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        .profile-name {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.25rem;
-        }
-
-        .profile-tagline {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            line-height: 1.4;
-        }
-
-        .nav-links {
-            list-style: none;
-            margin-bottom: auto;
-            width: 100%;
-        }
-
-        .nav-links li {
-            margin-bottom: 0.5rem;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            display: block;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            transition: background 0.2s ease, color 0.2s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--text-primary);
-            background: var(--card-bg);
-            text-decoration: none;
-        }
-
-        .nav-links a.active {
-            color: var(--text-primary);
-            background: var(--card-bg);
-        }
-
-        .sidebar-email {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
-            width: 100%;
-        }
-
-        .sidebar-email a {
-            color: var(--text-muted);
-        }
-
-        .sidebar-email a:hover {
-            color: var(--accent);
-        }
-
-        .main-content {
-            flex: 1;
-            padding: 5rem 4rem 6rem;
-            max-width: 780px;
-        }
-
-        .back-link {
-            display: inline-block;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 2rem;
-        }
-
-        .back-link:hover {
-            color: var(--accent);
-        }
-
-        .article-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            line-height: 1.3;
-            margin-bottom: 1rem;
-        }
-
-        .article-meta {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 3rem;
-        }
-
-        .article-body p {
-            margin-bottom: 1.5rem;
-        }
-
-        .article-body h2 {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-top: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .article-body h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .article-body strong {
-            font-weight: 600;
-        }
-
-        .article-body ul, .article-body ol {
-            margin-bottom: 1.5rem;
-            padding-left: 1.5rem;
-        }
-
-        .article-body li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-section {
-            margin-top: 5rem;
-            padding-top: 3rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-email {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        .copyright {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-top: 1rem;
-        }
-
-        .site-header {
-            padding: 1rem 2rem;
-            border-bottom: 1px solid var(--border);
-            background: var(--background);
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .header-logo {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            text-decoration: none;
-        }
-
-        .header-logo:hover {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        .header-nav {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .header-nav a {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            text-decoration: none;
-        }
-
-        .header-nav a:hover {
-            color: var(--text-primary);
-        }
-        .footer-email-main {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            margin-bottom: 2.5rem;
-            display: block;
-        }
-
-        .footer-columns {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .footer-col h4 {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 1rem;
-        }
-
-        .footer-col ul { list-style: none; }
-        .footer-col li { margin-bottom: 0.5rem; }
-
-        .footer-col a {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        .footer-col a:hover { color: var(--accent); }
-
-        .footer-bottom {
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-location {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-bottom: 0.35rem;
-        }
-
-
-        @media (max-width: 900px) {
-            .site-header {
-                display: none;
-            }
-
-            .site-wrapper {
-                flex-direction: column;
-            }
-
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-                border-right: none;
-                border-bottom: none;
-                padding: 2.5rem 2rem;
-                text-align: center;
-                align-items: center;
-                background: var(--background);
-            }
-
-            .profile-photo {
-                width: 100px;
-                height: 100px;
-                margin-bottom: 1rem;
-            }
-
-            .profile-name {
-                font-size: 1.5rem;
-            }
-
-            .profile-tagline {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            line-height: 1.4;
-        }
-
-            .nav-links {
-                display: flex;
-                justify-content: center;
-                gap: 1rem;
-                flex-wrap: wrap;
-                margin-bottom: 1.5rem;
-                padding: 1rem 0;
-                border-top: 1px solid var(--border);
-                border-bottom: 1px solid var(--border);
-                width: 100%;
-            }
-
-            .nav-links li {
-                margin-bottom: 0;
-            }
-
-            .sidebar-email {
-                display: block;
-                margin-top: 0;
-                padding-top: 0;
-                border-top: none;
-            }
-
-            .main-content {
-                padding: 3rem 2rem 4rem;
-                text-align: left;
-            }
-
-            .footer-columns { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-        }
-
-        @media (max-width: 600px) {
-            .site-header {
-                padding: 1rem 1.5rem;
-            }
-
-            .header-nav {
-                gap: 1rem;
-            }
-
-            .header-nav a {
-                font-size: 0.9rem;
-            }
-
-            .sidebar {
-                padding: 2rem 1.5rem;
-            }
-
-            .profile-photo {
-                width: 90px;
-                height: 90px;
-            }
-
-            .profile-name {
-                font-size: 1.35rem;
-            }
-
-            .nav-links {
-                gap: 0.75rem;
-                flex-wrap: wrap;
-            }
-
-            .main-content {
-                padding: 2rem 1.5rem 3rem;
-            }
-
-            .footer-columns { grid-template-columns: 1fr; }
-
-            .article-title {
-                font-size: 1.6rem;
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --text-primary: #f0f4f8; --text-secondary: #94a3b8; --text-muted: #64748b; --accent: #0088DB; --accent-hover: #0099f0; --accent-warm: #38b2f5; --accent-glow: rgba(0,136,219,0.15); --background: #0a0e17; --background-alt: #111827; --border: #1e293b; --border-light: #2a3a50; --card-bg: rgba(17,24,39,0.7); --card-bg-solid: #111827; --gradient-start: #0088DB; --gradient-end: #38b2f5; --radius-sm: 8px; --radius-md: 12px; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 17px; line-height: 1.7; color: var(--text-primary); background: var(--background); min-height: 100vh; }
+        body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 20% 0%, rgba(0,136,219,0.06) 0%, transparent 50%), radial-gradient(ellipse at 80% 100%, rgba(56,178,245,0.04) 0%, transparent 50%); pointer-events: none; z-index: -1; }
+        a { color: var(--accent); text-decoration: none; transition: color 0.2s ease; } a:hover { text-decoration: underline; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } } @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .animate-fade-in { animation: fadeIn 0.6s ease forwards; } .animate-fade-up { animation: fadeInUp 0.6s ease forwards; } .animate-delay-1 { animation-delay: 0.1s; opacity: 0; } .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
+        .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; } .reveal.visible { opacity: 1; transform: translateY(0); }
+        .site-header { position: sticky; top: 0; z-index: 100; background: rgba(10,14,23,0.8); backdrop-filter: blur(20px) saturate(1.2); -webkit-backdrop-filter: blur(20px) saturate(1.2); border-bottom: 1px solid var(--border); padding: 0 2rem; }
+        .header-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; height: 64px; }
+        .header-logo { font-size: 1.1rem; font-weight: 700; color: var(--text-primary); text-decoration: none; letter-spacing: -0.02em; } .header-logo:hover { color: var(--accent); text-decoration: none; }
+        .header-nav { display: flex; gap: 0.25rem; align-items: center; }
+        .nav-link { padding: 0.5rem 1rem; border-radius: var(--radius-sm); color: var(--text-secondary); font-size: 0.875rem; font-weight: 500; transition: all 0.2s ease; text-decoration: none; } .nav-link:hover { background: rgba(255,255,255,0.05); color: var(--text-primary); text-decoration: none; } .nav-link.active { background: var(--accent-glow); color: var(--accent); }
+        .main-wrapper { max-width: 780px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+        .back-link { display: inline-block; color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 2rem; } .back-link:hover { color: var(--accent); }
+        .article-title { font-size: 2rem; font-weight: 700; color: var(--text-primary); line-height: 1.3; margin-bottom: 1rem; letter-spacing: -0.02em; }
+        .article-meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 3rem; }
+        .article-body p { margin-bottom: 1.5rem; } .article-body h2 { font-size: 1.4rem; font-weight: 600; color: var(--text-primary); margin-top: 3rem; margin-bottom: 1rem; } .article-body h3 { font-size: 1.2rem; font-weight: 600; color: var(--text-primary); margin-top: 2rem; margin-bottom: 1rem; } .article-body strong { font-weight: 600; } .article-body ul, .article-body ol { margin-bottom: 1.5rem; padding-left: 1.5rem; } .article-body li { margin-bottom: 0.5rem; }
+        .footer-section { margin-top: 5rem; padding-top: 3rem; border-top: 1px solid var(--border); } .footer-email-main { color: var(--text-secondary); font-size: 1rem; margin-bottom: 2.5rem; display: block; }
+        .footer-columns { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2.5rem; }
+        .footer-col h4 { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem; } .footer-col ul { list-style: none; } .footer-col li { margin-bottom: 0.5rem; } .footer-col a { color: var(--text-secondary); font-size: 0.9rem; } .footer-col a:hover { color: var(--accent); }
+        .footer-bottom { padding-top: 1.5rem; border-top: 1px solid var(--border); } .footer-location { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.35rem; } .copyright { color: var(--text-muted); font-size: 0.9rem; margin-top: 1rem; }
+        @media (max-width: 768px) { .main-wrapper { padding: 3rem 1.5rem 4rem; } .article-title { font-size: 1.6rem; } .footer-columns { grid-template-columns: 1fr 1fr; gap: 1.5rem; } }
+        @media (max-width: 480px) { .main-wrapper { padding: 2rem 1.25rem 3rem; } .footer-columns { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
-    <header class="site-header">
-        <div class="header-container">
-            <a href="/" class="header-logo">Seth Forte</a>
-            <nav class="header-nav">
-                <a href="/">Home</a>
-                <a href="/services.html">Services</a>
-                <a href="/case-studies.html">Work</a>
-                <a href="/writing.html">Writing</a>
-                <a href="/about.html">About</a>
-                <a href="/reviews.html">Reviews</a>
-                <a href="/contact.html">Contact</a>
-            </nav>
+    <header class="site-header"><div class="header-container"><a href="/" class="header-logo">Seth Forte</a><nav class="header-nav"><a href="/" class="nav-link">Home</a><a href="/services.html" class="nav-link">Services</a><a href="/case-studies.html" class="nav-link">Work</a><a href="/writing.html" class="nav-link active">Writing</a><a href="/about.html" class="nav-link">About</a><a href="/reviews.html" class="nav-link">Reviews</a><a href="/contact.html" class="nav-link">Contact</a></nav></div></header>
+
+    <main class="main-wrapper">
+        <a href="/writing.html" class="back-link animate-fade-up">&larr; Back to Writing</a>
+
+        <h1 class="article-title animate-fade-up animate-delay-1">Everyone's Cutting Off Their Family (And Most Of Them Probably Shouldn't)</h1>
+        <p class="article-meta animate-fade-up animate-delay-2">Nov 19, 2025</p>
+
+        <div class="article-body">
+            <p>I saw a statistic last week that stopped me cold.</p>
+
+            <p>One in four Americans has cut off an immediate family member. Parent, sibling, child, grandparent. Just done. Not speaking.</p>
+
+            <p>29% of the country is estranged from someone in their immediate family.</p>
+
+            <p>That's not normal. That's not healthy. And most of the time, it's not necessary.</p>
+
+            <h2>We've Confused Boundaries With Ghosting</h2>
+
+            <p>Here's what I'm seeing constantly now.</p>
+
+            <p>Someone has a political disagreement with their parents. Cut them off.</p>
+
+            <p>Dad's annoying at Thanksgiving. Don't go home for the holidays.</p>
+
+            <p>Mom keeps asking about grandkids. Block her number.</p>
+
+            <p>Brother voted for the wrong person. He's dead to me.</p>
+
+            <p>Sister got vaccinated. She can't come to Christmas.</p>
+
+            <p>Uncle didn't get vaccinated. He's banned from the family.</p>
+
+            <p>This isn't boundaries. This is just being unable to handle discomfort.</p>
+
+            <p>Boundaries are healthy. Boundaries are necessary. I live by boundaries in my business and my personal life.</p>
+
+            <p>But boundaries don't mean "if you annoy me or disagree with me, you're out of my life."</p>
+
+            <p>That's not a boundary. That's being a child.</p>
+
+            <h2>You're An Adult Now</h2>
+
+            <p>Here's the uncomfortable truth.</p>
+
+            <p>A lot of people cutting off their parents are still mad about things that happened when they were 16.</p>
+
+            <p>You asked for $30 to go to a baseball game and they said no. You wanted to go to a different college and they pushed back. They didn't come through for you that one time when you really needed them.</p>
+
+            <p>You're 20 or 30 now. You're still carrying that around.</p>
+
+            <p>Our culture right now is obsessed with "self-worth." And look, self-worth is important. You should value yourself. You should have standards. You should protect your mental health.</p>
+
+            <p>But somewhere along the way, that got clouded into an inability to have relationships with people.</p>
+
+            <p>Everyone makes mistakes. Your parents made mistakes. You made mistakes. Your siblings made mistakes. That's called being human.</p>
+
+            <p>At some point, you have to become an adult. And being an adult means learning how to have relationships with imperfect people who got things wrong sometimes.</p>
+
+            <p>Your parents weren't perfect. They said no when you wish they'd said yes. They gave advice you didn't want. They pushed when you needed space. They didn't understand what you were going through.</p>
+
+            <p>That's called being human parents raising human kids.</p>
+
+            <p>If you're going to hold onto every disappointment from childhood forever, you're never going to have a relationship with anyone. Not your parents. Not your spouse. Not your kids. Not your friends.</p>
+
+            <p>Adults learn how to have hard conversations. Adults learn how to forgive small things. Adults learn how to stay in relationship even when it's uncomfortable.</p>
+
+            <p>If you haven't learned that yet, that's a you problem, not a them problem.</p>
+
+            <h2>When It Actually Makes Sense To Cut Someone Off</h2>
+
+            <p>Look, I'm not saying you should never cut off a family member.</p>
+
+            <p>There are legitimate reasons to end a relationship with a parent or sibling.</p>
+
+            <p>If there's been real abuse and there's been no reckoning, no ownership, no real apology and changed behavior, you don't owe that person access to your life or your kids. Abuse can be physical, emotional, psychological. If it happened and there's been no accountability, no genuine change, you're right to protect yourself and your family.</p>
+
+            <p>If someone is actively trying to control your life as an adult. Not giving advice. Not being annoying. Actually trying to control your decisions, your marriage, your kids, your career as if you still live under their roof.</p>
+
+            <p>If the relationship is so toxic that every interaction leaves you angry, sick, anxious, drinking more, unable to function in your actual life. When your heart rate spikes every time their name shows up on your phone.</p>
+
+            <p>If there's ongoing manipulation, gaslighting, blame-shifting, or this attitude of "you owe me" access to your home, your money, your kids, your life.</p>
+
+            <p>If someone fundamentally disrespects you, your spouse, or your kids in ways that are demeaning and abusive. And I'm not talking about annoying comments. I'm talking about actively trashing your self-worth, withholding love as punishment, belittling who you are.</p>
+
+            <p>Those are reasons. Real reasons.</p>
+
+            <p>But that's different from "Dad chews too loud" or "Mom always wants Mexican food and I'm gluten-free" or "They watch the wrong news channel" or "She wishes my kid played baseball instead of soccer" or "When I was 17 they wouldn't let me go to that concert."</p>
+
+            <h2>The Part Nobody Wants To Hear</h2>
+
+            <p>Being in relationship with people is uncomfortable.</p>
+
+            <p>Your parents are going to be annoying sometimes. They're going to give advice you didn't ask for. They're going to have opinions about your life. They're going to make jokes that aren't funny. They're going to disagree with your choices.</p>
+
+            <p>That's just called having parents.</p>
+
+            <p>Same with siblings. They're going to be frustrating. They're going to have different values. They're going to make different life choices.</p>
+
+            <p>You don't cut people off for being human.</p>
+
+            <p>I see grown adults who haven't lived under their parents' roof in years cutting off their families because life didn't turn out how they thought it would and dealing with family feels like too much work right now.</p>
+
+            <p>Growing up is hard. It's annoying and scary. You thought your life would look different. It doesn't. And when Mom calls and she's being Mom, it's easier to just cut her off than deal with being disappointed about where you are.</p>
+
+            <p>That's not your parents' fault. That's just being an adult. And adults have to learn how to have real conversations with people who annoy them.</p>
+
+            <p>Part of becoming an adult is realizing your parents were doing their best with what they had. They made mistakes. They got things wrong. They disappointed you sometimes.</p>
+
+            <p>So did you. You disappointed them too. You made mistakes. You said things you shouldn't have. You did things that hurt them.</p>
+
+            <p>If both sides are waiting for the other to be perfect before reconciling, nobody's ever reconciling.</p>
+
+            <h2>Unity Doesn't Require Uniformity</h2>
+
+            <p>You don't have to agree with your family to be in relationship with them.</p>
+
+            <p>Being on the same team doesn't mean everyone plays the same position. Being family doesn't mean you all have to think the same way, vote the same way, make the same life choices.</p>
+
+            <p>You can love your parents and completely disagree with their politics.</p>
+
+            <p>You can care about your siblings even though they made different career choices or married someone you wouldn't have chosen.</p>
+
+            <p>That's what being in a family actually means. Staying connected even when you're different.</p>
+
+            <p>The amount of people cutting off family members over who they voted for or whether they got a vaccine or what news channel they watch is insane.</p>
+
+            <p>Those aren't reasons. Those are excuses.</p>
+
+            <h2>What Actually Works Instead</h2>
+
+            <p>If your family is driving you crazy but they're not abusive or genuinely toxic, you need boundaries, not estrangement.</p>
+
+            <p><strong>Stop giving them votes in your life.</strong> You can love your parents without letting them decide where you live, what job you take, how you raise your kids, where you spend the holidays. They can have opinions. They don't get votes.</p>
+
+            <p><strong>Stop trying to make them okay with your decisions.</strong> It's not your job to manage their feelings about your life choices. When Dad says "I wouldn't take that job," that might just be his way of saying "I'll miss you if you move away." You don't need his approval.</p>
+
+            <p><strong>Stay out of triangles.</strong> When Dad complains about Mom to you, that's not your problem. When Mom talks about your sister, don't engage. That's between them.</p>
+
+            <p><strong>Don't own the blame they try to put on you.</strong> If your parents blame you for their marriage problems or their financial situation or their unhappiness, that's not yours to carry. Hop out of it.</p>
+
+            <p><strong>Set clear boundaries and stick to them.</strong> "We're not traveling this Christmas." "We're going from weekly dinners to monthly." "Don't yell in front of my kids or we're leaving." Is that uncomfortable? Yes. Will it cause conflict? Probably. Do it anyway.</p>
+
+            <p><strong>Let go of the small stuff from years ago.</strong> That time they didn't give you money for something. That time they said no to a request. That time they embarrassed you in front of your friends. You're an adult now. Those things happened. They're over. Learn how to move forward instead of cataloging every disappointment.</p>
+
+            <h2>The Financial Reality Check</h2>
+
+            <p>Here's where this gets tricky.</p>
+
+            <p>If you're still on their cell phone plan, they get a vote.</p>
+
+            <p>If they're paying for your college, they get a vote.</p>
+
+            <p>If they're paying for your car, they get a vote.</p>
+
+            <p>But if you're married with two kids living an hour away and financially independent? They don't get a vote.</p>
+
+            <p>You can't demand complete autonomy while still being financially dependent. That's not how it works.</p>
+
+            <h2>What This Looks Like In Real Life</h2>
+
+            <p>My relationship with my family and extended family isn't perfect.</p>
+
+            <p>My wife and I try to let everyone know what our holiday schedule will look like. Where we'll be. What we're doing. What works for us.</p>
+
+            <p>Some years that's well-received. Some years it's not. Feelings get hurt. People get upset with our decisions.</p>
+
+            <p>Can I control their reactions? Nope.</p>
+
+            <p>But it's my job to protect my marriage and my kids, not to make everyone in my extended family comfortable with our choices.</p>
+
+            <p>That means sitting through dinners I don't want to be at sometimes. Listening to jokes I've heard a thousand times. Dealing with political opinions I disagree with while rolling my eyes.</p>
+
+            <p>It also means stopping conversations when they cross lines. "Hey, don't say that in front of my kids." Making things awkward when necessary. "My daughter doesn't want a hug right now."</p>
+
+            <p>That's boundaries. Uncomfortable, sometimes conflict-creating boundaries.</p>
+
+            <p>But I'm not cutting people off because they're annoying or because we disagree about politics or because they give unwanted advice or because of something that happened 15 years ago.</p>
+
+            <h2>The Reconciliation Part</h2>
+
+            <p>Here's what the data shows. Most family estrangements eventually reconcile.</p>
+
+            <p>Which means a lot of people are losing years of relationships over things that eventually get worked out anyway.</p>
+
+            <p>If you want reconciliation (and most people do, even if they won't admit it), someone has to go first.</p>
+
+            <p>You're probably sitting there thinking "they don't want to talk to me" or "they're never going to forgive me" or "too much time has passed."</p>
+
+            <p>You made that up. You don't actually know that.</p>
+
+            <p>Go first. Send the text. Make the call. Say "I miss you. I'm sorry. I want to build a new relationship."</p>
+
+            <p>Will it be awkward? Yes. Might they reject you? Maybe. Is it better than losing another decade over pride?</p>
+
+            <p>Absolutely.</p>
+
+            <p>I've talked to people who haven't spoken to family members for five or ten years because they made up stories about what the other person was thinking. "I know they don't want to hear from me." "They'll never forgive me."</p>
+
+            <p>You lost a decade over a story you invented.</p>
+
+            <h2>Why This Matters For Business</h2>
+
+            <p>Here's the thing. If you can't learn how to stay in relationship with family members who annoy you, you're going to struggle in business.</p>
+
+            <p>Because business is all about relationships with imperfect people.</p>
+
+            <p>Clients are going to be annoying sometimes. They're going to ask the same questions repeatedly. They're going to change their mind. They're going to have opinions you disagree with.</p>
+
+            <p>If your response to discomfort is to cut people off, you're going to burn through clients constantly.</p>
+
+            <p>I've seen consultants who ghost clients the moment something gets uncomfortable. Client asks for a revision? Ghost them. Client questions a decision? Cut them off. Client has feedback that's hard to hear? Block their number.</p>
+
+            <p>That's not boundaries. That's being unable to handle adult relationships.</p>
+
+            <p>The same skills you need to maintain family relationships are the exact skills you need in business.</p>
+
+            <p>Having hard conversations instead of avoiding them. Setting clear boundaries without nuking the relationship. Forgiving small mistakes instead of holding grudges. Working through disagreements instead of walking away.</p>
+
+            <p>I think about this constantly with clients. Someone's going to be frustrating. A project is going to hit complications. Communication is going to break down temporarily.</p>
+
+            <p>If I cut off every client who annoyed me or every project that got uncomfortable, I'd have no business.</p>
+
+            <p>The consultants who succeed long-term aren't the ones who only work with perfect clients on perfect projects. They're the ones who learned how to maintain relationships even when things get messy.</p>
+
+            <p>Same with employees if you're building a team. People are going to make mistakes. They're going to have bad days. They're going to disagree with you sometimes.</p>
+
+            <p>If you fire everyone who's occasionally frustrating, you'll never build anything.</p>
+
+            <p>The pattern I see is clear. People who cut off family members over small disagreements tend to do the same thing in business. They burn through partnerships. They can't maintain long-term client relationships. They create drama and then leave when things get hard.</p>
+
+            <p>And the reverse is true too. People who've learned how to stay in relationship with difficult family members tend to be better at business relationships. They've had practice with hard conversations. They know how to set boundaries without destroying connections. They understand that disagreement doesn't mean the relationship is over.</p>
+
+            <p>That's valuable. In business, that's the difference between building something that lasts and constantly starting over because you can't handle discomfort.</p>
+
+            <h2>The Bottom Line</h2>
+
+            <p>The world needs more people coming together, not fewer.</p>
+
+            <p>We're already isolated enough. We're already divided enough. We're already lonely enough.</p>
+
+            <p>Cutting off family members over minor disagreements or discomfort is making all of that worse.</p>
+
+            <p>If you're dealing with real abuse or manipulation or genuinely toxic behavior, protect yourself. Set hard boundaries. Take breaks. End the relationship if you need to.</p>
+
+            <p>But if you're just uncomfortable or annoyed or still holding onto disappointments from when you were a teenager, grow up.</p>
+
+            <p>You're an adult now. Learn how to have real conversations. Build relationships with people who are different from you. Forgive the small stuff. Work toward being together instead of staying apart.</p>
+
+            <p>Family matters. Relationships matter. Not just for your personal life. For your professional life too.</p>
+
+            <p>Be very slow to pull the cord on "you're out of my life forever."</p>
+
+            <p>Take a year off if you need to. Go from weekly dinners to monthly. Send Christmas cards and FaceTime instead of traveling. Scale back to what's sustainable.</p>
+
+            <p>But give people a roadmap back. Be clear about what needs to change. Have the hard conversation about reconciliation.</p>
+
+            <p>Because feeling awkward or uncomfortable isn't a sign to end the relationship. It's a sign to work through it.</p>
+
+            <p>And most of the time, working through it is worth it.</p>
+
+            <p>Both for your family and for your future.</p>
         </div>
-    </header>
 
-    <div class="site-wrapper">
-        <aside class="sidebar">
-            <img src="../headshot-6.jpg" alt="Seth Forte" class="profile-photo animate-fade-in">
-            <h1 class="profile-name">Seth Forte</h1>
-            <p class="profile-tagline">Systems Architect &<br>Automation Consultant</p>
-
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/services.html">Services</a></li>
-                    <li><a href="/case-studies.html">Work</a></li>
-                    <li><a href="/writing.html" class="active">Writing</a></li>
-                    <li><a href="/about.html">About</a></li>
-                    <li><a href="/contact.html">Contact</a></li>
-                </ul>
-            </nav>
-
-            <div class="sidebar-email">
-                <a href="mailto:seth@launchforte.com">seth@launchforte.com</a>
+        <div class="footer-section">
+            <a href="mailto:seth@launchforte.com" class="footer-email-main">seth@launchforte.com</a>
+            <div class="footer-columns">
+                <div class="footer-col"><h4>Services</h4><ul><li><a href="/foundation.html">Foundation</a></li><li><a href="/launch.html">Launch</a></li><li><a href="/growth.html">Growth</a></li><li><a href="/scale.html">Scale</a></li><li><a href="/review.html">Infrastructure Review</a></li></ul></div>
+                <div class="footer-col"><h4>Company</h4><ul><li><a href="/about.html">About</a></li><li><a href="/case-studies.html">Case Studies</a></li><li><a href="/writing.html">Writing</a></li><li><a href="/contact.html">Contact</a></li></ul></div>
+                <div class="footer-col"><h4>Connect</h4><ul><li><a href="https://www.linkedin.com/in/seth-forte/" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="/upwork.html">Upwork Portfolio</a></li><li><a href="https://www.upwork.com/freelancers/sethf5" target="_blank" rel="noopener">Upwork Profile</a></li><li><a href="mailto:seth@launchforte.com">Email</a></li></ul></div>
             </div>
-        </aside>
-
-        <main class="main-content">
-            <a href="/writing.html" class="back-link animate-fade-up">← Back to Writing</a>
-
-            <h1 class="article-title animate-fade-up animate-delay-1">Everyone's Cutting Off Their Family (And Most Of Them Probably Shouldn't)</h1>
-            <p class="article-meta animate-fade-up animate-delay-2">Nov 19, 2025</p>
-
-            <div class="article-body">
-                <p>I saw a statistic last week that stopped me cold.</p>
-
-                <p>One in four Americans has cut off an immediate family member. Parent, sibling, child, grandparent. Just done. Not speaking.</p>
-
-                <p>29% of the country is estranged from someone in their immediate family.</p>
-
-                <p>That's not normal. That's not healthy. And most of the time, it's not necessary.</p>
-
-                <h2>We've Confused Boundaries With Ghosting</h2>
-
-                <p>Here's what I'm seeing constantly now.</p>
-
-                <p>Someone has a political disagreement with their parents. Cut them off.</p>
-
-                <p>Dad's annoying at Thanksgiving. Don't go home for the holidays.</p>
-
-                <p>Mom keeps asking about grandkids. Block her number.</p>
-
-                <p>Brother voted for the wrong person. He's dead to me.</p>
-
-                <p>Sister got vaccinated. She can't come to Christmas.</p>
-
-                <p>Uncle didn't get vaccinated. He's banned from the family.</p>
-
-                <p>This isn't boundaries. This is just being unable to handle discomfort.</p>
-
-                <p>Boundaries are healthy. Boundaries are necessary. I live by boundaries in my business and my personal life.</p>
-
-                <p>But boundaries don't mean "if you annoy me or disagree with me, you're out of my life."</p>
-
-                <p>That's not a boundary. That's being a child.</p>
-
-                <h2>You're An Adult Now</h2>
-
-                <p>Here's the uncomfortable truth.</p>
-
-                <p>A lot of people cutting off their parents are still mad about things that happened when they were 16.</p>
-
-                <p>You asked for $30 to go to a baseball game and they said no. You wanted to go to a different college and they pushed back. They didn't come through for you that one time when you really needed them.</p>
-
-                <p>You're 20 or 30 now. You're still carrying that around.</p>
-
-                <p>Our culture right now is obsessed with "self-worth." And look, self-worth is important. You should value yourself. You should have standards. You should protect your mental health.</p>
-
-                <p>But somewhere along the way, that got clouded into an inability to have relationships with people.</p>
-
-                <p>Everyone makes mistakes. Your parents made mistakes. You made mistakes. Your siblings made mistakes. That's called being human.</p>
-
-                <p>At some point, you have to become an adult. And being an adult means learning how to have relationships with imperfect people who got things wrong sometimes.</p>
-
-                <p>Your parents weren't perfect. They said no when you wish they'd said yes. They gave advice you didn't want. They pushed when you needed space. They didn't understand what you were going through.</p>
-
-                <p>That's called being human parents raising human kids.</p>
-
-                <p>If you're going to hold onto every disappointment from childhood forever, you're never going to have a relationship with anyone. Not your parents. Not your spouse. Not your kids. Not your friends.</p>
-
-                <p>Adults learn how to have hard conversations. Adults learn how to forgive small things. Adults learn how to stay in relationship even when it's uncomfortable.</p>
-
-                <p>If you haven't learned that yet, that's a you problem, not a them problem.</p>
-
-                <h2>When It Actually Makes Sense To Cut Someone Off</h2>
-
-                <p>Look, I'm not saying you should never cut off a family member.</p>
-
-                <p>There are legitimate reasons to end a relationship with a parent or sibling.</p>
-
-                <p>If there's been real abuse and there's been no reckoning, no ownership, no real apology and changed behavior, you don't owe that person access to your life or your kids. Abuse can be physical, emotional, psychological. If it happened and there's been no accountability, no genuine change, you're right to protect yourself and your family.</p>
-
-                <p>If someone is actively trying to control your life as an adult. Not giving advice. Not being annoying. Actually trying to control your decisions, your marriage, your kids, your career as if you still live under their roof.</p>
-
-                <p>If the relationship is so toxic that every interaction leaves you angry, sick, anxious, drinking more, unable to function in your actual life. When your heart rate spikes every time their name shows up on your phone.</p>
-
-                <p>If there's ongoing manipulation, gaslighting, blame-shifting, or this attitude of "you owe me" access to your home, your money, your kids, your life.</p>
-
-                <p>If someone fundamentally disrespects you, your spouse, or your kids in ways that are demeaning and abusive. And I'm not talking about annoying comments. I'm talking about actively trashing your self-worth, withholding love as punishment, belittling who you are.</p>
-
-                <p>Those are reasons. Real reasons.</p>
-
-                <p>But that's different from "Dad chews too loud" or "Mom always wants Mexican food and I'm gluten-free" or "They watch the wrong news channel" or "She wishes my kid played baseball instead of soccer" or "When I was 17 they wouldn't let me go to that concert."</p>
-
-                <h2>The Part Nobody Wants To Hear</h2>
-
-                <p>Being in relationship with people is uncomfortable.</p>
-
-                <p>Your parents are going to be annoying sometimes. They're going to give advice you didn't ask for. They're going to have opinions about your life. They're going to make jokes that aren't funny. They're going to disagree with your choices.</p>
-
-                <p>That's just called having parents.</p>
-
-                <p>Same with siblings. They're going to be frustrating. They're going to have different values. They're going to make different life choices.</p>
-
-                <p>You don't cut people off for being human.</p>
-
-                <p>I see grown adults who haven't lived under their parents' roof in years cutting off their families because life didn't turn out how they thought it would and dealing with family feels like too much work right now.</p>
-
-                <p>Growing up is hard. It's annoying and scary. You thought your life would look different. It doesn't. And when Mom calls and she's being Mom, it's easier to just cut her off than deal with being disappointed about where you are.</p>
-
-                <p>That's not your parents' fault. That's just being an adult. And adults have to learn how to have real conversations with people who annoy them.</p>
-
-                <p>Part of becoming an adult is realizing your parents were doing their best with what they had. They made mistakes. They got things wrong. They disappointed you sometimes.</p>
-
-                <p>So did you. You disappointed them too. You made mistakes. You said things you shouldn't have. You did things that hurt them.</p>
-
-                <p>If both sides are waiting for the other to be perfect before reconciling, nobody's ever reconciling.</p>
-
-                <h2>Unity Doesn't Require Uniformity</h2>
-
-                <p>You don't have to agree with your family to be in relationship with them.</p>
-
-                <p>Being on the same team doesn't mean everyone plays the same position. Being family doesn't mean you all have to think the same way, vote the same way, make the same life choices.</p>
-
-                <p>You can love your parents and completely disagree with their politics.</p>
-
-                <p>You can care about your siblings even though they made different career choices or married someone you wouldn't have chosen.</p>
-
-                <p>That's what being in a family actually means. Staying connected even when you're different.</p>
-
-                <p>The amount of people cutting off family members over who they voted for or whether they got a vaccine or what news channel they watch is insane.</p>
-
-                <p>Those aren't reasons. Those are excuses.</p>
-
-                <h2>What Actually Works Instead</h2>
-
-                <p>If your family is driving you crazy but they're not abusive or genuinely toxic, you need boundaries, not estrangement.</p>
-
-                <p><strong>Stop giving them votes in your life.</strong> You can love your parents without letting them decide where you live, what job you take, how you raise your kids, where you spend the holidays. They can have opinions. They don't get votes.</p>
-
-                <p><strong>Stop trying to make them okay with your decisions.</strong> It's not your job to manage their feelings about your life choices. When Dad says "I wouldn't take that job," that might just be his way of saying "I'll miss you if you move away." You don't need his approval.</p>
-
-                <p><strong>Stay out of triangles.</strong> When Dad complains about Mom to you, that's not your problem. When Mom talks about your sister, don't engage. That's between them.</p>
-
-                <p><strong>Don't own the blame they try to put on you.</strong> If your parents blame you for their marriage problems or their financial situation or their unhappiness, that's not yours to carry. Hop out of it.</p>
-
-                <p><strong>Set clear boundaries and stick to them.</strong> "We're not traveling this Christmas." "We're going from weekly dinners to monthly." "Don't yell in front of my kids or we're leaving." Is that uncomfortable? Yes. Will it cause conflict? Probably. Do it anyway.</p>
-
-                <p><strong>Let go of the small stuff from years ago.</strong> That time they didn't give you money for something. That time they said no to a request. That time they embarrassed you in front of your friends. You're an adult now. Those things happened. They're over. Learn how to move forward instead of cataloging every disappointment.</p>
-
-                <h2>The Financial Reality Check</h2>
-
-                <p>Here's where this gets tricky.</p>
-
-                <p>If you're still on their cell phone plan, they get a vote.</p>
-
-                <p>If they're paying for your college, they get a vote.</p>
-
-                <p>If they're paying for your car, they get a vote.</p>
-
-                <p>But if you're married with two kids living an hour away and financially independent? They don't get a vote.</p>
-
-                <p>You can't demand complete autonomy while still being financially dependent. That's not how it works.</p>
-
-                <h2>What This Looks Like In Real Life</h2>
-
-                <p>My relationship with my family and extended family isn't perfect.</p>
-
-                <p>My wife and I try to let everyone know what our holiday schedule will look like. Where we'll be. What we're doing. What works for us.</p>
-
-                <p>Some years that's well-received. Some years it's not. Feelings get hurt. People get upset with our decisions.</p>
-
-                <p>Can I control their reactions? Nope.</p>
-
-                <p>But it's my job to protect my marriage and my kids, not to make everyone in my extended family comfortable with our choices.</p>
-
-                <p>That means sitting through dinners I don't want to be at sometimes. Listening to jokes I've heard a thousand times. Dealing with political opinions I disagree with while rolling my eyes.</p>
-
-                <p>It also means stopping conversations when they cross lines. "Hey, don't say that in front of my kids." Making things awkward when necessary. "My daughter doesn't want a hug right now."</p>
-
-                <p>That's boundaries. Uncomfortable, sometimes conflict-creating boundaries.</p>
-
-                <p>But I'm not cutting people off because they're annoying or because we disagree about politics or because they give unwanted advice or because of something that happened 15 years ago.</p>
-
-                <h2>The Reconciliation Part</h2>
-
-                <p>Here's what the data shows. Most family estrangements eventually reconcile.</p>
-
-                <p>Which means a lot of people are losing years of relationships over things that eventually get worked out anyway.</p>
-
-                <p>If you want reconciliation (and most people do, even if they won't admit it), someone has to go first.</p>
-
-                <p>You're probably sitting there thinking "they don't want to talk to me" or "they're never going to forgive me" or "too much time has passed."</p>
-
-                <p>You made that up. You don't actually know that.</p>
-
-                <p>Go first. Send the text. Make the call. Say "I miss you. I'm sorry. I want to build a new relationship."</p>
-
-                <p>Will it be awkward? Yes. Might they reject you? Maybe. Is it better than losing another decade over pride?</p>
-
-                <p>Absolutely.</p>
-
-                <p>I've talked to people who haven't spoken to family members for five or ten years because they made up stories about what the other person was thinking. "I know they don't want to hear from me." "They'll never forgive me."</p>
-
-                <p>You lost a decade over a story you invented.</p>
-
-                <h2>Why This Matters For Business</h2>
-
-                <p>Here's the thing. If you can't learn how to stay in relationship with family members who annoy you, you're going to struggle in business.</p>
-
-                <p>Because business is all about relationships with imperfect people.</p>
-
-                <p>Clients are going to be annoying sometimes. They're going to ask the same questions repeatedly. They're going to change their mind. They're going to have opinions you disagree with.</p>
-
-                <p>If your response to discomfort is to cut people off, you're going to burn through clients constantly.</p>
-
-                <p>I've seen consultants who ghost clients the moment something gets uncomfortable. Client asks for a revision? Ghost them. Client questions a decision? Cut them off. Client has feedback that's hard to hear? Block their number.</p>
-
-                <p>That's not boundaries. That's being unable to handle adult relationships.</p>
-
-                <p>The same skills you need to maintain family relationships are the exact skills you need in business.</p>
-
-                <p>Having hard conversations instead of avoiding them. Setting clear boundaries without nuking the relationship. Forgiving small mistakes instead of holding grudges. Working through disagreements instead of walking away.</p>
-
-                <p>I think about this constantly with clients. Someone's going to be frustrating. A project is going to hit complications. Communication is going to break down temporarily.</p>
-
-                <p>If I cut off every client who annoyed me or every project that got uncomfortable, I'd have no business.</p>
-
-                <p>The consultants who succeed long-term aren't the ones who only work with perfect clients on perfect projects. They're the ones who learned how to maintain relationships even when things get messy.</p>
-
-                <p>Same with employees if you're building a team. People are going to make mistakes. They're going to have bad days. They're going to disagree with you sometimes.</p>
-
-                <p>If you fire everyone who's occasionally frustrating, you'll never build anything.</p>
-
-                <p>The pattern I see is clear. People who cut off family members over small disagreements tend to do the same thing in business. They burn through partnerships. They can't maintain long-term client relationships. They create drama and then leave when things get hard.</p>
-
-                <p>And the reverse is true too. People who've learned how to stay in relationship with difficult family members tend to be better at business relationships. They've had practice with hard conversations. They know how to set boundaries without destroying connections. They understand that disagreement doesn't mean the relationship is over.</p>
-
-                <p>That's valuable. In business, that's the difference between building something that lasts and constantly starting over because you can't handle discomfort.</p>
-
-                <h2>The Bottom Line</h2>
-
-                <p>The world needs more people coming together, not fewer.</p>
-
-                <p>We're already isolated enough. We're already divided enough. We're already lonely enough.</p>
-
-                <p>Cutting off family members over minor disagreements or discomfort is making all of that worse.</p>
-
-                <p>If you're dealing with real abuse or manipulation or genuinely toxic behavior, protect yourself. Set hard boundaries. Take breaks. End the relationship if you need to.</p>
-
-                <p>But if you're just uncomfortable or annoyed or still holding onto disappointments from when you were a teenager, grow up.</p>
-
-                <p>You're an adult now. Learn how to have real conversations. Build relationships with people who are different from you. Forgive the small stuff. Work toward being together instead of staying apart.</p>
-
-                <p>Family matters. Relationships matter. Not just for your personal life. For your professional life too.</p>
-
-                <p>Be very slow to pull the cord on "you're out of my life forever."</p>
-
-                <p>Take a year off if you need to. Go from weekly dinners to monthly. Send Christmas cards and FaceTime instead of traveling. Scale back to what's sustainable.</p>
-
-                <p>But give people a roadmap back. Be clear about what needs to change. Have the hard conversation about reconciliation.</p>
-
-                <p>Because feeling awkward or uncomfortable isn't a sign to end the relationship. It's a sign to work through it.</p>
-
-                <p>And most of the time, working through it is worth it.</p>
-
-                <p>Both for your family and for your future.</p>
+            <div class="footer-bottom">
+                <p class="footer-location">Based in Dallas, Texas. Serving clients nationwide.</p>
+                <p class="copyright">&copy; 2026 Seth Forte. All rights reserved.</p>
             </div>
+        </div>
+    </main>
 
-            <div class="footer-section">
-                <a href="mailto:seth@launchforte.com" class="footer-email-main">seth@launchforte.com</a>
-
-                <div class="footer-columns">
-                    <div class="footer-col">
-                        <h4>Services</h4>
-                        <ul>
-                            <li><a href="/foundation.html">Foundation</a></li>
-                            <li><a href="/launch.html">Launch</a></li>
-                            <li><a href="/growth.html">Growth</a></li>
-                            <li><a href="/scale.html">Scale</a></li>
-                            <li><a href="/review.html">Infrastructure Review</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Company</h4>
-                        <ul>
-                            <li><a href="/about.html">About</a></li>
-                            <li><a href="/case-studies.html">Case Studies</a></li>
-                            <li><a href="/writing.html">Writing</a></li>
-                            <li><a href="/contact.html">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Connect</h4>
-                        <ul>
-                            <li><a href="https://www.linkedin.com/in/seth-forte/" target="_blank" rel="noopener">LinkedIn</a></li>
-                            <li><a href="/upwork.html">Upwork Portfolio</a></li>
-                            <li><a href="https://www.upwork.com/freelancers/sethf5" target="_blank" rel="noopener">Upwork Profile</a></li>
-                            <li><a href="mailto:seth@launchforte.com">Email</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="footer-bottom">
-                    <p class="footer-location">Based in Dallas, Texas. Serving clients nationwide.</p>
-                    <p class="copyright">&copy; 2026 Seth Forte. All rights reserved.</p>
-                </div>
-            </div>
-        </main>
-    </div>
-<script src="/theme-toggle.js"></script>
 <script src="/scroll-reveal.js"></script>
+<script src="/theme-toggle.js"></script>
 <script src="/scroll-top.js"></script>
+<script src="/hamburger.js"></script>
 </body>
 </html>
