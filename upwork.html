@@ -130,6 +130,7 @@
         .result-item { padding: 1rem 0; border-bottom: 1px solid var(--border); }
         .result-item:last-child { border-bottom: none; }
         .result-client { font-size: 0.95rem; font-weight: 500; color: var(--text-primary); margin-bottom: 0.25rem; }
+        .result-stat { font-size: 0.8rem; font-weight: 500; color: var(--accent); margin-bottom: 0.35rem; }
         .result-desc { font-size: 0.88rem; color: var(--text-muted); }
 
         /* Reviews */
@@ -140,12 +141,6 @@
         .review-attribution { display: flex; flex-direction: column; gap: 0.1rem; }
         .review-name { font-size: 0.88rem; font-weight: 500; color: var(--text-primary); }
         .review-project { font-size: 0.8rem; color: var(--text-muted); }
-
-        /* Skills */
-        .skill-group { margin-bottom: 1.25rem; }
-        .skill-group-label { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.5rem; }
-        .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-        .skill-tag { background: rgba(255,255,255,0.03); border: 1px solid var(--border); color: var(--text-secondary); padding: 0.4rem 0.85rem; border-radius: 20px; font-size: 0.8rem; }
 
         /* How It Works */
         .steps-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
@@ -212,7 +207,7 @@
     <main class="main-wrapper">
         <div class="page-hero">
             <h1 class="page-title animate-fade-up animate-delay-1">You know what's broken. I know how to fix it.</h1>
-            <p class="page-subtitle animate-fade-up animate-delay-2">I build CRM pipelines, automation systems, AI tools, and lead generation infrastructure. If your business runs on duct-taped workflows and manual follow-up, I replace that with systems that actually work.</p>
+            <p class="page-subtitle animate-fade-up animate-delay-2">I build the systems that keep your business from running on manual work and duct tape. CRM, automation, AI, lead gen... if it should be running itself and it's not, that's what I do.</p>
             <div class="page-badges animate-fade-up animate-delay-3">
                 <span class="page-badge">Top Rated</span>
                 <span class="page-badge">100% Job Success</span>
@@ -224,20 +219,20 @@
 
         <div class="capability-grid">
             <div class="capability-card">
-                <h3>CRM &amp; Pipeline Infrastructure</h3>
-                <p>I set up the CRM, connect the forms, build the lead routing, and automate the follow-up. Every step from first contact to close gets tracked and triggered without anyone chasing it manually.</p>
+                <h3>CRM and Pipeline Infrastructure</h3>
+                <p>I set up the CRM, build the pipeline, connect the forms, and automate the follow-up. The whole thing runs without anyone chasing it.</p>
             </div>
             <div class="capability-card">
-                <h3>Lead Generation &amp; Funnels</h3>
-                <p>I build landing pages, ad campaigns, email and SMS sequences, and the automations that move leads through your pipeline. The system follows up so your team does not have to.</p>
+                <h3>Lead Generation and Funnels</h3>
+                <p>Ads, landing pages, email sequences, and the automations that move leads through your pipeline until they book or buy.</p>
             </div>
             <div class="capability-card">
-                <h3>AI &amp; Voice Automation</h3>
-                <p>I build AI voice agents, chatbots, document search tools, and content pipelines. These are not demos. They run in production and handle real volume.</p>
+                <h3>AI and Voice Automation</h3>
+                <p>AI voice agents, chatbots, document search, content pipelines. I build these for real businesses handling real volume, not as demos.</p>
             </div>
             <div class="capability-card">
-                <h3>Reporting &amp; Scale</h3>
-                <p>I build dashboards that track revenue, ad spend, pipeline velocity, and team output. You see what is working and what is not, without pulling reports manually.</p>
+                <h3>Reporting and Scale</h3>
+                <p>Dashboards that show what's working and what's not. Revenue, ad spend, pipeline, team output... without anyone pulling reports manually.</p>
             </div>
         </div>
 
@@ -247,23 +242,28 @@
 
         <div class="result-item">
             <div class="result-client">Revolut</div>
-            <div class="result-desc">Built outbound sales pipeline and CRM automation for a 20-person B2B banking team. $4M+ in pipeline value tracked through the system.</div>
+            <div class="result-stat">$4M+ pipeline value identified</div>
+            <div class="result-desc">Outbound pipeline and CRM automation for a 20-person B2B banking team. Transaction analysis that used to take weeks... done in hours.</div>
         </div>
         <div class="result-item">
             <div class="result-client">CR Deals</div>
-            <div class="result-desc">Replaced 130+ hours per month of manual court records pulls with an automated scraping and enrichment pipeline.</div>
+            <div class="result-stat">130+ hours/month automated</div>
+            <div class="result-desc">Manual court records pulls replaced with one automated pipeline. That's about $52K a year in labor costs that just went away.</div>
         </div>
         <div class="result-item">
             <div class="result-client">Modern Bungalow</div>
-            <div class="result-desc">Built Shopify to Xero product and inventory sync. Eliminated 60 hours per month of manual data entry.</div>
+            <div class="result-stat">60 hours/month saved</div>
+            <div class="result-desc">Shopify-to-Xero product and inventory sync. 60 hours of manual data entry per month, gone.</div>
         </div>
         <div class="result-item">
             <div class="result-client">Eden Medical</div>
-            <div class="result-desc">Built an AI booking agent using Voiceflow and Phorest API. Handles appointment scheduling and cancellations 24/7 without staff.</div>
+            <div class="result-stat">24/7 AI booking agent</div>
+            <div class="result-desc">Voiceflow and Phorest API integration. Patients book and cancel through AI without staff touching it.</div>
         </div>
         <div class="result-item">
             <div class="result-client">Kingfisher Ads</div>
-            <div class="result-desc">Built the full agency stack: lead capture, CRM pipeline, automated onboarding, and client reporting. Replaced their entire manual process.</div>
+            <div class="result-stat">Full agency stack built</div>
+            <div class="result-desc">Lead capture, CRM pipeline, onboarding automation, client reporting. Replaced their entire manual process end to end.</div>
         </div>
 
         <hr class="section-divider">
@@ -310,70 +310,23 @@
 
         <hr class="section-divider">
 
-        <h2 class="section-label">Tools I Work With</h2>
-
-        <div class="skill-group">
-            <div class="skill-group-label">CRM &amp; Marketing</div>
-            <div class="skill-tags">
-                <span class="skill-tag">HubSpot</span>
-                <span class="skill-tag">GoHighLevel</span>
-                <span class="skill-tag">ActiveCampaign</span>
-                <span class="skill-tag">Airtable</span>
-            </div>
-        </div>
-
-        <div class="skill-group">
-            <div class="skill-group-label">Automation</div>
-            <div class="skill-tags">
-                <span class="skill-tag">Make</span>
-                <span class="skill-tag">n8n</span>
-                <span class="skill-tag">Zapier</span>
-                <span class="skill-tag">Power Automate</span>
-            </div>
-        </div>
-
-        <div class="skill-group">
-            <div class="skill-group-label">AI &amp; Voice</div>
-            <div class="skill-tags">
-                <span class="skill-tag">OpenAI</span>
-                <span class="skill-tag">Claude</span>
-                <span class="skill-tag">Voiceflow</span>
-                <span class="skill-tag">Vapi</span>
-                <span class="skill-tag">Twilio</span>
-            </div>
-        </div>
-
-        <div class="skill-group">
-            <div class="skill-group-label">Development &amp; Infrastructure</div>
-            <div class="skill-tags">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">JavaScript</span>
-                <span class="skill-tag">REST APIs</span>
-                <span class="skill-tag">Stripe</span>
-                <span class="skill-tag">Shopify</span>
-                <span class="skill-tag">Google Workspace</span>
-            </div>
-        </div>
-
-        <hr class="section-divider">
-
         <h2 class="section-label">How It Works</h2>
 
         <div class="steps-grid">
             <div class="step-card">
                 <div class="step-number">Step 1</div>
                 <h3>Discovery Call</h3>
-                <p>We talk through your business, your tools, and what is broken or missing. I ask the questions most freelancers skip.</p>
+                <p>We talk through what's going on... what tools you have, what's broken, what you wish worked differently. If there's a clean build here, I'll tell you what it looks like. If there isn't, I'll tell you that too.</p>
             </div>
             <div class="step-card">
                 <div class="step-number">Step 2</div>
                 <h3>Scope and Build</h3>
-                <p>I write a clear scope, build the system, and test it. You get regular check-ins, not radio silence.</p>
+                <p>I write a clear scope before anything starts. Then I build it, test it, and keep you in the loop along the way. No disappearing for two weeks.</p>
             </div>
             <div class="step-card">
                 <div class="step-number">Step 3</div>
                 <h3>Handoff</h3>
-                <p>You get a working system, a live walkthrough, and documentation you can actually use. No mystery boxes.</p>
+                <p>You get the working system, a walkthrough on video, and documentation that makes sense. You own everything I build.</p>
             </div>
         </div>
 
@@ -381,7 +334,7 @@
 
         <!-- CTA -->
         <div class="cta-section">
-            <p class="body-text" style="margin-bottom: 1.75rem;">Have a project in mind? Hire me on Upwork or book a call to talk through what you need.</p>
+            <p class="body-text" style="margin-bottom: 1.75rem;">Got something you need built? Hire me on Upwork or book a call and I'll tell you what it takes.</p>
             <div class="cta-buttons">
                 <a href="https://www.upwork.com/freelancers/sethf5" target="_blank" rel="noopener" class="btn-primary">Hire Me on Upwork</a>
                 <a href="https://calendly.com/seth-fortewebdesigns/30min" target="_blank" rel="noopener" class="btn-secondary">Book a Call</a>
