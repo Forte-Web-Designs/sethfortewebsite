@@ -3,40 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Primary Meta Tags -->
     <title>Seth Forte | Automation Consultant & Systems Architect</title>
     <meta name="title" content="Seth Forte | Automation Consultant & Systems Architect">
-    <meta name="description" content="Automation consulting and systems architecture. CRM pipelines, sales funnels, reporting dashboards, and the infrastructure that makes growing businesses run.">
+    <meta name="description" content="Automation consulting and systems architecture. CRM pipelines, AI voice agents, reporting dashboards, and the infrastructure that makes growing businesses run.">
     <meta name="author" content="Seth Forte">
-
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sethforte.com/">
     <meta property="og:title" content="Seth Forte | Automation Consultant & Systems Architect">
-    <meta property="og:description" content="Automation consulting and systems architecture. CRM pipelines, sales funnels, reporting dashboards, and the infrastructure that makes growing businesses run.">
+    <meta property="og:description" content="Automation consulting and systems architecture. CRM pipelines, AI voice agents, reporting dashboards, and the infrastructure that makes growing businesses run.">
     <meta property="og:image" content="https://sethforte.com/headshot-6.jpg">
-
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://sethforte.com/">
     <meta property="twitter:title" content="Seth Forte | Automation Consultant & Systems Architect">
-    <meta property="twitter:description" content="Automation consulting and systems architecture. CRM pipelines, sales funnels, reporting dashboards, and the infrastructure that makes growing businesses run.">
+    <meta property="twitter:description" content="Automation consulting and systems architecture. CRM pipelines, AI voice agents, reporting dashboards, and the infrastructure that makes growing businesses run.">
     <meta property="twitter:image" content="https://sethforte.com/headshot-6.jpg">
-
-    <!-- Canonical URL -->
     <link rel="canonical" href="https://sethforte.com/">
-
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/jpeg" href="logo.jpg">
     <link rel="apple-touch-icon" href="logo.jpg">
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- Structured Data / Schema.org -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -50,7 +37,7 @@
             "https://www.upwork.com/freelancers/sethf5"
         ],
         "description": "Automation consulting and systems architecture. CRM pipelines, sales funnels, reporting dashboards, and the infrastructure that makes growing businesses run.",
-        "knowsAbout": ["Business Automation", "CRM Integration", "Sales Funnels", "HubSpot", "Make", "n8n", "Zapier", "Systems Architecture"],
+        "knowsAbout": ["Business Automation", "CRM Integration", "AI Voice Agents", "HubSpot", "Make", "n8n", "Zapier", "Systems Architecture"],
         "address": {
             "@type": "PostalAddress",
             "addressLocality": "Dallas",
@@ -60,33 +47,36 @@
         "email": "seth@launchforte.com"
     }
     </script>
-
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
             --text-primary: #f0f4f8;
             --text-secondary: #94a3b8;
             --text-muted: #64748b;
-            --accent: #0088DB;
-            --accent-hover: #0099f0;
-            --accent-warm: #38b2f5;
-            --background: #0a0e17;
-            --background-alt: #111827;
-            --border: rgba(255,255,255,0.08);
-            --border-light: rgba(255,255,255,0.12);
-            --radius-pill: 980px;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --accent-subtle: rgba(99,102,241,0.08);
+            --accent-glow: rgba(99,102,241,0.25);
+            --accent-2: #06b6d4;
+            --accent-3: #a78bfa;
+            --background: #09090b;
+            --background-alt: #0f0f13;
+            --surface: #141418;
+            --surface-hover: #1a1a20;
+            --border: rgba(255,255,255,0.06);
+            --border-light: rgba(255,255,255,0.1);
+            --radius-sm: 8px;
             --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-pill: 980px;
         }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            font-size: 17px;
-            line-height: 1.47;
+            font-size: 16px;
+            line-height: 1.6;
             color: var(--text-primary);
             background: var(--background);
             min-height: 100vh;
@@ -94,43 +84,64 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        a {
-            color: var(--accent);
-            text-decoration: none;
-            transition: color 0.3s ease;
+        a { color: var(--accent-hover); text-decoration: none; transition: color 0.2s ease; }
+        a:hover { color: var(--accent-hover); }
+
+        /* ─── Grid Background ─── */
+        .grid-bg {
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
         }
 
-        a:hover {
-            color: var(--accent-hover);
-            text-decoration: none;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
+        /* ─── Animations ─── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(2.5); opacity: 0; }
+        }
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
 
-        .animate-fade-in { animation: fadeIn 0.8s ease forwards; }
-        .animate-fade-up { animation: fadeInUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards; }
-        .animate-delay-1 { animation-delay: 0.15s; opacity: 0; }
-        .animate-delay-2 { animation-delay: 0.3s; opacity: 0; }
-        .animate-delay-3 { animation-delay: 0.45s; opacity: 0; }
-        .animate-delay-4 { animation-delay: 0.6s; opacity: 0; }
+        .animate-up { animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) forwards; }
+        .animate-in { animation: fadeIn 0.8s ease forwards; }
+        .delay-1 { animation-delay: 0.1s; opacity: 0; }
+        .delay-2 { animation-delay: 0.2s; opacity: 0; }
+        .delay-3 { animation-delay: 0.35s; opacity: 0; }
+        .delay-4 { animation-delay: 0.5s; opacity: 0; }
+        .delay-5 { animation-delay: 0.65s; opacity: 0; }
 
-        /* Header */
+        /* ─── Header ─── */
         .site-header {
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(10, 14, 23, 0.8);
-            backdrop-filter: blur(20px) saturate(1.8);
-            -webkit-backdrop-filter: blur(20px) saturate(1.8);
+            background: rgba(9,9,11,0.7);
+            backdrop-filter: blur(20px) saturate(1.5);
+            -webkit-backdrop-filter: blur(20px) saturate(1.5);
             border-bottom: 1px solid var(--border);
             padding: 0 2rem;
         }
@@ -139,211 +150,260 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
-            height: 48px;
+            height: 52px;
         }
 
         .header-logo {
-            font-size: 1rem;
+            font-size: 0.9375rem;
             font-weight: 600;
             color: var(--text-primary);
             text-decoration: none;
-            letter-spacing: -0.01em;
-        }
-
-        .header-logo:hover { color: var(--text-primary); text-decoration: none; opacity: 0.8; }
-
-        .header-nav {
+            letter-spacing: -0.02em;
             display: flex;
-            gap: 0.25rem;
+            align-items: center;
+            gap: 0.5rem;
         }
+        .header-logo:hover { color: var(--text-primary); opacity: 0.8; }
+
+        .logo-mark {
+            width: 22px;
+            height: 22px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .header-nav { display: flex; gap: 0.25rem; }
 
         .nav-link {
             padding: 0.35rem 0.75rem;
-            color: var(--text-secondary);
+            color: var(--text-muted);
             font-size: 0.8125rem;
             font-weight: 400;
-            transition: color 0.3s ease;
+            transition: color 0.2s ease;
             text-decoration: none;
+            border-radius: var(--radius-sm);
         }
+        .nav-link:hover { color: var(--text-primary); }
+        .nav-link.active { color: var(--text-primary); }
 
-        .nav-link:hover {
-            color: var(--text-primary);
-            text-decoration: none;
-        }
-
-        .nav-link.active {
-            color: var(--text-primary);
-            font-weight: 500;
-        }
-
-        /* Main Wrapper */
+        /* ─── Main ─── */
         .main-wrapper {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 2rem 8rem;
+            position: relative;
+            z-index: 1;
         }
 
-        /* Hero */
+        /* ─── Hero ─── */
         .hero-section {
             text-align: center;
-            padding: 8rem 0 4rem;
-            max-width: 800px;
+            padding: 7rem 0 5rem;
+            max-width: 820px;
             margin: 0 auto;
+            position: relative;
         }
 
-        .profile-photo {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
+        .hero-glow {
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 400px;
+            background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 70%);
+            pointer-events: none;
+            filter: blur(60px);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem 0.4rem 0.6rem;
+            background: var(--accent-subtle);
+            border: 1px solid rgba(99,102,241,0.15);
+            border-radius: var(--radius-pill);
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--accent-hover);
             margin-bottom: 2rem;
-            transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+            position: relative;
         }
 
-        .profile-photo:hover {
-            transform: scale(1.08);
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            position: relative;
+        }
+        .status-dot::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: #22c55e;
+            animation: pulse-ring 2s ease-out infinite;
         }
 
         .hero-headline {
-            font-size: clamp(3rem, 8vw, 5.5rem);
-            font-weight: 700;
+            font-size: clamp(2.75rem, 7vw, 4.5rem);
+            font-weight: 800;
             color: var(--text-primary);
             margin-bottom: 1.5rem;
-            letter-spacing: -0.03em;
-            line-height: 1.08;
+            letter-spacing: -0.04em;
+            line-height: 1.05;
+            position: relative;
         }
 
-        .rotating-word {
-            display: inline-block;
-            color: var(--accent);
-            transition: opacity 0.4s ease;
+        .gradient-text {
+            background: linear-gradient(135deg, var(--accent), var(--accent-2), var(--accent-3));
+            background-size: 200% 200%;
+            animation: gradient-shift 6s ease infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .hero-body {
+        .hero-sub {
             color: var(--text-secondary);
-            margin-bottom: 2.5rem;
-            line-height: 1.5;
-            font-size: 1.3125rem;
+            font-size: 1.25rem;
             font-weight: 300;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            line-height: 1.6;
+            max-width: 560px;
+            margin: 0 auto 2.5rem;
         }
 
         .hero-cta {
             display: flex;
-            gap: 2rem;
+            gap: 1rem;
             justify-content: center;
             align-items: center;
-            margin-top: 2.5rem;
         }
 
-        /* Buttons */
+        /* ─── Buttons ─── */
         .btn-primary {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.875rem 2rem;
+            padding: 0.8rem 1.75rem;
             background: var(--accent);
             color: #ffffff;
             border: none;
             border-radius: var(--radius-pill);
-            font-size: 1rem;
+            font-size: 0.875rem;
             font-weight: 500;
             cursor: pointer;
-            transition: background 0.3s ease;
+            transition: all 0.2s ease;
             text-decoration: none;
             font-family: inherit;
-            letter-spacing: -0.01em;
         }
-
         .btn-primary:hover {
             background: var(--accent-hover);
-            text-decoration: none;
             color: #ffffff;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 30px var(--accent-glow);
         }
 
-        .btn-secondary {
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.8rem 1.75rem;
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-pill);
+            font-size: 0.875rem;
+            font-weight: 400;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            font-family: inherit;
+        }
+        .btn-ghost:hover {
+            color: var(--text-primary);
+            border-color: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.03);
+        }
+
+        .btn-link {
             display: inline-flex;
             align-items: center;
             gap: 0.35rem;
-            border: none;
-            background: none;
-            color: var(--accent);
-            padding: 0;
-            font-size: 1rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            text-decoration: none;
-            font-family: inherit;
-            letter-spacing: -0.01em;
-        }
-
-        .btn-secondary:hover {
-            color: var(--accent-hover);
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            font-weight: 400;
+            transition: color 0.2s ease;
             text-decoration: none;
         }
+        .btn-link:hover { color: var(--accent-hover); }
 
-        /* Credibility */
-        .credibility-section {
+        /* ─── Metrics Bar ─── */
+        .metrics-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .metric-item {
+            background: var(--surface);
+            padding: 2rem 1.5rem;
             text-align: center;
-            padding: 4rem 0;
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
+            transition: background 0.2s ease;
         }
+        .metric-item:hover { background: var(--surface-hover); }
 
-        .credibility-bar {
-            display: flex;
-            justify-content: center;
-            gap: clamp(2rem, 5vw, 4rem);
-            padding: 0;
-        }
-
-        .credibility-item {
-            text-align: center;
-        }
-
-        .credibility-item .stat {
-            font-size: clamp(2rem, 4vw, 3rem);
+        .metric-value {
+            font-size: clamp(1.5rem, 3vw, 2.25rem);
             font-weight: 700;
             color: var(--text-primary);
+            letter-spacing: -0.03em;
+            margin-bottom: 0.35rem;
             display: block;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.02em;
         }
 
-        .credibility-item .label {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
+        .metric-label {
+            font-size: 0.6875rem;
+            color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            line-height: 1.4;
         }
 
-        .trusted-by-wrap {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-            margin-top: 3rem;
+        /* ─── Trust Carousel ─── */
+        .trust-section {
+            text-align: center;
+            margin-bottom: 1rem;
         }
 
-        .trusted-by-label {
+        .trust-label {
             font-size: 0.6875rem;
             font-weight: 500;
             text-transform: uppercase;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.12em;
             color: var(--text-muted);
+            margin-bottom: 1rem;
+            display: block;
         }
 
-        /* Client Carousel */
         .carousel-wrapper {
             width: 100%;
             overflow: hidden;
-            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
         }
 
         @keyframes scrollLeft {
@@ -357,281 +417,363 @@
             width: max-content;
             animation: scrollLeft 25s linear infinite;
         }
-
-        .carousel-track:hover {
-            animation-play-state: paused;
-        }
+        .carousel-track:hover { animation-play-state: paused; }
 
         .carousel-item {
             color: var(--text-muted);
-            font-size: 0.9375rem;
+            font-size: 0.875rem;
             font-weight: 400;
-            letter-spacing: 0.02em;
             white-space: nowrap;
-            transition: color 0.3s ease;
+            transition: color 0.2s ease;
         }
-
-        .carousel-item:hover {
-            color: var(--text-secondary);
-        }
+        .carousel-item:hover { color: var(--text-secondary); }
 
         .featured-in {
             text-align: center;
             font-size: 0.8125rem;
             color: var(--text-muted);
-            margin-top: 1.5rem;
+            margin-top: 1.25rem;
+        }
+        .featured-in a { color: var(--text-secondary); text-decoration: underline; text-underline-offset: 2px; }
+        .featured-in a:hover { color: var(--accent-hover); }
+
+        /* ─── Section Headings ─── */
+        .section-label {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent-hover);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .section-label::before {
+            content: '';
+            width: 16px;
+            height: 1px;
+            background: var(--accent);
         }
 
-        .featured-in a {
-            color: var(--text-secondary);
-            text-decoration: underline;
-            text-underline-offset: 2px;
-        }
-
-        .featured-in a:hover {
-            color: var(--accent);
-        }
-
-        /* Section Headings */
         .section-heading {
-            font-size: clamp(1.75rem, 4vw, 2.75rem);
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
             font-weight: 700;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.03em;
             color: var(--text-primary);
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.75rem;
             padding-top: 6rem;
         }
 
         .section-sub {
             color: var(--text-secondary);
-            font-size: 1.125rem;
+            font-size: 1.0625rem;
             font-weight: 300;
-            line-height: 1.5;
+            line-height: 1.6;
             margin-bottom: 3rem;
-            max-width: 600px;
+            max-width: 560px;
         }
 
-        /* Stage Grid */
+        /* ─── Stage Cards ─── */
         .stage-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1px;
-            margin-bottom: 3rem;
-            background: var(--border);
-            border-radius: var(--radius-md);
-            overflow: hidden;
+            gap: 1rem;
+            margin-bottom: 2rem;
         }
 
         .stage-card {
-            background: var(--background-alt);
-            padding: 3rem 2.5rem;
-            transition: background 0.3s ease;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
             text-decoration: none;
             color: inherit;
+            position: relative;
+            overflow: hidden;
         }
-
+        .stage-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-glow), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
         .stage-card:hover {
-            background: rgba(255,255,255,0.03);
+            border-color: rgba(99,102,241,0.15);
+            background: var(--surface-hover);
+            transform: translateY(-2px);
             text-decoration: none;
+        }
+        .stage-card:hover::before { opacity: 1; }
+
+        .stage-number {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            color: var(--accent-hover);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.75rem;
+            font-family: 'Inter', monospace;
         }
 
         .stage-card .stage-title {
-            font-size: 1.5rem;
+            font-size: 1.375rem;
             font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.35rem;
             letter-spacing: -0.02em;
         }
 
         .stage-card .stage-tagline {
-            font-size: 0.9375rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-            line-height: 1.5;
-        }
-
-        .stage-card .stage-subtitle {
-            font-size: 0.75rem;
+            font-size: 0.875rem;
             color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1rem;
         }
 
         .stage-card p {
             color: var(--text-secondary);
-            font-size: 0.9375rem;
+            font-size: 0.875rem;
             font-weight: 300;
-            line-height: 1.55;
+            line-height: 1.6;
             flex: 1;
         }
 
         .stage-card .stage-link {
-            font-size: 0.875rem;
-            color: var(--accent);
+            font-size: 0.8125rem;
+            color: var(--accent-hover);
             margin-top: auto;
-            padding-top: 1.5rem;
-            display: inline-block;
+            padding-top: 1.25rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: gap 0.2s ease;
+        }
+        .stage-card:hover .stage-link { gap: 0.5rem; }
+
+        /* ─── Divider ─── */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-light), transparent);
+            margin: 2rem 0;
         }
 
         .trust-line {
             text-align: center;
             color: var(--text-muted);
-            font-size: 0.9375rem;
+            font-size: 0.875rem;
             font-weight: 300;
         }
 
-        /* Audit */
-        .audit-section {
+        /* ─── Audit / CTA Block ─── */
+        .cta-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: 4rem 3rem;
             text-align: center;
-            padding: 6rem 0;
-            max-width: 600px;
-            margin: 0 auto;
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 200px;
+            background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 70%);
+            pointer-events: none;
+            filter: blur(40px);
         }
 
-        .audit-section h2 {
-            font-size: clamp(1.5rem, 3vw, 2.25rem);
+        .cta-block h2 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
             font-weight: 700;
             letter-spacing: -0.02em;
             color: var(--text-primary);
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.75rem;
+            position: relative;
         }
 
-        .audit-section .body-text {
+        .cta-block .body-text {
             color: var(--text-secondary);
-            font-size: 1.0625rem;
+            font-size: 1rem;
             font-weight: 300;
-            line-height: 1.55;
-            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            position: relative;
         }
 
-        /* Results */
+        /* ─── Results ─── */
         .result-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 0;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
             margin-bottom: 2rem;
         }
 
         .result-card {
-            border-bottom: 1px solid var(--border);
-            padding: 2.5rem 0;
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 2.5rem;
-            align-items: baseline;
-            transition: background 0.3s ease;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            transition: all 0.3s ease;
             text-decoration: none;
             color: inherit;
         }
-
-        .result-card:first-child {
-            border-top: 1px solid var(--border);
-        }
-
         .result-card:hover {
+            border-color: rgba(99,102,241,0.15);
+            background: var(--surface-hover);
+            transform: translateY(-2px);
             text-decoration: none;
-            background: rgba(255,255,255,0.02);
         }
 
         .result-stat {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
-            color: var(--text-primary);
-            letter-spacing: -0.02em;
-            white-space: nowrap;
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.75rem;
+            display: block;
+            background: linear-gradient(135deg, var(--accent-hover), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .result-card h3 {
-            font-size: 1.125rem;
+            font-size: 0.9375rem;
             font-weight: 600;
             color: var(--text-primary);
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.35rem;
         }
 
         .result-card p {
             color: var(--text-secondary);
-            font-size: 0.9375rem;
+            font-size: 0.8125rem;
             font-weight: 300;
+            line-height: 1.5;
         }
 
-        .view-all-link {
-            display: inline-block;
-            margin-top: 1.5rem;
-            color: var(--accent);
-            font-size: 1rem;
-            font-weight: 400;
+        /* ─── How I Work ─── */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
         }
 
-        /* Writing */
+        .process-step {
+            padding: 2rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+        }
+
+        .process-step .step-num {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            color: var(--accent-hover);
+            letter-spacing: 0.06em;
+            margin-bottom: 1rem;
+            font-family: 'Inter', monospace;
+        }
+
+        .process-step h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .process-step p {
+            color: var(--text-secondary);
+            font-size: 0.8125rem;
+            font-weight: 300;
+            line-height: 1.55;
+        }
+
+        /* ─── Writing ─── */
         .writing-list { list-style: none; }
 
         .writing-item {
-            padding: 1.75rem 0;
+            padding: 1.25rem 0;
             border-bottom: 1px solid var(--border);
         }
+        .writing-item:first-child { border-top: 1px solid var(--border); }
 
-        .writing-item:first-child {
-            border-top: 1px solid var(--border);
-        }
-
-        .writing-item a {
-            text-decoration: none;
-        }
+        .writing-item a { text-decoration: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
 
         .writing-item h3 {
-            font-size: 1.125rem;
+            font-size: 1rem;
             font-weight: 500;
             color: var(--text-primary);
-            transition: color 0.3s ease;
+            transition: color 0.2s ease;
             line-height: 1.4;
         }
+        .writing-item:hover h3 { color: var(--accent-hover); }
 
-        .writing-item:hover h3 {
-            color: var(--accent);
+        .writing-item .arrow {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            transition: transform 0.2s ease, color 0.2s ease;
+            flex-shrink: 0;
         }
+        .writing-item:hover .arrow { transform: translateX(3px); color: var(--accent-hover); }
 
-        /* Newsletter */
+        /* ─── Newsletter ─── */
         .newsletter-section {
             text-align: center;
-            padding: 6rem 0 2rem;
+            padding: 5rem 0 2rem;
             max-width: 507px;
             margin: 0 auto;
         }
+        .newsletter-section iframe { max-width: 507px; }
 
-        .newsletter-section iframe {
-            max-width: 507px;
-        }
-
-        /* About */
+        /* ─── About Block ─── */
         .about-text {
             color: var(--text-secondary);
-            font-size: 1.125rem;
+            font-size: 1rem;
             font-weight: 300;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-            max-width: 700px;
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+            max-width: 680px;
         }
 
-        /* Calendly */
-        .calendly-section {
-            padding-top: 4rem;
-        }
+        /* ─── Calendly ─── */
+        .calendly-section { padding-top: 3rem; }
 
-        /* Footer */
+        .profile-photo {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--border-light);
+            transition: transform 0.3s ease;
+        }
+        .profile-photo:hover { transform: scale(1.06); }
+
+        /* ─── Footer ─── */
         .footer-section {
             margin-top: 8rem;
-            padding-top: 4rem;
+            padding-top: 3rem;
             border-top: 1px solid var(--border);
         }
 
         .footer-email-main {
             color: var(--text-secondary);
-            font-size: 1rem;
+            font-size: 0.9375rem;
             font-weight: 300;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
             display: block;
         }
 
@@ -639,86 +781,104 @@
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             gap: 2rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
         }
 
         .footer-col h4 {
             font-size: 0.6875rem;
-            font-weight: 500;
+            font-weight: 600;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1rem;
         }
-
         .footer-col ul { list-style: none; }
-        .footer-col li { margin-bottom: 0.5rem; }
-
-        .footer-col a {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-            font-weight: 300;
-        }
-
-        .footer-col a:hover { color: var(--accent); }
+        .footer-col li { margin-bottom: 0.4rem; }
+        .footer-col a { color: var(--text-secondary); font-size: 0.8125rem; font-weight: 300; }
+        .footer-col a:hover { color: var(--accent-hover); }
 
         .footer-bottom {
-            padding-top: 2rem;
+            padding-top: 1.5rem;
             border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .footer-location {
+        .footer-location { color: var(--text-muted); font-size: 0.75rem; font-weight: 300; }
+        .copyright { color: var(--text-muted); font-size: 0.75rem; font-weight: 300; }
+
+        .footer-status {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.6875rem;
             color: var(--text-muted);
-            font-size: 0.8125rem;
-            margin-bottom: 0.35rem;
-            font-weight: 300;
+            font-weight: 400;
+        }
+        .footer-status .dot {
+            width: 6px;
+            height: 6px;
+            background: #22c55e;
+            border-radius: 50%;
         }
 
-        .copyright {
-            color: var(--text-muted);
-            font-size: 0.8125rem;
-            font-weight: 300;
-        }
-
-        /* Responsive 768px */
+        /* ─── Responsive 768px ─── */
         @media (max-width: 768px) {
             .header-nav { display: none; }
-            .main-wrapper { padding: 0 2rem 6rem; }
-            .hero-section { padding: 5rem 0 3rem; }
-            .hero-headline { font-size: clamp(2.25rem, 8vw, 3.5rem); }
-            .hero-body { font-size: 1.0625rem; }
-            .credibility-bar { flex-wrap: wrap; gap: 2rem; }
-            .credibility-item { flex: 0 0 calc(50% - 1rem); }
+            .main-wrapper { padding: 0 1.5rem 6rem; }
+            .hero-section { padding: 4rem 0 3rem; }
+            .hero-headline { font-size: clamp(2rem, 7vw, 3rem); }
+            .hero-sub { font-size: 1.0625rem; }
+            .hero-cta { flex-direction: column; gap: 0.75rem; }
+            .hero-cta .btn-primary, .hero-cta .btn-ghost { width: 100%; justify-content: center; }
+            .metrics-bar { grid-template-columns: repeat(2, 1fr); }
             .stage-grid { grid-template-columns: 1fr; }
-            .result-card { grid-template-columns: 1fr; gap: 0.5rem; }
+            .result-grid { grid-template-columns: 1fr; }
+            .process-grid { grid-template-columns: 1fr; }
             .footer-columns { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
             .section-heading { padding-top: 4rem; }
             .newsletter-section iframe { max-width: 100% !important; width: 100% !important; height: 420px !important; }
+            .cta-block { padding: 3rem 2rem; }
+            .footer-bottom { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
         }
 
-        /* Responsive 480px */
         @media (max-width: 480px) {
-            .site-header { padding: 0 1.5rem; }
-            .main-wrapper { padding: 0 1.5rem 4rem; }
+            .site-header { padding: 0 1.25rem; }
+            .main-wrapper { padding: 0 1.25rem 4rem; }
             .hero-section { padding: 3rem 0 2rem; }
-            .hero-headline { font-size: clamp(1.75rem, 8vw, 2.5rem); }
-            .credibility-item .stat { font-size: 1.75rem; }
-            .stage-card { padding: 2rem 1.5rem; }
+            .hero-headline { font-size: clamp(1.75rem, 8vw, 2.25rem); }
+            .metrics-bar { grid-template-columns: 1fr 1fr; }
+            .metric-item { padding: 1.5rem 1rem; }
+            .metric-value { font-size: 1.5rem; }
+            .stage-card { padding: 1.5rem; }
             .footer-columns { grid-template-columns: 1fr; }
-            .hero-cta { flex-direction: column; gap: 1.25rem; }
-            .profile-photo { width: 64px; height: 64px; }
             .section-heading { padding-top: 3rem; }
-            .audit-section { padding: 4rem 0; }
-            .newsletter-section { padding: 4rem 0 2rem; }
+            .cta-block { padding: 2.5rem 1.5rem; }
             .carousel-item { font-size: 0.8125rem; }
-            .carousel-track { gap: 2rem; }
+        }
+
+        /* ─── Scroll Reveal ─── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16,1,0.3,1);
+        }
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
+    <div class="grid-bg"></div>
+
     <header class="site-header">
         <div class="header-container">
-            <a href="/" class="header-logo">Seth Forte</a>
+            <a href="/" class="header-logo">
+                <span class="logo-mark">SF</span>
+                Seth Forte
+            </a>
             <nav class="header-nav">
                 <a href="/services.html" class="nav-link">Services</a>
                 <a href="/case-studies.html" class="nav-link">Work</a>
@@ -730,169 +890,187 @@
     </header>
 
     <main class="main-wrapper">
-        <!-- Hero Section -->
-        <div class="hero-section">
-            <h1 class="hero-headline animate-fade-up animate-delay-1">Business Growth Isn't Luck.<br>It's <span class="rotating-word">A System</span>.</h1>
-            <p class="hero-body animate-fade-up animate-delay-2">I build the automation infrastructure that turns traffic into leads, eliminates manual work, and makes growth repeatable.</p>
-            <div class="hero-cta animate-fade-up animate-delay-3">
-                <a href="https://calendly.com/seth-fortewebdesigns/30min" target="_blank" rel="noopener" class="btn-primary">Book a Call</a>
-                <a href="/case-studies.html" class="btn-secondary">See my work &#8250;</a>
+        <!-- Hero -->
+        <section class="hero-section">
+            <div class="hero-glow"></div>
+            <div class="hero-badge animate-up delay-1">
+                <span class="status-dot"></span>
+                Available for new projects
+            </div>
+            <h1 class="hero-headline animate-up delay-2">Build Systems That<br><span class="gradient-text">Make Growth Repeatable</span></h1>
+            <p class="hero-sub animate-up delay-3">I build automation infrastructure that turns traffic into leads, eliminates manual work, and gives you the data to scale — CRM, AI, and everything in between.</p>
+            <div class="hero-cta animate-up delay-4">
+                <a href="https://calendly.com/seth-fortewebdesigns/30min" target="_blank" rel="noopener" class="btn-primary">Book a Call &rarr;</a>
+                <a href="/case-studies.html" class="btn-ghost">See My Work</a>
+            </div>
+        </section>
+
+        <!-- Metrics -->
+        <div class="metrics-bar reveal">
+            <div class="metric-item">
+                <span class="metric-value">5+ yrs</span>
+                <span class="metric-label">Enterprise Systems</span>
+            </div>
+            <div class="metric-item">
+                <span class="metric-value">1,000+</span>
+                <span class="metric-label">Hours Returned</span>
+            </div>
+            <div class="metric-item">
+                <span class="metric-value">12+</span>
+                <span class="metric-label">Industries</span>
+            </div>
+            <div class="metric-item">
+                <span class="metric-value">60+</span>
+                <span class="metric-label">Systems Built</span>
             </div>
         </div>
 
-        <!-- Credibility Section -->
-        <div class="credibility-section animate-fade-up animate-delay-4">
-            <div class="credibility-bar">
-                <div class="credibility-item">
-                    <span class="stat">5+ Years</span>
-                    <span class="label">Enterprise Systems</span>
-                </div>
-                <div class="credibility-item">
-                    <span class="stat">1,000+</span>
-                    <span class="label">Hours Returned to Clients</span>
-                </div>
-                <div class="credibility-item">
-                    <span class="stat">12+</span>
-                    <span class="label">Industries Served</span>
-                </div>
-                <div class="credibility-item">
-                    <span class="stat">60+</span>
-                    <span class="label">Systems Built</span>
-                </div>
-            </div>
-
-            <div class="trusted-by-wrap">
-                <span class="trusted-by-label">Trusted by</span>
-                <div class="carousel-wrapper">
-                    <div class="carousel-track">
-                        <span class="carousel-item">Revolut</span>
-                        <span class="carousel-item">Modern Bungalow</span>
-                        <span class="carousel-item">Eden Medical</span>
-                        <span class="carousel-item">Kingfisher Ads</span>
-                        <span class="carousel-item">CR Deals Cincinnati</span>
-                        <span class="carousel-item">Hollow Bamboo</span>
-                        <span class="carousel-item">UDI Group</span>
-                        <span class="carousel-item">Revolut</span>
-                        <span class="carousel-item">Modern Bungalow</span>
-                        <span class="carousel-item">Eden Medical</span>
-                        <span class="carousel-item">Kingfisher Ads</span>
-                        <span class="carousel-item">CR Deals Cincinnati</span>
-                        <span class="carousel-item">Hollow Bamboo</span>
-                        <span class="carousel-item">UDI Group</span>
-                    </div>
+        <!-- Trust -->
+        <div class="trust-section reveal">
+            <span class="trust-label">Trusted by</span>
+            <div class="carousel-wrapper">
+                <div class="carousel-track">
+                    <span class="carousel-item">Revolut</span>
+                    <span class="carousel-item">Modern Bungalow</span>
+                    <span class="carousel-item">Eden Medical</span>
+                    <span class="carousel-item">Kingfisher Ads</span>
+                    <span class="carousel-item">CR Deals Cincinnati</span>
+                    <span class="carousel-item">Hollow Bamboo</span>
+                    <span class="carousel-item">UDI Group</span>
+                    <span class="carousel-item">Revolut</span>
+                    <span class="carousel-item">Modern Bungalow</span>
+                    <span class="carousel-item">Eden Medical</span>
+                    <span class="carousel-item">Kingfisher Ads</span>
+                    <span class="carousel-item">CR Deals Cincinnati</span>
+                    <span class="carousel-item">Hollow Bamboo</span>
+                    <span class="carousel-item">UDI Group</span>
                 </div>
             </div>
-
-            <p class="featured-in">As Featured in <a href="https://voyagedallas.com/interview/community-highlights-meet-seth-forte-of-forte-web-designs/" target="_blank" rel="noopener">Voyage Dallas Magazine</a></p>
+            <p class="featured-in">Featured in <a href="https://voyagedallas.com/interview/community-highlights-meet-seth-forte-of-forte-web-designs/" target="_blank" rel="noopener">Voyage Dallas Magazine</a></p>
         </div>
 
         <!-- What I Build -->
-        <h2 class="section-heading">What I Build</h2>
-        <p class="section-sub">Every business I work with is at one of four stages. The stage tells me exactly what to build.</p>
+        <div class="section-label reveal">Services</div>
+        <h2 class="section-heading reveal" style="padding-top: 0;">What I Build</h2>
+        <p class="section-sub reveal">Every business I work with is at one of four stages. The stage tells me exactly what to build.</p>
 
         <div class="stage-grid">
-            <a href="/foundation.html" class="stage-card">
+            <a href="/foundation.html" class="stage-card reveal">
+                <span class="stage-number">Stage 01</span>
                 <div class="stage-title">Foundation</div>
                 <div class="stage-tagline">Your tools don't talk to each other. We fix that.</div>
-                <p>You are paying for tools you never configured. We build the plumbing: CRM, payments, email, booking, tracking, and the integrations that connect everything. One system your whole business runs on.</p>
-                <span class="stage-link">Learn more &#8250;</span>
+                <p>CRM, payments, email, booking, tracking, and the integrations that connect everything. One system your whole business runs on.</p>
+                <span class="stage-link">Learn more &rarr;</span>
             </a>
-            <a href="/launch.html" class="stage-card">
+            <a href="/launch.html" class="stage-card reveal">
+                <span class="stage-number">Stage 02</span>
                 <div class="stage-title">Launch</div>
                 <div class="stage-tagline">Infrastructure is ready. Now fill it.</div>
-                <p>Your CRM is built but nobody is in it. Ad campaigns, sales funnels, email and SMS sequences, and conversion tracking. First leads in, first revenue generated.</p>
-                <span class="stage-link">Learn more &#8250;</span>
+                <p>Ad campaigns, sales funnels, email and SMS sequences, and conversion tracking. First leads in, first revenue generated.</p>
+                <span class="stage-link">Learn more &rarr;</span>
             </a>
-            <a href="/growth.html" class="stage-card">
+            <a href="/growth.html" class="stage-card reveal">
+                <span class="stage-number">Stage 03</span>
                 <div class="stage-title">Growth</div>
-                <div class="stage-tagline">One channel is working. We add more.</div>
-                <p>If your one channel goes down, your pipeline dies. Outbound cold email, AI voice agents, inbound lead capture, chat bots, review automation, and document search. More channels, more leads, less dependency on one source.</p>
-                <span class="stage-link">Learn more &#8250;</span>
+                <div class="stage-tagline">One channel works. We add more.</div>
+                <p>Outbound cold email, AI voice agents, inbound lead capture, chat bots, review automation. More channels, less dependency on one source.</p>
+                <span class="stage-link">Learn more &rarr;</span>
             </a>
-            <a href="/scale.html" class="stage-card">
+            <a href="/scale.html" class="stage-card reveal">
+                <span class="stage-number">Stage 04</span>
                 <div class="stage-title">Scale</div>
-                <div class="stage-tagline">Everything is running. Make it visible and hands-off.</div>
-                <p>You can't tell which channel has the best ROI. Reporting dashboards, content repurposing, support routing, social scheduling, and e-commerce automation. Better data, less manual work, and someone running it for you.</p>
-                <span class="stage-link">Learn more &#8250;</span>
+                <div class="stage-tagline">Make it visible and hands-off.</div>
+                <p>Reporting dashboards, content repurposing, support routing, social scheduling, and e-commerce automation. Better data, less manual work.</p>
+                <span class="stage-link">Learn more &rarr;</span>
             </a>
         </div>
 
-        <p class="trust-line">Every system is scoped, documented, tested, and handed off with training.</p>
+        <p class="trust-line reveal">Every system is scoped, documented, tested, and handed off with training.</p>
 
-        <!-- Audit Section -->
-        <div class="audit-section">
-            <h2>Not sure where to start? Most people aren't.</h2>
-            <p class="body-text">I review your setup, find the biggest wins, and give you a roadmap.</p>
-            <a href="https://calendly.com/seth-fortewebdesigns/30min" target="_blank" rel="noopener" class="btn-primary">Book a Foundation Review</a>
+        <!-- CTA Block -->
+        <div class="cta-block reveal">
+            <h2>Not sure where to start?</h2>
+            <p class="body-text">I review your setup, find the biggest wins, and give you a roadmap you can act on immediately.</p>
+            <a href="https://calendly.com/seth-fortewebdesigns/30min" target="_blank" rel="noopener" class="btn-primary">Book a Foundation Review &rarr;</a>
         </div>
 
         <!-- Results -->
-        <h2 class="section-heading">Results</h2>
+        <div class="section-label reveal">Case Studies</div>
+        <h2 class="section-heading reveal" style="padding-top: 0;">Results</h2>
 
         <div class="result-grid">
-            <a href="/work/cr-deals.html" class="result-card">
+            <a href="/work/cr-deals.html" class="result-card reveal">
                 <span class="result-stat">$52K/yr</span>
-                <div>
-                    <h3>CR Deals Cincinnati</h3>
-                    <p>Replaced a manual process costing $52K a year in labor with a system that runs itself.</p>
-                </div>
+                <h3>CR Deals Cincinnati</h3>
+                <p>Replaced a manual process costing $52K/year in labor with a system that runs itself.</p>
             </a>
-            <a href="/work/hollow-bamboo.html" class="result-card">
+            <a href="/work/hollow-bamboo.html" class="result-card reveal">
                 <span class="result-stat">20 hrs/wk</span>
-                <div>
-                    <h3>Hollow Bamboo Film Productions</h3>
-                    <p>Equipment tracking across 6 locations was eating 20 hours a week. Automated end to end.</p>
-                </div>
+                <h3>Hollow Bamboo Film</h3>
+                <p>Equipment tracking across 6 locations was eating 20 hours a week. Automated end to end.</p>
             </a>
-            <a href="/work/revolut.html" class="result-card">
+            <a href="/work/revolut.html" class="result-card reveal">
                 <span class="result-stat">$4M</span>
-                <div>
-                    <h3>Revolut</h3>
-                    <p>Transaction analysis that used to take weeks, done in hours. Found a $4M growth pathway buried in the data.</p>
-                </div>
+                <h3>Revolut</h3>
+                <p>Transaction analysis that used to take weeks, done in hours. Found a $4M growth pathway.</p>
             </a>
         </div>
 
-        <a href="/case-studies.html" class="view-all-link">See all results &#8250;</a>
+        <a href="/case-studies.html" class="btn-link reveal">See all results &rarr;</a>
 
         <!-- How I Work -->
-        <h2 class="section-heading">How Every Project Works</h2>
+        <div class="section-label reveal" style="margin-top: 5rem;">Process</div>
+        <h2 class="section-heading reveal" style="padding-top: 0;">How Every Project Works</h2>
 
-        <p class="about-text">Every engagement starts with a discovery call where I figure out what the problem is costing you. If the ROI is there, I build it. If it's not, I tell you.</p>
+        <div class="process-grid reveal">
+            <div class="process-step">
+                <div class="step-num">01</div>
+                <h3>Discovery</h3>
+                <p>We figure out what the problem is costing you. If the ROI is there, I build it. If it's not, I tell you.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-num">02</div>
+                <h3>Build</h3>
+                <p>Focused sprints with clear deliverables. You know what's being built, when it ships, and what it does.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-num">03</div>
+                <h3>Handoff</h3>
+                <p>Everything documented, walked through on video, and handed off. You own it completely.</p>
+            </div>
+        </div>
 
-        <p class="about-text">I work in focused sprints with clear deliverables. You know what's being built, when it ships, and what it does.</p>
-
-        <p class="about-text">When it's live, I document everything, walk you through it on video, and hand it off. You own it.</p>
-
-        <!-- Writing Section -->
-        <h2 class="section-heading">Writing</h2>
+        <!-- Writing -->
+        <div class="section-label reveal" style="margin-top: 5rem;">Insights</div>
+        <h2 class="section-heading reveal" style="padding-top: 0;">Writing</h2>
 
         <ul class="writing-list">
-            <li class="writing-item"><a href="/articles/fighting-friction.html"><h3>Audit Your Lifestyle</h3></a></li>
-            <li class="writing-item"><a href="/articles/paying-for-consultant.html"><h3>What You're Paying For When You Hire A Consultant</h3></a></li>
-            <li class="writing-item"><a href="/articles/technical-skills-wont-save-you.html"><h3>Technical Skills Won't Save You Anymore</h3></a></li>
+            <li class="writing-item reveal"><a href="/articles/fighting-friction.html"><h3>Audit Your Lifestyle</h3><span class="arrow">&rarr;</span></a></li>
+            <li class="writing-item reveal"><a href="/articles/paying-for-consultant.html"><h3>What You're Paying For When You Hire A Consultant</h3><span class="arrow">&rarr;</span></a></li>
+            <li class="writing-item reveal"><a href="/articles/technical-skills-wont-save-you.html"><h3>Technical Skills Won't Save You Anymore</h3><span class="arrow">&rarr;</span></a></li>
         </ul>
 
-        <a href="/writing.html" class="view-all-link">View all writing &#8250;</a>
+        <a href="/writing.html" class="btn-link reveal" style="margin-top: 1.25rem; display: inline-flex;">View all writing &rarr;</a>
 
-        <!-- Newsletter Section -->
-        <div class="newsletter-section">
+        <!-- Newsletter -->
+        <div class="newsletter-section reveal">
             <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
             <iframe src="https://subscribe-forms.beehiiv.com/5add37af-295e-4226-a8ac-e104c1213e0e" class="beehiiv-embed" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width: 100%; height: 387px; margin: 0; border-radius: 0 !important; background-color: transparent; box-shadow: 0 0 #0000;"></iframe>
         </div>
 
-        <!-- About Section -->
-        <h2 class="section-heading">About</h2>
+        <!-- About -->
+        <div class="section-label reveal">About</div>
+        <h2 class="section-heading reveal" style="padding-top: 0;">About</h2>
 
-        <p class="about-text">I spent years building enterprise systems at a major bank... the kind that handle millions of transactions and don't go down. Now I build automation and AI tools for growing businesses that have outgrown manual processes. Featured in <a href="https://voyagedallas.com/interview/community-highlights-meet-seth-forte-of-forte-web-designs/" target="_blank" rel="noopener">Voyage Dallas</a>, Dallas Innovates, BuiLT, and Orbie. Every project starts with the same question: what is this costing you? If the math works, I build it.</p>
+        <p class="about-text reveal">I spent years building enterprise systems at a major bank — the kind that handle millions of transactions and don't go down. Now I build automation and AI tools for growing businesses that have outgrown manual processes. Featured in <a href="https://voyagedallas.com/interview/community-highlights-meet-seth-forte-of-forte-web-designs/" target="_blank" rel="noopener">Voyage Dallas</a>, Dallas Innovates, BuiLT, and Orbie. Every project starts with the same question: what is this costing you?</p>
 
-        <a href="/about.html" class="view-all-link" style="margin-bottom: 2rem; display: inline-block;">More about me &#8250;</a>
+        <a href="/about.html" class="btn-link reveal" style="margin-bottom: 2rem; display: inline-flex;">More about me &rarr;</a>
 
-        <!-- Calendly Embed -->
-        <div style="text-align: center; padding-top: 2rem;">
+        <!-- Calendly -->
+        <div style="text-align: center; padding-top: 2rem;" class="reveal">
             <img src="headshot-6.jpg" alt="Seth Forte" class="profile-photo" style="display: block; margin: 0 auto 1.5rem;">
         </div>
-        <div class="calendly-section" style="min-width:320px;height:700px;">
+        <div class="calendly-section reveal" style="min-width:320px;height:700px;">
             <iframe src="https://calendly.com/seth-fortewebdesigns/30min?hide_gdpr_banner=1" width="100%" height="100%" frameborder="0" style="border-radius: 10px;"></iframe>
         </div>
 
@@ -933,18 +1111,26 @@
             </div>
 
             <div class="footer-bottom">
-                <p class="footer-location">Based in Grapevine, Texas. Serving clients nationwide.</p>
-                <p class="copyright">&copy; 2026 Seth Forte. All rights reserved.</p>
+                <div>
+                    <p class="footer-location">Based in Grapevine, Texas. Serving clients nationwide.</p>
+                    <p class="copyright">&copy; 2026 Seth Forte. All rights reserved.</p>
+                </div>
+                <div class="footer-status">
+                    <span class="dot"></span>
+                    All systems operational
+                </div>
             </div>
         </div>
     </main>
+
     <script>
-        const words = ["A System", "Using The Right Data", "A Framework", "A Process", "Repeatable"];
+        const words = ["Make Growth Repeatable", "Eliminate Manual Work", "Scale With AI", "Run Themselves", "Compound Over Time"];
         let index = 0;
-        const el = document.querySelector('.rotating-word');
+        const el = document.querySelector('.gradient-text');
         if (el) {
             setInterval(() => {
                 el.style.opacity = 0;
+                el.style.transition = 'opacity 0.4s ease';
                 setTimeout(() => {
                     index = (index + 1) % words.length;
                     el.textContent = words[index];
