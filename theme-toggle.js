@@ -42,16 +42,7 @@
         '[data-theme="light"] .btn-primary{background:#4f46e5}' +
         '[data-theme="light"] .btn-primary:hover{background:#6366f1;box-shadow:0 8px 30px rgba(79,70,229,0.2)}' +
         '[data-theme="light"] .btn-ghost{border-color:rgba(0,0,0,0.12);color:#475569}' +
-        '[data-theme="light"] .btn-ghost:hover{border-color:rgba(0,0,0,0.2);background:rgba(0,0,0,0.02);color:#0f172a}' +
-        '[data-theme="light"] .hero-orb-1{background:rgba(79,70,229,0.08)}' +
-        '[data-theme="light"] .hero-orb-2{background:rgba(8,145,178,0.06)}' +
-        '[data-theme="light"] .hero-orb-3{background:rgba(124,58,237,0.06)}' +
-        '[data-theme="light"] .hero-section .profile-photo{box-shadow:0 0 0 3px rgba(79,70,229,0.2),0 0 30px rgba(79,70,229,0.08)}' +
-        '[data-theme="light"] .stage-card:hover{box-shadow:0 20px 60px rgba(0,0,0,0.06)}' +
-        '[data-theme="light"] .result-card:hover{box-shadow:0 20px 60px rgba(0,0,0,0.06)}' +
-        '[data-theme="light"] .cta-block:hover{box-shadow:0 30px 80px rgba(0,0,0,0.04)}' +
-        '[data-theme="light"] .process-step:hover{box-shadow:0 16px 50px rgba(0,0,0,0.04)}' +
-        '[data-theme="light"] .btn-primary::before{background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent)}';
+        '[data-theme="light"] .btn-ghost:hover{border-color:rgba(0,0,0,0.2);background:rgba(0,0,0,0.02);color:#0f172a}';
 
     var toggleCSS = '#theme-toggle{width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-size:1rem;cursor:pointer;z-index:1001;display:flex;align-items:center;justify-content:center;transition:color 0.3s ease,border-color 0.3s ease;line-height:1;flex-shrink:0;margin-left:0.75rem}' +
         '#theme-toggle.scrolled{position:fixed;top:auto;bottom:8.5rem;right:2rem;margin-left:0;background:var(--background);border:1px solid var(--border-light)}' +
