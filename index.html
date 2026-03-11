@@ -167,19 +167,6 @@
         }
         .header-logo:hover { color: var(--text-primary); opacity: 0.8; }
 
-        .logo-mark {
-            width: 22px;
-            height: 22px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-2));
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            font-weight: 700;
-            color: white;
-        }
-
         .header-nav { display: flex; gap: 0.25rem; }
 
         .nav-link {
@@ -222,37 +209,6 @@
             background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 70%);
             pointer-events: none;
             filter: blur(60px);
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.4rem 1rem 0.4rem 0.6rem;
-            background: var(--accent-subtle);
-            border: 1px solid rgba(99,102,241,0.15);
-            border-radius: var(--radius-pill);
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: var(--accent-hover);
-            margin-bottom: 2rem;
-            position: relative;
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background: #22c55e;
-            border-radius: 50%;
-            position: relative;
-        }
-        .status-dot::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 50%;
-            background: #22c55e;
-            animation: pulse-ring 2s ease-out infinite;
         }
 
         .hero-headline {
@@ -875,10 +831,7 @@
 
     <header class="site-header">
         <div class="header-container">
-            <a href="/" class="header-logo">
-                <span class="logo-mark">SF</span>
-                Seth Forte
-            </a>
+            <a href="/" class="header-logo">Seth Forte</a>
             <nav class="header-nav">
                 <a href="/services.html" class="nav-link">Services</a>
                 <a href="/case-studies.html" class="nav-link">Work</a>
@@ -893,31 +846,28 @@
         <!-- Hero -->
         <section class="hero-section">
             <div class="hero-glow"></div>
-            <div class="hero-badge animate-up delay-1">
-                <span class="status-dot"></span>
-                Available for new projects
-            </div>
-            <h1 class="hero-headline animate-up delay-2">Build Systems That<br><span class="gradient-text">Make Growth Repeatable</span></h1>
-            <p class="hero-sub animate-up delay-3">I build automation infrastructure that turns traffic into leads, eliminates manual work, and gives you the data to scale — CRM, AI, and everything in between.</p>
+            <img src="headshot-6.jpg" alt="Seth Forte" class="profile-photo animate-up delay-1">
+            <h1 class="hero-headline animate-up delay-2">Business Growth Isn't Luck.<br>It's <span class="gradient-text">A System</span>.</h1>
+            <p class="hero-sub animate-up delay-3">I build the automation infrastructure that turns traffic into leads, eliminates manual work, and makes growth repeatable.</p>
             <div class="hero-cta animate-up delay-4">
-                <a href="https://calendly.com/seth-fortewebdesigns/30min" target="_blank" rel="noopener" class="btn-primary">Book a Call &rarr;</a>
-                <a href="/case-studies.html" class="btn-ghost">See My Work</a>
+                <a href="https://calendly.com/seth-fortewebdesigns/30min" target="_blank" rel="noopener" class="btn-primary">Book a Call</a>
+                <a href="/case-studies.html" class="btn-ghost">See my work &#8250;</a>
             </div>
         </section>
 
         <!-- Metrics -->
         <div class="metrics-bar reveal">
             <div class="metric-item">
-                <span class="metric-value">5+ yrs</span>
+                <span class="metric-value">5+ Years</span>
                 <span class="metric-label">Enterprise Systems</span>
             </div>
             <div class="metric-item">
                 <span class="metric-value">1,000+</span>
-                <span class="metric-label">Hours Returned</span>
+                <span class="metric-label">Hours Returned to Clients</span>
             </div>
             <div class="metric-item">
                 <span class="metric-value">12+</span>
-                <span class="metric-label">Industries</span>
+                <span class="metric-label">Industries Served</span>
             </div>
             <div class="metric-item">
                 <span class="metric-value">60+</span>
@@ -946,12 +896,11 @@
                     <span class="carousel-item">UDI Group</span>
                 </div>
             </div>
-            <p class="featured-in">Featured in <a href="https://voyagedallas.com/interview/community-highlights-meet-seth-forte-of-forte-web-designs/" target="_blank" rel="noopener">Voyage Dallas Magazine</a></p>
+            <p class="featured-in">As Featured in <a href="https://voyagedallas.com/interview/community-highlights-meet-seth-forte-of-forte-web-designs/" target="_blank" rel="noopener">Voyage Dallas Magazine</a></p>
         </div>
 
         <!-- What I Build -->
-        <div class="section-label reveal">Services</div>
-        <h2 class="section-heading reveal" style="padding-top: 0;">What I Build</h2>
+        <h2 class="section-heading reveal">What I Build</h2>
         <p class="section-sub reveal">Every business I work with is at one of four stages. The stage tells me exactly what to build.</p>
 
         <div class="stage-grid">
@@ -959,29 +908,29 @@
                 <span class="stage-number">Stage 01</span>
                 <div class="stage-title">Foundation</div>
                 <div class="stage-tagline">Your tools don't talk to each other. We fix that.</div>
-                <p>CRM, payments, email, booking, tracking, and the integrations that connect everything. One system your whole business runs on.</p>
-                <span class="stage-link">Learn more &rarr;</span>
+                <p>You are paying for tools you never configured. We build the plumbing: CRM, payments, email, booking, tracking, and the integrations that connect everything. One system your whole business runs on.</p>
+                <span class="stage-link">Learn more &#8250;</span>
             </a>
             <a href="/launch.html" class="stage-card reveal">
                 <span class="stage-number">Stage 02</span>
                 <div class="stage-title">Launch</div>
                 <div class="stage-tagline">Infrastructure is ready. Now fill it.</div>
-                <p>Ad campaigns, sales funnels, email and SMS sequences, and conversion tracking. First leads in, first revenue generated.</p>
-                <span class="stage-link">Learn more &rarr;</span>
+                <p>Your CRM is built but nobody is in it. Ad campaigns, sales funnels, email and SMS sequences, and conversion tracking. First leads in, first revenue generated.</p>
+                <span class="stage-link">Learn more &#8250;</span>
             </a>
             <a href="/growth.html" class="stage-card reveal">
                 <span class="stage-number">Stage 03</span>
                 <div class="stage-title">Growth</div>
-                <div class="stage-tagline">One channel works. We add more.</div>
-                <p>Outbound cold email, AI voice agents, inbound lead capture, chat bots, review automation. More channels, less dependency on one source.</p>
-                <span class="stage-link">Learn more &rarr;</span>
+                <div class="stage-tagline">One channel is working. We add more.</div>
+                <p>If your one channel goes down, your pipeline dies. Outbound cold email, AI voice agents, inbound lead capture, chat bots, review automation, and document search. More channels, more leads, less dependency on one source.</p>
+                <span class="stage-link">Learn more &#8250;</span>
             </a>
             <a href="/scale.html" class="stage-card reveal">
                 <span class="stage-number">Stage 04</span>
                 <div class="stage-title">Scale</div>
-                <div class="stage-tagline">Make it visible and hands-off.</div>
-                <p>Reporting dashboards, content repurposing, support routing, social scheduling, and e-commerce automation. Better data, less manual work.</p>
-                <span class="stage-link">Learn more &rarr;</span>
+                <div class="stage-tagline">Everything is running. Make it visible and hands-off.</div>
+                <p>You can't tell which channel has the best ROI. Reporting dashboards, content repurposing, support routing, social scheduling, and e-commerce automation. Better data, less manual work, and someone running it for you.</p>
+                <span class="stage-link">Learn more &#8250;</span>
             </a>
         </div>
 
@@ -989,65 +938,50 @@
 
         <!-- CTA Block -->
         <div class="cta-block reveal">
-            <h2>Not sure where to start?</h2>
-            <p class="body-text">I review your setup, find the biggest wins, and give you a roadmap you can act on immediately.</p>
-            <a href="https://calendly.com/seth-fortewebdesigns/30min" target="_blank" rel="noopener" class="btn-primary">Book a Foundation Review &rarr;</a>
+            <h2>Not sure where to start? Most people aren't.</h2>
+            <p class="body-text">I review your setup, find the biggest wins, and give you a roadmap.</p>
+            <a href="https://calendly.com/seth-fortewebdesigns/30min" target="_blank" rel="noopener" class="btn-primary">Book a Foundation Review</a>
         </div>
 
         <!-- Results -->
-        <div class="section-label reveal">Case Studies</div>
-        <h2 class="section-heading reveal" style="padding-top: 0;">Results</h2>
+        <h2 class="section-heading reveal">Results</h2>
 
         <div class="result-grid">
             <a href="/work/cr-deals.html" class="result-card reveal">
                 <span class="result-stat">$52K/yr</span>
                 <h3>CR Deals Cincinnati</h3>
-                <p>Replaced a manual process costing $52K/year in labor with a system that runs itself.</p>
+                <p>Replaced a manual process costing $52K a year in labor with a system that runs itself.</p>
             </a>
             <a href="/work/hollow-bamboo.html" class="result-card reveal">
                 <span class="result-stat">20 hrs/wk</span>
-                <h3>Hollow Bamboo Film</h3>
+                <h3>Hollow Bamboo Film Productions</h3>
                 <p>Equipment tracking across 6 locations was eating 20 hours a week. Automated end to end.</p>
             </a>
             <a href="/work/revolut.html" class="result-card reveal">
                 <span class="result-stat">$4M</span>
                 <h3>Revolut</h3>
-                <p>Transaction analysis that used to take weeks, done in hours. Found a $4M growth pathway.</p>
+                <p>Transaction analysis that used to take weeks, done in hours. Found a $4M growth pathway buried in the data.</p>
             </a>
         </div>
 
         <a href="/case-studies.html" class="btn-link reveal">See all results &rarr;</a>
 
         <!-- How I Work -->
-        <div class="section-label reveal" style="margin-top: 5rem;">Process</div>
-        <h2 class="section-heading reveal" style="padding-top: 0;">How Every Project Works</h2>
+        <h2 class="section-heading reveal">How Every Project Works</h2>
 
-        <div class="process-grid reveal">
-            <div class="process-step">
-                <div class="step-num">01</div>
-                <h3>Discovery</h3>
-                <p>We figure out what the problem is costing you. If the ROI is there, I build it. If it's not, I tell you.</p>
-            </div>
-            <div class="process-step">
-                <div class="step-num">02</div>
-                <h3>Build</h3>
-                <p>Focused sprints with clear deliverables. You know what's being built, when it ships, and what it does.</p>
-            </div>
-            <div class="process-step">
-                <div class="step-num">03</div>
-                <h3>Handoff</h3>
-                <p>Everything documented, walked through on video, and handed off. You own it completely.</p>
-            </div>
-        </div>
+        <p class="about-text reveal">Every engagement starts with a discovery call where I figure out what the problem is costing you. If the ROI is there, I build it. If it's not, I tell you.</p>
+
+        <p class="about-text reveal">I work in focused sprints with clear deliverables. You know what's being built, when it ships, and what it does.</p>
+
+        <p class="about-text reveal">When it's live, I document everything, walk you through it on video, and hand it off. You own it.</p>
 
         <!-- Writing -->
-        <div class="section-label reveal" style="margin-top: 5rem;">Insights</div>
-        <h2 class="section-heading reveal" style="padding-top: 0;">Writing</h2>
+        <h2 class="section-heading reveal">Writing</h2>
 
         <ul class="writing-list">
-            <li class="writing-item reveal"><a href="/articles/fighting-friction.html"><h3>Audit Your Lifestyle</h3><span class="arrow">&rarr;</span></a></li>
-            <li class="writing-item reveal"><a href="/articles/paying-for-consultant.html"><h3>What You're Paying For When You Hire A Consultant</h3><span class="arrow">&rarr;</span></a></li>
-            <li class="writing-item reveal"><a href="/articles/technical-skills-wont-save-you.html"><h3>Technical Skills Won't Save You Anymore</h3><span class="arrow">&rarr;</span></a></li>
+            <li class="writing-item reveal"><a href="/articles/fighting-friction.html"><h3>Audit Your Lifestyle</h3></a></li>
+            <li class="writing-item reveal"><a href="/articles/paying-for-consultant.html"><h3>What You're Paying For When You Hire A Consultant</h3></a></li>
+            <li class="writing-item reveal"><a href="/articles/technical-skills-wont-save-you.html"><h3>Technical Skills Won't Save You Anymore</h3></a></li>
         </ul>
 
         <a href="/writing.html" class="btn-link reveal" style="margin-top: 1.25rem; display: inline-flex;">View all writing &rarr;</a>
@@ -1059,10 +993,9 @@
         </div>
 
         <!-- About -->
-        <div class="section-label reveal">About</div>
-        <h2 class="section-heading reveal" style="padding-top: 0;">About</h2>
+        <h2 class="section-heading reveal">About</h2>
 
-        <p class="about-text reveal">I spent years building enterprise systems at a major bank — the kind that handle millions of transactions and don't go down. Now I build automation and AI tools for growing businesses that have outgrown manual processes. Featured in <a href="https://voyagedallas.com/interview/community-highlights-meet-seth-forte-of-forte-web-designs/" target="_blank" rel="noopener">Voyage Dallas</a>, Dallas Innovates, BuiLT, and Orbie. Every project starts with the same question: what is this costing you?</p>
+        <p class="about-text reveal">I spent years building enterprise systems at a major bank... the kind that handle millions of transactions and don't go down. Now I build automation and AI tools for growing businesses that have outgrown manual processes. Featured in <a href="https://voyagedallas.com/interview/community-highlights-meet-seth-forte-of-forte-web-designs/" target="_blank" rel="noopener">Voyage Dallas</a>, Dallas Innovates, BuiLT, and Orbie. Every project starts with the same question: what is this costing you? If the math works, I build it.</p>
 
         <a href="/about.html" class="btn-link reveal" style="margin-bottom: 2rem; display: inline-flex;">More about me &rarr;</a>
 
@@ -1124,7 +1057,7 @@
     </main>
 
     <script>
-        const words = ["Make Growth Repeatable", "Eliminate Manual Work", "Scale With AI", "Run Themselves", "Compound Over Time"];
+        const words = ["A System", "Using The Right Data", "A Framework", "A Process", "Repeatable"];
         let index = 0;
         const el = document.querySelector('.gradient-text');
         if (el) {
