@@ -7,18 +7,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        void: '#0A0A14',
-        plasma: '#7B61FF',
-        ghost: '#F0EFF4',
-        graphite: '#18181B',
-        'plasma-dim': '#6550D9',
-        'void-light': '#12121E',
-        'void-lighter': '#1A1A28',
+        moss: '#2E4036',
+        clay: '#CC5833',
+        cream: '#F2F0E9',
+        charcoal: '#1A1A1A',
+        'moss-light': '#3A5245',
+        'moss-dark': '#1F2D25',
+        'clay-light': '#E06A45',
+        'cream-dark': '#E8E5DC',
       },
       fontFamily: {
-        sans: ['Sora', 'sans-serif'],
-        display: ['Instrument Serif', 'serif'],
-        mono: ['Fira Code', 'monospace'],
+        sans: ['Plus Jakarta Sans', 'Outfit', 'sans-serif'],
+        display: ['Cormorant Garamond', 'serif'],
+        mono: ['IBM Plex Mono', 'monospace'],
       },
       borderRadius: {
         '2xl': '1rem',
