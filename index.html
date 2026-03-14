@@ -672,9 +672,17 @@
         .video-quotes {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            max-width: 600px;
+            gap: 1.25rem;
             margin-bottom: 2.5rem;
+        }
+        .video-quote-col {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .video-widget-wrap {
+            border-radius: var(--radius-md);
+            overflow: hidden;
         }
         .video-quote-card {
             background: var(--surface);
@@ -1038,26 +1046,32 @@
             <a href="https://calendly.com/seth-fortewebdesigns/30min" target="_blank" rel="noopener" class="btn-primary">Book a Foundation Review</a>
         </div>
 
-        <!-- Review Widget -->
-        <div class="reveal" style="max-width: 600px; margin-bottom: 2rem;">
-            <script src="https://widget.senja.io/widget/36af0ec6-70f0-4a77-96dc-bb6ca9a62e42/platform.js" type="text/javascript" async></script>
-            <div class="senja-embed" data-id="36af0ec6-70f0-4a77-96dc-bb6ca9a62e42" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div>
-        </div>
-
-        <!-- Video Testimonial Quotes -->
+        <!-- Video Testimonials -->
         <div class="video-quotes reveal">
-            <div class="video-quote-card">
-                <p class="video-quote-text">"He stood out from the pack real quickly. We'll use him for any job we ever have."</p>
-                <div class="video-quote-attribution">
-                    <span class="video-quote-name">Matt, 6 Months to Speech</span>
-                    <span class="video-quote-project">CRM build and automation for an online coaching program</span>
+            <div class="video-quote-col">
+                <div class="video-widget-wrap">
+                    <script src="https://widget.senja.io/widget/4865e92f-be0e-4665-a6b8-2d195d8f4741/platform.js" type="text/javascript" async></script>
+                    <div class="senja-embed" data-id="4865e92f-be0e-4665-a6b8-2d195d8f4741" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div>
+                </div>
+                <div class="video-quote-card">
+                    <p class="video-quote-text">"He stood out from the pack real quickly. We'll use him for any job we ever have."</p>
+                    <div class="video-quote-attribution">
+                        <span class="video-quote-name">Matt, 6 Months to Speech</span>
+                        <span class="video-quote-project">CRM build and automation for an online coaching program</span>
+                    </div>
                 </div>
             </div>
-            <div class="video-quote-card">
-                <p class="video-quote-text">"10 out of 10 experience. Absolutely recommend."</p>
-                <div class="video-quote-attribution">
-                    <span class="video-quote-name">Chelsea, 6 Months to Speech</span>
-                    <span class="video-quote-project">Full platform migration from Kajabi to GoHighLevel</span>
+            <div class="video-quote-col">
+                <div class="video-widget-wrap">
+                    <script src="https://widget.senja.io/widget/36af0ec6-70f0-4a77-96dc-bb6ca9a62e42/platform.js" type="text/javascript" async></script>
+                    <div class="senja-embed" data-id="36af0ec6-70f0-4a77-96dc-bb6ca9a62e42" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div>
+                </div>
+                <div class="video-quote-card">
+                    <p class="video-quote-text">"10 out of 10 experience. Absolutely recommend."</p>
+                    <div class="video-quote-attribution">
+                        <span class="video-quote-name">Chelsea, 6 Months to Speech</span>
+                        <span class="video-quote-project">Full platform migration from Kajabi to GoHighLevel</span>
+                    </div>
                 </div>
             </div>
         </div>
