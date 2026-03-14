@@ -573,7 +573,7 @@
         /* ─── Results ─── */
         .result-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 1rem;
             margin-bottom: 2rem;
         }
@@ -619,6 +619,54 @@
             font-weight: 300;
             line-height: 1.5;
         }
+
+        /* ─── Featured Case Study ─── */
+        .featured-case {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            transition: border-color 0.3s ease;
+        }
+        .featured-case:hover { border-color: var(--border-light); }
+        .featured-case h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+        .featured-case p {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            font-weight: 300;
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+        }
+        .featured-case .case-link {
+            color: var(--accent);
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-decoration: none;
+        }
+        .featured-case .case-link:hover { text-decoration: underline; }
+
+        /* ─── Review Cards ─── */
+        .review-grid { margin-bottom: 1.5rem; }
+        .review-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 1.75rem 2rem;
+            margin-bottom: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        .review-card:hover { border-color: var(--border-light); }
+        .review-stars { color: var(--accent); font-size: 0.85rem; letter-spacing: 0.05em; display: block; margin-bottom: 0.75rem; }
+        .review-text { color: var(--text-secondary); font-size: 0.95rem; font-weight: 300; line-height: 1.75; margin-bottom: 0.75rem; }
+        .review-attribution { display: flex; flex-direction: column; gap: 0.1rem; }
+        .review-name { font-size: 0.88rem; font-weight: 500; color: var(--text-primary); }
+        .review-project { font-size: 0.8rem; color: var(--text-muted); }
 
         /* ─── How I Work ─── */
         .process-grid {
@@ -791,6 +839,7 @@
             .metrics-bar { grid-template-columns: repeat(2, 1fr); }
             .stage-grid { grid-template-columns: 1fr; }
             .result-grid { grid-template-columns: 1fr; }
+            .review-card { padding: 1.25rem 1.5rem; }
             .process-grid { grid-template-columns: 1fr; }
             .footer-columns { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
             .section-heading { padding-top: 4rem; }
@@ -947,29 +996,81 @@
 
         <div class="result-grid">
             <a href="/work/cr-deals.html" class="result-card reveal">
-                <span class="result-stat">$52K/yr</span>
-                <h3>CR Deals Cincinnati</h3>
-                <p>Replaced a manual process costing $52K a year in labor with a system that runs itself.</p>
+                <span class="result-stat">$52K/year saved</span>
+                <p>Replaced a manual collections process with automated follow-up workflows, saving $52K in annual labor costs.</p>
             </a>
-            <a href="/work/hollow-bamboo.html" class="result-card reveal">
-                <span class="result-stat">20 hrs/wk</span>
-                <h3>Hollow Bamboo Film Productions</h3>
-                <p>Equipment tracking across 6 locations was eating 20 hours a week. Automated end to end.</p>
+            <a href="/work/modern-bungalow.html" class="result-card reveal">
+                <span class="result-stat">60 hrs/month back</span>
+                <p>Automated a Shopify-to-Xero product sync that eliminated 60 hours of monthly manual data entry.</p>
             </a>
-            <a href="/work/revolut.html" class="result-card reveal">
-                <span class="result-stat">$4M</span>
-                <h3>Revolut</h3>
-                <p>Transaction analysis that used to take weeks, done in hours. Found a $4M growth pathway buried in the data.</p>
+            <a href="/work/klnbros.html" class="result-card reveal">
+                <span class="result-stat">1,040 users migrated</span>
+                <p>Rebuilt CRM infrastructure and migrated 1,040 contacts with full data cleanup for a cleaning company.</p>
             </a>
+            <div class="result-card reveal">
+                <span class="result-stat">Daily team-wide adoption</span>
+                <p>Built a SharePoint approval system that replaced a manual SOP process across an entire organization.</p>
+            </div>
         </div>
 
-        <a href="/case-studies.html" class="btn-link reveal">See all results &rarr;</a>
+        <a href="/case-studies.html" class="btn-link reveal">See all case studies &rarr;</a>
 
-        <!-- Featured Review -->
-        <h2 class="section-heading reveal">Featured Review</h2>
-        <div class="reveal">
+        <!-- Featured Case Study -->
+        <h2 class="section-heading reveal">Featured Case Study</h2>
+        <div class="featured-case reveal">
+            <h3>Between Generations Care</h3>
+            <p>Full platform build from scratch inside GoHighLevel — CRM, booking calendars, email sequences, and a complete customer journey from Instagram follower to repeat client. Zero manual steps.</p>
+            <a href="/case-studies.html" class="case-link">Read the full case study &rarr;</a>
+        </div>
+
+        <!-- What Clients Say -->
+        <h2 class="section-heading reveal">What Clients Say</h2>
+        <div class="review-grid">
+            <div class="review-card reveal">
+                <span class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                <p class="review-text">"Seth is my go-to for all of my automation projects now. His process in defining the project scope ahead of time ensures that I get everything I need and we're on the same page throughout."</p>
+                <div class="review-attribution">
+                    <span class="review-name">Danielle, Modern Bungalow</span>
+                    <span class="review-project">Product Sync Automation</span>
+                </div>
+            </div>
+            <div class="review-card reveal">
+                <span class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                <p class="review-text">"Extremely knowledgeable and patient. He thought outside the box to offer solutions we did not consider. Highly recommend and we will use him again."</p>
+                <div class="review-attribution">
+                    <span class="review-name">Alex, UDI Group</span>
+                    <span class="review-project">Review System Development</span>
+                </div>
+            </div>
+            <div class="review-card reveal">
+                <span class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                <p class="review-text">"Seth is an amazing rare breed. He is not just focused on what is asked of him, he actually scopes the need to make sure the work meets your need to the maximum level. Brilliant Developer and the kind of man you wished was your neighbor."</p>
+                <div class="review-attribution">
+                    <span class="review-name">Mark, San Florida</span>
+                    <span class="review-project">Web Development</span>
+                </div>
+            </div>
+            <div class="review-card reveal">
+                <span class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                <p class="review-text">"If you need an automation specialist, stop looking right now and hire Seth. He will blow your mind with his knowledge and his ability to take your idea and not only understand what you want to achieve but also build on it."</p>
+                <div class="review-attribution">
+                    <span class="review-name">Andrew, Kingfisher Ads</span>
+                    <span class="review-project">Automation</span>
+                </div>
+            </div>
+        </div>
+        <a href="/reviews.html" class="btn-link reveal">See all reviews &rarr;</a>
+
+        <!-- Featured Review Widget -->
+        <div class="reveal" style="margin-top: 2rem;">
             <script src="https://widget.senja.io/widget/c94bcea1-171b-44e2-b437-9161fabfbbf4/platform.js" type="text/javascript" async></script>
             <div class="senja-embed" data-id="c94bcea1-171b-44e2-b437-9161fabfbbf4" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div>
+        </div>
+
+        <!-- Video Review Widget -->
+        <div class="reveal" style="margin-top: 2rem;">
+            <script src="https://widget.senja.io/widget/1bc7a1e6-b3e0-464a-a108-c61da496bc32/platform.js" type="text/javascript" async></script>
+            <div class="senja-embed" data-id="1bc7a1e6-b3e0-464a-a108-c61da496bc32" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div>
         </div>
 
         <!-- How I Work -->
