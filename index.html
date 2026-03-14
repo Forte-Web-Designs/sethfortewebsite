@@ -668,6 +668,53 @@
         .review-name { font-size: 0.88rem; font-weight: 500; color: var(--text-primary); }
         .review-project { font-size: 0.8rem; color: var(--text-muted); }
 
+        /* ─── Video Quote Cards ─── */
+        .video-quotes {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+        }
+        .video-quote-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .video-quote-card:hover {
+            border-color: var(--border-light);
+        }
+        .video-quote-text {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-weight: 300;
+            line-height: 1.65;
+            margin-bottom: 0.75rem;
+            font-style: italic;
+        }
+        .video-quote-attribution {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+        }
+        .video-quote-name {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        .video-quote-project {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+        @media (max-width: 480px) {
+            .video-quotes { grid-template-columns: 1fr; }
+        }
+
         /* ─── How I Work ─── */
         .process-grid {
             display: grid;
@@ -995,6 +1042,24 @@
         <div class="reveal" style="max-width: 600px; margin-bottom: 2rem;">
             <script src="https://widget.senja.io/widget/36af0ec6-70f0-4a77-96dc-bb6ca9a62e42/platform.js" type="text/javascript" async></script>
             <div class="senja-embed" data-id="36af0ec6-70f0-4a77-96dc-bb6ca9a62e42" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div>
+        </div>
+
+        <!-- Video Testimonial Quotes -->
+        <div class="video-quotes reveal">
+            <div class="video-quote-card">
+                <p class="video-quote-text">"He stood out from the pack real quickly. We'll use him for any job we ever have."</p>
+                <div class="video-quote-attribution">
+                    <span class="video-quote-name">Matt, 6 Months to Speech</span>
+                    <span class="video-quote-project">CRM build and automation for an online coaching program</span>
+                </div>
+            </div>
+            <div class="video-quote-card">
+                <p class="video-quote-text">"10 out of 10 experience. Absolutely recommend."</p>
+                <div class="video-quote-attribution">
+                    <span class="video-quote-name">Chelsea, 6 Months to Speech</span>
+                    <span class="video-quote-project">Full platform migration from Kajabi to GoHighLevel</span>
+                </div>
+            </div>
         </div>
 
         <!-- Results -->
