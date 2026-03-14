@@ -146,8 +146,29 @@
         /* Stage Badges */
         .stage-badge { display: inline-block; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.2rem 0.6rem; border-radius: 4px; margin-bottom: 0.5rem; }
         .stage-badge.badge-foundation { background: rgba(100,116,139,0.15); color: var(--text-muted); border: 1px solid rgba(100,116,139,0.3); }
+        .stage-badge.badge-launch { background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid rgba(34,197,94,0.3); }
         .stage-badge.badge-growth { background: rgba(99,102,241,0.15); color: var(--accent); border: 1px solid rgba(99,102,241,0.3); }
         .stage-badge.badge-scale { background: rgba(6,182,212,0.15); color: var(--accent-2); border: 1px solid rgba(6,182,212,0.3); }
+
+        /* Featured Case Study */
+        .featured-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            transition: border-color 0.3s ease;
+            display: block;
+            color: inherit;
+            text-decoration: none;
+        }
+        .featured-card:hover { border-color: var(--border-light); background: var(--surface-hover); text-decoration: none; }
+        .featured-label { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-hover); margin-bottom: 0.75rem; display: block; }
+        .featured-card .case-study-stat { font-size: 1.25rem; }
+        .featured-card h3 { font-size: 1.25rem; }
+
+        /* Section Label */
+        .section-label { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 1.5rem; margin-top: 2rem; }
 
         /* CTA Section */
         .cta-section {
@@ -250,145 +271,338 @@
     </header>
 
     <main class="main-wrapper">
-        <h1 class="page-title animate-fade-up animate-delay-1">Work</h1>
-        <p class="page-intro animate-fade-up animate-delay-2">Real projects. Real results. Every system is scoped, documented, and handed off with training. You own everything I build.</p>
+        <h1 class="page-title animate-fade-up animate-delay-1">Case Studies</h1>
+        <p class="page-intro animate-fade-up animate-delay-2">Real systems. Measurable results. Every project starts with understanding exactly what the problem is costing the business. Here's what happens when we build the fix.</p>
 
-        <!-- 1. Revolut -->
-        <a href="/work/revolut.html" class="case-study-card">
+        <!-- Featured Case Study -->
+        <a href="/case-studies.html" class="featured-card reveal">
+            <span class="featured-label">Featured</span>
+            <span class="stage-badge badge-launch">Launch</span>
+            <h3>Between Generations Care</h3>
+            <div class="case-study-meta"><span>Caregiving</span><span>Full Platform Build</span><span>GoHighLevel</span></div>
+            <div class="case-study-stat">Full CRM</div>
+            <p>complete customer journey, zero manual steps</p>
+            <div class="case-study-tags">
+                <span>Caregiving</span>
+                <span>GoHighLevel</span>
+                <span>CRM</span>
+                <span>Booking</span>
+                <span>Email Automation</span>
+            </div>
+            <p style="margin-top: 1rem;">Built the entire business platform from scratch inside GoHighLevel — CRM, booking calendars, email sequences, and a full customer journey from Instagram follower to repeat client. Zero manual steps. <span style="color: var(--accent-hover);">Read the full case study &rarr;</span></p>
+        </a>
+
+        <!-- Client Work -->
+        <div class="section-label">Client Work</div>
+
+        <!-- Compass Real Estate -->
+        <div class="case-study-card reveal">
+            <span class="stage-badge badge-foundation">Foundation</span>
+            <h3>Compass Real Estate</h3>
+            <div class="case-study-meta"><span>Real Estate</span><span>1 week</span><span>Voice-to-Email + Drive Automation</span></div>
+            <div class="case-study-stat">5-10 hrs</div>
+            <p>returned weekly</p>
+            <div class="case-study-tags">
+                <span>Real Estate</span>
+                <span>AI</span>
+                <span>Voice Input</span>
+                <span>Google Drive</span>
+            </div>
+            <p style="margin-top: 0.75rem;">Voice-to-email drafting system and automated Google Drive organization for a Denver real estate team. Email drafting went from 15 minutes to 60 seconds. <span style="color: var(--accent-hover);">Read the full case study &rarr;</span></p>
+        </div>
+
+        <!-- SAN of Florida -->
+        <a href="/work/san-florida.html" class="case-study-card reveal">
+            <span class="stage-badge badge-scale">Scale</span>
+            <h3>SAN of Florida</h3>
+            <div class="case-study-meta"><span>Insurance</span><span>Enterprise</span><span>SSO + MFA Infrastructure</span></div>
+            <div class="case-study-stat">1,040</div>
+            <p>users, 2 platforms, one login</p>
+            <div class="case-study-tags">
+                <span>Insurance</span>
+                <span>SSO</span>
+                <span>MFA</span>
+                <span>AWS Cognito</span>
+            </div>
+            <p style="margin-top: 0.75rem;">Unified SSO and MFA for 1,040 insurance agency users across Smartsheet and InsuredMine. No per-user licensing. Compliance met ahead of deadline. <span style="color: var(--accent-hover);">Read the full case study &rarr;</span></p>
+        </a>
+
+        <!-- Kingfisher Ads -->
+        <a href="/work/kingfisher-ads.html" class="case-study-card reveal">
             <span class="stage-badge badge-growth">Growth</span>
-            <div class="case-study-stat">$4M growth opportunity identified</div>
+            <h3>Kingfisher Ads</h3>
+            <div class="case-study-meta"><span>Agency</span><span>Ireland</span><span>Automated Ad Spend Reporting</span></div>
+            <div class="case-study-stat">3-4 hrs</div>
+            <p>monthly reporting eliminated</p>
+            <div class="case-study-tags">
+                <span>Agency</span>
+                <span>Reporting</span>
+                <span>Google Ads</span>
+                <span>Meta</span>
+                <span>n8n</span>
+            </div>
+            <p style="margin-top: 0.75rem;">Automated monthly ad spend reporting and billing calculations across Google Ads and Meta for multiple clients with different fee structures. <span style="color: var(--accent-hover);">Read the full case study &rarr;</span></p>
+        </a>
+
+        <!-- Corevantage Cleaning -->
+        <a href="/work/klnbros.html" class="case-study-card reveal">
+            <span class="stage-badge badge-foundation">Foundation</span>
+            <h3>Corevantage Cleaning</h3>
+            <div class="case-study-meta"><span>Cleaning Services</span><span>Grand Rapids, MI</span><span>Operations Control Plane</span></div>
+            <div class="case-study-stat">5-tier</div>
+            <p>payout system, fully automated</p>
+            <div class="case-study-tags">
+                <span>Home Services</span>
+                <span>Airtable</span>
+                <span>Make.com</span>
+                <span>BookingKoala</span>
+            </div>
+            <p style="margin-top: 0.75rem;">Operations control plane connecting BookingKoala, Stripe, and QuickBooks with automated 5-tier cleaner payouts and real-time job sync. <span style="color: var(--accent-hover);">Read the full case study &rarr;</span></p>
+        </a>
+
+        <!-- Universal Data Inc. -->
+        <div class="case-study-card reveal">
+            <span class="stage-badge badge-growth">Growth</span>
+            <h3>Universal Data Inc.</h3>
+            <div class="case-study-meta"><span>IT Services</span><span>New Orleans, LA</span><span>SharePoint SOP System</span></div>
+            <div class="case-study-stat">60</div>
+            <p>SOPs migrated, template-enforced workflow</p>
+            <div class="case-study-tags">
+                <span>Enterprise</span>
+                <span>SharePoint</span>
+                <span>Power Automate</span>
+                <span>Documentation</span>
+            </div>
+            <p style="margin-top: 0.75rem;">Migrated 60 SOPs from Trainual to SharePoint with locked templates, two-person approval workflow, and full version history. No new subscriptions. <span style="color: var(--accent-hover);">Read the full case study &rarr;</span></p>
+        </div>
+
+        <!-- THE 11R SHOP -->
+        <div class="case-study-card reveal">
+            <span class="stage-badge badge-foundation">Foundation</span>
+            <h3>THE 11R SHOP</h3>
+            <div class="case-study-meta"><span>Mobile Tire Service</span><span>Field Operations Dispatch</span></div>
+            <div class="case-study-stat">GPS</div>
+            <p>gated workflow with enforced audit trail</p>
+            <div class="case-study-tags">
+                <span>Field Services</span>
+                <span>Jotform</span>
+                <span>Make.com</span>
+                <span>Stripe</span>
+                <span>GPS</span>
+            </div>
+            <p style="margin-top: 0.75rem;">GPS-gated dispatch system with dynamic pricing, enforced proof collection, and automatic payment processing. Full audit trail on every job. <span style="color: var(--accent-hover);">Read the full case study &rarr;</span></p>
+        </div>
+
+        <!-- Little Cup Marketing / ALG Financial -->
+        <div class="case-study-card reveal">
+            <span class="stage-badge badge-foundation">Foundation</span>
+            <h3>Little Cup Marketing / ALG Financial</h3>
+            <div class="case-study-meta"><span>Financial Media</span><span>Multi-Brand Newsletter Infrastructure</span></div>
+            <div class="case-study-stat">4</div>
+            <p>brands audited, misrouted pipeline fixed</p>
+            <div class="case-study-tags">
+                <span>Media</span>
+                <span>Make.com</span>
+                <span>beehiiv</span>
+                <span>Infrastructure Audit</span>
+            </div>
+            <p style="margin-top: 0.75rem;">Full audit and rebuild of subscriber routing across four newsletter brands. Found and fixed misrouted pipelines, deployed source tracking, verified all scenarios. <span style="color: var(--accent-hover);">Read the full case study &rarr;</span></p>
+        </div>
+
+        <!-- Private Family Office -->
+        <div class="case-study-card reveal">
+            <span class="stage-badge badge-growth">Growth</span>
+            <h3>Private Family Office</h3>
+            <div class="case-study-meta"><span>Finance</span><span>NDA Client</span><span>Investment Audit Workflow</span></div>
+            <div class="case-study-stat">$15-25K</div>
+            <p>debug turned multi-phase partnership</p>
+            <div class="case-study-tags">
+                <span>Finance</span>
+                <span>n8n</span>
+                <span>API Authentication</span>
+                <span>Portfolio Automation</span>
+            </div>
+            <p style="margin-top: 0.75rem;">Diagnosed HMAC-SHA256 auth and data processing issues in an investment audit system. Initial debug expanded into a multi-phase portfolio operations build. <span style="color: var(--accent-hover);">Read the full case study &rarr;</span></p>
+        </div>
+
+        <!-- Legal Tech Startup -->
+        <div class="case-study-card reveal">
+            <span class="stage-badge badge-foundation">Foundation</span>
+            <h3>Legal Tech Startup</h3>
+            <div class="case-study-meta"><span>Legal Tech</span><span>Demo Workflows</span><span>Sales Enablement</span></div>
+            <div class="case-study-stat">4</div>
+            <p>legal document templates</p>
+            <div class="case-study-tags">
+                <span>Legal Tech</span>
+                <span>n8n</span>
+                <span>PDF Generation</span>
+                <span>Google Drive</span>
+            </div>
+            <p style="margin-top: 0.75rem;">Built two n8n demo workflows with four legal document templates for sales calls and prospect outreach. Sales-ready demos delivered within days. <span style="color: var(--accent-hover);">Read the full case study &rarr;</span></p>
+        </div>
+
+        <!-- Daleen Restoration -->
+        <div class="case-study-card reveal">
+            <span class="stage-badge badge-launch">Launch</span>
+            <h3>Daleen Restoration</h3>
+            <div class="case-study-meta"><span>Restoration</span><span>Wisconsin</span><span>Systems Assessment</span></div>
+            <div class="case-study-stat">$10,700+</div>
+            <p>roadmap from a $1,000 first project</p>
+            <div class="case-study-tags">
+                <span>Restoration</span>
+                <span>Albiware</span>
+                <span>Zapier</span>
+                <span>Twilio</span>
+                <span>Systems Assessment</span>
+            </div>
+            <p style="margin-top: 0.75rem;">Audited 24 Zapier automations, built commission tracking, and delivered a 14-page systems assessment with a five-phase automation roadmap. $10,700+ in additional work scoped. <span style="color: var(--accent-hover);">Read the full case study &rarr;</span></p>
+        </div>
+
+        <!-- Revolut -->
+        <a href="/work/revolut.html" class="case-study-card reveal">
+            <span class="stage-badge badge-growth">Growth</span>
             <h3>Revolut</h3>
             <div class="case-study-meta"><span>Fintech</span><span>2 weeks</span><span>AI Data Pipeline</span></div>
-            <p>AI-powered analysis of 200K+ transactions revealed profitability drivers that manual analysis would have taken weeks to find.</p>
+            <div class="case-study-stat">$4M</div>
+            <p>growth opportunity identified</p>
             <div class="case-study-tags">
                 <span>Fintech</span>
                 <span>AI Analysis</span>
                 <span>Data Pipeline</span>
             </div>
+            <p style="margin-top: 0.75rem;">AI-powered analysis of 200K+ transactions revealed profitability drivers that manual analysis would have taken weeks to find.</p>
         </a>
 
-        <!-- 2. CR Deals Cincinnati -->
-        <a href="/work/cr-deals.html" class="case-study-card">
+        <!-- CR Deals Cincinnati -->
+        <a href="/work/cr-deals.html" class="case-study-card reveal">
             <span class="stage-badge badge-scale">Scale</span>
-            <div class="case-study-stat">$52K annual savings</div>
             <h3>CR Deals Cincinnati</h3>
             <div class="case-study-meta"><span>E-commerce</span><span>3 weeks</span><span>AI Listing Automation</span></div>
-            <p>AI system that analyzes product photos, generates descriptions, and posts to all sales channels. 50-100 products daily, no human needed.</p>
+            <div class="case-study-stat">$52K</div>
+            <p>annual savings</p>
             <div class="case-study-tags">
                 <span>E-commerce</span>
-                <span>AI Automation</span>
+                <span>AI</span>
+                <span>Automation</span>
                 <span>Multi-channel</span>
             </div>
+            <p style="margin-top: 0.75rem;">AI system that analyzes product photos, generates descriptions, and posts to all sales channels. 50-100 products daily, no human needed.</p>
         </a>
 
-        <!-- 3. Modern Bungalow -->
-        <a href="/work/modern-bungalow.html" class="case-study-card">
+        <!-- Modern Bungalow -->
+        <a href="/work/modern-bungalow.html" class="case-study-card reveal">
             <span class="stage-badge badge-growth">Growth</span>
-            <div class="case-study-stat">60 hrs/month saved</div>
             <h3>Modern Bungalow</h3>
             <div class="case-study-meta"><span>E-commerce</span><span>2 weeks</span><span>Email Automation</span></div>
-            <p>Automated Shopify email workflows across 9 customer scenarios. Customer communication that runs itself.</p>
+            <div class="case-study-stat">60 hrs</div>
+            <p>saved monthly</p>
             <div class="case-study-tags">
                 <span>E-commerce</span>
                 <span>Shopify</span>
                 <span>Email Automation</span>
             </div>
+            <p style="margin-top: 0.75rem;">Automated Shopify email workflows across 9 customer scenarios. Customer communication that runs itself.</p>
         </a>
 
-        <!-- 4. Hollow Bamboo -->
-        <a href="/work/hollow-bamboo.html" class="case-study-card">
+        <!-- Hollow Bamboo -->
+        <a href="/work/hollow-bamboo.html" class="case-study-card reveal">
             <span class="stage-badge badge-foundation">Foundation</span>
-            <div class="case-study-stat">20+ hours weekly saved</div>
             <h3>Hollow Bamboo</h3>
             <div class="case-study-meta"><span>Film Production</span><span>4 weeks</span><span>Custom Inventory System</span></div>
-            <p>Custom inventory system with QR code mobile access replaced paper lists and constant texting. Equipment tracked across 6 locations.</p>
+            <div class="case-study-stat">20+ hrs</div>
+            <p>saved weekly</p>
             <div class="case-study-tags">
                 <span>Film Production</span>
                 <span>Custom Software</span>
                 <span>Inventory</span>
             </div>
+            <p style="margin-top: 0.75rem;">Custom inventory system with QR code mobile access replaced paper lists and constant texting. Equipment tracked across 6 locations.</p>
         </a>
 
-        <!-- 5. Eden Medical -->
-        <div class="case-study-card" style="border-color: var(--border);">
+        <!-- Eden Medical -->
+        <div class="case-study-card reveal">
             <span class="stage-badge badge-scale">Scale</span>
-            <div class="case-study-stat">AI booking chatbot</div>
             <h3>Eden Medical</h3>
             <div class="case-study-meta"><span>Healthcare</span><span>4 weeks</span><span>AI Chatbot</span></div>
-            <p>AI booking chatbot handling appointments, cancellations, and rescheduling across 10+ clinic locations. 24/7 automated scheduling.</p>
+            <div class="case-study-stat">24/7</div>
+            <p>automated scheduling</p>
             <div class="case-study-tags">
                 <span>Healthcare</span>
                 <span>AI Chatbot</span>
                 <span>Booking</span>
             </div>
+            <p style="margin-top: 0.75rem;">AI booking chatbot handling appointments, cancellations, and rescheduling across 10+ clinic locations. 24/7 automated scheduling.</p>
         </div>
 
-        <!-- 6. San Florida -->
-        <a href="/work/san-florida.html" class="case-study-card">
+        <!-- San Florida -->
+        <a href="/work/san-florida.html" class="case-study-card reveal">
             <span class="stage-badge badge-scale">Scale</span>
-            <div class="case-study-stat">SSO/MFA for 1,040 users</div>
             <h3>San Florida</h3>
             <div class="case-study-meta"><span>Enterprise</span><span>6 weeks</span><span>Security Infrastructure</span></div>
-            <p>Enterprise security implementation with zero downtime migration. One login for all applications, phishing-resistant authentication.</p>
+            <div class="case-study-stat">1,040</div>
+            <p>users migrated</p>
             <div class="case-study-tags">
                 <span>Enterprise</span>
                 <span>Security</span>
                 <span>SSO</span>
                 <span>MFA</span>
             </div>
+            <p style="margin-top: 0.75rem;">Enterprise security implementation with zero downtime migration. One login for all applications, phishing-resistant authentication.</p>
         </a>
 
-        <!-- 7. Kingfisher Ads -->
-        <a href="/work/kingfisher-ads.html" class="case-study-card">
+        <!-- Kingfisher Ads (duplicate) -->
+        <a href="/work/kingfisher-ads.html" class="case-study-card reveal">
             <span class="stage-badge badge-growth">Growth</span>
-            <div class="case-study-stat">Reports in 15 minutes</div>
             <h3>Kingfisher Ads</h3>
             <div class="case-study-meta"><span>Agency</span><span>1 week</span><span>Reporting Dashboard</span></div>
-            <p>Automated monthly ad spend reports pull from Google Ads and Meta, calculate metrics, and land in clients' inboxes automatically.</p>
+            <div class="case-study-stat">15 min</div>
+            <p>reports delivered</p>
             <div class="case-study-tags">
                 <span>Agency</span>
                 <span>Reporting</span>
                 <span>Google Ads</span>
                 <span>Meta</span>
             </div>
+            <p style="margin-top: 0.75rem;">Automated monthly ad spend reports pull from Google Ads and Meta, calculate metrics, and land in clients' inboxes automatically.</p>
         </a>
 
-        <!-- 8. KlnBros Agency -->
-        <a href="/work/klnbros.html" class="case-study-card">
+        <!-- KlnBros Agency -->
+        <a href="/work/klnbros.html" class="case-study-card reveal">
             <span class="stage-badge badge-foundation">Foundation</span>
-            <div class="case-study-stat">Back online in 2 hours</div>
             <h3>KlnBros Agency</h3>
             <div class="case-study-meta"><span>Agency</span><span>Emergency</span><span>Disaster Recovery</span></div>
-            <p>When their server crashed and database corrupted, we recovered 99.7% of data and restored 43 workflows. Emergency recovery with proper disaster prevention implemented.</p>
+            <div class="case-study-stat">99.7%</div>
+            <p>data recovered</p>
             <div class="case-study-tags">
                 <span>Infrastructure</span>
                 <span>Emergency</span>
                 <span>Disaster Recovery</span>
             </div>
+            <p style="margin-top: 0.75rem;">When their server crashed and database corrupted, we recovered 99.7% of data and restored 43 workflows. Back online in 2 hours with proper disaster prevention implemented.</p>
         </a>
 
-        <!-- 9. UDI Group -->
-        <div class="case-study-card" style="border-color: var(--border);">
+        <!-- UDI Group -->
+        <div class="case-study-card reveal">
             <span class="stage-badge badge-growth">Growth</span>
-            <div class="case-study-stat">SOP migration system</div>
             <h3>UDI Group</h3>
             <div class="case-study-meta"><span>Enterprise</span><span>3 weeks</span><span>Knowledge Base Migration</span></div>
-            <p>SOP migration system from Trainual to SharePoint with Power Automate flows. Internal knowledge base used daily by the whole team.</p>
+            <div class="case-study-stat">Daily</div>
+            <p>team-wide usage</p>
             <div class="case-study-tags">
                 <span>Enterprise</span>
                 <span>Power Platform</span>
                 <span>Documentation</span>
             </div>
+            <p style="margin-top: 0.75rem;">SOP migration system from Trainual to SharePoint with Power Automate flows. Internal knowledge base used daily by the whole team.</p>
         </div>
 
         <hr class="section-divider">
 
         <!-- CTA -->
-        <div class="cta-section">
-            <p>Most of the businesses I work with have the same story. Things are growing, but the way things run day to day hasn't kept up.</p>
-            <p style="margin-bottom: 1.75rem;">If that sounds familiar, that's usually where I come in.</p>
-            <a href="https://calendly.com/seth-fortewebdesigns/30min" target="_blank" rel="noopener" class="btn-primary">Book a Call</a>
-            <a href="mailto:seth@launchforte.com" class="btn-secondary-link">seth@launchforte.com</a>
+        <div class="cta-section reveal" style="text-align: center;">
+            <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-primary);">See what we can build for you.</h2>
+            <p>Every engagement starts with a discovery call where we map out what the problem is costing you. If the math works, we build it.</p>
+            <a href="https://calendly.com/seth-fortewebdesigns/30min" target="_blank" rel="noopener" class="btn-primary">Book a Call &rarr;</a>
         </div>
 
         <!-- Footer -->
