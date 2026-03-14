@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Between Generations Care Case Study: Full Platform Build | Seth Forte</title>
+    <meta name="description" content="Full platform build from scratch inside GoHighLevel — CRM, booking calendars, email sequences, and a complete customer journey from Instagram follower to repeat client.">
+    <meta name="keywords" content="gohighlevel case study, crm build, caregiving automation, booking automation, email sequences">
+    <meta name="author" content="Seth Forte">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://sethforte.com/work/between-generations-care">
+    <meta property="og:title" content="Between Generations Care Case Study | Seth Forte">
+    <meta property="og:description" content="Full platform build from scratch inside GoHighLevel for a caregiving brand.">
+    <meta property="og:image" content="https://sethforte.com/headshot-6.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://sethforte.com/work/between-generations-care">
+    <meta property="twitter:title" content="Between Generations Care Case Study | Seth Forte">
+    <meta property="twitter:description" content="Full platform build from scratch inside GoHighLevel for a caregiving brand.">
+    <meta property="twitter:image" content="https://sethforte.com/headshot-6.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://sethforte.com/work/between-generations-care">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="icon" type="image/jpeg" href="../logo.jpg">
+    <link rel="apple-touch-icon" href="../logo.jpg">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --text-primary: #f0f4f8;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --accent-subtle: rgba(99,102,241,0.08);
+            --accent-glow: rgba(99,102,241,0.25);
+            --accent-2: #06b6d4;
+            --accent-3: #a78bfa;
+            --background: #09090b;
+            --background-alt: #0f0f13;
+            --surface: #141418;
+            --surface-hover: #1a1a20;
+            --border: rgba(255,255,255,0.06);
+            --border-light: rgba(255,255,255,0.1);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-pill: 980px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--background);
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a { color: var(--accent-hover); text-decoration: none; transition: color 0.2s ease; }
+        a:hover { color: var(--accent-hover); text-decoration: none; }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-up { animation: fadeInUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards; }
+        .animate-delay-1 { animation-delay: 0.15s; opacity: 0; }
+        .animate-delay-2 { animation-delay: 0.3s; opacity: 0; }
+
+        .site-header { position: sticky; top: 0; z-index: 100; background: rgba(9,9,11,0.7); backdrop-filter: blur(20px) saturate(1.5); -webkit-backdrop-filter: blur(20px) saturate(1.5); border-bottom: 1px solid var(--border); padding: 0 2rem; }
+        .header-container { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; height: 52px; }
+        .header-logo { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9375rem; font-weight: 600; color: var(--text-primary); text-decoration: none; letter-spacing: -0.01em; }
+        .header-logo:hover { color: var(--text-primary); text-decoration: none; opacity: 0.8; }
+        .header-nav { display: flex; gap: 0.25rem; }
+        .nav-link { padding: 0.35rem 0.75rem; color: var(--text-secondary); font-size: 0.8125rem; font-weight: 400; transition: color 0.2s ease; text-decoration: none; }
+        .nav-link:hover { color: var(--text-primary); text-decoration: none; }
+        .nav-link.active { color: var(--text-primary); font-weight: 500; }
+
+        .main-wrapper { max-width: 1100px; position: relative; z-index: 1; margin: 0 auto; padding: 4rem 2rem 6rem; }
+
+        .back-link { display: inline-block; color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 2rem; }
+        .back-link:hover { color: var(--accent); }
+
+        .case-label { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 0.75rem; display: block; }
+        .case-title { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; color: var(--text-primary); line-height: 1.1; margin-bottom: 1rem; letter-spacing: -0.03em; }
+        .case-subtitle { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 3rem; line-height: 1.6; max-width: 700px; }
+
+        .section-divider { display: none; }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            transition: border-color 0.2s ease;
+        }
+        .stat-card:hover { border-color: var(--border-light); }
+        .stat-card .stat { font-size: 1.5rem; font-weight: 700; color: var(--accent); margin-bottom: 0.25rem; }
+        .stat-card .label { color: var(--text-secondary); font-size: 0.85rem; }
+
+        .case-section { margin-bottom: 3rem; max-width: 700px; }
+        .case-section h2 { font-size: 1.4rem; font-weight: 600; color: var(--text-primary); margin-bottom: 1rem; }
+        .case-section p { color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.7; }
+        .case-section ul { color: var(--text-secondary); margin-bottom: 1.5rem; padding-left: 1.5rem; }
+        .case-section li { margin-bottom: 0.5rem; line-height: 1.7; }
+        .case-section strong { color: var(--text-primary); }
+
+        /* Tech Stack */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 3rem; }
+        .tech-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--border);
+            padding: 0.3rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.875rem 2rem;
+            background: var(--accent);
+            color: #ffffff; border: none; border-radius: var(--radius-pill);
+            font-size: 1rem; font-weight: 500;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            font-family: inherit;
+        }
+        .btn-primary:hover { background: var(--accent-hover); text-decoration: none; color: #ffffff; transform: translateY(-1px); box-shadow: 0 4px 16px var(--accent-glow); }
+
+        .cta-card {
+            background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md);
+            padding: 2.5rem; text-align: center; margin-top: 4rem;
+            transition: border-color 0.2s ease;
+        }
+        .cta-card:hover { border-color: var(--border-light); }
+        .cta-card h3 { font-size: 1.3rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.75rem; }
+        .cta-card p { color: var(--text-secondary); margin-bottom: 1.5rem; }
+
+        /* Footer */
+        .footer-section { margin-top: 5rem; padding-top: 3rem; border-top: 1px solid var(--border); }
+        .footer-email-main { color: var(--text-secondary); font-size: 1rem; font-weight: 300; margin-bottom: 2.5rem; display: block; }
+        .footer-columns { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2.5rem; }
+        .footer-col h4 { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 0.5rem; }
+        .footer-col a { color: var(--text-secondary); font-size: 0.9rem; font-weight: 300; }
+        .footer-col a:hover { color: var(--accent); }
+        .footer-bottom { padding-top: 1.5rem; border-top: 1px solid var(--border); }
+        .footer-location { color: var(--text-muted); font-size: 0.8125rem; margin-bottom: 0.35rem; }
+        .copyright { color: var(--text-muted); font-size: 0.8125rem; }
+
+        .site-header::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), var(--accent-2), var(--accent), transparent);
+            opacity: 0.4;
+        }
+
+        .grid-bg {
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.revealed { opacity: 1; transform: translateY(0); }
+
+        .footer-status { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; }
+        .footer-status .status-dot { width: 6px; height: 6px; background: #10b981; border-radius: 50%; }
+        .footer-status span { color: var(--text-muted); font-size: 0.8125rem; }
+
+        @media (max-width: 768px) {
+            .main-wrapper { padding: 3rem 1.5rem 4rem; }
+            .case-title { font-size: 1.6rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-columns { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+            .header-nav { display: none; }
+        }
+
+        @media (max-width: 480px) {
+            .main-wrapper { padding: 2rem 1.25rem 3rem; }
+            .case-title { font-size: 1.4rem; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .footer-columns { grid-template-columns: 1fr; }
+            .site-header { padding: 0 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="header-logo">Launch Forte</a>
+            <nav class="header-nav">
+                <a href="/services.html" class="nav-link">Services</a>
+                <a href="/case-studies.html" class="nav-link active">Work</a>
+                <a href="/reviews.html" class="nav-link">Reviews</a>
+                <a href="/writing.html" class="nav-link">Writing</a>
+                <a href="/about.html" class="nav-link">About</a>
+                <a href="/contact.html" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-wrapper">
+        <a href="/case-studies.html" class="back-link animate-fade-up">&larr; Back to Work</a>
+
+        <span class="case-label animate-fade-up">Case Study</span>
+        <h1 class="case-title animate-fade-up animate-delay-1">Full Platform Build for a Caregiving Brand</h1>
+        <p class="case-subtitle animate-fade-up animate-delay-2">Danielle Frazier, Between Generations Care &middot; Full Build &middot; Case Study</p>
+
+        <div class="stats-grid reveal">
+            <div class="stat-card">
+                <div class="stat">Full CRM</div>
+                <div class="label">Live from day one</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat">0</div>
+                <div class="label">Manual steps for booking</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat">$1,800/yr</div>
+                <div class="label">Per client on quarterly plan</div>
+            </div>
+        </div>
+
+        <div class="case-section reveal">
+            <h2>The Situation</h2>
+            <p>Danielle Frazier started Between Generations Care to support caregivers. She had digital products, session offerings, content ideas, and a growing social media audience. What she didn't have was a system that connected any of it.</p>
+            <p>Her tools were everywhere. A website that didn't capture leads. Social accounts with engagement but no way to turn followers into subscribers. Digital products with no follow-up after purchase. No email list. No CRM. No booking system connected to anything. Someone could find her on Instagram, visit her site, and then nothing. No opt-in, no sequence, no nurture path.</p>
+        </div>
+
+        <div class="case-section reveal">
+            <h2>What We Built</h2>
+            <p>Everything. From the ground up. Inside GoHighLevel as the central platform.</p>
+            <ul>
+                <li><strong>CRM and pipeline</strong> with contact records, tags, and stages matching how the business works.</li>
+                <li><strong>Newsletter opt-in page</strong> connected to the CRM with automatic tagging and nurture sequence triggers.</li>
+                <li><strong>Two booking calendars</strong> (45-min single session and 60-min deep dive) with intake forms, confirmations, and reminders.</li>
+                <li><strong>Session pricing</strong> structured with monthly and quarterly packages that encourage recurring commitments.</li>
+                <li><strong>Email domain authentication</strong> (SPF, DKIM, DMARC) so everything sends from her professional domain and lands in inboxes.</li>
+                <li><strong>Content migrated</strong> from the existing site and rebuilt with proper conversion paths.</li>
+            </ul>
+            <p>The full customer journey: someone finds her on Instagram, clicks the bio link, subscribes, gets a welcome sequence, sees session offerings, books, gets confirmation and reminders, and receives follow-up after the session. Every touchpoint connected and automated. Before this build, none of that existed.</p>
+        </div>
+
+        <div class="case-section reveal">
+            <h2>Results</h2>
+            <ul>
+                <li><strong>Complete customer journey</strong> with zero manual steps.</li>
+                <li><strong>Full CRM with pipeline</strong> live from day one.</li>
+                <li><strong>Newsletter opt-in</strong> collecting subscribers immediately.</li>
+                <li><strong>Two booking calendars</strong> with automated intake and reminders.</li>
+                <li><strong>Email domain authenticated</strong> across all sending.</li>
+                <li><strong>Every step</strong> from first touch to post-session follow-up runs automatically.</li>
+            </ul>
+        </div>
+
+        <div class="case-section reveal">
+            <h2>The Outcome</h2>
+            <p>Before this build, Danielle had a collection of ideas and tools that didn't talk to each other. Every interaction required her to manually follow up, manually schedule, manually send.</p>
+            <p>Now she has one link in her Instagram bio that feeds into a system that handles everything. A follower becomes a subscriber becomes a booked session becomes a repeat client, and she doesn't touch any of the steps in between. She went from having a brand to having a business that runs.</p>
+            <p>The pricing structure changed the economics. Instead of one-off sessions with no retention path, she now has monthly and quarterly packages that create predictable recurring revenue. A single client on the quarterly plan is worth $1,800 per year without having to resell them every time.</p>
+            <p>The infrastructure also opened up revenue paths that didn't exist before. Email sequences, Pinterest automation, and Stan Store integration are all scoped for future phases... none of which were possible when everything was disconnected.</p>
+        </div>
+
+        <div class="case-section reveal">
+            <h2>Tech Stack</h2>
+            <div class="tech-stack">
+                <span class="tech-tag">GoHighLevel</span>
+                <span class="tech-tag">Namecheap</span>
+                <span class="tech-tag">Stan Store</span>
+                <span class="tech-tag">Instagram</span>
+                <span class="tech-tag">Facebook</span>
+            </div>
+        </div>
+
+        <div class="case-section reveal">
+            <h2>What Made This Work</h2>
+            <p>Danielle didn't need someone to build pages. She needed someone to understand how her business is supposed to flow and then build the system that makes it flow that way.</p>
+            <p>The opt-in page is just a page. The CRM is just a database. The booking calendar is just a scheduling tool. None of those matter on their own. What matters is that when someone discovers the brand for the first time, there's a clear path from discovery to engagement and every step along that path happens automatically.</p>
+        </div>
+
+        <div class="cta-card reveal">
+            <p>Need a system that turns your audience into paying clients? Let's talk about what that looks like for your business.</p>
+            <a href="https://calendly.com/seth-fortewebdesigns/30min" target="_blank" rel="noopener" class="btn-primary">Book a Call</a>
+        </div>
+
+        <div class="footer-section">
+            <a href="mailto:seth@launchforte.com" class="footer-email-main">seth@launchforte.com</a>
+            <div class="footer-columns">
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="/foundation.html">Foundation</a></li>
+                        <li><a href="/launch.html">Launch</a></li>
+                        <li><a href="/growth.html">Growth</a></li>
+                        <li><a href="/scale.html">Scale</a></li>
+                        <li><a href="/review.html">Infrastructure Review</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/about.html">About</a></li>
+                        <li><a href="/case-studies.html">Case Studies</a></li>
+                        <li><a href="/reviews.html">Reviews</a></li>
+                        <li><a href="/writing.html">Writing</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="https://www.linkedin.com/in/seth-forte/" target="_blank" rel="noopener">LinkedIn</a></li>
+                        <li><a href="/upwork.html">Upwork Portfolio</a></li>
+                        <li><a href="https://www.upwork.com/freelancers/sethf5" target="_blank" rel="noopener">Upwork Profile</a></li>
+                        <li><a href="mailto:seth@launchforte.com">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <div class="footer-status">
+                    <span class="status-dot"></span>
+                    All systems operational
+                </div>
+                <p class="footer-location">Based in Grapevine, Texas. Serving clients nationwide.</p>
+                <p class="copyright">&copy; 2026 Launch Forte. All rights reserved.</p>
+            </div>
+        </div>
+    </main>
+<script src="/scroll-reveal.js"></script>
+<script src="/theme-toggle.js"></script>
+<script src="/scroll-top.js"></script>
+<script src="/hamburger.js"></script>
+</body>
+</html>
