@@ -1,33 +1,3 @@
 User-agent: *
 Allow: /
-
-# Sitemaps
 Sitemap: https://sethforte.com/sitemap.xml
-
-# Disallow admin or private directories if any
-Disallow: /private/
-Disallow: /admin/
-
-# Allow all bots to crawl everything else
-Allow: /index.html
-Allow: /writing.html
-Allow: /services.html
-Allow: /about.html
-Allow: /contact.html
-Allow: /foundation.html
-Allow: /launch.html
-Allow: /growth.html
-Allow: /scale.html
-Allow: /review.html
-Allow: /upwork.html
-Allow: /articles/
-Allow: /work/
-Allow: /automation.html
-Allow: /crm-integration.html
-Allow: /custom-software.html
-Allow: /ai-automation.html
-Allow: /security-infrastructure.html
-Allow: /checklist.html
-Allow: /solutions/
-Allow: /industries/
-Allow: /resources/

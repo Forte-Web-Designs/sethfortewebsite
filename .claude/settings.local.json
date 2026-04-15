@@ -36,7 +36,12 @@
       "Bash(perl -i -pe 's|<title>[^<]*</title>|<title>Results \\\\| Seth Forte \\\\| Automation Case Studies</title>|' case-studies.html)",
       "Bash(perl -i -pe 's|<title>[^<]*</title>|<title>Contact Seth Forte \\\\| Automation Consultant</title>|' contact.html)",
       "Bash(perl -i -pe 's/Infrastructure Review/Systems Assessment/g; s/Foundation Review/Systems Assessment/g' review.html)",
-      "Read(//Users/fortewebdesigns/Library/Mobile Documents/com~apple~CloudDocs/Workspace/SethForteWebsite/**)"
+      "Read(//Users/fortewebdesigns/Library/Mobile Documents/com~apple~CloudDocs/Workspace/SethForteWebsite/**)",
+      "Bash(perl -i -pe 's|<img src=\"headshot-6.jpg\" alt=\"Seth Forte\" class=\"profile-photo animate-up delay-1\">|<img src=\"headshot-6.jpg\" alt=\"Seth Forte, automation consultant based in Grapevine Texas\" class=\"profile-photo animate-up delay-1\" width=\"72\" height=\"72\">|' index.html)",
+      "Bash(perl -i -pe 's|<img src=\"headshot-6.jpg\" alt=\"Seth Forte\" class=\"profile-photo\" style=\"display: block; margin: 0 auto 1.5rem;\">|<img src=\"headshot-6.jpg\" alt=\"Seth Forte, automation consultant based in Grapevine Texas\" class=\"profile-photo\" style=\"display: block; margin: 0 auto 1.5rem;\" width=\"72\" height=\"72\" loading=\"lazy\">|' index.html)",
+      "Bash(perl -i -pe 's|<img src=\"headshot-6.jpg\" alt=\"Seth Forte\" style=\"width: 80px; height: 80px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 1.5rem;\">|<img src=\"headshot-6.jpg\" alt=\"Seth Forte, automation consultant based in Grapevine Texas\" style=\"width: 80px; height: 80px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 1.5rem;\" width=\"80\" height=\"80\" loading=\"lazy\">|' about.html)",
+      "Bash(perl -i -pe 's|<img src=\"headshot-6.jpg\" alt=\"Seth Forte\" style=\"width: 80px; height: 80px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 1.5rem;\" class=\"animate-fade-in\">|<img src=\"headshot-6.jpg\" alt=\"Seth Forte, automation consultant based in Grapevine Texas\" style=\"width: 80px; height: 80px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 1.5rem;\" class=\"animate-fade-in\" width=\"80\" height=\"80\">|' upwork.html)",
+      "Bash(perl -i -pe 's|<img src=\"headshot-6.jpg\" alt=\"Seth Forte\" style=\"width: 80px; height: 80px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 1.5rem;\">|<img src=\"headshot-6.jpg\" alt=\"Seth Forte, automation consultant based in Grapevine Texas\" style=\"width: 80px; height: 80px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 1.5rem;\" width=\"80\" height=\"80\" loading=\"lazy\">|' upwork.html)"
     ],
     "deny": [],
     "ask": []
