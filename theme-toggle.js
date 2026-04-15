@@ -1,8 +1,8 @@
 (function() {
     var lightCSS = ':root[data-theme="light"]{' +
-        '--text-primary:#0a0f1a;' +
-        '--text-secondary:#334155;' +
-        '--text-muted:#64748b;' +
+        '--text-primary:#1e293b;' +
+        '--text-secondary:#475569;' +
+        '--text-muted:#94a3b8;' +
         '--accent:#4f46e5;' +
         '--accent-hover:#6366f1;' +
         '--accent-subtle:rgba(79,70,229,0.06);' +
