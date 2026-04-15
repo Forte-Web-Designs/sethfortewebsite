@@ -1,10 +1,10 @@
 (function() {
-    var css = '.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1)}' +
+    var css = '.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.5s ease,transform 0.5s ease}' +
         '.reveal.revealed{opacity:1;transform:translateY(0)}' +
-        '.reveal-delay-1{transition-delay:0.15s}' +
-        '.reveal-delay-2{transition-delay:0.3s}' +
-        '.reveal-delay-3{transition-delay:0.45s}' +
-        '.reveal-delay-4{transition-delay:0.6s}';
+        '.reveal-delay-1{transition-delay:0.05s}' +
+        '.reveal-delay-2{transition-delay:0.1s}' +
+        '.reveal-delay-3{transition-delay:0.15s}' +
+        '.reveal-delay-4{transition-delay:0.2s}';
     var style = document.createElement('style');
     style.textContent = css;
     document.head.appendChild(style);
@@ -57,8 +57,8 @@
 
     if ('IntersectionObserver' in window) {
         var observer = new IntersectionObserver(onIntersect, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -80px 0px'
+            threshold: 0.05,
+            rootMargin: '0px 0px -20px 0px'
         });
 
         function init() {
@@ -73,5 +73,10 @@
         } else {
             init();
         }
+    } else {
+        // No IntersectionObserver support: show everything immediately
+        var fallbackCSS = document.createElement('style');
+        fallbackCSS.textContent = '.reveal{opacity:1!important;transform:none!important}';
+        document.head.appendChild(fallbackCSS);
     }
 })();
