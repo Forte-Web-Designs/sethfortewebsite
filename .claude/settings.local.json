@@ -32,7 +32,11 @@
       "Bash(do grep -Pzo 'ROI Calculator</a></li>\\\\n\\\\s*<li><a href=\"\"/writing.html\"\">Writing</a></li>' \"$f\")",
       "Bash(perl -i -0777 -pe:*)",
       "Bash(git checkout:*)",
-      "Bash(open \"/Users/fortewebdesigns/Library/Mobile Documents/com~apple~CloudDocs/Workspace/SethForteWebsite/index.html\")"
+      "Bash(open \"/Users/fortewebdesigns/Library/Mobile Documents/com~apple~CloudDocs/Workspace/SethForteWebsite/index.html\")",
+      "Bash(perl -i -pe 's|<title>[^<]*</title>|<title>Results \\\\| Seth Forte \\\\| Automation Case Studies</title>|' case-studies.html)",
+      "Bash(perl -i -pe 's|<title>[^<]*</title>|<title>Contact Seth Forte \\\\| Automation Consultant</title>|' contact.html)",
+      "Bash(perl -i -pe 's/Infrastructure Review/Systems Assessment/g; s/Foundation Review/Systems Assessment/g' review.html)",
+      "Read(//Users/fortewebdesigns/Library/Mobile Documents/com~apple~CloudDocs/Workspace/SethForteWebsite/**)"
     ],
     "deny": [],
     "ask": []
