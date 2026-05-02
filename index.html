@@ -349,6 +349,11 @@
             display: block;
         }
 
+        .metric-value.metric-value--text {
+            font-size: clamp(1.125rem, 1.8vw, 1.375rem);
+            white-space: nowrap;
+        }
+
         .metric-label {
             font-size: 0.6875rem;
             color: var(--text-muted);
@@ -988,7 +993,7 @@
                 <span class="metric-label">Industries Mastered</span>
             </div>
             <div class="metric-item">
-                <span class="metric-value">Production-Grade</span>
+                <span class="metric-value metric-value--text">Production Grade</span>
                 <span class="metric-label">Infrastructure</span>
             </div>
         </div>
