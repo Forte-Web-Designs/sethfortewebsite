@@ -3,34 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>What I Build | Seth Forte | Automation and AI</title>
-    <meta name="description" content="CRM setup, AI phone agents, lead follow up, sales funnels, dispatch systems, reporting dashboards. Fixed scope, fixed price. Seth Forte, Grapevine TX.">
+    <title>What I Build | Seth Forte</title>
+    <meta name="description" content="The engineering layer between your strategy and your revenue. Revenue infrastructure, lead and customer systems, AI agents, reporting, and custom builds for growing businesses.">
     <meta name="author" content="Seth Forte">
     <link rel="canonical" href="https://sethforte.com/services">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sethforte.com/services">
-    <meta property="og:title" content="What I Build | Seth Forte | Automation and AI">
-    <meta property="og:description" content="CRM setup, AI phone agents, lead follow up, sales funnels, dispatch systems, reporting dashboards. Fixed scope, fixed price. Seth Forte, Grapevine TX.">
+    <meta property="og:title" content="What I Build | Seth Forte">
+    <meta property="og:description" content="The engineering layer between your strategy and your revenue. Revenue infrastructure, lead and customer systems, AI agents, reporting, and custom builds for growing businesses.">
     <meta property="og:image" content="https://sethforte.com/headshot-6.jpg">
     <meta property="og:site_name" content="Seth Forte">
     <meta property="og:locale" content="en_US">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="What I Build | Seth Forte | Automation and AI">
-    <meta name="twitter:description" content="CRM setup, AI phone agents, lead follow up, sales funnels, dispatch systems, reporting dashboards. Fixed scope, fixed price. Seth Forte, Grapevine TX.">
+    <meta name="twitter:title" content="What I Build | Seth Forte">
+    <meta name="twitter:description" content="The engineering layer between your strategy and your revenue. Revenue infrastructure, lead and customer systems, AI agents, reporting, and custom builds for growing businesses.">
     <meta name="twitter:image" content="https://sethforte.com/headshot-6.jpg">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Service",
-        "name": "Automation Consulting & Business Infrastructure Services",
+        "name": "Engineering Services for Growing Businesses",
         "provider": {
             "@type": "Person",
             "name": "Seth Forte",
             "url": "https://sethforte.com"
         },
-        "description": "CRM setup, lead generation, sales funnels, AI automation, and business infrastructure. Four stages from foundation to scale.",
+        "description": "Revenue infrastructure, lead and customer systems, AI agents and orchestration, reporting and dashboards, custom builds and integrations, engineering and reliability.",
         "areaServed": "Worldwide",
-        "url": "https://sethforte.com/services.html"
+        "url": "https://sethforte.com/services"
     }
     </script>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -65,6 +65,8 @@
             --radius-pill: 980px;
         }
 
+        html { scroll-behavior: smooth; }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             font-size: 16px;
@@ -77,123 +79,289 @@
         }
 
         a { color: var(--accent-hover); text-decoration: none; transition: color 0.2s ease; }
-        a:hover { color: var(--accent-hover); text-decoration: none; }
+        a:hover { color: var(--accent-hover); }
 
-        /* Animations */
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .animate-fade-in { animation: fadeIn 0.4s ease forwards; }
         .animate-fade-up { animation: fadeInUp 0.4s cubic-bezier(0.16,1,0.3,1) forwards; }
         .animate-delay-1 { animation-delay: 0.05s; opacity: 0; }
         .animate-delay-2 { animation-delay: 0.1s; opacity: 0; }
         .animate-delay-3 { animation-delay: 0.15s; opacity: 0; }
 
-        /* Scroll reveal */
         .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
         .reveal.revealed { opacity: 1; transform: translateY(0); }
 
-        /* Grid Background */
         .grid-bg { position: fixed; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; z-index: 0; }
 
         /* Header */
         .site-header { position: sticky; top: 0; z-index: 100; background: rgba(9,9,11,0.7); backdrop-filter: blur(20px) saturate(1.5); -webkit-backdrop-filter: blur(20px) saturate(1.5); border-bottom: 1px solid var(--border); padding: 0 2rem; }
-        .site-header::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), var(--accent-2), var(--accent), transparent); opacity: 0.4; }
         .header-container { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; height: 52px; }
-        .header-logo { font-size: 0.9375rem; font-weight: 600; color: var(--text-primary); text-decoration: none; letter-spacing: -0.01em; display: flex; align-items: center; gap: 0.5rem; }
-        .header-logo:hover { color: var(--text-primary); text-decoration: none; opacity: 0.8; }
+        .header-logo { font-size: 0.9375rem; font-weight: 600; color: var(--text-primary); text-decoration: none; letter-spacing: -0.02em; display: flex; align-items: center; gap: 0.5rem; }
+        .header-logo:hover { color: var(--text-primary); opacity: 0.8; }
         .header-nav { display: flex; gap: 0.25rem; }
-        .nav-link { padding: 0.35rem 0.75rem; color: var(--text-secondary); font-size: 0.8125rem; font-weight: 400; transition: color 0.3s ease; text-decoration: none; }
-        .nav-link:hover { color: var(--text-primary); text-decoration: none; }
+        .nav-link { padding: 0.35rem 0.75rem; color: var(--text-muted); font-size: 0.8125rem; font-weight: 400; transition: color 0.2s ease; text-decoration: none; border-radius: var(--radius-sm); }
+        .nav-link:hover { color: var(--text-primary); }
         .nav-link.active { color: var(--text-primary); font-weight: 500; }
 
-        /* Main wrapper */
+        /* Main */
         .main-wrapper { max-width: 1100px; margin: 0 auto; padding: 0 2rem 8rem; position: relative; z-index: 1; }
 
-        /* Page title */
-        .page-title { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.5rem; padding-top: 4rem; }
-        .page-subtitle { color: var(--text-secondary); font-size: 1.125rem; font-weight: 300; line-height: 1.5; margin-bottom: 3rem; }
-        .body-text { color: var(--text-secondary); font-size: 1.125rem; font-weight: 300; line-height: 1.6; margin-bottom: 1.75rem; }
+        /* Hero */
+        .hero-section { padding: 6rem 0 3rem; max-width: 820px; }
+        .page-title { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 1.25rem; color: var(--text-primary); }
+        .page-subtitle { color: var(--text-secondary); font-size: 1.25rem; font-weight: 300; line-height: 1.5; margin-bottom: 2rem; max-width: 640px; }
+        .hero-intro { color: var(--text-secondary); font-size: 1rem; font-weight: 300; line-height: 1.75; max-width: 720px; }
 
-        /* Section divider */
-        .section-divider { display: none; }
-
-        /* Stage sections */
-        .stage-section { margin-bottom: 4rem; }
-        .stage-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.75rem; }
-        .stage-label-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-        .stage-label.label-foundation { color: var(--text-muted); }
-        .stage-label.label-foundation .stage-label-dot { background: var(--text-muted); }
-        .stage-label.label-launch { color: var(--accent); }
-        .stage-label.label-launch .stage-label-dot { background: var(--accent); }
-        .stage-label.label-growth { color: var(--accent-2); }
-        .stage-label.label-growth .stage-label-dot { background: var(--accent-2); }
-        .stage-label.label-scale { color: #f0b866; }
-        .stage-label.label-scale .stage-label-dot { background: #f0b866; }
-
-        .stage-headline { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1rem; }
-        .stage-body { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.75rem; font-weight: 300; }
-
-        /* Capability items */
-        .capability-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
-        .capability-item {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 1.25rem 1.5rem;
-            transition: border-color 0.2s ease;
+        /* Section labels and headings */
+        .section-label {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent-hover);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
-        .capability-item:hover { border-color: var(--border-light); background: var(--surface-hover); }
-        .capability-title { font-size: 0.95rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.35rem; }
-        .capability-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+        .section-label::before {
+            content: '';
+            width: 16px;
+            height: 1px;
+            background: var(--accent);
+        }
+        .section-heading {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+        .section-body {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.75;
+            max-width: 720px;
+            margin-bottom: 3rem;
+        }
 
-        /* Audit section */
-        .audit-section {
+        /* Category cards */
+        .category-section {
+            scroll-margin-top: 80px;
+            margin-bottom: 1.25rem;
+        }
+
+        .category-card {
             background: var(--surface);
             border: 1px solid var(--border);
-            border-left: 4px solid var(--accent-2);
             border-radius: var(--radius-lg);
             padding: 2.5rem;
-            margin: 2rem 0;
+            transition: border-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-        .audit-section h2 { font-size: 1.3rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1.25rem; }
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-glow), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .category-card:hover { border-color: var(--border-light); }
+        .category-card:hover::before { opacity: 1; }
 
-        /* Buttons */
+        .category-eyebrow {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            color: var(--accent-hover);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 0.75rem;
+            display: block;
+            font-family: 'Inter', monospace;
+        }
+
+        .category-title {
+            font-size: clamp(1.5rem, 2.6vw, 1.875rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.025em;
+            margin-bottom: 0.5rem;
+        }
+
+        .category-subtitle {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .category-description {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            font-weight: 300;
+            line-height: 1.75;
+            margin-bottom: 1.75rem;
+            max-width: 720px;
+        }
+
+        .category-bullets-label {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .category-bullets {
+            list-style: none;
+            margin-bottom: 1.75rem;
+            padding: 0;
+        }
+        .category-bullets li {
+            position: relative;
+            padding-left: 1.25rem;
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            font-weight: 300;
+            line-height: 1.65;
+            margin-bottom: 0.6rem;
+        }
+        .category-bullets li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.625rem;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: 0.7;
+        }
+
+        .category-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--accent-hover);
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: gap 0.2s ease, color 0.2s ease;
+        }
+        .category-link:hover {
+            color: var(--accent);
+            gap: 0.6rem;
+        }
+
+        /* CTA Block */
+        .cta-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: 4rem 3rem;
+            text-align: center;
+            margin: 5rem 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 200px;
+            background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 70%);
+            pointer-events: none;
+            filter: blur(40px);
+        }
+        .cta-block h2 {
+            font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        .cta-block .body-text {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.7;
+            margin: 0 auto 2rem;
+            position: relative;
+            max-width: 640px;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
         .btn-primary {
             display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.75rem;
             background: var(--accent); color: #ffffff; border: none; border-radius: var(--radius-pill);
             font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all 0.2s ease;
             text-decoration: none; font-family: inherit;
         }
-        .btn-primary:hover { background: var(--accent-hover); text-decoration: none; color: #ffffff; transform: translateY(-1px); box-shadow: 0 8px 30px var(--accent-glow); }
+        .btn-primary:hover { background: var(--accent-hover); color: #ffffff; transform: translateY(-1px); box-shadow: 0 8px 30px var(--accent-glow); }
+
+        .btn-ghost {
+            display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.8rem 1.75rem;
+            background: transparent; color: var(--text-secondary);
+            border: 1px solid var(--border-light); border-radius: var(--radius-pill);
+            font-size: 0.875rem; font-weight: 400; cursor: pointer; transition: all 0.2s ease;
+            text-decoration: none; font-family: inherit;
+        }
+        .btn-ghost:hover { color: var(--text-primary); border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.03); }
 
         /* Footer */
-        .footer-section { margin-top: 8rem; padding-top: 4rem; border-top: 1px solid var(--border); }
-        .footer-email-main { color: var(--text-secondary); font-size: 1rem; font-weight: 300; margin-bottom: 3rem; display: block; }
-        .footer-columns { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-bottom: 3rem; }
-        .footer-col h4 { font-size: 0.6875rem; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.25rem; }
+        .footer-section { margin-top: 6rem; padding-top: 3rem; border-top: 1px solid var(--border); }
+        .footer-email-main { color: var(--text-secondary); font-size: 0.9375rem; font-weight: 300; margin-bottom: 2.5rem; display: block; }
+        .footer-columns { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2.5rem; }
+        .footer-col h4 { font-size: 0.6875rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
         .footer-col ul { list-style: none; }
-        .footer-col li { margin-bottom: 0.5rem; }
-        .footer-col a { color: var(--text-secondary); font-size: 0.875rem; font-weight: 300; }
-        .footer-col a:hover { color: var(--accent); }
+        .footer-col li { margin-bottom: 0.4rem; }
+        .footer-col a { color: var(--text-secondary); font-size: 0.8125rem; font-weight: 300; }
+        .footer-col a:hover { color: var(--accent-hover); }
         .footer-bottom { padding-top: 1.5rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
-        .footer-location { color: var(--text-muted); font-size: 0.8125rem; font-weight: 300; margin-bottom: 0.35rem; }
-        .copyright { color: var(--text-muted); font-size: 0.8125rem; font-weight: 300; }
+        .footer-location { color: var(--text-muted); font-size: 0.75rem; font-weight: 300; }
+        .copyright { color: var(--text-muted); font-size: 0.75rem; font-weight: 300; }
         .footer-status { display: flex; align-items: center; gap: 0.4rem; font-size: 0.6875rem; color: var(--text-muted); font-weight: 400; }
         .footer-status .dot { width: 6px; height: 6px; background: #22c55e; border-radius: 50%; }
 
         /* Responsive */
         @media (max-width: 768px) {
             .header-nav { display: none; }
-            .main-wrapper { padding: 0 2rem 6rem; }
-            .page-title { font-size: clamp(1.75rem, 6vw, 2.5rem); padding-top: 3rem; }
+            .main-wrapper { padding: 0 1.5rem 6rem; }
+            .hero-section { padding: 4rem 0 2rem; }
+            .page-title { font-size: clamp(2rem, 7vw, 3rem); }
+            .page-subtitle { font-size: 1.0625rem; }
+            .category-card { padding: 1.75rem; }
+            .cta-block { padding: 3rem 2rem; }
+            .cta-buttons { flex-direction: column; gap: 0.75rem; }
+            .cta-buttons .btn-primary, .cta-buttons .btn-ghost { width: 100%; justify-content: center; }
             .footer-columns { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-            .audit-section { padding: 1.75rem; }
             .footer-bottom { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
         }
 
         @media (max-width: 480px) {
-            .site-header { padding: 0 1.5rem; }
-            .main-wrapper { padding: 0 1.5rem 4rem; }
+            .site-header { padding: 0 1.25rem; }
+            .main-wrapper { padding: 0 1.25rem 4rem; }
+            .hero-section { padding: 3rem 0 1.5rem; }
+            .category-card { padding: 1.5rem; }
+            .cta-block { padding: 2.5rem 1.5rem; }
             .footer-columns { grid-template-columns: 1fr; }
         }
     </style>
@@ -213,82 +381,147 @@
     </header>
 
     <main class="main-wrapper">
-        <h1 class="page-title animate-fade-up animate-delay-1">What I Build</h1>
-        <p class="page-subtitle animate-fade-up animate-delay-2">Automation infrastructure for growing businesses. Fixed scope, fixed price.</p>
+        <!-- Hero -->
+        <section class="hero-section">
+            <h1 class="page-title animate-fade-up animate-delay-1">What I Build</h1>
+            <p class="page-subtitle animate-fade-up animate-delay-2">The engineering layer between your strategy and your revenue.</p>
+            <p class="hero-intro animate-fade-up animate-delay-3">Most growing businesses don't fail at the strategy level. They fail at the execution level. The systems underneath leak revenue, contradict each other, and get rebuilt every six months by someone new. I build the infrastructure that turns strategy into something a team can run.</p>
+        </section>
 
-        <!-- STAGE 1 - FOUNDATION -->
-        <div class="stage-section reveal">
-            <div class="stage-label label-foundation"><span class="stage-label-dot"></span>Stage 1 - Foundation</div>
-            <h2 class="stage-headline">The plumbing that connects everything.</h2>
-            <div class="capability-grid">
-                <div class="capability-item"><a href="https://launchforte.com/products/crm-pipeline-setup" target="_blank" rel="noopener" class="capability-title" style="color: var(--text-primary); text-decoration: none;">CRM and Pipeline Setup</a></div>
-                <div class="capability-item"><a href="https://launchforte.com/products/payment-automation" target="_blank" rel="noopener" class="capability-title" style="color: var(--text-primary); text-decoration: none;">Payment Automation</a></div>
-                <div class="capability-item"><a href="https://launchforte.com/products/email-authentication" target="_blank" rel="noopener" class="capability-title" style="color: var(--text-primary); text-decoration: none;">Email Authentication</a></div>
-                <div class="capability-item"><a href="https://launchforte.com/products/client-onboarding" target="_blank" rel="noopener" class="capability-title" style="color: var(--text-primary); text-decoration: none;">Client Onboarding</a></div>
-                <div class="capability-item"><a href="https://launchforte.com/products/automation-audit" target="_blank" rel="noopener" class="capability-title" style="color: var(--text-primary); text-decoration: none;">Automation Audit</a></div>
+        <!-- Six Categories Intro -->
+        <p class="section-label reveal" style="margin-top: 4rem;">Services</p>
+        <h2 class="section-heading reveal">Six categories of engineering work.</h2>
+        <p class="section-body reveal">The audit decides which category matters most for your business. The six below are how I organize the work, but most engagements touch two or three at the same time. A CRM rebuild surfaces a reporting problem. A reporting build reveals a lead capture problem. The categories aren't separate products. They're how I describe the work after the diagnostic.</p>
+
+        <!-- 01 Revenue Infrastructure -->
+        <section id="revenue-infrastructure" class="category-section reveal">
+            <div class="category-card">
+                <span class="category-eyebrow">01 / Revenue Infrastructure</span>
+                <h3 class="category-title">Revenue Infrastructure</h3>
+                <p class="category-subtitle">The foundation everything else runs on.</p>
+                <p class="category-description">CRMs that nobody configured. Pipeline stages that don't match how the team sells. Payment integration that stops at Stripe. Data architecture so fragmented that reporting requires a spreadsheet. I rebuild the operational backbone.</p>
+                <span class="category-bullets-label">What I build</span>
+                <ul class="category-bullets">
+                    <li>Full CRM configuration with pipeline stages, tags, source attribution, and data hygiene</li>
+                    <li>Payment integration with conversion tracking back to CRM and ad platforms</li>
+                    <li>Email deliverability infrastructure (SPF, DKIM, DMARC, warmup, A2P 10DLC compliance)</li>
+                    <li>Client onboarding automation that fires the right next step on payment, signup, or contract sign</li>
+                    <li>Multi platform pipeline migration (Kajabi, Infusionsoft, ClickFunnels, Mailchimp to GoHighLevel or target platform)</li>
+                    <li>Custom field architecture and webhook integrations between platforms</li>
+                </ul>
+                <a href="https://launchforte.com/what-we-build#revenue-infrastructure" target="_blank" rel="noopener" class="category-link">See full Revenue Infrastructure detail &rarr;</a>
             </div>
-        </div>
+        </section>
 
-        <hr class="section-divider">
-
-        <!-- STAGE 2 - LAUNCH -->
-        <div class="stage-section reveal">
-            <div class="stage-label label-launch"><span class="stage-label-dot"></span>Stage 2 - Launch</div>
-            <h2 class="stage-headline">Turn traffic into revenue.</h2>
-            <div class="capability-grid">
-                <div class="capability-item"><a href="https://launchforte.com/products/done-for-you-growth-package" target="_blank" rel="noopener" class="capability-title" style="color: var(--text-primary); text-decoration: none;">Done For You Growth Package</a></div>
-                <div class="capability-item"><a href="https://launchforte.com/products/growth-engine-system" target="_blank" rel="noopener" class="capability-title" style="color: var(--text-primary); text-decoration: none;">Growth Engine System</a></div>
-                <div class="capability-item"><a href="https://launchforte.com/products/stop-losing-leads" target="_blank" rel="noopener" class="capability-title" style="color: var(--text-primary); text-decoration: none;">Stop Losing Leads</a></div>
-                <div class="capability-item"><a href="https://launchforte.com/products/instant-response-system" target="_blank" rel="noopener" class="capability-title" style="color: var(--text-primary); text-decoration: none;">Instant Response System</a></div>
-                <div class="capability-item"><a href="https://launchforte.com/products/sales-funnel-build" target="_blank" rel="noopener" class="capability-title" style="color: var(--text-primary); text-decoration: none;">Sales Funnel Build</a></div>
-                <div class="capability-item"><a href="https://launchforte.com/products/nurture-sequences" target="_blank" rel="noopener" class="capability-title" style="color: var(--text-primary); text-decoration: none;">Nurture Sequences</a></div>
-                <div class="capability-item"><a href="https://launchforte.com/products/lead-tracking-and-reporting" target="_blank" rel="noopener" class="capability-title" style="color: var(--text-primary); text-decoration: none;">Lead Tracking and Reporting</a></div>
-                <div class="capability-item"><a href="https://launchforte.com/products/lead-reactivation" target="_blank" rel="noopener" class="capability-title" style="color: var(--text-primary); text-decoration: none;">Lead Reactivation</a></div>
+        <!-- 02 Lead and Customer Systems -->
+        <section id="lead-systems" class="category-section reveal">
+            <div class="category-card">
+                <span class="category-eyebrow">02 / Lead and Customer Systems</span>
+                <h3 class="category-title">Lead and Customer Systems</h3>
+                <p class="category-subtitle">Capture demand. Convert it. Don't let it leak.</p>
+                <p class="category-description">Forms that sit unanswered. Missed calls that go to voicemail. Booked appointments with no reminder so half the calendar evaporates. Dead leads in the CRM nobody has the bandwidth to wake up. I engineer the systems that capture demand you've already paid for.</p>
+                <span class="category-bullets-label">What I build</span>
+                <ul class="category-bullets">
+                    <li>Instant response systems with under 60 second SMS, email, and CRM logging on every form submission and missed call</li>
+                    <li>Sales funnels with landing pages, opt ins, behavior triggered nurture sequences, and CRM integration</li>
+                    <li>Lead routing with rules based assignment, hot lead alerts, and full context handoff</li>
+                    <li>Database reactivation campaigns with segmentation, AI personalized outreach, and reply handling</li>
+                    <li>Review automation with sentiment gating, Google integration, and private feedback flows</li>
+                    <li>Webinar funnels with paid registration, attendance tracking, dual CTA post webinar pages, and pipeline automation</li>
+                    <li>Dispatch systems for field service with GPS verification, dynamic pricing, and proof gates</li>
+                </ul>
+                <a href="https://launchforte.com/what-we-build#lead-systems" target="_blank" rel="noopener" class="category-link">See full Lead and Customer Systems detail &rarr;</a>
             </div>
-        </div>
+        </section>
 
-        <hr class="section-divider">
-
-        <!-- STAGE 3 - GROWTH -->
-        <div class="stage-section reveal">
-            <div class="stage-label label-growth"><span class="stage-label-dot"></span>Stage 3 - Growth</div>
-            <h2 class="stage-headline">AI agents, outbound, more channels.</h2>
-            <div class="capability-grid">
-                <div class="capability-item"><a href="https://launchforte.com/products/ai-front-desk" target="_blank" rel="noopener" class="capability-title" style="color: var(--text-primary); text-decoration: none;">AI Front Desk</a></div>
-                <div class="capability-item"><a href="https://launchforte.com/products/ai-agent-setup" target="_blank" rel="noopener" class="capability-title" style="color: var(--text-primary); text-decoration: none;">AI Agent Setup</a></div>
-                <div class="capability-item"><a href="https://launchforte.com/products/ai-workflow-builder" target="_blank" rel="noopener" class="capability-title" style="color: var(--text-primary); text-decoration: none;">AI Workflow Builder</a></div>
-                <div class="capability-item"><a href="https://launchforte.com/products/ai-website-chatbot" target="_blank" rel="noopener" class="capability-title" style="color: var(--text-primary); text-decoration: none;">AI Website Chatbot</a></div>
-                <div class="capability-item"><a href="https://launchforte.com/products/cold-email-outbound" target="_blank" rel="noopener" class="capability-title" style="color: var(--text-primary); text-decoration: none;">Cold Email Outbound</a></div>
-                <div class="capability-item"><a href="https://launchforte.com/products/dispatch-system" target="_blank" rel="noopener" class="capability-title" style="color: var(--text-primary); text-decoration: none;">Dispatch System</a></div>
-                <div class="capability-item"><a href="https://launchforte.com/products/review-automation" target="_blank" rel="noopener" class="capability-title" style="color: var(--text-primary); text-decoration: none;">Review Automation</a></div>
-                <div class="capability-item"><a href="https://launchforte.com/products/signal-monitoring" target="_blank" rel="noopener" class="capability-title" style="color: var(--text-primary); text-decoration: none;">Signal Monitoring</a></div>
+        <!-- 03 AI Agents and Orchestration -->
+        <section id="ai-orchestration" class="category-section reveal">
+            <div class="category-card">
+                <span class="category-eyebrow">03 / AI Agents and Orchestration</span>
+                <h3 class="category-title">AI Agents and Orchestration</h3>
+                <p class="category-subtitle">AI deployed where it earns its place.</p>
+                <p class="category-description">Most AI implementations are decoration. The work that survives is the AI that earns its place. Voice agents that qualify callers. Chatbots configured with the real sales process. Custom AI workflow tools built around how the team operates. I build AI where the math works.</p>
+                <span class="category-bullets-label">What I build</span>
+                <ul class="category-bullets">
+                    <li>Custom AI voice agents on Retell, Voiceflow, or platform native (GoHighLevel, ElevenLabs)</li>
+                    <li>AI website chatbots configured with knowledge base, sales process, and escalation rules</li>
+                    <li>AI workflow tools (custom GPTs, Google Workspace Gems, Claude skill files) for internal team operations</li>
+                    <li>AI personalized nurture sequences with brand voice enforcement and anti hallucination guardrails</li>
+                    <li>AI configured into platforms you already run (GoHighLevel AI, HubSpot AI, ex: native automations)</li>
+                    <li>AI orchestration across multi step workflows (transcription, classification, routing, summary, action)</li>
+                </ul>
+                <a href="https://launchforte.com/what-we-build#ai-orchestration" target="_blank" rel="noopener" class="category-link">See full AI Agents and Orchestration detail &rarr;</a>
             </div>
-        </div>
+        </section>
 
-        <hr class="section-divider">
-
-        <!-- STAGE 4 - SCALE -->
-        <div class="stage-section reveal">
-            <div class="stage-label label-scale"><span class="stage-label-dot"></span>Stage 4 - Scale</div>
-            <h2 class="stage-headline">Visibility, operations, custom builds.</h2>
-            <div class="capability-grid">
-                <div class="capability-item"><a href="https://launchforte.com/products/custom-application-build" target="_blank" rel="noopener" class="capability-title" style="color: var(--text-primary); text-decoration: none;">Custom Application Build</a></div>
-                <div class="capability-item"><a href="https://launchforte.com/products/operations-hub" target="_blank" rel="noopener" class="capability-title" style="color: var(--text-primary); text-decoration: none;">Operations Hub</a></div>
-                <div class="capability-item"><a href="https://launchforte.com/products/financial-data-integration" target="_blank" rel="noopener" class="capability-title" style="color: var(--text-primary); text-decoration: none;">Financial Data Integration</a></div>
-                <div class="capability-item"><a href="https://launchforte.com/products/reporting-dashboard" target="_blank" rel="noopener" class="capability-title" style="color: var(--text-primary); text-decoration: none;">Reporting Dashboard</a></div>
-                <div class="capability-item"><a href="https://launchforte.com/products/automation-migration" target="_blank" rel="noopener" class="capability-title" style="color: var(--text-primary); text-decoration: none;">Automation Migration</a></div>
-                <div class="capability-item"><a href="https://launchforte.com/products/e-commerce-automation" target="_blank" rel="noopener" class="capability-title" style="color: var(--text-primary); text-decoration: none;">E Commerce Automation</a></div>
-                <div class="capability-item"><a href="https://launchforte.com/products/reliability-setup" target="_blank" rel="noopener" class="capability-title" style="color: var(--text-primary); text-decoration: none;">Reliability Setup</a></div>
-                <div class="capability-item"><a href="https://launchforte.com/products/systems-assessment" target="_blank" rel="noopener" class="capability-title" style="color: var(--text-primary); text-decoration: none;">Systems Assessment</a></div>
+        <!-- 04 Reporting and Dashboards -->
+        <section id="reporting" class="category-section reveal">
+            <div class="category-card">
+                <span class="category-eyebrow">04 / Reporting and Dashboards</span>
+                <h3 class="category-title">Reporting and Dashboards</h3>
+                <p class="category-subtitle">Decisions from real numbers, not gut feel.</p>
+                <p class="category-description">The data exists in five tools and doesn't agree across them. The team builds Monday reports by hand because nobody trusts the dashboards. I build automated reporting that pulls from the source, normalizes the data, and surfaces metrics that drive decisions.</p>
+                <span class="category-bullets-label">What I build</span>
+                <ul class="category-bullets">
+                    <li>Real time pipeline dashboards with leads by source, response times, booking rates, and conversion stage</li>
+                    <li>Ad spend attribution from campaign through closed deal across Meta, Google, TikTok, and more</li>
+                    <li>Operational dashboards for service businesses (jobs, payouts, completion rates, team performance)</li>
+                    <li>Founder dashboards consolidating financial, operational, and pipeline metrics in one view</li>
+                    <li>KPI frameworks built around your business model (subscription, transactional, services, hybrid)</li>
+                    <li>Automated weekly and monthly reporting with delivery to email or Slack</li>
+                </ul>
+                <a href="https://launchforte.com/what-we-build#reporting" target="_blank" rel="noopener" class="category-link">See full Reporting and Dashboards detail &rarr;</a>
             </div>
-        </div>
+        </section>
 
-        <hr class="section-divider">
+        <!-- 05 Custom Builds and Integrations -->
+        <section id="custom-builds" class="category-section reveal">
+            <div class="category-card">
+                <span class="category-eyebrow">05 / Custom Builds and Integrations</span>
+                <h3 class="category-title">Custom Builds and Integrations</h3>
+                <p class="category-subtitle">When the off the shelf answer doesn't fit.</p>
+                <p class="category-description">Some of the most valuable engineering doesn't fit a template. Field service businesses that need offline capable apps. Family offices that need financial data pipelines with complex authentication. Operations that need agentic systems no platform builds. I work in React, Vite, n8n, Python, and the broader stack you'd expect from an engineer.</p>
+                <span class="category-bullets-label">What I build</span>
+                <ul class="category-bullets">
+                    <li>Standalone web applications (React, Vite, PWA with offline support)</li>
+                    <li>Financial data integration pipelines (Plaid, SnapTrade, banking APIs with HMAC, OAuth, custom auth)</li>
+                    <li>Dispatch systems with GPS verification, dynamic pricing, and proof gates for field service</li>
+                    <li>Operations hubs with multi tier payouts, commission calculations, and approval workflows</li>
+                    <li>Custom API integrations between platforms (ex: Salesforce to custom backend, Shopify to Xero)</li>
+                    <li>Progressive Web Apps replacing legacy software (Microsoft Access, paper based processes, manual workflows)</li>
+                </ul>
+                <a href="https://launchforte.com/what-we-build#custom-builds" target="_blank" rel="noopener" class="category-link">See full Custom Builds and Integrations detail &rarr;</a>
+            </div>
+        </section>
 
-        <!-- CTA Section -->
-        <div class="audit-section reveal" style="text-align: center;">
-            <p class="body-text" style="margin-bottom: 1rem;"><a href="https://launchforte.com/products" target="_blank" rel="noopener" style="color: var(--accent-hover); font-weight: 500;">See the full catalog with pricing at launchforte.com &rarr;</a></p>
-            <a href="https://calendly.com/seth-fortewebdesigns/30min" target="_blank" rel="noopener" class="btn-primary">Book a Call</a>
+        <!-- 06 Engineering and Reliability -->
+        <section id="engineering-reliability" class="category-section reveal">
+            <div class="category-card">
+                <span class="category-eyebrow">06 / Engineering and Reliability</span>
+                <h3 class="category-title">Engineering and Reliability</h3>
+                <p class="category-subtitle">The discipline that keeps systems running at volume.</p>
+                <p class="category-description">Monitoring, alerting, error handling, documentation, and the operational rigor that separates a build that works from a build that survives. The reason the systems I ship don't break the moment volume increases or the person who built them moves on.</p>
+                <span class="category-bullets-label">What I build</span>
+                <ul class="category-bullets">
+                    <li>Monitoring and alerting on critical workflows with failure detection and on call escalation</li>
+                    <li>Error handling and retry logic built into every integration point</li>
+                    <li>Documentation packages that survive team turnover (written runbooks, video walkthroughs, architecture diagrams)</li>
+                    <li>Audit trails and logging for compliance and debugging</li>
+                    <li>Load testing and volume planning for systems expected to scale</li>
+                    <li>Production observability so failures show up before customers see them</li>
+                </ul>
+                <a href="https://launchforte.com/what-we-build#engineering-reliability" target="_blank" rel="noopener" class="category-link">See full Engineering and Reliability detail &rarr;</a>
+            </div>
+        </section>
+
+        <!-- Closing CTA -->
+        <div class="cta-block reveal">
+            <h2>Start with an audit.</h2>
+            <p class="body-text">The audit is how we both know which of the six categories matters most for your business. Three days. A written diagnostic. Prioritized recommendations. Fixed pricing on what gets built next. The fee credits toward your first build over $3,000.</p>
+            <div class="cta-buttons">
+                <a href="https://calendly.com/seth-fortewebdesigns/30min" target="_blank" rel="noopener" class="btn-primary">Book a Growth Systems Audit</a>
+                <a href="https://launchforte.com/#how-to-engage" target="_blank" rel="noopener" class="btn-ghost">See full engagement model</a>
+            </div>
         </div>
 
         <!-- Footer -->
@@ -298,8 +531,10 @@
                 <div class="footer-col">
                     <h4>Services</h4>
                     <ul>
-                        <li><a href="/services.html">What I Build</a></li>
-                        <li><a href="https://launchforte.com/products" target="_blank" rel="noopener">Products</a></li>
+                        <li><a href="https://sethforte.com/services">What I Build</a></li>
+                        <li><a href="https://launchforte.com/#audit" target="_blank" rel="noopener">Audit</a></li>
+                        <li><a href="https://launchforte.com/#core-systems-build" target="_blank" rel="noopener">Build</a></li>
+                        <li><a href="https://launchforte.com/partnership" target="_blank" rel="noopener">Partnership</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -319,7 +554,7 @@
                         <li><a href="/upwork.html">Upwork Portfolio</a></li>
                         <li><a href="https://www.upwork.com/freelancers/sethforte" target="_blank" rel="noopener">Upwork Profile</a></li>
                         <li><a href="mailto:seth@launchforte.com">Email</a></li>
-                                            <li><a href="https://launchforte.com" target="_blank" rel="noopener">Launch Forte</a></li>
+                        <li><a href="https://launchforte.com" target="_blank" rel="noopener">Launch Forte</a></li>
                     </ul>
                 </div>
             </div>
