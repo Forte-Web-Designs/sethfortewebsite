@@ -276,6 +276,19 @@
             .footer-columns { grid-template-columns: 1fr; }
             .cta-section { padding: 1.75rem; }
         }
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, var(--accent), var(--accent-2), var(--accent-3));
+            background-size: 200% 200%;
+            animation: gradient-shift 6s ease infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
     </style>
 </head>
 <body>
@@ -293,7 +306,7 @@
     </header>
 
     <main class="main-wrapper">
-        <h1 class="page-title animate-fade-up animate-delay-1">Results</h1>
+        <h1 class="page-title animate-fade-up animate-delay-1"><span class="gradient-text">Results</span></h1>
         <p class="page-intro animate-fade-up animate-delay-2">Real systems. Measurable results. Every project starts with understanding exactly what the problem is costing the business. Here's what happens when we build the fix.</p>
 
         <!-- Featured Case Study -->

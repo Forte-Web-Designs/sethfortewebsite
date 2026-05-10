@@ -364,6 +364,19 @@
             .cta-block { padding: 2.5rem 1.5rem; }
             .footer-columns { grid-template-columns: 1fr; }
         }
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, var(--accent), var(--accent-2), var(--accent-3));
+            background-size: 200% 200%;
+            animation: gradient-shift 6s ease infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
     </style>
 </head>
 <body>
@@ -383,7 +396,7 @@
     <main class="main-wrapper">
         <!-- Hero -->
         <section class="hero-section">
-            <h1 class="page-title animate-fade-up animate-delay-1">What I Build</h1>
+            <h1 class="page-title animate-fade-up animate-delay-1">What I <span class="gradient-text">Build</span></h1>
             <p class="page-subtitle animate-fade-up animate-delay-2">The engineering layer between your strategy and your revenue.</p>
             <p class="hero-intro animate-fade-up animate-delay-3">Most growing businesses don't fail at the strategy level. They fail at the execution level. The systems underneath leak revenue, contradict each other, and get rebuilt every six months by someone new. I build the infrastructure that turns strategy into something a team can run.</p>
         </section>

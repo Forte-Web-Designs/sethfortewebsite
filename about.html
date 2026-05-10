@@ -349,6 +349,19 @@
             .main-wrapper { padding: 0 1.5rem 4rem; }
             .footer-columns { grid-template-columns: 1fr; }
         }
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, var(--accent), var(--accent-2), var(--accent-3));
+            background-size: 200% 200%;
+            animation: gradient-shift 6s ease infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
     </style>
 </head>
 <body>
@@ -366,7 +379,7 @@
     </header>
 
     <main class="main-wrapper">
-        <h1 class="page-title animate-fade-up animate-delay-1">About Seth Forte</h1>
+        <h1 class="page-title animate-fade-up animate-delay-1">About <span class="gradient-text">Seth Forte</span></h1>
 
         <!-- Background -->
         <h2 class="section-label">Background</h2>
