@@ -381,11 +381,33 @@
         }
 
         /* Gradient text - keep blue but quiet animation, no purples */
+                @keyframes gradient-shift-apple { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
         .gradient-text {
-            color: var(--accent);
-            background: none;
-            -webkit-text-fill-color: var(--accent);
-            animation: none !important;
+            background: linear-gradient(135deg, #0088DB 0%, #4ab5ed 50%, #0088DB 100%) !important;
+            background-size: 200% 200% !important;
+            animation: gradient-shift-apple 8s ease infinite !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+            color: transparent !important;
+        }
+        h1.hero-headline, h1.page-title, h1.display, .hero h1,
+        h2.section-heading, .page-title, .hero-headline {
+            background: linear-gradient(135deg, #0088DB 0%, #4ab5ed 50%, #0088DB 100%);
+            background-size: 200% 200%;
+            animation: gradient-shift-apple 8s ease infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        [data-theme="dark"] h1.hero-headline, [data-theme="dark"] h1.page-title, [data-theme="dark"] h1.display, [data-theme="dark"] .hero h1,
+        [data-theme="dark"] h2.section-heading, [data-theme="dark"] .page-title, [data-theme="dark"] .hero-headline,
+        [data-theme="dark"] .gradient-text {
+            background: linear-gradient(135deg, #4ab5ed 0%, #7ec9f1 50%, #4ab5ed 100%) !important;
+            background-size: 200% 200% !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
         }
 
     </style>
