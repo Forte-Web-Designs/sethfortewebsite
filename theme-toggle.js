@@ -1,4 +1,9 @@
 (function() {
+    // Apply persisted theme immediately to minimize flash before icons load
+    var saved = localStorage.getItem('theme');
+    var theme = saved === 'dark' || saved === 'light' ? saved : 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+
     var darkCSS = ':root[data-theme="dark"]{' +
         '--text-primary:#f5f5f7;' +
         '--text-secondary:#a1a1a6;' +
@@ -68,9 +73,19 @@
     style.textContent = darkCSS + toggleCSS;
     document.head.appendChild(style);
 
+    var sunIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>';
+    var moonIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+
     var toggle = document.createElement('button');
     toggle.id = 'theme-toggle';
-    toggle.setAttribute('aria-label', 'Toggle light/dark mode');
+    toggle.type = 'button';
+
+    function applyTheme(t) {
+        document.documentElement.setAttribute('data-theme', t);
+        toggle.innerHTML = t === 'dark' ? sunIcon : moonIcon;
+        toggle.setAttribute('aria-label', t === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+        try { localStorage.setItem('theme', t); } catch (e) {}
+    }
 
     var isMobile = window.innerWidth <= 768;
     var headerContainer = document.querySelector('.header-container');
@@ -81,19 +96,7 @@
         document.body.appendChild(toggle);
     }
 
-    var saved = localStorage.getItem('theme');
-    var theme = saved || 'light';
     applyTheme(theme);
-
-    var sunIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>';
-    var moonIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-
-    function applyTheme(t) {
-        document.documentElement.setAttribute('data-theme', t);
-        toggle.innerHTML = t === 'dark' ? sunIcon : moonIcon;
-        toggle.setAttribute('aria-label', t === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
-        localStorage.setItem('theme', t);
-    }
 
     toggle.addEventListener('click', function() {
         var current = document.documentElement.getAttribute('data-theme');
