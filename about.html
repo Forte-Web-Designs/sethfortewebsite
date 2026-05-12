@@ -202,6 +202,56 @@
             padding-top: 4rem;
         }
 
+        /* Top CTA */
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 3.5rem;
+        }
+        .hero-cta .btn-ghost-link {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .hero-cta .btn-ghost-link:hover { color: var(--accent); }
+
+        /* Video section */
+        .video-section {
+            margin-bottom: 4rem;
+        }
+        .video-eyebrow {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+        .video-heading {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 500;
+            color: var(--text-primary);
+            letter-spacing: -0.022em;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+        }
+        .video-wrap {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            overflow: hidden;
+            max-width: 900px;
+        }
+        .video-wrap video {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            background: #000;
+        }
+
         .body-text {
             color: var(--text-secondary);
             font-size: 1.125rem;
@@ -574,6 +624,23 @@
 
     <main class="main-wrapper">
         <h1 class="page-title animate-fade-up animate-delay-1">About <span class="gradient-text">Seth Forte</span></h1>
+
+        <div class="hero-cta animate-fade-up animate-delay-2">
+            <a href="https://calendly.com/seth-fortewebdesigns/30min" target="_blank" rel="noopener" class="btn-primary">Book a Call</a>
+            <a href="mailto:seth@launchforte.com" class="btn-ghost-link">Or email me directly</a>
+        </div>
+
+        <!-- Video -->
+        <section class="video-section reveal">
+            <span class="video-eyebrow">The 2-minute version</span>
+            <h2 class="video-heading">What I do, in my own words.</h2>
+            <div class="video-wrap">
+                <video controls preload="metadata" playsinline>
+                    <source src="Business Growth Systems &amp; AI Automation | Forte (DFW) - 26 October 2025.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </section>
 
         <!-- Background -->
         <h2 class="section-label">Background</h2>
