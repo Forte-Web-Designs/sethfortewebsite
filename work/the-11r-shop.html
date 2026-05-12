@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Bungalow | Case Study | Seth Forte</title>
-    <meta name="description" content="Replaced a discontinued integration with an engineered Shopify to Xero sync that hasn't required intervention since launch. 60 hours per month of manual data entry eliminated.">
+    <title>THE 11R SHOP | Case Study | Seth Forte</title>
+    <meta name="description" content="Engineered the dispatch system a mobile commercial tire service was running by phone. Four phase dispatch with GPS-gated workflow and enforced proof collection.">
     <meta name="author" content="Seth Forte">
-    <link rel="canonical" href="https://sethforte.com/work/modern-bungalow">
+    <link rel="canonical" href="https://sethforte.com/work/the-11r-shop">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://sethforte.com/work/modern-bungalow">
-    <meta property="og:title" content="Modern Bungalow | Case Study | Seth Forte">
-    <meta property="og:description" content="Replaced a discontinued integration with an engineered Shopify to Xero sync that hasn't required intervention since launch.">
+    <meta property="og:url" content="https://sethforte.com/work/the-11r-shop">
+    <meta property="og:title" content="THE 11R SHOP | Case Study | Seth Forte">
+    <meta property="og:description" content="Engineered the dispatch system a mobile commercial tire service was running by phone.">
     <meta property="og:image" content="https://sethforte.com/headshot-6.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Modern Bungalow | Case Study | Seth Forte">
-    <meta name="twitter:description" content="Replaced a discontinued integration with an engineered Shopify to Xero sync that hasn't required intervention since launch.">
+    <meta name="twitter:title" content="THE 11R SHOP | Case Study | Seth Forte">
+    <meta name="twitter:description" content="Engineered the dispatch system a mobile commercial tire service was running by phone.">
     <meta name="twitter:image" content="https://sethforte.com/headshot-6.jpg">
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link rel="icon" type="image/jpeg" href="../logo.jpg">
@@ -118,53 +118,53 @@
 
         <section class="case-hero">
             <span class="case-eyebrow animate-fade-up">Case study<span class="case-capability-tag">Custom builds and integrations</span></span>
-            <h1 class="case-h1 animate-fade-up animate-delay-1">Replaced a discontinued integration with an engineered Shopify to Xero sync that hasn't required intervention since launch.</h1>
-            <p class="case-context animate-fade-up animate-delay-2">Furniture retail / E-commerce</p>
+            <h1 class="case-h1 animate-fade-up animate-delay-1">Engineered the dispatch system a mobile commercial tire service was running by phone.</h1>
+            <p class="case-context animate-fade-up animate-delay-2">Field services / Mobile tire service</p>
         </section>
 
         <div class="outcome-stats reveal">
             <div class="outcome-stat">
-                <span class="outcome-stat-number">60 hours/month</span>
-                <span class="outcome-stat-label">Of manual data entry eliminated</span>
+                <span class="outcome-stat-number">Four phase dispatch</span>
+                <span class="outcome-stat-label">Replaced manual phone operations</span>
             </div>
             <div class="outcome-stat">
-                <span class="outcome-stat-number">157 to 2</span>
-                <span class="outcome-stat-label">API calls reduced through bulk fetch optimization</span>
+                <span class="outcome-stat-number">GPS-gated workflow</span>
+                <span class="outcome-stat-label">With enforced proof collection</span>
             </div>
             <div class="outcome-stat">
-                <span class="outcome-stat-number">Zero interventions</span>
-                <span class="outcome-stat-label">Required since launch</span>
+                <span class="outcome-stat-number">Audit trail</span>
+                <span class="outcome-stat-label">On every job, end to end</span>
             </div>
         </div>
 
         <section id="situation" class="case-section reveal">
             <span class="case-section-eyebrow">01 / Situation</span>
-            <h2 class="case-section-h2">A retailer whose accounting integration was being shut down.</h2>
-            <p class="case-section-body">Modern Bungalow is a furniture retailer running Shopify on the commerce side and Xero on the accounting side. The integration between them had been handled by Cin7, which was being discontinued. The business needed product data flowing between commerce and accounting without a person in the middle. The deadline wasn't optional.</p>
+            <h2 class="case-section-h2">A mobile service running operations from a phone.</h2>
+            <p class="case-section-body">THE 11R SHOP provides mobile commercial tire service. Dispatch happens in the field. Pricing depends on time of day, location, and service type. The owner was running the entire operation from a phone with no system underneath.</p>
         </section>
 
         <section id="problem" class="case-section reveal">
             <span class="case-section-eyebrow">02 / The Problem</span>
-            <h2 class="case-section-h2">Off-the-shelf integration was about to disappear.</h2>
-            <p class="case-section-body">The platforms didn't talk to each other natively. The third party that handled the integration was sunsetting the product. Replacing it manually would have meant 60 hours per month of data entry, every month, indefinitely. The available off-the-shelf alternatives didn't fit the specific data shape the business needed. The fix had to be engineered, not bought.</p>
+            <h2 class="case-section-h2">Field operations without operational visibility.</h2>
+            <p class="case-section-body">Every job required the owner to be in the loop. Customer requests came in through inconsistent channels. Pricing was calculated manually. Proof of service depended on the technician remembering. Payment collection happened after the fact, with delays. The business worked because the owner held everything in his head, which is the exact failure pattern that doesn't survive growth.</p>
         </section>
 
         <section id="engineering" class="case-section reveal">
             <span class="case-section-eyebrow">03 / The Engineering</span>
-            <h2 class="case-section-h2">n8n workflow optimized for Xero's rate limits and Shopify's webhook reliability.</h2>
-            <p class="case-section-body">I engineered a custom n8n workflow that syncs Shopify draft products into Xero as inventory items. The naive implementation would have made 157 individual API calls per sync. I rebuilt it with bulk fetch optimization, reducing that to 2. Xero's rate limits required batched POSTs of 10 items every 5 seconds, which I architected into the system. SKU deduplication, character limit handling, and webhook race condition fixes all got built into the foundation. The architecture decision that mattered: handle the failure modes before they fail in production. APIs return errors. Webhooks fire twice. Rate limits hit. The system handles all of it without intervention.</p>
+            <h2 class="case-section-h2">A four phase dispatch system with enforced compliance at every gate.</h2>
+            <p class="case-section-body">I engineered the operational backbone the business needed. Phase one: customer intake with dynamic pricing across three time of day tiers. Phase two: deposit capture at submission and owner approval before dispatch. Phase three: GPS arrival verification using haversine distance calculations, proof gate with photos and DOT verification. Phase four: automated balance invoicing and PDF receipts routed to customer and admin. Every stage produced an audit trail. The architecture decision that mattered: the system enforces compliance at each gate, which means no job can advance without the right proof at the right time. The owner stopped being the bottleneck because the system became the source of truth.</p>
         </section>
 
         <section id="outcome" class="case-section reveal">
             <span class="case-section-eyebrow">04 / Outcome</span>
-            <h2 class="case-section-h2">60 hours per month returned. Zero intervention required since launch.</h2>
-            <p class="case-section-body">The system runs on its own. Product data flows from Shopify to Xero without anyone touching it. The retailer saved 60 hours per month of manual data entry, which is what the discontinued integration would have cost to replace manually. The system has not required intervention since launch.</p>
+            <h2 class="case-section-h2">Manual phone dispatch replaced with a system that runs at volume.</h2>
+            <p class="case-section-body">The operation runs through the system instead of through the owner. Every job has a verified GPS arrival, DOT compliance proof, and a payment trail. Disputes have evidence. Compliance has documentation. The business stopped depending on what's in the owner's head and started running on what's in the system.</p>
         </section>
 
         <section id="pattern" class="case-section reveal">
             <span class="case-section-eyebrow">05 / The Pattern</span>
-            <h2 class="case-section-h2">Custom integration earns its keep when off-the-shelf disappears.</h2>
-            <p class="case-section-body">Most businesses don't think about integration infrastructure until the integration disappears. By then, the cost of doing nothing is hours per month, indefinitely. The math test for custom engineering: does the cost of manual work over the system's lifetime exceed the cost of building the engineered alternative. When the answer is yes, the build pays for itself. Here, it did.</p>
+            <h2 class="case-section-h2">Field operations need engineering, not just automation.</h2>
+            <p class="case-section-body">Most field service businesses get sold automation tools. What they need is an engineering layer that enforces the compliance their business depends on. GPS gates, photo verification, and payment workflows aren't features. They're the architecture that decides whether the business survives scaling.</p>
         </section>
 
         <div id="next-step" class="case-cta-block reveal">

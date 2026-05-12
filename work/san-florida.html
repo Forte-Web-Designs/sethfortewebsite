@@ -3,403 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Primary Meta Tags -->
-    <title>San Florida Case Study: SSO/MFA for 1,040 Users | Seth Forte</title>
-    <meta name="description" content="Enterprise security implementation: SSO and MFA deployment for 1,040 users across multiple locations. Zero downtime migration with full compliance.">
-    <meta name="keywords" content="SSO implementation, MFA deployment, enterprise security, identity management case study">
+    <title>SAN of Florida | Case Study | Seth Forte</title>
+    <meta name="description" content="Unified SSO and MFA for 1,040 insurance agency users across two platforms before the compliance deadline. Enterprise infrastructure without enterprise licensing.">
     <meta name="author" content="Seth Forte">
-
-    <!-- Open Graph / Facebook -->
+    <link rel="canonical" href="https://sethforte.com/work/san-florida">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://sethforte.com/work/san-florida">
-    <meta property="og:title" content="San Florida Case Study: SSO/MFA for 1,040 Users | Seth Forte">
-    <meta property="og:description" content="Enterprise SSO and MFA deployment for 1,040 users with zero downtime.">
+    <meta property="og:title" content="SAN of Florida | Case Study | Seth Forte">
+    <meta property="og:description" content="Unified SSO and MFA for 1,040 insurance agency users across two platforms before the compliance deadline.">
     <meta property="og:image" content="https://sethforte.com/headshot-6.jpg">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://sethforte.com/work/san-florida">
-    <meta property="twitter:title" content="San Florida SSO/MFA Deployment | Seth Forte">
-    <meta property="twitter:description" content="Enterprise SSO and MFA deployment for 1,040 users with zero downtime.">
-    <meta property="twitter:image" content="https://sethforte.com/headshot-6.jpg">
-
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://sethforte.com/work/san-florida">
-
-    <!-- Favicon -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SAN of Florida | Case Study | Seth Forte">
+    <meta name="twitter:description" content="Unified SSO and MFA for 1,040 insurance agency users across two platforms before the compliance deadline.">
+    <meta name="twitter:image" content="https://sethforte.com/headshot-6.jpg">
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link rel="icon" type="image/jpeg" href="../logo.jpg">
     <link rel="apple-touch-icon" href="../logo.jpg">
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        :root {
-            --text-primary: #1d1d1f;
-            --text-secondary: #515154;
-            --text-muted: #86868b;
-            --accent: #0088DB;
-            --accent-hover: #4ab5ed;
-            --accent-subtle: rgba(0,136,219,0.10);
-            --accent-glow: rgba(0,136,219,0.10);
-            --accent-2: #4ab5ed;
-            --accent-3: #0088DB;
-            --background: #f5f5f7;
-            --background-alt: #ffffff;
-            --surface: #ffffff;
-            --surface-hover: #f5f5f7;
-            --border: rgba(0,0,0,0.08);
-            --border-light: rgba(0,0,0,0.12);
-            --background-dark: #1d1d1f;
-            --card-bg: #ffffff;
-            --accent-warm: #4ab5ed;
-            --accent-tint: rgba(0,136,219,0.10);
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 16px;
-            --radius-xl: 24px;
-            --radius-pill: 980px;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            font-size: 16px;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background: var(--background);
-            min-height: 100vh;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        a { color: var(--accent-hover); text-decoration: none; transition: color 0.2s ease; }
-        a:hover { color: var(--accent-hover); text-decoration: none; }
-
+        :root { --text-primary: #1d1d1f; --text-secondary: #515154; --text-muted: #86868b; --accent: #0088DB; --accent-hover: #4ab5ed; --accent-subtle: rgba(0,136,219,0.10); --accent-glow: rgba(0,136,219,0.10); --accent-2: #4ab5ed; --accent-3: #0088DB; --background: #f5f5f7; --background-alt: #ffffff; --surface: #ffffff; --surface-hover: #f5f5f7; --border: rgba(0,0,0,0.08); --border-light: rgba(0,0,0,0.12); --background-dark: #1d1d1f; --card-bg: #ffffff; --accent-warm: #4ab5ed; --accent-tint: rgba(0,136,219,0.10); --radius-sm: 8px; --radius-md: 12px; --radius-lg: 16px; --radius-xl: 24px; --radius-pill: 980px; }
+        html { scroll-behavior: smooth; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif; font-size: 17px; line-height: 1.5; color: var(--text-primary); background: var(--background); min-height: 100vh; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        a { color: var(--accent); text-decoration: none; transition: color 0.2s ease; }
+        a:hover { color: var(--accent-warm); }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
         .animate-fade-up { animation: fadeInUp 0.4s cubic-bezier(0.16,1,0.3,1) forwards; }
         .animate-delay-1 { animation-delay: 0.05s; opacity: 0; }
         .animate-delay-2 { animation-delay: 0.1s; opacity: 0; }
-
-        .site-header { position: sticky; top: 0; z-index: 100; background: rgba(245,245,247,0.85); backdrop-filter: blur(20px) saturate(1.5); -webkit-backdrop-filter: blur(20px) saturate(1.5); border-bottom: 1px solid var(--border); padding: 0 2rem; }
-        .header-container { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; height: 52px; }
-        .header-logo { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9375rem; font-weight: 600; color: var(--text-primary); text-decoration: none; letter-spacing: -0.01em; }
-        .header-logo:hover { color: var(--text-primary); text-decoration: none; opacity: 0.8; }
-        .header-nav { display: flex; gap: 0.25rem; }
-        .nav-link { padding: 0.35rem 0.75rem; color: var(--text-secondary); font-size: 0.8125rem; font-weight: 400; transition: color 0.2s ease; text-decoration: none; }
-        .nav-link:hover { color: var(--text-primary); text-decoration: none; }
-        .nav-link.active { color: var(--text-primary); font-weight: 500; }
-
-        /* Main Wrapper */
-        .main-wrapper { max-width: 1100px; position: relative; z-index: 1; margin: 0 auto; padding: 4rem 2rem 6rem; }
-
-        .back-link { display: inline-block; color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 2rem; }
-        .back-link:hover { color: var(--accent); }
-
-        .case-title { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; color: var(--text-primary); line-height: 1.1; margin-bottom: 1rem; letter-spacing: -0.03em; }
-        .case-subtitle { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 3rem; line-height: 1.6; max-width: 700px; }
-
-        .section-divider { display: none; }
-
-        .case-section { margin-bottom: 3rem; max-width: 700px; }
-        .case-section h2 { font-size: 1.4rem; font-weight: 600; color: var(--text-primary); margin-bottom: 1rem; }
-        .case-section h3 { font-size: 1.15rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.75rem; margin-top: 2rem; }
-        .case-section p { color: var(--text-secondary); margin-bottom: 1.5rem; }
-        .case-section ul, .case-section ol { color: var(--text-secondary); margin-bottom: 1.5rem; padding-left: 1.5rem; }
-        .case-section li { margin-bottom: 0.5rem; }
-        .case-section strong { color: var(--text-primary); }
-
-        .result-card {
-            background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md);
-            padding: 1.5rem; margin-bottom: 1rem;
-            transition: border-color 0.2s ease;
-        }
-        .result-card:hover { border-color: var(--border-light); }
-        .result-card .stat { font-size: 1.5rem; font-weight: 700; color: var(--accent); margin-bottom: 0.25rem; }
-        .result-card .label { color: var(--text-secondary); font-size: 0.95rem; }
-
-        .btn-primary {
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            padding: 0.875rem 2rem;
-            background: var(--accent);
-            color: #ffffff; border: none; border-radius: var(--radius-pill);
-            font-size: 1rem; font-weight: 500;
-            transition: all 0.2s ease;
-            text-decoration: none;
-            font-family: inherit;
-        }
-        .btn-primary:hover { background: var(--accent-hover); text-decoration: none; color: #ffffff; transform: translateY(-1px); box-shadow: 0 4px 16px var(--accent-glow); }
-
-        .cta-card {
-            background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md);
-            padding: 2.5rem; text-align: center; margin-top: 4rem;
-            transition: border-color 0.2s ease;
-        }
-        .cta-card:hover { border-color: var(--border-light); }
-        .cta-card h3 { font-size: 1.3rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.75rem; }
-        .cta-card p { color: var(--text-secondary); margin-bottom: 1.5rem; }
-
-        .blockquote {
-            font-style: italic; font-size: 1.05rem; border-left: 3px solid var(--accent);
-            padding-left: 1.5rem; margin: 0 0 1.5rem 0; color: var(--text-secondary);
-        }
-
-        /* Footer */
-        .footer-section { margin-top: 5rem; padding-top: 3rem; border-top: 1px solid var(--border); }
-        .footer-email-main { color: var(--text-secondary); font-size: 1rem; font-weight: 300; margin-bottom: 2.5rem; display: block; }
-        .footer-columns { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2.5rem; }
-        .footer-col h4 { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem; }
-        .footer-col ul { list-style: none; }
-        .footer-col li { margin-bottom: 0.5rem; }
-        .footer-col a { color: var(--text-secondary); font-size: 0.9rem; font-weight: 300; }
-        .footer-col a:hover { color: var(--accent); }
-        .footer-bottom { padding-top: 1.5rem; border-top: 1px solid var(--border); }
-        .footer-location { color: var(--text-muted); font-size: 0.8125rem; margin-bottom: 0.35rem; }
-        .copyright { color: var(--text-muted); font-size: 0.8125rem; }
-
-        .site-header::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent), var(--accent-2), var(--accent), transparent);
-            opacity: 0.4;
-        }
-
-        .grid-bg {
-            position: fixed;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
         .reveal.revealed { opacity: 1; transform: translateY(0); }
-
-        .footer-status { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; }
-        .footer-status .status-dot { width: 6px; height: 6px; background: #10b981; border-radius: 50%; }
-        .footer-status span { color: var(--text-muted); font-size: 0.8125rem; }
-
-        /* Responsive */
+        .site-header { position: sticky; top: 0; z-index: 100; background: rgba(245,245,247,0.85) !important; backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 0.5px solid var(--border); padding: 0 2rem; }
+        .header-container { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; height: 52px; }
+        .header-logo { font-size: 0.9375rem; font-weight: 600; color: var(--text-primary); text-decoration: none; letter-spacing: -0.01em; display: flex; align-items: center; gap: 0.5rem; }
+        .header-logo:hover { color: var(--text-primary); opacity: 0.8; }
+        .header-nav { display: flex; gap: 0.25rem; }
+        .nav-link { padding: 0.35rem 0.75rem; color: var(--text-primary); opacity: 0.85; font-size: 0.8125rem; font-weight: 400; text-decoration: none; }
+        .nav-link:hover { opacity: 1; }
+        .nav-link.active { opacity: 1; font-weight: 500; }
+        .main-wrapper { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem 0; position: relative; z-index: 1; }
+        .back-link { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--text-secondary); font-size: 0.875rem; font-weight: 400; margin-bottom: 3rem; transition: color 0.2s ease; }
+        .back-link:hover { color: var(--accent); }
+        .case-hero { max-width: 880px; margin-bottom: 3rem; }
+        .case-eyebrow { font-size: 0.75rem; font-weight: 600; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; display: inline-block; }
+        .case-capability-tag { display: inline-block; font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); background: var(--accent-tint); padding: 0.35rem 0.8rem; border-radius: var(--radius-sm); margin-left: 0.5rem; vertical-align: middle; }
+        .case-h1 { font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 600; color: var(--text-primary); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.25rem; }
+        .case-context { font-size: 1rem; color: var(--text-muted); font-weight: 400; margin-bottom: 0; }
+        .outcome-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 5rem; }
+        .outcome-stat { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.75rem 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
+        .outcome-stat-number { font-size: 1.5rem; font-weight: 700; color: var(--accent); letter-spacing: -0.02em; line-height: 1.15; }
+        .outcome-stat-label { font-size: 0.875rem; color: var(--text-secondary); font-weight: 400; line-height: 1.45; }
+        .case-section { margin-bottom: 4rem; scroll-margin-top: 80px; max-width: 780px; }
+        .case-section-eyebrow { font-size: 0.75rem; font-weight: 600; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.85rem; display: block; }
+        .case-section-h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; color: var(--text-primary); letter-spacing: -0.025em; line-height: 1.2; margin-bottom: 1.25rem; }
+        .case-section-body { font-size: 1.0625rem; color: var(--text-secondary); line-height: 1.75; font-weight: 400; }
+        .case-section-body + .case-section-body { margin-top: 1rem; }
+        .case-cta-block { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 4rem 3rem; text-align: center; margin: 5rem 0 0; scroll-margin-top: 80px; }
+        .case-cta-eyebrow { display: block; font-size: 0.75rem; font-weight: 600; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.7rem; }
+        .case-cta-block h2 { font-size: clamp(1.75rem, 3.5vw, 2.25rem); font-weight: 600; letter-spacing: -0.025em; color: var(--text-primary); margin-bottom: 1rem; line-height: 1.15; }
+        .case-cta-block .body-text { color: var(--text-secondary); font-size: 1.0625rem; font-weight: 400; line-height: 1.65; margin: 0 auto 2rem; max-width: 640px; }
+        .cta-buttons { display: flex; gap: 1rem; justify-content: center; align-items: center; flex-wrap: wrap; }
+        .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.75rem; background: var(--accent); color: #fff !important; border: none; border-radius: var(--radius-pill); font-size: 0.875rem; font-weight: 500; text-decoration: none; font-family: inherit; transition: background 0.2s ease; }
+        .btn-primary:hover { background: var(--accent-warm); }
+        .btn-ghost { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.8rem 1.75rem; background: transparent; color: var(--accent); border: 1px solid var(--border-light); border-radius: var(--radius-pill); font-size: 0.875rem; font-weight: 500; text-decoration: none; font-family: inherit; transition: opacity 0.2s ease, background 0.2s ease; }
+        .btn-ghost:hover { opacity: 0.85; background: var(--accent-tint); }
+        .footer-section { background: var(--background-dark); color: #86868b; margin-top: 6rem; padding: 3rem 2rem 2rem; border-radius: 18px 18px 0 0; }
+        .footer-email-main { color: #ffffff !important; opacity: 0.95; font-weight: 500; font-size: 0.9375rem; margin-bottom: 2.5rem; display: block; text-decoration: none; }
+        .footer-columns { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2.5rem; max-width: 1100px; margin-left: auto; margin-right: auto; }
+        .footer-col h4 { color: #ffffff; opacity: 0.75; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 0.4rem; }
+        .footer-col a { color: #86868b; font-size: 0.8125rem; font-weight: 300; }
+        .footer-col a:hover { color: #ffffff; }
+        .footer-bottom { padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; max-width: 1100px; margin: 0 auto; }
+        .footer-location, .copyright { color: #86868b; font-size: 0.75rem; font-weight: 300; }
+        .footer-status { display: flex; align-items: center; gap: 0.4rem; font-size: 0.6875rem; color: #86868b; }
+        .footer-status .dot { width: 6px; height: 6px; background: #22c55e; border-radius: 50%; }
         @media (max-width: 768px) {
-            .main-wrapper { padding: 3rem 1.5rem 4rem; }
-            .case-title { font-size: 1.6rem; }
-            .footer-columns { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
             .header-nav { display: none; }
-            .footer-status { flex-direction: column; align-items: flex-start; }
+            .main-wrapper { padding: 3rem 1.5rem 0; }
+            .outcome-stats { grid-template-columns: 1fr; }
+            .case-cta-block { padding: 2.75rem 1.75rem; }
+            .cta-buttons { flex-direction: column; gap: 0.75rem; width: 100%; }
+            .cta-buttons .btn-primary, .cta-buttons .btn-ghost { width: 100%; justify-content: center; }
+            .case-capability-tag { display: inline-block; margin-left: 0; margin-top: 0.75rem; }
+            .footer-columns { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+            .footer-bottom { flex-direction: column; align-items: flex-start; }
         }
-
         @media (max-width: 480px) {
-            .main-wrapper { padding: 2rem 1.25rem 3rem; }
-            .case-title { font-size: 1.4rem; }
+            .site-header { padding: 0 1.25rem; }
+            .main-wrapper { padding: 2rem 1.25rem 0; }
             .footer-columns { grid-template-columns: 1fr; }
-            .site-header { padding: 0 1rem; }
+            .case-cta-block { padding: 2.25rem 1.25rem; }
         }
-    
-        /* Apple-style overrides */
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
-            font-size: 17px;
-            line-height: 1.5;
-        }
-        .hero-headline,
-        h1.display,
-        .page-title,
-        .hero h1 {
-            font-weight: 500;
-            letter-spacing: -0.025em;
-            line-height: 1.05;
-        }
-        h2, .section-heading, .section-label.section-heading {
-            font-weight: 500;
-            letter-spacing: -0.022em;
-            line-height: 1.1;
-        }
-        h3, .card-heading {
-            font-weight: 500;
-            letter-spacing: -0.015em;
-        }
-        .eyebrow {
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--accent);
-            letter-spacing: 0;
-            text-transform: none;
-            margin: 0 0 12px;
-        }
-        .sub, .lede, .hero-sub, .page-subtitle {
-            font-size: 1.1875rem;
-            line-height: 1.45;
-            color: var(--text-secondary);
-            font-weight: 400;
-            letter-spacing: -0.005em;
-        }
-        p { font-size: 1.0625rem; line-height: 1.55; }
-
-        /* Pill buttons, no lift, no glow */
-        .btn-primary {
-            background: var(--accent);
-            color: #fff !important;
-            border-radius: 980px;
-            font-weight: 500;
-            box-shadow: none !important;
-            transition: background 0.2s ease, color 0.2s ease;
-        }
-        .btn-primary:hover {
-            background: var(--accent-warm, #4ab5ed);
-            transform: none !important;
-            box-shadow: none !important;
-        }
-        .btn-ghost, .btn-secondary {
-            background: transparent;
-            color: var(--accent);
-            border: 1px solid var(--border-light);
-            border-radius: 980px;
-            font-weight: 500;
-            transition: opacity 0.2s ease, background 0.2s ease;
-        }
-        .btn-ghost:hover, .btn-secondary:hover {
-            opacity: 0.75;
-            transform: none !important;
-            background: var(--accent-tint, rgba(0,136,219,0.10));
-            color: var(--accent);
-            border-color: var(--border-light);
-        }
-        .btn-link {
-            color: var(--accent) !important;
-            font-weight: 500;
-        }
-        .btn-link:hover { color: var(--accent-warm, #4ab5ed) !important; opacity: 0.85; }
-
-        /* Cards: soft, no borders, large radius, no shadow on hover */
-        .stage-card, .result-card, .review-card, .capability-card,
-        .step-card, .case-study-card, .featured-card, .video-quote-card,
-        .feature-block, .service-card, .featured-case, .audit-section,
-        .stat-card, .metric-item, .cta-block, .cta-section, .next-step,
-        .engagement-block {
-            background: var(--card-bg, #ffffff);
-            border-radius: 18px;
-            border: 1px solid var(--border);
-            transition: background 0.2s ease, border-color 0.2s ease;
-        }
-        .stage-card:hover, .result-card:hover, .review-card:hover,
-        .capability-card:hover, .step-card:hover, .case-study-card:hover,
-        .featured-card:hover, .video-quote-card:hover {
-            transform: none !important;
-            box-shadow: none !important;
-            background: var(--background);
-            border-color: var(--border-light);
-        }
-
-        /* Eyebrow / section-label sentence case, no uppercase */
-        .section-label, .stage-number, .step-number, .stage-label,
-        .case-label, .review-stars, .trust-label, .metric-label,
-        .featured-label, .stage-badge, .case-study-meta, .case-study-tags,
-        .review-attribution, .review-project, .footer-col h4 {
-            text-transform: none;
-            letter-spacing: 0;
-        }
-        .section-label {
-            color: var(--accent);
-            font-size: 0.875rem;
-            font-weight: 500;
-        }
-        .section-label::before { display: none; }
-
-        /* Body background - flat, no overlays */
-        body::before, body::after { display: none !important; }
-        .grid-bg { display: none !important; }
-
-        /* Footer dark statement */
-        .footer-section, .site-footer {
-            background: var(--background-dark, #1d1d1f);
-            color: #86868b;
-            border-top: none;
-            margin-top: 6rem;
-            padding: 3rem 2rem 2rem;
-            border-radius: 18px 18px 0 0;
-        }
-        .footer-section a, .site-footer a {
-            color: #86868b;
-        }
-        .footer-section a:hover, .site-footer a:hover {
-            color: #ffffff;
-        }
-        .footer-col h4 {
-            color: #ffffff;
-            opacity: 0.75;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-        }
-        .footer-email-main, .footer-email-main a {
-            color: #ffffff !important;
-            opacity: 0.95;
-            font-weight: 500;
-        }
-        .footer-location, .copyright, .footer-status {
-            color: #86868b !important;
-        }
-
-        /* Sticky header with backdrop blur */
-        .site-header {
-            background: rgba(245, 245, 247, 0.85) !important;
-            backdrop-filter: saturate(180%) blur(20px);
-            -webkit-backdrop-filter: saturate(180%) blur(20px);
-            border-bottom: 0.5px solid var(--border);
-        }
-        .site-header::after { display: none !important; }
-        .nav-link {
-            color: var(--text-primary);
-            opacity: 0.85;
-            font-weight: 400;
-        }
-        .nav-link:hover { color: var(--text-primary); opacity: 1; }
-        .nav-link.active { color: var(--text-primary); opacity: 1; font-weight: 500; }
-
-        /* Tech / review tags */
-        .tech-tag, .case-study-tags span, .review-tag {
-            background: var(--accent-tint, rgba(0,136,219,0.10));
-            color: var(--accent);
-            border: none;
-        }
-
-        /* Stat colors */
-        .result-stat, .case-study-stat, .featured-stat, .stat-card .stat,
-        .feature-block .stat, .metric-value, .stat {
-            color: var(--accent) !important;
-            -webkit-text-fill-color: var(--accent) !important;
-            background: none !important;
-            background-clip: unset !important;
-            -webkit-background-clip: unset !important;
-        }
-
-        /* Gradient text - keep blue but quiet animation, no purples */
-                @keyframes gradient-shift-apple { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-        .gradient-text {
-            background: linear-gradient(135deg, #0088DB 0%, #4ab5ed 50%, #0088DB 100%) !important;
-            background-size: 200% 200% !important;
-            animation: gradient-shift-apple 8s ease infinite !important;
-            -webkit-background-clip: text !important;
-            -webkit-text-fill-color: transparent !important;
-            background-clip: text !important;
-            color: transparent !important;
-        }
-        </style>
+    </style>
 </head>
 <body>
-    <div class="grid-bg"></div>
     <header class="site-header">
         <div class="header-container">
             <a href="/" class="header-logo">Seth Forte</a>
@@ -413,75 +114,67 @@
     </header>
 
     <main class="main-wrapper">
-        <a href="/case-studies.html" class="back-link animate-fade-up">&larr; Back to Work</a>
+        <a href="/case-studies.html" class="back-link animate-fade-up">&larr; Back to results</a>
 
-        <h1 class="case-title animate-fade-up animate-delay-1">San Florida: Enterprise Security for 1,040 Users</h1>
-        <p class="case-subtitle animate-fade-up animate-delay-2">SSO and MFA implementation across the organization. One login for all applications. Phishing-resistant authentication. Zero downtime migration.</p>
+        <section class="case-hero">
+            <span class="case-eyebrow animate-fade-up">Case study<span class="case-capability-tag">Engineering and reliability</span></span>
+            <h1 class="case-h1 animate-fade-up animate-delay-1">Unified SSO and MFA for 1,040 insurance agency users across two platforms before the compliance deadline.</h1>
+            <p class="case-context animate-fade-up animate-delay-2">Insurance / Enterprise</p>
+        </section>
 
-        <div class="case-section">
-            <h2>The Challenge</h2>
-            <p>1,040 employees across multiple locations. Dozens of applications, each with separate logins. Password fatigue leading to weak passwords and reuse. No multi-factor authentication. IT spending hours on password resets.</p>
-            <p>The security risks were mounting, and compliance requirements were tightening. They needed enterprise-grade identity management without disrupting operations.</p>
+        <div class="outcome-stats reveal">
+            <div class="outcome-stat">
+                <span class="outcome-stat-number">1,040 users</span>
+                <span class="outcome-stat-label">Migrated across two platforms</span>
+            </div>
+            <div class="outcome-stat">
+                <span class="outcome-stat-number">Zero downtime</span>
+                <span class="outcome-stat-label">During migration</span>
+            </div>
+            <div class="outcome-stat">
+                <span class="outcome-stat-number">Ahead of deadline</span>
+                <span class="outcome-stat-label">On compliance requirements</span>
+            </div>
         </div>
 
-        <hr class="section-divider">
+        <section id="situation" class="case-section reveal">
+            <span class="case-section-eyebrow">01 / Situation</span>
+            <h2 class="case-section-h2">An insurance agency facing a compliance deadline with two platforms and 1,040 users.</h2>
+            <p class="case-section-body">SAN of Florida runs operations across Smartsheet and InsuredMine. Two platforms, two logins, 1,040 users. A compliance deadline required unified single sign-on and multi-factor authentication. The cost of failing the deadline was higher than the cost of doing it right the first time.</p>
+        </section>
 
-        <div class="case-section">
-            <h2>The Solution</h2>
+        <section id="problem" class="case-section reveal">
+            <span class="case-section-eyebrow">02 / The Problem</span>
+            <h2 class="case-section-h2">Per-user licensing economics that didn't scale.</h2>
+            <p class="case-section-body">The off-the-shelf SSO providers all charged per user. At 1,040 users, the per-month cost was prohibitive. The agency needed enterprise-grade authentication without enterprise per-user economics. The available shortcuts compromised security. The build needed to be engineered to enterprise standards without the enterprise licensing model.</p>
+        </section>
 
-            <h3>Single Sign-On (SSO)</h3>
-            <p>One login for all applications. Employees authenticate once and get access to everything they need. No more remembering 15 different passwords.</p>
+        <section id="engineering" class="case-section reveal">
+            <span class="case-section-eyebrow">03 / The Engineering</span>
+            <h2 class="case-section-h2">AWS Cognito infrastructure engineered for two platforms and zero downtime.</h2>
+            <p class="case-section-body">I architected the SSO and MFA layer on AWS Cognito with custom integration into both Smartsheet and InsuredMine. The architecture decisions that mattered: per-user costs eliminated through Cognito's pricing model, MFA enforced at the identity layer instead of per-platform, and a migration path that didn't take either system offline. I built the user migration in phases to validate at each stage. The authentication layer was engineered to phishing-resistant standards before the compliance deadline required them. Zero downtime during migration was a requirement, not a goal. I hit it because the architecture was designed to allow parallel operation during the cutover.</p>
+        </section>
 
-            <h3>Multi-Factor Authentication (MFA)</h3>
-            <p>Phishing-resistant authentication using hardware keys and authenticator apps. Even if a password is compromised, accounts stay secure.</p>
+        <section id="outcome" class="case-section reveal">
+            <span class="case-section-eyebrow">04 / Outcome</span>
+            <h2 class="case-section-h2">Compliance met. Costs avoided. Zero downtime through the migration.</h2>
+            <p class="case-section-body">All 1,040 users migrated to the unified SSO and MFA layer ahead of the compliance deadline. No per-user licensing fees. No downtime during the cutover. The authentication infrastructure was engineered to standards that satisfied compliance and survives the next regulatory requirement without rebuilding.</p>
+        </section>
 
-            <h3>Phased Rollout</h3>
-            <p>Deployed in waves - starting with IT, then pilot groups, then full organization. Each phase validated before moving to the next.</p>
+        <section id="pattern" class="case-section reveal">
+            <span class="case-section-eyebrow">05 / The Pattern</span>
+            <h2 class="case-section-h2">Enterprise infrastructure without enterprise licensing.</h2>
+            <p class="case-section-body">Most enterprise authentication problems get solved by buying enterprise tools at enterprise prices. The engineering alternative is rarely considered because most operators don't have the engineering depth to build it. When the depth exists, the math changes. Enterprise-grade infrastructure becomes possible at a fraction of the enterprise cost.</p>
+        </section>
 
-            <h3>User Training</h3>
-            <p>Clear documentation and training sessions for each group. Support channels established for questions. Nobody left behind.</p>
-        </div>
-
-        <hr class="section-divider">
-
-        <div class="case-section">
-            <h2>The Results</h2>
-            <ul>
-                <li><strong>1,040 users migrated</strong> with zero downtime</li>
-                <li><strong>Password reset tickets dropped 73%</strong></li>
-                <li><strong>Full compliance</strong> with security requirements</li>
-                <li><strong>Phishing-resistant authentication</strong> across all systems</li>
-                <li><strong>Simplified onboarding/offboarding</strong> - one place to manage access</li>
-            </ul>
-        </div>
-
-        <hr class="section-divider">
-
-        <div class="case-section">
-            <h2>Implementation Details</h2>
-            <p>The rollout followed enterprise best practices:</p>
-            <ul>
-                <li><strong>Week 1-2:</strong> Infrastructure setup and IT pilot</li>
-                <li><strong>Week 3-4:</strong> Department pilot groups (50 users)</li>
-                <li><strong>Week 5-8:</strong> Phased rollout by location</li>
-                <li><strong>Week 9-10:</strong> Full deployment and legacy system cutover</li>
-                <li><strong>Ongoing:</strong> Monitoring, support, and continuous improvement</li>
-            </ul>
-        </div>
-
-        <hr class="section-divider">
-
-        <div class="case-section">
-            <h2>Client Feedback</h2>
-            <blockquote class="blockquote">
-                "We were nervous about changing how 1,000+ people log in every day. Seth's phased approach meant we caught issues early with small groups before they affected everyone. The actual cutover was anticlimactic - in a good way. It just worked."
-            </blockquote>
-        </div>
-
-        <div class="cta-card">
-            <h3>Want Results Like These?</h3>
-            <p>Let's talk about what automation could do for your business.</p>
-            <a href="https://calendly.com/seth-fortewebdesigns/30min" target="_blank" rel="noopener" class="btn-primary">Book a Call</a>
+        <div id="next-step" class="case-cta-block reveal">
+            <span class="case-cta-eyebrow">Next step</span>
+            <h2>Start with an audit.</h2>
+            <p class="body-text">Every engagement starts with a Growth Systems Audit. I map your infrastructure, identify what's leaking, and write a roadmap with fixed pricing on what gets built next. Three days. $1,500. Credits toward your first build over $3,000.</p>
+            <div class="cta-buttons">
+                <a href="https://calendly.com/seth-fortewebdesigns/30min" target="_blank" rel="noopener" class="btn-primary">Book a Growth Systems Audit</a>
+                <a href="/case-studies.html" class="btn-ghost">See more case studies &rarr;</a>
+            </div>
         </div>
 
         <div class="footer-section">
@@ -491,7 +184,9 @@
                     <h4>Services</h4>
                     <ul>
                         <li><a href="/services.html">What I Build</a></li>
-                        <li><a href="https://launchforte.com/products" target="_blank" rel="noopener">Products</a></li>
+                        <li><a href="https://launchforte.com/#audit" target="_blank" rel="noopener">Audit</a></li>
+                        <li><a href="https://launchforte.com/#core-systems-build" target="_blank" rel="noopener">Build</a></li>
+                        <li><a href="https://launchforte.com/partnership" target="_blank" rel="noopener">Partnership</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -511,22 +206,26 @@
                         <li><a href="/upwork.html">Upwork Portfolio</a></li>
                         <li><a href="https://www.upwork.com/freelancers/sethforte" target="_blank" rel="noopener">Upwork Profile</a></li>
                         <li><a href="mailto:seth@launchforte.com">Email</a></li>
+                        <li><a href="https://launchforte.com" target="_blank" rel="noopener">Launch Forte</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div class="footer-bottom">
+                <div>
+                    <p class="footer-location">Based in Grapevine, Texas. Serving clients nationwide.</p>
+                    <p class="copyright">&copy; 2026 Seth Forte. All rights reserved.</p>
+                </div>
                 <div class="footer-status">
-                    <span class="status-dot"></span>
+                    <span class="dot"></span>
                     All systems operational
                 </div>
-                <p class="footer-location">Based in Dallas, Texas. Serving clients nationwide.</p>
-                <p class="copyright">&copy; 2026 Seth Forte. All rights reserved.</p>
             </div>
         </div>
     </main>
-<script src="/scroll-reveal.js"></script>
-<script src="/theme-toggle.js"></script>
-<script src="/scroll-top.js"></script>
-<script src="/hamburger.js"></script>
+
+    <script src="/scroll-reveal.js"></script>
+    <script src="/theme-toggle.js"></script>
+    <script src="/scroll-top.js"></script>
+    <script src="/hamburger.js"></script>
 </body>
 </html>

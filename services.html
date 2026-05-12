@@ -152,7 +152,7 @@
         /* Category cards */
         .category-section {
             scroll-margin-top: 80px;
-            margin-bottom: 1.25rem;
+            margin-bottom: 4.5rem;
         }
 
         .category-card {
@@ -207,62 +207,11 @@
 
         .category-description {
             color: var(--text-secondary);
-            font-size: 0.9375rem;
+            font-size: 1.0625rem;
             font-weight: 300;
             line-height: 1.75;
-            margin-bottom: 1.75rem;
+            margin-bottom: 0;
             max-width: 720px;
-        }
-
-        .category-bullets-label {
-            font-size: 0.6875rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.75rem;
-            display: block;
-        }
-
-        .category-bullets {
-            list-style: none;
-            margin-bottom: 1.75rem;
-            padding: 0;
-        }
-        .category-bullets li {
-            position: relative;
-            padding-left: 1.25rem;
-            color: var(--text-secondary);
-            font-size: 0.9375rem;
-            font-weight: 300;
-            line-height: 1.65;
-            margin-bottom: 0.6rem;
-        }
-        .category-bullets li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0.625rem;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--accent);
-            opacity: 0.7;
-        }
-
-        .category-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            color: var(--accent-hover);
-            font-size: 0.875rem;
-            font-weight: 500;
-            text-decoration: none;
-            transition: gap 0.2s ease, color 0.2s ease;
-        }
-        .category-link:hover {
-            color: var(--accent);
-            gap: 0.6rem;
         }
 
         /* CTA Block */
@@ -598,7 +547,7 @@
         <!-- Six Categories Intro -->
         <p class="section-label reveal" style="margin-top: 4rem;">Services</p>
         <h2 class="section-heading reveal">Six categories of <span class="gradient-text">engineering</span> work.</h2>
-        <p class="section-body reveal">The audit decides which category matters most. Most engagements touch two or three at the same time. A CRM rebuild surfaces a reporting problem. A reporting build reveals a lead capture problem. The categories aren't separate products. They're how I describe the work.</p>
+        <p class="section-body reveal">The audit decides which capability matters most. Most engagements touch two or three at once. Revenue infrastructure surfaces a reporting problem. Reporting reveals a lead capture problem. The categories aren't separate products. They're capabilities the business needs to scale.</p>
 
         <!-- 01 Revenue Infrastructure -->
         <section id="revenue-infrastructure" class="category-section reveal">
@@ -606,17 +555,7 @@
                 <span class="category-eyebrow">01 / Revenue Infrastructure</span>
                 <h3 class="category-title">Revenue Infrastructure</h3>
                 <p class="category-subtitle">The foundation everything else runs on.</p>
-                <p class="category-description">CRMs nobody configured. Pipeline stages that don't match how the team sells. Payment integration that stops at Stripe. I rebuild the operational backbone.</p>
-                <span class="category-bullets-label">What I build</span>
-                <ul class="category-bullets">
-                    <li>Full CRM configuration with pipeline stages, tags, source attribution, and data hygiene</li>
-                    <li>Payment integration with conversion tracking back to CRM and ad platforms</li>
-                    <li>Email deliverability infrastructure (SPF, DKIM, DMARC, warmup, A2P 10DLC compliance)</li>
-                    <li>Client onboarding automation that fires the right next step on payment, signup, or contract sign</li>
-                    <li>Multi platform pipeline migration (Kajabi, Infusionsoft, ClickFunnels, Mailchimp to GoHighLevel or target platform)</li>
-                    <li>Custom field architecture and webhook integrations between platforms</li>
-                </ul>
-                <a href="https://launchforte.com/what-we-build#revenue-infrastructure" target="_blank" rel="noopener" class="category-link">See full Revenue Infrastructure detail &rarr;</a>
+                <p class="category-description">The operational foundation everything else compounds on.</p>
             </div>
         </section>
 
@@ -626,18 +565,7 @@
                 <span class="category-eyebrow">02 / Lead and Customer Systems</span>
                 <h3 class="category-title">Lead and Customer Systems</h3>
                 <p class="category-subtitle">Capture demand. Convert it. Don't let it leak.</p>
-                <p class="category-description">Forms that sit unanswered. Missed calls that go to voicemail. Half the calendar evaporates from missing reminders. I engineer the systems that capture demand you've already paid for.</p>
-                <span class="category-bullets-label">What I build</span>
-                <ul class="category-bullets">
-                    <li>Instant response systems with under 60 second SMS, email, and CRM logging on every form submission and missed call</li>
-                    <li>Sales funnels with landing pages, opt ins, behavior triggered nurture sequences, and CRM integration</li>
-                    <li>Lead routing with rules based assignment, hot lead alerts, and full context handoff</li>
-                    <li>Database reactivation campaigns with segmentation, AI personalized outreach, and reply handling</li>
-                    <li>Review automation with sentiment gating, Google integration, and private feedback flows</li>
-                    <li>Webinar funnels with paid registration, attendance tracking, dual CTA post webinar pages, and pipeline automation</li>
-                    <li>Dispatch systems for field service with GPS verification, dynamic pricing, and proof gates</li>
-                </ul>
-                <a href="https://launchforte.com/what-we-build#lead-systems" target="_blank" rel="noopener" class="category-link">See full Lead and Customer Systems detail &rarr;</a>
+                <p class="category-description">Closing the gap between marketing spend and converted revenue.</p>
             </div>
         </section>
 
@@ -647,17 +575,7 @@
                 <span class="category-eyebrow">03 / AI Agents and Orchestration</span>
                 <h3 class="category-title">AI Agents and Orchestration</h3>
                 <p class="category-subtitle">AI deployed where it earns its place.</p>
-                <p class="category-description">Most AI implementations are decoration. The work that survives earns its place. Voice agents that qualify callers. Chatbots configured with the real sales process. I build AI where the math works.</p>
-                <span class="category-bullets-label">What I build</span>
-                <ul class="category-bullets">
-                    <li>Custom AI voice agents on Retell, Voiceflow, or platform native (GoHighLevel, ElevenLabs)</li>
-                    <li>AI website chatbots configured with knowledge base, sales process, and escalation rules</li>
-                    <li>AI workflow tools (custom GPTs, Google Workspace Gems, Claude skill files) for internal team operations</li>
-                    <li>AI personalized nurture sequences with brand voice enforcement and anti hallucination guardrails</li>
-                    <li>AI configured into platforms you already run (GoHighLevel AI, HubSpot AI, ex: native automations)</li>
-                    <li>AI orchestration across multi step workflows (transcription, classification, routing, summary, action)</li>
-                </ul>
-                <a href="https://launchforte.com/what-we-build#ai-orchestration" target="_blank" rel="noopener" class="category-link">See full AI Agents and Orchestration detail &rarr;</a>
+                <p class="category-description">AI that replaces the part of the work the team can't afford to do manually.</p>
             </div>
         </section>
 
@@ -667,18 +585,7 @@
                 <span class="category-eyebrow">04 / Reporting and Dashboards</span>
                 <h3 class="category-title">Reporting and Dashboards</h3>
                 <p class="category-subtitle">Decisions from real numbers, not gut feel.</p>
-                <p class="category-description">Data exists in five tools and doesn't agree. Monday reports get built by hand. I build automated reporting that surfaces metrics that drive decisions.</p>
-
-                <span class="category-bullets-label">What I build</span>
-                <ul class="category-bullets">
-                    <li>Real time pipeline dashboards with leads by source, response times, booking rates, and conversion stage</li>
-                    <li>Ad spend attribution from campaign through closed deal across Meta, Google, TikTok, and more</li>
-                    <li>Operational dashboards for service businesses (jobs, payouts, completion rates, team performance)</li>
-                    <li>Founder dashboards consolidating financial, operational, and pipeline metrics in one view</li>
-                    <li>KPI frameworks built around your business model (subscription, transactional, services, hybrid)</li>
-                    <li>Automated weekly and monthly reporting with delivery to email or Slack</li>
-                </ul>
-                <a href="https://launchforte.com/what-we-build#reporting" target="_blank" rel="noopener" class="category-link">See full Reporting and Dashboards detail &rarr;</a>
+                <p class="category-description">The capability to make decisions from real numbers.</p>
             </div>
         </section>
 
@@ -688,17 +595,7 @@
                 <span class="category-eyebrow">05 / Custom Builds and Integrations</span>
                 <h3 class="category-title">Custom Builds and Integrations</h3>
                 <p class="category-subtitle">When the off the shelf answer doesn't fit.</p>
-                <p class="category-description">Some of the most valuable engineering doesn't fit a template. Offline capable apps. Financial data pipelines. Agentic systems no platform builds. I work in React, Vite, n8n, Python, and the broader stack.</p>
-                <span class="category-bullets-label">What I build</span>
-                <ul class="category-bullets">
-                    <li>Standalone web applications (React, Vite, PWA with offline support)</li>
-                    <li>Financial data integration pipelines (Plaid, SnapTrade, banking APIs with HMAC, OAuth, custom auth)</li>
-                    <li>Dispatch systems with GPS verification, dynamic pricing, and proof gates for field service</li>
-                    <li>Operations hubs with multi tier payouts, commission calculations, and approval workflows</li>
-                    <li>Custom API integrations between platforms (ex: Salesforce to custom backend, Shopify to Xero)</li>
-                    <li>Progressive Web Apps replacing legacy software (Microsoft Access, paper based processes, manual workflows)</li>
-                </ul>
-                <a href="https://launchforte.com/what-we-build#custom-builds" target="_blank" rel="noopener" class="category-link">See full Custom Builds and Integrations detail &rarr;</a>
+                <p class="category-description">When the off the shelf answer doesn't fit the business.</p>
             </div>
         </section>
 
@@ -708,24 +605,14 @@
                 <span class="category-eyebrow">06 / Engineering and Reliability</span>
                 <h3 class="category-title">Engineering and Reliability</h3>
                 <p class="category-subtitle">The discipline that keeps systems running at volume.</p>
-                <p class="category-description">Monitoring, alerting, error handling, documentation. The operational rigor that separates a build that works from a build that survives volume and team turnover.</p>
-                <span class="category-bullets-label">What I build</span>
-                <ul class="category-bullets">
-                    <li>Monitoring and alerting on critical workflows with failure detection and on call escalation</li>
-                    <li>Error handling and retry logic built into every integration point</li>
-                    <li>Documentation packages that survive team turnover (written runbooks, video walkthroughs, architecture diagrams)</li>
-                    <li>Audit trails and logging for compliance and debugging</li>
-                    <li>Load testing and volume planning for systems expected to scale</li>
-                    <li>Production observability so failures show up before customers see them</li>
-                </ul>
-                <a href="https://launchforte.com/what-we-build#engineering-reliability" target="_blank" rel="noopener" class="category-link">See full Engineering and Reliability detail &rarr;</a>
+                <p class="category-description">The operational rigor that keeps systems running at volume.</p>
             </div>
         </section>
 
         <!-- Closing CTA -->
         <div class="cta-block reveal">
             <h2>Start with an <span class="gradient-text">audit</span>.</h2>
-            <p class="body-text">The audit is how we both know which category matters most. Three days. A written diagnostic. Fixed pricing on what gets built next.</p>
+            <p class="body-text">The audit is how we both know which capability matters most. Three days. A written diagnostic. Fixed pricing on what gets built next. The fee credits toward your first build over $3,000.</p>
             <div class="cta-buttons">
                 <a href="https://calendly.com/seth-fortewebdesigns/30min" target="_blank" rel="noopener" class="btn-primary">Book a Growth Systems Audit</a>
                 <a href="https://launchforte.com/#how-to-engage" target="_blank" rel="noopener" class="btn-ghost">See full engagement model</a>
