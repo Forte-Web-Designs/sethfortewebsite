@@ -57,11 +57,12 @@
         '[data-theme="dark"] #sticky-cta-link{background:#4ab5ed;color:#1d1d1f}' +
         '[data-theme="dark"] #sticky-cta-link:hover{background:#0088DB;color:#ffffff}';
 
-    var toggleCSS = '#theme-toggle{width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-size:1rem;cursor:pointer;z-index:1001;display:flex;align-items:center;justify-content:center;transition:color 0.3s ease,border-color 0.3s ease;line-height:1;flex-shrink:0;margin-left:0.75rem}' +
-        '#theme-toggle.scrolled{position:fixed;top:auto;bottom:8.5rem;right:2rem;margin-left:0;background:var(--background);border:1px solid var(--border-light)}' +
-        '#theme-toggle:hover{color:var(--text-primary);border-color:var(--border-light)}' +
-        '@media(max-width:768px){#theme-toggle{position:fixed;top:1rem;right:4rem;margin-left:0;background:var(--background);border:1px solid var(--border-light)}}' +
-        '@media(max-width:480px){#theme-toggle{width:34px;height:34px;font-size:0.95rem;right:3.5rem}#theme-toggle.scrolled{right:1.25rem;bottom:8rem}}';
+    var toggleCSS = '#theme-toggle{width:28px;height:28px;border-radius:50%;border:none;background:transparent;color:var(--text-muted);cursor:pointer;z-index:1001;display:flex;align-items:center;justify-content:center;transition:color 0.2s ease,opacity 0.2s ease;line-height:1;flex-shrink:0;margin-left:0.75rem;padding:0;opacity:0.7}' +
+        '#theme-toggle:hover{color:var(--text-primary);opacity:1}' +
+        '#theme-toggle svg{width:18px;height:18px;display:block}' +
+        '#theme-toggle.scrolled{position:fixed;top:auto;bottom:8.5rem;right:2rem;margin-left:0;background:var(--background);border:0.5px solid var(--border-light);opacity:0.95}' +
+        '@media(max-width:768px){#theme-toggle{position:fixed;top:1rem;right:4rem;margin-left:0;background:var(--background);border:0.5px solid var(--border-light);width:32px;height:32px;opacity:0.95}#theme-toggle svg{width:16px;height:16px}}' +
+        '@media(max-width:480px){#theme-toggle{right:3.5rem}#theme-toggle.scrolled{right:1.25rem;bottom:8rem}}';
 
     var style = document.createElement('style');
     style.textContent = darkCSS + toggleCSS;
@@ -84,9 +85,13 @@
     var theme = saved || 'light';
     applyTheme(theme);
 
+    var sunIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>';
+    var moonIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+
     function applyTheme(t) {
         document.documentElement.setAttribute('data-theme', t);
-        toggle.innerHTML = t === 'dark' ? '☀️' : '🌘';
+        toggle.innerHTML = t === 'dark' ? sunIcon : moonIcon;
+        toggle.setAttribute('aria-label', t === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
         localStorage.setItem('theme', t);
     }
 
