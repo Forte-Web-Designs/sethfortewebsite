@@ -397,7 +397,34 @@
             background-clip: text !important;
             color: transparent !important;
         }
-        </style>
+        
+        /* Case study video slot */
+        .case-video-wrap {
+            max-width: 880px;
+            margin: 0 auto 3.5rem;
+        }
+        .case-video-placeholder {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 18px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            opacity: 0.6;
+        }
+        .case-video-wrap iframe,
+        .case-video-wrap video {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <div class="grid-bg"></div>
@@ -405,8 +432,9 @@
         <div class="header-container">
             <a href="/" class="header-logo">Seth Forte</a>
             <nav class="header-nav">
-                <a href="/services.html" class="nav-link">What I Build</a>
-                <a href="/case-studies.html" class="nav-link active">Results</a>
+                <a href="/" class="nav-link">Home</a>
+                <a href="/case-studies.html" class="nav-link">Results</a>
+                <a href="/writing.html" class="nav-link">Writing</a>
                 <a href="/about.html" class="nav-link">About</a>
                 <a href="/contact.html" class="nav-link">Contact</a>
             </nav>
@@ -490,7 +518,6 @@
                         <li><a href="/about.html">About</a></li>
                         <li><a href="/case-studies.html">Results</a></li>
                         <li><a href="/writing.html">Writing</a></li>
-                        <li><a href="/upwork.html">Upwork</a></li>
                         <li><a href="/contact.html">Contact</a></li>
                     </ul>
                 </div>

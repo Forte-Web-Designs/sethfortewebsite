@@ -802,6 +802,12 @@
             gap: 0.4rem;
             font-size: 0.6875rem;
             color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .footer-status:hover { color: var(--text-secondary); }
+        a.footer-status {
+            color: var(--text-muted);
             font-weight: 400;
         }
         .footer-status .dot {
@@ -855,7 +861,117 @@
             opacity: 1;
             transform: translateY(0);
         }
-    
+
+        /* Founder video */
+        .founder-video {
+            width: 100%;
+            max-width: 880px;
+            margin: 0 auto;
+        }
+        .video-placeholder {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 18px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        .video-placeholder-label {
+            opacity: 0.7;
+        }
+        .founder-video iframe,
+        .founder-video video {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            display: block;
+        }
+
+        /* Writing preview */
+        .writing-preview {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .writing-preview li {
+            border-bottom: 1px solid var(--border);
+        }
+        .writing-preview li:first-child {
+            border-top: 1px solid var(--border);
+        }
+        .writing-preview a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 0;
+            color: var(--text-primary);
+            font-size: 1rem;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .writing-preview a:hover {
+            color: var(--accent);
+        }
+        .writing-preview-title {
+            font-weight: 500;
+            letter-spacing: -0.005em;
+        }
+        .writing-preview-cta {
+            color: var(--accent);
+            font-size: 0.875rem;
+            white-space: nowrap;
+            opacity: 0.85;
+        }
+
+        /* Results preview */
+        .results-preview {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        .results-preview-card {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 1.75rem 1.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            text-decoration: none;
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+        .results-preview-card:hover {
+            background: var(--background);
+            border-color: var(--border-light);
+        }
+        .results-preview-stat {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+        }
+        .results-preview-name {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            letter-spacing: -0.01em;
+        }
+        .results-preview-context {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        @media (max-width: 768px) {
+            .results-preview { grid-template-columns: 1fr; }
+        }
+
         /* Apple-style overrides */
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
@@ -1054,8 +1170,9 @@
         <div class="header-container">
             <a href="/" class="header-logo">Seth Forte</a>
             <nav class="header-nav">
-                <a href="/services.html" class="nav-link">What I Build</a>
+                <a href="/" class="nav-link">Home</a>
                 <a href="/case-studies.html" class="nav-link">Results</a>
+                <a href="/writing.html" class="nav-link">Writing</a>
                 <a href="/about.html" class="nav-link">About</a>
                 <a href="/contact.html" class="nav-link">Contact</a>
             </nav>
@@ -1079,13 +1196,8 @@
             <p class="positioning-proof">Founder of Launch Forte. Trusted across industries.</p>
         </section>
 
-        <!-- The Problem -->
-        <p class="section-label reveal">The Problem</p>
-        <h2 class="section-heading reveal" style="padding-top: 0;"><span class="gradient-text">Growth</span> hits the same wall every time.</h2>
-        <p class="about-text reveal">Every business outgrows the systems that built it. I engineer what comes next.</p>
-
         <!-- Trusted By -->
-        <div class="trust-section reveal" style="margin-top: 5rem;">
+        <div class="trust-section reveal" style="margin-top: 4rem;">
             <span class="trust-label">Trusted by</span>
             <div class="carousel-wrapper">
                 <div class="carousel-track">
@@ -1138,156 +1250,63 @@
             </div>
         </div>
 
-        <!-- How To Engage -->
-        <p class="section-label reveal" style="margin-top: 6rem;">Where Most Engagements Start</p>
-        <h2 class="section-heading reveal" style="padding-top: 0; margin-bottom: 2rem;">How To <span class="gradient-text">Engage</span></h2>
-        <div class="engage-grid">
-            <div class="engage-card reveal">
-                <h3>Growth Systems Audit</h3>
-                <p class="engage-body">Diagnostic of your infrastructure. Prioritized recommendations. Fixed pricing on each.</p>
-                <p class="engage-sub">$1,500. 3 days. Credits toward your first build over $3,000.</p>
-                <a href="https://calendly.com/seth-launchforte/30min" target="_blank" rel="noopener" class="btn-primary">Book an Audit</a>
-            </div>
-            <div class="engage-card reveal">
-                <h3>Core Systems Build</h3>
-                <p class="engage-body">The build your strategy needs. Engineered to survive volume.</p>
-                <p class="engage-sub">Fixed price after audit. Most builds 7 to 21 days.</p>
-                <a href="https://launchforte.com/what-we-build" target="_blank" rel="noopener" class="btn-primary">See What I Build</a>
-            </div>
-            <div class="engage-card reveal">
-                <h3>Embedded Growth Systems Partner</h3>
-                <p class="engage-body">The engineering brain at the table. Monthly review. Async access. Priority on builds.</p>
-                <p class="engage-sub">From $3,500/month. 6 month minimum.</p>
-                <a href="https://launchforte.com/partnership" target="_blank" rel="noopener" class="btn-primary">Learn About the Partnership</a>
+        <!-- Watch -->
+        <p class="section-label reveal" style="margin-top: 6rem;">Watch</p>
+        <h2 class="section-heading reveal" style="padding-top: 0; margin-bottom: 1.5rem;">A few minutes with <span class="gradient-text">Seth</span></h2>
+        <div class="founder-video reveal">
+            <div class="video-placeholder">
+                <span class="video-placeholder-label">Founder video coming soon</span>
             </div>
         </div>
 
-        <!-- How It Works -->
-        <h2 class="section-heading reveal" id="how-it-works" style="margin-bottom: 2rem;">How It <span class="gradient-text">Works</span></h2>
-        <div class="works-grid">
-            <div class="works-step reveal">
-                <span class="step-num">01</span>
-                <h3>Diagnose</h3>
-                <p>We map your infrastructure end to end with written diagnostic with priorities.</p>
-            </div>
-            <div class="works-step reveal">
-                <span class="step-num">02</span>
-                <h3>Architect</h3>
-                <p>I design before I write code. The architecture decides whether the build survives.</p>
-            </div>
-            <div class="works-step reveal">
-                <span class="step-num">03</span>
-                <h3>Build</h3>
-                <p>I build to the architecture. Fixed scope. Tested with real data before handoff.</p>
-            </div>
-            <div class="works-step reveal">
-                <span class="step-num">04</span>
-                <h3>Operate</h3>
-                <p>Documented, monitored, and handed off cleanly. The Partnership picks up where the build ends.</p>
-            </div>
-        </div>
+        <!-- Latest Writing -->
+        <p class="section-label reveal" style="margin-top: 6rem;">Writing</p>
+        <h2 class="section-heading reveal" style="padding-top: 0; margin-bottom: 1.5rem;">Latest <span class="gradient-text">writing</span></h2>
+        <ul class="writing-preview reveal">
+            <li><a href="/articles/day-job.html"><span class="writing-preview-title">Why I Don't Take Every Project (And That's Fine)</span><span class="writing-preview-cta">Read &rarr;</span></a></li>
+            <li><a href="/articles/enterprise-to-small-business.html"><span class="writing-preview-title">What Building Enterprise Systems Taught Me</span><span class="writing-preview-cta">Read &rarr;</span></a></li>
+            <li><a href="/articles/ai-overkill.html"><span class="writing-preview-title">When AI Is Overkill (Most of the Time)</span><span class="writing-preview-cta">Read &rarr;</span></a></li>
+        </ul>
+        <a href="/writing.html" class="btn-link reveal" style="margin-top: 1rem;">See all writing &rarr;</a>
 
-        <!-- What I Build -->
-        <p class="section-label reveal" style="margin-top: 6rem;">Services</p>
-        <h2 class="section-heading reveal" style="padding-top: 0;">What I <span class="gradient-text">Build</span></h2>
-        <p class="section-sub reveal">Six categories of engineering work.</p>
-        <div class="capabilities-grid">
-            <a href="https://launchforte.com/what-we-build#revenue-infrastructure" target="_blank" rel="noopener" class="capability-card reveal">
-                <h3>Revenue Infrastructure</h3>
-                <p>The operational foundation everything else compounds on.</p>
+        <!-- Results Preview -->
+        <p class="section-label reveal" style="margin-top: 6rem;">Results</p>
+        <h2 class="section-heading reveal" style="padding-top: 0; margin-bottom: 1.5rem;">Engineering work that <span class="gradient-text">moved</span> real businesses</h2>
+        <div class="results-preview reveal">
+            <a href="/work/between-generations-care.html" class="results-preview-card">
+                <span class="results-preview-stat">Zero manual steps</span>
+                <span class="results-preview-name">Between Generations Care</span>
+                <span class="results-preview-context">Full platform build inside GoHighLevel. Instagram follower to repeat client, fully engineered.</span>
             </a>
-            <a href="https://launchforte.com/what-we-build#lead-systems" target="_blank" rel="noopener" class="capability-card reveal">
-                <h3>Lead and Customer Systems</h3>
-                <p>Closing the gap between marketing spend and converted revenue.</p>
+            <a href="/work/cr-deals.html" class="results-preview-card">
+                <span class="results-preview-stat">130+ hrs / month recovered</span>
+                <span class="results-preview-name">CR Deals</span>
+                <span class="results-preview-context">Replaced manual court records pulls with one automated pipeline.</span>
             </a>
-            <a href="https://launchforte.com/what-we-build#ai-orchestration" target="_blank" rel="noopener" class="capability-card reveal">
-                <h3>AI Agents and Orchestration</h3>
-                <p>AI that replaces the part of the work the team can't afford to do manually.</p>
-            </a>
-            <a href="https://launchforte.com/what-we-build#reporting" target="_blank" rel="noopener" class="capability-card reveal">
-                <h3>Reporting and Dashboards</h3>
-                <p>The capability to make decisions from real numbers.</p>
-            </a>
-            <a href="https://launchforte.com/what-we-build#custom-builds" target="_blank" rel="noopener" class="capability-card reveal">
-                <h3>Custom Builds and Integrations</h3>
-                <p>When the off the shelf answer doesn't fit the business.</p>
-            </a>
-            <a href="https://launchforte.com/what-we-build#engineering-reliability" target="_blank" rel="noopener" class="capability-card reveal">
-                <h3>Engineering and Reliability</h3>
-                <p>The operational rigor that keeps systems running at volume.</p>
+            <a href="/work/the-11r-shop.html" class="results-preview-card">
+                <span class="results-preview-stat">GPS gated dispatch</span>
+                <span class="results-preview-name">The 11R Shop</span>
+                <span class="results-preview-context">Four phase dispatch with dynamic pricing, arrival verification, and automated invoicing.</span>
             </a>
         </div>
+        <a href="/case-studies.html" class="btn-link reveal" style="margin-top: 1rem;">See all results &rarr;</a>
 
-        <!-- Audit CTA -->
-        <div class="cta-block reveal">
-            <h3>Not sure where to start?</h3>
-            <p class="body-text">Most engagements start with an audit. $1,500. 3 days. Credits toward your first build over $3,000.</p>
-            <a href="https://calendly.com/seth-launchforte/30min" target="_blank" rel="noopener" class="btn-primary">Book a Growth Systems Audit</a>
-        </div>
-
-        <!-- Why Work With Me -->
-        <p class="section-label reveal">Why Work With Me</p>
-        <h2 class="section-heading reveal" style="padding-top: 0;">An <span class="gradient-text">Engineer</span> Who Speaks Revenue</h2>
-        <p class="about-text reveal">Consultants tell you what should happen. Developers build what you ask for. I engineer what strategy depends on.</p>
-        <p class="about-text reveal">Seven years writing code that businesses depend on. Two at a national auto body chain. Five engineering enterprise infrastructure where downtime costs six figures an hour. That mindset shows up in every <a href="https://launchforte.com" target="_blank" rel="noopener">Launch Forte</a> build.</p>
-
-        <!-- Featured Case Study -->
-        <h2 class="section-heading reveal">Featured <span class="gradient-text">Case Study</span></h2>
-        <div class="featured-case reveal">
-            <h3>Between Generations Care</h3>
-            <p>Full platform build from scratch inside GoHighLevel. CRM, booking calendars, email sequences, and a complete customer journey from Instagram follower to repeat client. Zero manual steps.</p>
-            <a href="https://launchforte.com/work/between-generations-care" target="_blank" rel="noopener" class="case-link">Read the full case study &rarr;</a>
-        </div>
-
-        <!-- What Clients Say -->
-        <h2 class="section-heading reveal">What <span class="gradient-text">Clients</span> Say</h2>
-        <div class="review-grid">
-            <div class="review-card reveal">
-                <span class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-                <p class="review-text">"Seth is my go-to for all of my automation projects now. His process in defining the project scope ahead of time ensures that I get everything I need and we're on the same page throughout."</p>
-                <div class="review-attribution">
-                    <span class="review-name">Danielle, Modern Bungalow</span>
-                    <span class="review-project">Product Sync Automation</span>
-                </div>
-            </div>
-            <div class="review-card reveal">
-                <span class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-                <p class="review-text">"Extremely knowledgeable and patient. He thought outside the box to offer solutions we did not consider. Highly recommend and we will use him again."</p>
-                <div class="review-attribution">
-                    <span class="review-name">Alex, UDI Group</span>
-                    <span class="review-project">Review System Development</span>
-                </div>
-            </div>
-            <div class="review-card reveal">
-                <span class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-                <p class="review-text">"Seth is an amazing rare breed. He is not just focused on what is asked of him, he actually scopes the need to make sure the work meets your need to the maximum level. Brilliant Developer and the kind of man you wished was your neighbor."</p>
-                <div class="review-attribution">
-                    <span class="review-name">Mark, San Florida</span>
-                    <span class="review-project">Web Development</span>
-                </div>
-            </div>
-            <div class="review-card reveal">
-                <span class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-                <p class="review-text">"If you need an automation specialist, stop looking right now and hire Seth. He will blow your mind with his knowledge and his ability to take your idea and not only understand what you want to achieve but also build on it."</p>
-                <div class="review-attribution">
-                    <span class="review-name">Andrew, Kingfisher Ads</span>
-                    <span class="review-project">Automation</span>
-                </div>
-            </div>
-        </div>
-        <a href="/reviews.html" class="btn-link reveal">See all reviews &rarr;</a>
-
-        <!-- About -->
+        <!-- About preview -->
         <p class="section-label reveal" style="margin-top: 6rem;">About</p>
         <h2 class="section-heading reveal" style="padding-top: 0;"><span class="gradient-text">Seth Forte</span>, Founder of Launch Forte</h2>
-        <p class="about-text reveal">I run Launch Forte. We build the infrastructure growing businesses run on.</p>
-        <p class="about-text reveal">Every engagement starts with diagnosing what the problem is costing. If the math doesn't work, I'll tell you.</p>
+        <p class="about-text reveal">Seven years writing code businesses depend on. Enterprise infrastructure where downtime costs six figures an hour. That mindset shows up in every build.</p>
         <a href="/about.html" class="btn-link reveal" style="margin-bottom: 2rem;">More about me &rarr;</a>
 
+        <!-- Work With Me -->
+        <p class="section-label reveal" style="margin-top: 6rem;">Work With Me</p>
+        <h2 class="section-heading reveal" style="padding-top: 0;">Launch Forte holds the <span class="gradient-text">offer</span></h2>
+        <p class="about-text reveal">Launch Forte is where I build. Audits, systems, partnerships. If you came here to learn about the work, that's where to go next.</p>
+        <a href="https://launchforte.com" target="_blank" rel="noopener" class="btn-link reveal">Visit Launch Forte &rarr;</a>
+
         <!-- Closing CTA -->
-        <div class="cta-block reveal">
-            <h2>If <span class="gradient-text">growth</span> feels messy, the system is usually why.</h2>
-            <p class="body-text">Strategy fails at the execution level. Start with an audit. I'll tell you what's worth fixing.</p>
+        <div class="cta-block reveal" style="margin-top: 4rem;">
+            <h2>Ready to talk?</h2>
+            <p class="body-text">If growth feels messy, the system underneath is usually why. Start with a conversation.</p>
             <a href="https://calendly.com/seth-launchforte/30min" target="_blank" rel="noopener" class="btn-primary">Book a Growth Systems Audit</a>
         </div>
 
@@ -1297,22 +1316,11 @@
 
             <div class="footer-columns">
                 <div class="footer-col">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="https://launchforte.com/#audit" target="_blank" rel="noopener">Audit</a></li>
-                        <li><a href="https://launchforte.com/#core-systems-build" target="_blank" rel="noopener">Build</a></li>
-                        <li><a href="https://launchforte.com/partnership" target="_blank" rel="noopener">Partnership</a></li>
-                        <li><a href="https://launchforte.com/what-we-build" target="_blank" rel="noopener">What I Build</a></li>
-                        <li><a href="https://launchforte.com/industries" target="_blank" rel="noopener">Industries</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
                     <h4>Company</h4>
                     <ul>
                         <li><a href="/about.html">About</a></li>
                         <li><a href="/case-studies.html">Results</a></li>
                         <li><a href="/writing.html">Writing</a></li>
-                        <li><a href="/upwork.html">Upwork</a></li>
                         <li><a href="/contact.html">Contact</a></li>
                     </ul>
                 </div>
@@ -1320,9 +1328,13 @@
                     <h4>Connect</h4>
                     <ul>
                         <li><a href="https://www.linkedin.com/in/seth-forte/" target="_blank" rel="noopener">LinkedIn</a></li>
-                        <li><a href="/upwork.html">Upwork Portfolio</a></li>
-                        <li><a href="https://www.upwork.com/freelancers/sethforte" target="_blank" rel="noopener">Upwork Profile</a></li>
+                        <li><a href="https://www.upwork.com/freelancers/sethforte" target="_blank" rel="noopener">Upwork</a></li>
                         <li><a href="mailto:seth@launchforte.com">Email</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Elsewhere</h4>
+                    <ul>
                         <li><a href="https://launchforte.com" target="_blank" rel="noopener">Launch Forte</a></li>
                     </ul>
                 </div>
@@ -1333,10 +1345,10 @@
                     <p class="footer-location">Based in Grapevine, Texas. Serving clients nationwide.</p>
                     <p class="copyright">&copy; 2026 Seth Forte. All rights reserved.</p>
                 </div>
-                <div class="footer-status">
+                <a href="/case-studies.html" class="footer-status">
                     <span class="dot"></span>
                     All systems operational
-                </div>
+                </a>
             </div>
         </div>
     </main>
