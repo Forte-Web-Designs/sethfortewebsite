@@ -44,7 +44,10 @@
       "Bash(perl -i -pe 's|<img src=\"headshot-6.jpg\" alt=\"Seth Forte\" style=\"width: 80px; height: 80px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 1.5rem;\">|<img src=\"headshot-6.jpg\" alt=\"Seth Forte, automation consultant based in Grapevine Texas\" style=\"width: 80px; height: 80px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 1.5rem;\" width=\"80\" height=\"80\" loading=\"lazy\">|' upwork.html)",
       "Read(//Users/fortewebdesigns/Library/Mobile Documents/com~apple~CloudDocs/Workspace/**)",
       "Bash(cat > *)",
-      "Bash(node -e ' *)"
+      "Bash(node -e ' *)",
+      "Bash(perl -i -pe ' *)",
+      "Bash(perl -i -pe 's|Five years at Wells Fargo taught me more about reliability and edge cases than any course ever could\\\\.|Five years in enterprise infrastructure taught me more about reliability and edge cases than any course ever could\\\\.|g' posts.html)",
+      "Bash(perl -i -pe 's|Five years at Wells Fargo taught me more about reliability and edge cases than any course ever could\\\\.|Five years in enterprise infrastructure taught me more about reliability and edge cases than any course ever could\\\\.|g' \"posts 2.html\")"
     ],
     "deny": [],
     "ask": [],

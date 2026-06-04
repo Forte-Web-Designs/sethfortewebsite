@@ -130,6 +130,20 @@
         .writing-item .read-link { font-size: 0.9rem; color: var(--accent-hover); display: inline-block; }
         .view-all-link { display: inline-block; margin-top: 1.5rem; color: var(--accent-hover); font-size: 0.95rem; font-weight: 500; }
         .view-all-link:hover { color: var(--accent-hover); }
+        /* Optional inline video on a writing item: drop iframe/video into .writing-item-video */
+        .writing-item-video { margin: 0.75rem 0; border-radius: 12px; overflow: hidden; max-width: 600px; }
+        .writing-item-video iframe, .writing-item-video video { width: 100%; aspect-ratio: 16 / 9; border: 0; display: block; border-radius: 12px; }
+        /* Empty state */
+        .writing-empty {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            color: var(--text-muted);
+        }
+        .writing-empty h3 { font-size: 1.125rem; font-weight: 500; color: var(--text-primary); margin-bottom: 0.5rem; }
+        .writing-empty p { font-size: 0.95rem; color: var(--text-secondary); }
 
         /* Footer */
         .footer-section { margin-top: 8rem; padding-top: 4rem; border-top: 1px solid var(--border); }
@@ -411,7 +425,7 @@
 
             <li class="writing-item">
                 <h3>What Building Enterprise Systems Taught Me</h3>
-                <p>Five years at Wells Fargo taught me more about reliability and edge cases than any course ever could.</p>
+                <p>Five years in enterprise infrastructure taught me more about reliability and edge cases than any course ever could.</p>
                 <a href="/articles/enterprise-to-small-business.html" class="read-link">Read</a>
             </li>
 
@@ -435,13 +449,6 @@
             <a href="mailto:seth@launchforte.com" class="footer-email-main">seth@launchforte.com</a>
 
             <div class="footer-columns">
-                <div class="footer-col">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="/services.html">What I Build</a></li>
-                        <li><a href="https://launchforte.com/products" target="_blank" rel="noopener">Products</a></li>
-                    </ul>
-                </div>
                 <div class="footer-col">
                     <h4>Company</h4>
                     <ul>
@@ -469,7 +476,7 @@
 
             <div class="footer-bottom">
                 <div>
-                    <p class="footer-location">Based in Dallas, Texas. Serving clients nationwide.</p>
+                    <p class="footer-location">Based in Grapevine, Texas. Serving clients nationwide.</p>
                     <p class="copyright">&copy; 2026 Seth Forte. All rights reserved.</p>
                 </div>
                 <a href="/case-studies.html" class="footer-status">
