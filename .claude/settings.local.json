@@ -47,7 +47,8 @@
       "Bash(node -e ' *)",
       "Bash(perl -i -pe ' *)",
       "Bash(perl -i -pe 's|Five years at Wells Fargo taught me more about reliability and edge cases than any course ever could\\\\.|Five years in enterprise infrastructure taught me more about reliability and edge cases than any course ever could\\\\.|g' posts.html)",
-      "Bash(perl -i -pe 's|Five years at Wells Fargo taught me more about reliability and edge cases than any course ever could\\\\.|Five years in enterprise infrastructure taught me more about reliability and edge cases than any course ever could\\\\.|g' \"posts 2.html\")"
+      "Bash(perl -i -pe 's|Five years at Wells Fargo taught me more about reliability and edge cases than any course ever could\\\\.|Five years in enterprise infrastructure taught me more about reliability and edge cases than any course ever could\\\\.|g' \"posts 2.html\")",
+      "Bash(awk '/<nav class=\"header-nav\">/,/<\\\\/nav>/' about.html)"
     ],
     "deny": [],
     "ask": [],
