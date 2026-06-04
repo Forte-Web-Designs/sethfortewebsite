@@ -1,6 +1,14 @@
 (function() {
     var style = document.createElement('style');
     style.textContent = '' +
+        // Active nav indicator: strong color + underline beneath the active tab
+        '.header-nav a.nav-link{position:relative}' +
+        '.header-nav a.nav-link.active{color:var(--accent)!important;opacity:1!important;font-weight:600!important}' +
+        '.header-nav a.nav-link.active::after{content:"";position:absolute;left:0.75rem;right:0.75rem;bottom:-2px;height:2px;background:var(--accent);border-radius:2px}' +
+        '[data-theme="dark"] .header-nav a.nav-link.active{color:#4ab5ed!important}' +
+        '[data-theme="dark"] .header-nav a.nav-link.active::after{background:#4ab5ed}' +
+        '.hamburger-overlay a.active{color:var(--accent)!important;opacity:1!important;font-weight:600!important}' +
+        '[data-theme="dark"] .hamburger-overlay a.active{color:#4ab5ed!important}' +
         '.hamburger-btn{display:none;position:fixed;top:0.75rem;right:1rem;width:40px;height:40px;border-radius:50%;border:0.5px solid var(--border-light);background:var(--background);color:var(--text-primary);font-size:1.25rem;cursor:pointer;z-index:1002;align-items:center;justify-content:center;transition:color 0.2s ease,border-color 0.2s ease,opacity 0.2s ease;line-height:1;padding:0}' +
         '.hamburger-btn:hover{color:var(--accent);border-color:var(--accent)}' +
         '.hamburger-btn.is-open{opacity:0;pointer-events:none;visibility:hidden}' +
@@ -33,7 +41,39 @@
     closeBtn.innerHTML = '✕';
     overlay.appendChild(closeBtn);
 
+    // Mark the current page's nav link as active (desktop nav)
+    var path = (window.location.pathname || '/').replace(/\/+$/, '') || '/';
+    function normalize(p) {
+        if (!p) return '';
+        p = p.split('#')[0].split('?')[0];
+        p = p.replace(/\/+$/, '');
+        p = p.replace(/\.html$/i, '');
+        return p === '' ? '/' : p;
+    }
+    var currentPath = normalize(path);
     var navLinks = document.querySelectorAll('.header-nav a');
+    var bestMatch = null;
+    var bestLen = -1;
+    navLinks.forEach(function(link) {
+        try {
+            var href = link.getAttribute('href') || '';
+            // Skip external links
+            if (/^https?:\/\//i.test(href)) return;
+            var linkPath = normalize(new URL(href, window.location.origin).pathname);
+            // Exact match wins. If no exact match, longest prefix match wins
+            // (so /work/foo highlights the Results tab if Results was at /case-studies, etc).
+            if (linkPath === currentPath) {
+                bestMatch = link;
+                bestLen = Infinity;
+            } else if (linkPath !== '/' && currentPath.indexOf(linkPath) === 0 && linkPath.length > bestLen) {
+                bestMatch = link;
+                bestLen = linkPath.length;
+            }
+        } catch (e) {}
+    });
+    if (bestMatch) bestMatch.classList.add('active');
+
+    // Clone into hamburger overlay, preserving active state
     navLinks.forEach(function(link) {
         var clone = link.cloneNode(true);
         overlay.appendChild(clone);
