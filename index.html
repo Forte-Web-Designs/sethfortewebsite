@@ -343,6 +343,31 @@
             margin: 0 auto;
         }
 
+        /* ─── Video ─── */
+        .video-section { margin-bottom: 4rem; }
+        .video-eyebrow {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+        .video-wrap {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            overflow: hidden;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .video-wrap video {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            background: #000;
+        }
+
         /* ─── Trust Carousel ─── */
         .trust-section {
             text-align: center;
@@ -1190,6 +1215,17 @@
             <div class="hero-cta animate-up delay-4">
                 <a href="https://calendly.com/seth-launchforte/30min" target="_blank" rel="noopener" class="btn-primary">Book a Growth Systems Audit</a>
                 <a href="#watch" class="btn-ghost">See How I Work</a>
+            </div>
+        </section>
+
+        <!-- Video -->
+        <section class="video-section reveal" style="margin: 2.5rem auto 4rem; max-width: 900px;">
+            <span class="video-eyebrow">The 2-minute version</span>
+            <div class="video-wrap">
+                <video controls autoplay muted playsinline preload="auto">
+                    <source src="Business Growth Systems &amp; AI Automation | Forte (DFW) - 26 October 2025.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
             </div>
         </section>
 

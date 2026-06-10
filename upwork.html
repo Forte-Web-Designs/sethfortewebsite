@@ -378,6 +378,32 @@
         }
         .cta-buttons { display: flex; gap: 1rem; justify-content: center; align-items: center; flex-wrap: wrap; position: relative; }
 
+        /* Video section */
+        .video-section { margin-bottom: 4rem; }
+        .video-eyebrow {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+            display: block;
+            text-align: center;
+        }
+        .video-wrap {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            overflow: hidden;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .video-wrap video {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            background: #000;
+        }
+
         /* Video Quote Cards */
         .video-quotes { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 2.5rem; }
         .video-quote-col { display: flex; flex-direction: column; gap: 0.75rem; }
@@ -669,6 +695,17 @@
             </div>
             <div class="hero-cta animate-fade-up animate-delay-4">
                 <a href="https://www.upwork.com/freelancers/sethforte" target="_blank" rel="noopener" class="btn-primary">Hire Me on Upwork &rarr;</a>
+            </div>
+        </section>
+
+        <!-- Video -->
+        <section class="video-section reveal" style="margin: 1rem auto 4rem; max-width: 900px;">
+            <span class="video-eyebrow">The 2-minute version</span>
+            <div class="video-wrap">
+                <video controls autoplay muted playsinline preload="auto">
+                    <source src="Business Growth Systems &amp; AI Automation | Forte (DFW) - 26 October 2025.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
             </div>
         </section>
 
