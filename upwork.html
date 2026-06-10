@@ -150,7 +150,14 @@
             background: var(--border-light);
         }
 
-        .hero-cta { display: flex; justify-content: center; position: relative; }
+        .hero-cta { display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap; position: relative; }
+        .hero-cta .btn-ghost-link {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .hero-cta .btn-ghost-link:hover { color: var(--accent); }
 
         /* Buttons */
         .btn-primary {
@@ -704,6 +711,7 @@
             </div>
             <div class="hero-cta animate-fade-up animate-delay-4">
                 <a href="https://www.upwork.com/freelancers/sethforte" target="_blank" rel="noopener" class="btn-primary">Hire Me on Upwork &rarr;</a>
+                <a href="mailto:seth@launchforte.com" class="btn-ghost-link">Or reach me directly</a>
             </div>
         </section>
 
