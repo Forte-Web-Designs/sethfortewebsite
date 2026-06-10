@@ -64,10 +64,18 @@
 
     var toggleCSS = '#theme-toggle{width:28px;height:28px;border-radius:50%;border:none;background:transparent;color:var(--text-muted);cursor:pointer;z-index:1001;display:flex;align-items:center;justify-content:center;transition:color 0.2s ease,opacity 0.2s ease;line-height:1;flex-shrink:0;margin-left:0.75rem;padding:0;opacity:0.7}' +
         '#theme-toggle:hover{color:var(--text-primary);opacity:1}' +
-        '#theme-toggle svg{width:18px;height:18px;display:block}' +
+        '#theme-toggle svg{width:18px;height:18px;display:block;transition:transform 0.45s cubic-bezier(0.4,0,0.2,1)}' +
+        '#theme-toggle.theme-switching svg{transform:rotate(180deg)}' +
         '#theme-toggle.scrolled{position:fixed;top:auto;bottom:8.5rem;right:2rem;margin-left:0;background:var(--background);border:0.5px solid var(--border-light);opacity:0.95}' +
         '@media(max-width:768px){#theme-toggle{position:fixed;top:1rem;right:4rem;margin-left:0;background:var(--background);border:0.5px solid var(--border-light);width:32px;height:32px;opacity:0.95}#theme-toggle svg{width:16px;height:16px}}' +
-        '@media(max-width:480px){#theme-toggle{right:3.5rem}#theme-toggle.scrolled{right:1.25rem;bottom:8rem}}';
+        '@media(max-width:480px){#theme-toggle{right:3.5rem}#theme-toggle.scrolled{right:1.25rem;bottom:8rem}}' +
+        // Smooth theme transition: applied only after first paint, only during a flip.
+        // Targets the properties that actually change between themes.
+        'html.theme-transition, html.theme-transition body, html.theme-transition *, html.theme-transition *::before, html.theme-transition *::after {' +
+        'transition: background-color 0.45s cubic-bezier(0.4,0,0.2,1), background 0.45s cubic-bezier(0.4,0,0.2,1), color 0.45s cubic-bezier(0.4,0,0.2,1), border-color 0.45s cubic-bezier(0.4,0,0.2,1), fill 0.45s cubic-bezier(0.4,0,0.2,1), stroke 0.45s cubic-bezier(0.4,0,0.2,1), box-shadow 0.45s cubic-bezier(0.4,0,0.2,1) !important;' +
+        '}' +
+        // Don't animate transform-driven hover lifts during a theme flip
+        'html.theme-transition * { transition-property: background-color, background, color, border-color, fill, stroke, box-shadow !important; }';
 
     var style = document.createElement('style');
     style.textContent = darkCSS + toggleCSS;
@@ -98,9 +106,23 @@
 
     applyTheme(theme);
 
+    var transitionTimer = null;
     toggle.addEventListener('click', function() {
-        var current = document.documentElement.getAttribute('data-theme');
+        var root = document.documentElement;
+        // Enable the smooth color transition just for this flip
+        root.classList.add('theme-transition');
+        toggle.classList.add('theme-switching');
+
+        var current = root.getAttribute('data-theme');
         applyTheme(current === 'dark' ? 'light' : 'dark');
+
+        // Remove the transition class after the animation runs so it
+        // doesn't slow down unrelated hover states across the page.
+        if (transitionTimer) clearTimeout(transitionTimer);
+        transitionTimer = setTimeout(function() {
+            root.classList.remove('theme-transition');
+            toggle.classList.remove('theme-switching');
+        }, 500);
     });
 
     var isScrolled = false;
