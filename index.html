@@ -359,6 +359,50 @@
             overflow: hidden;
             max-width: 900px;
             margin: 0 auto;
+            position: relative;
+        }
+        .video-unmute {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.55rem 1rem;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
+            border: none;
+            border-radius: 980px;
+            cursor: pointer;
+            z-index: 5;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: background 0.2s ease, opacity 0.3s ease, transform 0.3s ease;
+            opacity: 1;
+        }
+        .video-unmute:hover {
+            background: rgba(0, 0, 0, 0.85);
+        }
+        .video-unmute svg {
+            width: 14px;
+            height: 14px;
+            display: block;
+        }
+        .video-unmute.is-hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.9);
+        }
+        @media (max-width: 480px) {
+            .video-unmute {
+                top: 0.65rem;
+                right: 0.65rem;
+                padding: 0.45rem 0.85rem;
+                font-size: 0.75rem;
+            }
         }
         .video-wrap video, .video-wrap iframe {
             display: block;
@@ -1224,7 +1268,11 @@
             <span class="video-eyebrow">Watch</span>
             <h2 class="section-heading reveal" style="padding-top: 0; margin-bottom: 1.5rem;">See how I <span class="gradient-text">work</span>.</h2>
             <div class="video-wrap">
-                <iframe src="https://www.youtube-nocookie.com/embed/7YxCIPU1Jd0?autoplay=1&amp;mute=1&amp;playsinline=1&amp;rel=0" title="Seth Forte: 2-minute intro" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                <iframe id="hero-yt-iframe" src="https://www.youtube-nocookie.com/embed/7YxCIPU1Jd0?autoplay=1&amp;mute=1&amp;playsinline=1&amp;rel=0&amp;enablejsapi=1" title="Seth Forte: 2-minute intro" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                <button type="button" id="hero-yt-unmute" class="video-unmute" aria-label="Unmute video">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                    <span>Tap to unmute</span>
+                </button>
             </div>
         </section>
 
@@ -1393,6 +1441,65 @@
             }, 2200);
         }
     </script>
+
+    <!-- YouTube unmute button: loads YT IFrame API, lets user enable sound. -->
+    <script>
+        (function() {
+            var iframe = document.getElementById('hero-yt-iframe');
+            var unmuteBtn = document.getElementById('hero-yt-unmute');
+            if (!iframe || !unmuteBtn) return;
+
+            function hideUnmuteBtn() { unmuteBtn.classList.add('is-hidden'); }
+            function showUnmuteBtn() { unmuteBtn.classList.remove('is-hidden'); }
+
+            var ytPlayer = null;
+            function setupPlayer() {
+                if (typeof YT === 'undefined' || !YT.Player) return;
+                ytPlayer = new YT.Player('hero-yt-iframe', {
+                    events: {
+                        onReady: function() {
+                            // If video isn't muted (some autoplay paths don't need it), hide button immediately
+                            try {
+                                if (!ytPlayer.isMuted()) hideUnmuteBtn();
+                            } catch (e) {}
+                        }
+                    }
+                });
+            }
+
+            // Inject the YT IFrame API only once, lazily
+            if (!window.YT) {
+                var tag = document.createElement('script');
+                tag.src = 'https://www.youtube.com/iframe_api';
+                document.head.appendChild(tag);
+                var prevHook = window.onYouTubeIframeAPIReady;
+                window.onYouTubeIframeAPIReady = function() {
+                    if (typeof prevHook === 'function') prevHook();
+                    setupPlayer();
+                };
+            } else {
+                setupPlayer();
+            }
+
+            unmuteBtn.addEventListener('click', function() {
+                if (ytPlayer && typeof ytPlayer.unMute === 'function') {
+                    try {
+                        ytPlayer.unMute();
+                        ytPlayer.setVolume(100);
+                        if (typeof ytPlayer.playVideo === 'function') ytPlayer.playVideo();
+                    } catch (e) {}
+                }
+                hideUnmuteBtn();
+            });
+
+            // If the user clicks on the iframe itself (which would unmute via YT controls),
+            // hide the button on next focus change. Best-effort hint.
+            window.addEventListener('blur', function() {
+                if (document.activeElement === iframe) hideUnmuteBtn();
+            });
+        })();
+    </script>
+
 <script src="/scroll-reveal.js"></script>
 <script src="/theme-toggle.js"></script>
 <script src="/scroll-top.js"></script>
