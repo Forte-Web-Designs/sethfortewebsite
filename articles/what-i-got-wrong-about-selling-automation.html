@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What I Got Wrong About Selling Automation - Seth Forte</title>
+    <meta name="description" content="Selling automation is not a technical problem. Learn what drives client trust, better positioning, and lessons from real consulting work.">
+    <meta name="author" content="Seth Forte">
+    <link rel="icon" type="image/jpeg" href="../logo.jpg">
+    <link rel="apple-touch-icon" href="../logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; } .grid-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; z-index: 0; }
+
+        :root {
+            --text-primary: #1d1d1f;
+            --text-secondary: #515154;
+            --text-muted: #86868b;
+            --accent: #0088DB;
+            --accent-hover: #4ab5ed;
+            --accent-2: #4ab5ed;
+            --background: #f5f5f7;
+            --background-alt: #ffffff;
+            --border: rgba(0,0,0,0.08);
+            --border-light: rgba(0,0,0,0.12);
+            --background-dark: #1d1d1f;
+            --card-bg: #ffffff;
+            --accent-warm: #4ab5ed;
+            --accent-tint: rgba(0,136,219,0.10);
+            --radius-pill: 980px;
+            --radius-md: 12px;
+            --accent-subtle: rgba(0,136,219,0.10); --accent-glow: rgba(0,136,219,0.10); --accent-3: #0088DB; --surface: #ffffff; --surface-hover: #f5f5f7; --radius-sm: 8px; --radius-lg: 16px; --radius-xl: 24px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--background);
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a { color: var(--accent-hover); text-decoration: none; transition: color 0.2s ease; }
+        a:hover { color: var(--accent-hover); text-decoration: none; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .animate-fade-in { animation: fadeIn 0.4s cubic-bezier(0.16,1,0.3,1) forwards; }
+        .animate-fade-up { animation: fadeInUp 0.4s cubic-bezier(0.16,1,0.3,1) forwards; }
+        .animate-delay-1 { animation-delay: 0.05s; opacity: 0; }
+        .animate-delay-2 { animation-delay: 0.1s; opacity: 0; }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(245,245,247,0.85);
+            backdrop-filter: blur(20px) saturate(1.5);
+            -webkit-backdrop-filter: blur(20px) saturate(1.5);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2rem;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            height: 52px;
+        }
+
+        .header-logo {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .header-logo:hover { color: var(--accent); text-decoration: none; }
+
+        .header-nav {
+            display: flex;
+            gap: 0.25rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            padding: 0.5rem 1rem;
+            color: var(--text-secondary);
+            font-size: 0.8125rem;
+            font-weight: 400;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .nav-link:hover {
+            background: rgba(0,0,0,0.04);
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .nav-link.active {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .main-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 2rem 6rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+
+        .back-link:hover { color: var(--accent); }
+
+        .article-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.15;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .article-meta {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 3rem;
+        }
+
+        .article-body p { margin-bottom: 1.5rem; font-weight: 300; }
+
+        .article-body h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-body h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-body strong { font-weight: 600; }
+
+        .article-body ul, .article-body ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .article-body li { margin-bottom: 0.5rem; }
+
+        .footer-section {
+            margin-top: 5rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-email-main {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 2.5rem;
+            display: block;
+        }
+
+        .footer-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-col h4 {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 1rem;
+        }
+
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 0.5rem; }
+        .footer-col a { color: var(--text-secondary); font-size: 0.9rem; }
+        .footer-col a:hover { color: var(--accent); }
+
+        .footer-bottom {
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-location {
+            color: var(--text-muted);
+            font-size: 0.8125rem;
+            font-weight: 300;
+            margin-bottom: 0.35rem;
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 0.8125rem;
+            font-weight: 300;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .header-nav { display: none; }
+            .main-wrapper { padding: 3rem 1.5rem 4rem; }
+            .article-title { font-size: 1.6rem; }
+            .footer-columns { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        }
+
+        @media (max-width: 480px) {
+            .main-wrapper { padding: 2rem 1.25rem 3rem; }
+            .footer-columns { grid-template-columns: 1fr; }
+        }
+    
+        /* Apple-style overrides */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
+            font-size: 17px;
+            line-height: 1.5;
+        }
+        .hero-headline,
+        h1.display,
+        .page-title,
+        .hero h1 {
+            font-weight: 500;
+            letter-spacing: -0.025em;
+            line-height: 1.05;
+        }
+        h2, .section-heading, .section-label.section-heading {
+            font-weight: 500;
+            letter-spacing: -0.022em;
+            line-height: 1.1;
+        }
+        h3, .card-heading {
+            font-weight: 500;
+            letter-spacing: -0.015em;
+        }
+        .eyebrow {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0;
+            text-transform: none;
+            margin: 0 0 12px;
+        }
+        .sub, .lede, .hero-sub, .page-subtitle {
+            font-size: 1.1875rem;
+            line-height: 1.45;
+            color: var(--text-secondary);
+            font-weight: 400;
+            letter-spacing: -0.005em;
+        }
+        p { font-size: 1.0625rem; line-height: 1.55; }
+
+        /* Pill buttons, no lift, no glow */
+        .btn-primary {
+            background: var(--accent);
+            color: #fff !important;
+            border-radius: 980px;
+            font-weight: 500;
+            box-shadow: none !important;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+        .btn-primary:hover {
+            background: var(--accent-warm, #4ab5ed);
+            transform: none !important;
+            box-shadow: none !important;
+        }
+        .btn-ghost, .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--border-light);
+            border-radius: 980px;
+            font-weight: 500;
+            transition: opacity 0.2s ease, background 0.2s ease;
+        }
+        .btn-ghost:hover, .btn-secondary:hover {
+            opacity: 0.75;
+            transform: none !important;
+            background: var(--accent-tint, rgba(0,136,219,0.10));
+            color: var(--accent);
+            border-color: var(--border-light);
+        }
+        .btn-link {
+            color: var(--accent) !important;
+            font-weight: 500;
+        }
+        .btn-link:hover { color: var(--accent-warm, #4ab5ed) !important; opacity: 0.85; }
+
+        /* Cards: soft, no borders, large radius, no shadow on hover */
+        .stage-card, .result-card, .review-card, .capability-card,
+        .step-card, .case-study-card, .featured-card, .video-quote-card,
+        .feature-block, .service-card, .featured-case, .audit-section,
+        .stat-card, .metric-item, .cta-block, .cta-section, .next-step,
+        .engagement-block {
+            background: var(--card-bg, #ffffff);
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+        .stage-card:hover, .result-card:hover, .review-card:hover,
+        .capability-card:hover, .step-card:hover, .case-study-card:hover,
+        .featured-card:hover, .video-quote-card:hover {
+            transform: none !important;
+            box-shadow: none !important;
+            background: var(--background);
+            border-color: var(--border-light);
+        }
+
+        /* Eyebrow / section-label sentence case, no uppercase */
+        .section-label, .stage-number, .step-number, .stage-label,
+        .case-label, .review-stars, .trust-label, .metric-label,
+        .featured-label, .stage-badge, .case-study-meta, .case-study-tags,
+        .review-attribution, .review-project, .footer-col h4 {
+            text-transform: none;
+            letter-spacing: 0;
+        }
+        .section-label {
+            color: var(--accent);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        .section-label::before { display: none; }
+
+        /* Body background - flat, no overlays */
+        body::before, body::after { display: none !important; }
+        .grid-bg { display: none !important; }
+
+        /* Footer dark statement */
+        .footer-section, .site-footer {
+            background: var(--background-dark, #1d1d1f);
+            color: #86868b;
+            border-top: none;
+            margin-top: 6rem;
+            padding: 3rem 2rem 2rem;
+            border-radius: 18px 18px 0 0;
+        }
+        .footer-section a, .site-footer a {
+            color: #86868b;
+        }
+        .footer-section a:hover, .site-footer a:hover {
+            color: #ffffff;
+        }
+        .footer-col h4 {
+            color: #ffffff;
+            opacity: 0.75;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+        .footer-email-main, .footer-email-main a {
+            color: #ffffff !important;
+            opacity: 0.95;
+            font-weight: 500;
+        }
+        .footer-location, .copyright, .footer-status {
+            color: #86868b !important;
+        }
+
+        /* Sticky header with backdrop blur */
+        .site-header {
+            background: rgba(245, 245, 247, 0.85) !important;
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 0.5px solid var(--border);
+        }
+        .site-header::after { display: none !important; }
+        .nav-link {
+            color: var(--text-primary);
+            opacity: 0.85;
+            font-weight: 400;
+        }
+        .nav-link:hover { color: var(--text-primary); opacity: 1; }
+        .nav-link.active { color: var(--text-primary); opacity: 1; font-weight: 500; }
+
+        /* Tech / review tags */
+        .tech-tag, .case-study-tags span, .review-tag {
+            background: var(--accent-tint, rgba(0,136,219,0.10));
+            color: var(--accent);
+            border: none;
+        }
+
+        /* Stat colors */
+        .result-stat, .case-study-stat, .featured-stat, .stat-card .stat,
+        .feature-block .stat, .metric-value, .stat {
+            color: var(--accent) !important;
+            -webkit-text-fill-color: var(--accent) !important;
+            background: none !important;
+            background-clip: unset !important;
+            -webkit-background-clip: unset !important;
+        }
+
+        /* Gradient text - keep blue but quiet animation, no purples */
+                @keyframes gradient-shift-apple { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+        .gradient-text {
+            background: linear-gradient(135deg, #0088DB 0%, #4ab5ed 50%, #0088DB 100%) !important;
+            background-size: 200% 200% !important;
+            animation: gradient-shift-apple 8s ease infinite !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+            color: transparent !important;
+        }
+        </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="header-logo">Seth Forte</a>
+            <nav class="header-nav">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/case-studies.html" class="nav-link">Results</a>
+                <a href="/writing.html" class="nav-link">Writing</a>
+                <a href="/about.html" class="nav-link">About</a>
+                <a href="/contact.html" class="nav-link">Contact</a>
+                <a href="https://launchforte.com" class="nav-link" target="_blank" rel="noopener">Launch Forte</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-wrapper">
+        <a href="/writing.html" class="back-link animate-fade-up">&larr; Back to Writing</a>
+
+        <h1 class="article-title animate-fade-up animate-delay-1">What I Got Wrong About Selling Automation</h1>
+        <p class="article-meta animate-fade-up animate-delay-2">Jul 26, 2026</p>
+
+        <div class="article-body">
+            <h2>I Thought the Hard Part Was Building It</h2>
+
+            <p>For a long time, my mental model of selling automation was basically this: if the system works, the sale takes care of itself. The hard part was the logic, the error handling, the edge cases that only surface at two in the morning when something upstream changes its API response. Get that right, and the rest would follow.</p>
+
+            <p>I genuinely believed this. I spent hours making demos cleaner, workflows more elegant, documentation more thorough. I thought a client who could see the thing running would immediately understand its value. The assumption underneath all of it was that confusion was a technical problem, and I was good at solving technical problems.</p>
+
+            <p>Then I started doing actual client work, and that assumption collapsed almost immediately.</p>
+
+            <p>Not because the builds were bad. The builds were fine. But I kept running into this strange moment in conversations where I could feel the energy drain out of the room, or out of a call, right around the point where I started explaining how the system worked. Eyes would glaze. Responses got shorter. People who had seemed genuinely interested would go quiet in ways I told myself were just scheduling conflicts or budget timing.</p>
+
+            <p>It took longer than I want to admit to recognize what was happening. The automation was working. I was the bottleneck.</p>
+
+            <p>The technical execution had never been the hard part of selling automation, not really. The hard part was everything that happens before someone trusts you enough to care what you built. Making a person feel like their specific problem was the thing you were solving, rather than a use case you were demoing, turned out to matter far more. I had been so focused on proving competence that I had skipped entirely over the part where the client decides whether they want to be in the room with you at all.</p>
+
+            <h2>The Pitch That Taught Me I Was Selling the Wrong Thing</h2>
+
+            <p>Early on, I had a call with a home services contractor who was drowning in follow up. Missed leads, jobs falling through the cracks, an inbox that had become a liability. I came in prepared. I walked him through the trigger logic, the CRM integration, the way the system would route new inquiries and fire off a sequence without anyone touching a keyboard. I was proud of how clean it was. I explained it well.</p>
+
+            <p>He went quiet. Not the quiet of someone thinking it over, but the quiet of someone who had already left the conversation in his head.</p>
+
+            <p>He said something like, &quot;Yeah, that sounds complicated,&quot; and I knew I had lost him. I spent the next few minutes trying to rescue it by explaining more, which made it worse.</p>
+
+            <p>What I did not understand then was that I had described a machine to someone who was asking me to take away a headache. He did not care how the triggers worked. He did not want to understand the integration. He wanted to stop lying awake wondering if someone had followed up with the estimate he sent on Thursday. Those were two completely different conversations, and I had shown up to the wrong one.</p>
+
+            <p>Selling automation by explaining automation is like a surgeon describing the instruments before asking where it hurts. The capability is real, but it is not what earns trust or moves a decision. What the client is evaluating is whether you understand the specific thing that is costing them, sleep, revenue, reputation, time, and whether working with you will make that thing stop.</p>
+
+            <p>That call was not a failure of the product. It was a failure of framing. And it took me longer than I would like to admit to stop repeating it.</p>
+
+            <h2>What Clients Hear When You Say Automation</h2>
+
+            <p>The word does something I didn't expect. I'd say &quot;automation&quot; and watch a client's expression shift toward a kind of careful blankness. It took me too many conversations to understand what was happening in that moment.</p>
+
+            <p>What I was hearing when I said the word: efficiency, time reclaimed, a system that runs while you sleep. What they were hearing was closer to: something complicated is about to be introduced into my business, and I'm going to be responsible for it when it breaks.</p>
+
+            <p>That's not irrational. Most of the business owners I've done client work with have been burned before, by software that promised simplicity and delivered a second job, by tools their team never adopted, by consultants who handed them something impressive and then disappeared. When I walked in talking about automation, I was walking in carrying all of that history, whether I knew it or not.</p>
+
+            <p>There's also an abstraction problem. Automation doesn't point at anything concrete until you make it. A client can picture a new employee, a spreadsheet, even a piece of equipment. They cannot picture a workflow that triggers off a form submission and routes data through three tools they've never opened. The word asks them to trust a shape they can't see yet, and most people won't do that, not because they're unsophisticated, but because they're careful.</p>
+
+            <p>What I eventually understood is that selling automation means you're doing the quieter work of dissolving the word itself, replacing it with something specific enough to touch, low stakes enough to believe, and grounded in whatever is costing them sleep right now. Until that happens, you're not in a real conversation. You're talking past each other in a way that feels polite but goes nowhere.</p>
+
+            <h2>The Positioning Shifts That Changed How Conversations Went</h2>
+
+            <p>After enough cold rooms and polite rejections, I started paying attention to the moments conversations turned. Not the closes, but the pivots, the sentences that made someone lean in instead of glaze over. I started cataloguing what I'd changed, almost by accident, across different client builds. These aren't principles I derived from a framework. They're just what I noticed I was doing differently once things started working.</p>
+
+            <ul>
+
+                <li><strong>From &quot;here's what it does&quot; to &quot;here's what disappears.&quot;</strong> I stopped describing the system and started describing the friction it removes. A moving company I set up automations for didn't care about the workflow. They cared that their dispatcher would stop spending Sunday nights chasing confirmation emails.</li>
+
+            </ul>
+
+            <ul>
+
+                <li><strong>From &quot;automation&quot; to &quot;the thing that handles it.&quot;</strong> The word automation was doing damage before I even got to the demo. I started using plain language, &quot;the part that follows up automatically,&quot; &quot;the piece that routes the request,&quot; and the defensiveness dropped noticeably.</li>
+
+            </ul>
+
+            <ul>
+
+                <li><strong>From capability to consequence.</strong> I used to open with what I could build. I switched to opening with what I'd seen go wrong when this kind of work stayed manual. That reframe made me a peer observing a problem, not a vendor pitching a product.</li>
+
+            </ul>
+
+            <ul>
+
+                <li><strong>From process to ownership.</strong> Clients don't want to understand how the system works. They want to know who's responsible when something breaks. I started addressing that directly, early, instead of waiting for it to surface as an objection.</li>
+
+            </ul>
+
+            <ul>
+
+                <li><strong>From &quot;this will save you time&quot; to &quot;this will stop costing you.&quot;</strong> Time savings are abstract. Costs are real. When I started framing the gap in terms of what the current situation was actively taking from them, the urgency in the room changed.</li>
+
+            </ul>
+
+            <p>None of these shifts came from reading about <a href="https://sethforte.com">selling automation</a>. They came from watching what I'd said right before someone checked out.</p>
+
+            <h2>What It Cost to Learn This Slowly</h2>
+
+            <p>There was a stretch of about eight months where I kept getting to the proposal stage and then losing the deal. Not losing it in a dramatic way, no arguments, no hard objections. Clients would just go quiet. I told myself they had budget problems, timing problems, internal politics. All of that was probably true sometimes. But the pattern was too consistent to blame on circumstance.</p>
+
+            <p>I also misread several clients badly enough that I built things they never fully used. A restoration contractor I worked with got a lead follow up system that was genuinely well constructed. It did exactly what I scoped it to do. They used maybe half of it, and six months later they were back to doing things manually because nobody on their team had real ownership of the new process. I had solved the wrong problem with precision.</p>
+
+            <p>That one stung more than a lost deal. A lost deal costs you the work. A misread client costs you the work, the relationship, and your confidence in your own judgment.</p>
+
+            <p>What I kept getting wrong was that I was listening for what clients said they wanted and then building toward that, rather than listening for what they were afraid of. Those are different conversations, and they require different ears. Selling automation well turns out to be less about explaining systems and more about understanding what someone is dreading every Monday morning.</p>
+
+            <p>The positioning shifts I made earlier didn't come from reading about consulting or studying frameworks. They came from accumulating enough specific failures that I finally had to stop blaming the clients for not understanding and start asking what I was failing to make clear. That's a slower and more uncomfortable way to learn. I don't think there was a faster one available to me.</p>
+
+            <h2>What I Believe Now</h2>
+
+            <p>Selling automation is not a technical problem. It never was. The work of building a system that runs reliably is genuinely hard, but it is not the thing standing between you and a client who says yes. What stands there is trust, and trust requires that the client first believes you understand what their days feel like before the automation exists.</p>
+
+            <p>I believe the sale happens or dies in the first ten minutes of a conversation, and it has almost nothing to do with what you can build. It has everything to do with whether the client feels like you have already been inside their problem. Not their workflow, their problem. The thing that wakes them up at 3am is not that their CRM and their invoicing tool do not talk to each other. It is that a job slipped through last month and they cannot fully explain why, and they are not sure it will not happen again.</p>
+
+            <p>When I stopped leading with capability and started leading with that feeling, conversations changed. Not because I became a better salesperson, but because I stopped making clients do translation work. They no longer had to figure out what my technical explanation meant for their actual life. I did that work before I walked in.</p>
+
+            <p>I also believe that the word automation will keep causing problems for anyone who uses it as the headline. It is a category, not a promise. Clients do not buy categories. They buy relief from a specific, named pressure they have been carrying longer than they want to admit.</p>
+
+            <p>That is the whole thing. If you can name the pressure more precisely than the client has named it themselves, you are no longer selling automation. You are offering them a way out of something they already know is costing them. That is a different conversation entirely, and it is one worth having.</p>
+        </div>
+
+        <div class="footer-section">
+            <a href="mailto:seth@launchforte.com" class="footer-email-main">seth@launchforte.com</a>
+            <div class="footer-columns">
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/about.html">About</a></li>
+                        <li><a href="/case-studies.html">Results</a></li>
+                        <li><a href="/writing.html">Writing</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="https://www.linkedin.com/in/seth-forte/" target="_blank" rel="noopener">LinkedIn</a></li>
+                        <li><a href="/upwork.html">Upwork</a></li>
+                        <li><a href="mailto:seth@launchforte.com">Email</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Elsewhere</h4>
+                    <ul>
+                        <li><a href="https://launchforte.com" target="_blank" rel="noopener">Launch Forte</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-location">Based in Dallas-Fort Worth. Serving clients nationwide.</p>
+                <p class="copyright">&copy; 2026 Seth Forte. All rights reserved.</p>
+            </div>
+        </div>
+    </main>
+
+<script src="/scroll-reveal.js"></script>
+<script src="/theme-toggle.js"></script>
+<script src="/scroll-top.js"></script>
+<script src="/hamburger.js"></script>
+</body>
+</html>
