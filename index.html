@@ -19,9 +19,9 @@
     <meta name="twitter:description" content="Seth Forte, automation engineer and founder of Launch Forte. Seven years building the systems businesses depend on, including enterprise infrastructure. See the work and get in touch.">
     <meta name="twitter:image" content="https://sethforte.com/headshot-6.jpg">
     <link rel="canonical" href="https://sethforte.com">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="icon" type="image/jpeg" href="logo.jpg">
-    <link rel="apple-touch-icon" href="logo.jpg">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="apple-touch-icon" href="/favicon.svg.png">
     <link rel="preload" href="/fonts/Mona-Sans.var.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/media/hero-poster.jpg" as="image">
     <script type="application/ld+json">
@@ -126,6 +126,10 @@
             --accent: #0088DB;
             --accent-hover: #0077C4;
             --accent-tint: rgba(0, 136, 219, 0.10);
+            /* Accent shades that clear WCAG AA for white text at 14px
+               (#0088DB is 3.79:1 and fails; these are 4.73:1 and 5.24:1) */
+            --accent-strong: #0077C4;
+            --accent-deep: #0070B8;
 
             --border: rgba(10, 10, 10, 0.08);
             --border-strong: rgba(10, 10, 10, 0.16);
@@ -199,24 +203,23 @@
         .hero-video-layer video,
         .hero-video-layer img.hero-poster-fallback {
             position: absolute;
-            top: 50%;
-            left: 62%;
-            transform: translate(-50%, -50%);
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
+            inset: 0;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            filter: grayscale(100%) contrast(1.05);
+            /* Focal point per clip — Seth stands in a different spot in each,
+               so each sets its own object-position and stays in frame. */
+            object-position: var(--hero-focus, 50%) center;
         }
+        .hero-video-layer img.hero-poster-fallback { --hero-focus: 43%; }
         /* Double overlay: left-to-right for legibility, bottom fade into the pane */
         .hero-video-layer::after {
             content: "";
             position: absolute;
             inset: 0;
             background:
-                linear-gradient(90deg, rgba(10,10,10,0.96) 0%, rgba(10,10,10,0.86) 42%, rgba(10,10,10,0.55) 100%),
-                linear-gradient(to bottom, rgba(10,10,10,0.35) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,0.30) 72%, #0A0A0A 100%);
+                linear-gradient(90deg, rgba(10,10,10,0.93) 0%, rgba(10,10,10,0.72) 45%, rgba(10,10,10,0.34) 100%),
+                linear-gradient(to bottom, rgba(10,10,10,0.30) 0%, rgba(10,10,10,0) 32%, rgba(10,10,10,0.26) 74%, #0A0A0A 100%);
         }
         .hero-inner {
             position: relative;
@@ -271,11 +274,8 @@
             display: block;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid rgba(255,255,255,0.14);
-            filter: grayscale(100%);
-            transition: filter var(--dur-hover) var(--ease-out);
+            border: 2px solid rgba(255,255,255,0.22);
         }
-        .profile-photo:hover { filter: grayscale(0%); }
 
         .hero-headline {
             font-family: var(--font-display);
@@ -467,8 +467,8 @@
             transition: transform var(--dur-hover) var(--ease-out),
                         background var(--dur-hover), color var(--dur-hover);
         }
-        .btn-primary { background: var(--accent); color: #fff; }
-        .btn-primary:hover { background: var(--accent-hover); color: #fff; transform: translateY(-1px); }
+        .btn-primary { background: var(--accent-strong); color: #fff; }
+        .btn-primary:hover { background: var(--accent-deep); color: #fff; transform: translateY(-1px); }
         .hero-cta .btn-ghost {
             background: transparent;
             color: #FFFFFF;
@@ -629,60 +629,69 @@
             gap: 2rem;
         }
         @media (min-width: 860px) { .video-quotes { grid-template-columns: repeat(2, 1fr); } }
-        .video-quote-col { display: flex; flex-direction: column; gap: 1.25rem; }
-        /* The Senja widget sizes itself to its container and will run away in a
-           wide grid cell. Cap it to a portrait testimonial frame — same widget,
-           same data-id, just bounded. */
+        .video-quote-col {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            align-items: start;
+            gap: 1.25rem;
+            padding: 1.25rem;
+            border-radius: var(--radius-3xl);
+            background: var(--paper);
+            box-shadow: inset 0 0 0 1px var(--border);
+        }
+        @media (max-width: 1080px) { .video-quote-col { grid-template-columns: 1fr; } }
+        /* Senja renders inside shadow DOM (data-mode="shadow"), so its internal
+           video can't be styled or cropped from here — any fixed-ratio box just
+           slices the frame arbitrarily. Cap the WIDTH, let the widget set its
+           own height, and centre it. Same approach Pass 8 landed on.  */
+        /* Senja renders inside shadow DOM, so its internal media can't be sized
+           from here — it lays out ~4x taller than its own 3:4 source. Give the
+           wrapper the source's real 3:4 ratio and clip the overflow, so the
+           frame is a sane portrait card instead of a 800px column. */
         .video-widget-wrap {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 3 / 4;
             border-radius: var(--radius-3xl);
             overflow: hidden;
-            background: var(--n-50);
-            box-shadow: inset 0 0 0 1px var(--border);
-            max-width: 320px;
-            width: 100%;
-            aspect-ratio: 9 / 14;
-            position: relative;
+            background: var(--n-100);
         }
         .video-widget-wrap .senja-embed {
             position: absolute;
-            inset: 0;
+            top: 50%;
+            left: 0;
             width: 100%;
-            height: 100%;
-            overflow: hidden;
+            transform: translateY(-50%);
+            display: block;
         }
-        .video-widget-wrap .senja-embed > * { max-width: 100%; }
         .video-quote-card {
             position: relative;
-            padding: 2.5rem 2rem;
-            border-radius: var(--radius-3xl);
-            background: var(--ink);
-            color: var(--paper);
-            overflow: hidden;
+            padding: 0.5rem 0.5rem 0.5rem 0;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
-        .video-quote-card::before {
-            content: "\201C";
-            position: absolute;
-            top: -0.75rem; left: 1.5rem;
-            font-family: var(--font-display);
-            font-size: 10rem;
-            line-height: 1;
-            color: var(--n-800);
-            z-index: 0;
-        }
+        @media (max-width: 1080px) { .video-quote-card { padding: 0.5rem 0; } }
         .video-quote-text {
-            position: relative;
-            z-index: 1;
             font-family: var(--font-display);
             font-variation-settings: var(--font-display-vars);
             font-weight: 500;
-            font-size: clamp(1.2rem, 2.2vw, 1.6rem);
-            line-height: 1.35;
-            color: var(--paper);
-            margin: 0 0 1.5rem;
+            font-size: var(--text-lg);
+            line-height: 1.45;
+            color: var(--ink);
+            margin: 0 0 1.25rem;
+            letter-spacing: -0.01em;
         }
-        .video-quote-attribution { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 0.15rem; }
-        .video-quote-name { color: var(--paper); font-weight: 600; font-size: var(--text-sm); }
-        .video-quote-project { color: var(--n-400); font-size: var(--text-sm); }
+        .video-quote-attribution {
+            margin-top: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+        .video-quote-name { color: var(--ink); font-weight: 600; font-size: var(--text-sm); }
+        .video-quote-project { color: var(--n-500); font-size: var(--text-sm); }
 
         /* ---------- 11. Writing — Studio index list ---------- */
         .writing-preview { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; }
@@ -788,8 +797,8 @@
         }
         .panel-pointer .about-text { color: var(--n-400); }
         .panel-pointer .btn-primary,
-        .main-wrapper .panel-pointer .btn-primary { background: var(--accent); color: #fff; }
-        .main-wrapper .panel-pointer .btn-primary:hover { background: var(--accent-hover); color: #fff; }
+        .main-wrapper .panel-pointer .btn-primary { background: var(--accent-strong); color: #fff; }
+        .main-wrapper .panel-pointer .btn-primary:hover { background: var(--accent-deep); color: #fff; }
 
         /* ---------- 14. Closing CTA ---------- */
         .cta-block {
@@ -957,7 +966,7 @@
     <section class="hero-cinematic">
         <div class="hero-video-layer">
             <img src="/media/hero-poster.jpg" alt="" class="hero-poster-fallback" aria-hidden="true" width="1280" height="720">
-            <video src="/media/hero-loop.mp4" poster="/media/hero-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1" width="1280" height="720"></video>
+            <video id="hero-video" poster="/media/hero-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1" width="1280" height="720"></video>
         </div>
 
         <header class="site-header">
@@ -1190,6 +1199,46 @@
                 }, 300);
             }, 2200);
         }
+    </script>
+
+    <!-- Hero background loop: three clips play in sequence. Each carries its own
+         focal point so Seth stays in frame regardless of where he stands in it.
+         Desktop only — the mobile breakpoint hides the video and shows the poster. -->
+    <script>
+        (function() {
+            var v = document.getElementById('hero-video');
+            if (!v) return;
+            if (window.matchMedia('(max-width: 768px)').matches) return;
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+            var clips = [
+                { src: '/media/hero-loop-1.mp4', focus: '43%' },
+                { src: '/media/hero-loop-3.mp4', focus: '55%' },
+                { src: '/media/hero-loop-2.mp4', focus: '76%' }
+            ];
+            var i = 0;
+
+            function play(n) {
+                var c = clips[n];
+                v.style.setProperty('--hero-focus', c.focus);
+                v.src = c.src;
+                var p = v.play();
+                if (p && p.catch) p.catch(function() {});
+            }
+
+            // Advance to the next clip when this one ends; loop the set.
+            v.removeAttribute('loop');
+            v.addEventListener('ended', function() {
+                i = (i + 1) % clips.length;
+                play(i);
+            });
+            v.addEventListener('error', function() {
+                i = (i + 1) % clips.length;
+                if (i !== 0) play(i);
+            });
+
+            play(0);
+        })();
     </script>
 
     <!-- YouTube unmute button: loads YT IFrame API, lets user enable sound. -->
