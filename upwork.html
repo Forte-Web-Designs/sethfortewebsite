@@ -1010,6 +1010,103 @@
             .page-hero { padding: 6rem 1.5rem 4rem !important; }
             .hero-video-layer video { display: none; }
         }
+        
+        /* ============================================================
+           Sticky header — one definition, every page. Overrides the older
+           .site-header rules further up (including an !important one with a
+           hardcoded light background that ignored dark mode).
+           ============================================================ */
+        .site-header {
+            position: sticky !important;
+            top: 0;
+            left: 0; right: 0;
+            z-index: 60;
+            padding: 0.9rem 0 !important;
+            background: transparent !important;
+            border-bottom: 1px solid transparent !important;
+            -webkit-backdrop-filter: none;
+            backdrop-filter: none;
+            transition: background var(--dur-hover, 180ms) ease,
+                        border-color var(--dur-hover, 180ms) ease;
+        }
+        .site-header::after { display: none !important; }
+
+        /* On the pane: earn a background so links stay readable over content */
+        .site-header.is-stuck {
+            background: color-mix(in srgb, var(--paper) 88%, transparent) !important;
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            border-bottom-color: var(--border) !important;
+        }
+        /* Fallback for browsers without color-mix */
+        @supports not (background: color-mix(in srgb, #fff 50%, transparent)) {
+            .site-header.is-stuck { background: var(--paper) !important; }
+        }
+
+        .site-header .header-container {
+            max-width: var(--max-content, 1120px);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            height: auto;
+        }
+        @media (min-width: 640px) {
+            .site-header .header-container { padding: 0 2rem; }
+        }
+
+        /* Over a dark hero the links read light; on the pane they read ink. */
+        .site-header .header-logo {
+            color: #FFFFFF;
+            font-family: var(--font-display, inherit);
+            font-variation-settings: var(--font-display-vars, normal);
+            font-weight: 700;
+            font-size: 1.125rem;
+            letter-spacing: -0.02em;
+            text-decoration: none;
+            opacity: 1;
+        }
+        .site-header .nav-link {
+            color: rgba(255,255,255,0.78);
+            padding: 0.5rem 0.9rem;
+            border-radius: 999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            opacity: 1;
+            text-decoration: none;
+            transition: color 180ms ease, background 180ms ease;
+        }
+        .site-header .nav-link:hover,
+        .site-header .nav-link.active {
+            color: #FFFFFF;
+            background: rgba(255,255,255,0.10);
+        }
+        .site-header.is-stuck .header-logo { color: var(--ink) !important; }
+        .site-header.is-stuck .nav-link { color: var(--n-600) !important; }
+        .site-header.is-stuck .nav-link:hover,
+        .site-header.is-stuck .nav-link.active {
+            color: var(--ink) !important;
+            background: var(--n-100) !important;
+        }
+        .site-header.is-stuck #hamburger span { background: var(--ink); }
+        .site-header #hamburger span { background: #FFFFFF; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .site-header { transition: none; }
+        }
+
+        /* The header is a sibling BEFORE <main>, so pull the full-bleed hero up
+           beneath it — same trick the homepage uses — letting the dark zone run
+           the full height with the transparent header floating over it. */
+        .site-header { margin-bottom: -5.25rem; }
+        .main-wrapper { padding-top: 0 !important; }
+        .page-hero.has-video { padding-top: 9rem !important; }
+        @media (max-width: 768px) {
+            .site-header { margin-bottom: -4.5rem; }
+            .page-hero.has-video { padding-top: 7.5rem !important; }
+        }
         </style>
 </head>
 <body>
@@ -1030,7 +1127,7 @@
 
     <main class="main-wrapper">
         <!-- Hero -->
-        <section class="page-hero">
+        <section class="page-hero has-video">
             <div class="hero-video-layer">
                 <img src="/media/hero-poster.jpg" alt="" class="hero-poster-fallback" aria-hidden="true" width="1280" height="720">
                 <video id="hero-video" poster="/media/hero-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1" width="1280" height="720"></video>
@@ -1343,6 +1440,28 @@
             v.addEventListener('ended', function() { i = (i + 1) % clips.length; play(i); });
             v.addEventListener('error', function() { i = (i + 1) % clips.length; if (i !== 0) play(i); });
             play(0);
+        })();
+    </script>
+
+    <!-- Sticky header: transparent while a dark hero is behind it, solid once
+         the paper pane scrolls under. Pages with no dark hero are solid from
+         first paint. Shared verbatim across the site. -->
+    <script>
+        (function() {
+            var header = document.querySelector('.site-header');
+            if (!header) return;
+            var hero = document.querySelector('.hero-cinematic, .page-hero.has-video');
+            function sync() {
+                var stuck = true;
+                if (hero) {
+                    stuck = hero.getBoundingClientRect().bottom <= header.offsetHeight + 4;
+                }
+                header.classList.toggle('is-stuck', stuck);
+            }
+            sync();
+            window.addEventListener('scroll', sync, { passive: true });
+            window.addEventListener('resize', sync);
+            window.addEventListener('load', sync);
         })();
     </script>
 </body>
