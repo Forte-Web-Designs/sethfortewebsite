@@ -68,6 +68,25 @@
 
     var toggleCSS = '#theme-toggle{width:28px;height:28px;border-radius:50%;border:none;background:transparent;color:var(--text-muted);cursor:pointer;z-index:1001;display:flex;align-items:center;justify-content:center;transition:color 0.2s ease,opacity 0.2s ease;line-height:1;flex-shrink:0;margin-left:0.75rem;padding:0;opacity:0.7}' +
         '#theme-toggle:hover{color:var(--text-primary);opacity:1}' +
+
+        /* --- Studio pages: the toggle must read against three different
+           grounds — the dark hero video, the light pane, and the dark pane in
+           dark mode. A bare icon inherits whatever is behind it, so give it a
+           real chip: a translucent disc that always carries its own contrast. */
+        'html[data-studio] #theme-toggle{width:36px;height:36px;opacity:1;color:#FFFFFF;' +
+          'background:rgba(10,10,10,0.45);border:1px solid rgba(255,255,255,0.28);' +
+          '-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);' +
+          'transition:background 0.2s ease,border-color 0.2s ease,color 0.2s ease}' +
+        'html[data-studio] #theme-toggle:hover{background:rgba(10,10,10,0.62);border-color:rgba(255,255,255,0.45);color:#FFFFFF}' +
+        /* Off the hero (scrolled, or any page whose header sits on paper) the
+           chip flips to match the pane it now sits on. */
+        'html[data-studio] #theme-toggle.on-paper{color:var(--ink)!important;' +
+          'background:rgba(255,255,255,0.82)!important;border-color:rgba(10,10,10,0.14)!important}' +
+        'html[data-studio] #theme-toggle.on-paper:hover{background:#FFFFFF!important;border-color:rgba(10,10,10,0.28)!important;color:var(--ink)!important}' +
+        'html[data-studio][data-theme="dark"] #theme-toggle.on-paper{color:var(--ink)!important;' +
+          'background:rgba(23,23,23,0.86)!important;border-color:rgba(255,255,255,0.20)!important}' +
+        'html[data-studio][data-theme="dark"] #theme-toggle.on-paper:hover{background:#262626!important;border-color:rgba(255,255,255,0.34)!important;color:var(--ink)!important}' +
+        'html[data-studio] #theme-toggle svg{width:17px;height:17px}' +
         '#theme-toggle svg{width:18px;height:18px;display:block;transition:transform 0.45s cubic-bezier(0.4,0,0.2,1)}' +
         '#theme-toggle.theme-switching svg{transform:rotate(180deg)}' +
         '#theme-toggle.scrolled{position:fixed;top:auto;bottom:8.5rem;right:2rem;margin-left:0;background:var(--background);border:0.5px solid var(--border-light);opacity:0.95}' +
@@ -110,6 +129,25 @@
 
     applyTheme(theme);
 
+    // Which ground is the toggle sitting on? Only the homepage has the dark
+    // cinematic hero; every other page's header sits on the paper pane from the
+    // start. Keeping this in one place means the chip is never guessing.
+    var heroZone = document.querySelector('.hero-cinematic');
+    function updateToggleGround() {
+        if (!document.documentElement.hasAttribute('data-studio')) return;
+        var onPaper = true;
+        if (heroZone) {
+            // Measure against the toggle's actual position on screen. It starts
+            // in the header and later becomes position:fixed near the bottom of
+            // the viewport, so read its live rect rather than assuming a spot.
+            var t = toggle.getBoundingClientRect();
+            var probeY = t.height ? t.top + t.height / 2 : 50;
+            onPaper = heroZone.getBoundingClientRect().bottom <= probeY;
+        }
+        toggle.classList.toggle('on-paper', onPaper);
+    }
+    updateToggleGround();
+
     var transitionTimer = null;
     toggle.addEventListener('click', function() {
         var root = document.documentElement;
@@ -119,6 +157,7 @@
 
         var current = root.getAttribute('data-theme');
         applyTheme(current === 'dark' ? 'light' : 'dark');
+        updateToggleGround();
 
         // Remove the transition class after the animation runs so it
         // doesn't slow down unrelated hover states across the page.
@@ -130,7 +169,9 @@
     });
 
     var isScrolled = false;
+    window.addEventListener('resize', updateToggleGround);
     window.addEventListener('scroll', function() {
+        updateToggleGround();
         if (window.scrollY > 300) {
             if (!isScrolled) {
                 isScrolled = true;
