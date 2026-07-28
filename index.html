@@ -191,7 +191,7 @@
             justify-content: center;
             overflow: hidden;
             background: #0A0A0A;
-            padding: 9rem 0 6rem;
+            padding: 8.5rem 0 6rem;
             isolation: isolate;
         }
         .hero-video-layer {
@@ -324,12 +324,30 @@
 
         /* ---------- 5. Shell: nav + rounded paper pane ---------- */
         .site-header {
-            position: absolute;
-            top: 2rem;
+            /* Sticky sitewide. Over the hero it floats transparently; once the
+               paper pane arrives it earns a background so the links stay
+               readable against whatever scrolls beneath. The hero is pulled up
+               beneath it (negative margin) so the dark zone runs full height. */
+            position: sticky;
+            top: 0;
+            margin-bottom: -5.5rem;
             left: 0; right: 0;
             z-index: 40;
-            padding: 0;
+            padding: 0.9rem 0;
+            background: transparent;
+            transition: background var(--dur-hover) var(--ease-out),
+                        border-color var(--dur-hover) var(--ease-out);
+            border-bottom: 1px solid transparent;
         }
+        .site-header.is-stuck {
+            background: color-mix(in srgb, var(--paper) 88%, transparent);
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            border-bottom-color: var(--border);
+        }
+        .site-header.is-stuck .header-logo { color: var(--ink); }
+        .site-header.is-stuck .nav-link { color: var(--n-600); }
+        .site-header.is-stuck .nav-link:hover { color: var(--ink); background: var(--n-100); }
         .header-container {
             max-width: var(--max-wide);
             margin: 0 auto;
@@ -973,19 +991,56 @@
             .cta-block h2 { font-size: 1.5rem; }
             .footer-email-main { font-size: 1.35rem; }
         }
+        
+        /* A primary button must not depend on --ink/--paper together: both flip
+           in dark mode, which produced white text on a white pill. Pin the pair
+           per theme so foreground and background can never invert in step. */
+        .btn-primary,
+        .main-wrapper .btn-primary,
+        .cta-buttons .btn-primary {
+            background: #0A0A0A !important;
+            color: #FFFFFF !important;
+        }
+        .btn-primary:hover,
+        .main-wrapper .btn-primary:hover,
+        .cta-buttons .btn-primary:hover {
+            background: #262626 !important;
+            color: #FFFFFF !important;
+        }
+        [data-theme="dark"] .btn-primary,
+        [data-theme="dark"] .main-wrapper .btn-primary,
+        [data-theme="dark"] .cta-buttons .btn-primary {
+            background: #FAFAFA !important;
+            color: #0A0A0A !important;
+        }
+        [data-theme="dark"] .btn-primary:hover,
+        [data-theme="dark"] .main-wrapper .btn-primary:hover,
+        [data-theme="dark"] .cta-buttons .btn-primary:hover {
+            background: #FFFFFF !important;
+            color: #0A0A0A !important;
+        }
+        /* The accent-ground button (hero CTA) keeps white text in both themes;
+           #0077C4 clears 4.73:1 against white. */
+        .hero-cta .btn-primary,
+        .panel-pointer .btn-primary,
+        [data-theme="dark"] .hero-cta .btn-primary,
+        [data-theme="dark"] .panel-pointer .btn-primary {
+            background: var(--accent-strong, #0077C4) !important;
+            color: #FFFFFF !important;
+        }
+        .hero-cta .btn-primary:hover,
+        .panel-pointer .btn-primary:hover,
+        [data-theme="dark"] .hero-cta .btn-primary:hover,
+        [data-theme="dark"] .panel-pointer .btn-primary:hover {
+            background: var(--accent-deep, #0070B8) !important;
+            color: #FFFFFF !important;
+        }
         </style>
 </head>
 <body>
     <div class="grid-bg"></div>
 
-    <!-- The dark zone: nav bleeding into the full-bleed dim video -->
-    <section class="hero-cinematic">
-        <div class="hero-video-layer">
-            <img src="/media/hero-poster.jpg" alt="" class="hero-poster-fallback" aria-hidden="true" width="1280" height="720">
-            <video id="hero-video" poster="/media/hero-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1" width="1280" height="720"></video>
-        </div>
-
-        <header class="site-header">
+    <header class="site-header">
             <div class="header-container">
                 <a href="/" class="header-logo">Seth Forte</a>
                 <nav class="header-nav">
@@ -997,7 +1052,15 @@
                     <a href="https://launchforte.com" class="nav-link" target="_blank" rel="noopener">Launch Forte</a>
                 </nav>
             </div>
-        </header>
+    </header>
+
+
+    <!-- The dark zone: nav bleeding into the full-bleed dim video -->
+    <section class="hero-cinematic">
+        <div class="hero-video-layer">
+            <img src="/media/hero-poster.jpg" alt="" class="hero-poster-fallback" aria-hidden="true" width="1280" height="720">
+            <video id="hero-video" poster="/media/hero-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1" width="1280" height="720"></video>
+        </div>
 
         <div class="hero-inner">
             <img src="headshot-6.jpg" alt="Seth Forte, founder of Launch Forte" class="profile-photo animate-up delay-1" width="72" height="72" style="margin-bottom: 1.5rem;">
@@ -1319,5 +1382,24 @@
 <script src="/theme-toggle.js"></script>
 <script src="/scroll-top.js"></script>
 <script src="/hamburger.js"></script>
+
+    <!-- Sticky header: transparent over the dark hero, solid once the paper
+         pane scrolls under it. Uses the hero's own bottom edge, so it stays
+         correct at any viewport height. -->
+    <script>
+        (function() {
+            var header = document.querySelector('.site-header');
+            var hero = document.querySelector('.hero-cinematic');
+            if (!header) return;
+            function sync() {
+                var stuck = true;
+                if (hero) stuck = hero.getBoundingClientRect().bottom <= header.offsetHeight;
+                header.classList.toggle('is-stuck', stuck);
+            }
+            sync();
+            window.addEventListener('scroll', sync, { passive: true });
+            window.addEventListener('resize', sync);
+        })();
+    </script>
 </body>
 </html>
