@@ -516,6 +516,92 @@
                 align-items: center;
             }
         }
+        
+        /* ============================================================
+           Sticky header — one definition, every page. Overrides the older
+           .site-header rules further up (including an !important one with a
+           hardcoded light background that ignored dark mode).
+           ============================================================ */
+        .site-header {
+            position: sticky !important;
+            top: 0;
+            left: 0; right: 0;
+            z-index: 60;
+            padding: 0.9rem 0 !important;
+            background: transparent !important;
+            border-bottom: 1px solid transparent !important;
+            -webkit-backdrop-filter: none;
+            backdrop-filter: none;
+            transition: background var(--dur-hover, 180ms) ease,
+                        border-color var(--dur-hover, 180ms) ease;
+        }
+        .site-header::after { display: none !important; }
+
+        /* On the pane: earn a background so links stay readable over content */
+        .site-header.is-stuck {
+            background: color-mix(in srgb, var(--paper) 88%, transparent) !important;
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            border-bottom-color: var(--border) !important;
+        }
+        /* Fallback for browsers without color-mix */
+        @supports not (background: color-mix(in srgb, #fff 50%, transparent)) {
+            .site-header.is-stuck { background: var(--paper) !important; }
+        }
+
+        .site-header .header-container {
+            max-width: var(--max-content, 1120px);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            height: auto;
+        }
+        @media (min-width: 640px) {
+            .site-header .header-container { padding: 0 2rem; }
+        }
+
+        /* Over a dark hero the links read light; on the pane they read ink. */
+        .site-header .header-logo {
+            color: #FFFFFF;
+            font-family: var(--font-display, inherit);
+            font-variation-settings: var(--font-display-vars, normal);
+            font-weight: 700;
+            font-size: 1.125rem;
+            letter-spacing: -0.02em;
+            text-decoration: none;
+            opacity: 1;
+        }
+        .site-header .nav-link {
+            color: rgba(255,255,255,0.78);
+            padding: 0.5rem 0.9rem;
+            border-radius: 999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            opacity: 1;
+            text-decoration: none;
+            transition: color 180ms ease, background 180ms ease;
+        }
+        .site-header .nav-link:hover,
+        .site-header .nav-link.active {
+            color: #FFFFFF;
+            background: rgba(255,255,255,0.10);
+        }
+        .site-header.is-stuck .header-logo { color: var(--ink) !important; }
+        .site-header.is-stuck .nav-link { color: var(--n-600) !important; }
+        .site-header.is-stuck .nav-link:hover,
+        .site-header.is-stuck .nav-link.active {
+            color: var(--ink) !important;
+            background: var(--n-100) !important;
+        }
+        .site-header.is-stuck #hamburger span { background: var(--ink); }
+        .site-header #hamburger span { background: #FFFFFF; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .site-header { transition: none; }
+        }
         </style>
 </head>
 <body>
@@ -660,5 +746,27 @@
 <script src="/theme-toggle.js"></script>
 <script src="/scroll-top.js"></script>
 <script src="/hamburger.js"></script>
+
+    <!-- Sticky header: transparent while a dark hero is behind it, solid once
+         the paper pane scrolls under. Pages with no dark hero are solid from
+         first paint. Shared verbatim across the site. -->
+    <script>
+        (function() {
+            var header = document.querySelector('.site-header');
+            if (!header) return;
+            var hero = document.querySelector('.hero-cinematic, .page-hero.has-video');
+            function sync() {
+                var stuck = true;
+                if (hero) {
+                    stuck = hero.getBoundingClientRect().bottom <= header.offsetHeight + 4;
+                }
+                header.classList.toggle('is-stuck', stuck);
+            }
+            sync();
+            window.addEventListener('scroll', sync, { passive: true });
+            window.addEventListener('resize', sync);
+            window.addEventListener('load', sync);
+        })();
+    </script>
 </body>
 </html>
