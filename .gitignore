@@ -45,9 +45,9 @@ videos/
 *.mp4
 *.mov
 
-# ...except the compressed hero loop, which ships with the site (0.9MB, 720p).
-# The uncompressed source clips (hero-1/2/4) stay ignored by the rule above.
-!media/hero-loop.mp4
+# ...except the compressed hero loops, which ship with the site (720p, ~1MB
+# each). The uncompressed source clips (hero-1/2/4) stay ignored above.
+!media/hero-loop-*.mp4
 
 # Studio template source: reference only, mined by hand, never deployed.
 tailwind-plus-studio/
