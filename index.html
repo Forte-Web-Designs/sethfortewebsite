@@ -715,7 +715,23 @@
             color: var(--ink);
             letter-spacing: -0.01em;
         }
+        .writing-preview-date {
+            flex: none;
+            margin-left: auto;
+            font-size: var(--text-sm);
+            color: var(--n-500);
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
         .writing-preview-cta { flex: none; font-size: var(--text-sm); font-weight: 600; color: var(--accent); }
+        /* title | date | Read →  — the date sits between, right-aligned */
+        .writing-preview a { gap: 1.25rem; }
+        .writing-preview-title { flex: 1 1 auto; }
+        @media (max-width: 560px) {
+            .writing-preview a { flex-wrap: wrap; gap: 0.35rem 1rem; }
+            .writing-preview-title { flex: 1 1 100%; }
+            .writing-preview-date { margin-left: 0; }
+        }
 
         /* ---------- 12. Results — Studio case study cards ---------- */
         .results-preview {
@@ -1085,9 +1101,9 @@
                 <p class="section-label reveal">Writing</p>
                 <h2 class="section-heading reveal" style="margin-bottom: 1.5rem;">Latest <span class="gradient-text">writing</span></h2>
                 <ul class="writing-preview reveal">
-                    <li><a href="/articles/day-job.html"><span class="writing-preview-title">Why I Don't Take Every Project (And That's Fine)</span><span class="writing-preview-cta">Read &rarr;</span></a></li>
-                    <li><a href="/articles/enterprise-to-small-business.html"><span class="writing-preview-title">What Building Enterprise Systems Taught Me</span><span class="writing-preview-cta">Read &rarr;</span></a></li>
-                    <li><a href="/articles/ai-overkill.html"><span class="writing-preview-title">When AI Is Overkill (Most of the Time)</span><span class="writing-preview-cta">Read &rarr;</span></a></li>
+                    <li><a href="/articles/building-the-thing-that-builds-the-thing.html"><span class="writing-preview-title">Building The Thing That Builds The Thing</span><span class="writing-preview-date">Jul 28, 2026</span><span class="writing-preview-cta">Read &rarr;</span></a></li>
+                    <li><a href="/articles/what-i-got-wrong-about-selling-automation.html"><span class="writing-preview-title">What I Got Wrong About Selling Automation</span><span class="writing-preview-date">Jul 26, 2026</span><span class="writing-preview-cta">Read &rarr;</span></a></li>
+                    <li><a href="/articles/sso-small-business.html"><span class="writing-preview-title">SSO for Small Business (Without Paying Enterprise Prices)</span><span class="writing-preview-date">Jan 4, 2026</span><span class="writing-preview-cta">Read &rarr;</span></a></li>
                 </ul>
                 <a href="/writing.html" class="btn-link reveal" style="margin-top: 1.5rem;">See all writing &rarr;</a>
             </div>
