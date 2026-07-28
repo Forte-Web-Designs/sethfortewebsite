@@ -608,6 +608,50 @@
         @media (prefers-reduced-motion: reduce) {
             .site-header { transition: none; }
         }
+        
+        /* A primary button must not depend on --ink/--paper together: both flip
+           in dark mode, which produced white text on a white pill. Pin the pair
+           per theme so foreground and background can never invert in step. */
+        .btn-primary,
+        .main-wrapper .btn-primary,
+        .cta-buttons .btn-primary {
+            background: #0A0A0A !important;
+            color: #FFFFFF !important;
+        }
+        .btn-primary:hover,
+        .main-wrapper .btn-primary:hover,
+        .cta-buttons .btn-primary:hover {
+            background: #262626 !important;
+            color: #FFFFFF !important;
+        }
+        [data-theme="dark"] .btn-primary,
+        [data-theme="dark"] .main-wrapper .btn-primary,
+        [data-theme="dark"] .cta-buttons .btn-primary {
+            background: #FAFAFA !important;
+            color: #0A0A0A !important;
+        }
+        [data-theme="dark"] .btn-primary:hover,
+        [data-theme="dark"] .main-wrapper .btn-primary:hover,
+        [data-theme="dark"] .cta-buttons .btn-primary:hover {
+            background: #FFFFFF !important;
+            color: #0A0A0A !important;
+        }
+        /* The accent-ground button (hero CTA) keeps white text in both themes;
+           #0077C4 clears 4.73:1 against white. */
+        .hero-cta .btn-primary,
+        .panel-pointer .btn-primary,
+        [data-theme="dark"] .hero-cta .btn-primary,
+        [data-theme="dark"] .panel-pointer .btn-primary {
+            background: var(--accent-strong, #0077C4) !important;
+            color: #FFFFFF !important;
+        }
+        .hero-cta .btn-primary:hover,
+        .panel-pointer .btn-primary:hover,
+        [data-theme="dark"] .hero-cta .btn-primary:hover,
+        [data-theme="dark"] .panel-pointer .btn-primary:hover {
+            background: var(--accent-deep, #0070B8) !important;
+            color: #FFFFFF !important;
+        }
         </style>
 </head>
 <body>
