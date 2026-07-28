@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-studio>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,9 +22,8 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/jpeg" href="logo.jpg">
     <link rel="apple-touch-icon" href="logo.jpg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" href="/fonts/Mona-Sans.var.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/media/hero-poster.jpg" as="image">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -73,1372 +72,1109 @@
     }
     </script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        /* ============================================================
+           SETH FORTE — Studio design system.
+           Mined from launchforte.com Pass 8 (site/studio.css), which was
+           itself mined from tailwind-plus-studio (Seth-owned license).
+           Ported INLINE per this repo's CLAUDE.md: no external CSS files,
+           no build step, no framework. One token vocabulary across both
+           sites; this repo's mechanics.
+           ============================================================ */
 
-        :root {
-            --text-primary: #1d1d1f;
-            --text-secondary: #515154;
-            --text-muted: #86868b;
-            --accent: #0088DB;
-            --accent-hover: #4ab5ed;
-            --accent-subtle: rgba(0,136,219,0.10);
-            --accent-glow: rgba(0,136,219,0.10);
-            --accent-2: #4ab5ed;
-            --accent-3: #0088DB;
-            --background: #f5f5f7;
-            --background-alt: #ffffff;
-            --surface: #ffffff;
-            --surface-hover: #f5f5f7;
-            --border: rgba(0,0,0,0.08);
-            --border-light: rgba(0,0,0,0.12);
-            --background-dark: #1d1d1f;
-            --card-bg: #ffffff;
-            --accent-warm: #4ab5ed;
-            --accent-tint: rgba(0,136,219,0.10);
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 16px;
-            --radius-xl: 24px;
-            --radius-pill: 980px;
+        /* ---------- 1. Mona Sans, self-hosted (Studio's variable face) ---------- */
+        @font-face {
+            font-family: 'Mona Sans';
+            font-weight: 200 900;
+            font-display: swap;
+            font-style: normal;
+            font-stretch: 75% 125%;
+            src: url('/fonts/Mona-Sans.var.woff2') format('woff2-variations'),
+                 url('/fonts/Mona-Sans.var.woff2') format('woff2');
         }
 
+        /* ---------- 2. Tokens — monochrome + one accent ---------- */
+        :root {
+            --font-sans: 'Mona Sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-display: 'Mona Sans', ui-sans-serif, system-ui, sans-serif;
+            --font-display-vars: 'wdth' 125;
+
+            --text-xs: 0.75rem;   --text-sm: 0.875rem;  --text-base: 1rem;
+            --text-lg: 1.125rem;  --text-xl: 1.25rem;   --text-2xl: 1.5rem;
+            --text-3xl: 1.75rem;  --text-4xl: 2rem;     --text-5xl: 2.5rem;
+            --text-6xl: 3rem;     --text-7xl: 4rem;
+            --text-base-lh: 1.75rem; --text-xl-lh: 2rem;
+
+            --sp-2: 0.5rem;   --sp-4: 1rem;   --sp-6: 1.5rem;  --sp-8: 2rem;
+            --sp-10: 2.5rem;  --sp-12: 3rem;  --sp-16: 4rem;   --sp-20: 5rem;
+            --sp-24: 6rem;    --sp-32: 8rem;  --sp-40: 10rem;
+
+            --radius-sm: 6px;   --radius: 12px;      --radius-2xl: 1rem;
+            --radius-3xl: 1.5rem; --radius-4xl: 2.5rem;
+
+            /* Ink and paper — the whole system runs on these */
+            --paper: #FFFFFF;
+            --paper-2: #FAFAFA;
+            --ink: #0A0A0A;
+            --ink-2: #171717;
+
+            --n-50:  #FAFAFA;  --n-100: #F5F5F5;  --n-200: #E5E5E5;
+            --n-300: #D4D4D4;  --n-400: #A3A3A3;  --n-500: #737373;
+            --n-600: #525252;  --n-700: #404040;  --n-800: #262626;
+            --n-900: #171717;  --n-950: #0A0A0A;
+
+            /* The ONE accent, demoted from theme to signature */
+            --accent: #0088DB;
+            --accent-hover: #0077C4;
+            --accent-tint: rgba(0, 136, 219, 0.10);
+
+            --border: rgba(10, 10, 10, 0.08);
+            --border-strong: rgba(10, 10, 10, 0.16);
+            --ring: rgba(10, 10, 10, 0.05);
+
+            --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+            --dur-reveal: 700ms;
+            --dur-hover: 180ms;
+
+            --max-narrow: 720px;
+            --max-content: 1120px;
+            --max-wide: 1280px;
+        }
+
+        /* Dark mode: ink and paper swap, blue is constant */
+        [data-theme="dark"] {
+            --paper: #0A0A0A;
+            --paper-2: #171717;
+            --ink: #FAFAFA;
+            --ink-2: #E5E5E5;
+            --n-50:  #171717;  --n-100: #262626;  --n-200: #404040;
+            --n-300: #525252;  --n-400: #737373;  --n-500: #A3A3A3;
+            --n-600: #D4D4D4;  --n-700: #E5E5E5;  --n-800: #F5F5F5;
+            --n-900: #FAFAFA;  --n-950: #FFFFFF;
+            --border: rgba(255, 255, 255, 0.10);
+            --border-strong: rgba(255, 255, 255, 0.18);
+            --ring: rgba(255, 255, 255, 0.05);
+        }
+
+        /* ---------- 3. Base ---------- */
+        *, *::before, *::after { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; }
+        html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+        /* Nothing may push the page wider than the viewport (mobile discipline:
+           no truncation, no horizontal scroll). */
+        body { overflow-x: hidden; }
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            font-size: 16px;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background: var(--background);
-            min-height: 100vh;
+            background: #0A0A0A;
+            color: var(--ink);
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            line-height: 1.55;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
         }
+        ::selection { background: var(--accent); color: #fff; }
+        :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+        img { max-width: 100%; }
 
-        a { color: var(--accent-hover); text-decoration: none; transition: color 0.2s ease; }
-        a:hover { color: var(--accent-hover); }
-
-        /* ─── Grid Background ─── */
-        .grid-bg {
-            position: fixed;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* ─── Animations ─── */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(24px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
-        }
-        @keyframes pulse-ring {
-            0% { transform: scale(1); opacity: 0.5; }
-            100% { transform: scale(2.5); opacity: 0; }
-        }
-        @keyframes gradient-shift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .animate-up { animation: fadeUp 0.4s cubic-bezier(0.16,1,0.3,1) forwards; }
-        .animate-in { animation: fadeIn 0.4s ease forwards; }
-        .delay-1 { animation-delay: 0.05s; opacity: 0; }
-        .delay-2 { animation-delay: 0.1s; opacity: 0; }
-        .delay-3 { animation-delay: 0.15s; opacity: 0; }
-        .delay-4 { animation-delay: 0.2s; opacity: 0; }
-        .delay-5 { animation-delay: 0.25s; opacity: 0; }
-
-        /* ─── Header ─── */
-        .site-header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(245,245,247,0.85);
-            backdrop-filter: blur(20px) saturate(1.5);
-            -webkit-backdrop-filter: blur(20px) saturate(1.5);
-            border-bottom: 1px solid var(--border);
-            padding: 0 2rem;
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1100px;
-            margin: 0 auto;
-            height: 52px;
-        }
-
-        .header-logo {
-            font-size: 0.9375rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            text-decoration: none;
-            letter-spacing: -0.02em;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .header-logo:hover { color: var(--text-primary); opacity: 0.8; }
-
-        .header-nav { display: flex; gap: 0.25rem; }
-
-        .nav-link {
-            padding: 0.35rem 0.75rem;
-            color: var(--text-muted);
-            font-size: 0.8125rem;
-            font-weight: 400;
-            transition: color 0.2s ease;
-            text-decoration: none;
-            border-radius: var(--radius-sm);
-        }
-        .nav-link:hover { color: var(--text-primary); }
-        .nav-link.active { color: var(--text-primary); }
-
-        /* ─── Main ─── */
-        .main-wrapper {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 2rem 8rem;
+        /* ---------- 4. The cinematic hero (dark zone) ---------- */
+        .hero-cinematic {
             position: relative;
-            z-index: 1;
-        }
-
-        /* ─── Hero ─── */
-        .hero-section {
-            text-align: center;
-            padding: 7rem 0 4rem;
-            max-width: 820px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .hero-glow {
-            position: absolute;
-            top: -100px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 600px;
-            height: 400px;
-            background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 70%);
-            pointer-events: none;
-            filter: blur(60px);
-        }
-
-        .hero-headline {
-            font-size: clamp(2.75rem, 7vw, 4.5rem);
-            font-weight: 800;
-            color: var(--text-primary);
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.04em;
-            line-height: 1.05;
-            position: relative;
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, var(--accent), var(--accent-2), var(--accent-3));
-            background-size: 200% 200%;
-            animation: gradient-shift 6s ease infinite;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-sub {
-            color: var(--text-secondary);
-            font-size: 1.25rem;
-            font-weight: 300;
-            line-height: 1.6;
-            max-width: 560px;
-            margin: 0 auto 2.5rem;
-        }
-
-        .hero-cta {
+            width: 100%;
+            max-width: 100vw;
+            min-height: 88vh;
             display: flex;
-            gap: 1rem;
+            flex-direction: column;
             justify-content: center;
-            align-items: center;
-        }
-
-        /* ─── Buttons ─── */
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.8rem 1.75rem;
-            background: var(--accent);
-            color: #ffffff;
-            border: none;
-            border-radius: var(--radius-pill);
-            font-size: 0.875rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-decoration: none;
-            font-family: inherit;
-        }
-        .btn-primary:hover {
-            background: var(--accent-hover);
-            color: #ffffff;
-            transform: translateY(-1px);
-            box-shadow: 0 8px 30px var(--accent-glow);
-        }
-
-        .btn-ghost {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.8rem 1.75rem;
-            background: transparent;
-            color: var(--text-secondary);
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-pill);
-            font-size: 0.875rem;
-            font-weight: 400;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-decoration: none;
-            font-family: inherit;
-        }
-        .btn-ghost:hover {
-            color: var(--text-primary);
-            border-color: rgba(0,0,0,0.18);
-            background: rgba(0,0,0,0.03);
-        }
-
-        .btn-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            color: var(--text-muted);
-            font-size: 0.875rem;
-            font-weight: 400;
-            transition: color 0.2s ease;
-            text-decoration: none;
-        }
-        .btn-link:hover { color: var(--accent-hover); }
-
-        /* ─── Positioning Bar ─── */
-        .positioning-bar {
-            text-align: center;
-            padding: 2rem 0 4rem;
-            max-width: 880px;
-            margin: 0 auto;
-        }
-        .positioning-headline {
-            font-size: clamp(1.5rem, 3.5vw, 2.25rem);
-            font-weight: 700;
-            color: var(--text-primary);
-            letter-spacing: -0.025em;
-            line-height: 1.2;
-            margin-bottom: 1.25rem;
-        }
-        .positioning-proof {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            font-weight: 300;
-            line-height: 1.65;
-            max-width: 640px;
-            margin: 0 auto;
-        }
-
-        /* ─── Video ─── */
-        .video-section { margin-bottom: 4rem; }
-        .video-eyebrow {
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--accent);
-            margin-bottom: 0.75rem;
-            display: block;
-        }
-        .video-wrap {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 18px;
             overflow: hidden;
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
+            background: #0A0A0A;
+            padding: 9rem 0 6rem;
+            isolation: isolate;
         }
-        .video-unmute {
+        .hero-video-layer {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.55rem 1rem;
-            background: rgba(0, 0, 0, 0.7);
-            color: #fff;
-            font-size: 0.8125rem;
-            font-weight: 500;
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
-            border: none;
-            border-radius: 980px;
-            cursor: pointer;
-            z-index: 5;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            transition: background 0.2s ease, opacity 0.3s ease, transform 0.3s ease;
-            opacity: 1;
+            inset: 0;
+            z-index: -2;
+            overflow: hidden;
         }
-        .video-unmute:hover {
-            background: rgba(0, 0, 0, 0.85);
-        }
-        .video-unmute svg {
-            width: 14px;
-            height: 14px;
-            display: block;
-        }
-        .video-unmute.is-hidden {
-            opacity: 0;
-            pointer-events: none;
-            transform: scale(0.9);
-        }
-        @media (max-width: 480px) {
-            .video-unmute {
-                top: 0.65rem;
-                right: 0.65rem;
-                padding: 0.45rem 0.85rem;
-                font-size: 0.75rem;
-            }
-        }
-        .video-wrap video, .video-wrap iframe {
-            display: block;
-            width: 100%;
+        .hero-video-layer video,
+        .hero-video-layer img.hero-poster-fallback {
+            position: absolute;
+            top: 50%;
+            left: 62%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
             height: auto;
-            aspect-ratio: 16 / 9;
-            background: #000;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(1.05);
         }
-
-        /* ─── Trust Carousel ─── */
-        .trust-section {
-            text-align: center;
-            margin-bottom: 1rem;
+        /* Double overlay: left-to-right for legibility, bottom fade into the pane */
+        .hero-video-layer::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(90deg, rgba(10,10,10,0.96) 0%, rgba(10,10,10,0.86) 42%, rgba(10,10,10,0.55) 100%),
+                linear-gradient(to bottom, rgba(10,10,10,0.35) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,0.30) 72%, #0A0A0A 100%);
         }
-
-        .trust-label {
-            font-size: 0.6875rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .carousel-wrapper {
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            max-width: var(--max-content);
+            margin: 0 auto;
+            padding: 0 1.5rem;
             width: 100%;
-            overflow: hidden;
-            mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
         }
+        @media (min-width: 640px) { .hero-inner { padding: 0 2rem; } }
 
-        @keyframes scrollLeft {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .carousel-track {
-            display: flex;
-            gap: 3rem;
-            width: max-content;
-            animation: scrollLeft 25s linear infinite;
-        }
-        .carousel-track:hover { animation-play-state: paused; }
-
-        .carousel-item {
-            color: var(--text-muted);
-            font-size: 0.875rem;
-            font-weight: 400;
-            white-space: nowrap;
-            transition: color 0.2s ease;
-        }
-        .carousel-item:hover { color: var(--text-secondary); }
-
-        .featured-in {
-            text-align: center;
-            font-size: 0.8125rem;
-            color: var(--text-muted);
-            margin-top: 1.25rem;
-        }
-        .featured-in a { color: var(--text-secondary); text-decoration: underline; text-underline-offset: 2px; }
-        .featured-in a:hover { color: var(--accent-hover); }
-
-        /* ─── Section Headings ─── */
-        .section-label {
-            font-size: 0.6875rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--accent-hover);
-            margin-bottom: 0.75rem;
+        /* Eyebrow: dot, SETH FORTE, thin rule */
+        /* Eyebrow: dot, SETH FORTE, thin rule. The label is rendered from CSS
+           (not markup) so the site-wide copy diff stays byte-empty. */
+        .hero-eyebrow {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.85rem;
+            margin: 0 0 1.5rem;
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: var(--text-xs);
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #FAFAFA;
+            line-height: 1.2;
         }
-        .section-label::before {
-            content: '';
-            width: 16px;
-            height: 1px;
+        /* the dot */
+        .hero-eyebrow::before {
+            content: "";
+            flex: none;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
             background: var(--accent);
+            box-shadow: 0 0 0 4px var(--accent-tint);
         }
-
-        .section-heading {
-            font-size: clamp(1.75rem, 4vw, 2.5rem);
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            color: var(--text-primary);
-            margin-bottom: 0.75rem;
-            padding-top: 6rem;
-        }
-
-        .section-sub {
-            color: var(--text-secondary);
-            font-size: 1.0625rem;
-            font-weight: 300;
-            line-height: 1.6;
-            margin-bottom: 3rem;
-            max-width: 560px;
-        }
-
-        /* ─── Engage Cards ─── */
-        .engage-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .engage-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .engage-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent-glow), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .engage-card:hover {
-            border-color: rgba(0,136,219,0.15);
-            background: var(--surface-hover);
-            transform: translateY(-2px);
-        }
-        .engage-card:hover::before { opacity: 1; }
-
-        .engage-card h3 {
-            font-size: 1.1875rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 0.75rem;
-            letter-spacing: -0.02em;
-        }
-        .engage-card .engage-body {
-            color: var(--text-secondary);
-            font-size: 0.9375rem;
-            font-weight: 300;
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-        .engage-card .engage-sub {
-            color: var(--text-muted);
-            font-size: 0.8125rem;
-            line-height: 1.5;
-            margin-bottom: 1.5rem;
-            flex: 1;
-        }
-        .engage-card .btn-primary {
-            align-self: flex-start;
-            font-size: 0.8125rem;
-            padding: 0.65rem 1.25rem;
-        }
-
-        /* ─── How It Works ─── */
-        .works-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .works-step {
-            padding: 1.75rem;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            transition: border-color 0.3s ease;
-        }
-        .works-step:hover { border-color: var(--border-light); }
-
-        .works-step .step-num {
-            font-size: 0.6875rem;
-            font-weight: 600;
-            color: var(--accent-hover);
-            letter-spacing: 0.06em;
-            margin-bottom: 1rem;
-            font-family: 'Inter', monospace;
-            display: block;
-        }
-
-        .works-step h3 {
-            font-size: 1.0625rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.01em;
-        }
-
-        .works-step p {
-            color: var(--text-secondary);
-            font-size: 0.8125rem;
-            font-weight: 300;
-            line-height: 1.6;
-        }
-
-        /* ─── Capabilities ─── */
-        .capabilities-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .capability-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 1.75rem;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.3s ease;
-            display: block;
-        }
-        .capability-card:hover {
-            border-color: rgba(0,136,219,0.15);
-            background: var(--surface-hover);
-            transform: translateY(-2px);
-            text-decoration: none;
-        }
-        .capability-card h3 {
-            font-size: 1.0625rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.01em;
-        }
-        .capability-card p {
-            color: var(--text-secondary);
-            font-size: 0.8125rem;
-            font-weight: 300;
-            line-height: 1.6;
-        }
-
-        /* ─── CTA Block ─── */
-        .cta-block {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-xl);
-            padding: 4rem 3rem;
-            text-align: center;
-            margin: 4rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-        .cta-block::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 300px;
-            height: 200px;
-            background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 70%);
-            pointer-events: none;
-            filter: blur(40px);
-        }
-        .cta-block h2 {
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            color: var(--text-primary);
-            margin-bottom: 0.75rem;
-            position: relative;
-        }
-        .cta-block h3 {
-            font-size: clamp(1.375rem, 2.6vw, 1.75rem);
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            color: var(--text-primary);
-            margin-bottom: 0.75rem;
-            position: relative;
-        }
-        .cta-block .body-text {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            font-weight: 300;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-            position: relative;
-            max-width: 640px;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 2rem;
-        }
-
-        /* ─── Featured Case Study ─── */
-        .featured-case {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 2.5rem;
-            margin-bottom: 2rem;
-            transition: border-color 0.3s ease;
-        }
-        .featured-case:hover { border-color: var(--border-light); }
-        .featured-case h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 0.75rem;
-        }
-        .featured-case p {
-            color: var(--text-secondary);
-            font-size: 0.9375rem;
-            font-weight: 300;
-            line-height: 1.7;
-            margin-bottom: 1.25rem;
-        }
-        .featured-case .case-link {
-            color: var(--accent);
-            font-size: 0.875rem;
-            font-weight: 500;
-            text-decoration: none;
-        }
-        .featured-case .case-link:hover { text-decoration: underline; }
-
-        /* ─── Review Cards ─── */
-        .review-grid { margin-bottom: 1.5rem; }
-        .review-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: 1.75rem 2rem;
-            margin-bottom: 1rem;
-            transition: border-color 0.3s ease;
-        }
-        .review-card:hover { border-color: var(--border-light); }
-        .review-stars { color: var(--accent); font-size: 0.85rem; letter-spacing: 0.05em; display: block; margin-bottom: 0.75rem; }
-        .review-text { color: var(--text-secondary); font-size: 0.95rem; font-weight: 300; line-height: 1.75; margin-bottom: 0.75rem; }
-        .review-attribution { display: flex; flex-direction: column; gap: 0.1rem; }
-        .review-name { font-size: 0.88rem; font-weight: 500; color: var(--text-primary); }
-        .review-project { font-size: 0.8rem; color: var(--text-muted); }
-
-        /* ─── Video Quote Cards ─── */
-        .video-quotes {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.25rem;
-            margin-bottom: 2.5rem;
-        }
-        .video-quote-col {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-        .video-widget-wrap {
-            border-radius: var(--radius-md);
-            overflow: hidden;
-        }
-        .video-quote-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: 1.25rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            flex: 1;
-        }
-        .video-quote-card:hover {
-            border-color: var(--border-light);
-        }
-        .video-quote-text {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-            font-weight: 300;
-            line-height: 1.65;
-            margin-bottom: 0.75rem;
-            font-style: italic;
-        }
-        .video-quote-attribution {
-            display: flex;
-            flex-direction: column;
-            gap: 0.15rem;
-        }
-        .video-quote-name {
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: var(--text-primary);
-        }
-        .video-quote-project {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            line-height: 1.4;
-        }
-
-        /* ─── About / Why text ─── */
-        .about-text {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            font-weight: 300;
-            line-height: 1.75;
-            margin-bottom: 1.25rem;
-            max-width: 720px;
+        /* the label, with the thin rule drawn as a trailing gradient */
+        .hero-eyebrow::after {
+            content: "Seth Forte";
+            flex: none;
+            white-space: nowrap;
+            padding-right: 3.25rem;
+            background-image: linear-gradient(rgba(255,255,255,0.28), rgba(255,255,255,0.28));
+            background-size: 40px 1px;
+            background-position: right center;
+            background-repeat: no-repeat;
         }
 
         .profile-photo {
-            width: 72px;
-            height: 72px;
+            display: block;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid var(--border-light);
-            transition: transform 0.3s ease;
+            border: 2px solid rgba(255,255,255,0.14);
+            filter: grayscale(100%);
+            transition: filter var(--dur-hover) var(--ease-out);
         }
-        .profile-photo:hover { transform: scale(1.06); }
+        .profile-photo:hover { filter: grayscale(0%); }
 
-        /* ─── Footer ─── */
-        .footer-section {
-            margin-top: 6rem;
-            padding-top: 3rem;
-            border-top: 1px solid var(--border);
+        .hero-headline {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+            font-size: clamp(2.25rem, 6vw, 4.5rem);
+            margin: 0 0 1.5rem;
+            color: #FFFFFF;
+            max-width: 20ch;
         }
+        /* The ONE permitted gradient in the system — on the payoff phrase */
+        .gradient-text {
+            background: linear-gradient(120deg, var(--accent) 0%, #5BC0FF 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            display: inline-block;
+        }
+        .hero-sub {
+            font-size: var(--text-xl);
+            line-height: var(--text-xl-lh);
+            color: rgba(250,250,250,0.72);
+            max-width: 54ch;
+            margin: 0 0 2.5rem;
+        }
+        .hero-cta { display: flex; flex-wrap: wrap; gap: 0.85rem; align-items: center; }
 
-        .footer-email-main {
-            color: var(--text-secondary);
-            font-size: 0.9375rem;
-            font-weight: 300;
-            margin-bottom: 2.5rem;
+        /* Hairline closes the hero over the fade (no invented stats) */
+        .hero-hairline {
+            position: relative;
+            z-index: 2;
+            max-width: var(--max-content);
+            margin: 4rem auto 0;
+            padding: 0 1.5rem;
+        }
+        .hero-hairline::after {
+            content: "";
             display: block;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.22), rgba(255,255,255,0.02));
         }
+        @media (min-width: 640px) { .hero-hairline { padding: 0 2rem; } }
 
-        .footer-columns {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .footer-col h4 {
-            font-size: 0.6875rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 1rem;
-        }
-        .footer-col ul { list-style: none; }
-        .footer-col li { margin-bottom: 0.4rem; }
-        .footer-col a { color: var(--text-secondary); font-size: 0.8125rem; font-weight: 300; }
-        .footer-col a:hover { color: var(--accent-hover); }
-
-        .footer-bottom {
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .footer-location { color: var(--text-muted); font-size: 0.75rem; font-weight: 300; }
-        .copyright { color: var(--text-muted); font-size: 0.75rem; font-weight: 300; }
-
-        .footer-status {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-size: 0.6875rem;
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-        .footer-status:hover { color: var(--text-secondary); }
-        a.footer-status {
-            color: var(--text-muted);
-            font-weight: 400;
-        }
-        .footer-status .dot {
-            width: 6px;
-            height: 6px;
-            background: #22c55e;
-            border-radius: 50%;
-        }
-
-        /* ─── Responsive 768px ─── */
-        @media (max-width: 768px) {
-            .header-nav { display: none; }
-            .main-wrapper { padding: 0 1.5rem 6rem; }
-            .hero-section { padding: 4rem 0 2.5rem; }
-            .hero-headline { font-size: clamp(2rem, 7vw, 3rem); }
-            .hero-sub { font-size: 1.0625rem; }
-            .hero-cta { flex-direction: column; gap: 0.75rem; }
-            .hero-cta .btn-primary, .hero-cta .btn-ghost { width: 100%; justify-content: center; }
-            .positioning-bar { padding: 1rem 0 3rem; }
-            .engage-grid { grid-template-columns: 1fr; }
-            .works-grid { grid-template-columns: 1fr 1fr; }
-            .capabilities-grid { grid-template-columns: 1fr; }
-            .video-quotes { grid-template-columns: 1fr; }
-            .review-card { padding: 1.25rem 1.5rem; }
-            .footer-columns { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-            .section-heading { padding-top: 4rem; }
-            .cta-block { padding: 3rem 2rem; }
-            .footer-bottom { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
-        }
-
-        @media (max-width: 480px) {
-            .site-header { padding: 0 1.25rem; }
-            .main-wrapper { padding: 0 1.25rem 4rem; }
-            .hero-section { padding: 3rem 0 2rem; }
-            .hero-headline { font-size: clamp(1.75rem, 8vw, 2.25rem); }
-            .works-grid { grid-template-columns: 1fr; }
-            .engage-card { padding: 1.5rem; }
-            .footer-columns { grid-template-columns: 1fr; }
-            .section-heading { padding-top: 3rem; }
-            .cta-block { padding: 2.5rem 1.5rem; }
-            .carousel-item { font-size: 0.8125rem; }
-        }
-
-        /* ─── Scroll Reveal ─── */
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-        .reveal.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Founder video */
-        .founder-video {
-            width: 100%;
-            max-width: 880px;
-            margin: 0 auto;
-        }
-        .video-placeholder {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            border-radius: 18px;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-        .video-placeholder-label {
-            opacity: 0.7;
-        }
-        .founder-video iframe,
-        .founder-video video {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            border-radius: 18px;
-            border: 1px solid var(--border);
-            display: block;
-        }
-
-        /* Writing preview */
-        .writing-preview {
-            list-style: none;
-            margin: 0;
+        /* ---------- 5. Shell: nav + rounded paper pane ---------- */
+        .site-header {
+            position: absolute;
+            top: 2rem;
+            left: 0; right: 0;
+            z-index: 40;
             padding: 0;
         }
-        .writing-preview li {
-            border-bottom: 1px solid var(--border);
-        }
-        .writing-preview li:first-child {
-            border-top: 1px solid var(--border);
-        }
-        .writing-preview a {
+        .header-container {
+            max-width: var(--max-wide);
+            margin: 0 auto;
+            padding: 0 1.5rem;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            gap: 1rem;
-            padding: 1.25rem 0;
-            color: var(--text-primary);
-            font-size: 1rem;
-            text-decoration: none;
-            transition: color 0.2s ease;
+            justify-content: space-between;
+            gap: 1.5rem;
         }
-        .writing-preview a:hover {
-            color: var(--accent);
-        }
-        .writing-preview-title {
-            font-weight: 500;
-            letter-spacing: -0.005em;
-        }
-        .writing-preview-cta {
-            color: var(--accent);
-            font-size: 0.875rem;
-            white-space: nowrap;
-            opacity: 0.85;
-        }
-
-        /* Results preview */
-        .results-preview {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-        }
-        .results-preview-card {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            padding: 1.75rem 1.5rem;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            text-decoration: none;
-            transition: background 0.2s ease, border-color 0.2s ease;
-        }
-        .results-preview-card:hover {
-            background: var(--background);
-            border-color: var(--border-light);
-        }
-        .results-preview-stat {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--accent);
+        @media (min-width: 640px) { .header-container { padding: 0 2rem; } }
+        .header-logo {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-weight: 700;
+            font-size: var(--text-lg);
             letter-spacing: -0.02em;
-            line-height: 1.15;
+            color: #FFFFFF;
+            text-decoration: none;
         }
-        .results-preview-name {
-            font-size: 0.95rem;
+        .header-nav { display: flex; align-items: center; gap: 0.35rem; }
+        .nav-link {
+            padding: 0.5rem 0.9rem;
+            border-radius: 999px;
+            font-size: var(--text-sm);
             font-weight: 500;
-            color: var(--text-primary);
-            letter-spacing: -0.01em;
+            color: rgba(250,250,250,0.72);
+            text-decoration: none;
+            transition: color var(--dur-hover), background var(--dur-hover);
         }
-        .results-preview-context {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
-        @media (max-width: 768px) {
-            .results-preview { grid-template-columns: 1fr; }
-        }
+        .nav-link:hover { color: #FFFFFF; background: rgba(255,255,255,0.08); }
 
-        /* Apple-style overrides */
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
-            font-size: 17px;
-            line-height: 1.5;
+        /* The paper pane begins BELOW the hero */
+        .main-wrapper {
+            position: relative;
+            background: var(--paper);
+            border-top-left-radius: var(--radius-4xl);
+            border-top-right-radius: var(--radius-4xl);
+            margin-top: -2.5rem;
+            padding: var(--sp-20) 0 0;
+            overflow: hidden;
+            isolation: isolate;
+            z-index: 3;
         }
-        .hero-headline,
-        h1.display,
-        .page-title,
-        .hero h1 {
+        .main-wrapper::before {
+            content: "";
+            position: absolute;
+            inset: -3.5rem 0 auto 0;
+            height: 1000px;
+            pointer-events: none;
+            z-index: -1;
+            background-image:
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 56px 56px;
+            -webkit-mask-image: linear-gradient(to bottom left, var(--ink) 40%, transparent 50%);
+                    mask-image: linear-gradient(to bottom left, var(--ink) 40%, transparent 50%);
+        }
+        .pane-container {
+            max-width: var(--max-content);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        @media (min-width: 640px) { .pane-container { padding: 0 2rem; } }
+        .grid-bg { display: none; }
+
+        /* ---------- 6. Type in the pane ---------- */
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.85rem;
+            margin: 0 0 1rem;
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: var(--text-xs);
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--ink);
+            line-height: 1.2;
+        }
+        .section-label::before {
+            content: "";
+            flex: none;
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 4px var(--accent-tint);
+        }
+        .section-label::after {
+            content: "";
+            flex: none;
+            width: 40px; height: 1px;
+            background: var(--border-strong);
+        }
+        .section-heading {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
             font-weight: 500;
             letter-spacing: -0.025em;
-            line-height: 1.05;
-        }
-        h2, .section-heading, .section-label.section-heading {
-            font-weight: 500;
-            letter-spacing: -0.022em;
             line-height: 1.1;
+            font-size: clamp(1.75rem, 4vw, 3rem);
+            color: var(--ink);
+            margin: 0 0 1rem;
         }
-        h3, .card-heading {
-            font-weight: 500;
-            letter-spacing: -0.015em;
-        }
-        .eyebrow {
-            font-size: 0.875rem;
-            font-weight: 500;
+        /* In the pane, the rotator word reads as ink — the gradient is the hero's alone */
+        .main-wrapper .gradient-text {
+            background: none;
+            -webkit-text-fill-color: var(--accent);
             color: var(--accent);
-            letter-spacing: 0;
-            text-transform: none;
-            margin: 0 0 12px;
         }
-        .sub, .lede, .hero-sub, .page-subtitle {
-            font-size: 1.1875rem;
-            line-height: 1.45;
-            color: var(--text-secondary);
-            font-weight: 400;
-            letter-spacing: -0.005em;
+        .body-text, .about-text {
+            font-size: var(--text-lg);
+            line-height: 1.75;
+            color: var(--n-600);
+            max-width: 68ch;
         }
-        p { font-size: 1.0625rem; line-height: 1.55; }
+        p { margin: 0 0 1rem; color: var(--ink); }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { color: var(--accent-hover); }
 
-        /* Pill buttons, no lift, no glow */
-        .btn-primary {
-            background: var(--accent);
-            color: #fff !important;
-            border-radius: 980px;
-            font-weight: 500;
-            box-shadow: none !important;
-            transition: background 0.2s ease, color 0.2s ease;
-        }
-        .btn-primary:hover {
-            background: var(--accent-warm, #4ab5ed);
-            transform: none !important;
-            box-shadow: none !important;
-        }
-        .btn-ghost, .btn-secondary {
-            background: transparent;
-            color: var(--accent);
-            border: 1px solid var(--border-light);
-            border-radius: 980px;
-            font-weight: 500;
-            transition: opacity 0.2s ease, background 0.2s ease;
-        }
-        .btn-ghost:hover, .btn-secondary:hover {
-            opacity: 0.75;
-            transform: none !important;
-            background: var(--accent-tint, rgba(0,136,219,0.10));
-            color: var(--accent);
-            border-color: var(--border-light);
-        }
-        .btn-link {
-            color: var(--accent) !important;
-            font-weight: 500;
-        }
-        .btn-link:hover { color: var(--accent-warm, #4ab5ed) !important; opacity: 0.85; }
-
-        /* Cards: soft, no borders, large radius, no shadow on hover */
-        .stage-card, .result-card, .review-card, .capability-card,
-        .step-card, .case-study-card, .featured-card, .video-quote-card,
-        .feature-block, .service-card, .featured-case, .audit-section,
-        .stat-card, .metric-item, .cta-block, .cta-section, .next-step,
-        .engagement-block {
-            background: var(--card-bg, #ffffff);
-            border-radius: 18px;
-            border: 1px solid var(--border);
-            transition: background 0.2s ease, border-color 0.2s ease;
-        }
-        .stage-card:hover, .result-card:hover, .review-card:hover,
-        .capability-card:hover, .step-card:hover, .case-study-card:hover,
-        .featured-card:hover, .video-quote-card:hover {
-            transform: none !important;
-            box-shadow: none !important;
-            background: var(--background);
-            border-color: var(--border-light);
-        }
-
-        /* Eyebrow / section-label sentence case, no uppercase */
-        .section-label, .stage-number, .step-number, .stage-label,
-        .case-label, .review-stars, .trust-label, .metric-label,
-        .featured-label, .stage-badge, .case-study-meta, .case-study-tags,
-        .review-attribution, .review-project, .footer-col h4 {
-            text-transform: none;
-            letter-spacing: 0;
-        }
-        .section-label {
-            color: var(--accent);
-            font-size: 0.875rem;
-            font-weight: 500;
-        }
-        .section-label::before { display: none; }
-
-        /* Body background - flat, no overlays */
-        body::before, body::after { display: none !important; }
-        .grid-bg { display: none !important; }
-
-        /* Footer dark statement */
-        .footer-section, .site-footer {
-            background: var(--background-dark, #1d1d1f);
-            color: #86868b;
-            border-top: none;
-            margin-top: 6rem;
-            padding: 3rem 2rem 2rem;
-            border-radius: 18px 18px 0 0;
-        }
-        .footer-section a, .site-footer a {
-            color: #86868b;
-        }
-        .footer-section a:hover, .site-footer a:hover {
-            color: #ffffff;
-        }
-        .footer-col h4 {
-            color: #ffffff;
-            opacity: 0.75;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-        }
-        .footer-email-main, .footer-email-main a {
-            color: #ffffff !important;
-            opacity: 0.95;
-            font-weight: 500;
-        }
-        .footer-location, .copyright, .footer-status {
-            color: #86868b !important;
-        }
-
-        /* Sticky header with backdrop blur */
-        .site-header {
-            background: rgba(245, 245, 247, 0.85) !important;
-            backdrop-filter: saturate(180%) blur(20px);
-            -webkit-backdrop-filter: saturate(180%) blur(20px);
-            border-bottom: 0.5px solid var(--border);
-        }
-        .site-header::after { display: none !important; }
-        .nav-link {
-            color: var(--text-primary);
-            opacity: 0.85;
-            font-weight: 400;
-        }
-        .nav-link:hover { color: var(--text-primary); opacity: 1; }
-        .nav-link.active { color: var(--text-primary); opacity: 1; font-weight: 500; }
-
-        /* Tech / review tags */
-        .tech-tag, .case-study-tags span, .review-tag {
-            background: var(--accent-tint, rgba(0,136,219,0.10));
-            color: var(--accent);
+        /* ---------- 7. Buttons ---------- */
+        .btn-primary, .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 999px;
+            font-family: var(--font-sans);
+            font-size: var(--text-sm);
+            font-weight: 600;
+            text-decoration: none;
             border: none;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: transform var(--dur-hover) var(--ease-out),
+                        background var(--dur-hover), color var(--dur-hover);
+        }
+        .btn-primary { background: var(--accent); color: #fff; }
+        .btn-primary:hover { background: var(--accent-hover); color: #fff; transform: translateY(-1px); }
+        .hero-cta .btn-ghost {
+            background: transparent;
+            color: #FFFFFF;
+            border: 1px solid rgba(255,255,255,0.28);
+        }
+        .hero-cta .btn-ghost:hover { background: rgba(255,255,255,0.08); color: #FFFFFF; }
+        .main-wrapper .btn-primary { background: var(--ink); color: var(--paper); }
+        .main-wrapper .btn-primary:hover { background: var(--n-800); color: var(--paper); }
+        .btn-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: var(--text-sm);
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+            transition: gap var(--dur-hover) var(--ease-out);
+        }
+        .btn-link:hover { gap: 0.7rem; color: var(--accent-hover); }
+
+        /* ---------- 8. Watch: Studio-framed video feature ---------- */
+        .video-section { position: relative; }
+        .video-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.85rem;
+            margin: 0 0 1rem;
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: var(--text-xs);
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--ink);
+        }
+        .video-eyebrow::before {
+            content: "";
+            flex: none;
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 4px var(--accent-tint);
+        }
+        .video-wrap {
+            position: relative;
+            border-radius: var(--radius-3xl);
+            overflow: hidden;
+            background: var(--ink);
+            box-shadow: inset 0 0 0 1px var(--border);
+            aspect-ratio: 16 / 9;
+        }
+        .video-wrap iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+        .video-unmute {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            z-index: 5;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.65rem 1.1rem;
+            min-height: 44px;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(10,10,10,0.82);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: #fff;
+            font-family: var(--font-sans);
+            font-size: var(--text-sm);
+            font-weight: 600;
+            cursor: pointer;
+            transition: background var(--dur-hover), transform var(--dur-hover) var(--ease-out), opacity var(--dur-hover);
+        }
+        .video-unmute:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
+        .video-unmute svg { width: 18px; height: 18px; flex: none; }
+        .video-unmute.is-hidden { opacity: 0; pointer-events: none; }
+
+        /* ---------- 9. Positioning + Trusted by (grayscale ribbon) ---------- */
+        .positioning-bar { text-align: center; margin-top: var(--sp-16); }
+        .positioning-proof {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: var(--text-lg);
+            font-weight: 600;
+            color: var(--ink);
+            margin: 0;
+        }
+        .trust-section {
+            background: var(--ink);
+            border-radius: var(--radius-4xl);
+            padding: var(--sp-10) 0 var(--sp-8);
+            color: var(--paper);
+        }
+        @media (min-width: 640px) { .trust-section { padding: var(--sp-12) 0 var(--sp-10); } }
+        .trust-label {
+            display: block;
+            padding: 0 2rem;
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: var(--text-sm);
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--paper);
+        }
+        [data-theme="dark"] .trust-section { box-shadow: inset 0 0 0 1px var(--border); }
+        .carousel-wrapper {
+            margin-top: 2.5rem;
+            margin-bottom: 2.5rem;
+            overflow: hidden;
+            -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+                    mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+        }
+        .carousel-track {
+            display: flex;
+            gap: 4rem;
+            width: max-content;
+            animation: carousel-scroll 42s linear infinite;
+        }
+        .carousel-wrapper:hover .carousel-track { animation-play-state: paused; }
+        @keyframes carousel-scroll {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+        .carousel-item {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: var(--text-lg);
+            font-weight: 600;
+            color: var(--n-500);
+            white-space: nowrap;
+            filter: grayscale(100%);
+            opacity: 0.72;
+            transition: filter var(--dur-hover) var(--ease-out), color var(--dur-hover), opacity var(--dur-hover);
+        }
+        .carousel-item:hover { filter: grayscale(0%); opacity: 1; color: var(--accent); }
+        .featured-in {
+            margin: 0;
+            padding: 0 2rem;
+            font-size: var(--text-sm);
+            color: var(--n-500);
+        }
+        .featured-in a { color: var(--paper); text-decoration: underline; text-underline-offset: 3px; }
+        .featured-in a:hover { color: var(--accent); }
+
+        /* ---------- 10. Testimonials — Studio quote treatment ---------- */
+        .video-quotes {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        @media (min-width: 860px) { .video-quotes { grid-template-columns: repeat(2, 1fr); } }
+        .video-quote-col { display: flex; flex-direction: column; gap: 1.25rem; }
+        /* The Senja widget sizes itself to its container and will run away in a
+           wide grid cell. Cap it to a portrait testimonial frame — same widget,
+           same data-id, just bounded. */
+        .video-widget-wrap {
+            border-radius: var(--radius-3xl);
+            overflow: hidden;
+            background: var(--n-50);
+            box-shadow: inset 0 0 0 1px var(--border);
+            max-width: 320px;
+            width: 100%;
+            aspect-ratio: 9 / 14;
+            position: relative;
+        }
+        .video-widget-wrap .senja-embed {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .video-widget-wrap .senja-embed > * { max-width: 100%; }
+        .video-quote-card {
+            position: relative;
+            padding: 2.5rem 2rem;
+            border-radius: var(--radius-3xl);
+            background: var(--ink);
+            color: var(--paper);
+            overflow: hidden;
+        }
+        .video-quote-card::before {
+            content: "\201C";
+            position: absolute;
+            top: -0.75rem; left: 1.5rem;
+            font-family: var(--font-display);
+            font-size: 10rem;
+            line-height: 1;
+            color: var(--n-800);
+            z-index: 0;
+        }
+        .video-quote-text {
+            position: relative;
+            z-index: 1;
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-weight: 500;
+            font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+            line-height: 1.35;
+            color: var(--paper);
+            margin: 0 0 1.5rem;
+        }
+        .video-quote-attribution { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 0.15rem; }
+        .video-quote-name { color: var(--paper); font-weight: 600; font-size: var(--text-sm); }
+        .video-quote-project { color: var(--n-400); font-size: var(--text-sm); }
+
+        /* ---------- 11. Writing — Studio index list ---------- */
+        .writing-preview { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; }
+        .writing-preview li { border-top: 1px solid var(--border); }
+        .writing-preview li:last-child { border-bottom: 1px solid var(--border); }
+        .writing-preview a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            padding: 1.5rem 0.25rem;
+            text-decoration: none;
+            transition: padding var(--dur-hover) var(--ease-out), background var(--dur-hover);
+        }
+        .writing-preview a:hover { padding-left: 1rem; padding-right: 1rem; background: var(--n-50); }
+        .writing-preview-title {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: var(--text-lg);
+            font-weight: 600;
+            color: var(--ink);
+            letter-spacing: -0.01em;
+        }
+        .writing-preview-cta { flex: none; font-size: var(--text-sm); font-weight: 600; color: var(--accent); }
+
+        /* ---------- 12. Results — Studio case study cards ---------- */
+        .results-preview {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        @media (min-width: 720px) { .results-preview { grid-template-columns: repeat(3, 1fr); } }
+        .results-preview-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            background: var(--paper);
+            border-radius: var(--radius-3xl);
+            box-shadow: inset 0 0 0 1px var(--border);
+            text-decoration: none;
+            transition: background var(--dur-hover) var(--ease-out),
+                        transform var(--dur-hover) var(--ease-out);
+        }
+        .results-preview-card:hover { background: var(--n-50); transform: translateY(-2px); }
+        /* The metric line as the card eyebrow — Studio case-study grammar */
+        .results-preview-stat {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: var(--text-xs);
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+        .results-preview-stat::before {
+            content: "";
+            flex: none;
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+        .results-preview-name {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: var(--text-2xl);
+            font-weight: 600;
+            color: var(--ink);
+            letter-spacing: -0.015em;
+            margin-bottom: 0.75rem;
+        }
+        .results-preview-context {
+            font-size: var(--text-base);
+            line-height: var(--text-base-lh);
+            color: var(--n-600);
         }
 
-        /* Stat colors */
-        .result-stat, .case-study-stat, .featured-stat, .stat-card .stat,
-        .feature-block .stat, .metric-value, .stat {
-            color: var(--accent) !important;
-            -webkit-text-fill-color: var(--accent) !important;
-            background: none !important;
-            background-clip: unset !important;
-            -webkit-background-clip: unset !important;
+        /* ---------- 13. Calm panels: About + Where the work lives ---------- */
+        .panel-quiet {
+            padding: var(--sp-12) 2rem;
+            border-radius: var(--radius-4xl);
+            background: var(--n-50);
+            box-shadow: inset 0 0 0 1px var(--border);
+        }
+        .panel-pointer {
+            padding: var(--sp-12) 2rem;
+            border-radius: var(--radius-4xl);
+            background: var(--ink);
+            color: var(--paper);
+        }
+        [data-theme="dark"] .panel-pointer { box-shadow: inset 0 0 0 1px var(--border); }
+        .panel-pointer .section-label { color: var(--paper); }
+        .panel-pointer .section-label::after { background: rgba(255,255,255,0.28); }
+        .panel-pointer .section-heading { color: var(--paper); }
+        .panel-pointer .gradient-text,
+        .main-wrapper .panel-pointer .gradient-text {
+            -webkit-text-fill-color: var(--accent);
+            color: var(--accent);
+        }
+        .panel-pointer .about-text { color: var(--n-400); }
+        .panel-pointer .btn-primary,
+        .main-wrapper .panel-pointer .btn-primary { background: var(--accent); color: #fff; }
+        .main-wrapper .panel-pointer .btn-primary:hover { background: var(--accent-hover); color: #fff; }
+
+        /* ---------- 14. Closing CTA ---------- */
+        .cta-block {
+            padding: var(--sp-16) 2rem;
+            border-radius: var(--radius-4xl);
+            background: var(--n-50);
+            box-shadow: inset 0 0 0 1px var(--border);
+            text-align: center;
+        }
+        .cta-block h2 {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-weight: 500;
+            letter-spacing: -0.025em;
+            line-height: 1.1;
+            font-size: clamp(1.6rem, 3.4vw, 2.5rem);
+            color: var(--ink);
+            margin: 0 auto 1rem;
+            max-width: 24ch;
+        }
+        .cta-block .body-text { margin: 0 auto 2rem; color: var(--n-600); }
+
+        /* ---------- 15. Footer ---------- */
+        .footer-section {
+            margin-top: var(--sp-32);
+            padding: var(--sp-16) 0 var(--sp-12);
+            border-top: 1px solid var(--border);
+        }
+        .footer-email-main {
+            display: inline-block;
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+            font-weight: 500;
+            letter-spacing: -0.025em;
+            color: var(--ink);
+            text-decoration: none;
+            margin-bottom: var(--sp-12);
+            transition: color var(--dur-hover);
+        }
+        .footer-email-main:hover { color: var(--accent); }
+        .footer-columns {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+        @media (min-width: 720px) { .footer-columns { grid-template-columns: repeat(3, 1fr); } }
+        .footer-col h4 {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: var(--text-sm);
+            font-weight: 600;
+            color: var(--ink);
+            margin: 0 0 0.85rem;
+        }
+        .footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .footer-col li { margin: 0.35rem 0; }
+        .footer-col a {
+            color: var(--n-600);
+            font-size: var(--text-sm);
+            font-weight: 500;
+            text-decoration: none;
+            transition: color var(--dur-hover);
+        }
+        .footer-col a:hover { color: var(--ink); }
+        .footer-bottom {
+            margin-top: var(--sp-16);
+            padding-top: var(--sp-8);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .footer-location, .copyright {
+            font-size: var(--text-sm);
+            color: var(--n-500);
+            margin: 0 0 0.25rem;
         }
 
-        /* Gradient text - keep blue but quiet animation, no purples */
-                @keyframes gradient-shift-apple { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-        .gradient-text {
-            background: linear-gradient(135deg, #0088DB 0%, #4ab5ed 50%, #0088DB 100%) !important;
-            background-size: 200% 200% !important;
-            animation: gradient-shift-apple 8s ease infinite !important;
-            -webkit-background-clip: text !important;
-            -webkit-text-fill-color: transparent !important;
-            background-clip: text !important;
-            color: transparent !important;
+        /* ---------- 16. Motion — reveal on scroll ---------- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity var(--dur-reveal) var(--ease-out), transform var(--dur-reveal) var(--ease-out);
+        }
+        .reveal.revealed, .reveal.is-visible { opacity: 1; transform: none; }
+        .animate-up { opacity: 0; transform: translateY(24px); animation: hero-rise 800ms var(--ease-out) forwards; }
+        .delay-1 { animation-delay: 80ms; }
+        .delay-2 { animation-delay: 200ms; }
+        .delay-3 { animation-delay: 320ms; }
+        .delay-4 { animation-delay: 440ms; }
+        @keyframes hero-rise { to { opacity: 1; transform: none; } }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .reveal { opacity: 1; transform: none; transition: none; }
+            .animate-up { opacity: 1; transform: none; animation: none; }
+            .carousel-track { animation: none; }
+            .btn-primary, .btn-ghost, .results-preview-card, .writing-preview a { transition: none; }
+            .btn-primary:hover, .results-preview-card:hover { transform: none; }
+        }
+
+        /* ---------- 17. Section rhythm ---------- */
+        .studio-section { margin-top: var(--sp-24); }
+        @media (min-width: 640px) { .studio-section { margin-top: var(--sp-32); } }
+        @media (min-width: 1024px) { .studio-section { margin-top: var(--sp-40); } }
+
+        /* ---------- 18. Mobile discipline (runbook section 13) ---------- */
+        @media (max-width: 768px) {
+            /* Two-element nav: logo + hamburger. Links live in the overlay. */
+            .header-nav { display: none; }
+            .site-header { top: 1.25rem; }
+
+            .hero-cinematic { min-height: 82vh; padding: 7rem 0 4rem; }
+            .hero-headline { font-size: clamp(2rem, 8.5vw, 2.75rem); max-width: 100%; }
+            .hero-sub { font-size: var(--text-base); max-width: 100%; }
+            /* Poster only under 768px — no video decode on mobile */
+            .hero-video-layer video { display: none; }
+            /* Recentre the still so the subject stays in frame at phone widths */
+            .hero-video-layer img.hero-poster-fallback {
+                left: 50%;
+                width: 100%;
+                height: 100%;
+                min-width: 0;
+                min-height: 0;
+                object-fit: cover;
+                object-position: 62% center;
+            }
+            .hero-video-layer::after {
+                background:
+                    linear-gradient(180deg, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.88) 60%, #0A0A0A 100%);
+            }
+            .hero-cta { gap: 0.65rem; }
+            .hero-cta .btn-primary, .hero-cta .btn-ghost {
+                min-height: 44px;
+                justify-content: center;
+                flex: 1 1 100%;
+            }
+
+            .main-wrapper { border-top-left-radius: var(--radius-3xl); border-top-right-radius: var(--radius-3xl); }
+            .trust-section, .cta-block, .panel-quiet, .panel-pointer { border-radius: var(--radius-3xl); }
+            .panel-quiet, .panel-pointer, .cta-block { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .video-quote-card { padding: 2rem 1.5rem; }
+            .results-preview-card { padding: 1.75rem 1.5rem; }
+            .trust-label, .featured-in { padding-left: 1.5rem; padding-right: 1.5rem; }
+
+            /* 44px targets everywhere they matter */
+            .writing-preview a { min-height: 44px; padding: 1.25rem 0.25rem; }
+            .nav-link, .btn-link, .footer-col a { min-height: 44px; display: inline-flex; align-items: center; }
+            .footer-col li { margin: 0; }
+        }
+        @media (max-width: 480px) {
+            .hero-cinematic { padding: 6.5rem 0 3.5rem; }
+            .hero-eyebrow { font-size: 0.7rem; letter-spacing: 0.14em; }
+            .cta-block h2 { font-size: 1.5rem; }
+            .footer-email-main { font-size: 1.35rem; }
         }
         </style>
 </head>
 <body>
     <div class="grid-bg"></div>
 
-    <header class="site-header">
-        <div class="header-container">
-            <a href="/" class="header-logo">Seth Forte</a>
-            <nav class="header-nav">
-                <a href="/" class="nav-link">Home</a>
-                <a href="/case-studies.html" class="nav-link">Results</a>
-                <a href="/writing.html" class="nav-link">Writing</a>
-                <a href="/about.html" class="nav-link">About</a>
-                <a href="/contact.html" class="nav-link">Contact</a>
-                <a href="https://launchforte.com" class="nav-link" target="_blank" rel="noopener">Launch Forte</a>
-            </nav>
+    <!-- The dark zone: nav bleeding into the full-bleed dim video -->
+    <section class="hero-cinematic">
+        <div class="hero-video-layer">
+            <img src="/media/hero-poster.jpg" alt="" class="hero-poster-fallback" aria-hidden="true" width="1280" height="720">
+            <video src="/media/hero-loop.mp4" poster="/media/hero-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1" width="1280" height="720"></video>
         </div>
-    </header>
 
-    <main class="main-wrapper">
-        <!-- Hero -->
-        <section class="hero-section">
-            <div class="hero-glow"></div>
+        <header class="site-header">
+            <div class="header-container">
+                <a href="/" class="header-logo">Seth Forte</a>
+                <nav class="header-nav">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/case-studies.html" class="nav-link">Results</a>
+                    <a href="/writing.html" class="nav-link">Writing</a>
+                    <a href="/about.html" class="nav-link">About</a>
+                    <a href="/contact.html" class="nav-link">Contact</a>
+                    <a href="https://launchforte.com" class="nav-link" target="_blank" rel="noopener">Launch Forte</a>
+                </nav>
+            </div>
+        </header>
+
+        <div class="hero-inner">
             <img src="headshot-6.jpg" alt="Seth Forte, founder of Launch Forte" class="profile-photo animate-up delay-1" width="72" height="72" style="margin-bottom: 1.5rem;">
+            <p class="hero-eyebrow animate-up delay-1" aria-hidden="true"></p>
             <h1 class="hero-headline animate-up delay-2">Business Growth Isn't Luck.<br>It's <span class="gradient-text">A System</span>.</h1>
             <p class="hero-sub animate-up delay-3">Automation infrastructure for growing businesses. I build the systems that turn traffic into revenue and make growth repeatable.</p>
             <div class="hero-cta animate-up delay-4">
                 <a href="https://calendly.com/seth-launchforte/30min" target="_blank" rel="noopener" class="btn-primary">Book a Growth Systems Audit</a>
                 <a href="#watch" class="btn-ghost">See How I Work</a>
             </div>
-        </section>
+        </div>
 
-        <!-- Watch -->
-        <section id="watch" class="video-section reveal" style="margin: 2.5rem auto 4rem; max-width: 900px; scroll-margin-top: 80px;">
-            <span class="video-eyebrow">Watch</span>
-            <h2 class="section-heading reveal" style="padding-top: 0; margin-bottom: 1.5rem;">See how I <span class="gradient-text">work</span>.</h2>
-            <div class="video-wrap">
-                <iframe id="hero-yt-iframe" src="https://www.youtube-nocookie.com/embed/7YxCIPU1Jd0?autoplay=1&amp;mute=1&amp;playsinline=1&amp;rel=0&amp;enablejsapi=1" title="Seth Forte: 2-minute intro" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                <button type="button" id="hero-yt-unmute" class="video-unmute" aria-label="Unmute video">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
-                    <span>Tap to unmute</span>
-                </button>
-            </div>
-        </section>
+        <div class="hero-hairline" aria-hidden="true"></div>
+    </section>
 
-        <!-- Positioning Bar -->
-        <section class="positioning-bar reveal">
-            <p class="positioning-proof">Founder of Launch Forte. Trusted across industries.</p>
-        </section>
+    <main class="main-wrapper">
+        <div class="pane-container">
+            <!-- Watch -->
+            <section id="watch" class="video-section reveal" style="scroll-margin-top: 80px;">
+                <span class="video-eyebrow">Watch</span>
+                <h2 class="section-heading reveal" style="margin-bottom: 1.5rem;">See how I <span class="gradient-text">work</span>.</h2>
+                <div class="video-wrap">
+                    <iframe id="hero-yt-iframe" src="https://www.youtube-nocookie.com/embed/7YxCIPU1Jd0?autoplay=1&amp;mute=1&amp;playsinline=1&amp;rel=0&amp;enablejsapi=1" title="Seth Forte: 2-minute intro" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    <button type="button" id="hero-yt-unmute" class="video-unmute" aria-label="Unmute video">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                        <span>Tap to unmute</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Positioning Bar -->
+            <section class="positioning-bar reveal">
+                <p class="positioning-proof">Founder of Launch Forte. Trusted across industries.</p>
+            </section>
+        </div>
 
         <!-- Trusted By -->
-        <div class="trust-section reveal" style="margin-top: 4rem;">
-            <span class="trust-label">Trusted by</span>
-            <div class="carousel-wrapper">
-                <div class="carousel-track">
-                    <span class="carousel-item">Revolut</span>
-                    <span class="carousel-item">Modern Bungalow</span>
-                    <span class="carousel-item">Eden Medical</span>
-                    <span class="carousel-item">Kingfisher Ads</span>
-                    <span class="carousel-item">CR Deals Cincinnati</span>
-                    <span class="carousel-item">Hollow Bamboo</span>
-                    <span class="carousel-item">UDI Group</span>
-                    <span class="carousel-item">Revolut</span>
-                    <span class="carousel-item">Modern Bungalow</span>
-                    <span class="carousel-item">Eden Medical</span>
-                    <span class="carousel-item">Kingfisher Ads</span>
-                    <span class="carousel-item">CR Deals Cincinnati</span>
-                    <span class="carousel-item">Hollow Bamboo</span>
-                    <span class="carousel-item">UDI Group</span>
+        <div class="pane-container studio-section">
+            <div class="trust-section reveal">
+                <span class="trust-label">Trusted by</span>
+                <div class="carousel-wrapper">
+                    <div class="carousel-track">
+                        <span class="carousel-item">Revolut</span>
+                        <span class="carousel-item">Modern Bungalow</span>
+                        <span class="carousel-item">Eden Medical</span>
+                        <span class="carousel-item">Kingfisher Ads</span>
+                        <span class="carousel-item">CR Deals Cincinnati</span>
+                        <span class="carousel-item">Hollow Bamboo</span>
+                        <span class="carousel-item">UDI Group</span>
+                        <span class="carousel-item">Revolut</span>
+                        <span class="carousel-item">Modern Bungalow</span>
+                        <span class="carousel-item">Eden Medical</span>
+                        <span class="carousel-item">Kingfisher Ads</span>
+                        <span class="carousel-item">CR Deals Cincinnati</span>
+                        <span class="carousel-item">Hollow Bamboo</span>
+                        <span class="carousel-item">UDI Group</span>
+                    </div>
                 </div>
+                <p class="featured-in">Featured in <a href="https://voyagedallas.com/interview/community-highlights-meet-seth-forte-of-forte-web-designs/" target="_blank" rel="noopener">Voyage Dallas Magazine</a></p>
             </div>
-            <p class="featured-in">Featured in <a href="https://voyagedallas.com/interview/community-highlights-meet-seth-forte-of-forte-web-designs/" target="_blank" rel="noopener">Voyage Dallas Magazine</a></p>
         </div>
 
-        <!-- Featured Review -->
-        <p class="section-label reveal" style="margin-top: 6rem;">Testimonials</p>
-        <h2 class="section-heading reveal" style="padding-top: 0; margin-bottom: 2rem;">Straight from the <span class="gradient-text">clients</span>.</h2>
+        <div class="pane-container">
+            <!-- Featured Review -->
+            <div class="studio-section">
+                <p class="section-label reveal">Testimonials</p>
+                <h2 class="section-heading reveal" style="margin-bottom: 2rem;">Straight from the <span class="gradient-text">clients</span>.</h2>
 
-        <div class="video-quotes reveal">
-            <div class="video-quote-col">
-                <div class="video-widget-wrap">
-                    <script src="https://widget.senja.io/widget/4865e92f-be0e-4665-a6b8-2d195d8f4741/platform.js" type="text/javascript" async></script>
-                    <div class="senja-embed" data-id="4865e92f-be0e-4665-a6b8-2d195d8f4741" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div>
-                </div>
-                <div class="video-quote-card">
-                    <p class="video-quote-text">"He stood out from the pack real quickly. We'll use him for any job we ever have."</p>
-                    <div class="video-quote-attribution">
-                        <span class="video-quote-name">Matt, Six Months to Speech</span>
-                        <span class="video-quote-project">CRM build and automation for an online coaching program</span>
+                <div class="video-quotes reveal">
+                    <div class="video-quote-col">
+                        <div class="video-widget-wrap">
+                            <script src="https://widget.senja.io/widget/4865e92f-be0e-4665-a6b8-2d195d8f4741/platform.js" type="text/javascript" async></script>
+                            <div class="senja-embed" data-id="4865e92f-be0e-4665-a6b8-2d195d8f4741" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div>
+                        </div>
+                        <div class="video-quote-card">
+                            <p class="video-quote-text">"He stood out from the pack real quickly. We'll use him for any job we ever have."</p>
+                            <div class="video-quote-attribution">
+                                <span class="video-quote-name">Matt, Six Months to Speech</span>
+                                <span class="video-quote-project">CRM build and automation for an online coaching program</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-quote-col">
+                        <div class="video-widget-wrap">
+                            <script src="https://widget.senja.io/widget/36af0ec6-70f0-4a77-96dc-bb6ca9a62e42/platform.js" type="text/javascript" async></script>
+                            <div class="senja-embed" data-id="36af0ec6-70f0-4a77-96dc-bb6ca9a62e42" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div>
+                        </div>
+                        <div class="video-quote-card">
+                            <p class="video-quote-text">"10 out of 10 experience. Absolutely recommend."</p>
+                            <div class="video-quote-attribution">
+                                <span class="video-quote-name">Chelsea, Six Months to Speech</span>
+                                <span class="video-quote-project">Full platform migration from Kajabi to GoHighLevel</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="video-quote-col">
-                <div class="video-widget-wrap">
-                    <script src="https://widget.senja.io/widget/36af0ec6-70f0-4a77-96dc-bb6ca9a62e42/platform.js" type="text/javascript" async></script>
-                    <div class="senja-embed" data-id="36af0ec6-70f0-4a77-96dc-bb6ca9a62e42" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div>
+
+            <!-- Latest Writing -->
+            <div class="studio-section">
+                <p class="section-label reveal">Writing</p>
+                <h2 class="section-heading reveal" style="margin-bottom: 1.5rem;">Latest <span class="gradient-text">writing</span></h2>
+                <ul class="writing-preview reveal">
+                    <li><a href="/articles/day-job.html"><span class="writing-preview-title">Why I Don't Take Every Project (And That's Fine)</span><span class="writing-preview-cta">Read &rarr;</span></a></li>
+                    <li><a href="/articles/enterprise-to-small-business.html"><span class="writing-preview-title">What Building Enterprise Systems Taught Me</span><span class="writing-preview-cta">Read &rarr;</span></a></li>
+                    <li><a href="/articles/ai-overkill.html"><span class="writing-preview-title">When AI Is Overkill (Most of the Time)</span><span class="writing-preview-cta">Read &rarr;</span></a></li>
+                </ul>
+                <a href="/writing.html" class="btn-link reveal" style="margin-top: 1.5rem;">See all writing &rarr;</a>
+            </div>
+
+            <!-- Results Preview -->
+            <div class="studio-section">
+                <p class="section-label reveal">Results</p>
+                <h2 class="section-heading reveal" style="margin-bottom: 2rem;">Engineering work that <span class="gradient-text">moved</span> businesses</h2>
+                <div class="results-preview reveal">
+                    <a href="/work/between-generations-care.html" class="results-preview-card">
+                        <span class="results-preview-stat">Zero manual steps</span>
+                        <span class="results-preview-name">Between Generations Care</span>
+                        <span class="results-preview-context">Full platform build inside GoHighLevel. Instagram follower to repeat client, fully engineered.</span>
+                    </a>
+                    <a href="/work/cr-deals.html" class="results-preview-card">
+                        <span class="results-preview-stat">130+ hrs / month recovered</span>
+                        <span class="results-preview-name">CR Deals</span>
+                        <span class="results-preview-context">Replaced manual court records pulls with one automated pipeline.</span>
+                    </a>
+                    <a href="/work/the-11r-shop.html" class="results-preview-card">
+                        <span class="results-preview-stat">GPS gated dispatch</span>
+                        <span class="results-preview-name">The 11R Shop</span>
+                        <span class="results-preview-context">Four phase dispatch with dynamic pricing, arrival verification, and automated invoicing.</span>
+                    </a>
                 </div>
-                <div class="video-quote-card">
-                    <p class="video-quote-text">"10 out of 10 experience. Absolutely recommend."</p>
-                    <div class="video-quote-attribution">
-                        <span class="video-quote-name">Chelsea, Six Months to Speech</span>
-                        <span class="video-quote-project">Full platform migration from Kajabi to GoHighLevel</span>
+                <a href="/case-studies.html" class="btn-link reveal" style="margin-top: 1.5rem;">See all results &rarr;</a>
+            </div>
+
+            <!-- About preview -->
+            <div class="studio-section">
+                <div class="panel-quiet reveal">
+                    <p class="section-label">About</p>
+                    <h2 class="section-heading"><span class="gradient-text">Seth Forte</span></h2>
+                    <p class="about-text">Seven years writing code businesses depend on, including enterprise infrastructure where downtime costs six figures an hour. That standard shows up in every build.</p>
+                    <a href="/about.html" class="btn-link">More about me &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Launch Forte -->
+            <div class="studio-section">
+                <div class="panel-pointer reveal">
+                    <p class="section-label">Where the work lives</p>
+                    <h2 class="section-heading"><span class="gradient-text">Launch Forte</span> is my company.</h2>
+                    <p class="about-text">The audits, the builds, the partnerships. If you're here to hire, that's where to go.</p>
+                    <a href="https://launchforte.com" target="_blank" rel="noopener" class="btn-primary" style="margin-top: 0.5rem;">Visit Launch Forte</a>
+                </div>
+            </div>
+
+            <!-- Closing CTA -->
+            <div class="studio-section">
+                <div class="cta-block reveal">
+                    <h2>If <span class="gradient-text">growth</span> has stalled, the system underneath is usually why.</h2>
+                    <p class="body-text">Start with an audit.</p>
+                    <a href="https://calendly.com/seth-launchforte/30min" target="_blank" rel="noopener" class="btn-primary">Book a Growth Systems Audit</a>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer-section">
+                <a href="mailto:seth@launchforte.com" class="footer-email-main">seth@launchforte.com</a>
+
+                <div class="footer-columns">
+                    <div class="footer-col">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="/about.html">About</a></li>
+                            <li><a href="/case-studies.html">Results</a></li>
+                            <li><a href="/writing.html">Writing</a></li>
+                            <li><a href="/contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="https://www.linkedin.com/in/seth-forte/" target="_blank" rel="noopener">LinkedIn</a></li>
+                            <li><a href="/upwork.html">Upwork</a></li>
+                            <li><a href="mailto:seth@launchforte.com">Email</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Elsewhere</h4>
+                        <ul>
+                            <li><a href="https://launchforte.com" target="_blank" rel="noopener">Launch Forte</a></li>
+                        </ul>
                     </div>
                 </div>
+
+                <div class="footer-bottom">
+                    <div>
+                        <p class="footer-location">Based in Dallas-Fort Worth. Serving clients nationwide.</p>
+                        <p class="copyright">&copy; 2026 Seth Forte. All rights reserved.</p>
+                    </div>
+                    </div>
             </div>
-        </div>
-
-        <!-- Latest Writing -->
-        <p class="section-label reveal" style="margin-top: 6rem;">Writing</p>
-        <h2 class="section-heading reveal" style="padding-top: 0; margin-bottom: 1.5rem;">Latest <span class="gradient-text">writing</span></h2>
-        <ul class="writing-preview reveal">
-            <li><a href="/articles/day-job.html"><span class="writing-preview-title">Why I Don't Take Every Project (And That's Fine)</span><span class="writing-preview-cta">Read &rarr;</span></a></li>
-            <li><a href="/articles/enterprise-to-small-business.html"><span class="writing-preview-title">What Building Enterprise Systems Taught Me</span><span class="writing-preview-cta">Read &rarr;</span></a></li>
-            <li><a href="/articles/ai-overkill.html"><span class="writing-preview-title">When AI Is Overkill (Most of the Time)</span><span class="writing-preview-cta">Read &rarr;</span></a></li>
-        </ul>
-        <a href="/writing.html" class="btn-link reveal" style="margin-top: 1rem;">See all writing &rarr;</a>
-
-        <!-- Results Preview -->
-        <p class="section-label reveal" style="margin-top: 6rem;">Results</p>
-        <h2 class="section-heading reveal" style="padding-top: 0; margin-bottom: 1.5rem;">Engineering work that <span class="gradient-text">moved</span> businesses</h2>
-        <div class="results-preview reveal">
-            <a href="/work/between-generations-care.html" class="results-preview-card">
-                <span class="results-preview-stat">Zero manual steps</span>
-                <span class="results-preview-name">Between Generations Care</span>
-                <span class="results-preview-context">Full platform build inside GoHighLevel. Instagram follower to repeat client, fully engineered.</span>
-            </a>
-            <a href="/work/cr-deals.html" class="results-preview-card">
-                <span class="results-preview-stat">130+ hrs / month recovered</span>
-                <span class="results-preview-name">CR Deals</span>
-                <span class="results-preview-context">Replaced manual court records pulls with one automated pipeline.</span>
-            </a>
-            <a href="/work/the-11r-shop.html" class="results-preview-card">
-                <span class="results-preview-stat">GPS gated dispatch</span>
-                <span class="results-preview-name">The 11R Shop</span>
-                <span class="results-preview-context">Four phase dispatch with dynamic pricing, arrival verification, and automated invoicing.</span>
-            </a>
-        </div>
-        <a href="/case-studies.html" class="btn-link reveal" style="margin-top: 1rem;">See all results &rarr;</a>
-
-        <!-- About preview -->
-        <p class="section-label reveal" style="margin-top: 6rem;">About</p>
-        <h2 class="section-heading reveal" style="padding-top: 0;"><span class="gradient-text">Seth Forte</span></h2>
-        <p class="about-text reveal">Seven years writing code businesses depend on, including enterprise infrastructure where downtime costs six figures an hour. That standard shows up in every build.</p>
-        <a href="/about.html" class="btn-link reveal" style="margin-bottom: 2rem;">More about me &rarr;</a>
-
-        <!-- Launch Forte -->
-        <p class="section-label reveal" style="margin-top: 6rem;">Where the work lives</p>
-        <h2 class="section-heading reveal" style="padding-top: 0;"><span class="gradient-text">Launch Forte</span> is my company.</h2>
-        <p class="about-text reveal">The audits, the builds, the partnerships. If you're here to hire, that's where to go.</p>
-        <a href="https://launchforte.com" target="_blank" rel="noopener" class="btn-primary reveal" style="margin-top: 0.5rem;">Visit Launch Forte</a>
-
-        <!-- Closing CTA -->
-        <div class="cta-block reveal" style="margin-top: 4rem;">
-            <h2>If <span class="gradient-text">growth</span> has stalled, the system underneath is usually why.</h2>
-            <p class="body-text">Start with an audit.</p>
-            <a href="https://calendly.com/seth-launchforte/30min" target="_blank" rel="noopener" class="btn-primary">Book a Growth Systems Audit</a>
-        </div>
-
-        <!-- Footer -->
-        <div class="footer-section">
-            <a href="mailto:seth@launchforte.com" class="footer-email-main">seth@launchforte.com</a>
-
-            <div class="footer-columns">
-                <div class="footer-col">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="/about.html">About</a></li>
-                        <li><a href="/case-studies.html">Results</a></li>
-                        <li><a href="/writing.html">Writing</a></li>
-                        <li><a href="/contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Connect</h4>
-                    <ul>
-                        <li><a href="https://www.linkedin.com/in/seth-forte/" target="_blank" rel="noopener">LinkedIn</a></li>
-                        <li><a href="/upwork.html">Upwork</a></li>
-                        <li><a href="mailto:seth@launchforte.com">Email</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Elsewhere</h4>
-                    <ul>
-                        <li><a href="https://launchforte.com" target="_blank" rel="noopener">Launch Forte</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <div>
-                    <p class="footer-location">Based in Dallas-Fort Worth. Serving clients nationwide.</p>
-                    <p class="copyright">&copy; 2026 Seth Forte. All rights reserved.</p>
-                </div>
-                </div>
         </div>
     </main>
-
     <script>
         const words = ["A System", "Using The Right Data", "A Framework", "A Process", "Repeatable"];
         let index = 0;
