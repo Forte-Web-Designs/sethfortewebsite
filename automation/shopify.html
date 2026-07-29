@@ -1151,6 +1151,136 @@
             border: 1px solid var(--border-light) !important;
             color: var(--ink) !important;
         }
+        
+        /* ============================================================
+           Page hero zone — the homepage's cinematic treatment, applied to
+           every page. The opening block of <main> is wrapped and given the
+           video layer, overlays, and light-on-dark type.
+           ============================================================ */
+        /* .main-wrapper is max-width:1100px with 2rem side padding, so the
+           hero must break out of BOTH to reach the viewport edges. calc against
+           the wrapper's own box does it without needing to know the width. */
+        /* The wrapper is max-width:1100px with 2rem padding. Rather than fight
+           it with calc (which resolves against the wrapper's box, not the
+           viewport), drop the hero out of flow with a viewport-anchored width
+           and let a spacer hold its height. */
+        .main-wrapper { padding-top: 0 !important; }
+        .page-hero-zone {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            background: #0A0A0A;
+            box-sizing: border-box;
+            width: 100vw;
+            margin-left: calc(50% - 50vw);
+            margin-right: calc(50% - 50vw);
+            padding: 9rem 2rem 5rem;
+        }
+        /* undo the wrapper's own side padding for this one child */
+        .main-wrapper > .page-hero-zone { position: relative; }
+        .page-hero-zone > * {
+            position: relative;
+            z-index: 2;
+            max-width: var(--max-content, 1120px);
+            margin-left: auto;
+            margin-right: auto;
+        }
+        @media (min-width: 640px) { .page-hero-zone { padding-left: 2rem; padding-right: 2rem; } }
+
+        .page-hero-zone .hero-video-layer {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .page-hero-zone .hero-video-layer video,
+        .page-hero-zone .hero-video-layer img.hero-poster-fallback {
+            position: absolute;
+            inset: 0;
+            width: 100% !important;
+            max-width: none !important;
+            height: 100% !important;
+            margin: 0 !important;
+            border-radius: 0 !important;
+            object-fit: cover;
+            object-position: var(--hero-focus, 50%) center;
+        }
+        .page-hero-zone .hero-video-layer img.hero-poster-fallback { --hero-focus: 43%; }
+        .page-hero-zone .hero-video-layer::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(90deg, rgba(10,10,10,0.93) 0%, rgba(10,10,10,0.72) 45%, rgba(10,10,10,0.40) 100%),
+                linear-gradient(to bottom, rgba(10,10,10,0.34) 0%, rgba(10,10,10,0) 34%, rgba(10,10,10,0.30) 74%, #0A0A0A 100%);
+        }
+
+        /* Type on the dark ground reads light in BOTH themes */
+        .page-hero-zone .page-title,
+        .page-hero-zone h1,
+        [data-theme="dark"] .page-hero-zone .page-title,
+        [data-theme="dark"] .page-hero-zone h1 {
+            color: #FFFFFF !important;
+            -webkit-text-fill-color: #FFFFFF !important;
+        }
+        .page-hero-zone .page-subtitle,
+        .page-hero-zone .page-intro,
+        [data-theme="dark"] .page-hero-zone .page-subtitle,
+        [data-theme="dark"] .page-hero-zone .page-intro {
+            color: rgba(255,255,255,0.76) !important;
+            -webkit-text-fill-color: rgba(255,255,255,0.76) !important;
+        }
+        .page-hero-zone .section-label,
+        .page-hero-zone .eyebrow,
+        [data-theme="dark"] .page-hero-zone .section-label,
+        [data-theme="dark"] .page-hero-zone .eyebrow {
+            color: #FFFFFF !important;
+        }
+        .page-hero-zone .section-label::after,
+        .page-hero-zone .eyebrow::after { background: rgba(255,255,255,0.28) !important; }
+        /* the accent word keeps the accent, brightened for the dark ground */
+        .page-hero-zone .gradient-text,
+        .page-hero-zone .page-title > .gradient-text:only-child,
+        [data-theme="dark"] .page-hero-zone .gradient-text {
+            color: #4FB8F0 !important;
+            -webkit-text-fill-color: #4FB8F0 !important;
+            background: none !important;
+        }
+        .page-hero-zone .back-link,
+        .page-hero-zone .btn-ghost-link,
+        [data-theme="dark"] .page-hero-zone .back-link,
+        [data-theme="dark"] .page-hero-zone .btn-ghost-link {
+            color: rgba(255,255,255,0.80) !important;
+        }
+        .page-hero-zone .btn-ghost {
+            color: #FFFFFF !important;
+            border-color: rgba(255,255,255,0.30) !important;
+            background: transparent !important;
+        }
+        .page-hero-zone .credibility-item,
+        [data-theme="dark"] .page-hero-zone .credibility-item {
+            color: rgba(255,255,255,0.80) !important;
+        }
+
+        /* Mobile: full-width background layer, stacked (Pass 8 treatment) */
+        @media (max-width: 900px) {
+            .page-hero-zone .hero-video-layer video,
+            .page-hero-zone .hero-video-layer img.hero-poster-fallback {
+                --hero-focus: 50%;
+                opacity: 0.55;
+            }
+            .page-hero-zone .hero-video-layer::after {
+                background: linear-gradient(180deg,
+                    rgba(10,10,10,0.86) 0%, rgba(10,10,10,0.62) 38%,
+                    rgba(10,10,10,0.78) 72%, #0A0A0A 100%);
+            }
+        }
+        @media (max-width: 768px) {
+            .page-hero-zone { padding: 7rem 1.5rem 3.5rem; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .page-hero-zone .hero-video-layer video { display: none; }
+        }
         </style>
 </head>
 <body>
@@ -1170,8 +1300,14 @@
     </header>
 
     <main class="main-wrapper">
+        <section class="page-hero-zone">
+            <div class="hero-video-layer" aria-hidden="true">
+                <img src="/media/hero-poster.jpg" alt="" class="hero-poster-fallback" width="1280" height="720">
+                <video id="hero-video" poster="/media/hero-poster.jpg" autoplay muted loop playsinline preload="metadata" tabindex="-1" width="1280" height="720"></video>
+            </div>
         <h1 class="page-title animate-fade-up animate-delay-1">Shopify Automation</h1>
         <p class="page-intro animate-fade-up animate-delay-2">Order comes in. Fulfillment triggers. Customer gets notified. Inventory updates. Accounting syncs. All without you touching anything.</p>
+        </section>
 
         <hr class="section-divider">
 
@@ -1277,6 +1413,34 @@
             window.addEventListener('scroll', sync, { passive: true });
             window.addEventListener('resize', sync);
             window.addEventListener('load', sync);
+        })();
+    </script>
+
+    <!-- Hero background loop: the three speaking clips, each with its own focal
+         point so Seth stays in frame. Plays on mobile too — the clips are
+         0.7-1.2MB and the poster paints first. Reduced motion gets the still. -->
+    <script>
+        (function() {
+            var v = document.getElementById('hero-video');
+            if (!v) return;
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            var clips = [
+                { src: '/media/hero-loop-1.mp4', focus: '43%' },
+                { src: '/media/hero-loop-3.mp4', focus: '55%' },
+                { src: '/media/hero-loop-2.mp4', focus: '76%' }
+            ];
+            var i = 0;
+            function play(n) {
+                var c = clips[n];
+                v.style.setProperty('--hero-focus', c.focus);
+                v.src = c.src;
+                var p = v.play();
+                if (p && p.catch) p.catch(function() {});
+            }
+            v.removeAttribute('loop');
+            v.addEventListener('ended', function() { i = (i + 1) % clips.length; play(i); });
+            v.addEventListener('error', function() { i = (i + 1) % clips.length; if (i !== 0) play(i); });
+            play(0);
         })();
     </script>
 </body>
