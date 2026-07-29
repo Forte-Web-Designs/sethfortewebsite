@@ -1443,7 +1443,7 @@
            The poster is a first-paint placeholder only: once the video has
            frames, it is hidden outright. */
         .hero-video-layer img.hero-poster-fallback { z-index: 0; }
-        .hero-video-layer video { z-index: 1; }
+        .hero-video-layer video { z-index: 1; filter: grayscale(1); }
         .hero-video-layer.video-live img.hero-poster-fallback { opacity: 0 !important; }
         /* keep the ambient dimming: the copy sits on top of this */
         .hero-video-layer.video-live video { opacity: 0.72 !important; }
