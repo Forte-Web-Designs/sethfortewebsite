@@ -1316,6 +1316,18 @@
             left: 0 !important;
             right: 0 !important;
         }
+        
+        /* The poster <img> and the <video> were both painting at 0.55 opacity,
+           so they blended into a washed-out still instead of showing motion.
+           The poster is a first-paint placeholder only: once the video has
+           frames, it is hidden outright. */
+        .hero-video-layer img.hero-poster-fallback { z-index: 0; }
+        .hero-video-layer video { z-index: 1; }
+        .hero-video-layer.video-live img.hero-poster-fallback { opacity: 0 !important; }
+        .hero-video-layer.video-live video { opacity: 1 !important; }
+        @media (max-width: 900px) {
+            .hero-video-layer.video-live video { opacity: 0.62 !important; }
+        }
         </style>
 </head>
 <body>
@@ -1723,6 +1735,21 @@
             window.addEventListener('scroll', sync, { passive: true });
             window.addEventListener('resize', sync);
             window.addEventListener('load', sync);
+        })();
+    </script>
+
+    <!-- Hide the poster once the video actually has frames, so the two never
+         blend. Falls back to leaving the poster up if playback never starts. -->
+    <script>
+        (function() {
+            var v = document.getElementById('hero-video');
+            if (!v) return;
+            var layer = v.closest('.hero-video-layer');
+            if (!layer) return;
+            function live() { layer.classList.add('video-live'); }
+            v.addEventListener('playing', live);
+            v.addEventListener('loadeddata', function() { if (v.readyState >= 2) live(); });
+            if (v.readyState >= 2 && !v.paused) live();
         })();
     </script>
 </body>

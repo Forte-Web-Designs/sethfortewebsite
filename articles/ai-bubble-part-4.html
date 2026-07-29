@@ -797,11 +797,6 @@
             color: var(--ink) !important;
         }
         
-        /* ============================================================
-           Page hero zone — the homepage's cinematic treatment, applied to
-           every page. The opening block of <main> is wrapped and given the
-           video layer, overlays, and light-on-dark type.
-           ============================================================ */
         /* .main-wrapper is max-width:1100px with 2rem side padding, so the
            hero must break out of BOTH to reach the viewport edges. calc against
            the wrapper's own box does it without needing to know the width. */
@@ -927,36 +922,6 @@
             .page-hero-zone .hero-video-layer video { display: none; }
         }
 
-        /* Article hero: back-link, title and date on the dark ground; the body
-           copy stays on the pane below at its reading measure. */
-        .site-header { margin-bottom: -5.5rem; }
-        .main-wrapper { padding-left: 0 !important; padding-right: 0 !important; max-width: none !important; padding-top: 0 !important; }
-        .main-wrapper > *:not(.page-hero-zone) {
-            max-width: 720px; margin-left: auto; margin-right: auto;
-            padding-left: 1.5rem; padding-right: 1.5rem; box-sizing: border-box;
-        }
-        .page-hero-zone { width: 100% !important; margin: 0 !important; padding-top: 9.5rem !important; padding-bottom: 3.5rem !important; }
-        .page-hero-zone > *:not(.hero-video-layer) { max-width: 720px; margin-left: auto; margin-right: auto; }
-        .page-hero-zone .back-link { display: inline-block; margin-bottom: 1.25rem; }
-        .page-hero-zone .article-title,
-        [data-theme="dark"] .page-hero-zone .article-title { color:#FFFFFF !important; -webkit-text-fill-color:#FFFFFF !important; }
-        .page-hero-zone .article-meta,
-        [data-theme="dark"] .page-hero-zone .article-meta { color:rgba(255,255,255,0.70) !important; }
-        @media (max-width: 768px) {
-            .site-header { margin-bottom: -4.75rem; }
-            .page-hero-zone { padding-top: 8rem !important; padding-bottom: 2.5rem !important; }
-        }
-        
-        /* Back-link sits in the same column as the title, not flush left. */
-        .page-hero-zone .back-link {
-            max-width: 720px;
-            margin-left: auto !important;
-            margin-right: auto !important;
-            padding-left: 1.5rem;
-            padding-right: 1.5rem;
-            box-sizing: border-box;
-            width: 100%;
-        }
         /* Nav must read light over the dark hero on every page that has one. */
         .page-hero-zone ~ * .site-header .nav-link,
         .site-header:not(.is-stuck) .nav-link { color: rgba(255,255,255,0.82) !important; }
@@ -964,16 +929,188 @@
         .site-header:not(.is-stuck) .nav-link.active { color: #FFFFFF !important; background: rgba(255,255,255,0.12) !important; }
         .site-header:not(.is-stuck) .header-logo { color: #FFFFFF !important; }
         
-        /* The video layer is a child of the zone, so the `> *` max-width rule
-           above was capping it to --max-content (1120px) and leaving 80px of
-           pane either side. It must span the zone edge to edge. */
+
+        /* ============================================================
+           HERO + HEADER — one definition, identical on every page.
+           Matches the homepage: the sticky header floats transparently over a
+           full-bleed dark video zone, then earns a paper background once the
+           pane scrolls under it. Do not add per-page overrides; edit here.
+           ============================================================ */
+
+        /* The wrapper stops constraining width; each child gets its own column
+           back, so the hero alone can run edge to edge. */
+        .main-wrapper {
+            max-width: none !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            padding-top: 0 !important;
+        }
+        .main-wrapper > *:not(.page-hero-zone) {
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            box-sizing: border-box;
+        }
+
+        /* Hero pulled up under the sticky header so the dark zone reaches
+           behind the nav — otherwise white links land on the white pane. */
+        .site-header { margin-bottom: -5.5rem !important; }
+
+        .page-hero-zone {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            box-sizing: border-box;
+            width: 100% !important;
+            max-width: none !important;
+            margin: 0 !important;
+            background: #0A0A0A;
+            padding: 10rem 2rem 5rem !important;
+        }
+        /* Content sits in the reading column; the video layer does not. */
+        .page-hero-zone > *:not(.hero-video-layer) {
+            position: relative;
+            z-index: 2;
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+        }
         .page-hero-zone > .hero-video-layer {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
             max-width: none !important;
             width: 100% !important;
             margin: 0 !important;
             padding: 0 !important;
-            left: 0 !important;
-            right: 0 !important;
+            overflow: hidden;
+        }
+        .page-hero-zone .hero-video-layer video,
+        .page-hero-zone .hero-video-layer img.hero-poster-fallback {
+            position: absolute;
+            inset: 0;
+            width: 100% !important;
+            max-width: none !important;
+            height: 100% !important;
+            margin: 0 !important;
+            border-radius: 0 !important;
+            object-fit: cover;
+            object-position: var(--hero-focus, 50%) center;
+        }
+        .page-hero-zone .hero-video-layer img.hero-poster-fallback { --hero-focus: 43%; }
+        .page-hero-zone .hero-video-layer::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(90deg, rgba(10,10,10,0.93) 0%, rgba(10,10,10,0.72) 45%, rgba(10,10,10,0.40) 100%),
+                linear-gradient(to bottom, rgba(10,10,10,0.34) 0%, rgba(10,10,10,0) 34%, rgba(10,10,10,0.30) 74%, #0A0A0A 100%);
+        }
+
+        /* Everything in the dark zone reads light, in BOTH themes. */
+        .page-hero-zone .page-title, .page-hero-zone h1,
+        .page-hero-zone .article-title, .page-hero-zone .case-title,
+        [data-theme="dark"] .page-hero-zone .page-title,
+        [data-theme="dark"] .page-hero-zone h1,
+        [data-theme="dark"] .page-hero-zone .article-title,
+        [data-theme="dark"] .page-hero-zone .case-title {
+            color: #FFFFFF !important;
+            -webkit-text-fill-color: #FFFFFF !important;
+            padding-top: 0 !important;
+        }
+        .page-hero-zone .page-subtitle, .page-hero-zone .page-intro,
+        .page-hero-zone .case-subtitle, .page-hero-zone .hero-intro,
+        [data-theme="dark"] .page-hero-zone .page-subtitle,
+        [data-theme="dark"] .page-hero-zone .page-intro,
+        [data-theme="dark"] .page-hero-zone .case-subtitle,
+        [data-theme="dark"] .page-hero-zone .hero-intro {
+            color: rgba(255,255,255,0.78) !important;
+            -webkit-text-fill-color: rgba(255,255,255,0.78) !important;
+        }
+        .page-hero-zone .article-meta,
+        [data-theme="dark"] .page-hero-zone .article-meta { color: rgba(255,255,255,0.70) !important; }
+        .page-hero-zone .section-label, .page-hero-zone .eyebrow,
+        [data-theme="dark"] .page-hero-zone .section-label,
+        [data-theme="dark"] .page-hero-zone .eyebrow { color: #FFFFFF !important; }
+        .page-hero-zone .section-label::after,
+        .page-hero-zone .eyebrow::after { background: rgba(255,255,255,0.28) !important; }
+        .page-hero-zone .gradient-text,
+        .page-hero-zone .case-eyebrow,
+        [data-theme="dark"] .page-hero-zone .gradient-text,
+        [data-theme="dark"] .page-hero-zone .case-eyebrow {
+            color: #4FB8F0 !important;
+            -webkit-text-fill-color: #4FB8F0 !important;
+            background: none !important;
+        }
+        .page-hero-zone .back-link, .page-hero-zone .btn-ghost-link,
+        [data-theme="dark"] .page-hero-zone .back-link,
+        [data-theme="dark"] .page-hero-zone .btn-ghost-link {
+            color: rgba(255,255,255,0.82) !important;
+            display: inline-block;
+            margin-bottom: 1.25rem;
+        }
+        .page-hero-zone .btn-ghost {
+            color: #FFFFFF !important;
+            border-color: rgba(255,255,255,0.30) !important;
+            background: transparent !important;
+        }
+        .page-hero-zone .credibility-item,
+        [data-theme="dark"] .page-hero-zone .credibility-item { color: rgba(255,255,255,0.80) !important; }
+        .page-hero-zone .case-capability-tag {
+            background: rgba(255,255,255,0.14) !important;
+            color: #FFFFFF !important;
+        }
+        /* Anchor chips / pills sitting in the hero */
+        .page-hero-zone .jump-link, .page-hero-zone .anchor-nav a {
+            background: rgba(255,255,255,0.92) !important;
+            color: #0A0A0A !important;
+            border-color: transparent !important;
+        }
+
+        /* Nav over the dark zone reads light; the shared header script flips
+           .is-stuck once the pane arrives. */
+        .site-header:not(.is-stuck) .header-logo { color: #FFFFFF !important; }
+        .site-header:not(.is-stuck) .nav-link { color: rgba(255,255,255,0.82) !important; }
+        .site-header:not(.is-stuck) .nav-link:hover,
+        .site-header:not(.is-stuck) .nav-link.active {
+            color: #FFFFFF !important;
+            background: rgba(255,255,255,0.12) !important;
+        }
+
+        /* Mobile: full-width background layer, stacked (Pass 8 treatment) */
+        @media (max-width: 900px) {
+            .page-hero-zone .hero-video-layer video,
+            .page-hero-zone .hero-video-layer img.hero-poster-fallback {
+                --hero-focus: 50%;
+                opacity: 0.55;
+            }
+            .page-hero-zone .hero-video-layer::after {
+                background: linear-gradient(180deg,
+                    rgba(10,10,10,0.86) 0%, rgba(10,10,10,0.62) 38%,
+                    rgba(10,10,10,0.78) 72%, #0A0A0A 100%);
+            }
+        }
+        @media (max-width: 768px) {
+            .site-header { margin-bottom: -4.75rem !important; }
+            .page-hero-zone { padding: 8rem 1.5rem 3.5rem !important; }
+            .main-wrapper > *:not(.page-hero-zone) { padding-left: 1.5rem; padding-right: 1.5rem; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .page-hero-zone .hero-video-layer video { display: none; }
+        }
+        
+        /* The poster <img> and the <video> were both painting at 0.55 opacity,
+           so they blended into a washed-out still instead of showing motion.
+           The poster is a first-paint placeholder only: once the video has
+           frames, it is hidden outright. */
+        .hero-video-layer img.hero-poster-fallback { z-index: 0; }
+        .hero-video-layer video { z-index: 1; }
+        .hero-video-layer.video-live img.hero-poster-fallback { opacity: 0 !important; }
+        .hero-video-layer.video-live video { opacity: 1 !important; }
+        @media (max-width: 900px) {
+            .hero-video-layer.video-live video { opacity: 0.62 !important; }
         }
         </style>
 </head>
@@ -1193,6 +1330,21 @@
             v.addEventListener('ended', function() { i = (i + 1) % clips.length; play(i); });
             v.addEventListener('error', function() { i = (i + 1) % clips.length; if (i !== 0) play(i); });
             play(0);
+        })();
+    </script>
+
+    <!-- Hide the poster once the video actually has frames, so the two never
+         blend. Falls back to leaving the poster up if playback never starts. -->
+    <script>
+        (function() {
+            var v = document.getElementById('hero-video');
+            if (!v) return;
+            var layer = v.closest('.hero-video-layer');
+            if (!layer) return;
+            function live() { layer.classList.add('video-live'); }
+            v.addEventListener('playing', live);
+            v.addEventListener('loadeddata', function() { if (v.readyState >= 2) live(); });
+            if (v.readyState >= 2 && !v.paused) live();
         })();
     </script>
 </body>
