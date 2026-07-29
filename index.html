@@ -218,7 +218,7 @@
             position: absolute;
             inset: 0;
             background:
-                linear-gradient(90deg, rgba(10,10,10,0.93) 0%, rgba(10,10,10,0.72) 45%, rgba(10,10,10,0.34) 100%),
+                linear-gradient(90deg, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.80) 45%, rgba(10,10,10,0.62) 100%),
                 linear-gradient(to bottom, rgba(10,10,10,0.30) 0%, rgba(10,10,10,0) 32%, rgba(10,10,10,0.26) 74%, #0A0A0A 100%);
         }
         .hero-inner {
@@ -300,7 +300,7 @@
         .hero-sub {
             font-size: var(--text-xl);
             line-height: var(--text-xl-lh);
-            color: rgba(250,250,250,0.72);
+            color: rgba(255,255,255,0.92);
             max-width: 54ch;
             margin: 0 0 2.5rem;
         }
@@ -1324,9 +1324,10 @@
         .hero-video-layer img.hero-poster-fallback { z-index: 0; }
         .hero-video-layer video { z-index: 1; }
         .hero-video-layer.video-live img.hero-poster-fallback { opacity: 0 !important; }
-        .hero-video-layer.video-live video { opacity: 1 !important; }
+        /* keep the ambient dimming: the copy sits on top of this */
+        .hero-video-layer.video-live video { opacity: 0.72 !important; }
         @media (max-width: 900px) {
-            .hero-video-layer.video-live video { opacity: 0.62 !important; }
+            .hero-video-layer.video-live video { opacity: 0.50 !important; }
         }
         </style>
 </head>
@@ -1351,7 +1352,6 @@
     <!-- The dark zone: nav bleeding into the full-bleed dim video -->
     <section class="hero-cinematic">
         <div class="hero-video-layer">
-            <img src="/media/hero-poster.jpg" alt="" class="hero-poster-fallback" aria-hidden="true" width="1280" height="720">
             <video id="hero-video" poster="/media/hero-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1" width="1280" height="720"></video>
         </div>
 
