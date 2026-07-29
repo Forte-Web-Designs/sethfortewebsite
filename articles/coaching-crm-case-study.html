@@ -757,6 +757,54 @@
             background: rgba(79,184,240,0.16) !important;
             color: #7FCCF5 !important;
         }
+        
+        /* ---------- Hamburger: visible on every ground ----------
+           hamburger.js styles .hamburger-btn with var(--background) +
+           var(--text-primary), which over the dark hero video resolves to
+           near-white on near-white — the button was invisible. Give it the same
+           chip treatment the theme toggle got. */
+        html[data-studio] .hamburger-btn {
+            background: rgba(10,10,10,0.45) !important;
+            border: 1px solid rgba(255,255,255,0.28) !important;
+            color: #FFFFFF !important;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            top: 1.05rem !important;
+            width: 36px !important;
+            height: 36px !important;
+        }
+        /* Off the dark hero the chip flips to match the pane it sits on. */
+        html[data-studio] body.past-hero .hamburger-btn {
+            background: rgba(255,255,255,0.82) !important;
+            border-color: rgba(10,10,10,0.14) !important;
+            color: var(--ink) !important;
+        }
+        html[data-studio][data-theme="dark"] body.past-hero .hamburger-btn {
+            background: rgba(23,23,23,0.86) !important;
+            border-color: rgba(255,255,255,0.20) !important;
+            color: var(--ink) !important;
+        }
+        /* Overlay + close button in Studio tokens, readable in both themes */
+        html[data-studio] .hamburger-overlay { background: var(--paper) !important; }
+        html[data-studio] .hamburger-overlay a { color: var(--ink) !important; opacity: 1; }
+        html[data-studio] .hamburger-overlay a *,
+        html[data-studio] .hamburger-overlay a span {
+            color: var(--ink) !important;
+            -webkit-text-fill-color: var(--ink) !important;
+        }
+        html[data-studio] .hamburger-overlay a:hover,
+        html[data-studio] .hamburger-overlay a.active {
+            color: var(--accent-strong, #0077C4) !important;
+        }
+        html[data-studio][data-theme="dark"] .hamburger-overlay a:hover,
+        html[data-studio][data-theme="dark"] .hamburger-overlay a.active {
+            color: #4FB8F0 !important;
+        }
+        html[data-studio] .hamburger-close {
+            background: var(--n-100) !important;
+            border: 1px solid var(--border-light) !important;
+            color: var(--ink) !important;
+        }
         </style>
 </head>
 <body>
@@ -957,6 +1005,9 @@
                     stuck = hero.getBoundingClientRect().bottom <= header.offsetHeight + 4;
                 }
                 header.classList.toggle('is-stuck', stuck);
+                // the hamburger is a fixed sibling of the header, so it needs
+                // its own hook to know which ground it is currently over
+                document.body.classList.toggle('past-hero', stuck);
             }
             sync();
             window.addEventListener('scroll', sync, { passive: true });

@@ -904,6 +904,7 @@
 
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
+            .hero-video-layer video { display: none; }
             .reveal { opacity: 1; transform: none; transition: none; }
             .animate-up { opacity: 1; transform: none; animation: none; }
             .carousel-track { animation: none; }
@@ -925,17 +926,19 @@
             .hero-cinematic { min-height: 82vh; padding: 7rem 0 4rem; }
             .hero-headline { font-size: clamp(2rem, 8.5vw, 2.75rem); max-width: 100%; }
             .hero-sub { font-size: var(--text-base); max-width: 100%; }
-            /* Poster only under 768px — no video decode on mobile */
-            .hero-video-layer video { display: none; }
-            /* Recentre the still so the subject stays in frame at phone widths */
+            /* Video plays on mobile too (0.7-1.2MB, poster paints first), per
+               the Pass 8 treatment: full-width background rather than a panel.
+               The stacking rules live in the 900px block below. */
+            .hero-video-layer video,
             .hero-video-layer img.hero-poster-fallback {
-                left: 50%;
+                inset: 0;
+                left: 0;
                 width: 100%;
                 height: 100%;
                 min-width: 0;
                 min-height: 0;
+                transform: none;
                 object-fit: cover;
-                object-position: 62% center;
             }
             .hero-video-layer::after {
                 background:
@@ -1223,6 +1226,83 @@
            at ~560px and below. Above that every variant is the same height. */
         @media (max-width: 560px) {
             .hero-headline { min-height: calc(3 * 1.05em); }
+        }
+        
+        /* ---------- Mobile hero: LaunchForte Pass 8 treatment, stacked ----------
+           Pass 8 drops the video to full-width at reduced opacity below 900px so
+           it reads as a background layer rather than a panel beside the text.
+           Same here, with the video playing on mobile (it is 0.7-1.2MB and the
+           poster still paints first). */
+        @media (max-width: 900px) {
+            .hero-video-layer video,
+            .hero-video-layer img.hero-poster-fallback {
+                --hero-focus: 50%;
+                opacity: 0.55;
+            }
+            /* Stacked: overlay runs top-to-bottom, not left-to-right, because
+               the text now sits ON the video rather than beside it. */
+            .hero-video-layer::after {
+                background:
+                    linear-gradient(180deg,
+                        rgba(10,10,10,0.86) 0%,
+                        rgba(10,10,10,0.62) 38%,
+                        rgba(10,10,10,0.78) 72%,
+                        #0A0A0A 100%);
+            }
+            .hero-inner { text-align: left; }
+            .hero-headline { max-width: 100%; }
+        }
+
+        /* ---------- Hamburger: visible on every ground ----------
+           hamburger.js styles .hamburger-btn with var(--background) +
+           var(--text-primary), which over the dark hero video resolves to
+           near-white on near-white — the button was invisible. Give it the same
+           chip treatment the theme toggle got. */
+        html[data-studio] .hamburger-btn {
+            display: none;
+            background: rgba(10,10,10,0.45) !important;
+            border: 1px solid rgba(255,255,255,0.28) !important;
+            color: #FFFFFF !important;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            top: 1.05rem !important;
+            width: 36px !important;
+            height: 36px !important;
+        }
+        @media (max-width: 768px) {
+            html[data-studio] .hamburger-btn { display: flex !important; }
+        }
+        html[data-studio] .site-header.is-stuck ~ .hamburger-btn,
+        html[data-studio] body.past-hero .hamburger-btn {
+            background: rgba(255,255,255,0.82) !important;
+            border-color: rgba(10,10,10,0.14) !important;
+            color: var(--ink) !important;
+        }
+        html[data-studio][data-theme="dark"] body.past-hero .hamburger-btn {
+            background: rgba(23,23,23,0.86) !important;
+            border-color: rgba(255,255,255,0.20) !important;
+            color: var(--ink) !important;
+        }
+        /* Overlay + close button in Studio tokens, readable in both themes */
+        html[data-studio] .hamburger-overlay { background: var(--paper) !important; }
+        html[data-studio] .hamburger-overlay a { color: var(--ink) !important; opacity: 1; }
+        html[data-studio] .hamburger-overlay a * ,
+        html[data-studio] .hamburger-overlay a span {
+            color: var(--ink) !important;
+            -webkit-text-fill-color: var(--ink) !important;
+        }
+        html[data-studio] .hamburger-overlay a:hover,
+        html[data-studio] .hamburger-overlay a.active {
+            color: var(--accent-strong, #0077C4) !important;
+        }
+        html[data-studio][data-theme="dark"] .hamburger-overlay a:hover,
+        html[data-studio][data-theme="dark"] .hamburger-overlay a.active {
+            color: #4FB8F0 !important;
+        }
+        html[data-studio] .hamburger-close {
+            background: var(--n-100) !important;
+            border: 1px solid var(--border-light) !important;
+            color: var(--ink) !important;
         }
         </style>
 </head>
@@ -1621,6 +1701,9 @@
                     stuck = hero.getBoundingClientRect().bottom <= header.offsetHeight + 4;
                 }
                 header.classList.toggle('is-stuck', stuck);
+                // the hamburger is a fixed sibling, not inside the header, so it
+                // needs its own hook to know which ground it is over
+                document.body.classList.toggle('past-hero', stuck);
             }
             sync();
             window.addEventListener('scroll', sync, { passive: true });
