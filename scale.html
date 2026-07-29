@@ -1029,6 +1029,116 @@
         @media (prefers-reduced-motion: reduce) {
             .site-header { transition: none; }
         }
+        
+        /* The legacy footer painted itself with --background-dark and hardcoded
+           its text to #86868b / #ffffff. That alias maps to --ink, which turns
+           near-WHITE in dark mode, so the footer went light while its text
+           stayed light: white on white. Pin the footer's own pair per theme. */
+        .footer-section, .site-footer {
+            background: #0A0A0A !important;
+            color: #A3A3A3 !important;
+        }
+        .footer-section a, .site-footer a,
+        .footer-col a, .footer-section .footer-email-main {
+            color: #A3A3A3 !important;
+        }
+        .footer-section a:hover, .site-footer a:hover,
+        .footer-col a:hover, .footer-section .footer-email-main:hover {
+            color: #FFFFFF !important;
+        }
+        .footer-col h4, .footer-section h4 { color: #FFFFFF !important; }
+        .footer-location, .copyright { color: #A3A3A3 !important; }
+        [data-theme="dark"] .footer-section,
+        [data-theme="dark"] .site-footer {
+            background: #050505 !important;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+        }
+        
+        /* #0088DB is 3.79:1 on white — below AA for normal text. Accent-coloured
+           TEXT and ghost-button borders use the darker #0077C4 (4.73:1). The
+           accent itself is unchanged where it is a large graphic element. */
+        .btn-ghost, .btn-ghost-link, .btn-link,
+        .review-stars, .case-study-stat, .result-stat, .featured-stat,
+        .writing-preview-cta, .read-link {
+            color: var(--accent-strong, #0077C4) !important;
+        }
+        [data-theme="dark"] .btn-ghost,
+        [data-theme="dark"] .btn-ghost-link,
+        [data-theme="dark"] .btn-link,
+        [data-theme="dark"] .review-stars,
+        [data-theme="dark"] .case-study-stat,
+        [data-theme="dark"] .result-stat,
+        [data-theme="dark"] .featured-stat,
+        [data-theme="dark"] .writing-preview-cta,
+        [data-theme="dark"] .read-link {
+            color: #4FB8F0 !important;
+        }
+        
+        /* The Trusted By ribbon is an ink card in both themes, so its contents
+           must stay light — --n-500/--ink flip and inverted it to grey-on-white
+           in dark mode. Same class of bug as the footer. */
+        .trust-section { background: #0A0A0A !important; }
+        [data-theme="dark"] .trust-section {
+            background: #050505 !important;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.10);
+        }
+        .trust-section .trust-label,
+        [data-theme="dark"] .trust-section .trust-label { color: #FFFFFF !important; }
+        .carousel-item,
+        [data-theme="dark"] .carousel-item { color: #D4D4D4 !important; }
+        .carousel-item:hover,
+        [data-theme="dark"] .carousel-item:hover { color: #4FB8F0 !important; }
+        .featured-in,
+        [data-theme="dark"] .featured-in { color: #D4D4D4 !important; }
+        .featured-in a,
+        [data-theme="dark"] .featured-in a { color: #FFFFFF !important; }
+
+        /* Near-misses on their own grounds: nudge to clear AA outright. */
+        .results-preview-stat { color: var(--accent-strong, #0077C4) !important; }
+        [data-theme="dark"] .results-preview-stat { color: #4FB8F0 !important; }
+        .hero-cta .btn-ghost, .hero-cta .btn-ghost:link { color: #FFFFFF !important; }
+        .review-tag { background: rgba(0,119,196,0.14) !important; color: #005E9E !important; }
+        [data-theme="dark"] .review-tag { background: rgba(79,184,240,0.16) !important; color: #7FCCF5 !important; }
+        .step-number { color: #4FB8F0 !important; }
+        
+        /* Final contrast pass — each of these was measured failing AA on its
+           own painted ground, in the theme noted. */
+
+        /* .featured-in outside the ink ribbon sits on paper, so the light
+           treatment above inverted it. Scope the light colour to the ribbon. */
+        .featured-in { color: var(--n-600) !important; }
+        .featured-in a { color: var(--ink) !important; }
+        .trust-section .featured-in,
+        [data-theme="dark"] .trust-section .featured-in { color: #D4D4D4 !important; }
+        .trust-section .featured-in a,
+        [data-theme="dark"] .trust-section .featured-in a { color: #FFFFFF !important; }
+
+        /* Step numerals and small accent labels: darker accent on paper,
+           brighter on ink. */
+        .step-number, .stage-number, .capability-tag, .featured-card-link,
+        .category-eyebrow, .view-all-link, .case-label {
+            color: var(--accent-strong, #0077C4) !important;
+        }
+        [data-theme="dark"] .step-number,
+        [data-theme="dark"] .stage-number,
+        [data-theme="dark"] .capability-tag,
+        [data-theme="dark"] .featured-card-link,
+        [data-theme="dark"] .category-eyebrow,
+        [data-theme="dark"] .view-all-link,
+        [data-theme="dark"] .case-label {
+            color: #4FB8F0 !important;
+        }
+        /* On its own tinted ground the accent needs to go one step darker
+           still to clear AA (measured 4.02 at #0077C4). */
+        .capability-tag {
+            background: rgba(0,119,196,0.10) !important;
+            color: #00568F !important;
+        }
+        [data-theme="dark"] .capability-tag { background: rgba(79,184,240,0.16) !important; }
+
+        /* Body links in dark mode: #0077C4 is too dark on ink. */
+        [data-theme="dark"] a { color: #4FB8F0; }
+        [data-theme="dark"] a:hover { color: #7FCCF5; }
         </style>
 </head>
 <body>
