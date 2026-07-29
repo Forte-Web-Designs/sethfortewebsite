@@ -1206,6 +1206,24 @@
         /* Body links in dark mode: #0077C4 is too dark on ink. */
         [data-theme="dark"] a { color: #4FB8F0; }
         [data-theme="dark"] a:hover { color: #7FCCF5; }
+        
+        /* The H1's last word is swapped on a timer ("A System" ->
+           "Using The Right Data" -> ...). At narrow widths the longest option
+           wraps to an extra line, which resized the headline and shoved the
+           whole page down ~92px on every cycle. Reserve the tallest variant's
+           height up front so the layout never moves.
+
+           min-height is set from the real rendered height of the longest word
+           at load, and re-measured on resize. The CSS floor below is a
+           no-JS/first-paint fallback in the same proportions. */
+        .hero-headline {
+            min-height: calc(2 * 1.05em);
+        }
+        /* Measured: only "Using The Right Data" needs a third line, and only
+           at ~560px and below. Above that every variant is the same height. */
+        @media (max-width: 560px) {
+            .hero-headline { min-height: calc(3 * 1.05em); }
+        }
         </style>
 </head>
 <body>
@@ -1434,6 +1452,40 @@
             </div>
         </div>
     </main>
+
+    <!-- Reserve the headline's tallest state so the rotating word cannot
+         resize the page. Measures every variant off-screen, then pins the
+         min-height to the largest. Re-runs on resize. -->
+    <script>
+        (function() {
+            var h1 = document.querySelector('.hero-headline');
+            var slot = h1 && h1.querySelector('.gradient-text');
+            if (!h1 || !slot) return;
+            var variants = ["A System", "Using The Right Data", "A Framework", "A Process", "Repeatable"];
+
+            function reserve() {
+                var live = slot.textContent;
+                h1.style.minHeight = '';
+                var tallest = 0;
+                for (var i = 0; i < variants.length; i++) {
+                    slot.textContent = variants[i];
+                    var hgt = h1.getBoundingClientRect().height;
+                    if (hgt > tallest) tallest = hgt;
+                }
+                slot.textContent = live;
+                if (tallest) h1.style.minHeight = Math.ceil(tallest) + 'px';
+            }
+
+            reserve();
+            // fonts land after first paint and change the metrics
+            if (document.fonts && document.fonts.ready) document.fonts.ready.then(reserve);
+            var t;
+            window.addEventListener('resize', function() {
+                clearTimeout(t);
+                t = setTimeout(reserve, 120);
+            });
+        })();
+    </script>
     <script>
         const words = ["A System", "Using The Right Data", "A Framework", "A Process", "Repeatable"];
         let index = 0;
