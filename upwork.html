@@ -1604,7 +1604,9 @@
         (function() {
             var v = document.getElementById('hero-video');
             if (!v) return;
-            if (window.matchMedia('(max-width: 768px)').matches) return;
+            // Mobile plays too, per the Pass 8 treatment: the clips are
+            // 0.7-1.2MB and the poster paints first, so there is no cost to
+            // first paint. Only reduced-motion opts out.
             if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
             var clips = [
                 { src: '/media/hero-loop-1.mp4', focus: '43%' },
@@ -1633,7 +1635,7 @@
         (function() {
             var header = document.querySelector('.site-header');
             if (!header) return;
-            var hero = document.querySelector('.hero-cinematic, .page-hero.has-video');
+            var hero = document.querySelector('.hero-cinematic, .page-hero.has-video, .page-hero-zone');
             function sync() {
                 var stuck = true;
                 if (hero) {
