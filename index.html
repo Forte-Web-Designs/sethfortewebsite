@@ -1351,7 +1351,7 @@
     <!-- The dark zone: nav bleeding into the full-bleed dim video -->
     <section class="hero-cinematic">
         <div class="hero-video-layer">
-            <video class="hero-video" id="hero-video" autoplay muted playsinline preload="auto" aria-hidden="true" tabindex="-1" width="1280" height="720">
+            <video class="hero-video" id="hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1" width="1280" height="720">
                 <source src="/media/hero-loop-1.mp4" type="video/mp4">
             </video>
         </div>
@@ -1666,23 +1666,6 @@
         })();
     </script>
 
-<!-- Hero video sequencer: play clip 1 once, then loop clip 2 -->
-<script>
-    (function() {
-        var v = document.getElementById('hero-video');
-        if (!v) return;
-        var s = v.querySelector('source');
-        if (!s) return;
-        v.addEventListener('ended', function once() {
-            v.removeEventListener('ended', once);
-            s.src = '/media/hero-loop-2.mp4';
-            v.loop = true;
-            v.load();
-            var p = v.play();
-            if (p && p.catch) p.catch(function() {});
-        });
-    })();
-</script>
 <script src="/scroll-reveal.js"></script>
 <script src="/theme-toggle.js"></script>
 <script src="/scroll-top.js"></script>
