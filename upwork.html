@@ -1472,7 +1472,9 @@
         <!-- Hero -->
         <section class="page-hero has-video">
             <div class="hero-video-layer">
-                <video id="hero-video" poster="/media/hero-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1" width="1280" height="720"></video>
+                <video class="hero-video" id="hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1" width="1280" height="720">
+                    <source src="/media/hero-loop-1.mp4" type="video/mp4">
+                </video>
             </div>
             <img src="headshot-6.jpg" alt="Seth Forte, founder of Launch Forte" class="animate-fade-in" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 1.5rem; border: 2px solid var(--border-light); position: relative;" width="80" height="80">
             <h1 class="page-title animate-fade-up animate-delay-1"><span class="gradient-text">Seth Forte</span> on Upwork.</h1>
@@ -1756,36 +1758,6 @@
     <script src="/theme-toggle.js"></script>
     <script src="/scroll-top.js"></script>
     <script src="/hamburger.js"></script>
-
-    <!-- Hero background loop: the three speaking clips, each with its own focal
-         point so Seth stays in frame. Desktop only; mobile shows the poster. -->
-    <script>
-        (function() {
-            var v = document.getElementById('hero-video');
-            if (!v) return;
-            // Mobile plays too, per the Pass 8 treatment: the clips are
-            // 0.7-1.2MB and the poster paints first, so there is no cost to
-            // first paint. Only reduced-motion opts out.
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-            var clips = [
-                { src: '/media/hero-loop-1.mp4', focus: '43%' },
-                { src: '/media/hero-loop-3.mp4', focus: '55%' },
-                { src: '/media/hero-loop-2.mp4', focus: '76%' }
-            ];
-            var i = 0;
-            function play(n) {
-                var c = clips[n];
-                v.style.setProperty('--hero-focus', c.focus);
-                v.src = c.src;
-                var p = v.play();
-                if (p && p.catch) p.catch(function() {});
-            }
-            v.removeAttribute('loop');
-            v.addEventListener('ended', function() { i = (i + 1) % clips.length; play(i); });
-            v.addEventListener('error', function() { i = (i + 1) % clips.length; if (i !== 0) play(i); });
-            play(0);
-        })();
-    </script>
 
     <!-- Sticky header: transparent while a dark hero is behind it, solid once
          the paper pane scrolls under. Pages with no dark hero are solid from
