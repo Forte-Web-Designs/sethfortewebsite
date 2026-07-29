@@ -1122,6 +1122,39 @@
         .site-header:not(.is-stuck) .nav-link:hover,
         .site-header:not(.is-stuck) .nav-link.active { color: #FFFFFF !important; background: rgba(255,255,255,0.12) !important; }
         .site-header:not(.is-stuck) .header-logo { color: #FFFFFF !important; }
+        
+        /* The video layer is a child of the zone, so the `> *` max-width rule
+           above was capping it to --max-content (1120px) and leaving 80px of
+           pane either side. It must span the zone edge to edge. */
+        .page-hero-zone > .hero-video-layer {
+            max-width: none !important;
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+        }
+        
+        /* Case study hero: pull it up under the sticky header so the dark zone
+           reaches behind the nav (otherwise the white links sit on white pane),
+           and give the body its reading column back. */
+        .site-header { margin-bottom: -5.5rem; }
+        .main-wrapper { padding-left: 0 !important; padding-right: 0 !important; max-width: none !important; padding-top: 0 !important; }
+        .main-wrapper > *:not(.page-hero-zone) {
+            max-width: 900px; margin-left: auto; margin-right: auto;
+            padding-left: 2rem; padding-right: 2rem; box-sizing: border-box;
+        }
+        .page-hero-zone { width: 100% !important; margin: 0 !important; padding-top: 10rem !important; }
+        .page-hero-zone > *:not(.hero-video-layer) { max-width: 900px; margin-left: auto; margin-right: auto; }
+        .page-hero-zone .case-title, [data-theme="dark"] .page-hero-zone .case-title { color:#FFFFFF !important; -webkit-text-fill-color:#FFFFFF !important; }
+        .page-hero-zone .case-subtitle, [data-theme="dark"] .page-hero-zone .case-subtitle { color:rgba(255,255,255,0.76) !important; -webkit-text-fill-color:rgba(255,255,255,0.76) !important; }
+        .page-hero-zone .case-eyebrow, [data-theme="dark"] .page-hero-zone .case-eyebrow { color:#4FB8F0 !important; }
+        .page-hero-zone .case-capability-tag { background:rgba(255,255,255,0.14) !important; color:#FFFFFF !important; }
+        @media (max-width: 768px) {
+            .site-header { margin-bottom: -4.75rem; }
+            .page-hero-zone { padding-top: 8rem !important; }
+            .main-wrapper > *:not(.page-hero-zone) { padding-left:1.5rem; padding-right:1.5rem; }
+        }
         </style>
 </head>
 <body>

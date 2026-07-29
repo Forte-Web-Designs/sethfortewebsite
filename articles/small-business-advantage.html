@@ -996,6 +996,18 @@
         .site-header:not(.is-stuck) .nav-link:hover,
         .site-header:not(.is-stuck) .nav-link.active { color: #FFFFFF !important; background: rgba(255,255,255,0.12) !important; }
         .site-header:not(.is-stuck) .header-logo { color: #FFFFFF !important; }
+        
+        /* The video layer is a child of the zone, so the `> *` max-width rule
+           above was capping it to --max-content (1120px) and leaving 80px of
+           pane either side. It must span the zone edge to edge. */
+        .page-hero-zone > .hero-video-layer {
+            max-width: none !important;
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+        }
         </style>
 </head>
 <body>

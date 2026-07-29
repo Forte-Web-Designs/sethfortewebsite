@@ -1097,6 +1097,18 @@
             .page-hero-zone { padding-top: 8rem !important; }
             .main-wrapper > *:not(.page-hero-zone) { padding-left: 1.5rem; padding-right: 1.5rem; }
         }
+        
+        /* The video layer is a child of the zone, so the `> *` max-width rule
+           above was capping it to --max-content (1120px) and leaving 80px of
+           pane either side. It must span the zone edge to edge. */
+        .page-hero-zone > .hero-video-layer {
+            max-width: none !important;
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+        }
         </style>
 </head>
 <body>
