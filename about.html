@@ -1468,7 +1468,10 @@
            ============================================================ */
         .hero-zone {
           position: relative;
-          background: #0A0A0A;
+          background:
+            radial-gradient(ellipse 900px 600px at 15% 20%, rgba(74,181,237,0.18), transparent 60%),
+            radial-gradient(ellipse 700px 500px at 90% 90%, rgba(0,136,219,0.10), transparent 60%),
+            #0A0A0A;
           color: #FFFFFF;
           overflow: hidden;
           padding-bottom: 3rem;
@@ -1508,10 +1511,10 @@
           z-index: 1;
         }
         .hero-overlay-btm {
-          background: linear-gradient(180deg, transparent 65%, rgba(10,10,10,0.4) 82%, #FFFFFF 100%);
+          background: linear-gradient(180deg, transparent 70%, rgba(10,10,10,0.55) 88%, #FFFFFF 100%);
         }
         [data-theme="dark"] .hero-overlay-btm {
-          background: linear-gradient(180deg, transparent 65%, rgba(10,10,10,0.4) 82%, #0A0A0A 100%);
+          background: linear-gradient(180deg, transparent 70%, rgba(10,10,10,0.4) 88%, #0A0A0A 100%);
         }
 
         .hero-nav {
@@ -1564,7 +1567,6 @@
 
         @media (max-width: 768px) {
           .hero-zone { padding-bottom: 1.5rem; }
-          .hero-zone .hero-video { object-position: center center; }
           .hero-zone .hero-content-inner { text-align: center; }
           .hero-zone .hero-h1 {
             max-width: 100% !important;
@@ -1590,9 +1592,6 @@
     </header>
 
     <div class="hero-zone">
-        <video class="hero-video" id="hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
-            <source src="/media/hero-loop-1.mp4" type="video/mp4">
-        </video>
         <div class="hero-overlay hero-overlay-btm" aria-hidden="true"></div>
         <div class="hero-content">
             <div class="hero-content-inner">
