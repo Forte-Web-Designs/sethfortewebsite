@@ -1411,11 +1411,9 @@
           max-width: 960px;
           margin: 0 auto;
           padding: 0 1.5rem;
-          text-align: left;
+          text-align: center;
         }
-        .hero-zone .hero-h1,
-        .hero-zone .hero-sub,
-        .hero-zone .hero-cta { margin-left: 0; margin-right: 0; }
+        .hero-zone .hero-cta { justify-content: center; }
         @media (min-width: 640px) {
           .hero-content-inner { padding: 0 2rem; }
         }
@@ -1434,11 +1432,8 @@
 
         @media (max-width: 768px) {
           .hero-zone { padding-bottom: 1.5rem; }
-          .hero-zone .hero-video { object-position: 27% center; }
+          .hero-zone .hero-video { object-position: center center; }
           .hero-zone .hero-content-inner { text-align: center; }
-          .hero-zone .hero-h1,
-          .hero-zone .hero-sub,
-          .hero-zone .hero-cta { margin-left: auto; margin-right: auto; }
           .hero-zone .hero-h1 {
             max-width: 100% !important;
             font-size: clamp(1.75rem, 8vw, 2.5rem);
