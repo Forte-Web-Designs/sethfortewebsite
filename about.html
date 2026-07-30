@@ -1462,11 +1462,120 @@
         @media (max-width: 768px) {
             .hero-video-layer video { display: none; }
         }
+
+        /* ============================================================
+           HERO ZONE REBUILD (spec 2026-07-30)
+           ============================================================ */
+        .hero-zone {
+          position: relative;
+          background: #0A0A0A;
+          color: #FFFFFF;
+          overflow: hidden;
+          padding-bottom: 3rem;
+        }
+        main.hero-follows {
+          margin-top: 0;
+          padding-top: 0;
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+        }
+        main.hero-follows::before { display: none; }
+
+        .hero-zone .hero-video {
+          position: absolute;
+          top: 0; left: 0;
+          width: 100%; height: 100%;
+          object-fit: cover;
+          object-position: center bottom;
+          z-index: 0;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .hero-zone .hero-video { display: none; }
+        }
+
+        .hero-video-tint {
+          position: absolute;
+          inset: 0;
+          background: rgba(0, 0, 0, 0.28);
+          z-index: 1;
+          pointer-events: none;
+        }
+
+        .hero-overlay {
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          z-index: 1;
+        }
+        .hero-overlay-btm {
+          background: linear-gradient(180deg, transparent 65%, rgba(10,10,10,0.4) 82%, #FFFFFF 100%);
+        }
+        [data-theme="dark"] .hero-overlay-btm {
+          background: linear-gradient(180deg, transparent 65%, rgba(10,10,10,0.4) 82%, #0A0A0A 100%);
+        }
+
+        .hero-nav {
+          position: sticky;
+          top: 0;
+          z-index: 40;
+          padding: 1.15rem 0;
+          background: transparent !important;
+          -webkit-backdrop-filter: none !important;
+          backdrop-filter: none !important;
+          border-bottom: 1px solid transparent !important;
+          transition: background 0.2s ease, border-color 0.2s ease;
+        }
+        .hero-nav.is-scrolled {
+          background: rgba(10, 10, 10, 0.82) !important;
+          -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
+          backdrop-filter: saturate(180%) blur(20px) !important;
+          border-bottom-color: rgba(255,255,255,0.08) !important;
+        }
+        .hero-nav .logo img { filter: brightness(0) invert(1); }
+
+        .hero-content {
+          position: relative;
+          z-index: 20;
+          padding: 6rem 0 3rem;
+        }
+        .hero-content-inner {
+          max-width: 960px;
+          margin: 0 auto;
+          padding: 0 1.5rem;
+          text-align: center;
+        }
+        @media (min-width: 640px) {
+          .hero-content-inner { padding: 0 2rem; }
+        }
+
+        .hero-h1 {
+          font-family: 'Inter', sans-serif;
+          font-weight: 500;
+          font-size: clamp(2.25rem, 5.5vw, 4.25rem);
+          line-height: 1.05;
+          letter-spacing: -0.03em;
+          margin: 0 auto 1.5rem;
+          max-width: 18ch;
+          color: #FFFFFF;
+          text-wrap: balance;
+        }
+
+        @media (max-width: 768px) {
+          .hero-zone { padding-bottom: 1.5rem; }
+          .hero-zone .hero-video,
+          .hero-zone .hero-video-tint,
+          .hero-zone .hero-overlay { display: none !important; }
+          .hero-zone .hero-content-inner { text-align: center; }
+          .hero-zone .hero-h1 {
+            max-width: 100% !important;
+            font-size: clamp(1.75rem, 8vw, 2.5rem);
+          }
+        }
         </style>
 </head>
 <body>
     <div class="grid-bg"></div>
-    <header class="site-header">
+    <header class="site-header hero-nav">
         <div class="header-container">
             <a href="/" class="header-logo">Seth Forte</a>
             <nav class="header-nav">
@@ -1480,21 +1589,24 @@
         </div>
     </header>
 
-    <main class="main-wrapper">
-        <section class="page-hero-zone">
-            <div class="hero-video-layer" aria-hidden="true">
-                <video class="hero-video" id="hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1" width="1280" height="720">
-                    <source src="/media/hero-loop-1.mp4" type="video/mp4">
-                </video>
+    <div class="hero-zone">
+        <video class="hero-video" id="hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+            <source src="/media/hero-loop-1.mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-tint" aria-hidden="true"></div>
+        <div class="hero-overlay hero-overlay-btm" aria-hidden="true"></div>
+        <div class="hero-content">
+            <div class="hero-content-inner">
+                <h1 class="hero-h1 page-title animate-fade-up animate-delay-1">About <span class="gradient-text">Seth Forte</span></h1>
+                <div class="hero-cta animate-fade-up animate-delay-2">
+                    <a href="https://calendly.com/seth-launchforte/30min" target="_blank" rel="noopener" class="btn-primary">Book a Call</a>
+                    <a href="mailto:seth@launchforte.com" class="btn-ghost-link">Or email me directly</a>
+                </div>
             </div>
-        <h1 class="page-title animate-fade-up animate-delay-1">About <span class="gradient-text">Seth Forte</span></h1>
-
-        <div class="hero-cta animate-fade-up animate-delay-2">
-            <a href="https://calendly.com/seth-launchforte/30min" target="_blank" rel="noopener" class="btn-primary">Book a Call</a>
-            <a href="mailto:seth@launchforte.com" class="btn-ghost-link">Or email me directly</a>
         </div>
-        </section>
+    </div>
 
+    <main class="main-wrapper hero-follows">
         <!-- Video -->
         <section class="video-section reveal">
             <span class="video-eyebrow">The 2-minute version</span>
@@ -1624,7 +1736,7 @@
         (function() {
             var header = document.querySelector('.site-header');
             if (!header) return;
-            var hero = document.querySelector('.hero-cinematic, .page-hero.has-video');
+            var hero = document.querySelector('.hero-zone, .hero-cinematic, .page-hero.has-video');
             function sync() {
                 var stuck = true;
                 if (hero) {
@@ -1640,6 +1752,18 @@
             window.addEventListener('resize', sync);
             window.addEventListener('load', sync);
         })();
+    </script>
+
+    <script>
+      (function() {
+        var nav = document.querySelector('.hero-nav');
+        if (!nav) return;
+        function sync() {
+          nav.classList.toggle('is-scrolled', window.scrollY > 120);
+        }
+        sync();
+        window.addEventListener('scroll', sync, { passive: true });
+      })();
     </script>
 
 </body>
