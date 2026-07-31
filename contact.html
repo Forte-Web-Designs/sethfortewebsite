@@ -1367,6 +1367,46 @@
         }
         .hero-zone .hero-cta { justify-content: center; }
         .hero-zone .hero-sub { margin-left: auto; margin-right: auto; }
+
+        /* Hero contrast: everything inside the dark hero reads light in BOTH themes. */
+        .hero-zone,
+        .hero-zone h1, .hero-zone h2, .hero-zone h3,
+        .hero-zone p, .hero-zone .page-title, .hero-zone .page-subtitle,
+        .hero-zone .hero-h1, .hero-zone .hero-headline, .hero-zone .hero-sub,
+        .hero-zone .hero-intro, .hero-zone .hero-eyebrow, .hero-zone .section-label,
+        [data-theme="dark"] .hero-zone,
+        [data-theme="dark"] .hero-zone h1, [data-theme="dark"] .hero-zone h2,
+        [data-theme="dark"] .hero-zone p, [data-theme="dark"] .hero-zone .page-title {
+            color: #FFFFFF !important;
+            -webkit-text-fill-color: #FFFFFF !important;
+        }
+        .hero-zone .hero-sub,
+        .hero-zone .page-subtitle,
+        .hero-zone .hero-intro {
+            color: rgba(255,255,255,0.76) !important;
+            -webkit-text-fill-color: rgba(255,255,255,0.76) !important;
+        }
+        .hero-zone .gradient-text,
+        .hero-zone .page-title > .gradient-text:only-child,
+        [data-theme="dark"] .hero-zone .gradient-text {
+            color: #4FB8F0 !important;
+            -webkit-text-fill-color: #4FB8F0 !important;
+            background: none !important;
+            background-image: none !important;
+        }
+        .hero-zone .back-link,
+        .hero-zone .btn-ghost-link,
+        .hero-zone .btn-ghost,
+        [data-theme="dark"] .hero-zone .back-link,
+        [data-theme="dark"] .hero-zone .btn-ghost-link,
+        [data-theme="dark"] .hero-zone .btn-ghost {
+            color: rgba(255,255,255,0.80) !important;
+            border-color: rgba(255,255,255,0.30) !important;
+        }
+        .hero-zone .credibility-item,
+        [data-theme="dark"] .hero-zone .credibility-item {
+            color: rgba(255,255,255,0.80) !important;
+        }
         @media (min-width: 640px) {
           .hero-content-inner { padding: 0 2rem; }
         }
