@@ -1838,6 +1838,50 @@
         .hero-zone .back-link:hover {
             color: #FFFFFF !important;
         }
+        /* Hero contrast: catch-all for any interactive element inside the hero
+           (pill-nav links, anchor pills, ghost buttons, chips, plain <a> tags)
+           so they read as light-on-dark in both themes rather than the base
+           var(--text-secondary) which flips dark in light mode and disappears. */
+        .hero-zone a,
+        [data-theme="dark"] .hero-zone a {
+            color: rgba(255,255,255,0.85) !important;
+        }
+        .hero-zone a:hover,
+        [data-theme="dark"] .hero-zone a:hover {
+            color: #FFFFFF !important;
+        }
+        .hero-zone .pill-link,
+        .hero-zone .anchor-pill,
+        .hero-zone .chip,
+        [data-theme="dark"] .hero-zone .pill-link,
+        [data-theme="dark"] .hero-zone .anchor-pill,
+        [data-theme="dark"] .hero-zone .chip {
+            color: rgba(255,255,255,0.80) !important;
+            border-color: rgba(255,255,255,0.24) !important;
+            background: rgba(255,255,255,0.04) !important;
+        }
+        .hero-zone .pill-link:hover,
+        .hero-zone .anchor-pill:hover,
+        .hero-zone .chip:hover,
+        [data-theme="dark"] .hero-zone .pill-link:hover,
+        [data-theme="dark"] .hero-zone .anchor-pill:hover,
+        [data-theme="dark"] .hero-zone .chip:hover {
+            color: #FFFFFF !important;
+            border-color: rgba(255,255,255,0.4) !important;
+            background: rgba(255,255,255,0.08) !important;
+        }
+        /* Ghost/link buttons inside the hero: preserve the earlier .btn-ghost-link
+           rule (kept ~0.80 white text) but also give them a visible underline on hover
+           for affordance. */
+        .hero-zone .btn-link,
+        [data-theme="dark"] .hero-zone .btn-link {
+            color: rgba(255,255,255,0.85) !important;
+        }
+        .hero-zone .btn-link:hover,
+        [data-theme="dark"] .hero-zone .btn-link:hover {
+            color: #FFFFFF !important;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -1865,16 +1909,18 @@
                 <h1 class="page-title animate-fade-up animate-delay-1"><span class="gradient-text">Results</span></h1>
                 <p class="page-subtitle animate-fade-up animate-delay-1">Engineering work that moved businesses.</p>
                 <p class="page-intro animate-fade-up animate-delay-2">Every engagement on this page started with a problem a business was paying for. Outcomes verified.</p>
-                <nav class="pill-nav animate-fade-up animate-delay-2">
-                <a href="#video-testimonials" class="pill-link">Video testimonials</a>
-                <a href="#featured" class="pill-link">Featured case studies</a>
-                <a href="#additional" class="pill-link">Additional engagements</a>
-                <a href="#reviews" class="pill-link">Client reviews</a>
-                <a href="#next-step" class="pill-link">Next step</a>
-                </nav>
             </div>
         </div>
     </div>
+
+        <!-- Anchor pills — moved OUT of the hero so they read dark-on-light in the pane below -->
+        <nav class="pill-nav animate-fade-up animate-delay-2" style="max-width: 960px; margin: 2rem auto 3rem; padding: 0 1.5rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem;">
+            <a href="#video-testimonials" class="pill-link">Video testimonials</a>
+            <a href="#featured" class="pill-link">Featured case studies</a>
+            <a href="#additional" class="pill-link">Additional engagements</a>
+            <a href="#reviews" class="pill-link">Client reviews</a>
+            <a href="#next-step" class="pill-link">Next step</a>
+        </nav>
 
         <!-- Section 1: Video Testimonials -->
         <section id="video-testimonials" class="section">

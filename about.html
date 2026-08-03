@@ -1740,6 +1740,45 @@
         [data-theme="dark"] .hero-zone .credibility-item {
             color: rgba(255,255,255,0.80) !important;
         }
+        /* Hero contrast: catch-all for any interactive element inside the hero
+           (pill-nav, anchor pills, chips, plain <a>) — read light on dark. */
+        .hero-zone a,
+        [data-theme="dark"] .hero-zone a {
+            color: rgba(255,255,255,0.85) !important;
+        }
+        .hero-zone a:hover,
+        [data-theme="dark"] .hero-zone a:hover {
+            color: #FFFFFF !important;
+        }
+        .hero-zone .pill-link,
+        .hero-zone .anchor-pill,
+        .hero-zone .chip,
+        [data-theme="dark"] .hero-zone .pill-link,
+        [data-theme="dark"] .hero-zone .anchor-pill,
+        [data-theme="dark"] .hero-zone .chip {
+            color: rgba(255,255,255,0.80) !important;
+            border-color: rgba(255,255,255,0.24) !important;
+            background: rgba(255,255,255,0.04) !important;
+        }
+        .hero-zone .pill-link:hover,
+        .hero-zone .anchor-pill:hover,
+        .hero-zone .chip:hover,
+        [data-theme="dark"] .hero-zone .pill-link:hover,
+        [data-theme="dark"] .hero-zone .anchor-pill:hover,
+        [data-theme="dark"] .hero-zone .chip:hover {
+            color: #FFFFFF !important;
+            border-color: rgba(255,255,255,0.4) !important;
+            background: rgba(255,255,255,0.08) !important;
+        }
+        .hero-zone .btn-link,
+        [data-theme="dark"] .hero-zone .btn-link {
+            color: rgba(255,255,255,0.85) !important;
+        }
+        .hero-zone .btn-link:hover,
+        [data-theme="dark"] .hero-zone .btn-link:hover {
+            color: #FFFFFF !important;
+            text-decoration: underline;
+        }
         @media (min-width: 640px) {
           .hero-content-inner { padding: 0 2rem; }
         }
