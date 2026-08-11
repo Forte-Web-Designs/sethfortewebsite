@@ -1770,6 +1770,280 @@
             color: #FFFFFF !important;
             text-decoration: underline;
         }
+
+        /* ============================================================
+           Pricing section — rate card, worked examples, fixed products,
+           rules. Lives in the paper pane, so it reads dark-on-light and
+           uses the same tokens as the rest of the page.
+           ============================================================ */
+        .rate-card {
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg, 16px);
+            overflow: hidden;
+            margin-top: 1.5rem;
+        }
+        .rate-row {
+            display: flex;
+            align-items: baseline;
+            gap: 1.25rem;
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .rate-row:last-child { border-bottom: 0; }
+        .rate-row:nth-child(even) { background: var(--surface-hover, rgba(0,0,0,0.02)); }
+        [data-theme="dark"] .rate-row:nth-child(even) { background: rgba(255,255,255,0.03); }
+        .rate-what { flex: 1; min-width: 0; }
+        .rate-name {
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: -0.012em;
+            color: var(--text-primary);
+            margin-bottom: 0.2rem;
+        }
+        .rate-eg {
+            font-size: 0.8438rem;
+            line-height: 1.55;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+        .rate-price {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            white-space: nowrap;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .define-block {
+            margin-top: 1.5rem;
+            padding: 1.5rem 1.75rem;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg, 16px);
+            background: var(--surface-hover, rgba(0,0,0,0.02));
+        }
+        [data-theme="dark"] .define-block { background: rgba(255,255,255,0.03); }
+        .define-h {
+            font-size: 0.9375rem;
+            font-weight: 600;
+            letter-spacing: -0.012em;
+            color: var(--text-primary);
+            margin-bottom: 0.6rem;
+        }
+        .define-block p {
+            font-size: 0.9063rem;
+            line-height: 1.65;
+            color: var(--text-secondary);
+            font-weight: 300;
+            max-width: 66ch;
+        }
+        .define-block p + p { margin-top: 0.7rem; }
+        .define-eg {
+            margin-top: 0.9rem !important;
+            padding-top: 0.85rem;
+            border-top: 1px dashed var(--border-light);
+        }
+        .define-eg strong { color: var(--text-primary); font-weight: 600; }
+
+        .included-strip {
+            margin-top: 1.5rem;
+            padding: 1.4rem 1.75rem;
+            background: var(--accent-tint, rgba(0,136,219,0.08));
+            border-radius: var(--radius-md, 12px);
+            font-size: 0.9375rem;
+            line-height: 1.65;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+        .included-strip strong { color: var(--text-primary); font-weight: 600; }
+
+        .pricing-example {
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg, 16px);
+            padding: 1.75rem 1.9rem 1.6rem;
+            margin-top: 1.4rem;
+            background: var(--card-bg, #ffffff);
+        }
+        [data-theme="dark"] .pricing-example { background: rgba(255,255,255,0.02); }
+        .pricing-example-cap {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        .pricing-example h3 {
+            font-size: 1.1875rem;
+            font-weight: 600;
+            letter-spacing: -0.015em;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        .pricing-example-said {
+            font-size: 0.9063rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            margin-bottom: 0.35rem;
+            max-width: 62ch;
+            font-weight: 300;
+        }
+        .pricing-example-alt {
+            font-size: 0.8125rem;
+            line-height: 1.55;
+            color: var(--text-muted);
+            opacity: 0.75;
+            margin-bottom: 1.25rem;
+            max-width: 62ch;
+            font-weight: 300;
+        }
+        .pricing-tally {
+            border-top: 1px solid var(--border);
+            font-variant-numeric: tabular-nums;
+        }
+        .tally-li {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            padding: 0.7rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .tally-l {
+            flex: 1;
+            font-size: 0.9063rem;
+            line-height: 1.5;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+        .tally-l em { font-style: normal; color: var(--text-muted); }
+        .tally-n {
+            font-size: 0.9375rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+        .tally-sum {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            padding: 0.95rem 0 0;
+        }
+        .tally-sum-l {
+            flex: 1;
+            font-size: 0.9375rem;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            color: var(--text-primary);
+        }
+        .tally-sum-n {
+            font-size: 1.875rem;
+            font-weight: 600;
+            letter-spacing: -0.025em;
+            color: var(--accent);
+            white-space: nowrap;
+        }
+        .pricing-why {
+            margin-top: 1.1rem;
+            padding-top: 1rem;
+            border-top: 1px dashed var(--border-light);
+            font-size: 0.875rem;
+            line-height: 1.62;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+        .pricing-why strong { color: var(--text-primary); font-weight: 600; }
+        .pricing-why ol {
+            margin: 0.65rem 0 0 1.1rem;
+            columns: 2;
+            column-gap: 1.6rem;
+        }
+        .pricing-why li {
+            font-size: 0.8438rem;
+            line-height: 1.5;
+            color: var(--text-secondary);
+            margin-bottom: 0.3rem;
+            break-inside: avoid;
+        }
+
+        .fixed-products {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+        .fixed-product {
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg, 16px);
+            padding: 1.6rem 1.75rem;
+        }
+        .fixed-price {
+            font-size: 2.125rem;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            color: var(--text-primary);
+            line-height: 1;
+            margin-bottom: 0.6rem;
+        }
+        .fixed-price-sub {
+            font-size: 0.9375rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            letter-spacing: 0;
+        }
+        .fixed-product h3 {
+            font-size: 1.0625rem;
+            font-weight: 600;
+            letter-spacing: -0.015em;
+            color: var(--text-primary);
+            margin-bottom: 0.4rem;
+        }
+        .fixed-product p {
+            font-size: 0.9063rem;
+            line-height: 1.62;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        .pricing-rules { margin-top: 1.5rem; }
+        .pricing-rule {
+            display: flex;
+            gap: 1.1rem;
+            padding: 1.1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .pricing-rule:last-child { border-bottom: 0; }
+        .pricing-rule-num {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--accent);
+            padding-top: 0.2rem;
+            flex: none;
+            width: 1.4rem;
+            font-variant-numeric: tabular-nums;
+        }
+        .pricing-rule-body { flex: 1; }
+        .pricing-rule h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: -0.015em;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+        .pricing-rule p {
+            font-size: 0.9063rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        @media (max-width: 768px) {
+            .rate-row { flex-direction: column; gap: 0.5rem; }
+            .rate-price { font-size: 1.375rem; }
+            .fixed-products { grid-template-columns: 1fr; }
+            .pricing-why ol { columns: 1; }
+            .pricing-example { padding: 1.4rem 1.25rem 1.25rem; }
+            .define-block, .included-strip { padding: 1.25rem; }
+        }
         @media (min-width: 640px) {
           .hero-content-inner { padding: 0 2rem; }
         }
@@ -2025,27 +2299,199 @@
         <p class="section-body reveal">The audits, the builds, and the partnerships all run through it, and Upwork is one door in. If you are ready to start, an Upwork message is the fastest way, and the full practice is at launchforte.com when you want the bigger picture.</p>
         <a href="https://launchforte.com" target="_blank" rel="noopener" class="btn-link reveal" style="margin-top: 0.5rem;">Visit Launch Forte</a>
 
-        <!-- Engagement Model -->
-        <p class="section-label reveal" style="margin-top: 6rem;">Engagement Model</p>
-        <h2 class="section-heading reveal" style="padding-top: 0;">Three ways to <span class="gradient-text">engage</span>.</h2>
-        <p class="section-body reveal">Most Upwork projects start as a specific build. The audit and the partnership are there when you want them.</p>
+        <!-- Pricing -->
+        <p class="section-label reveal" style="margin-top: 6rem;">Pricing</p>
+        <h2 class="section-heading reveal" style="padding-top: 0;">Priced <span class="gradient-text">by the piece</span>, and you can add it up yourself.</h2>
+        <p class="section-body reveal">No floors, no packages you have to fit into, and no number that appears without a line behind it. Here is exactly what each part of a build costs and how a few real systems add up.</p>
 
-        <div class="engagement-blocks">
-            <div class="engagement-block reveal">
-                <h3>Growth Systems Audit</h3>
-                <p>Three days. The diagnostic that decides what to build and what it's worth.</p>
+        <!-- The Rate Card -->
+        <p class="section-label reveal" style="margin-top: 3.5rem;">The Rate Card</p>
+        <p class="section-body reveal" style="margin-bottom: 1.5rem;">Every build is made of six kinds of part. Count the parts your job needs, add them together, and that is the price. Same arithmetic whether the job takes two days or two months.</p>
+
+        <div class="rate-card reveal">
+            <div class="rate-row">
+                <div class="rate-what">
+                    <div class="rate-name">Getting two systems talking to each other</div>
+                    <div class="rate-eg">A sync, a webhook, an API call, a Zapier or Make scenario. Data moves one direction and nothing has to decide anything.</div>
+                </div>
+                <div class="rate-price">$400</div>
             </div>
-            <div class="engagement-block reveal">
-                <h3>Core Systems Build</h3>
-                <p>Fixed price after audit. Most builds 7 to 21 days.</p>
+            <div class="rate-row">
+                <div class="rate-what">
+                    <div class="rate-name">Setting something up inside a tool you already have</div>
+                    <div class="rate-eg">A form, a tag, an email or text template, your pipeline stages, a custom field, a calendar. Priced each.</div>
+                </div>
+                <div class="rate-price">$250</div>
             </div>
-            <div class="engagement-block reveal">
-                <h3>Embedded Growth Systems Partner</h3>
-                <p>6 month minimum. The engineering brain at the table month over month.</p>
+            <div class="rate-row">
+                <div class="rate-what">
+                    <div class="rate-name">Something that has to decide</div>
+                    <div class="rate-eg">Routing, scoring, a follow up sequence with conditions, an approval step, an AI step, a duplicate check. Every separate rule counts as one.</div>
+                </div>
+                <div class="rate-price">$700</div>
+            </div>
+            <div class="rate-row">
+                <div class="rate-what">
+                    <div class="rate-name">A dashboard or a report</div>
+                    <div class="rate-eg">A live view someone opens, or a report that arrives on its own. Both counts as two.</div>
+                </div>
+                <div class="rate-price">$600</div>
+            </div>
+            <div class="rate-row">
+                <div class="rate-what">
+                    <div class="rate-name">Anything touching payments, invoices, or a real customer list</div>
+                    <div class="rate-eg">Because that one gets tested harder. Charged once per build, however many places it touches.</div>
+                </div>
+                <div class="rate-price">$800</div>
+            </div>
+            <div class="rate-row">
+                <div class="rate-what">
+                    <div class="rate-name">Each system past the first two</div>
+                    <div class="rate-eg">The first two are already included in the prices above. Every one after that adds a line.</div>
+                </div>
+                <div class="rate-price">$300</div>
             </div>
         </div>
 
-        <a href="https://launchforte.com/#how-to-engage" target="_blank" rel="noopener" class="btn-link reveal">See the full engagement model &rarr;</a>
+        <div class="define-block reveal">
+            <div class="define-h">What counts as a system</div>
+            <p>A system is any app your business already uses that the build has to touch. Your CRM is one. Your accounting software is one. Your website forms, your phone system, your email, a spreadsheet you keep numbers in, each one is a system.</p>
+            <p>The tool doing the connecting does not count. Zapier, Make, or whatever runs the automation in the background is plumbing rather than a place your information lives, so you never pay a line for it.</p>
+            <p class="define-eg"><strong>Counting yours:</strong> a build that pulls website forms into your CRM and pushes paid invoices into QuickBooks touches three systems. The first two are already inside the prices above, so the third adds one line at $300.</p>
+        </div>
+
+        <div class="included-strip reveal">
+            <strong>Always inside the number, never billed on top.</strong> Testing on your real data rather than a sandbox, the handoff documentation so you own what was built, one walkthrough session, and thirty days of support after go live.
+        </div>
+
+        <!-- How Real Systems Add Up -->
+        <p class="section-label reveal" style="margin-top: 4rem;">How Real Systems Add Up</p>
+        <p class="section-body reveal" style="margin-bottom: 1.5rem;">Five builds, smallest to largest, priced off the card above. Every line is a thing that exists when the work is done.</p>
+
+        <div class="pricing-example reveal">
+            <div class="pricing-example-cap">One piece</div>
+            <h3>A single connection</h3>
+            <p class="pricing-example-said">"I am copying the same handful of numbers from one place into another every single day."</p>
+            <p class="pricing-example-alt">Or: "I need my Make scenario writing into QuickBooks."</p>
+            <div class="pricing-tally">
+                <div class="tally-li"><div class="tally-l">Getting two systems talking <em>(Make into QuickBooks)</em></div><div class="tally-n">$400</div></div>
+                <div class="tally-sum"><div class="tally-sum-l">Total</div><div class="tally-sum-n">$400</div></div>
+            </div>
+        </div>
+
+        <div class="pricing-example reveal">
+            <div class="pricing-example-cap">Three pieces</div>
+            <h3>Orders into the books, with a daily view</h3>
+            <p class="pricing-example-said">"Every order gets typed into the books by hand, and I never know where the month stands until it closes."</p>
+            <p class="pricing-example-alt">Or: "Shopify to QuickBooks sync with a sales dashboard on top."</p>
+            <div class="pricing-tally">
+                <div class="tally-li"><div class="tally-l">Getting two systems talking <em>(Shopify into QuickBooks)</em></div><div class="tally-n">$400</div></div>
+                <div class="tally-li"><div class="tally-l">Touches invoices and payments</div><div class="tally-n">$800</div></div>
+                <div class="tally-li"><div class="tally-l">A dashboard <em>(sales and margin, refreshed each morning)</em></div><div class="tally-n">$600</div></div>
+                <div class="tally-sum"><div class="tally-sum-l">Total</div><div class="tally-sum-n">$1,800</div></div>
+            </div>
+        </div>
+
+        <div class="pricing-example reveal">
+            <div class="pricing-example-cap">Five pieces</div>
+            <h3>A CRM that runs itself</h3>
+            <p class="pricing-example-said">"Our pipeline stages mean different things to different people, and follow up only happens when somebody remembers."</p>
+            <p class="pricing-example-alt">Or: "Rebuild our CRM stages and automate the follow up sequences."</p>
+            <div class="pricing-tally">
+                <div class="tally-li"><div class="tally-l">Setup inside your CRM &times; 3 <em>(pipeline stages, the fields behind them, message templates)</em></div><div class="tally-n">$750</div></div>
+                <div class="tally-li"><div class="tally-l">Decisions &times; 2 <em>(who a new lead goes to, the follow up sequence and when it stops)</em></div><div class="tally-n">$1,400</div></div>
+                <div class="tally-sum"><div class="tally-sum-l">Total</div><div class="tally-sum-n">$2,150</div></div>
+            </div>
+        </div>
+
+        <div class="pricing-example reveal">
+            <div class="pricing-example-cap">Six pieces</div>
+            <h3>Speed to lead</h3>
+            <p class="pricing-example-said">"A missed call is a lost job. We call people back hours later and they have already booked somebody else."</p>
+            <p class="pricing-example-alt">Or: "Missed call text back with lead routing into the CRM."</p>
+            <div class="pricing-tally">
+                <div class="tally-li"><div class="tally-l">Getting two systems talking <em>(your phone system into your CRM)</em></div><div class="tally-n">$400</div></div>
+                <div class="tally-li"><div class="tally-l">Setup inside your existing tools <em>(the text templates)</em></div><div class="tally-n">$250</div></div>
+                <div class="tally-li"><div class="tally-l">Decisions &times; 2 <em>(is this a real lead, who owns it)</em></div><div class="tally-n">$1,400</div></div>
+                <div class="tally-li"><div class="tally-l">Touches a real customer list <em>(it texts actual people)</em></div><div class="tally-n">$800</div></div>
+                <div class="tally-li"><div class="tally-l">Systems past the first two &times; 1 <em>(three in all: your phone system, your CRM, your texting service)</em></div><div class="tally-n">$300</div></div>
+                <div class="tally-sum"><div class="tally-sum-l">Total</div><div class="tally-sum-n">$3,150</div></div>
+            </div>
+        </div>
+
+        <div class="pricing-example reveal">
+            <div class="pricing-example-cap">Eighteen pieces</div>
+            <h3>An inventory and reorder system</h3>
+            <p class="pricing-example-said">"Tell me what to reorder and when, across every product and every warehouse, so we stop running out and stop over ordering."</p>
+            <p class="pricing-example-alt">Or: "Inventory coverage and reorder engine across all locations."</p>
+            <div class="pricing-tally">
+                <div class="tally-li"><div class="tally-l">Getting systems talking &times; 3 <em>(inventory, the demand forecast, accounting)</em></div><div class="tally-n">$1,200</div></div>
+                <div class="tally-li"><div class="tally-l">Decisions &times; 10 <em>(listed below)</em></div><div class="tally-n">$7,000</div></div>
+                <div class="tally-li"><div class="tally-l">Dashboards and reports &times; 2 <em>(the live view, the weekly reorder list)</em></div><div class="tally-n">$1,200</div></div>
+                <div class="tally-li"><div class="tally-l">Setup inside your existing tools <em>(sign in and access)</em></div><div class="tally-n">$250</div></div>
+                <div class="tally-li"><div class="tally-l">Touches live stock and purchasing</div><div class="tally-n">$800</div></div>
+                <div class="tally-li"><div class="tally-l">Systems past the first two &times; 1 <em>(three in all: inventory, the forecast sheet, accounting)</em></div><div class="tally-n">$300</div></div>
+                <div class="tally-sum"><div class="tally-sum-l">Total</div><div class="tally-sum-n">$10,750</div></div>
+            </div>
+            <div class="pricing-why">
+                <strong>Why ten decisions and not one.</strong> "Work out what to reorder" sounds like a single feature. In a real warehouse it is ten separate rules, and each one is a place a system quietly gives you a wrong number if nobody built it.
+                <ol>
+                    <li>Deciding what one unit even is, when the same item is counted as singles and as cases</li>
+                    <li>Coverage measured against real demand rather than the calendar</li>
+                    <li>Every item measured against its own lead time</li>
+                    <li>Netting products that pull from one shared pool</li>
+                    <li>Rolling a case up through its parts to the limiting component</li>
+                    <li>Purchase orders past their date, flagged and held out of the count</li>
+                    <li>Healthy overall but short at one location, with a transfer suggested</li>
+                    <li>Missing or broken data flagged rather than quietly dropped</li>
+                    <li>Items with stock but no forecast, left neutral instead of guessed</li>
+                    <li>The reorder recommendation itself</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Two Fixed Products -->
+        <p class="section-label reveal" style="margin-top: 4rem;">Two Fixed Products</p>
+
+        <div class="fixed-products reveal">
+            <div class="fixed-product">
+                <div class="fixed-price">$650</div>
+                <h3>The Audit</h3>
+                <p>A full end to end workup of what you are running, what is costing you, and what is worth fixing, with every fix scoped and priced off the card above. It credits toward the build, so if you go ahead it costs you nothing. This is the right first step when the answer is not obvious yet.</p>
+            </div>
+            <div class="fixed-product">
+                <div class="fixed-price">$750 <span class="fixed-price-sub">/ month</span></div>
+                <h3>Ongoing</h3>
+                <p>Optional after launch. Things drift as your tools update and your business changes, so this covers maintenance, tuning, and a report each week on what the system caught. You own everything either way, and this is a choice rather than a contract you are locked into.</p>
+            </div>
+        </div>
+
+        <!-- Three Rules -->
+        <p class="section-label reveal" style="margin-top: 4rem;">Three Rules I Hold Myself To</p>
+
+        <div class="pricing-rules reveal">
+            <div class="pricing-rule">
+                <div class="pricing-rule-num">01</div>
+                <div class="pricing-rule-body">
+                    <h3>The prices never move, only the count does</h3>
+                    <p>A bigger job is more pieces, never a higher rate. If your build turns out to have more in it than the job description said, you see the full list and the new number before any work starts, never after.</p>
+                </div>
+            </div>
+            <div class="pricing-rule">
+                <div class="pricing-rule-num">02</div>
+                <div class="pricing-rule-body">
+                    <h3>The number is fixed before I start</h3>
+                    <p>No hourly billing, no meter running, no invoice at the end that is larger than the number you agreed to. If the scope genuinely changes, that is a conversation before it happens rather than a line item after.</p>
+                </div>
+            </div>
+            <div class="pricing-rule">
+                <div class="pricing-rule-num">03</div>
+                <div class="pricing-rule-body">
+                    <h3>If I cannot price it honestly, I will not price it</h3>
+                    <p>Some jobs do not have enough detail to quote without guessing. When that happens I will tell you exactly which two or three things I need to know instead of putting a made up number in front of you.</p>
+                </div>
+            </div>
+        </div>
 
         <!-- Closing CTA -->
         <div class="cta-block reveal">
