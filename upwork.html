@@ -2068,6 +2068,131 @@
             font-size: clamp(1.75rem, 8vw, 2.5rem);
           }
         }
+        
+        /* ---------- Price It Yourself calculator ----------
+           Same six unit prices as the rate card above; the arithmetic is
+           deliberately checkable by hand. Prices live in one object in the
+           script so they can be changed in a single place. */
+        .calc {
+            border-radius: 1.5rem;
+            box-shadow: inset 0 0 0 1px var(--border);
+            background: var(--paper);
+            overflow: hidden;
+        }
+        .calc-row {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            align-items: center;
+            gap: 1.25rem;
+            padding: 1.15rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .calc-row:last-child { border-bottom: 0; }
+        .calc-row.is-on { background: var(--n-50); }
+        .calc-name {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--ink);
+            letter-spacing: -0.01em;
+        }
+        .calc-note { font-size: 0.8125rem; color: var(--n-500); margin-top: 0.2rem; line-height: 1.5; }
+        .calc-price {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-weight: 600;
+            font-size: 0.9375rem;
+            color: var(--n-500);
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
+        .calc-row.is-on .calc-price { color: var(--accent-strong, #0077C4); }
+        .calc-stepper { display: flex; align-items: center; gap: 0.35rem; }
+        .calc-btn {
+            width: 34px; height: 34px;
+            min-width: 34px;
+            border-radius: 50%;
+            border: 1px solid var(--border-light);
+            background: var(--paper);
+            color: var(--ink);
+            font-size: 1.05rem;
+            line-height: 1;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: border-color 160ms ease, background 160ms ease, color 160ms ease;
+        }
+        .calc-btn:hover { border-color: var(--accent-strong, #0077C4); color: var(--accent-strong, #0077C4); }
+        .calc-btn:disabled { opacity: 0.32; cursor: default; }
+        .calc-btn:disabled:hover { border-color: var(--border-light); color: var(--ink); }
+        .calc-count {
+            min-width: 2ch;
+            text-align: center;
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--ink);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .calc-total {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: var(--ink);
+        }
+        .calc-total-label {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.62);
+        }
+        .calc-total-parts { color: rgba(255,255,255,0.92); font-size: 0.875rem; margin-top: 0.3rem; line-height: 1.5; }
+        .calc-total-figure {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-weight: 600;
+            font-size: clamp(1.85rem, 4vw, 2.75rem);
+            letter-spacing: -0.025em;
+            color: #FFFFFF;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
+        [data-theme="dark"] .calc-total { background: #050505; box-shadow: inset 0 1px 0 rgba(255,255,255,0.08); }
+        .calc-fine { font-size: 0.8125rem; color: var(--n-500); padding: 1rem 1.5rem 0; margin: 0; line-height: 1.6; }
+        .calc-actions {
+            display: flex; flex-wrap: wrap; align-items: center; gap: 0.85rem;
+            padding: 1.25rem 1.5rem 1.5rem;
+        }
+        #calc-reset {
+            background: none;
+            border: 0;
+            padding: 0;
+            cursor: pointer;
+            font-family: var(--font-sans);
+            font-size: 0.875rem;
+            color: var(--n-500);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        #calc-reset:hover { color: var(--ink); }
+
+        @media (max-width: 640px) {
+            .calc-row { grid-template-columns: 1fr auto; row-gap: 0.85rem; padding: 1.1rem 1.15rem; }
+            .calc-what { grid-column: 1 / -1; }
+            .calc-price { justify-self: start; }
+            .calc-stepper { justify-self: end; }
+            .calc-total { flex-direction: column; align-items: flex-start; gap: 0.5rem; padding: 1.25rem 1.15rem; }
+            .calc-fine, .calc-actions { padding-left: 1.15rem; padding-right: 1.15rem; }
+            .calc-actions .btn-primary { width: 100%; justify-content: center; }
+        }
+        @media (prefers-reduced-motion: reduce) { .calc-btn { transition: none; } }
         </style>
 </head>
 <body>
@@ -2108,6 +2233,301 @@
     </div>
 
     <main class="main-wrapper hero-follows">
+        <!-- Pricing -->
+        <p class="section-label reveal" style="margin-top: 6rem;">Pricing</p>
+        <h2 class="section-heading reveal" style="padding-top: 0;">Priced <span class="gradient-text">by the piece</span>, and you can add it up yourself.</h2>
+        <p class="section-body reveal">No floors, no packages you have to fit into, and no number that appears without a line behind it. Here is exactly what each part of a build costs and how a few real systems add up.</p>
+
+        <!-- The Rate Card -->
+        <p class="section-label reveal" style="margin-top: 3.5rem;">The Rate Card</p>
+        <p class="section-body reveal" style="margin-bottom: 1.5rem;">Every build is made of six kinds of part. Count the parts your job needs, add them together, and that is the price. Same arithmetic whether the job takes two days or two months.</p>
+
+        <div class="rate-card reveal">
+            <div class="rate-row">
+                <div class="rate-what">
+                    <div class="rate-name">Getting two systems talking to each other</div>
+                    <div class="rate-eg">A sync, a webhook, an API call, a Zapier or Make scenario. Data moves one direction and nothing has to decide anything.</div>
+                </div>
+                <div class="rate-price">$400</div>
+            </div>
+            <div class="rate-row">
+                <div class="rate-what">
+                    <div class="rate-name">Setting something up inside a tool you already have</div>
+                    <div class="rate-eg">A form, a tag, an email or text template, your pipeline stages, a custom field, a calendar. Priced each.</div>
+                </div>
+                <div class="rate-price">$250</div>
+            </div>
+            <div class="rate-row">
+                <div class="rate-what">
+                    <div class="rate-name">Something that has to decide</div>
+                    <div class="rate-eg">Routing, scoring, a follow up sequence with conditions, an approval step, an AI step, a duplicate check. Every separate rule counts as one.</div>
+                </div>
+                <div class="rate-price">$700</div>
+            </div>
+            <div class="rate-row">
+                <div class="rate-what">
+                    <div class="rate-name">A dashboard or a report</div>
+                    <div class="rate-eg">A live view someone opens, or a report that arrives on its own. Both counts as two.</div>
+                </div>
+                <div class="rate-price">$600</div>
+            </div>
+            <div class="rate-row">
+                <div class="rate-what">
+                    <div class="rate-name">Anything touching payments, invoices, or a real customer list</div>
+                    <div class="rate-eg">Because that one gets tested harder. Charged once per build, however many places it touches.</div>
+                </div>
+                <div class="rate-price">$800</div>
+            </div>
+            <div class="rate-row">
+                <div class="rate-what">
+                    <div class="rate-name">Each system past the first two</div>
+                    <div class="rate-eg">The first two are already included in the prices above. Every one after that adds a line.</div>
+                </div>
+                <div class="rate-price">$300</div>
+            </div>
+        </div>
+
+        <div class="define-block reveal">
+            <div class="define-h">What counts as a system</div>
+            <p>A system is any app your business already uses that the build has to touch. Your CRM is one. Your accounting software is one. Your website forms, your phone system, your email, a spreadsheet you keep numbers in, each one is a system.</p>
+            <p>The tool doing the connecting does not count. Zapier, Make, or whatever runs the automation in the background is plumbing rather than a place your information lives, so you never pay a line for it.</p>
+            <p class="define-eg"><strong>Counting yours:</strong> a build that pulls website forms into your CRM and pushes paid invoices into QuickBooks touches three systems. The first two are already inside the prices above, so the third adds one line at $300.</p>
+        </div>
+
+        <div class="included-strip reveal">
+            <strong>Always inside the number, never billed on top.</strong> Testing on your real data rather than a sandbox, the handoff documentation so you own what was built, one walkthrough session, and thirty days of support after go live.
+        </div>
+
+        <!-- Price It Yourself -->
+        <p class="section-label reveal" style="margin-top: 4rem;">Price It Yourself</p>
+        <p class="section-body reveal" style="margin-bottom: 1.5rem;">Count the parts your job needs. The total updates as you go, and it uses the same six numbers from the card above, so you can check the arithmetic by hand if you want to.</p>
+
+        <div class="calc reveal">
+            <div class="calc-rows">
+                <div class="calc-row" data-unit="connection">
+                    <div class="calc-what">
+                        <div class="calc-name">Getting two systems talking</div>
+                        <div class="calc-note">A sync, a webhook, an API call. Data moves, nothing decides.</div>
+                    </div>
+                    <div class="calc-price">$400</div>
+                    <div class="calc-stepper">
+                        <button type="button" class="calc-btn" data-step="-1" aria-label="Fewer: getting two systems talking">&minus;</button>
+                        <output class="calc-count" aria-live="polite">0</output>
+                        <button type="button" class="calc-btn" data-step="1" aria-label="More: getting two systems talking">+</button>
+                    </div>
+                </div>
+
+                <div class="calc-row" data-unit="setup">
+                    <div class="calc-what">
+                        <div class="calc-name">Setup inside a tool you already have</div>
+                        <div class="calc-note">A form, a pipeline, fields, templates. Configuration, not code.</div>
+                    </div>
+                    <div class="calc-price">$250</div>
+                    <div class="calc-stepper">
+                        <button type="button" class="calc-btn" data-step="-1" aria-label="Fewer: setup inside a tool you already have">&minus;</button>
+                        <output class="calc-count" aria-live="polite">0</output>
+                        <button type="button" class="calc-btn" data-step="1" aria-label="More: setup inside a tool you already have">+</button>
+                    </div>
+                </div>
+
+                <div class="calc-row" data-unit="decision">
+                    <div class="calc-what">
+                        <div class="calc-name">Something that has to decide</div>
+                        <div class="calc-note">Routing, scoring, a follow up that fires on a condition.</div>
+                    </div>
+                    <div class="calc-price">$700</div>
+                    <div class="calc-stepper">
+                        <button type="button" class="calc-btn" data-step="-1" aria-label="Fewer: something that has to decide">&minus;</button>
+                        <output class="calc-count" aria-live="polite">0</output>
+                        <button type="button" class="calc-btn" data-step="1" aria-label="More: something that has to decide">+</button>
+                    </div>
+                </div>
+
+                <div class="calc-row" data-unit="dashboard">
+                    <div class="calc-what">
+                        <div class="calc-name">A dashboard or a report</div>
+                        <div class="calc-note">A live view someone opens, or a report that arrives on a schedule.</div>
+                    </div>
+                    <div class="calc-price">$600</div>
+                    <div class="calc-stepper">
+                        <button type="button" class="calc-btn" data-step="-1" aria-label="Fewer: a dashboard or a report">&minus;</button>
+                        <output class="calc-count" aria-live="polite">0</output>
+                        <button type="button" class="calc-btn" data-step="1" aria-label="More: a dashboard or a report">+</button>
+                    </div>
+                </div>
+
+                <div class="calc-row" data-unit="sensitive">
+                    <div class="calc-what">
+                        <div class="calc-name">Anything touching money or real customers</div>
+                        <div class="calc-note">Payments, invoices, or a list of actual people it contacts.</div>
+                    </div>
+                    <div class="calc-price">$800</div>
+                    <div class="calc-stepper">
+                        <button type="button" class="calc-btn" data-step="-1" aria-label="Fewer: anything touching money or real customers">&minus;</button>
+                        <output class="calc-count" aria-live="polite">0</output>
+                        <button type="button" class="calc-btn" data-step="1" aria-label="More: anything touching money or real customers">+</button>
+                    </div>
+                </div>
+
+                <div class="calc-row" data-unit="extra">
+                    <div class="calc-what">
+                        <div class="calc-name">Each system past the first two</div>
+                        <div class="calc-note">The first two are already in the prices above. Count only the extras.</div>
+                    </div>
+                    <div class="calc-price">$300</div>
+                    <div class="calc-stepper">
+                        <button type="button" class="calc-btn" data-step="-1" aria-label="Fewer: each system past the first two">&minus;</button>
+                        <output class="calc-count" aria-live="polite">0</output>
+                        <button type="button" class="calc-btn" data-step="1" aria-label="More: each system past the first two">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="calc-total">
+                <div class="calc-total-side">
+                    <div class="calc-total-label">Your build</div>
+                    <div class="calc-total-parts" id="calc-parts">Nothing counted yet</div>
+                </div>
+                <div class="calc-total-figure" id="calc-total" aria-live="polite">$0</div>
+            </div>
+
+            <p class="calc-fine">Fixed before I start. If the job turns out to be more than this, that is mine to absorb, not yours to pay.</p>
+
+            <div class="calc-actions">
+                <a href="https://www.upwork.com/freelancers/sethforte" target="_blank" rel="noopener" class="btn-primary">Send me this on Upwork &rarr;</a>
+                <button type="button" class="btn-ghost-link" id="calc-reset">Start over</button>
+            </div>
+        </div>
+
+        <!-- How Real Systems Add Up -->
+        <p class="section-label reveal" style="margin-top: 4rem;">How Real Systems Add Up</p>
+        <p class="section-body reveal" style="margin-bottom: 1.5rem;">Five builds, smallest to largest, priced off the card above. Every line is a thing that exists when the work is done.</p>
+
+        <div class="pricing-example reveal">
+            <div class="pricing-example-cap">One piece</div>
+            <h3>A single connection</h3>
+            <p class="pricing-example-said">"I am copying the same handful of numbers from one place into another every single day."</p>
+            <p class="pricing-example-alt">Or: "I need my Make scenario writing into QuickBooks."</p>
+            <div class="pricing-tally">
+                <div class="tally-li"><div class="tally-l">Getting two systems talking <em>(Make into QuickBooks)</em></div><div class="tally-n">$400</div></div>
+                <div class="tally-sum"><div class="tally-sum-l">Total</div><div class="tally-sum-n">$400</div></div>
+            </div>
+        </div>
+
+        <div class="pricing-example reveal">
+            <div class="pricing-example-cap">Three pieces</div>
+            <h3>Orders into the books, with a daily view</h3>
+            <p class="pricing-example-said">"Every order gets typed into the books by hand, and I never know where the month stands until it closes."</p>
+            <p class="pricing-example-alt">Or: "Shopify to QuickBooks sync with a sales dashboard on top."</p>
+            <div class="pricing-tally">
+                <div class="tally-li"><div class="tally-l">Getting two systems talking <em>(Shopify into QuickBooks)</em></div><div class="tally-n">$400</div></div>
+                <div class="tally-li"><div class="tally-l">Touches invoices and payments</div><div class="tally-n">$800</div></div>
+                <div class="tally-li"><div class="tally-l">A dashboard <em>(sales and margin, refreshed each morning)</em></div><div class="tally-n">$600</div></div>
+                <div class="tally-sum"><div class="tally-sum-l">Total</div><div class="tally-sum-n">$1,800</div></div>
+            </div>
+        </div>
+
+        <div class="pricing-example reveal">
+            <div class="pricing-example-cap">Five pieces</div>
+            <h3>A CRM that runs itself</h3>
+            <p class="pricing-example-said">"Our pipeline stages mean different things to different people, and follow up only happens when somebody remembers."</p>
+            <p class="pricing-example-alt">Or: "Rebuild our CRM stages and automate the follow up sequences."</p>
+            <div class="pricing-tally">
+                <div class="tally-li"><div class="tally-l">Setup inside your CRM &times; 3 <em>(pipeline stages, the fields behind them, message templates)</em></div><div class="tally-n">$750</div></div>
+                <div class="tally-li"><div class="tally-l">Decisions &times; 2 <em>(who a new lead goes to, the follow up sequence and when it stops)</em></div><div class="tally-n">$1,400</div></div>
+                <div class="tally-sum"><div class="tally-sum-l">Total</div><div class="tally-sum-n">$2,150</div></div>
+            </div>
+        </div>
+
+        <div class="pricing-example reveal">
+            <div class="pricing-example-cap">Six pieces</div>
+            <h3>Speed to lead</h3>
+            <p class="pricing-example-said">"A missed call is a lost job. We call people back hours later and they have already booked somebody else."</p>
+            <p class="pricing-example-alt">Or: "Missed call text back with lead routing into the CRM."</p>
+            <div class="pricing-tally">
+                <div class="tally-li"><div class="tally-l">Getting two systems talking <em>(your phone system into your CRM)</em></div><div class="tally-n">$400</div></div>
+                <div class="tally-li"><div class="tally-l">Setup inside your existing tools <em>(the text templates)</em></div><div class="tally-n">$250</div></div>
+                <div class="tally-li"><div class="tally-l">Decisions &times; 2 <em>(is this a real lead, who owns it)</em></div><div class="tally-n">$1,400</div></div>
+                <div class="tally-li"><div class="tally-l">Touches a real customer list <em>(it texts actual people)</em></div><div class="tally-n">$800</div></div>
+                <div class="tally-li"><div class="tally-l">Systems past the first two &times; 1 <em>(three in all: your phone system, your CRM, your texting service)</em></div><div class="tally-n">$300</div></div>
+                <div class="tally-sum"><div class="tally-sum-l">Total</div><div class="tally-sum-n">$3,150</div></div>
+            </div>
+        </div>
+
+        <div class="pricing-example reveal">
+            <div class="pricing-example-cap">Eighteen pieces</div>
+            <h3>An inventory and reorder system</h3>
+            <p class="pricing-example-said">"Tell me what to reorder and when, across every product and every warehouse, so we stop running out and stop over ordering."</p>
+            <p class="pricing-example-alt">Or: "Inventory coverage and reorder engine across all locations."</p>
+            <div class="pricing-tally">
+                <div class="tally-li"><div class="tally-l">Getting systems talking &times; 3 <em>(inventory, the demand forecast, accounting)</em></div><div class="tally-n">$1,200</div></div>
+                <div class="tally-li"><div class="tally-l">Decisions &times; 10 <em>(listed below)</em></div><div class="tally-n">$7,000</div></div>
+                <div class="tally-li"><div class="tally-l">Dashboards and reports &times; 2 <em>(the live view, the weekly reorder list)</em></div><div class="tally-n">$1,200</div></div>
+                <div class="tally-li"><div class="tally-l">Setup inside your existing tools <em>(sign in and access)</em></div><div class="tally-n">$250</div></div>
+                <div class="tally-li"><div class="tally-l">Touches live stock and purchasing</div><div class="tally-n">$800</div></div>
+                <div class="tally-li"><div class="tally-l">Systems past the first two &times; 1 <em>(three in all: inventory, the forecast sheet, accounting)</em></div><div class="tally-n">$300</div></div>
+                <div class="tally-sum"><div class="tally-sum-l">Total</div><div class="tally-sum-n">$10,750</div></div>
+            </div>
+            <div class="pricing-why">
+                <strong>Why ten decisions and not one.</strong> "Work out what to reorder" sounds like a single feature. In a real warehouse it is ten separate rules, and each one is a place a system quietly gives you a wrong number if nobody built it.
+                <ol>
+                    <li>Deciding what one unit even is, when the same item is counted as singles and as cases</li>
+                    <li>Coverage measured against real demand rather than the calendar</li>
+                    <li>Every item measured against its own lead time</li>
+                    <li>Netting products that pull from one shared pool</li>
+                    <li>Rolling a case up through its parts to the limiting component</li>
+                    <li>Purchase orders past their date, flagged and held out of the count</li>
+                    <li>Healthy overall but short at one location, with a transfer suggested</li>
+                    <li>Missing or broken data flagged rather than quietly dropped</li>
+                    <li>Items with stock but no forecast, left neutral instead of guessed</li>
+                    <li>The reorder recommendation itself</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Two Fixed Products -->
+        <p class="section-label reveal" style="margin-top: 4rem;">Two Fixed Products</p>
+
+        <div class="fixed-products reveal">
+            <div class="fixed-product">
+                <div class="fixed-price">$650</div>
+                <h3>The Audit</h3>
+                <p>A full end to end workup of what you are running, what is costing you, and what is worth fixing, with every fix scoped and priced off the card above. It credits toward the build, so if you go ahead it costs you nothing. This is the right first step when the answer is not obvious yet.</p>
+            </div>
+            <div class="fixed-product">
+                <div class="fixed-price">$750 <span class="fixed-price-sub">/ month</span></div>
+                <h3>Ongoing</h3>
+                <p>Optional after launch. Things drift as your tools update and your business changes, so this covers maintenance, tuning, and a report each week on what the system caught. You own everything either way, and this is a choice rather than a contract you are locked into.</p>
+            </div>
+        </div>
+
+        <!-- Three Rules -->
+        <p class="section-label reveal" style="margin-top: 4rem;">Three Rules I Hold Myself To</p>
+
+        <div class="pricing-rules reveal">
+            <div class="pricing-rule">
+                <div class="pricing-rule-num">01</div>
+                <div class="pricing-rule-body">
+                    <h3>The prices never move, only the count does</h3>
+                    <p>A bigger job is more pieces, never a higher rate. If your build turns out to have more in it than the job description said, you see the full list and the new number before any work starts, never after.</p>
+                </div>
+            </div>
+            <div class="pricing-rule">
+                <div class="pricing-rule-num">02</div>
+                <div class="pricing-rule-body">
+                    <h3>The number is fixed before I start</h3>
+                    <p>No hourly billing, no meter running, no invoice at the end that is larger than the number you agreed to. If the scope genuinely changes, that is a conversation before it happens rather than a line item after.</p>
+                </div>
+            </div>
+            <div class="pricing-rule">
+                <div class="pricing-rule-num">03</div>
+                <div class="pricing-rule-body">
+                    <h3>If I cannot price it honestly, I will not price it</h3>
+                    <p>Some jobs do not have enough detail to quote without guessing. When that happens I will tell you exactly which two or three things I need to know instead of putting a made up number in front of you.</p>
+                </div>
+            </div>
+        </div>
+
         <!-- Watch -->
         <section class="video-section reveal" style="margin: 1rem auto 4rem; max-width: 900px;">
             <span class="video-eyebrow">Watch</span>
@@ -2299,200 +2719,6 @@
         <p class="section-body reveal">The audits, the builds, and the partnerships all run through it, and Upwork is one door in. If you are ready to start, an Upwork message is the fastest way, and the full practice is at launchforte.com when you want the bigger picture.</p>
         <a href="https://launchforte.com" target="_blank" rel="noopener" class="btn-link reveal" style="margin-top: 0.5rem;">Visit Launch Forte</a>
 
-        <!-- Pricing -->
-        <p class="section-label reveal" style="margin-top: 6rem;">Pricing</p>
-        <h2 class="section-heading reveal" style="padding-top: 0;">Priced <span class="gradient-text">by the piece</span>, and you can add it up yourself.</h2>
-        <p class="section-body reveal">No floors, no packages you have to fit into, and no number that appears without a line behind it. Here is exactly what each part of a build costs and how a few real systems add up.</p>
-
-        <!-- The Rate Card -->
-        <p class="section-label reveal" style="margin-top: 3.5rem;">The Rate Card</p>
-        <p class="section-body reveal" style="margin-bottom: 1.5rem;">Every build is made of six kinds of part. Count the parts your job needs, add them together, and that is the price. Same arithmetic whether the job takes two days or two months.</p>
-
-        <div class="rate-card reveal">
-            <div class="rate-row">
-                <div class="rate-what">
-                    <div class="rate-name">Getting two systems talking to each other</div>
-                    <div class="rate-eg">A sync, a webhook, an API call, a Zapier or Make scenario. Data moves one direction and nothing has to decide anything.</div>
-                </div>
-                <div class="rate-price">$400</div>
-            </div>
-            <div class="rate-row">
-                <div class="rate-what">
-                    <div class="rate-name">Setting something up inside a tool you already have</div>
-                    <div class="rate-eg">A form, a tag, an email or text template, your pipeline stages, a custom field, a calendar. Priced each.</div>
-                </div>
-                <div class="rate-price">$250</div>
-            </div>
-            <div class="rate-row">
-                <div class="rate-what">
-                    <div class="rate-name">Something that has to decide</div>
-                    <div class="rate-eg">Routing, scoring, a follow up sequence with conditions, an approval step, an AI step, a duplicate check. Every separate rule counts as one.</div>
-                </div>
-                <div class="rate-price">$700</div>
-            </div>
-            <div class="rate-row">
-                <div class="rate-what">
-                    <div class="rate-name">A dashboard or a report</div>
-                    <div class="rate-eg">A live view someone opens, or a report that arrives on its own. Both counts as two.</div>
-                </div>
-                <div class="rate-price">$600</div>
-            </div>
-            <div class="rate-row">
-                <div class="rate-what">
-                    <div class="rate-name">Anything touching payments, invoices, or a real customer list</div>
-                    <div class="rate-eg">Because that one gets tested harder. Charged once per build, however many places it touches.</div>
-                </div>
-                <div class="rate-price">$800</div>
-            </div>
-            <div class="rate-row">
-                <div class="rate-what">
-                    <div class="rate-name">Each system past the first two</div>
-                    <div class="rate-eg">The first two are already included in the prices above. Every one after that adds a line.</div>
-                </div>
-                <div class="rate-price">$300</div>
-            </div>
-        </div>
-
-        <div class="define-block reveal">
-            <div class="define-h">What counts as a system</div>
-            <p>A system is any app your business already uses that the build has to touch. Your CRM is one. Your accounting software is one. Your website forms, your phone system, your email, a spreadsheet you keep numbers in, each one is a system.</p>
-            <p>The tool doing the connecting does not count. Zapier, Make, or whatever runs the automation in the background is plumbing rather than a place your information lives, so you never pay a line for it.</p>
-            <p class="define-eg"><strong>Counting yours:</strong> a build that pulls website forms into your CRM and pushes paid invoices into QuickBooks touches three systems. The first two are already inside the prices above, so the third adds one line at $300.</p>
-        </div>
-
-        <div class="included-strip reveal">
-            <strong>Always inside the number, never billed on top.</strong> Testing on your real data rather than a sandbox, the handoff documentation so you own what was built, one walkthrough session, and thirty days of support after go live.
-        </div>
-
-        <!-- How Real Systems Add Up -->
-        <p class="section-label reveal" style="margin-top: 4rem;">How Real Systems Add Up</p>
-        <p class="section-body reveal" style="margin-bottom: 1.5rem;">Five builds, smallest to largest, priced off the card above. Every line is a thing that exists when the work is done.</p>
-
-        <div class="pricing-example reveal">
-            <div class="pricing-example-cap">One piece</div>
-            <h3>A single connection</h3>
-            <p class="pricing-example-said">"I am copying the same handful of numbers from one place into another every single day."</p>
-            <p class="pricing-example-alt">Or: "I need my Make scenario writing into QuickBooks."</p>
-            <div class="pricing-tally">
-                <div class="tally-li"><div class="tally-l">Getting two systems talking <em>(Make into QuickBooks)</em></div><div class="tally-n">$400</div></div>
-                <div class="tally-sum"><div class="tally-sum-l">Total</div><div class="tally-sum-n">$400</div></div>
-            </div>
-        </div>
-
-        <div class="pricing-example reveal">
-            <div class="pricing-example-cap">Three pieces</div>
-            <h3>Orders into the books, with a daily view</h3>
-            <p class="pricing-example-said">"Every order gets typed into the books by hand, and I never know where the month stands until it closes."</p>
-            <p class="pricing-example-alt">Or: "Shopify to QuickBooks sync with a sales dashboard on top."</p>
-            <div class="pricing-tally">
-                <div class="tally-li"><div class="tally-l">Getting two systems talking <em>(Shopify into QuickBooks)</em></div><div class="tally-n">$400</div></div>
-                <div class="tally-li"><div class="tally-l">Touches invoices and payments</div><div class="tally-n">$800</div></div>
-                <div class="tally-li"><div class="tally-l">A dashboard <em>(sales and margin, refreshed each morning)</em></div><div class="tally-n">$600</div></div>
-                <div class="tally-sum"><div class="tally-sum-l">Total</div><div class="tally-sum-n">$1,800</div></div>
-            </div>
-        </div>
-
-        <div class="pricing-example reveal">
-            <div class="pricing-example-cap">Five pieces</div>
-            <h3>A CRM that runs itself</h3>
-            <p class="pricing-example-said">"Our pipeline stages mean different things to different people, and follow up only happens when somebody remembers."</p>
-            <p class="pricing-example-alt">Or: "Rebuild our CRM stages and automate the follow up sequences."</p>
-            <div class="pricing-tally">
-                <div class="tally-li"><div class="tally-l">Setup inside your CRM &times; 3 <em>(pipeline stages, the fields behind them, message templates)</em></div><div class="tally-n">$750</div></div>
-                <div class="tally-li"><div class="tally-l">Decisions &times; 2 <em>(who a new lead goes to, the follow up sequence and when it stops)</em></div><div class="tally-n">$1,400</div></div>
-                <div class="tally-sum"><div class="tally-sum-l">Total</div><div class="tally-sum-n">$2,150</div></div>
-            </div>
-        </div>
-
-        <div class="pricing-example reveal">
-            <div class="pricing-example-cap">Six pieces</div>
-            <h3>Speed to lead</h3>
-            <p class="pricing-example-said">"A missed call is a lost job. We call people back hours later and they have already booked somebody else."</p>
-            <p class="pricing-example-alt">Or: "Missed call text back with lead routing into the CRM."</p>
-            <div class="pricing-tally">
-                <div class="tally-li"><div class="tally-l">Getting two systems talking <em>(your phone system into your CRM)</em></div><div class="tally-n">$400</div></div>
-                <div class="tally-li"><div class="tally-l">Setup inside your existing tools <em>(the text templates)</em></div><div class="tally-n">$250</div></div>
-                <div class="tally-li"><div class="tally-l">Decisions &times; 2 <em>(is this a real lead, who owns it)</em></div><div class="tally-n">$1,400</div></div>
-                <div class="tally-li"><div class="tally-l">Touches a real customer list <em>(it texts actual people)</em></div><div class="tally-n">$800</div></div>
-                <div class="tally-li"><div class="tally-l">Systems past the first two &times; 1 <em>(three in all: your phone system, your CRM, your texting service)</em></div><div class="tally-n">$300</div></div>
-                <div class="tally-sum"><div class="tally-sum-l">Total</div><div class="tally-sum-n">$3,150</div></div>
-            </div>
-        </div>
-
-        <div class="pricing-example reveal">
-            <div class="pricing-example-cap">Eighteen pieces</div>
-            <h3>An inventory and reorder system</h3>
-            <p class="pricing-example-said">"Tell me what to reorder and when, across every product and every warehouse, so we stop running out and stop over ordering."</p>
-            <p class="pricing-example-alt">Or: "Inventory coverage and reorder engine across all locations."</p>
-            <div class="pricing-tally">
-                <div class="tally-li"><div class="tally-l">Getting systems talking &times; 3 <em>(inventory, the demand forecast, accounting)</em></div><div class="tally-n">$1,200</div></div>
-                <div class="tally-li"><div class="tally-l">Decisions &times; 10 <em>(listed below)</em></div><div class="tally-n">$7,000</div></div>
-                <div class="tally-li"><div class="tally-l">Dashboards and reports &times; 2 <em>(the live view, the weekly reorder list)</em></div><div class="tally-n">$1,200</div></div>
-                <div class="tally-li"><div class="tally-l">Setup inside your existing tools <em>(sign in and access)</em></div><div class="tally-n">$250</div></div>
-                <div class="tally-li"><div class="tally-l">Touches live stock and purchasing</div><div class="tally-n">$800</div></div>
-                <div class="tally-li"><div class="tally-l">Systems past the first two &times; 1 <em>(three in all: inventory, the forecast sheet, accounting)</em></div><div class="tally-n">$300</div></div>
-                <div class="tally-sum"><div class="tally-sum-l">Total</div><div class="tally-sum-n">$10,750</div></div>
-            </div>
-            <div class="pricing-why">
-                <strong>Why ten decisions and not one.</strong> "Work out what to reorder" sounds like a single feature. In a real warehouse it is ten separate rules, and each one is a place a system quietly gives you a wrong number if nobody built it.
-                <ol>
-                    <li>Deciding what one unit even is, when the same item is counted as singles and as cases</li>
-                    <li>Coverage measured against real demand rather than the calendar</li>
-                    <li>Every item measured against its own lead time</li>
-                    <li>Netting products that pull from one shared pool</li>
-                    <li>Rolling a case up through its parts to the limiting component</li>
-                    <li>Purchase orders past their date, flagged and held out of the count</li>
-                    <li>Healthy overall but short at one location, with a transfer suggested</li>
-                    <li>Missing or broken data flagged rather than quietly dropped</li>
-                    <li>Items with stock but no forecast, left neutral instead of guessed</li>
-                    <li>The reorder recommendation itself</li>
-                </ol>
-            </div>
-        </div>
-
-        <!-- Two Fixed Products -->
-        <p class="section-label reveal" style="margin-top: 4rem;">Two Fixed Products</p>
-
-        <div class="fixed-products reveal">
-            <div class="fixed-product">
-                <div class="fixed-price">$650</div>
-                <h3>The Audit</h3>
-                <p>A full end to end workup of what you are running, what is costing you, and what is worth fixing, with every fix scoped and priced off the card above. It credits toward the build, so if you go ahead it costs you nothing. This is the right first step when the answer is not obvious yet.</p>
-            </div>
-            <div class="fixed-product">
-                <div class="fixed-price">$750 <span class="fixed-price-sub">/ month</span></div>
-                <h3>Ongoing</h3>
-                <p>Optional after launch. Things drift as your tools update and your business changes, so this covers maintenance, tuning, and a report each week on what the system caught. You own everything either way, and this is a choice rather than a contract you are locked into.</p>
-            </div>
-        </div>
-
-        <!-- Three Rules -->
-        <p class="section-label reveal" style="margin-top: 4rem;">Three Rules I Hold Myself To</p>
-
-        <div class="pricing-rules reveal">
-            <div class="pricing-rule">
-                <div class="pricing-rule-num">01</div>
-                <div class="pricing-rule-body">
-                    <h3>The prices never move, only the count does</h3>
-                    <p>A bigger job is more pieces, never a higher rate. If your build turns out to have more in it than the job description said, you see the full list and the new number before any work starts, never after.</p>
-                </div>
-            </div>
-            <div class="pricing-rule">
-                <div class="pricing-rule-num">02</div>
-                <div class="pricing-rule-body">
-                    <h3>The number is fixed before I start</h3>
-                    <p>No hourly billing, no meter running, no invoice at the end that is larger than the number you agreed to. If the scope genuinely changes, that is a conversation before it happens rather than a line item after.</p>
-                </div>
-            </div>
-            <div class="pricing-rule">
-                <div class="pricing-rule-num">03</div>
-                <div class="pricing-rule-body">
-                    <h3>If I cannot price it honestly, I will not price it</h3>
-                    <p>Some jobs do not have enough detail to quote without guessing. When that happens I will tell you exactly which two or three things I need to know instead of putting a made up number in front of you.</p>
-                </div>
-            </div>
-        </div>
-
         <!-- Closing CTA -->
         <div class="cta-block reveal">
             <h2><span class="gradient-text">Hire me</span> on Upwork, or reach me directly.</h2>
@@ -2598,6 +2824,76 @@
         sync();
         window.addEventListener('scroll', sync, { passive: true });
       })();
+    </script>
+
+    <!-- Price It Yourself: the six unit prices, in one place. These mirror the
+         rate card in the markup above; change both together. -->
+    <script>
+        (function() {
+            var calc = document.querySelector('.calc');
+            if (!calc) return;
+
+            var PRICES = {
+                connection: 400,
+                setup:      250,
+                decision:   700,
+                dashboard:  600,
+                sensitive:  800,
+                extra:      300
+            };
+            var MAX = 20;
+
+            var rows    = Array.prototype.slice.call(calc.querySelectorAll('.calc-row'));
+            var totalEl = document.getElementById('calc-total');
+            var partsEl = document.getElementById('calc-parts');
+            var reset   = document.getElementById('calc-reset');
+            var counts  = {};
+
+            function money(n) { return '$' + n.toLocaleString('en-US'); }
+
+            function render() {
+                var total = 0, pieces = 0, names = [];
+                rows.forEach(function(row) {
+                    var unit = row.getAttribute('data-unit');
+                    var n = counts[unit] || 0;
+                    var price = PRICES[unit] || 0;
+                    total += n * price;
+                    pieces += n;
+                    row.classList.toggle('is-on', n > 0);
+                    row.querySelector('.calc-count').textContent = n;
+                    var minus = row.querySelector('[data-step="-1"]');
+                    var plus  = row.querySelector('[data-step="1"]');
+                    if (minus) minus.disabled = n <= 0;
+                    if (plus)  plus.disabled  = n >= MAX;
+                    if (n > 0) {
+                        var label = row.querySelector('.calc-name').textContent;
+                        names.push(n > 1 ? label + ' \u00d7 ' + n : label);
+                    }
+                });
+                totalEl.textContent = money(total);
+                partsEl.textContent = pieces
+                    ? names.join(' \u00b7 ')
+                    : 'Nothing counted yet';
+            }
+
+            calc.addEventListener('click', function(e) {
+                var btn = e.target.closest('.calc-btn');
+                if (!btn) return;
+                var row  = btn.closest('.calc-row');
+                var unit = row.getAttribute('data-unit');
+                var step = parseInt(btn.getAttribute('data-step'), 10);
+                var next = (counts[unit] || 0) + step;
+                counts[unit] = Math.max(0, Math.min(MAX, next));
+                render();
+            });
+
+            if (reset) reset.addEventListener('click', function() {
+                counts = {};
+                render();
+            });
+
+            render();
+        })();
     </script>
 </body>
 </html>
