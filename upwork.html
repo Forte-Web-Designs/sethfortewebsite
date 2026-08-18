@@ -2298,14 +2298,14 @@
             <div class="rate-row">
                 <div class="rate-what">
                     <div class="rate-name">Setting something up inside a tool you already have</div>
-                    <div class="rate-eg">A form, a tag, an email or text template, your pipeline stages, a custom field, a calendar. Priced each.</div>
+                    <div class="rate-eg">A form, a tag, your pipeline stages, a set of follow up messages, a custom field, a calendar. Priced each.</div>
                 </div>
                 <div class="rate-price">$250</div>
             </div>
             <div class="rate-row">
                 <div class="rate-what">
                     <div class="rate-name">Something that has to decide</div>
-                    <div class="rate-eg">Routing, scoring, a follow up sequence with conditions, an approval step, an AI step, a duplicate check. Every separate rule counts as one.</div>
+                    <div class="rate-eg">Routing a lead to the right person, working out who counts as at risk, an approval step, an AI step, a duplicate check. Every separate rule counts as one.</div>
                 </div>
                 <div class="rate-price">$700</div>
             </div>
@@ -2318,7 +2318,7 @@
             </div>
             <div class="rate-row">
                 <div class="rate-what">
-                    <div class="rate-name">Anything touching payments, invoices, or a real customer list</div>
+                    <div class="rate-name">Anything that moves money, or merges or deletes records</div>
                     <div class="rate-eg">Because that one gets tested harder. Charged once per build, however many places it touches.</div>
                 </div>
                 <div class="rate-price">$800</div>
@@ -2365,7 +2365,7 @@
                 <div class="calc-row" data-unit="setup">
                     <div class="calc-what">
                         <div class="calc-name">Setup inside a tool you already have</div>
-                        <div class="calc-note">A form, a pipeline, fields, templates. Configuration work inside a tool you already pay for.</div>
+                        <div class="calc-note">A form, a pipeline, fields, a set of follow up messages. Configuration work inside a tool you already pay for.</div>
                     </div>
                     <div class="calc-price">$250</div>
                     <div class="calc-stepper">
@@ -2378,7 +2378,7 @@
                 <div class="calc-row" data-unit="decision">
                     <div class="calc-what">
                         <div class="calc-name">Something that has to decide</div>
-                        <div class="calc-note">Routing, scoring, a follow up that fires on a condition.</div>
+                        <div class="calc-note">Routing a lead, working out who counts as at risk, an approval step.</div>
                     </div>
                     <div class="calc-price">$700</div>
                     <div class="calc-stepper">
@@ -2403,12 +2403,12 @@
 
                 <div class="calc-row" data-unit="sensitive">
                     <div class="calc-what">
-                        <div class="calc-name">Anything touching money or real customers</div>
-                        <div class="calc-note">Payments, invoices, or a list of actual people it contacts.</div>
+                        <div class="calc-name">Anything that moves money, or merges or deletes records</div>
+                        <div class="calc-note">Payments and invoices, or a step that merges or deletes what you already have.</div>
                     </div>
                     <div class="calc-price">$800</div>
                     <div class="calc-stepper">
-                        <button type="button" class="calc-toggle" id="calc-sensitive" role="switch" aria-checked="false" aria-label="Anything touching money or real customers">
+                        <button type="button" class="calc-toggle" id="calc-sensitive" role="switch" aria-checked="false" aria-label="Anything that moves money, or merges or deletes records">
                             <span class="calc-toggle-track"><span class="calc-toggle-thumb"></span></span>
                             <span class="calc-toggle-text">No</span>
                         </button>
@@ -2477,10 +2477,10 @@
             <div class="pricing-example-cap">Five pieces</div>
             <h3>A CRM that runs itself</h3>
             <p class="pricing-example-said">"Our pipeline stages mean different things to different people, and follow up only happens when somebody remembers."</p>
-            <p class="pricing-example-alt">Or: "Rebuild our CRM stages and automate the follow up sequences."</p>
+            <p class="pricing-example-alt">Or: "Rebuild our CRM stages and set up the follow up messages."</p>
             <div class="pricing-tally">
                 <div class="tally-li"><div class="tally-l">Setup inside your CRM &times; 3 <em>(pipeline stages, the fields behind them, message templates)</em></div><div class="tally-n">$750</div></div>
-                <div class="tally-li"><div class="tally-l">Decisions &times; 2 <em>(who a new lead goes to, the follow up sequence and when it stops)</em></div><div class="tally-n">$1,400</div></div>
+                <div class="tally-li"><div class="tally-l">Decisions &times; 2 <em>(who a new lead goes to, the rule that stops follow up)</em></div><div class="tally-n">$1,400</div></div>
                 <div class="tally-sum"><div class="tally-sum-l">Total</div><div class="tally-sum-n">$2,150</div></div>
             </div>
         </div>
@@ -2494,7 +2494,7 @@
                 <div class="tally-li"><div class="tally-l">Getting two systems talking <em>(your phone system into your CRM)</em></div><div class="tally-n">$400</div></div>
                 <div class="tally-li"><div class="tally-l">Setup inside your existing tools <em>(the text templates)</em></div><div class="tally-n">$250</div></div>
                 <div class="tally-li"><div class="tally-l">Decisions &times; 2 <em>(is this a real lead, who owns it)</em></div><div class="tally-n">$1,400</div></div>
-                <div class="tally-li"><div class="tally-l">Touches a real customer list <em>(it texts actual people)</em></div><div class="tally-n">$800</div></div>
+                <div class="tally-li"><div class="tally-l">Moves money, or merges or deletes records <em>(it writes and merges lead records in your CRM)</em></div><div class="tally-n">$800</div></div>
                 <div class="tally-li"><div class="tally-l">Systems past the first two &times; 1 <em>(three in all: your phone system, your CRM, your texting service)</em></div><div class="tally-n">$300</div></div>
                 <div class="tally-sum"><div class="tally-sum-l">Total</div><div class="tally-sum-n">$3,150</div></div>
             </div>
@@ -2755,7 +2755,7 @@
             <div class="step-card reveal">
                 <span class="step-number">04</span>
                 <h3>Handoff</h3>
-                <p>You get the working system, a walkthrough on video, and documentation that makes sense. You own everything I build. Partnership picks up here if you want it.</p>
+                <p>Every build includes testing on your real data, handoff documentation, one walkthrough session, and thirty days of support after go live. You own everything I build. Partnership picks up here if you want it.</p>
             </div>
         </div>
 
