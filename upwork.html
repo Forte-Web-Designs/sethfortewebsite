@@ -2107,7 +2107,11 @@
             white-space: nowrap;
         }
         .calc-row.is-on .calc-price { color: var(--accent-strong, #0077C4); }
-        .calc-stepper { display: flex; align-items: center; gap: 0.35rem; }
+        .calc-stepper {
+            display: flex; align-items: center; gap: 0.35rem;
+            justify-content: flex-end;
+            min-width: 105px;   /* 34 + gap + 26 + gap + 34, the stepper's natural width */
+        }
         .calc-btn {
             width: 34px; height: 34px;
             min-width: 34px;
@@ -2127,14 +2131,20 @@
         /* The risk line is charged once per build however many places it touches,
            so it gets a switch rather than a counter. Same tokens as .calc-btn. */
         .calc-toggle {
-            display: flex; align-items: center; gap: 0.55rem;
+            display: flex; align-items: center; justify-content: flex-end;
+            gap: 0.35rem;
             background: none; border: 0; padding: 0;
             cursor: pointer; color: var(--ink);
             font-family: inherit;
+            height: 34px;
+            width: 100%;
         }
+        /* Track height matches .calc-btn so the switch sits on the same
+           baseline as the steppers, and its width is two buttons plus the
+           gap they sit in, so both controls occupy the same slot. */
         .calc-toggle-track {
             position: relative;
-            width: 46px; height: 26px;
+            width: 56px; height: 34px;
             border-radius: 999px;
             border: 1px solid var(--border-light);
             background: var(--paper);
@@ -2143,11 +2153,11 @@
         }
         .calc-toggle-thumb {
             position: absolute;
-            top: 50%; left: 3px;
-            width: 18px; height: 18px;
-            margin-top: -9px;
+            top: 50%; left: 4px;
+            width: 24px; height: 24px;
+            margin-top: -12px;
             border-radius: 50%;
-            background: var(--n-600, #525252);
+            background: var(--border-light);
             transition: transform 160ms ease, background 160ms ease;
         }
         .calc-toggle[aria-checked="true"] .calc-toggle-track {
@@ -2155,9 +2165,11 @@
             border-color: var(--accent-strong, #0077C4);
         }
         .calc-toggle[aria-checked="true"] .calc-toggle-thumb {
-            transform: translateX(20px);
+            transform: translateX(22px);
             background: #FFFFFF;
         }
+        .calc-toggle:hover .calc-toggle-thumb { background: var(--accent-strong, #0077C4); }
+        .calc-toggle[aria-checked="true"]:hover .calc-toggle-thumb { background: #FFFFFF; }
         .calc-toggle:hover .calc-toggle-track { border-color: var(--accent-strong, #0077C4); }
         .calc-toggle-text {
             font-family: var(--font-display);
@@ -2165,7 +2177,8 @@
             font-weight: 700;
             font-size: 1rem;
             color: var(--ink);
-            min-width: 3ch;
+            min-width: 2ch;
+            text-align: center;
         }
         @media (prefers-reduced-motion: reduce) {
             .calc-toggle-track, .calc-toggle-thumb { transition: none; }
