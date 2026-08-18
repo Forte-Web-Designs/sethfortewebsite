@@ -2124,6 +2124,52 @@
         .calc-btn:hover { border-color: var(--accent-strong, #0077C4); color: var(--accent-strong, #0077C4); }
         .calc-btn:disabled { opacity: 0.32; cursor: default; }
         .calc-btn:disabled:hover { border-color: var(--border-light); color: var(--ink); }
+        /* The risk line is charged once per build however many places it touches,
+           so it gets a switch rather than a counter. Same tokens as .calc-btn. */
+        .calc-toggle {
+            display: flex; align-items: center; gap: 0.55rem;
+            background: none; border: 0; padding: 0;
+            cursor: pointer; color: var(--ink);
+            font-family: inherit;
+        }
+        .calc-toggle-track {
+            position: relative;
+            width: 46px; height: 26px;
+            border-radius: 999px;
+            border: 1px solid var(--border-light);
+            background: var(--paper);
+            transition: background 160ms ease, border-color 160ms ease;
+            flex: none;
+        }
+        .calc-toggle-thumb {
+            position: absolute;
+            top: 50%; left: 3px;
+            width: 18px; height: 18px;
+            margin-top: -9px;
+            border-radius: 50%;
+            background: var(--n-600, #525252);
+            transition: transform 160ms ease, background 160ms ease;
+        }
+        .calc-toggle[aria-checked="true"] .calc-toggle-track {
+            background: var(--accent-strong, #0077C4);
+            border-color: var(--accent-strong, #0077C4);
+        }
+        .calc-toggle[aria-checked="true"] .calc-toggle-thumb {
+            transform: translateX(20px);
+            background: #FFFFFF;
+        }
+        .calc-toggle:hover .calc-toggle-track { border-color: var(--accent-strong, #0077C4); }
+        .calc-toggle-text {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--ink);
+            min-width: 3ch;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .calc-toggle-track, .calc-toggle-thumb { transition: none; }
+        }
         .calc-count {
             min-width: 2ch;
             text-align: center;
@@ -2266,7 +2312,7 @@
             <div class="rate-row">
                 <div class="rate-what">
                     <div class="rate-name">A dashboard or a report</div>
-                    <div class="rate-eg">A live view someone opens, or a report that arrives on its own. Both counts as two.</div>
+                    <div class="rate-eg">A live view someone opens, or a report that arrives on its own. If you need both, that is two.</div>
                 </div>
                 <div class="rate-price">$600</div>
             </div>
@@ -2319,7 +2365,7 @@
                 <div class="calc-row" data-unit="setup">
                     <div class="calc-what">
                         <div class="calc-name">Setup inside a tool you already have</div>
-                        <div class="calc-note">A form, a pipeline, fields, templates. Configuration, not code.</div>
+                        <div class="calc-note">A form, a pipeline, fields, templates. Configuration work inside a tool you already pay for.</div>
                     </div>
                     <div class="calc-price">$250</div>
                     <div class="calc-stepper">
@@ -2345,7 +2391,7 @@
                 <div class="calc-row" data-unit="dashboard">
                     <div class="calc-what">
                         <div class="calc-name">A dashboard or a report</div>
-                        <div class="calc-note">A live view someone opens, or a report that arrives on a schedule.</div>
+                        <div class="calc-note">A live view someone opens, or a report that arrives on its own. If you need both, that is two.</div>
                     </div>
                     <div class="calc-price">$600</div>
                     <div class="calc-stepper">
@@ -2362,9 +2408,10 @@
                     </div>
                     <div class="calc-price">$800</div>
                     <div class="calc-stepper">
-                        <button type="button" class="calc-btn" data-step="-1" aria-label="Fewer: anything touching money or real customers">&minus;</button>
-                        <output class="calc-count" aria-live="polite">0</output>
-                        <button type="button" class="calc-btn" data-step="1" aria-label="More: anything touching money or real customers">+</button>
+                        <button type="button" class="calc-toggle" id="calc-sensitive" role="switch" aria-checked="false" aria-label="Anything touching money or real customers">
+                            <span class="calc-toggle-track"><span class="calc-toggle-thumb"></span></span>
+                            <span class="calc-toggle-text">No</span>
+                        </button>
                     </div>
                 </div>
 
@@ -2390,7 +2437,7 @@
                 <div class="calc-total-figure" id="calc-total" aria-live="polite">$0</div>
             </div>
 
-            <p class="calc-fine">Fixed before I start. If the job turns out to be more than this, that is mine to absorb, not yours to pay.</p>
+            <p class="calc-fine">Fixed once we agree the list. If your job turns out to have more in it than you counted here, you see the new list and the new number before anything starts.</p>
 
             <div class="calc-actions">
                 <a href="https://www.upwork.com/freelancers/sethforte" target="_blank" rel="noopener" class="btn-primary">Send me this on Upwork &rarr;</a>
@@ -2439,7 +2486,7 @@
         </div>
 
         <div class="pricing-example reveal">
-            <div class="pricing-example-cap">Six pieces</div>
+            <div class="pricing-example-cap">Five pieces</div>
             <h3>Speed to lead</h3>
             <p class="pricing-example-said">"A missed call is a lost job. We call people back hours later and they have already booked somebody else."</p>
             <p class="pricing-example-alt">Or: "Missed call text back with lead routing into the CRM."</p>
@@ -2454,7 +2501,7 @@
         </div>
 
         <div class="pricing-example reveal">
-            <div class="pricing-example-cap">Eighteen pieces</div>
+            <div class="pricing-example-cap">Seventeen pieces</div>
             <h3>An inventory and reorder system</h3>
             <p class="pricing-example-said">"Tell me what to reorder and when, across every product and every warehouse, so we stop running out and stop over ordering."</p>
             <p class="pricing-example-alt">Or: "Inventory coverage and reorder engine across all locations."</p>
@@ -2508,7 +2555,7 @@
                 <div class="pricing-rule-num">01</div>
                 <div class="pricing-rule-body">
                     <h3>The prices never move, only the count does</h3>
-                    <p>A bigger job is more pieces, never a higher rate. If your build turns out to have more in it than the job description said, you see the full list and the new number before any work starts, never after.</p>
+                    <p>A bigger job is more pieces at the same rates. If your build turns out to have more in it than the job description said, you see the full list and the new number before any work starts, never after.</p>
                 </div>
             </div>
             <div class="pricing-rule">
@@ -2855,18 +2902,27 @@
                 rows.forEach(function(row) {
                     var unit = row.getAttribute('data-unit');
                     var n = counts[unit] || 0;
+                    if (row.querySelector('.calc-toggle')) n = n > 0 ? 1 : 0;
+                    counts[unit] = n;
                     var price = PRICES[unit] || 0;
                     total += n * price;
                     pieces += n;
                     row.classList.toggle('is-on', n > 0);
-                    row.querySelector('.calc-count').textContent = n;
+                    var countEl = row.querySelector('.calc-count');
+                    if (countEl) countEl.textContent = n;
+                    var toggle = row.querySelector('.calc-toggle');
+                    if (toggle) {
+                        toggle.setAttribute('aria-checked', n > 0 ? 'true' : 'false');
+                        var txt = toggle.querySelector('.calc-toggle-text');
+                        if (txt) txt.textContent = n > 0 ? 'Yes' : 'No';
+                    }
                     var minus = row.querySelector('[data-step="-1"]');
                     var plus  = row.querySelector('[data-step="1"]');
                     if (minus) minus.disabled = n <= 0;
                     if (plus)  plus.disabled  = n >= MAX;
                     if (n > 0) {
                         var label = row.querySelector('.calc-name').textContent;
-                        names.push(n > 1 ? label + ' \u00d7 ' + n : label);
+                        names.push((n > 1 && !toggle) ? label + ' \u00d7 ' + n : label);
                     }
                 });
                 totalEl.textContent = money(total);
@@ -2876,6 +2932,16 @@
             }
 
             calc.addEventListener('click', function(e) {
+                // The risk line is charged once per build however many places it
+                // touches, so it is a toggle, not a counter. Everything else steps.
+                var tog = e.target.closest('.calc-toggle');
+                if (tog) {
+                    var trow = tog.closest('.calc-row');
+                    var tunit = trow.getAttribute('data-unit');
+                    counts[tunit] = counts[tunit] ? 0 : 1;
+                    render();
+                    return;
+                }
                 var btn = e.target.closest('.calc-btn');
                 if (!btn) return;
                 var row  = btn.closest('.calc-row');
