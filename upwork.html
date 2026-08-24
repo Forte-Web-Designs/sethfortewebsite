@@ -1771,6 +1771,115 @@
         }
 
         /* ============================================================
+           Video testimonials — every client video, directly under the
+           hero. Mixed sources (Senja widgets, native mp4 served from
+           launchforte.com, HeyGen iframe) normalised to one card shape.
+           ============================================================ */
+        .testimonial-video-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem 1.75rem;
+            margin-bottom: 2.5rem;
+        }
+        .testimonial-video {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+        .testimonial-video-media {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .testimonial-video-media video {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            border-radius: var(--radius-lg, 16px);
+            border: 1px solid var(--border);
+            background: #000;
+            display: block;
+        }
+        /* Matt's clip is shot vertical — give it a portrait box, capped
+           narrower so it doesn't tower over the landscape cards beside it. */
+        .testimonial-video-portrait { max-width: 320px; }
+        .testimonial-video-portrait video { aspect-ratio: 3 / 4; }
+        .testimonial-video-frame {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: var(--radius-lg, 16px);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: #000;
+        }
+        .testimonial-video-frame iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .testimonial-video-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .testimonial-video-quote {
+            color: var(--text-secondary);
+            font-size: 0.9063rem;
+            font-weight: 300;
+            line-height: 1.6;
+            font-style: italic;
+            margin-bottom: 0.35rem;
+        }
+        .testimonial-video-name {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        .testimonial-video-name a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .testimonial-video-name a:hover { color: var(--accent); }
+        .testimonial-video-project {
+            font-size: 0.7813rem;
+            color: var(--text-muted);
+            line-height: 1.45;
+            font-weight: 300;
+        }
+
+        .testimonial-rating {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+        .testimonial-rating strong {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .testimonial-rating-stars {
+            color: var(--accent);
+            letter-spacing: 0.05em;
+        }
+
+        @media (max-width: 768px) {
+            .testimonial-video-grid {
+                grid-template-columns: 1fr;
+                gap: 2.25rem;
+            }
+        }
+
+        /* ============================================================
            Pricing section — rate card, worked examples, fixed products,
            rules. Lives in the paper pane, so it reads dark-on-light and
            uses the same tokens as the rest of the page.
@@ -2291,6 +2400,86 @@
     </div>
 
     <main class="main-wrapper hero-follows">
+        <!-- Video Testimonials — every client video, straight under the hero -->
+        <p class="section-label reveal" style="margin-top: 3rem;">Testimonials</p>
+        <h2 class="section-heading reveal" style="padding-top: 0; margin-bottom: 0.75rem;">Straight from the <span class="gradient-text">clients</span>.</h2>
+        <p class="section-body reveal" style="margin-bottom: 2rem;">Six clients on camera, in their own words. Every one of these is a build that shipped.</p>
+
+        <div class="testimonial-video-grid">
+            <div class="testimonial-video reveal">
+                <div class="testimonial-video-media">
+                    <script src="https://widget.senja.io/widget/4865e92f-be0e-4665-a6b8-2d195d8f4741/platform.js" type="text/javascript" async></script>
+                    <div class="senja-embed" data-id="4865e92f-be0e-4665-a6b8-2d195d8f4741" data-mode="shadow" data-lazyload="true" style="display: block; width: 100%;"></div>
+                </div>
+                <div class="testimonial-video-caption">
+                    <p class="testimonial-video-quote">"He stood out from the pack real quickly. We'll use him for any job we ever have."</p>
+                    <span class="testimonial-video-name">Matt Juels, Six Months to Speech</span>
+                    <span class="testimonial-video-project">CRM build and automation for an online coaching program</span>
+                </div>
+            </div>
+
+            <div class="testimonial-video reveal">
+                <div class="testimonial-video-media">
+                    <script src="https://widget.senja.io/widget/36af0ec6-70f0-4a77-96dc-bb6ca9a62e42/platform.js" type="text/javascript" async></script>
+                    <div class="senja-embed" data-id="36af0ec6-70f0-4a77-96dc-bb6ca9a62e42" data-mode="shadow" data-lazyload="true" style="display: block; width: 100%;"></div>
+                </div>
+                <div class="testimonial-video-caption">
+                    <p class="testimonial-video-quote">"10 out of 10 experience. Absolutely recommend."</p>
+                    <span class="testimonial-video-name">Chelsea Juels, Six Months to Speech</span>
+                    <span class="testimonial-video-project">Full platform migration from Kajabi to GoHighLevel</span>
+                </div>
+            </div>
+
+            <div class="testimonial-video reveal">
+                <div class="testimonial-video-media">
+                    <video controls playsinline preload="metadata" poster="https://launchforte.com/videos/danielle-poster.jpg" src="https://launchforte.com/videos/danielle-review.mp4" title="Danielle Sandusky testimonial"></video>
+                </div>
+                <div class="testimonial-video-caption">
+                    <span class="testimonial-video-name">Danielle Sandusky, Modern Bungalow</span>
+                    <span class="testimonial-video-project">Order and pricing automation for a furniture company</span>
+                </div>
+            </div>
+
+            <div class="testimonial-video reveal">
+                <div class="testimonial-video-media">
+                    <script src="https://widget.senja.io/widget/1161d123-faf7-49e0-b44d-9e6b20136c66/platform.js" type="text/javascript" async></script>
+                    <div class="senja-embed" data-id="1161d123-faf7-49e0-b44d-9e6b20136c66" data-mode="shadow" data-lazyload="true" style="display: block; width: 100%;"></div>
+                </div>
+                <div class="testimonial-video-caption">
+                    <span class="testimonial-video-name"><a href="https://itellemedia.com" target="_blank" rel="noopener">Steve Tirogene, Itelle Media</a></span>
+                    <span class="testimonial-video-project">AI strategy and systems advisory</span>
+                </div>
+            </div>
+
+            <div class="testimonial-video reveal">
+                <div class="testimonial-video-media testimonial-video-portrait">
+                    <video controls playsinline preload="metadata" poster="https://launchforte.com/videos/matt-poster.jpg" src="https://launchforte.com/videos/video-1.mp4" title="Matt Juels testimonial"></video>
+                </div>
+                <div class="testimonial-video-caption">
+                    <span class="testimonial-video-name">Matt Juels, Six Months to Speech</span>
+                    <span class="testimonial-video-project">CRM build and automation for an online coaching program</span>
+                </div>
+            </div>
+
+            <div class="testimonial-video reveal">
+                <div class="testimonial-video-media">
+                    <div class="testimonial-video-frame">
+                        <iframe src="https://app.heygen.com/embeds/8afdada80e4c4371978e3076986b4b7f" title="Cordaryl Cousar testimonial" loading="lazy" allow="encrypted-media; fullscreen; autoplay; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="testimonial-video-caption">
+                    <span class="testimonial-video-name">Cordaryl Cousar, Electronics Surgeon</span>
+                    <span class="testimonial-video-project">Growth systems architecture and advisory</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="testimonial-rating reveal">
+            <strong>5.0</strong>
+            <span class="testimonial-rating-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span>across all platforms</span>
+        </div>
+
         <!-- Pricing -->
         <p class="section-label reveal" style="margin-top: 6rem;">Pricing</p>
         <h2 class="section-heading reveal" style="padding-top: 0;">Priced <span class="gradient-text">by the piece</span>, and you can add it up yourself.</h2>
@@ -2594,39 +2783,6 @@
                 <iframe src="https://www.youtube-nocookie.com/embed/7YxCIPU1Jd0?autoplay=1&amp;mute=1&amp;playsinline=1&amp;rel=0" title="Seth Forte: 2-minute intro" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
             </div>
         </section>
-
-        <!-- Featured Reviews (video) -->
-        <p class="section-label reveal" style="margin-top: 4rem;">Testimonials</p>
-        <h2 class="section-heading reveal" style="padding-top: 0; margin-bottom: 2rem;">Straight from the <span class="gradient-text">clients</span>.</h2>
-
-        <div class="video-quotes reveal">
-            <div class="video-quote-col">
-                <div class="video-widget-wrap">
-                    <script src="https://widget.senja.io/widget/4865e92f-be0e-4665-a6b8-2d195d8f4741/platform.js" type="text/javascript" async></script>
-                    <div class="senja-embed" data-id="4865e92f-be0e-4665-a6b8-2d195d8f4741" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div>
-                </div>
-                <div class="video-quote-card">
-                    <p class="video-quote-text">"He stood out from the pack real quickly. We'll use him for any job we ever have."</p>
-                    <div class="video-quote-attribution">
-                        <span class="video-quote-name">Matt, Six Months to Speech</span>
-                        <span class="video-quote-project">CRM build and automation for an online coaching program</span>
-                    </div>
-                </div>
-            </div>
-            <div class="video-quote-col">
-                <div class="video-widget-wrap">
-                    <script src="https://widget.senja.io/widget/36af0ec6-70f0-4a77-96dc-bb6ca9a62e42/platform.js" type="text/javascript" async></script>
-                    <div class="senja-embed" data-id="36af0ec6-70f0-4a77-96dc-bb6ca9a62e42" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div>
-                </div>
-                <div class="video-quote-card">
-                    <p class="video-quote-text">"10 out of 10 experience. Absolutely recommend."</p>
-                    <div class="video-quote-attribution">
-                        <span class="video-quote-name">Chelsea, Six Months to Speech</span>
-                        <span class="video-quote-project">Full platform migration from Kajabi to GoHighLevel</span>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- What I Build -->
         <p class="section-label reveal">What I Build</p>
