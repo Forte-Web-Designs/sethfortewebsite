@@ -2360,6 +2360,161 @@
             .calc-actions .btn-primary { width: 100%; justify-content: center; }
         }
         @media (prefers-reduced-motion: reduce) { .calc-btn { transition: none; } }
+        
+        /* ---------- Intro deck blocks (from Launch-Forte-Upwork-Intro-2.pdf) ----------
+           Same Studio grammar the deck already uses: dark ground where it needs
+           weight, numbered principles, photo grid. */
+        .deck-lede {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-weight: 500;
+            font-size: clamp(1.5rem, 3.2vw, 2.25rem);
+            line-height: 1.22;
+            letter-spacing: -0.025em;
+            color: var(--ink);
+            max-width: 22ch;
+            margin: 0 0 1.75rem;
+        }
+        .deck-split {
+            display: grid;
+            grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+            gap: 2.5rem;
+            align-items: start;
+        }
+        .deck-portrait {
+            width: 100%;
+            border-radius: 1.25rem;
+            display: block;
+            /* cap the height so the portrait sits beside the prose rather than
+               towering over it; the crop keeps the face centred */
+            aspect-ratio: 4 / 5;
+            max-height: 460px;
+            object-fit: cover;
+            object-position: center 22%;
+        }
+        .deck-split p { color: var(--n-600); line-height: 1.75; margin: 0 0 1rem; }
+        .deck-split p strong { color: var(--ink); font-weight: 600; }
+
+        .deck-photos {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.25rem;
+            margin-top: 2rem;
+        }
+        .deck-photos img {
+            width: 100%;
+            border-radius: 1.25rem;
+            display: block;
+            /* the sources are already 4:3 — show them whole rather than
+               cropping, which was cutting people out of frame */
+            height: auto;
+        }
+
+        .deck-principles { margin-top: 2rem; }
+        .deck-principle {
+            display: grid;
+            grid-template-columns: 2.5rem minmax(0, 12rem) minmax(0, 1fr);
+            gap: 1.25rem;
+            padding: 1.15rem 0;
+            border-top: 1px solid var(--border);
+            align-items: start;
+        }
+        .deck-principle:last-child { border-bottom: 1px solid var(--border); }
+        .deck-principle-n {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent-strong, #0077C4);
+            padding-top: 0.2rem;
+            font-variant-numeric: tabular-nums;
+        }
+        .deck-principle-t {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--ink);
+            letter-spacing: -0.01em;
+        }
+        .deck-principle-d { color: var(--n-600); font-size: 0.9375rem; line-height: 1.65; }
+
+        .deck-callout {
+            margin-top: 2rem;
+            padding: 1.5rem 1.75rem;
+            border-radius: 1.25rem;
+            background: var(--n-50);
+            box-shadow: inset 0 0 0 1px var(--border);
+        }
+        .deck-callout-l {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--n-500);
+            margin: 0 0 0.6rem;
+        }
+        .deck-callout p { margin: 0; color: var(--n-600); line-height: 1.7; }
+        .deck-callout p strong { color: var(--ink); font-weight: 600; }
+
+        .deck-facts {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            margin-top: 2rem;
+        }
+        .deck-fact-l {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: 0.6875rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--n-500);
+            margin-bottom: 0.45rem;
+        }
+        .deck-fact-v { color: var(--ink); font-weight: 600; font-size: 0.9375rem; line-height: 1.45; }
+        .deck-fact-v .accentv { color: var(--accent-strong, #0077C4); }
+
+        .deck-ways {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.75rem;
+        }
+        .deck-way {
+            padding: 1.35rem;
+            border-radius: 1.25rem;
+            box-shadow: inset 0 0 0 1px var(--border);
+            background: var(--paper);
+        }
+        .deck-way-t {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--ink);
+            margin-bottom: 0.5rem;
+        }
+        .deck-way p { margin: 0; color: var(--n-600); font-size: 0.875rem; line-height: 1.6; }
+
+        @media (max-width: 860px) {
+            .deck-split { grid-template-columns: 1fr; gap: 1.5rem; }
+            .deck-portrait { max-width: 100%; aspect-ratio: 3 / 2; max-height: 320px; }
+            .deck-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .deck-ways { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .deck-principle { grid-template-columns: 2rem 1fr; row-gap: 0.4rem; }
+            .deck-principle-d { grid-column: 2; }
+        }
+        @media (max-width: 560px) {
+            .deck-photos { grid-template-columns: 1fr; }
+            .deck-facts, .deck-ways { grid-template-columns: 1fr; }
+            .deck-callout { padding: 1.25rem; }
+        }
         </style>
 </head>
 <body>
@@ -2400,6 +2555,116 @@
     </div>
 
     <main class="main-wrapper hero-follows">
+
+        <!-- A Short Introduction (the intro deck, 1:1) -->
+        <p class="section-label reveal" style="margin-top: 5rem;">A short introduction</p>
+        <h2 class="deck-lede reveal">Hi, I'm Seth Forte. I build and run the automation behind growing businesses.</h2>
+
+        <div class="deck-facts reveal">
+            <div>
+                <div class="deck-fact-l">Based in</div>
+                <div class="deck-fact-v">Dallas Fort Worth, Texas</div>
+            </div>
+            <div>
+                <div class="deck-fact-l">Delivery</div>
+                <div class="deck-fact-v">Fixed price</div>
+            </div>
+            <div>
+                <div class="deck-fact-l">Projects delivered</div>
+                <div class="deck-fact-v"><span class="accentv">50+</span></div>
+            </div>
+        </div>
+
+        <!-- Who I Am -->
+        <p class="section-label reveal" style="margin-top: 5rem;">Who I am</p>
+        <h2 class="deck-lede reveal">I spent years keeping a national bank's critical systems standing. Now I build that same reliability for growing businesses.</h2>
+
+        <div class="deck-split reveal">
+            <img src="/media/seth-portrait.jpg" alt="Seth Forte" class="deck-portrait" width="706" height="900" loading="lazy">
+            <div>
+                <p>Before Launch Forte I was a <strong>senior software engineer and reliability engineer at a national bank</strong>, on the team responsible for systems that could not go down. That work is where I learned the habits I still build with today: monitor everything, alert before the customer notices, write it down so the next person can run it, and never ship something you cannot explain in one sentence.</p>
+                <p>I started Launch Forte because I kept meeting owners who had bought good tools and were still doing the work by hand. Proposals, invoices, follow ups, reports, moving information from one place to another. The busywork that keeps you in the business instead of growing it. <strong>That is what I take off your plate.</strong></p>
+                <p>I do this full time, I do not outsource it, and I keep the client list short on purpose. <strong>The person who scopes your build is the one who builds it.</strong></p>
+            </div>
+        </div>
+
+        <div class="deck-photos reveal">
+            <img src="/media/seth-family.jpg" alt="Seth Forte with his family" width="1100" height="825" loading="lazy">
+            <img src="/media/seth-baking.jpg" alt="Seth Forte baking with his daughter" width="1100" height="825" loading="lazy">
+        </div>
+
+        <div class="deck-callout reveal">
+            <p class="deck-callout-l">Off the clock</p>
+            <p>I work from a small office in Dallas Fort Worth, Texas, with my wife and our daughter close enough to interrupt me at lunch. Off the clock it is the gym, whipping up meals, video games, board games, time with family, and <strong>a standing effort not to completely roast in the Texas heat!</strong></p>
+        </div>
+
+        <!-- What Makes This Different -->
+        <p class="section-label reveal" style="margin-top: 5rem;">What makes this different</p>
+        <h2 class="deck-lede reveal">The whole business first. Then the smallest build that moves it.</h2>
+        <p class="section-body reveal">Most of what gets posted is a task. I read it for the business underneath: how the money comes in, where it leaks, which tool is the bottleneck, what has to run clean before anything else can. The task is usually one piece of a bigger picture, and the bigger picture is what I am building toward. We start with the smallest piece worth taking, prove it on real data, and stack the next one on it, so the system ends up running the business instead of becoming one more thing to manage.</p>
+
+        <div class="deck-principles reveal">
+            <div class="deck-principle">
+                <div class="deck-principle-n">01</div>
+                <div class="deck-principle-t">The bigger picture before the build</div>
+                <div class="deck-principle-d">Every engagement opens with a read of the whole operation and a number on what the problem is costing. The build is whatever that number points to, and it is scoped to fit the next one.</div>
+            </div>
+            <div class="deck-principle">
+                <div class="deck-principle-n">02</div>
+                <div class="deck-principle-t">Smallest win first</div>
+                <div class="deck-principle-d">One piece, shipped and watched, then the next. You pay for what moves the business, in the order it needs to move.</div>
+            </div>
+            <div class="deck-principle">
+                <div class="deck-principle-n">03</div>
+                <div class="deck-principle-t">A few clients at a time</div>
+                <div class="deck-principle-d">The roster stays short on purpose. The person who scopes your build is the one who builds it, tests it, and answers you.</div>
+            </div>
+            <div class="deck-principle">
+                <div class="deck-principle-n">04</div>
+                <div class="deck-principle-t">Built to stay up</div>
+                <div class="deck-principle-d">Monitoring, alerting, and a written runbook on every system, so it tells us before it tells your customers.</div>
+            </div>
+            <div class="deck-principle">
+                <div class="deck-principle-n">05</div>
+                <div class="deck-principle-t">Personalized approach</div>
+                <div class="deck-principle-d">Time up front to understand where you are trying to go, then a build shaped to that. Updates come often and read plain, so you never have to chase me or decode a status.</div>
+            </div>
+        </div>
+
+        <div class="deck-callout reveal">
+            <p class="deck-callout-l">Who this is for</p>
+            <p>Owners doing real revenue who are still the bottleneck in their own operation, with tools already in place that do not talk to each other, who want the work off their plate for good. <strong>Fixed price, tested on your data.</strong></p>
+        </div>
+
+        <div class="deck-callout reveal">
+            <p class="deck-callout-l">Before you compare bids</p>
+            <p><strong>You will see all kinds of people and bids on Upwork, some at a fraction of my number.</strong> The difference is usually whether the person has put this in front of real customers before, or is about to learn on yours and your time, and the standard of professionalism and communication, with the intent of what you are asking matched to your vision.</p>
+        </div>
+
+        <!-- Three Ways In -->
+        <p class="section-label reveal" style="margin-top: 5rem;">Three ways in</p>
+        <h2 class="deck-lede reveal">Audit, build, or partnership. Start wherever the problem is.</h2>
+        <p class="section-body reveal">Most owners start with the audit: a short call, a written read of what is broken and what it is worth fixing, and a number on it. The audit fee credits toward the first build. If the job you posted already names the build, we skip straight to a fixed price proposal.</p>
+
+        <div class="deck-ways reveal">
+            <div class="deck-way">
+                <div class="deck-way-t">Audit</div>
+                <p>I find what is costing you customers and put a number on it. Credits toward the build.</p>
+            </div>
+            <div class="deck-way">
+                <div class="deck-way-t">Build</div>
+                <p>The system the audit points to, built and tested on real data before it goes live.</p>
+            </div>
+            <div class="deck-way">
+                <div class="deck-way-t">Partnership</div>
+                <p>I stay at the table after launch, with a monthly review and a result you can read in dollars.</p>
+            </div>
+            <div class="deck-way">
+                <div class="deck-way-t">Reply here</div>
+                <p>Everything before a contract happens in this Upwork thread. Send a message and a call gets set up.</p>
+            </div>
+        </div>
+
         <!-- Video Testimonials — every client video, straight under the hero -->
         <p class="section-label reveal" style="margin-top: 3rem;">Testimonials</p>
         <h2 class="section-heading reveal" style="padding-top: 0; margin-bottom: 0.75rem;">Straight from the <span class="gradient-text">clients</span>.</h2>
