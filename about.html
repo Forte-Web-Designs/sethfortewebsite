@@ -316,7 +316,11 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             overflow: hidden;
+            /* capped narrower than the text column, so centre it rather than
+               letting it sit flush left and read as misaligned */
             max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .video-wrap video, .video-wrap iframe {
             display: block;
@@ -1996,27 +2000,8 @@
             </div>
         </section>
 
-        <!-- Background -->
-        <h2 class="section-label">Background</h2>
-
-        <p class="body-text">I'm Seth Forte. My background is enterprise infrastructure, five years building systems where an hour of downtime costs six figures and nothing is allowed to break. I bring that same standard to growing companies through <a href="https://launchforte.com" target="_blank" rel="noopener">Launch Forte</a>. The monitoring and failure handling of a system that cannot go down, applied to a business that has never had it.</p>
-
-        <p class="featured-in">Featured in <a href="https://voyagedallas.com/interview/community-highlights-meet-seth-forte-of-forte-web-designs/" target="_blank" rel="noopener">Voyage Dallas Magazine</a>.</p>
-
-        <h3 class="section-label">Results at a glance</h3>
-
-        <ul class="results-summary">
-            <li><strong>$52K+</strong> a year in collections automated</li>
-            <li><strong>20+ hours</strong> a week recovered through custom systems</li>
-            <li><strong>$10,700+</strong> in prioritized builds from a single audit</li>
-            <li><strong>1,040 users</strong> migrated to SSO and MFA with zero downtime</li>
-        </ul>
-
-        <hr class="section-divider">
-
-
         <!-- Who I Am (from the intro deck) -->
-        <p class="section-label reveal" style="margin-top: 6rem;">Who I am</p>
+        <p class="section-label reveal" style="margin-top: 3.5rem;">Who I am</p>
         <h2 class="deck-lede reveal">I spent years keeping a national bank's critical systems standing. Now I build that same reliability for growing businesses.</h2>
 
         <div class="deck-split reveal">
@@ -2037,6 +2022,25 @@
             <p class="deck-callout-l">Off the clock</p>
             <p>I work from a small office in Dallas Fort Worth, Texas, with my wife and our daughter close enough to interrupt me at lunch. Off the clock it is the gym, whipping up meals, video games, board games, time with family, and <strong>a standing effort not to completely roast in the Texas heat!</strong></p>
         </div>
+
+        <!-- Background -->
+        <h2 class="section-label" style="margin-top: 5rem;">Background</h2>
+
+        <p class="body-text">I'm Seth Forte. My background is enterprise infrastructure, five years building systems where an hour of downtime costs six figures and nothing is allowed to break. I bring that same standard to growing companies through <a href="https://launchforte.com" target="_blank" rel="noopener">Launch Forte</a>. The monitoring and failure handling of a system that cannot go down, applied to a business that has never had it.</p>
+
+        <p class="featured-in">Featured in <a href="https://voyagedallas.com/interview/community-highlights-meet-seth-forte-of-forte-web-designs/" target="_blank" rel="noopener">Voyage Dallas Magazine</a>.</p>
+
+        <h3 class="section-label">Results at a glance</h3>
+
+        <ul class="results-summary">
+            <li><strong>$52K+</strong> a year in collections automated</li>
+            <li><strong>20+ hours</strong> a week recovered through custom systems</li>
+            <li><strong>$10,700+</strong> in prioritized builds from a single audit</li>
+            <li><strong>1,040 users</strong> migrated to SSO and MFA with zero downtime</li>
+        </ul>
+
+        <hr class="section-divider">
+
 
         <!-- How I Work (from the intro deck) -->
         <p class="section-label reveal" style="margin-top: 6rem;">What makes this different</p>
