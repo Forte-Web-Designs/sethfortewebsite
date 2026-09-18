@@ -1585,6 +1585,10 @@
             font-weight: 600;
         }
         @media (prefers-reduced-motion: reduce) { .review-card-lf:hover { transform: none; } }
+        
+        /* Single-scroll page: nav jumps to sections, so keep headings clear of
+           the sticky header when an anchor lands. */
+        #about, #results, #reviews, #writing, #contact { scroll-margin-top: 90px; }
         </style>
 </head>
 <body>
@@ -1594,11 +1598,11 @@
             <div class="header-container">
                 <a href="/" class="header-logo">Seth Forte</a>
                 <nav class="header-nav">
-                    <a href="/" class="nav-link">Home</a>
-                    <a href="/case-studies.html" class="nav-link">Results</a>
-                    <a href="/writing.html" class="nav-link">Writing</a>
-                    <a href="/about.html" class="nav-link">About</a>
-                    <a href="/contact.html" class="nav-link">Contact</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#results" class="nav-link">Results</a>
+                    <a href="#reviews" class="nav-link">Reviews</a>
+                    <a href="#writing" class="nav-link">Writing</a>
+                    <a href="#contact" class="nav-link">Contact</a>
                     <a href="https://launchforte.com" class="nav-link" target="_blank" rel="noopener">Launch Forte</a>
                 </nav>
             </div>
@@ -1624,8 +1628,21 @@
 
     <main class="main-wrapper hero-follows">
         <div class="pane-container">
+            <!-- About preview -->
+            <div class="studio-section" id="about">
+                <div class="panel-quiet reveal home-about">
+                    <img src="/media/seth-portrait.jpg" alt="Seth Forte" class="home-about-photo" width="706" height="900" loading="lazy">
+                    <div class="home-about-text">
+                        <p class="section-label">About</p>
+                        <h2 class="section-heading"><span class="gradient-text">Seth Forte</span></h2>
+                        <p class="about-text">Seven years writing code businesses depend on, including enterprise infrastructure where downtime costs six figures an hour. That standard shows up in every build.</p>
+                        <a href="/about.html" class="btn-link">More about me &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
             <!-- Watch -->
-            <section id="watch" class="video-section reveal" style="scroll-margin-top: 80px;">
+            <section id="watch" class="video-section studio-section reveal" style="scroll-margin-top: 90px;">
                 <span class="video-eyebrow">Watch</span>
                 <h2 class="section-heading reveal" style="margin-bottom: 1.5rem;">See how I <span class="gradient-text">work</span>.</h2>
                 <div class="video-wrap">
@@ -1663,6 +1680,64 @@
         </div>
 
         <div class="pane-container">
+
+            <!-- Results Preview -->
+            <div class="studio-section" id="results">
+                <p class="section-label reveal">Results</p>
+                <h2 class="section-heading reveal" style="margin-bottom: 2rem;">Engineering work that <span class="gradient-text">moved</span> businesses</h2>
+                <div class="results-preview reveal">
+                    <a href="/work/between-generations-care.html" class="results-preview-card">
+                        <span class="results-preview-stat">Zero manual steps</span>
+                        <span class="results-preview-name">Between Generations Care</span>
+                        <span class="results-preview-context">Full platform build inside GoHighLevel. Instagram follower to repeat client, fully engineered.</span>
+                    </a>
+                    <a href="/work/cr-deals.html" class="results-preview-card">
+                        <span class="results-preview-stat">130+ hrs / month recovered</span>
+                        <span class="results-preview-name">CR Deals</span>
+                        <span class="results-preview-context">Replaced manual court records pulls with one automated pipeline.</span>
+                    </a>
+                    <a href="/work/the-11r-shop.html" class="results-preview-card">
+                        <span class="results-preview-stat">GPS gated dispatch</span>
+                        <span class="results-preview-name">The 11R Shop</span>
+                        <span class="results-preview-context">Four phase dispatch with dynamic pricing, arrival verification, and automated invoicing.</span>
+                    </a>
+                </div>
+                <a href="/case-studies.html" class="btn-link reveal" style="margin-top: 1.5rem;">See all results &rarr;</a>
+            </div>
+
+            <!-- Client reviews (launchforte.com review-grid) -->
+            <div class="studio-section" id="reviews">
+                <p class="section-label reveal">Reviews</p>
+                <h2 class="section-heading reveal" style="margin-bottom: 2rem;">What clients say after the <span class="gradient-text">work is done</span>.</h2>
+                <div class="review-grid reveal">
+                    <div class="review-card-lf">
+                        <div class="review-stars-lf">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <p class="review-quote-lf">Seth is my go-to for all of my automation projects now and he's making my business run so much more smoothly and efficiently. His process in defining the project scope ahead of time ensures that I get everything I need and we're on the same page throughout.</p>
+                        <div class="review-author-lf">Danielle, Modern Bungalow</div>
+                        <div class="review-project-lf">Shopify to Xero product sync</div>
+                    </div>
+                    <div class="review-card-lf">
+                        <div class="review-stars-lf">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <p class="review-quote-lf">Seth was amazing. Extremely knowledgeable and patient. He thought outside the box to offer us solutions we did not consider. Highly recommend Seth and we will use him again.</p>
+                        <div class="review-author-lf">Alex, UDI Group</div>
+                        <div class="review-project-lf">Custom review system</div>
+                    </div>
+                    <div class="review-card-lf">
+                        <div class="review-stars-lf">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <p class="review-quote-lf">The support and consultancy he provided were thoughtful, practical, and immediately helpful. Communication was always clear and timely.</p>
+                        <div class="review-author-lf">Ongoing engagement</div>
+                        <div class="review-project-lf">Automation consulting and scoping</div>
+                    </div>
+                    <div class="review-card-lf">
+                        <div class="review-stars-lf">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <p class="review-quote-lf">It was a great experience working with Seth. He is professional, organised, talented and friendly. It is enjoyable to work with him.</p>
+                        <div class="review-author-lf">Eden Medical</div>
+                        <div class="review-project-lf">AI booking and cancellation flow</div>
+                    </div>
+                </div>
+                <a href="/reviews.html" class="btn-link reveal" style="margin-top: 1.5rem;">See all reviews &rarr;</a>
+            </div>
+
             <!-- Featured Review -->
             <div class="studio-section">
                 <p class="section-label reveal">Testimonials</p>
@@ -1698,41 +1773,8 @@
                 </div>
             </div>
 
-            <!-- Client reviews (launchforte.com review-grid) -->
-            <div class="studio-section">
-                <p class="section-label reveal">Reviews</p>
-                <h2 class="section-heading reveal" style="margin-bottom: 2rem;">What clients say after the <span class="gradient-text">work is done</span>.</h2>
-                <div class="review-grid reveal">
-                    <div class="review-card-lf">
-                        <div class="review-stars-lf">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                        <p class="review-quote-lf">Seth is my go-to for all of my automation projects now and he's making my business run so much more smoothly and efficiently. His process in defining the project scope ahead of time ensures that I get everything I need and we're on the same page throughout.</p>
-                        <div class="review-author-lf">Danielle, Modern Bungalow</div>
-                        <div class="review-project-lf">Shopify to Xero product sync</div>
-                    </div>
-                    <div class="review-card-lf">
-                        <div class="review-stars-lf">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                        <p class="review-quote-lf">Seth was amazing. Extremely knowledgeable and patient. He thought outside the box to offer us solutions we did not consider. Highly recommend Seth and we will use him again.</p>
-                        <div class="review-author-lf">Alex, UDI Group</div>
-                        <div class="review-project-lf">Custom review system</div>
-                    </div>
-                    <div class="review-card-lf">
-                        <div class="review-stars-lf">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                        <p class="review-quote-lf">The support and consultancy he provided were thoughtful, practical, and immediately helpful. Communication was always clear and timely.</p>
-                        <div class="review-author-lf">Ongoing engagement</div>
-                        <div class="review-project-lf">Automation consulting and scoping</div>
-                    </div>
-                    <div class="review-card-lf">
-                        <div class="review-stars-lf">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                        <p class="review-quote-lf">It was a great experience working with Seth. He is professional, organised, talented and friendly. It is enjoyable to work with him.</p>
-                        <div class="review-author-lf">Eden Medical</div>
-                        <div class="review-project-lf">AI booking and cancellation flow</div>
-                    </div>
-                </div>
-                <a href="/reviews.html" class="btn-link reveal" style="margin-top: 1.5rem;">See all reviews &rarr;</a>
-            </div>
-
             <!-- Latest Writing -->
-            <div class="studio-section">
+            <div class="studio-section" id="writing">
                 <p class="section-label reveal">Writing</p>
                 <h2 class="section-heading reveal" style="margin-bottom: 1.5rem;">Latest <span class="gradient-text">writing</span></h2>
                 <ul class="writing-preview reveal">
@@ -1741,43 +1783,6 @@
                     <li><a href="/articles/sso-small-business.html"><span class="writing-preview-title">SSO for Small Business (Without Paying Enterprise Prices)</span><span class="writing-preview-date">Jan 4, 2026</span><span class="writing-preview-cta">Read &rarr;</span></a></li>
                 </ul>
                 <a href="/writing.html" class="btn-link reveal" style="margin-top: 1.5rem;">See all writing &rarr;</a>
-            </div>
-
-            <!-- Results Preview -->
-            <div class="studio-section">
-                <p class="section-label reveal">Results</p>
-                <h2 class="section-heading reveal" style="margin-bottom: 2rem;">Engineering work that <span class="gradient-text">moved</span> businesses</h2>
-                <div class="results-preview reveal">
-                    <a href="/work/between-generations-care.html" class="results-preview-card">
-                        <span class="results-preview-stat">Zero manual steps</span>
-                        <span class="results-preview-name">Between Generations Care</span>
-                        <span class="results-preview-context">Full platform build inside GoHighLevel. Instagram follower to repeat client, fully engineered.</span>
-                    </a>
-                    <a href="/work/cr-deals.html" class="results-preview-card">
-                        <span class="results-preview-stat">130+ hrs / month recovered</span>
-                        <span class="results-preview-name">CR Deals</span>
-                        <span class="results-preview-context">Replaced manual court records pulls with one automated pipeline.</span>
-                    </a>
-                    <a href="/work/the-11r-shop.html" class="results-preview-card">
-                        <span class="results-preview-stat">GPS gated dispatch</span>
-                        <span class="results-preview-name">The 11R Shop</span>
-                        <span class="results-preview-context">Four phase dispatch with dynamic pricing, arrival verification, and automated invoicing.</span>
-                    </a>
-                </div>
-                <a href="/case-studies.html" class="btn-link reveal" style="margin-top: 1.5rem;">See all results &rarr;</a>
-            </div>
-
-            <!-- About preview -->
-            <div class="studio-section">
-                <div class="panel-quiet reveal home-about">
-                    <img src="/media/seth-portrait.jpg" alt="Seth Forte" class="home-about-photo" width="706" height="900" loading="lazy">
-                    <div class="home-about-text">
-                        <p class="section-label">About</p>
-                        <h2 class="section-heading"><span class="gradient-text">Seth Forte</span></h2>
-                        <p class="about-text">Seven years writing code businesses depend on, including enterprise infrastructure where downtime costs six figures an hour. That standard shows up in every build.</p>
-                        <a href="/about.html" class="btn-link">More about me &rarr;</a>
-                    </div>
-                </div>
             </div>
 
             <!-- Launch Forte -->
@@ -1791,7 +1796,7 @@
             </div>
 
             <!-- Closing CTA -->
-            <div class="studio-section">
+            <div class="studio-section" id="contact">
                 <div class="cta-block reveal">
                     <h2>If <span class="gradient-text">growth</span> has stalled, the system underneath is usually why.</h2>
                     <p class="body-text">Start with an audit.</p>
