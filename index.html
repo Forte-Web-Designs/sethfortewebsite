@@ -573,31 +573,29 @@
             color: var(--paper);
         }
         [data-theme="dark"] .trust-section { box-shadow: inset 0 0 0 1px var(--border); }
+        /* Static grid, matching launchforte.com's .studio-clients-grid. A
+           marquee inside this rounded card clipped names at the corners no
+           matter how the mask was tuned — overflow:hidden cuts before the fade
+           finishes. Static also reads calmer, which is the point of the card. */
         .carousel-wrapper {
             margin-top: 2.5rem;
             margin-bottom: 2.5rem;
-            overflow: hidden;
-            -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
-                    mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+            padding: 0 2rem;
         }
         .carousel-track {
-            display: flex;
-            gap: 4rem;
-            width: max-content;
-            animation: carousel-scroll 42s linear infinite;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.75rem 2rem;
+            width: 100%;
         }
-        .carousel-wrapper:hover .carousel-track { animation-play-state: paused; }
-        @keyframes carousel-scroll {
-            from { transform: translateX(0); }
-            to   { transform: translateX(-50%); }
-        }
+        @media (min-width: 1024px) { .carousel-track { grid-template-columns: repeat(4, 1fr); } }
         .carousel-item {
             font-family: var(--font-display);
             font-variation-settings: var(--font-display-vars);
             font-size: var(--text-lg);
             font-weight: 600;
             color: var(--n-500);
-            white-space: nowrap;
+            text-align: center;
             filter: grayscale(100%);
             opacity: 0.72;
             transition: filter var(--dur-hover) var(--ease-out), color var(--dur-hover), opacity var(--dur-hover);
@@ -833,16 +831,19 @@
             padding: var(--sp-16) 0 var(--sp-12);
             border-top: 1px solid var(--border);
         }
+        /* Matches launchforte.com exactly: --text-2xl, centred, weight 600.
+           Was a clamp up to 2.5rem left-aligned, which read oversized. */
         .footer-email-main {
-            display: inline-block;
+            display: block;
+            text-align: center;
             font-family: var(--font-display);
             font-variation-settings: var(--font-display-vars);
-            font-size: clamp(1.5rem, 3.5vw, 2.5rem);
-            font-weight: 500;
-            letter-spacing: -0.025em;
+            font-size: var(--text-2xl);
+            font-weight: 600;
+            letter-spacing: -0.015em;
             color: var(--ink);
             text-decoration: none;
-            margin-bottom: var(--sp-12);
+            margin-bottom: var(--sp-16);
             transition: color var(--dur-hover);
         }
         .footer-email-main:hover { color: var(--accent); }
@@ -904,7 +905,6 @@
             .hero-video-layer video { display: none; }
             .reveal { opacity: 1; transform: none; transition: none; }
             .animate-up { opacity: 1; transform: none; animation: none; }
-            .carousel-track { animation: none; }
             .btn-primary, .btn-ghost, .results-preview-card, .writing-preview a { transition: none; }
             .btn-primary:hover, .results-preview-card:hover { transform: none; }
         }
@@ -964,7 +964,7 @@
             .hero-cinematic { padding: 6.5rem 0 3.5rem; }
             .hero-eyebrow { font-size: 0.7rem; letter-spacing: 0.14em; }
             .cta-block h2 { font-size: 1.5rem; }
-            .footer-email-main { font-size: 1.35rem; }
+            .footer-email-main { font-size: var(--text-xl); }
         }
         
         /* A primary button must not depend on --ink/--paper together: both flip
@@ -1546,6 +1546,45 @@
             .home-about { grid-template-columns: 1fr; gap: 1.5rem; }
             .home-about-photo { width: 100%; height: 220px; }
         }
+        
+        /* Review grid — ported verbatim from launchforte.com (index.html
+           lines 650-657). Gold stars, ring-1 card, hover lift. */
+        .review-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2rem; }
+        @media (min-width: 700px) { .review-grid { grid-template-columns: repeat(2, 1fr); } }
+        .review-card-lf {
+            padding: 2rem;
+            background: var(--paper);
+            border-radius: var(--radius-3xl);
+            box-shadow: inset 0 0 0 1px var(--border);
+            transition: transform var(--dur-hover), background var(--dur-hover);
+        }
+        .review-card-lf:hover { transform: translateY(-2px); background: var(--n-50); }
+        .review-stars-lf { color: #EBBF3A; font-size: var(--text-sm); letter-spacing: 3px; margin-bottom: 1rem; }
+        .review-quote-lf {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: var(--text-lg);
+            line-height: 1.5;
+            color: var(--ink);
+            font-weight: 500;
+            margin: 0 0 1.25rem;
+        }
+        .review-author-lf {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: var(--text-sm);
+            font-weight: 600;
+            color: var(--ink);
+            margin: 0 0 0.25rem;
+        }
+        .review-project-lf {
+            font-size: var(--text-xs);
+            color: var(--n-500);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+        }
+        @media (prefers-reduced-motion: reduce) { .review-card-lf:hover { transform: none; } }
         </style>
 </head>
 <body>
@@ -1617,13 +1656,6 @@
                         <span class="carousel-item">CR Deals Cincinnati</span>
                         <span class="carousel-item">Hollow Bamboo</span>
                         <span class="carousel-item">UDI Group</span>
-                        <span class="carousel-item">Revolut</span>
-                        <span class="carousel-item">Modern Bungalow</span>
-                        <span class="carousel-item">Eden Medical</span>
-                        <span class="carousel-item">Kingfisher Ads</span>
-                        <span class="carousel-item">CR Deals Cincinnati</span>
-                        <span class="carousel-item">Hollow Bamboo</span>
-                        <span class="carousel-item">UDI Group</span>
                     </div>
                 </div>
                 <p class="featured-in">Featured in <a href="https://voyagedallas.com/interview/community-highlights-meet-seth-forte-of-forte-web-designs/" target="_blank" rel="noopener">Voyage Dallas Magazine</a></p>
@@ -1664,6 +1696,39 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- Client reviews (launchforte.com review-grid) -->
+            <div class="studio-section">
+                <p class="section-label reveal">Reviews</p>
+                <h2 class="section-heading reveal" style="margin-bottom: 2rem;">What clients say after the <span class="gradient-text">work is done</span>.</h2>
+                <div class="review-grid reveal">
+                    <div class="review-card-lf">
+                        <div class="review-stars-lf">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <p class="review-quote-lf">Seth is my go-to for all of my automation projects now and he's making my business run so much more smoothly and efficiently. His process in defining the project scope ahead of time ensures that I get everything I need and we're on the same page throughout.</p>
+                        <div class="review-author-lf">Danielle, Modern Bungalow</div>
+                        <div class="review-project-lf">Shopify to Xero product sync</div>
+                    </div>
+                    <div class="review-card-lf">
+                        <div class="review-stars-lf">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <p class="review-quote-lf">Seth was amazing. Extremely knowledgeable and patient. He thought outside the box to offer us solutions we did not consider. Highly recommend Seth and we will use him again.</p>
+                        <div class="review-author-lf">Alex, UDI Group</div>
+                        <div class="review-project-lf">Custom review system</div>
+                    </div>
+                    <div class="review-card-lf">
+                        <div class="review-stars-lf">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <p class="review-quote-lf">The support and consultancy he provided were thoughtful, practical, and immediately helpful. Communication was always clear and timely.</p>
+                        <div class="review-author-lf">Ongoing engagement</div>
+                        <div class="review-project-lf">Automation consulting and scoping</div>
+                    </div>
+                    <div class="review-card-lf">
+                        <div class="review-stars-lf">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <p class="review-quote-lf">It was a great experience working with Seth. He is professional, organised, talented and friendly. It is enjoyable to work with him.</p>
+                        <div class="review-author-lf">Eden Medical</div>
+                        <div class="review-project-lf">AI booking and cancellation flow</div>
+                    </div>
+                </div>
+                <a href="/reviews.html" class="btn-link reveal" style="margin-top: 1.5rem;">See all reviews &rarr;</a>
             </div>
 
             <!-- Latest Writing -->
