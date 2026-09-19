@@ -1959,6 +1959,43 @@
         }
         .define-eg strong { color: var(--text-primary); font-weight: 600; }
 
+        /* Sits between the pricing lede and the rate card, so the framing
+           lands before the first number rather than after the total. Uses
+           the same accent tint as .included-strip, plus a left rule and a
+           label so it reads as a deliberate aside rather than body copy. */
+        .compare-bids {
+            margin: 2rem 0 0;
+            padding: 1.5rem 1.75rem;
+            background: var(--accent-tint, rgba(0,136,219,0.08));
+            border-left: 3px solid var(--accent);
+            border-radius: var(--radius-md, 12px);
+        }
+        .compare-bids-label {
+            margin: 0 0 0.6rem;
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: var(--text-xs, 0.75rem);
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--accent-strong, #0077C4);
+        }
+        [data-theme="dark"] .compare-bids-label { color: #4FB8F0; }
+        .compare-bids-body {
+            margin: 0;
+            font-size: 0.9375rem;
+            line-height: 1.7;
+            font-weight: 300;
+            color: var(--text-secondary);
+        }
+        .compare-bids-body strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        @media (max-width: 768px) {
+            .compare-bids { padding: 1.25rem 1.25rem; }
+        }
+
         .included-strip {
             margin-top: 1.5rem;
             padding: 1.4rem 1.75rem;
@@ -2546,7 +2583,7 @@
                 <img src="headshot-6.jpg" alt="Seth Forte, founder of Launch Forte" class="animate-fade-in" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 1.5rem; border: 2px solid var(--border-light); position: relative;" width="80" height="80">
                 <h1 class="hero-h1 page-title animate-fade-up animate-delay-1"><span class="gradient-text">Seth Forte</span> on Upwork.</h1>
                 <p class="page-subtitle animate-fade-up animate-delay-2">Same engineer. Same engineering practice. Same standards.</p>
-                <p class="hero-intro animate-fade-up animate-delay-3">If you found me on Upwork as Seth Forte, you're in the right place. Launch Forte is the engineering practice I run. Top Rated. 100% Job Success. Seven years of engineering experience behind every project.</p>
+                <p class="hero-intro animate-fade-up animate-delay-3">If you found me on Upwork as Seth Forte, this is the same person and the same practice. Reach out there or right here, whichever you prefer. Launch Forte is the engineering practice I run. Top Rated. 100% Job Success. Seven years of engineering experience behind every project.</p>
                 <div class="credibility-row animate-fade-up animate-delay-3">
                     <span class="credibility-item">Top Rated</span>
                     <span class="credibility-item">100% Job Success</span>
@@ -2755,6 +2792,11 @@
         <p class="section-label reveal" style="margin-top: 6rem;">Pricing</p>
         <h2 class="section-heading reveal" style="padding-top: 0;">Priced <span class="gradient-text">by the piece</span>, and you can add it up yourself.</h2>
         <p class="section-body reveal">No floors, no packages you have to fit into, and no number that appears without a line behind it. Here is exactly what each part of a build costs and how a few real systems add up.</p>
+
+        <aside class="compare-bids reveal">
+            <p class="compare-bids-label">Before you compare bids</p>
+            <p class="compare-bids-body"><strong>You will see all kinds of people and bids on Upwork, some at a fraction of my number.</strong> The difference is usually whether the person has put this in front of real customers before, or is about to learn on yours and your time, and the standard of professionalism and communication, with the intent of what you are asking matched to your vision.</p>
+        </aside>
 
         <!-- The Rate Card -->
         <p class="section-label reveal" style="margin-top: 3.5rem;">The Rate Card</p>
@@ -3213,8 +3255,8 @@
 
         <!-- Closing CTA -->
         <div class="cta-block reveal">
-            <h2><span class="gradient-text">Hire me</span> on Upwork, or reach me directly.</h2>
-            <p class="body-text">Most Upwork buyers reach out about a specific build, and an Upwork message is the fastest way to start one. If you'd rather work outside the platform, the audit and direct email are the same path. Same engineer, same standards, your call which door.</p>
+            <h2>Found me on Upwork? <span class="gradient-text">Reach me either way</span>.</h2>
+            <p class="body-text">This page exists so that anyone who found me on Upwork can find me here too. If the platform is where you are comfortable hiring, use it. If you would rather book the audit or just email me, that is the same engineer and the same standards, with no platform in between. Your call which door.</p>
             <div class="cta-buttons">
                 <a href="https://www.upwork.com/freelancers/sethforte" target="_blank" rel="noopener" class="btn-primary">Hire Me on Upwork &rarr;</a>
                 <a href="https://calendly.com/seth-launchforte/30min" target="_blank" rel="noopener" class="btn-ghost">Book an Audit &rarr;</a>
