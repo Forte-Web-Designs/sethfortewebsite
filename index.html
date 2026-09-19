@@ -880,7 +880,6 @@
         }
         .vt-arrow svg { width: 20px; height: 20px; }
         .vt-arrow:hover { background: var(--accent); color: #fff; border-color: var(--accent); transform: translateY(-50%) scale(1.05); }
-        .vt-arrow:disabled { opacity: 0.3; cursor: not-allowed; }
         .vt-arrow-prev { left: -0.5rem; }
         .vt-arrow-next { right: -0.5rem; }
         @media (max-width: 768px) {
@@ -2096,8 +2095,10 @@
     </script>
 
     <!-- Video testimonial carousel: arrow buttons scroll the track by one card
-         width at a time. Snap-scroll CSS on the track settles cards in place.
-         Buttons dim at either end. -->
+         width at a time. Snap-scroll CSS settles cards in place. The track
+         wraps in both directions, so Next past the last card returns to the
+         first and Prev from the first jumps to the last. Neither arrow ever
+         disables, because there is no end to reach. -->
     <script>
     (function () {
         var track = document.getElementById('vt-track');
@@ -2113,19 +2114,29 @@
             var gap = parseFloat(style.columnGap || style.gap || 0) || 0;
             return card.getBoundingClientRect().width + gap;
         }
-        function scrollByCard(dir) {
-            track.scrollBy({ left: dir * cardStep(), behavior: 'smooth' });
+        function maxScroll() {
+            return track.scrollWidth - track.clientWidth;
         }
-        function updateArrows() {
-            var maxScroll = track.scrollWidth - track.clientWidth;
-            prev.disabled = track.scrollLeft <= 2;
-            next.disabled = track.scrollLeft >= maxScroll - 2;
+        function scrollByCard(dir) {
+            var step = cardStep();
+            var max = maxScroll();
+            var at = track.scrollLeft;
+            // Tolerance covers sub-pixel rounding and the snap settle, so the
+            // wrap fires on the click that would otherwise do nothing.
+            var target;
+            if (dir > 0) {
+                target = (at >= max - 2) ? 0 : Math.min(at + step, max);
+            } else {
+                target = (at <= 2) ? max : Math.max(at - step, 0);
+            }
+            var wrapping = (dir > 0 && target === 0 && at >= max - 2) ||
+                           (dir < 0 && target === max && at <= 2);
+            // Jump the wrap rather than gliding the whole strip backwards,
+            // which at six cards reads as a glitch rather than a rewind.
+            track.scrollTo({ left: target, behavior: wrapping ? 'auto' : 'smooth' });
         }
         prev.addEventListener('click', function () { scrollByCard(-1); });
         next.addEventListener('click', function () { scrollByCard(1); });
-        track.addEventListener('scroll', updateArrows, { passive: true });
-        window.addEventListener('resize', updateArrows);
-        updateArrows();
     })();
     </script>
 </body>
