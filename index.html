@@ -568,23 +568,6 @@
         .featured-in a:hover { color: var(--accent); }
 
         /* ---------- 10. Testimonials — Studio quote treatment ---------- */
-        .video-quotes {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-        @media (min-width: 860px) { .video-quotes { grid-template-columns: repeat(2, 1fr); } }
-        .video-quote-col {
-            display: grid;
-            grid-template-columns: 200px 1fr;
-            align-items: start;
-            gap: 1.25rem;
-            padding: 1.25rem;
-            border-radius: var(--radius-3xl);
-            background: var(--paper);
-            box-shadow: inset 0 0 0 1px var(--border);
-        }
-        @media (max-width: 1080px) { .video-quote-col { grid-template-columns: 1fr; } }
         /* Senja renders inside shadow DOM (data-mode="shadow"), so its internal
            video can't be styled or cropped from here — any fixed-ratio box just
            slices the frame arbitrarily. Cap the WIDTH, let the widget set its
@@ -593,50 +576,6 @@
            from here — it lays out ~4x taller than its own 3:4 source. Give the
            wrapper the source's real 3:4 ratio and clip the overflow, so the
            frame is a sane portrait card instead of a 800px column. */
-        .video-widget-wrap {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 3 / 4;
-            border-radius: var(--radius-3xl);
-            overflow: hidden;
-            background: var(--n-100);
-        }
-        .video-widget-wrap .senja-embed {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 100%;
-            transform: translateY(-50%);
-            display: block;
-        }
-        .video-quote-card {
-            position: relative;
-            padding: 0.5rem 0.5rem 0.5rem 0;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-        @media (max-width: 1080px) { .video-quote-card { padding: 0.5rem 0; } }
-        .video-quote-text {
-            font-family: var(--font-display);
-            font-variation-settings: var(--font-display-vars);
-            font-weight: 500;
-            font-size: var(--text-lg);
-            line-height: 1.45;
-            color: var(--ink);
-            margin: 0 0 1.25rem;
-            letter-spacing: -0.01em;
-        }
-        .video-quote-attribution {
-            margin-top: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 0.15rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border);
-        }
-        .video-quote-name { color: var(--ink); font-weight: 600; font-size: var(--text-sm); }
-        .video-quote-project { color: var(--n-500); font-size: var(--text-sm); }
 
         /* ---------- 11. Writing — Studio index list ---------- */
         .writing-preview { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; }
@@ -841,6 +780,120 @@
         .cta-block .body-text { margin: 0 auto 2rem; color: var(--n-600); }
 
         /* ---------- 15. Footer ---------- */
+        /* Video testimonial carousel, matching launchforte.com: 2 cards
+           visible on desktop, 1 on mobile, snap-scroll driven by the arrows.
+           Each vendor (Senja, HeyGen, native mp4) renders its own player
+           inside a uniform frame so the row reads as one set. */
+        .vt-carousel { position: relative; max-width: var(--max-content, 1120px); margin: 0 auto; padding: 0 2rem; }
+        .vt-track {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: calc((100% - 1.5rem) / 2);
+            gap: 1.5rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding: 0.25rem 0.25rem 1rem;
+        }
+        .vt-track::-webkit-scrollbar { display: none; }
+        .vt-card {
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+        .vt-frame {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            border-radius: var(--radius-3xl, 1.5rem);
+            overflow: hidden;
+            background: var(--ink);
+            margin-bottom: 1rem;
+        }
+        .vt-frame video,
+        .vt-frame iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: 0;
+            display: block;
+        }
+        .vt-senja { background: var(--n-100); aspect-ratio: 3 / 4; }
+        .vt-senja .senja-embed {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            transform: translateY(-50%);
+        }
+        .vt-heygen { aspect-ratio: 16 / 9; }
+        .vt-quote { padding: 0 0.25rem; }
+        .vt-quote-text {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: var(--text-base, 1rem);
+            line-height: 1.5;
+            color: var(--ink);
+            font-weight: 500;
+            font-style: italic;
+            margin: 0 0 0.75rem;
+        }
+        .vt-author {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: 0.9375rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 0.2rem;
+        }
+        .vt-author a { color: inherit; text-decoration: none; }
+        .vt-author a:hover { color: var(--accent); }
+        .vt-project {
+            font-size: 0.75rem;
+            color: var(--n-500);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+        }
+        .vt-arrow {
+            position: absolute;
+            top: 40%;
+            transform: translateY(-50%);
+            z-index: 5;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--paper);
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.10);
+            color: var(--ink);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.15s ease, background 0.15s ease, opacity 0.15s ease;
+        }
+        .vt-arrow svg { width: 20px; height: 20px; }
+        .vt-arrow:hover { background: var(--accent); color: #fff; border-color: var(--accent); transform: translateY(-50%) scale(1.05); }
+        .vt-arrow:disabled { opacity: 0.3; cursor: not-allowed; }
+        .vt-arrow-prev { left: -0.5rem; }
+        .vt-arrow-next { right: -0.5rem; }
+        @media (max-width: 768px) {
+            .vt-carousel { padding: 0 1rem; }
+            .vt-track { grid-auto-columns: 100%; gap: 1rem; }
+            .vt-arrow-prev { left: 0.25rem; }
+            .vt-arrow-next { right: 0.25rem; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .vt-track { scroll-behavior: auto; }
+            .vt-arrow { transition: none; }
+        }
+
         .footer-section {
             margin-top: var(--sp-32);
             padding: var(--sp-16) 2rem var(--sp-12);
@@ -980,7 +1033,6 @@
             .main-wrapper { border-top-left-radius: var(--radius-3xl); border-top-right-radius: var(--radius-3xl); }
             .cta-block, .panel-quiet { border-radius: var(--radius-3xl); }
             .panel-quiet, .panel-pointer, .cta-block { padding-left: 1.5rem; padding-right: 1.5rem; }
-            .video-quote-card { padding: 2rem 1.5rem; }
             .results-preview-card { padding: 1.75rem 1.5rem; }
             .featured-in { padding-left: 1.5rem; padding-right: 1.5rem; }
 
@@ -1717,32 +1769,90 @@
                 <p class="section-label reveal">Reviews</p>
                 <h2 class="section-heading reveal" style="margin-bottom: 2rem;">Straight from the <span class="gradient-text">clients</span>.</h2>
 
-                <div class="video-quotes reveal">
-                    <div class="video-quote-col">
-                        <div class="video-widget-wrap">
-                            <script src="https://widget.senja.io/widget/4865e92f-be0e-4665-a6b8-2d195d8f4741/platform.js" type="text/javascript" async></script>
-                            <div class="senja-embed" data-id="4865e92f-be0e-4665-a6b8-2d195d8f4741" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div>
-                        </div>
-                        <div class="video-quote-card">
-                            <p class="video-quote-text">"He stood out from the pack real quickly. We'll use him for any job we ever have."</p>
-                            <div class="video-quote-attribution">
-                                <span class="video-quote-name">Matt, Six Months to Speech</span>
-                                <span class="video-quote-project">CRM build and automation for an online coaching program</span>
+                <p class="section-body reveal" style="margin-bottom: 2rem;">Six clients on camera, in their own words. Every one of these is a build that shipped.</p>
+
+                <!-- Video testimonial carousel: 2 visible on desktop, 1 on mobile,
+                     snap-scroll with arrow buttons. Six videos total (3 Senja +
+                     2 native mp4 + 1 HeyGen). Each vendor renders its own player
+                     inside a uniform card frame. -->
+                <div class="vt-carousel reveal" role="region" aria-label="Video testimonials, scroll horizontally">
+                    <button class="vt-arrow vt-arrow-prev" type="button" aria-label="Previous testimonials" data-vt-dir="-1">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+                    </button>
+                    <button class="vt-arrow vt-arrow-next" type="button" aria-label="Next testimonials" data-vt-dir="1">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+                    </button>
+                    <div class="vt-track" id="vt-track">
+
+                        <article class="vt-card">
+                            <div class="vt-frame vt-senja">
+                                <script src="https://widget.senja.io/widget/4865e92f-be0e-4665-a6b8-2d195d8f4741/platform.js" type="text/javascript" async></script>
+                                <div class="senja-embed" data-id="4865e92f-be0e-4665-a6b8-2d195d8f4741" data-mode="shadow" data-lazyload="true" style="display:block;width:100%"></div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="video-quote-col">
-                        <div class="video-widget-wrap">
-                            <script src="https://widget.senja.io/widget/36af0ec6-70f0-4a77-96dc-bb6ca9a62e42/platform.js" type="text/javascript" async></script>
-                            <div class="senja-embed" data-id="36af0ec6-70f0-4a77-96dc-bb6ca9a62e42" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div>
-                        </div>
-                        <div class="video-quote-card">
-                            <p class="video-quote-text">"10 out of 10 experience. Absolutely recommend."</p>
-                            <div class="video-quote-attribution">
-                                <span class="video-quote-name">Chelsea, Six Months to Speech</span>
-                                <span class="video-quote-project">Full platform migration from Kajabi to GoHighLevel</span>
+                            <div class="vt-quote">
+                                <p class="vt-quote-text">"He stood out from the pack real quickly. We'll use him for any job we ever have."</p>
+                                <div class="vt-author">Matt Juels, Six Months to Speech</div>
+                                <div class="vt-project">CRM build and automation</div>
                             </div>
-                        </div>
+                        </article>
+
+                        <article class="vt-card">
+                            <div class="vt-frame vt-senja">
+                                <script src="https://widget.senja.io/widget/36af0ec6-70f0-4a77-96dc-bb6ca9a62e42/platform.js" type="text/javascript" async></script>
+                                <div class="senja-embed" data-id="36af0ec6-70f0-4a77-96dc-bb6ca9a62e42" data-mode="shadow" data-lazyload="true" style="display:block;width:100%"></div>
+                            </div>
+                            <div class="vt-quote">
+                                <p class="vt-quote-text">"10 out of 10 experience. Absolutely recommend."</p>
+                                <div class="vt-author">Chelsea Juels, Six Months to Speech</div>
+                                <div class="vt-project">Full platform migration</div>
+                            </div>
+                        </article>
+
+                        <article class="vt-card">
+                            <div class="vt-frame vt-mp4">
+                                <video controls playsinline preload="metadata" poster="https://launchforte.com/videos/danielle-poster.jpg" src="https://launchforte.com/videos/danielle-review.mp4" title="Danielle Sandusky testimonial"></video>
+                            </div>
+                            <div class="vt-quote">
+                                <p class="vt-quote-text">"He's enabled me to keep running my business with a lean, efficient team."</p>
+                                <div class="vt-author">Danielle Sandusky, Modern Bungalow</div>
+                                <div class="vt-project">Order and pricing automation</div>
+                            </div>
+                        </article>
+
+                        <article class="vt-card">
+                            <div class="vt-frame vt-senja">
+                                <script src="https://widget.senja.io/widget/1161d123-faf7-49e0-b44d-9e6b20136c66/platform.js" type="text/javascript" async></script>
+                                <div class="senja-embed" data-id="1161d123-faf7-49e0-b44d-9e6b20136c66" data-mode="shadow" data-lazyload="true" style="display:block;width:100%"></div>
+                            </div>
+                            <div class="vt-quote">
+                                <p class="vt-quote-text">"Sharp systems thinker who ships and follows up."</p>
+                                <div class="vt-author"><a href="https://itellemedia.com" target="_blank" rel="noopener">Steve Tirogene, Itelle Media</a></div>
+                                <div class="vt-project">AI strategy and systems advisory</div>
+                            </div>
+                        </article>
+
+                        <article class="vt-card">
+                            <div class="vt-frame vt-mp4">
+                                <video controls playsinline preload="metadata" poster="https://launchforte.com/videos/matt-poster.jpg" src="https://launchforte.com/videos/video-1.mp4" title="Matt Juels testimonial"></video>
+                            </div>
+                            <div class="vt-quote">
+                                <p class="vt-quote-text">"He stood out from the pack real quickly. We'll use him for any job we ever have."</p>
+                                <div class="vt-author">Matt Juels, Six Months to Speech</div>
+                                <div class="vt-project">CRM build and automation</div>
+                            </div>
+                        </article>
+
+                        <article class="vt-card">
+                            <div class="vt-frame vt-heygen">
+                                <iframe src="https://app.heygen.com/embeds/8afdada80e4c4371978e3076986b4b7f" title="Cordaryl Cousar testimonial" loading="lazy" allow="encrypted-media; fullscreen; autoplay; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="vt-quote">
+                                <p class="vt-quote-text">"A pro who thinks beyond the ask and moves the business forward."</p>
+                                <div class="vt-author">Cordaryl Cousar, Electronics Surgeon</div>
+                                <div class="vt-project">Growth systems architecture and advisory</div>
+                            </div>
+                        </article>
+
                     </div>
                 </div>
                 <a href="/reviews.html" class="btn-link reveal" style="margin-top: 1.5rem;">See all reviews &rarr;</a>
@@ -1983,6 +2093,40 @@
         sync();
         window.addEventListener('scroll', sync, { passive: true });
       })();
+    </script>
+
+    <!-- Video testimonial carousel: arrow buttons scroll the track by one card
+         width at a time. Snap-scroll CSS on the track settles cards in place.
+         Buttons dim at either end. -->
+    <script>
+    (function () {
+        var track = document.getElementById('vt-track');
+        if (!track) return;
+        var prev = document.querySelector('.vt-arrow-prev');
+        var next = document.querySelector('.vt-arrow-next');
+        if (!prev || !next) return;
+
+        function cardStep() {
+            var card = track.querySelector('.vt-card');
+            if (!card) return track.clientWidth;
+            var style = getComputedStyle(track);
+            var gap = parseFloat(style.columnGap || style.gap || 0) || 0;
+            return card.getBoundingClientRect().width + gap;
+        }
+        function scrollByCard(dir) {
+            track.scrollBy({ left: dir * cardStep(), behavior: 'smooth' });
+        }
+        function updateArrows() {
+            var maxScroll = track.scrollWidth - track.clientWidth;
+            prev.disabled = track.scrollLeft <= 2;
+            next.disabled = track.scrollLeft >= maxScroll - 2;
+        }
+        prev.addEventListener('click', function () { scrollByCard(-1); });
+        next.addEventListener('click', function () { scrollByCard(1); });
+        track.addEventListener('scroll', updateArrows, { passive: true });
+        window.addEventListener('resize', updateArrows);
+        updateArrows();
+    })();
     </script>
 </body>
 </html>
