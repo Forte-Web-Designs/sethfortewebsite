@@ -554,53 +554,10 @@
             color: var(--ink);
             margin: 0;
         }
-        .trust-section {
-            background: var(--ink);
-            border-radius: var(--radius-4xl);
-            padding: var(--sp-10) 0 var(--sp-8);
-            color: var(--paper);
-        }
-        @media (min-width: 640px) { .trust-section { padding: var(--sp-12) 0 var(--sp-10); } }
-        .trust-label {
-            display: block;
-            padding: 0 2rem;
-            font-family: var(--font-display);
-            font-variation-settings: var(--font-display-vars);
-            font-size: var(--text-sm);
-            font-weight: 600;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            color: var(--paper);
-        }
-        [data-theme="dark"] .trust-section { box-shadow: inset 0 0 0 1px var(--border); }
         /* Static grid, matching launchforte.com's .studio-clients-grid. A
            marquee inside this rounded card clipped names at the corners no
            matter how the mask was tuned — overflow:hidden cuts before the fade
            finishes. Static also reads calmer, which is the point of the card. */
-        .carousel-wrapper {
-            margin-top: 2.5rem;
-            margin-bottom: 2.5rem;
-            padding: 0 2rem;
-        }
-        .carousel-track {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.75rem 2rem;
-            width: 100%;
-        }
-        @media (min-width: 1024px) { .carousel-track { grid-template-columns: repeat(4, 1fr); } }
-        .carousel-item {
-            font-family: var(--font-display);
-            font-variation-settings: var(--font-display-vars);
-            font-size: var(--text-lg);
-            font-weight: 600;
-            color: var(--n-500);
-            text-align: center;
-            filter: grayscale(100%);
-            opacity: 0.72;
-            transition: filter var(--dur-hover) var(--ease-out), color var(--dur-hover), opacity var(--dur-hover);
-        }
-        .carousel-item:hover { filter: grayscale(0%); opacity: 1; color: var(--accent); }
         .featured-in {
             margin: 0;
             padding: 0 2rem;
@@ -949,11 +906,11 @@
             }
 
             .main-wrapper { border-top-left-radius: var(--radius-3xl); border-top-right-radius: var(--radius-3xl); }
-            .trust-section, .cta-block, .panel-quiet, .panel-pointer { border-radius: var(--radius-3xl); }
+            .cta-block, .panel-quiet, .panel-pointer { border-radius: var(--radius-3xl); }
             .panel-quiet, .panel-pointer, .cta-block { padding-left: 1.5rem; padding-right: 1.5rem; }
             .video-quote-card { padding: 2rem 1.5rem; }
             .results-preview-card { padding: 1.75rem 1.5rem; }
-            .trust-label, .featured-in { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .featured-in { padding-left: 1.5rem; padding-right: 1.5rem; }
 
             /* 44px targets everywhere they matter */
             .writing-preview a { min-height: 44px; padding: 1.25rem 0.25rem; }
@@ -1144,21 +1101,6 @@
         /* The Trusted By ribbon is an ink card in both themes, so its contents
            must stay light — --n-500/--ink flip and inverted it to grey-on-white
            in dark mode. Same class of bug as the footer. */
-        .trust-section { background: #0A0A0A !important; }
-        [data-theme="dark"] .trust-section {
-            background: #050505 !important;
-            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.10);
-        }
-        .trust-section .trust-label,
-        [data-theme="dark"] .trust-section .trust-label { color: #FFFFFF !important; }
-        .carousel-item,
-        [data-theme="dark"] .carousel-item { color: #D4D4D4 !important; }
-        .carousel-item:hover,
-        [data-theme="dark"] .carousel-item:hover { color: #4FB8F0 !important; }
-        .featured-in,
-        [data-theme="dark"] .featured-in { color: #D4D4D4 !important; }
-        .featured-in a,
-        [data-theme="dark"] .featured-in a { color: #FFFFFF !important; }
 
         /* Near-misses on their own grounds: nudge to clear AA outright. */
         .results-preview-stat { color: var(--accent-strong, #0077C4) !important; }
@@ -1175,10 +1117,6 @@
            treatment above inverted it. Scope the light colour to the ribbon. */
         .featured-in { color: var(--n-600) !important; }
         .featured-in a { color: var(--ink) !important; }
-        .trust-section .featured-in,
-        [data-theme="dark"] .trust-section .featured-in { color: #D4D4D4 !important; }
-        .trust-section .featured-in a,
-        [data-theme="dark"] .trust-section .featured-in a { color: #FFFFFF !important; }
 
         /* Step numerals and small accent labels: darker accent on paper,
            brighter on ink. */
@@ -1657,26 +1595,8 @@
             <!-- Positioning Bar -->
             <section class="positioning-bar reveal">
                 <p class="positioning-proof">Founder of Launch Forte. Trusted across industries.</p>
-            </section>
-        </div>
-
-        <!-- Trusted By -->
-        <div class="pane-container studio-section">
-            <div class="trust-section reveal">
-                <span class="trust-label">Trusted by</span>
-                <div class="carousel-wrapper">
-                    <div class="carousel-track">
-                        <span class="carousel-item">Revolut</span>
-                        <span class="carousel-item">Modern Bungalow</span>
-                        <span class="carousel-item">Eden Medical</span>
-                        <span class="carousel-item">Kingfisher Ads</span>
-                        <span class="carousel-item">CR Deals Cincinnati</span>
-                        <span class="carousel-item">Hollow Bamboo</span>
-                        <span class="carousel-item">UDI Group</span>
-                    </div>
-                </div>
                 <p class="featured-in">Featured in <a href="https://voyagedallas.com/interview/community-highlights-meet-seth-forte-of-forte-web-designs/" target="_blank" rel="noopener">Voyage Dallas Magazine</a></p>
-            </div>
+            </section>
         </div>
 
         <div class="pane-container">

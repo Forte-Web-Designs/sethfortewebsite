@@ -51,7 +51,7 @@
         '[data-theme="dark"]:not([data-studio]) .result-stat,[data-theme="dark"]:not([data-studio]) .case-study-stat,[data-theme="dark"]:not([data-studio]) .featured-stat,[data-theme="dark"]:not([data-studio]) .stat-card .stat,[data-theme="dark"]:not([data-studio]) .feature-block .stat,[data-theme="dark"]:not([data-studio]) .metric-value,[data-theme="dark"]:not([data-studio]) .stat,[data-theme="dark"]:not([data-studio]) .gradient-text{color:#4ab5ed!important;-webkit-text-fill-color:#4ab5ed!important}' +
         '[data-theme="dark"]:not([data-studio]) .footer-section,[data-theme="dark"]:not([data-studio]) .site-footer{background:#000000;color:#86868b}' +
         '[data-theme="dark"]:not([data-studio]) .tech-tag,[data-theme="dark"]:not([data-studio]) .case-study-tags span,[data-theme="dark"]:not([data-studio]) .review-tag{background:rgba(74,181,237,0.14);color:#4ab5ed}' +
-        '[data-theme="dark"]:not([data-studio]) .carousel-item{color:#a1a1a6}' +
+
         '[data-theme="dark"]:not([data-studio]) .metric-label,[data-theme="dark"]:not([data-studio]) .trust-label,[data-theme="dark"]:not([data-studio]) .featured-label,[data-theme="dark"]:not([data-studio]) .stage-number,[data-theme="dark"]:not([data-studio]) .step-number,[data-theme="dark"]:not([data-studio]) .case-label{color:#86868b}' +
         '[data-theme="dark"]:not([data-studio]) .featured-in,[data-theme="dark"]:not([data-studio]) .featured-in a{color:#a1a1a6}' +
         '[data-theme="dark"]:not([data-studio]) hr,[data-theme="dark"]:not([data-studio]) .section-divider{border-color:rgba(255,255,255,0.10)}' +
