@@ -684,7 +684,8 @@
             grid-template-columns: 1fr;
             gap: 1.5rem;
         }
-        @media (min-width: 720px) { .results-preview { grid-template-columns: repeat(3, 1fr); } }
+        @media (min-width: 720px)  { .results-preview { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1100px) { .results-preview { grid-template-columns: repeat(4, 1fr); } }
         .results-preview-card {
             position: relative;
             display: flex;
@@ -698,6 +699,61 @@
                         transform var(--dur-hover) var(--ease-out);
         }
         .results-preview-card:hover { background: var(--n-50); transform: translateY(-2px); }
+
+        /* Client mark sits above the metric. Held in a fixed-height box so
+           four logos of very different aspect ratios share one baseline, and
+           desaturated at rest so the cards read as one row rather than four
+           competing brand colours. */
+        .results-logo {
+            display: flex;
+            align-items: center;
+            height: 34px;
+            margin-bottom: 1.25rem;
+        }
+        .results-logo img {
+            max-height: 100%;
+            max-width: 150px;
+            width: auto;
+            object-fit: contain;
+            object-position: left center;
+            /* Grayscale alone leaves each mark at its own lightness, so the
+               dark ones (Modern Bungalow's olive, CR Deals' navy) sink into
+               the ink ground in dark mode. Flatten to a single tone per
+               theme instead, and let hover restore the real colour. */
+            filter: grayscale(100%) brightness(0) invert(0) opacity(0.62);
+            transition: filter var(--dur-hover) var(--ease-out);
+        }
+        [data-theme="dark"] .results-logo img {
+            filter: grayscale(100%) brightness(0) invert(1) opacity(0.72);
+        }
+        .results-preview-card:hover .results-logo img,
+        [data-theme="dark"] .results-preview-card:hover .results-logo img {
+            filter: none;
+        }
+        /* Daleen's mark is a filled shield rather than line art, so the
+           flatten-and-invert above would render it as a solid block. It
+           already reads on both grounds, so it keeps its own colours. */
+        .results-logo img[alt="Daleen Services"],
+        [data-theme="dark"] .results-logo img[alt="Daleen Services"] {
+            filter: grayscale(100%) opacity(0.72);
+            max-height: 128%;
+        }
+        .results-preview-card:hover .results-logo img[alt="Daleen Services"],
+        [data-theme="dark"] .results-preview-card:hover .results-logo img[alt="Daleen Services"] {
+            filter: none;
+        }
+        /* Six Months to Speech has no mark in the intro deck, so it keeps a
+           wordmark set in the display face at the same height. */
+        .results-logo-word {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: var(--text-lg);
+            font-weight: 600;
+            letter-spacing: -0.015em;
+            color: var(--ink);
+            opacity: 0.75;
+        }
+        .results-preview-card:hover .results-logo-word { opacity: 1; }
         /* The metric line as the card eyebrow — Studio case-study grammar */
         .results-preview-stat {
             display: inline-flex;
@@ -742,12 +798,23 @@
             box-shadow: inset 0 0 0 1px var(--border);
         }
         .panel-pointer {
-            padding: var(--sp-12) 2rem;
-            border-radius: var(--radius-4xl);
+            padding: var(--sp-16) 2rem;
             background: var(--ink);
             color: var(--paper);
+            /* Break out of the reading column so the dark ground spans the
+               page, the way launchforte.com's dark bands do. Without this it
+               reads as a black box floating on white. */
+            width: 100vw;
+            max-width: 100vw;
+            margin-left: calc(50% - 50vw);
+            margin-right: calc(50% - 50vw);
+            border-radius: 0;
         }
-        [data-theme="dark"] .panel-pointer { box-shadow: inset 0 0 0 1px var(--border); }
+        .panel-pointer > * {
+            max-width: var(--max-content, 1120px);
+            margin-left: auto;
+            margin-right: auto;
+        }
         .panel-pointer .section-label { color: var(--paper); }
         .panel-pointer .section-label::after { background: rgba(255,255,255,0.28); }
         .panel-pointer .section-heading { color: var(--paper); }
@@ -906,7 +973,7 @@
             }
 
             .main-wrapper { border-top-left-radius: var(--radius-3xl); border-top-right-radius: var(--radius-3xl); }
-            .cta-block, .panel-quiet, .panel-pointer { border-radius: var(--radius-3xl); }
+            .cta-block, .panel-quiet { border-radius: var(--radius-3xl); }
             .panel-quiet, .panel-pointer, .cta-block { padding-left: 1.5rem; padding-right: 1.5rem; }
             .video-quote-card { padding: 2rem 1.5rem; }
             .results-preview-card { padding: 1.75rem 1.5rem; }
@@ -1606,61 +1673,33 @@
                 <p class="section-label reveal">Results</p>
                 <h2 class="section-heading reveal" style="margin-bottom: 2rem;">Engineering work that <span class="gradient-text">moved</span> businesses</h2>
                 <div class="results-preview reveal">
-                    <a href="/work/between-generations-care.html" class="results-preview-card">
-                        <span class="results-preview-stat">Zero manual steps</span>
-                        <span class="results-preview-name">Between Generations Care</span>
-                        <span class="results-preview-context">Full platform build inside GoHighLevel. Instagram follower to repeat client, fully engineered.</span>
-                    </a>
                     <a href="/work/cr-deals.html" class="results-preview-card">
+                        <span class="results-logo"><img src="/media/logos/cr-deals.png" alt="CR Deals" loading="lazy" width="1500" height="762"></span>
                         <span class="results-preview-stat">130+ hrs / month recovered</span>
-                        <span class="results-preview-name">CR Deals</span>
                         <span class="results-preview-context">Replaced manual court records pulls with one automated pipeline.</span>
                     </a>
-                    <a href="/work/the-11r-shop.html" class="results-preview-card">
-                        <span class="results-preview-stat">GPS gated dispatch</span>
-                        <span class="results-preview-name">The 11R Shop</span>
-                        <span class="results-preview-context">Four phase dispatch with dynamic pricing, arrival verification, and automated invoicing.</span>
+                    <a href="/work/modern-bungalow.html" class="results-preview-card">
+                        <span class="results-logo"><img src="/media/logos/modern-bungalow.png" alt="Modern Bungalow" loading="lazy" width="1200" height="95"></span>
+                        <span class="results-preview-stat">Shopify to Xero, in sync</span>
+                        <span class="results-preview-context">Product and inventory sync that ended the manual double entry between storefront and books.</span>
+                    </a>
+                    <a href="/work/daleen-restoration.html" class="results-preview-card">
+                        <span class="results-logo"><img src="/media/logos/daleen-services.png" alt="Daleen Services" loading="lazy" width="306" height="477"></span>
+                        <span class="results-preview-stat">Intake to dispatch, automated</span>
+                        <span class="results-preview-context">Restoration jobs routed from first call to crew assignment without a coordinator retyping anything.</span>
+                    </a>
+                    <a href="/case-studies.html" class="results-preview-card">
+                        <span class="results-logo results-logo-word">Six Months to Speech</span>
+                        <span class="results-preview-stat">Kajabi to GoHighLevel</span>
+                        <span class="results-preview-context">Full platform migration plus the CRM and automation behind an online coaching program.</span>
                     </a>
                 </div>
                 <a href="/case-studies.html" class="btn-link reveal" style="margin-top: 1.5rem;">See all results &rarr;</a>
             </div>
 
-            <!-- Client reviews (launchforte.com review-grid) -->
+            <!-- Client testimonials (video only; the text reviews live on /reviews.html) -->
             <div class="studio-section" id="reviews">
                 <p class="section-label reveal">Reviews</p>
-                <h2 class="section-heading reveal" style="margin-bottom: 2rem;">What clients say after the <span class="gradient-text">work is done</span>.</h2>
-                <div class="review-grid reveal">
-                    <div class="review-card-lf">
-                        <div class="review-stars-lf">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                        <p class="review-quote-lf">Seth is my go-to for all of my automation projects now and he's making my business run so much more smoothly and efficiently. His process in defining the project scope ahead of time ensures that I get everything I need and we're on the same page throughout.</p>
-                        <div class="review-author-lf">Danielle, Modern Bungalow</div>
-                        <div class="review-project-lf">Shopify to Xero product sync</div>
-                    </div>
-                    <div class="review-card-lf">
-                        <div class="review-stars-lf">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                        <p class="review-quote-lf">Seth was amazing. Extremely knowledgeable and patient. He thought outside the box to offer us solutions we did not consider. Highly recommend Seth and we will use him again.</p>
-                        <div class="review-author-lf">Alex, UDI Group</div>
-                        <div class="review-project-lf">Custom review system</div>
-                    </div>
-                    <div class="review-card-lf">
-                        <div class="review-stars-lf">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                        <p class="review-quote-lf">The support and consultancy he provided were thoughtful, practical, and immediately helpful. Communication was always clear and timely.</p>
-                        <div class="review-author-lf">Ongoing engagement</div>
-                        <div class="review-project-lf">Automation consulting and scoping</div>
-                    </div>
-                    <div class="review-card-lf">
-                        <div class="review-stars-lf">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                        <p class="review-quote-lf">It was a great experience working with Seth. He is professional, organised, talented and friendly. It is enjoyable to work with him.</p>
-                        <div class="review-author-lf">Eden Medical</div>
-                        <div class="review-project-lf">AI booking and cancellation flow</div>
-                    </div>
-                </div>
-                <a href="/reviews.html" class="btn-link reveal" style="margin-top: 1.5rem;">See all reviews &rarr;</a>
-            </div>
-
-            <!-- Featured Review -->
-            <div class="studio-section">
-                <p class="section-label reveal">Testimonials</p>
                 <h2 class="section-heading reveal" style="margin-bottom: 2rem;">Straight from the <span class="gradient-text">clients</span>.</h2>
 
                 <div class="video-quotes reveal">
@@ -1691,6 +1730,7 @@
                         </div>
                     </div>
                 </div>
+                <a href="/reviews.html" class="btn-link reveal" style="margin-top: 1.5rem;">See all reviews &rarr;</a>
             </div>
 
             <!-- Latest Writing -->
