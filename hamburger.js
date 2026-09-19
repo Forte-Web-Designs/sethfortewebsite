@@ -59,6 +59,12 @@
             var href = link.getAttribute('href') || '';
             // Skip external links
             if (/^https?:\/\//i.test(href)) return;
+            // Skip same-page anchors. On the homepage every one of these
+            // ("#about", "#contact", ...) resolves to pathname "/", so they
+            // all matched exactly and the last one won -- which is why Contact
+            // lit up on the home page. Which section you are looking at is a
+            // scroll-position question, not a URL one.
+            if (href.charAt(0) === '#') return;
             var linkPath = normalize(new URL(href, window.location.origin).pathname);
             // Exact match wins. If no exact match, longest prefix match wins
             // (so /work/foo highlights the Results tab if Results was at /case-studies, etc).
