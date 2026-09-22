@@ -1657,6 +1657,64 @@
         /* Single-scroll page: nav jumps to sections, so keep headings clear of
            the sticky header when an anchor lands. */
         #about, #results, #reviews, #writing, #contact { scroll-margin-top: 90px; }
+        
+        /* ---------- Forte Signals ----------
+           Personal, quiet, and built from the same tokens as the rest of the
+           page. Deliberately NOT a marketing unit: no illustration, no count,
+           no popup. The GHL iframe carries the fields. */
+        .signals {
+            padding: var(--sp-12) 2rem;
+            border-radius: var(--radius-4xl);
+            background: var(--n-50);
+            box-shadow: inset 0 0 0 1px var(--border);
+        }
+        .signals .section-heading { max-width: 22ch; margin-bottom: 1.25rem; }
+        .signals-copy {
+            color: var(--n-600);
+            font-size: var(--text-lg);
+            line-height: 1.75;
+            max-width: 62ch;
+            margin: 0 0 1rem;
+        }
+        .signals-copy-last { margin-bottom: 2rem; }
+        .signals-form {
+            max-width: 520px;
+            border-radius: var(--radius-3xl);
+            overflow: hidden;
+            background: var(--paper);
+            box-shadow: inset 0 0 0 1px var(--border);
+        }
+        .signals-form iframe { display: block; width: 100%; }
+        .signals-fine {
+            margin: 1rem 0 0;
+            font-size: var(--text-sm);
+            color: var(--n-500);
+            line-height: 1.6;
+        }
+        /* Held state: shown only while data-signals-live="false" */
+        .signals-held {
+            margin: 0;
+            padding: 1.15rem 1.35rem;
+            border-radius: var(--radius-3xl);
+            background: var(--paper);
+            box-shadow: inset 0 0 0 1px var(--border);
+            color: var(--n-600);
+            font-size: var(--text-base);
+            line-height: 1.6;
+            max-width: 520px;
+        }
+        .signals-held a { color: var(--accent-strong, #0077C4); font-weight: 600; }
+        #signals[data-signals-live="false"] [data-signals-form] { display: none; }
+        #signals[data-signals-live="true"]  [data-signals-held] { display: none; }
+
+        @media (max-width: 640px) {
+            .signals { padding: var(--sp-10) 1.25rem; border-radius: var(--radius-3xl); }
+            .signals-copy { font-size: var(--text-base); }
+            .signals-form, .signals-held { max-width: 100%; }
+            /* GHL renders its own stacked layout below ~480px; give it room so
+               the submit button is never cut off. */
+            .signals-form iframe { height: 380px !important; }
+        }
         </style>
 </head>
 <body>
@@ -1866,6 +1924,46 @@
                 </ul>
                 <a href="/writing.html" class="btn-link reveal" style="margin-top: 1.5rem;">See all writing &rarr;</a>
             </div>
+
+            <!-- Forte Signals — newsletter signup.
+                 Subscriber system of record is GoHighLevel, form
+                 "Forte Signals | SethForte.com" (jk4QZmJvhyvXfVtR6RhO).
+                 No local handler, no local subscriber store: the iframe posts
+                 straight to GHL, which stamps LF Newsletter Source = SethForte.com.
+
+                 LIVE GATE: the form is held behind data-signals-live="false"
+                 until the six GHL preconditions are confirmed (domain verified,
+                 workflow published, welcome copy approved, test submission,
+                 welcome email tested, unsubscribe tested). Flip that attribute
+                 to "true" to expose the form. Nothing else needs changing. -->
+            <section class="studio-section" id="signals" data-signals-live="false">
+                <div class="signals reveal">
+                    <p class="section-label">Forte Signals</p>
+                    <h2 class="section-heading">Every other Friday I send something I'm <span class="gradient-text">seeing from the work</span>.</h2>
+                    <p class="signals-copy">Business problems that keep showing up, changes in software or AI that are worth understanding, and ideas I think are useful if you're building or running a business.</p>
+                    <p class="signals-copy signals-copy-last">If I don't have something useful, I won't send one.</p>
+
+                    <div class="signals-form" data-signals-form>
+                        <iframe
+                            data-src="https://api.leadconnectorhq.com/widget/form/jk4QZmJvhyvXfVtR6RhO"
+                            id="inline-jk4QZmJvhyvXfVtR6RhO"
+                            data-layout="{'id':'INLINE'}"
+                            data-trigger-type="alwaysShow"
+                            data-activation-type="alwaysActivated"
+                            data-deactivation-type="neverDeactivate"
+                            data-form-name="Forte Signals | SethForte.com"
+                            data-height="320"
+                            data-layout-iframe-id="inline-jk4QZmJvhyvXfVtR6RhO"
+                            data-form-id="jk4QZmJvhyvXfVtR6RhO"
+                            title="Forte Signals | SethForte.com"
+                            style="width:100%;height:320px;border:none;border-radius:var(--radius-3xl);">
+                        </iframe>
+                    </div>
+
+                    <p class="signals-held" data-signals-held>Forte Signals opens soon. <a href="mailto:seth@launchforte.com?subject=Forte%20Signals">Email me</a> and I'll add you to the first send.</p>
+                    <p class="signals-fine">First name optional, email required. No spam, and one click unsubscribes you.</p>
+                </div>
+            </section>
 
             <!-- Launch Forte -->
             <div class="studio-section">
@@ -2136,6 +2234,25 @@
         prev.addEventListener('click', function () { scrollByCard(-1); });
         next.addEventListener('click', function () { scrollByCard(1); });
     })();
+    </script>
+
+    <!-- GoHighLevel form embed script. Loaded ONLY when Forte Signals is live,
+         so a held page makes no third-party request. GHL owns the submission,
+         the success state and the subscriber record — there is deliberately no
+         local handler and no local subscriber store. -->
+    <script>
+        (function() {
+            var sec = document.getElementById('signals');
+            if (!sec || sec.getAttribute('data-signals-live') !== 'true') return;
+            // promote the parked URL only once the gate is open, so a held
+            // page never requests the form at all
+            var f = sec.querySelector('iframe[data-src]');
+            if (f) { f.src = f.getAttribute('data-src'); f.removeAttribute('data-src'); }
+            var t = document.createElement('script');
+            t.src = 'https://link.msgsndr.com/js/form_embed.js';
+            t.async = true;
+            document.body.appendChild(t);
+        })();
     </script>
 </body>
 </html>
