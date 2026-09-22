@@ -660,7 +660,7 @@
            olive, CR Deals' navy) are dark enough to disappear on the ink
            ground, so in dark mode every logo sits on its own light chip
            rather than being recoloured. */
-        [data-theme="dark"] .results-logo {
+        [data-theme="dark"] .results-logo:not(.results-logo-word) {
             align-self: flex-start;
             height: auto;
             padding: 0.5rem 0.7rem;
@@ -1607,9 +1607,7 @@
            is what the about page actually delivers. */
         .about-text-personal {
             margin-top: 0.85rem;
-            color: var(--n-600);
         }
-        [data-theme="dark"] .about-text-personal { color: var(--n-400); }
 
         .home-about-text > :last-child { margin-bottom: 0; }
         @media (max-width: 760px) {
@@ -1862,9 +1860,9 @@
                 <p class="section-label reveal">Writing</p>
                 <h2 class="section-heading reveal" style="margin-bottom: 1.5rem;">Latest <span class="gradient-text">writing</span></h2>
                 <ul class="writing-preview reveal">
+                    <li><a href="/articles/the-migration-that-broke-nothing.html"><span class="writing-preview-title">The migration that broke nothing</span><span class="writing-preview-date">Sep 20, 2026</span><span class="writing-preview-cta">Read &rarr;</span></a></li>
+                    <li><a href="/articles/running-a-practice-out-of-a-shed.html"><span class="writing-preview-title">Running A Practice Out Of A Shed</span><span class="writing-preview-date">Aug 4, 2026</span><span class="writing-preview-cta">Read &rarr;</span></a></li>
                     <li><a href="/articles/building-the-thing-that-builds-the-thing.html"><span class="writing-preview-title">Building The Thing That Builds The Thing</span><span class="writing-preview-date">Jul 28, 2026</span><span class="writing-preview-cta">Read &rarr;</span></a></li>
-                    <li><a href="/articles/what-i-got-wrong-about-selling-automation.html"><span class="writing-preview-title">What I Got Wrong About Selling Automation</span><span class="writing-preview-date">Jul 26, 2026</span><span class="writing-preview-cta">Read &rarr;</span></a></li>
-                    <li><a href="/articles/sso-small-business.html"><span class="writing-preview-title">SSO for Small Business (Without Paying Enterprise Prices)</span><span class="writing-preview-date">Jan 4, 2026</span><span class="writing-preview-cta">Read &rarr;</span></a></li>
                 </ul>
                 <a href="/writing.html" class="btn-link reveal" style="margin-top: 1.5rem;">See all writing &rarr;</a>
             </div>
