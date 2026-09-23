@@ -1678,42 +1678,42 @@
         }
         .signals-copy-last { margin-bottom: 2rem; }
         .signals-form {
+            position: relative;
             max-width: 520px;
+            height: 363px;
+            margin-bottom: 1rem;
             border-radius: var(--radius-3xl);
             overflow: hidden;
             background: var(--paper);
             box-shadow: inset 0 0 0 1px var(--border);
         }
-        .signals-form iframe { display: block; width: 100%; }
+        /* GHL's embed script promotes the iframe to position:absolute, which
+           takes it out of flow. Without a height here the wrapper collapses
+           to zero and overflow:hidden clips the form away entirely. */
+        .signals-form iframe {
+            display: block;
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
         .signals-fine {
             margin: 1rem 0 0;
             font-size: var(--text-sm);
             color: var(--n-500);
             line-height: 1.6;
         }
-        /* Held state: shown only while data-signals-live="false" */
-        .signals-held {
-            margin: 0;
-            padding: 1.15rem 1.35rem;
-            border-radius: var(--radius-3xl);
-            background: var(--paper);
-            box-shadow: inset 0 0 0 1px var(--border);
-            color: var(--n-600);
-            font-size: var(--text-base);
-            line-height: 1.6;
-            max-width: 520px;
-        }
-        .signals-held a { color: var(--accent-strong, #0077C4); font-weight: 600; }
+        /* The live gate still guards the form: data-signals-live="false"
+           hides it and stops the GHL request, for any future pause. */
         #signals[data-signals-live="false"] [data-signals-form] { display: none; }
-        #signals[data-signals-live="true"]  [data-signals-held] { display: none; }
 
         @media (max-width: 640px) {
             .signals { padding: var(--sp-10) 1.25rem; border-radius: var(--radius-3xl); }
             .signals-copy { font-size: var(--text-base); }
-            .signals-form, .signals-held { max-width: 100%; }
-            /* GHL renders its own stacked layout below ~480px; give it room so
+            .signals-form { max-width: 100%; }
+            /* GHL stacks its layout below ~480px; give the wrapper room so
                the submit button is never cut off. */
-            .signals-form iframe { height: 380px !important; }
+            .signals-form { height: 400px; }
         }
         </style>
 </head>
@@ -1931,12 +1931,12 @@
                  No local handler, no local subscriber store: the iframe posts
                  straight to GHL, which stamps LF Newsletter Source = SethForte.com.
 
-                 LIVE GATE: the form is held behind data-signals-live="false"
-                 until the six GHL preconditions are confirmed (domain verified,
-                 workflow published, welcome copy approved, test submission,
-                 welcome email tested, unsubscribe tested). Flip that attribute
-                 to "true" to expose the form. Nothing else needs changing. -->
-            <section class="studio-section" id="signals" data-signals-live="false">
+                 LIVE GATE: data-signals-live="true" since the six GHL
+                 preconditions were confirmed (domain verified, workflow
+                 published, welcome copy approved, test submission, welcome
+                 email tested, unsubscribe tested). Set it back to "false" to
+                 pause: that hides the form and stops the GHL request. -->
+            <section class="studio-section" id="signals" data-signals-live="true">
                 <div class="signals reveal">
                     <p class="section-label">Forte Signals</p>
                     <h2 class="section-heading">Every other Friday I send something I'm <span class="gradient-text">seeing from the work</span>.</h2>
@@ -1960,7 +1960,6 @@
                         </iframe>
                     </div>
 
-                    <p class="signals-held" data-signals-held>Forte Signals opens soon. <a href="mailto:seth@launchforte.com?subject=Forte%20Signals">Email me</a> and I'll add you to the first send.</p>
                     <p class="signals-fine">First name optional, email required. No spam, and one click unsubscribes you.</p>
                 </div>
             </section>
