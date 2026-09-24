@@ -1966,6 +1966,27 @@
             .deck-facts, .deck-ways { grid-template-columns: 1fr; }
             .deck-callout { padding: 1.25rem; }
         }
+        
+        
+        /* ---------- Deck heading measure ----------
+           The unified hero block gives every .main-wrapper child
+           max-width:1100px + 2rem padding + margin:auto so the full-bleed hero
+           can escape the column. That stretched the display headings to the
+           full width. Constrain the TEXT only — leaving the box identical to
+           its siblings keeps the headings flush with the labels and cards. */
+        /* Keep the BOX the same width as every sibling so the heading stays
+           aligned with the labels and cards, and shorten the LINE with
+           padding-right. A max-width here would shrink the box and the auto
+           margins would then centre it, pushing it out of alignment. */
+        .main-wrapper > .deck-lede { max-width: 1100px; }
+        /* Only where there is room to spare: below this the heading should use
+           the full column, and the calc would go negative and blow the page
+           out horizontally. */
+        @media (min-width: 1000px) {
+            .main-wrapper > .deck-lede { padding-right: calc(100% - 30ch); }
+        }
+        .section-label + .deck-lede { margin-top: 0.35rem; }
+        @media (max-width: 860px) { .deck-lede { max-width: 100%; } }
         </style>
 </head>
 <body>
