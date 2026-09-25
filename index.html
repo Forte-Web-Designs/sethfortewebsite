@@ -467,38 +467,66 @@
         }
         .hero-cta .btn-ghost:hover { background: rgba(255,255,255,0.08); color: #FFFFFF; }
 
-        /* Circular icon button in the hero CTA row. Same 46px box as the
-           text pills so the three sit on one baseline, glass treatment
-           matching .btn-ghost. The SVG inherits currentColor, so the
-           brand-red hover is a one-property change. */
-        .btn-icon {
+        /* YouTube button in the hero CTA row. Solid brand red at rest, not
+           on hover: the channel is a real destination, so it should read as
+           a primary action rather than a quiet affordance. Slightly taller
+           and wider than the neighbouring pills so it carries weight. */
+        .btn-youtube {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 46px;
-            height: 46px;
-            flex: 0 0 auto;
-            border-radius: 50%;
+            gap: 0.6rem;
+            padding: 0.95rem 1.75rem;
+            border-radius: 999px;
+            background: #FF0033;
             color: #FFFFFF;
-            background: transparent;
-            border: 1px solid rgba(255,255,255,0.28);
+            border: 1px solid #FF0033;
+            font-family: var(--font-sans);
+            font-size: var(--text-base);
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            line-height: 1;
             text-decoration: none;
-            transition: background 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease;
+            white-space: nowrap;
+            box-shadow: 0 6px 22px rgba(255,0,51,0.34);
+            transition: background 180ms ease, box-shadow 180ms ease, transform 180ms ease;
         }
-        .btn-icon svg {
-            width: 22px;
-            height: 22px;
+        .btn-youtube svg {
+            width: 26px;
+            height: 26px;
             display: block;
+            flex: 0 0 auto;
             fill: currentColor;
         }
-        .btn-icon:hover,
-        .btn-icon:focus-visible {
-            color: #FF0033;
-            border-color: rgba(255,0,51,0.55);
-            background: rgba(255,0,51,0.12);
-            transform: translateY(-1px);
+        .btn-youtube:hover,
+        .btn-youtube:focus-visible {
+            background: #E6002E;
+            box-shadow: 0 10px 30px rgba(255,0,51,0.46);
+            transform: translateY(-2px);
         }
-        .btn-icon:focus-visible { outline: 2px solid #FF0033; outline-offset: 3px; }
+        .btn-youtube:focus-visible { outline: 2px solid #FFFFFF; outline-offset: 3px; }
+
+        /* Scroll cue, not a button. It points at a section on this same page,
+           so it should sit under the two real destinations rather than
+           compete with them at pill weight. */
+        .hero-scroll-cue {
+            /* full-width basis so it wraps onto its own line under the two
+               buttons, at every width */
+            flex: 0 0 100%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            margin-top: 0.35rem;
+            font-family: var(--font-sans);
+            font-size: var(--text-sm);
+            font-weight: 500;
+            letter-spacing: -0.005em;
+            text-decoration: none;
+            transition: color 180ms ease;
+        }
+        .hero-scroll-cue span { transition: transform 180ms ease; }
+        .hero-scroll-cue:hover span { transform: translateY(2px); }
         .main-wrapper .btn-primary { background: var(--ink); color: var(--paper); }
         .main-wrapper .btn-primary:hover { background: var(--n-800); color: var(--paper); }
         .btn-link {
@@ -1057,14 +1085,11 @@
                     linear-gradient(180deg, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.88) 60%, #0A0A0A 100%);
             }
             .hero-cta { gap: 0.65rem; }
-            .hero-cta .btn-primary, .hero-cta .btn-ghost {
+            .hero-cta .btn-primary, .hero-cta .btn-youtube {
                 min-height: 44px;
                 justify-content: center;
                 flex: 1 1 100%;
             }
-            /* the pills go full width here, so the icon centres on its own
-               row rather than stretching into a lozenge */
-            .hero-cta .btn-icon { margin: 0.15rem auto 0; }
 
             .main-wrapper { border-top-left-radius: var(--radius-3xl); border-top-right-radius: var(--radius-3xl); }
             .cta-block, .panel-quiet { border-radius: var(--radius-3xl); }
@@ -1569,14 +1594,16 @@
         [data-theme="dark"] .hero-zone a:hover {
             color: #FFFFFF !important;
         }
-        /* ...except the icon button, which carries its own brand colour on
-           hover. The catch-all above is !important, so the exemption has to
-           be too. */
-        .hero-zone a.btn-icon:hover,
-        .hero-zone a.btn-icon:focus-visible,
-        [data-theme="dark"] .hero-zone a.btn-icon:hover,
-        [data-theme="dark"] .hero-zone a.btn-icon:focus-visible {
-            color: #FF0033 !important;
+        /* The YouTube button is white-on-red in every state, so it opts out
+           of the translucent-white catch-all above. That rule is !important,
+           so the exemption has to be too. */
+        .hero-zone a.btn-youtube,
+        .hero-zone a.btn-youtube:hover,
+        .hero-zone a.btn-youtube:focus-visible,
+        [data-theme="dark"] .hero-zone a.btn-youtube,
+        [data-theme="dark"] .hero-zone a.btn-youtube:hover,
+        [data-theme="dark"] .hero-zone a.btn-youtube:focus-visible {
+            color: #FFFFFF !important;
         }
         .hero-zone .pill-link,
         .hero-zone .anchor-pill,
@@ -1792,10 +1819,11 @@
                 <p class="hero-sub animate-up delay-3">Automation infrastructure for growing businesses. I build the systems that turn traffic into revenue and make growth repeatable.</p>
                 <div class="hero-cta animate-up delay-4">
                     <a href="https://calendly.com/seth-launchforte/30min" target="_blank" rel="noopener" class="btn-primary">Book a Growth Systems Audit</a>
-                    <a href="#watch" class="btn-ghost">See How I Work</a>
-                    <a href="https://www.youtube.com/@TheSethForte" target="_blank" rel="noopener" class="btn-icon btn-icon-youtube" aria-label="Seth Forte on YouTube" title="Watch on YouTube">
+                    <a href="https://www.youtube.com/@TheSethForte" target="_blank" rel="noopener" class="btn-youtube" title="Seth Forte on YouTube">
                         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 0 0 .5 6.2C0 8.09 0 12 0 12s0 3.91.5 5.8a3.02 3.02 0 0 0 2.12 2.14c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51a3.02 3.02 0 0 0 2.12-2.14C24 15.91 24 12 24 12s0-3.91-.5-5.8ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z"/></svg>
+                        <span>Watch on YouTube</span>
                     </a>
+                    <a href="#watch" class="hero-scroll-cue">See how I work <span aria-hidden="true">&darr;</span></a>
                 </div>
             </div>
         </div>
