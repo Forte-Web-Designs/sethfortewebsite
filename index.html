@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seth Forte | Automation Engineer and Founder of Launch Forte</title>
+    <title>Seth Forte | Software Engineer &amp; Founder of Launch Forte</title>
     <link rel="icon" href="/favicon.png" type="image/png">
     <meta name="title" content="Seth Forte | Automation Engineer and Founder of Launch Forte">
-    <meta name="description" content="Seth Forte, automation engineer and founder of Launch Forte. Seven years building the systems businesses depend on, including enterprise infrastructure. See the work and get in touch.">
+    <meta name="description" content="Seth Forte is a software engineer and founder of Launch Forte, specializing in business systems, revenue operations, and software integration.">
     <meta name="author" content="Seth Forte">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sethforte.com">
-    <meta property="og:title" content="Seth Forte | Automation Engineer and Founder of Launch Forte">
-    <meta property="og:description" content="Seth Forte, automation engineer and founder of Launch Forte. Seven years building the systems businesses depend on, including enterprise infrastructure. See the work and get in touch.">
+    <meta property="og:title" content="Seth Forte | Software Engineer &amp; Founder of Launch Forte">
+    <meta property="og:description" content="Seth Forte is a software engineer and founder of Launch Forte, specializing in business systems, revenue operations, and software integration.">
     <meta property="og:image" content="https://sethforte.com/headshot-6.jpg">
     <meta property="og:site_name" content="Seth Forte">
     <meta property="og:locale" content="en_US">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Seth Forte | Automation Engineer and Founder of Launch Forte">
-    <meta name="twitter:description" content="Seth Forte, automation engineer and founder of Launch Forte. Seven years building the systems businesses depend on, including enterprise infrastructure. See the work and get in touch.">
+    <meta name="twitter:title" content="Seth Forte | Software Engineer &amp; Founder of Launch Forte">
+    <meta name="twitter:description" content="Seth Forte is a software engineer and founder of Launch Forte, specializing in business systems, revenue operations, and software integration.">
     <meta name="twitter:image" content="https://sethforte.com/headshot-6.jpg">
     <link rel="canonical" href="https://sethforte.com">
     <link rel="preload" href="/fonts/Mona-Sans.var.woff2" as="font" type="font/woff2" crossorigin>
@@ -28,8 +28,8 @@
         "name": "Seth Forte",
         "alternateName": "Seth F",
         "url": "https://sethforte.com/",
-        "jobTitle": "Automation Engineer",
-        "description": "Automation engineer and founder of Launch Forte. Seven years building the systems businesses depend on, including enterprise infrastructure.",
+        "jobTitle": "Software Engineer",
+        "description": "Software engineer and founder of Launch Forte, specializing in business systems, revenue operations, and software integration.",
         "image": "https://sethforte.com/headshot-6.jpg",
         "email": "mailto:seth@launchforte.com",
         "worksFor": {
@@ -259,6 +259,8 @@
         /* the label, with the thin rule drawn as a trailing gradient */
         .hero-eyebrow::after {
             content: "Seth Forte";
+            /* .hero-eyebrow-labelled carries the text in markup instead; this
+               pseudo-element then draws the trailing rule only. */
             flex: none;
             white-space: nowrap;
             padding-right: 3.25rem;
@@ -266,6 +268,12 @@
             background-size: 40px 1px;
             background-position: right center;
             background-repeat: no-repeat;
+        }
+        .hero-eyebrow-labelled::after {
+            content: "";
+            width: 40px;
+            padding-right: 0;
+            margin-left: 0.25rem;
         }
 
         .profile-photo {
@@ -1814,16 +1822,16 @@
         <div class="hero-content">
             <div class="hero-content-inner">
                 <img src="headshot-6.jpg" alt="Seth Forte, founder of Launch Forte" class="profile-photo animate-up delay-1" width="72" height="72" style="margin-bottom: 1.5rem;">
-                <p class="hero-eyebrow animate-up delay-1" aria-hidden="true"></p>
-                <h1 class="hero-h1 hero-headline animate-up delay-2">Business Growth Isn't Luck.<br>It's <span class="gradient-text">A System</span>.</h1>
-                <p class="hero-sub animate-up delay-3">Automation infrastructure for growing businesses. I build the systems that turn traffic into revenue and make growth repeatable.</p>
+                <p class="hero-eyebrow hero-eyebrow-labelled animate-up delay-1">Seth Forte &mdash; Software Engineer &amp; Founder</p>
+                <h1 class="hero-h1 hero-headline animate-up delay-2">I Build Systems That Make Businesses <span class="gradient-text">Work Better</span>.</h1>
+                <p class="hero-sub animate-up delay-3">I'm a software engineer and founder of Launch Forte. I design the systems behind how businesses grow, sell, and operate.</p>
                 <div class="hero-cta animate-up delay-4">
-                    <a href="https://calendly.com/seth-launchforte/30min" target="_blank" rel="noopener" class="btn-primary">Book a Growth Systems Audit</a>
+                    <a href="https://launchforte.com" target="_blank" rel="noopener" class="btn-primary">Work With Me</a>
                     <a href="https://www.youtube.com/@TheSethForte" target="_blank" rel="noopener" class="btn-youtube" title="Seth Forte on YouTube">
                         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 0 0 .5 6.2C0 8.09 0 12 0 12s0 3.91.5 5.8a3.02 3.02 0 0 0 2.12 2.14c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51a3.02 3.02 0 0 0 2.12-2.14C24 15.91 24 12 24 12s0-3.91-.5-5.8ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z"/></svg>
                         <span>Watch on YouTube</span>
                     </a>
-                    <a href="#watch" class="hero-scroll-cue">See how I work <span aria-hidden="true">&darr;</span></a>
+                    <a href="#results" class="hero-scroll-cue">See My Work <span aria-hidden="true">&darr;</span></a>
                 </div>
             </div>
         </div>
@@ -1837,10 +1845,11 @@
                     <img src="/media/seth-portrait.jpg" alt="Seth Forte" class="home-about-photo" width="706" height="900" loading="lazy">
                     <div class="home-about-text">
                         <p class="section-label">About</p>
-                        <h2 class="section-heading"><span class="gradient-text">Seth Forte</span></h2>
-                        <p class="about-text">Seven years writing code businesses depend on, including enterprise infrastructure where downtime costs six figures an hour. That standard shows up in every build.</p>
-                        <p class="about-text about-text-personal">There is a person behind that, though. Christ follower, husband, girl dad, and honestly just a big ol&rsquo; nerd. If you are deciding whether to trust someone with your business, it helps to know who they actually are.</p>
-                        <a href="/about.html" class="btn-link">Meet the person behind the work &rarr;</a>
+                        <h2 class="section-heading">A Little <span class="gradient-text">About Me</span>.</h2>
+                        <p class="about-text">I'm Seth. Software engineer, founder of Launch Forte, and someone who genuinely enjoys figuring out how things work.</p>
+                        <p class="about-text">I've spent seven years building software and infrastructure businesses depend on. Today I bring that engineering background into the systems behind sales, revenue, and operations.</p>
+                        <p class="about-text about-text-personal">Outside of work, I'm a Christ follower, husband, girl dad, and a big ol&rsquo; nerd.</p>
+                        <a href="/about.html" class="btn-link">More About Me &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -1870,7 +1879,8 @@
             <!-- Results Preview -->
             <div class="studio-section" id="results">
                 <p class="section-label reveal">Results</p>
-                <h2 class="section-heading reveal" style="margin-bottom: 2rem;">Engineering work that <span class="gradient-text">moved</span> businesses</h2>
+                <h2 class="section-heading reveal" style="margin-bottom: 0.75rem;">Some of <span class="gradient-text">My Work</span>.</h2>
+                <p class="section-body reveal" style="margin-bottom: 2rem;">Real businesses. Real systems. Built and delivered.</p>
                 <div class="results-preview reveal">
                     <a href="/work/cr-deals.html" class="results-preview-card">
                         <span class="results-logo"><img src="/media/logos/cr-deals.png" alt="CR Deals" loading="lazy" width="1500" height="762"></span>
@@ -1893,15 +1903,14 @@
                         <span class="results-preview-context">Full platform migration plus the CRM and automation behind an online coaching program.</span>
                     </a>
                 </div>
-                <a href="/case-studies.html" class="btn-link reveal" style="margin-top: 1.5rem;">See all results &rarr;</a>
+                <a href="/case-studies.html" class="btn-link reveal" style="margin-top: 1.5rem;">See All Results &rarr;</a>
             </div>
 
             <!-- Client testimonials (video only; the text reviews live on /reviews.html) -->
             <div class="studio-section" id="reviews">
                 <p class="section-label reveal">Reviews</p>
-                <h2 class="section-heading reveal" style="margin-bottom: 2rem;">Straight from the <span class="gradient-text">clients</span>.</h2>
+                <h2 class="section-heading reveal" style="margin-bottom: 2rem;">What <span class="gradient-text">Clients Say</span>.</h2>
 
-                <p class="section-body reveal" style="margin-bottom: 2rem;">Six clients on camera, in their own words. Every one of these is a build that shipped.</p>
 
                 <!-- Video testimonial carousel: 2 visible on desktop, 1 on mobile,
                      snap-scroll with arrow buttons. Six videos total (3 Senja +
@@ -1963,16 +1972,6 @@
                             </div>
                         </article>
 
-                        <article class="vt-card">
-                            <div class="vt-frame vt-mp4">
-                                <video controls playsinline preload="metadata" poster="https://launchforte.com/videos/matt-poster.jpg" src="https://launchforte.com/videos/video-1.mp4" title="Matt Juels testimonial"></video>
-                            </div>
-                            <div class="vt-quote">
-                                <p class="vt-quote-text">"He stood out from the pack real quickly. We'll use him for any job we ever have."</p>
-                                <div class="vt-author">Matt Juels, Six Months to Speech</div>
-                                <div class="vt-project">CRM build and automation</div>
-                            </div>
-                        </article>
 
                         <article class="vt-card">
                             <div class="vt-frame vt-heygen">
@@ -1987,19 +1986,19 @@
 
                     </div>
                 </div>
-                <a href="/reviews.html" class="btn-link reveal" style="margin-top: 1.5rem;">See all reviews &rarr;</a>
+                <a href="/reviews.html" class="btn-link reveal" style="margin-top: 1.5rem;">See All Reviews &rarr;</a>
             </div>
 
             <!-- Latest Writing -->
             <div class="studio-section" id="writing">
                 <p class="section-label reveal">Writing</p>
-                <h2 class="section-heading reveal" style="margin-bottom: 1.5rem;">Latest <span class="gradient-text">writing</span></h2>
+                <h2 class="section-heading reveal" style="margin-bottom: 1.5rem;">Things I've Been <span class="gradient-text">Thinking About</span>.</h2>
                 <ul class="writing-preview reveal">
                     <li><a href="/articles/the-migration-that-broke-nothing.html"><span class="writing-preview-title">The migration that broke nothing</span><span class="writing-preview-date">Sep 20, 2026</span><span class="writing-preview-cta">Read &rarr;</span></a></li>
                     <li><a href="/articles/running-a-practice-out-of-a-shed.html"><span class="writing-preview-title">Running A Practice Out Of A Shed</span><span class="writing-preview-date">Aug 4, 2026</span><span class="writing-preview-cta">Read &rarr;</span></a></li>
                     <li><a href="/articles/building-the-thing-that-builds-the-thing.html"><span class="writing-preview-title">Building The Thing That Builds The Thing</span><span class="writing-preview-date">Jul 28, 2026</span><span class="writing-preview-cta">Read &rarr;</span></a></li>
                 </ul>
-                <a href="/writing.html" class="btn-link reveal" style="margin-top: 1.5rem;">See all writing &rarr;</a>
+                <a href="/writing.html" class="btn-link reveal" style="margin-top: 1.5rem;">See All Writing &rarr;</a>
             </div>
 
             <!-- Forte Signals — newsletter signup.
@@ -2016,9 +2015,8 @@
             <section class="studio-section" id="signals" data-signals-live="true">
                 <div class="signals reveal">
                     <p class="section-label">Forte Signals</p>
-                    <h2 class="section-heading">Every other Friday I send something I'm <span class="gradient-text">seeing from the work</span>.</h2>
-                    <p class="signals-copy">Business problems that keep showing up, changes in software or AI that are worth understanding, and ideas I think are useful if you're building or running a business.</p>
-                    <p class="signals-copy signals-copy-last">If I don't have something useful, I won't send one.</p>
+                    <h2 class="section-heading">Forte <span class="gradient-text">Signals</span>.</h2>
+                    <p class="signals-copy signals-copy-last">Every other Friday, I share what I'm learning about business, software, and AI. Just the useful stuff.</p>
 
                     <div class="signals-form" data-signals-form>
                         <iframe
@@ -2044,19 +2042,19 @@
             <!-- Launch Forte -->
             <div class="studio-section">
                 <div class="panel-pointer reveal">
-                    <p class="section-label">Where the work lives</p>
-                    <h2 class="section-heading"><span class="gradient-text">Launch Forte</span> is my company.</h2>
-                    <p class="about-text">The audits, the builds, the partnerships. If you're here to hire, that's where to go.</p>
-                    <a href="https://launchforte.com" target="_blank" rel="noopener" class="btn-primary" style="margin-top: 0.5rem;">Visit Launch Forte</a>
+                    <p class="section-label">My Company</p>
+                    <h2 class="section-heading"><span class="gradient-text">Launch Forte</span>.</h2>
+                    <p class="about-text">I founded Launch Forte to help businesses build better revenue and operations systems, backed by real engineering.</p>
+                    <a href="https://launchforte.com" target="_blank" rel="noopener" class="btn-primary" style="margin-top: 0.5rem;">Visit Launch Forte &rarr;</a>
                 </div>
             </div>
 
             <!-- Closing CTA -->
             <div class="studio-section" id="contact">
                 <div class="cta-block reveal">
-                    <h2>If <span class="gradient-text">growth</span> has stalled, the system underneath is usually why.</h2>
-                    <p class="body-text">Start with an audit.</p>
-                    <a href="https://calendly.com/seth-launchforte/30min" target="_blank" rel="noopener" class="btn-primary">Book a Growth Systems Audit</a>
+                    <h2>Have Something You're <span class="gradient-text">Working On</span>?</h2>
+                    <p class="body-text">I'd love to hear about it.</p>
+                    <a href="mailto:seth@launchforte.com" class="btn-primary">Get In Touch</a>
                 </div>
             </div>
 
@@ -2101,55 +2099,6 @@
         </div>
     </main>
 
-    <!-- Reserve the headline's tallest state so the rotating word cannot
-         resize the page. Measures every variant off-screen, then pins the
-         min-height to the largest. Re-runs on resize. -->
-    <script>
-        (function() {
-            var h1 = document.querySelector('.hero-headline');
-            var slot = h1 && h1.querySelector('.gradient-text');
-            if (!h1 || !slot) return;
-            var variants = ["A System", "Using The Right Data", "A Framework", "A Process", "Repeatable"];
-
-            function reserve() {
-                var live = slot.textContent;
-                h1.style.minHeight = '';
-                var tallest = 0;
-                for (var i = 0; i < variants.length; i++) {
-                    slot.textContent = variants[i];
-                    var hgt = h1.getBoundingClientRect().height;
-                    if (hgt > tallest) tallest = hgt;
-                }
-                slot.textContent = live;
-                if (tallest) h1.style.minHeight = Math.ceil(tallest) + 'px';
-            }
-
-            reserve();
-            // fonts land after first paint and change the metrics
-            if (document.fonts && document.fonts.ready) document.fonts.ready.then(reserve);
-            var t;
-            window.addEventListener('resize', function() {
-                clearTimeout(t);
-                t = setTimeout(reserve, 120);
-            });
-        })();
-    </script>
-    <script>
-        const words = ["A System", "Using The Right Data", "A Framework", "A Process", "Repeatable"];
-        let index = 0;
-        const el = document.querySelector('.gradient-text');
-        if (el) {
-            setInterval(() => {
-                el.style.opacity = 0;
-                el.style.transition = 'opacity 0.3s ease';
-                setTimeout(() => {
-                    index = (index + 1) % words.length;
-                    el.textContent = words[index];
-                    el.style.opacity = 1;
-                }, 300);
-            }, 2200);
-        }
-    </script>
 
     <!-- YouTube unmute button: loads YT IFrame API, lets user enable sound. -->
     <script>
