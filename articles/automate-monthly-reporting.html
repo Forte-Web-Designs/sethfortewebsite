@@ -1517,7 +1517,7 @@
 
             <p>Start with one report for one client. Prove it works. Then expand.</p>
 
-            <p>If you're spending hours on monthly reporting and want that time back, <a href="https://calendly.com/seth-launchforte/meeting" target="_blank" rel="noopener">book a call</a>. We'll figure out what can be automated.</p>
+            <p>If you're spending hours on monthly reporting and want that time back, <a href="https://api.leadconnectorhq.com/widget/bookings/launchforte-call" target="_blank" rel="noopener">book a call</a>. We'll figure out what can be automated.</p>
         </div>
 
         <div class="footer-section">
@@ -1629,8 +1629,8 @@
   if (typeof gtag !== 'function') return;
   // Calendly link clicks (any page)
   document.addEventListener('click', function (e) {
-    var a = e.target.closest && e.target.closest('a[href*="calendly.com"]');
-    if (a) gtag('event', 'calendly_click', { link_url: a.href.split('?')[0], page_path: location.pathname });
+    var a = e.target.closest && e.target.closest('a[href*="leadconnectorhq.com"], a[href*="calendly.com"]');
+    if (a) gtag('event', 'booking_click', { link_url: a.href.split('?')[0], page_path: location.pathname });
   }, true);
 })();
 </script>

@@ -1483,7 +1483,7 @@
                 <li>You need specific features that don't exist</li>
             </ul>
 
-            <p>If spreadsheets are failing you and off-the-shelf tools don't fit, <a href="https://calendly.com/seth-launchforte/meeting" target="_blank" rel="noopener">book a call</a>. We'll figure out what makes sense for your situation.</p>
+            <p>If spreadsheets are failing you and off-the-shelf tools don't fit, <a href="https://api.leadconnectorhq.com/widget/bookings/launchforte-call" target="_blank" rel="noopener">book a call</a>. We'll figure out what makes sense for your situation.</p>
 
             <p>Check out my <a href="../custom-software.html">custom software services</a> to see what I build.</p>
         </div>
@@ -1600,8 +1600,8 @@
   if (typeof gtag !== 'function') return;
   // Calendly link clicks (any page)
   document.addEventListener('click', function (e) {
-    var a = e.target.closest && e.target.closest('a[href*="calendly.com"]');
-    if (a) gtag('event', 'calendly_click', { link_url: a.href.split('?')[0], page_path: location.pathname });
+    var a = e.target.closest && e.target.closest('a[href*="leadconnectorhq.com"], a[href*="calendly.com"]');
+    if (a) gtag('event', 'booking_click', { link_url: a.href.split('?')[0], page_path: location.pathname });
   }, true);
 })();
 </script>

@@ -1499,7 +1499,7 @@
 
                 <p>It takes longer upfront. It costs more initially. But it's cheaper than building the same automation three times because the first two failed.</p>
 
-                <p>If you've been burned by automation that didn't last, or you want to do it right the first time, <a href="https://calendly.com/seth-launchforte/meeting" target="_blank" rel="noopener">book a call</a>. I'll help you figure out what's worth automating and how to build it to last.</p>
+                <p>If you've been burned by automation that didn't last, or you want to do it right the first time, <a href="https://api.leadconnectorhq.com/widget/bookings/launchforte-call" target="_blank" rel="noopener">book a call</a>. I'll help you figure out what's worth automating and how to build it to last.</p>
         </div>
 
         <div class="footer-section">
@@ -1614,8 +1614,8 @@
   if (typeof gtag !== 'function') return;
   // Calendly link clicks (any page)
   document.addEventListener('click', function (e) {
-    var a = e.target.closest && e.target.closest('a[href*="calendly.com"]');
-    if (a) gtag('event', 'calendly_click', { link_url: a.href.split('?')[0], page_path: location.pathname });
+    var a = e.target.closest && e.target.closest('a[href*="leadconnectorhq.com"], a[href*="calendly.com"]');
+    if (a) gtag('event', 'booking_click', { link_url: a.href.split('?')[0], page_path: location.pathname });
   }, true);
 })();
 </script>

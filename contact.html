@@ -1686,7 +1686,7 @@
         <p class="body-text" style="margin-top: 2rem;">If you'd rather talk it through, grab 30 minutes here.</p>
 
         <div class="hero-cta animate-fade-up animate-delay-3" style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin: 1rem 0 2rem;">
-            <a href="https://calendly.com/seth-launchforte/meeting" target="_blank" rel="noopener" class="btn-primary">Book a Call</a>
+            <a href="https://api.leadconnectorhq.com/widget/bookings/launchforte-call" target="_blank" rel="noopener" class="btn-primary">Book a Call</a>
             <a href="mailto:seth@launchforte.com" class="btn-ghost-link">Or email me directly</a>
         </div>
 
@@ -1699,7 +1699,7 @@
             <img src="headshot-6.jpg" alt="Seth Forte, automation consultant based in Dallas-Fort Worth" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 1.5rem;" width="80" height="80" loading="lazy">
         </div>
         <div class="calendly-embed" style="min-width:320px;height:700px;">
-            <iframe src="https://calendly.com/seth-launchforte/meeting?hide_gdpr_banner=1" width="100%" height="100%" frameborder="0" style="border-radius: 10px;"></iframe>
+            <iframe src="https://api.leadconnectorhq.com/widget/bookings/launchforte-call" width="100%" height="100%" frameborder="0" style="border-radius: 10px;"></iframe>
         </div>
 
         <p class="location" style="margin-top: 2rem; font-style: italic;">Based in Dallas-Fort Worth. Working with people everywhere.</p>
@@ -1790,8 +1790,8 @@
   if (typeof gtag !== 'function') return;
   // Calendly link clicks (any page)
   document.addEventListener('click', function (e) {
-    var a = e.target.closest && e.target.closest('a[href*="calendly.com"]');
-    if (a) gtag('event', 'calendly_click', { link_url: a.href.split('?')[0], page_path: location.pathname });
+    var a = e.target.closest && e.target.closest('a[href*="leadconnectorhq.com"], a[href*="calendly.com"]');
+    if (a) gtag('event', 'booking_click', { link_url: a.href.split('?')[0], page_path: location.pathname });
   }, true);
 })();
 </script>

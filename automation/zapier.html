@@ -1805,7 +1805,7 @@
         <div class="cta-card reveal">
             <h3>Get Your Zapier Automations Built Right</h3>
             <p>I'll build it to last and teach your team to maintain it.</p>
-            <a href="https://calendly.com/seth-launchforte/meeting" target="_blank" rel="noopener" class="btn-primary">Book a Call</a>
+            <a href="https://api.leadconnectorhq.com/widget/bookings/launchforte-call" target="_blank" rel="noopener" class="btn-primary">Book a Call</a>
         </div>
 
         <div class="footer-section">
@@ -1921,8 +1921,8 @@
   if (typeof gtag !== 'function') return;
   // Calendly link clicks (any page)
   document.addEventListener('click', function (e) {
-    var a = e.target.closest && e.target.closest('a[href*="calendly.com"]');
-    if (a) gtag('event', 'calendly_click', { link_url: a.href.split('?')[0], page_path: location.pathname });
+    var a = e.target.closest && e.target.closest('a[href*="leadconnectorhq.com"], a[href*="calendly.com"]');
+    if (a) gtag('event', 'booking_click', { link_url: a.href.split('?')[0], page_path: location.pathname });
   }, true);
 })();
 </script>

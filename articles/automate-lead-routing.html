@@ -1490,7 +1490,7 @@
 
             <p>If any of these sound familiar, lead routing automation would help.</p>
 
-            <p>I build lead routing systems for sales teams. If leads are slipping through the cracks, <a href="https://calendly.com/seth-launchforte/meeting" target="_blank" rel="noopener">book a call</a> and we'll figure out the right solution.</p>
+            <p>I build lead routing systems for sales teams. If leads are slipping through the cracks, <a href="https://api.leadconnectorhq.com/widget/bookings/launchforte-call" target="_blank" rel="noopener">book a call</a> and we'll figure out the right solution.</p>
         </div>
 
         <div class="footer-section">
@@ -1602,8 +1602,8 @@
   if (typeof gtag !== 'function') return;
   // Calendly link clicks (any page)
   document.addEventListener('click', function (e) {
-    var a = e.target.closest && e.target.closest('a[href*="calendly.com"]');
-    if (a) gtag('event', 'calendly_click', { link_url: a.href.split('?')[0], page_path: location.pathname });
+    var a = e.target.closest && e.target.closest('a[href*="leadconnectorhq.com"], a[href*="calendly.com"]');
+    if (a) gtag('event', 'booking_click', { link_url: a.href.split('?')[0], page_path: location.pathname });
   }, true);
 })();
 </script>
