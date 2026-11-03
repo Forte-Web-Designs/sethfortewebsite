@@ -1724,9 +1724,26 @@
 })();
 </script>
 <script>
-// Calendly redirects here after a confirmed booking (set once on the event type's confirmation page).
-// This is the only place calendly_booked fires, so embed and new-tab bookings are counted the same way.
-if (typeof gtag === 'function') gtag('event', 'calendly_booked', { page_path: '/booked' });
+// Counts one Calendly booking per invitee_uuid. Calendly adds invitee_uuid and event_type_uuid
+// to this URL only when it redirects after a confirmed booking (Pass event details is on).
+// A refresh or a bare visit to /booked has no invitee_uuid, or the UUID was already counted,
+// so it adds nothing.
+(function () {
+  try {
+    var p = new URLSearchParams(window.location.search);
+    var inviteeId = p.get('invitee_uuid');
+    var eventTypeId = p.get('event_type_uuid');
+    if (!inviteeId || !eventTypeId) return;
+    var key = 'cal_booked_' + inviteeId;
+    var seen = false;
+    try { seen = window.localStorage.getItem(key) === '1'; } catch (e) {}
+    if (seen) return;
+    if (typeof gtag === 'function') {
+      gtag('event', 'calendly_booked', { booking_id: inviteeId, event_type_id: eventTypeId, page_path: '/booked' });
+    }
+    try { window.localStorage.setItem(key, '1'); } catch (e) {}
+  } catch (e) {}
+})();
 </script>
 </body>
 </html>
