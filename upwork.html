@@ -3267,7 +3267,7 @@
             <p class="body-text">This page exists so that anyone who found me on Upwork can find me here too. If the platform is where you are comfortable hiring, use it. If you would rather book the audit or just email me, that is the same engineer and the same standards, with no platform in between. Your call which door.</p>
             <div class="cta-buttons">
                 <a href="https://www.upwork.com/freelancers/sethforte" target="_blank" rel="noopener" class="btn-primary">Hire Me on Upwork &rarr;</a>
-                <a href="https://calendly.com/seth-launchforte/meeting" target="_blank" rel="noopener" class="btn-ghost">Book an Audit &rarr;</a>
+                <a href="https://api.leadconnectorhq.com/widget/booking/97Srg8GPNqHkPJQqt4Xj" target="_blank" rel="noopener" class="btn-ghost">Book an Audit &rarr;</a>
                 <a href="mailto:seth@launchforte.com" class="btn-ghost">Email Me &rarr;</a>
             </div>
         </div>
@@ -3461,8 +3461,8 @@
   if (typeof gtag !== 'function') return;
   // Calendly link clicks (any page)
   document.addEventListener('click', function (e) {
-    var a = e.target.closest && e.target.closest('a[href*="calendly.com"]');
-    if (a) gtag('event', 'calendly_click', { link_url: a.href.split('?')[0], page_path: location.pathname });
+    var a = e.target.closest && e.target.closest('a[href*="leadconnectorhq.com"], a[href*="calendly.com"]');
+    if (a) gtag('event', 'booking_click', { link_url: a.href.split('?')[0], page_path: location.pathname });
   }, true);
 })();
 </script>

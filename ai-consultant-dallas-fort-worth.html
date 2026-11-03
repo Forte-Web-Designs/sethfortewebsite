@@ -1861,7 +1861,7 @@
         <div class="cta-card reveal">
             <h3>Work out where AI fits</h3>
             <p>A short call is enough to tell whether it's worth it for your case.</p>
-            <a href="https://calendly.com/seth-launchforte/meeting" target="_blank" rel="noopener" class="btn-primary">Book a Call</a>
+            <a href="https://api.leadconnectorhq.com/widget/booking/97Srg8GPNqHkPJQqt4Xj" target="_blank" rel="noopener" class="btn-primary">Book a Call</a>
         </div>
 
         <div class="footer-section">
@@ -1977,8 +1977,8 @@
   if (typeof gtag !== 'function') return;
   // Calendly link clicks (any page)
   document.addEventListener('click', function (e) {
-    var a = e.target.closest && e.target.closest('a[href*="calendly.com"]');
-    if (a) gtag('event', 'calendly_click', { link_url: a.href.split('?')[0], page_path: location.pathname });
+    var a = e.target.closest && e.target.closest('a[href*="leadconnectorhq.com"], a[href*="calendly.com"]');
+    if (a) gtag('event', 'booking_click', { link_url: a.href.split('?')[0], page_path: location.pathname });
   }, true);
 })();
 </script>
