@@ -1385,6 +1385,14 @@
             text-decoration: underline;
         }
     </style>
+<!-- Google tag (gtag.js) for sethforte.com (GA4 property 562021674) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W5NDYYQTL2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-W5NDYYQTL2');
+</script>
 </head>
 <body>
     <div class="grid-bg"></div>
@@ -1652,5 +1660,20 @@
             if (v.readyState >= 2 && !v.paused) live();
         })();
     </script>
+<script>
+(function () {
+  if (typeof gtag !== 'function') return;
+  // Calendly link clicks (any page)
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href*="calendly.com"]');
+    if (a) gtag('event', 'calendly_click', { link_url: a.href.split('?')[0], page_path: location.pathname });
+  }, true);
+  // Confirmed Calendly bookings (inline embed on /contact)
+  window.addEventListener('message', function (e) {
+    if (e.origin !== 'https://calendly.com' || !e.data || typeof e.data !== 'object') return;
+    if (e.data.event === 'calendly.event_scheduled') gtag('event', 'calendly_booked', { page_path: location.pathname });
+  });
+})();
+</script>
 </body>
 </html>
