@@ -1646,11 +1646,6 @@
     var a = e.target.closest && e.target.closest('a[href*="calendly.com"]');
     if (a) gtag('event', 'calendly_click', { link_url: a.href.split('?')[0], page_path: location.pathname });
   }, true);
-  // Confirmed Calendly bookings (inline embed on /contact)
-  window.addEventListener('message', function (e) {
-    if (e.origin !== 'https://calendly.com' || !e.data || typeof e.data !== 'object') return;
-    if (e.data.event === 'calendly.event_scheduled') gtag('event', 'calendly_booked', { page_path: location.pathname });
-  });
 })();
 </script>
 </body>
