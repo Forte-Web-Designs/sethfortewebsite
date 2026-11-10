@@ -1917,6 +1917,8 @@
             color: var(--ink);
         }
         .bw-soon-text { margin: 0; color: var(--n-500); font-size: var(--text-sm); }
+        .bw-more { margin-left: auto; white-space: nowrap; }
+        @media (max-width: 560px) { .bw-more { margin-left: 0; } }
 
         @media (max-width: 900px) {
             .bw { grid-template-columns: 1fr; gap: 2rem; padding: var(--sp-10) 1.5rem; }
@@ -1956,7 +1958,7 @@
                 <a href="/" class="header-logo">Seth Forte</a>
                 <nav class="header-nav">
                     <a href="#about" class="nav-link">About</a>
-                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="/projects.html" class="nav-link">Workshop</a>
                     <a href="#results" class="nav-link">Results</a>
                     <a href="#reviews" class="nav-link">Reviews</a>
                     <a href="#writing" class="nav-link">Writing</a>
@@ -2059,6 +2061,7 @@
                 <div class="bw-soon reveal">
                     <p class="bw-soon-label">The workshop is just getting started.</p>
                     <p class="bw-soon-text">First projects, experiments, and build videos coming soon.</p>
+                    <a href="/projects.html" class="btn-link bw-more">Read more &rarr;</a>
                 </div>
             </section>
 
