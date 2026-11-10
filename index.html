@@ -1737,7 +1737,7 @@
         
         /* Single-scroll page: nav jumps to sections, so keep headings clear of
            the sticky header when an anchor lands. */
-        #about, #results, #reviews, #writing, #contact { scroll-margin-top: 90px; }
+        #about, #projects, #results, #reviews, #writing, #contact { scroll-margin-top: 90px; }
         
         /* ---------- Forte Signals ----------
            Personal, quiet, and built from the same tokens as the rest of the
@@ -1796,6 +1796,148 @@
                the submit button is never cut off. */
             .signals-form { height: 400px; }
         }
+        
+        /* ---------- Beyond the Work ----------
+           Personal making section. Same tokens, type and card grammar as the
+           rest of the page — the only new idea is the notebook panel, drawn in
+           CSS/SVG rather than photographed, because none of these builds exist
+           yet. Structured so a project grid can replace .bw-soon later. */
+        .bw {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+            gap: 3rem;
+            align-items: center;
+            padding: var(--sp-12) 2.5rem;
+            border-radius: var(--radius-4xl);
+            background: var(--n-50);
+            box-shadow: inset 0 0 0 1px var(--border);
+        }
+        .bw-story .section-heading { max-width: 24ch; }
+        .bw-story .about-text { margin-bottom: 1rem; }
+        .bw-tagline {
+            margin: 1.5rem 0 0;
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: var(--text-lg);
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: var(--ink);
+        }
+
+        .bw-areas {
+            list-style: none;
+            padding: 0;
+            margin: 1.75rem 0 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+        .bw-area {
+            font-size: var(--text-sm);
+            font-weight: 600;
+            color: var(--n-600);
+            background: var(--paper);
+            border-radius: 999px;
+            padding: 0.5rem 0.95rem;
+            box-shadow: inset 0 0 0 1px var(--border);
+        }
+        .bw-youtube { margin-top: 1.75rem; }
+        /* pending state: reads as a label, not a dead link */
+        .btn-youtube.is-pending {
+            background: transparent !important;
+            color: var(--n-500) !important;
+            border-color: var(--border) !important;
+            box-shadow: inset 0 0 0 1px var(--border);
+            cursor: default;
+            pointer-events: none;
+        }
+        .btn-youtube.is-pending svg { fill: var(--n-400); opacity: 0.8; }
+
+        /* Notebook panel */
+        .bw-visual {
+            position: relative;
+            aspect-ratio: 7 / 8;
+            border-radius: var(--radius-3xl);
+            background: var(--paper);
+            box-shadow: inset 0 0 0 1px var(--border);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .bw-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(var(--border-strong, rgba(10,10,10,0.16)) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border-strong, rgba(10,10,10,0.16)) 1px, transparent 1px);
+            background-size: 26px 26px;
+            -webkit-mask-image: radial-gradient(ellipse at center, #000 55%, transparent 88%);
+                    mask-image: radial-gradient(ellipse at center, #000 55%, transparent 88%);
+        }
+        .bw-sketch {
+            position: relative;
+            width: 76%;
+            max-width: 290px;
+            color: var(--n-600);
+            stroke-width: 1.5;
+        }
+        .bw-sketch circle:nth-of-type(2) { color: var(--accent); stroke: var(--accent); }
+        .bw-measure {
+            position: absolute;
+            left: 0; right: 0; bottom: 1.35rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            font-size: var(--text-xs);
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--n-500);
+        }
+        .bw-measure span:last-child { color: var(--accent-strong, #0077C4); }
+
+        /* Coming soon — replace with a project grid when there is work to show */
+        .bw-soon {
+            margin-top: 1.5rem;
+            padding: 1.35rem 1.75rem;
+            border-radius: var(--radius-3xl);
+            background: var(--paper);
+            box-shadow: inset 0 0 0 1px var(--border);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0.35rem 0.85rem;
+        }
+        .bw-soon-label {
+            margin: 0;
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-weight: 600;
+            color: var(--ink);
+        }
+        .bw-soon-text { margin: 0; color: var(--n-500); font-size: var(--text-sm); }
+
+        @media (max-width: 900px) {
+            .bw { grid-template-columns: 1fr; gap: 2rem; padding: var(--sp-10) 1.5rem; }
+            .bw-story .section-heading { max-width: 100%; }
+            /* stack the sketch above its own label row rather than overlaying
+               them — the shorter panel made them collide */
+            .bw-visual {
+                aspect-ratio: auto;
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1.5rem 1rem 1.25rem;
+            }
+            .bw-sketch { width: 58%; max-width: 220px; }
+            .bw-measure { position: static; gap: 1.1rem; }
+        }
+        @media (max-width: 560px) {
+            .bw { padding: var(--sp-10) 1.25rem; border-radius: var(--radius-3xl); }
+            .bw-area { font-size: var(--text-xs); }
+            .bw-soon { padding: 1.15rem 1.25rem; }
+        }
+        @media (prefers-reduced-motion: reduce) { .bw-sketch { transition: none; } }
         </style>
 <!-- Google tag (gtag.js) for sethforte.com (GA4 property 562021674) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-W5NDYYQTL2"></script>
@@ -1814,6 +1956,7 @@
                 <a href="/" class="header-logo">Seth Forte</a>
                 <nav class="header-nav">
                     <a href="#about" class="nav-link">About</a>
+                    <a href="#projects" class="nav-link">Projects</a>
                     <a href="#results" class="nav-link">Results</a>
                     <a href="#reviews" class="nav-link">Reviews</a>
                     <a href="#writing" class="nav-link">Writing</a>
@@ -1861,6 +2004,63 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Beyond the Work — personal making/invention.
+                 A hobby section, not a service. Built so it can grow into a
+                 real project gallery later: swap .bw-soon for a grid of
+                 .bw-project cards and the surrounding layout still holds. -->
+            <section class="studio-section" id="projects" style="scroll-margin-top: 90px;">
+                <div class="bw reveal">
+                    <div class="bw-story">
+                        <p class="section-label">Beyond the Work</p>
+                        <h2 class="section-heading">Some ideas deserve to <span class="gradient-text">leave the screen</span>.</h2>
+                        <p class="about-text">Most of my working life is spent building software and systems through Launch Forte. But there's a whole other side of me: a husband, dad, gamer, and curious guy who's learning to turn ideas into things he can actually hold.</p>
+                        <p class="about-text">Lately, I've been getting into electronics, robotics, 3D printing, mechanical design, and making art with code. Sometimes that means a little machine that moves. Sometimes it's a glowing desk sculpture, a gaming-inspired creation, or something I haven't thought of yet.</p>
+                        <p class="about-text">I'm not trying to build the biggest or flashiest thing. I want to understand how things work, make something with my own hands, and tell the story of how it came together.</p>
+                        <p class="bw-tagline">Part code. Part craftsmanship. All curiosity.</p>
+
+                        <ul class="bw-areas">
+                            <li class="bw-area">Hardware + Software</li>
+                            <li class="bw-area">Robotics + Mechanisms</li>
+                            <li class="bw-area">Creative Design + Art</li>
+                            <li class="bw-area">Making + Storytelling</li>
+                        </ul>
+
+                        <!-- Inert until there are build videos to send people to.
+                             Swap this <span> back to the <a href> used in the hero
+                             when the first video is published. -->
+                        <span class="btn-youtube bw-youtube is-pending" aria-disabled="true">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 0 0 .5 6.2C0 8.09 0 12 0 12s0 3.91.5 5.8a3.02 3.02 0 0 0 2.12 2.14c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51a3.02 3.02 0 0 0 2.12-2.14C24 15.91 24 12 24 12s0-3.91-.5-5.8ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z"/></svg>
+                            <span>Follow Along on YouTube</span>
+                        </span>
+                    </div>
+
+                    <!-- Notebook panel: drawn entirely in CSS/SVG. No stock photos
+                         and no mock-ups of builds that do not exist yet. -->
+                    <div class="bw-visual" aria-hidden="true">
+                        <div class="bw-grid"></div>
+                        <svg class="bw-sketch" viewBox="0 0 280 320" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="140" cy="104" r="46"/>
+                            <circle cx="140" cy="104" r="15"/>
+                            <path d="M140 58v-14M140 164v14M94 104H80M200 104h14"/>
+                            <path d="M107 71 97 61M173 71l10-10M107 137l-10 10M173 137l10 10"/>
+                            <path d="M58 212h60v44H58zM162 212h60v44h-60z"/>
+                            <path d="M118 234h44"/>
+                            <path d="M78 212v-18M202 212v-18"/>
+                            <circle cx="78" cy="190" r="4"/>
+                            <circle cx="202" cy="190" r="4"/>
+                            <path d="M58 286h164" stroke-dasharray="4 6"/>
+                            <path d="M58 280v12M222 280v12"/>
+                        </svg>
+                        <div class="bw-measure"><span>idea</span><span>prototype</span><span>built</span></div>
+                    </div>
+                </div>
+
+                <div class="bw-soon reveal">
+                    <p class="bw-soon-label">The workshop is just getting started.</p>
+                    <p class="bw-soon-text">First projects, experiments, and build videos coming soon.</p>
+                </div>
+            </section>
 
             <!-- Watch -->
             <section id="watch" class="video-section studio-section reveal" style="scroll-margin-top: 90px;">
