@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Off the Screen | The Workshop | Seth Forte</title>
+    <title>Off the Screen | Creative Engineering | Seth Forte</title>
     <link rel="icon" href="/favicon.png" type="image/png">
     <meta name="title" content="Seth Forte | Automation Engineer and Founder of Launch Forte">
-    <meta name="description" content="Off the Screen. Seth Forte on taking ideas off the computer: robotics, electronics, 3D printing, mechanical design, and the builds in between.">
+    <meta name="description" content="Ideas made real, by hand and by code. Seth Forte on learning to build in the physical world: sketching, electronics, 3D printing, mechanical design, and sharing the process.">
     <meta name="author" content="Seth Forte">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sethforte.com/projects">
-    <meta property="og:title" content="Off the Screen | The Workshop | Seth Forte">
-    <meta property="og:description" content="Robotics, electronics, 3D printing, and mechanical design. The personal workshop behind Launch Forte.">
+    <meta property="og:title" content="Off the Screen | Creative Engineering | Seth Forte">
+    <meta property="og:description" content="Ideas made real, by hand and by code. The personal creative engineering side of the person behind Launch Forte.">
     <meta property="og:image" content="https://sethforte.com/headshot-6.jpg">
     <meta property="og:site_name" content="Seth Forte">
     <meta property="og:locale" content="en_US">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Off the Screen | The Workshop | Seth Forte">
-    <meta name="twitter:description" content="Robotics, electronics, 3D printing, and mechanical design. The personal workshop behind Launch Forte.">
+    <meta name="twitter:title" content="Off the Screen | Creative Engineering | Seth Forte">
+    <meta name="twitter:description" content="Ideas made real, by hand and by code. The personal creative engineering side of the person behind Launch Forte.">
     <meta name="twitter:image" content="https://sethforte.com/headshot-6.jpg">
     <link rel="canonical" href="https://sethforte.com/projects">
     <link rel="preload" href="/fonts/Mona-Sans.var.woff2" as="font" type="font/woff2" crossorigin>
@@ -1613,6 +1613,19 @@
         [data-theme="dark"] .hero-zone a.btn-youtube:focus-visible {
             color: #FFFFFF !important;
         }
+        /* Pending YouTube button on the dark hero: the light-theme pending
+           tokens (--n-500 on --border) disappear against the video, so it gets
+           a translucent-white treatment that still reads as a label, not a
+           live link. The catch-all exemption above targets a.btn-youtube, so
+           this <span> is unaffected by it. */
+        .hero-zone .btn-youtube.is-pending {
+            background: rgba(255,255,255,0.06) !important;
+            color: rgba(255,255,255,0.72) !important;
+            border-color: rgba(255,255,255,0.22) !important;
+            box-shadow: none;
+        }
+        .hero-zone .btn-youtube.is-pending svg { fill: rgba(255,255,255,0.72); opacity: 1; }
+
         .hero-zone .pill-link,
         .hero-zone .anchor-pill,
         .hero-zone .chip,
@@ -1998,6 +2011,85 @@
         }
         .ws-area-copy { margin: 0; color: var(--n-600); line-height: 1.7; }
 
+        /* The process: Imagine -> ... -> Tell the Story. A flowing row on wide
+           screens, a vertical list on narrow ones. The arrows are decorative,
+           so they are aria-hidden in markup and the ordered list carries the
+           sequence for anyone reading with assistive tech. */
+        .ws-process {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem 0.35rem;
+            counter-reset: ws-step;
+        }
+        .ws-process li {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        /* The arrow leads its step rather than trailing it, so a wrapped row
+           never ends on an arrow pointing at nothing. The flip side is a row
+           that would now START with one: anchor-based sizing hides any arrow
+           whose step begins a line. */
+        .ws-process li:first-child .ws-process-arrow { display: none; }
+        .ws-step {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.6rem 1.05rem;
+            border-radius: 999px;
+            background: var(--paper);
+            box-shadow: inset 0 0 0 1px var(--border);
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: var(--text-sm);
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: var(--ink);
+            white-space: nowrap;
+        }
+        .ws-step::before {
+            counter-increment: ws-step;
+            content: counter(ws-step);
+            font-family: var(--font-sans);
+            font-size: 0.6875rem;
+            font-weight: 600;
+            line-height: 1;
+            color: var(--accent-strong, #0077C4);
+        }
+        /* The accent holds AA on paper but not on the dark ground, so dark
+           mode gets the lighter accent the rest of the site already uses for
+           accent text (4.18 -> 8.6 against #0A0A0A). */
+        [data-theme="dark"] .ws-step::before { color: #4ab5ed; }
+        .ws-process-arrow {
+            color: var(--n-400);
+            font-size: var(--text-sm);
+            line-height: 1;
+        }
+        .ws-process-note { margin: 1.5rem 0 0; max-width: 64ch; color: var(--n-600); line-height: 1.7; }
+
+        /* Between the stacked layout and full width the row would wrap and
+           strand the arrow before the last step. Tighten the pills instead so
+           all six keep one line down to the stacking breakpoint. */
+        @media (max-width: 880px) and (min-width: 761px) {
+            .ws-process { gap: 0.4rem 0.2rem; }
+            .ws-step { padding: 0.55rem 0.8rem; gap: 0.4rem; font-size: 0.8125rem; }
+        }
+
+        @media (max-width: 760px) {
+            /* Stack the steps: the inline arrows stop making sense once the
+               row wraps, so hide them and let the list read top to bottom.
+               Stacking here rather than lower keeps the row from ever wrapping
+               mid-sequence, which would strand an arrow at a line start. */
+            .ws-process { flex-direction: column; align-items: stretch; gap: 0.5rem; }
+            .ws-process li { width: 100%; }
+            .ws-process-arrow { display: none; }
+            .ws-step { width: 100%; white-space: normal; }
+        }
+
         .ws-soon .section-heading { max-width: 22ch; }
         .ws-soon .about-text { max-width: 62ch; margin-bottom: 1.75rem; }
         .ws-youtube {
@@ -2013,15 +2105,6 @@
             text-decoration: none;
         }
         .ws-youtube svg { width: 20px; height: 20px; flex: none; }
-        .btn-youtube.is-pending {
-            background: transparent !important;
-            color: var(--n-500) !important;
-            border-color: var(--border) !important;
-            box-shadow: inset 0 0 0 1px var(--border);
-            cursor: default;
-            pointer-events: none;
-        }
-        .btn-youtube.is-pending svg { fill: var(--n-400); opacity: 0.8; }
         .ws-soon-note { margin: 1rem 0 0; font-size: var(--text-sm); color: var(--n-500); }
 
         @media (max-width: 860px) {
@@ -2084,10 +2167,18 @@
         <div class="hero-overlay hero-overlay-btm" aria-hidden="true"></div>
         <div class="hero-content">
             <div class="hero-content-inner">
-                <p class="hero-eyebrow hero-eyebrow-labelled animate-up delay-1">The Workshop</p>
+                <p class="hero-eyebrow hero-eyebrow-labelled animate-up delay-1">Creative Engineering</p>
                 <h1 class="hero-h1 hero-headline animate-up delay-2">Off the <span class="gradient-text">Screen</span>.</h1>
-                <p class="hero-sub animate-up delay-3">Some ideas deserve to leave the screen.</p>
+                <p class="hero-sub animate-up delay-3">Ideas made real. By hand and by code.</p>
                 <div class="hero-cta animate-up delay-4">
+                    <!-- Inert until the channel link is confirmed. To activate,
+                         swap this <span> for:
+                         <a href="CHANNEL_URL" class="btn-youtube" target="_blank" rel="noopener">
+                         and drop the is-pending / aria-disabled attributes. -->
+                    <span class="btn-youtube is-pending" aria-disabled="true">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 0 0 .5 6.2C0 8.09 0 12 0 12s0 3.91.5 5.8a3.02 3.02 0 0 0 2.12 2.14c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51a3.02 3.02 0 0 0 2.12-2.14C24 15.91 24 12 24 12s0-3.91-.5-5.8ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z"/></svg>
+                        <span>Follow Along on YouTube</span>
+                    </span>
                     <a href="#areas" class="hero-scroll-cue">What I'm Exploring <span aria-hidden="true">&darr;</span></a>
                 </div>
             </div>
@@ -2100,17 +2191,53 @@
             <!-- Introduction -->
             <div class="studio-section">
                 <div class="panel-quiet reveal ws-intro">
-                    <p class="about-text">I spend a lot of my time building software. Lately, I've been wondering what happens when I take some of those ideas off a computer and try to make them real.</p>
-                    <p class="about-text">Robotics, electronics, 3D printing, mechanical design, a little art, and probably a lot of trial and error.</p>
-                    <p class="about-text">I'm starting from the beginning. Learning the tools, figuring out how things work, and making things with my own hands. Some projects might be useful. Some might be completely ridiculous. Hopefully, they'll all teach me something.</p>
+                    <p class="about-text">I've spent years building things in software. Now I'm learning how to bring ideas into the physical world, too. Some ideas deserve to leave the screen.</p>
+                    <p class="about-text">I want to understand how things work &mdash; not just what they do, but the individual pieces, materials, mechanisms, and decisions behind them. Then I want to sketch something of my own, figure out how to build it, and see what happens when I bring it to life.</p>
+                    <p class="about-text">Sometimes that'll mean electronics and code. Sometimes it'll mean gears, 3D printing, painting, or simply making something interesting with my hands.</p>
+                    <p class="about-text">I'm learning as I go, and I want to share the drawings, experiments, mistakes, and stories along the way.</p>
                     <p class="ws-tagline">Part code. Part craftsmanship. All curiosity.</p>
+                </div>
+            </div>
+
+            <!-- How a build actually goes. Every skill here is one I'm
+                 learning myself; not every project needs every step. -->
+            <div class="studio-section">
+                <p class="section-label reveal">The Process</p>
+                <h2 class="section-heading reveal" style="margin-bottom: 2rem;">From an idea to a <span class="gradient-text">real thing</span>.</h2>
+                <div class="reveal">
+                    <ol class="ws-process">
+                        <li>
+                            <span class="ws-step">Imagine</span>
+                        </li>
+                        <li>
+                            <span class="ws-process-arrow" aria-hidden="true">&rarr;</span>
+                            <span class="ws-step">Sketch</span>
+                        </li>
+                        <li>
+                            <span class="ws-process-arrow" aria-hidden="true">&rarr;</span>
+                            <span class="ws-step">Design</span>
+                        </li>
+                        <li>
+                            <span class="ws-process-arrow" aria-hidden="true">&rarr;</span>
+                            <span class="ws-step">Build</span>
+                        </li>
+                        <li>
+                            <span class="ws-process-arrow" aria-hidden="true">&rarr;</span>
+                            <span class="ws-step">Bring to Life</span>
+                        </li>
+                        <li>
+                            <span class="ws-process-arrow" aria-hidden="true">&rarr;</span>
+                            <span class="ws-step">Tell the Story</span>
+                        </li>
+                    </ol>
+                    <p class="ws-process-note">Drawing, measuring, designing, printing, soldering, assembling, coding, painting, filming &mdash; I'm learning each of these as I go. Not every project needs every step, and not all of them involve software. Sometimes a licensed design or an existing template is the right place to start. The point is understanding how something works, and then making something of my own.</p>
                 </div>
             </div>
 
             <!-- The four areas. Creative directions, not finished work. -->
             <div class="studio-section" id="areas" style="scroll-margin-top: 90px;">
                 <p class="section-label reveal">What I'm Exploring</p>
-                <h2 class="section-heading reveal" style="margin-bottom: 2rem;">Four directions, <span class="gradient-text">one workshop</span>.</h2>
+                <h2 class="section-heading reveal" style="margin-bottom: 2rem;">Four directions, <span class="gradient-text">one curiosity</span>.</h2>
                 <div class="ws-areas reveal">
                     <article class="ws-area">
                         <span class="ws-area-mark" aria-hidden="true">
@@ -2121,7 +2248,7 @@
                             </svg>
                         </span>
                         <h3 class="ws-area-title">Things That Light Up</h3>
-                        <p class="ws-area-copy">Light sculptures, interactive objects, illuminated miniatures, and creative experiments with software and electronics.</p>
+                        <p class="ws-area-copy">Light sculptures, interactive desk objects, illuminated miniatures, and the kind of electronics-and-code experiments that are much more fun to look at than to explain.</p>
                     </article>
                     <article class="ws-area">
                         <span class="ws-area-mark" aria-hidden="true">
@@ -2132,7 +2259,7 @@
                             </svg>
                         </span>
                         <h3 class="ws-area-title">Things That Move</h3>
-                        <p class="ws-area-copy">Robots, gears, motors, mechanisms, and other ideas that start as drawings and eventually do something in the real world.</p>
+                        <p class="ws-area-copy">Robots with a bit of personality, gears, motors, mechanisms, and other ideas that start as a drawing in a notebook and eventually do something in the real world.</p>
                     </article>
                     <article class="ws-area">
                         <span class="ws-area-mark" aria-hidden="true">
@@ -2142,7 +2269,7 @@
                             </svg>
                         </span>
                         <h3 class="ws-area-title">Things Worth Making</h3>
-                        <p class="ws-area-copy">Original 3D prints, practical objects, gaming-inspired creations, artistic designs, and whatever else catches my curiosity.</p>
+                        <p class="ws-area-copy">Studio props, gaming-inspired art, original 3D prints, painted sculptures, and the occasional ridiculous invention. My studio should eventually be full of things I built myself.</p>
                     </article>
                     <article class="ws-area">
                         <span class="ws-area-mark" aria-hidden="true">
@@ -2152,7 +2279,7 @@
                             </svg>
                         </span>
                         <h3 class="ws-area-title">The Story Behind It</h3>
-                        <p class="ws-area-copy">Sketches, mistakes, first attempts, lessons, workshop footage, and eventually the finished videos documenting how everything came together.</p>
+                        <p class="ws-area-copy">Notebook sketches, first attempts, the mistakes, what I learned, workshop footage, and eventually the finished videos showing how it all came together.</p>
                     </article>
                 </div>
             </div>
@@ -2163,8 +2290,8 @@
                     <p class="section-label">Coming Soon</p>
                     <h2 class="section-heading">The first builds are <span class="gradient-text">underway</span>.</h2>
                     <p class="about-text">I'm putting together my workshop and learning one project at a time. As I finish things, I'll share the designs, photos, code, lessons, and videos here.</p>
-                    <!-- Inert until there are build videos. Swap this <span> for the
-                         <a href="https://www.youtube.com/@TheSethForte"> the hero uses. -->
+                    <!-- Inert until there are build videos. Activate this and the
+                         hero button together, with the confirmed channel URL. -->
                     <span class="btn-youtube ws-youtube is-pending" aria-disabled="true">
                         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 0 0 .5 6.2C0 8.09 0 12 0 12s0 3.91.5 5.8a3.02 3.02 0 0 0 2.12 2.14c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51a3.02 3.02 0 0 0 2.12-2.14C24 15.91 24 12 24 12s0-3.91-.5-5.8ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z"/></svg>
                         <span>Follow Along on YouTube</span>
