@@ -2200,7 +2200,11 @@
         }
 
         .hero-h1 {
-          font-family: 'Inter', sans-serif;
+          /* Mona Sans, like the rest of the system. This rule is declared
+             after .hero-headline, so a hardcoded Inter here silently won on
+             every page that carries both classes. */
+          font-family: var(--font-display);
+          font-variation-settings: var(--font-display-vars);
           font-weight: 500;
           font-size: clamp(2.25rem, 5.5vw, 4.25rem);
           line-height: 1.05;
