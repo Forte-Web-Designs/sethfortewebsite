@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Off the Screen | Creative Engineering | Seth Forte</title>
+    <title>Off the Screen | Seth Forte</title>
     <link rel="icon" href="/favicon.png" type="image/png">
     <meta name="title" content="Seth Forte | Automation Engineer and Founder of Launch Forte">
-    <meta name="description" content="Ideas made real, by hand and by code. Seth Forte on learning to build in the physical world: sketching, electronics, 3D printing, mechanical design, and sharing the process.">
+    <meta name="description" content="Ideas made real, by hand and by code. Seth Forte on building things away from the screen: sketching, electronics, 3D printing, mechanical design, and thinking out loud about learning and making.">
     <meta name="author" content="Seth Forte">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sethforte.com/projects">
-    <meta property="og:title" content="Off the Screen | Creative Engineering | Seth Forte">
-    <meta property="og:description" content="Ideas made real, by hand and by code. The personal creative engineering side of the person behind Launch Forte.">
+    <meta property="og:title" content="Off the Screen | Seth Forte">
+    <meta property="og:description" content="Ideas made real, by hand and by code. Building things, thinking out loud, and figuring life out. The personal side of the person behind Launch Forte.">
     <meta property="og:image" content="https://sethforte.com/headshot-6.jpg">
     <meta property="og:site_name" content="Seth Forte">
     <meta property="og:locale" content="en_US">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Off the Screen | Creative Engineering | Seth Forte">
-    <meta name="twitter:description" content="Ideas made real, by hand and by code. The personal creative engineering side of the person behind Launch Forte.">
+    <meta name="twitter:title" content="Off the Screen | Seth Forte">
+    <meta name="twitter:description" content="Ideas made real, by hand and by code. Building things, thinking out loud, and figuring life out. The personal side of the person behind Launch Forte.">
     <meta name="twitter:image" content="https://sethforte.com/headshot-6.jpg">
     <link rel="canonical" href="https://sethforte.com/projects">
     <link rel="preload" href="/fonts/Mona-Sans.var.woff2" as="font" type="font/woff2" crossorigin>
@@ -2135,6 +2135,19 @@
         }
         .ws-youtube svg { width: 20px; height: 20px; flex: none; }
         .ws-soon-note { margin: 1rem 0 0; font-size: var(--text-sm); color: var(--n-500); }
+        .ws-bridge .about-text { max-width: 64ch; margin-bottom: 1rem; }
+        .ws-bridge .btn-link { margin-top: 0.5rem; }
+        /* Link colour on the softened pane. The sitewide accent (#0088DB) is
+           3.5:1 here and the !important accent-strong rule is 4.38:1, both
+           under AA for body-size text. This page warmed its background, so it
+           owns the consequence: one shade darker clears it at 4.9:1. The
+           !important is required to beat the sitewide rule, not for weight.
+           Dark mode already passes on its own ground and is left alone. */
+        :root:not([data-theme="dark"]) .ws-bridge a,
+        :root:not([data-theme="dark"]) .ws-bridge .btn-link,
+        :root:not([data-theme="dark"]) .main-wrapper .btn-link {
+            color: #006FB8 !important;
+        }
 
         @media (max-width: 860px) {
             .ws-areas { grid-template-columns: 1fr; gap: 1.25rem; }
@@ -2218,11 +2231,12 @@
 
             <!-- Introduction -->
             <div class="studio-section">
-                <p class="section-label reveal">Creative Engineering</p>
+                <p class="section-label reveal">Why I'm Doing This</p>
                 <div class="panel-quiet reveal ws-intro">
                     <p class="about-text">I've spent years building things in software. Now I'm learning how to bring ideas into the physical world, too. Some ideas deserve to leave the screen.</p>
+                    <p class="about-text">Part of this is that AI changed how I work. I can direct a lot of the software now instead of typing every line myself, and I love that. But I still want the part where you actually make something. So I'm taking that somewhere new: industrial design sketching, electronics, Arduino, CAD, 3D printing, soldering, fabrication, a bit of art. Whatever a project needs.</p>
                     <p class="about-text">I want to understand how things work, not just what they do, but the individual pieces, materials, mechanisms, and decisions behind them. Then I want to sketch something of my own, figure out how to build it, and see what happens when I bring it to life.</p>
-                    <p class="about-text">Sometimes that'll mean electronics and code. Sometimes it'll mean gears, 3D printing, painting, or simply making something interesting with my hands.</p>
+                    <p class="about-text">Technology should expand what we can make, not replace the enjoyment of making it. I think there's real value in learning a skill, using your imagination, and building something with your hands instead of only consuming what everyone else made.</p>
                     <p class="about-text">I'm learning as I go, and I want to share the drawings, experiments, mistakes, and stories along the way.</p>
                     <p class="ws-tagline">Part code. Part craftsmanship. All curiosity.</p>
                 </div>
@@ -2266,7 +2280,7 @@
             <!-- The four areas. Creative directions, not finished work. -->
             <div class="studio-section" id="areas" style="scroll-margin-top: 90px;">
                 <p class="section-label reveal">What I'm Exploring</p>
-                <h2 class="section-heading reveal" style="margin-bottom: 2rem;">Four directions, <span class="gradient-text">one curiosity</span>.</h2>
+                <h2 class="section-heading reveal" style="margin-bottom: 2rem;">A few directions, <span class="gradient-text">one curious person</span>.</h2>
                 <div class="ws-areas reveal">
                     <article class="ws-area">
                         <span class="ws-area-mark" aria-hidden="true">
@@ -2307,8 +2321,8 @@
                                 <path d="M13 20h14M13 25h14M13 29h9"/>
                             </svg>
                         </span>
-                        <h3 class="ws-area-title">The Story Behind It</h3>
-                        <p class="ws-area-copy">Notebook sketches, first attempts, the mistakes, what I learned, workshop footage, and eventually the finished videos showing how it all came together.</p>
+                        <h3 class="ws-area-title">Thinking Out Loud</h3>
+                        <p class="ws-area-copy">Notebook sketches and workshop footage, but also the quieter stuff: what I'm learning, how the build went wrong, and conversations about work, family, curiosity, and figuring life out.</p>
                     </article>
                 </div>
             </div>
@@ -2318,14 +2332,27 @@
                 <div class="panel-quiet reveal ws-soon">
                     <p class="section-label">Coming Soon</p>
                     <h2 class="section-heading">The first builds are <span class="gradient-text">underway</span>.</h2>
-                    <p class="about-text">I'm putting together my workshop and learning one project at a time. As I finish things, I'll share the designs, photos, code, lessons, and videos here.</p>
+                    <p class="about-text">I'm putting together my workshop and learning one project at a time. As I finish things, I'll share the designs, photos, code, lessons, and videos here. Some of it will be builds, some of it will be me thinking out loud. It all goes on my own channel rather than a separate brand, because the thread running through it is just me.</p>
                     <!-- Inert until there are build videos. Activate this and the
                          hero button together, with the confirmed channel URL. -->
                     <span class="btn-youtube ws-youtube is-pending" aria-disabled="true">
                         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 0 0 .5 6.2C0 8.09 0 12 0 12s0 3.91.5 5.8a3.02 3.02 0 0 0 2.12 2.14c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51a3.02 3.02 0 0 0 2.12-2.14C24 15.91 24 12 24 12s0-3.91-.5-5.8ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z"/></svg>
                         <span>Follow Along on YouTube</span>
                     </span>
-                    <p class="ws-soon-note">The channel goes live with the first build.</p>
+                    <p class="ws-soon-note">Genuinely early days: no finished builds to show yet. The channel goes live with the first one.</p>
+                </div>
+            </div>
+
+            <!-- The business connection: stated plainly, once, at the end.
+                 Someone who likes the personal side should be able to find out
+                 what I do for a living without being sold to. -->
+            <div class="studio-section">
+                <p class="section-label reveal">The Day Job</p>
+                <h2 class="section-heading reveal" style="margin-bottom: 1rem;">I also build software for a <span class="gradient-text">living</span>.</h2>
+                <div class="reveal ws-bridge">
+                    <p class="about-text">If you found this through a build or a video: the rest of my week is <a href="https://launchforte.com" target="_blank" rel="noopener">Launch Forte</a>, where I design and build automation and web systems for small businesses. Same curiosity, different materials.</p>
+                    <p class="about-text">And if you came here from the business side, this page is the other half of it. Both are me.</p>
+                    <a href="/" class="btn-link">See the professional work &rarr;</a>
                 </div>
             </div>
 
