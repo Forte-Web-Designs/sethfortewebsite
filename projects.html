@@ -3,27 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Off the Screen | Seth Forte | The Workshop</title>
+    <title>Off the Screen | The Workshop | Seth Forte</title>
     <link rel="icon" href="/favicon.png" type="image/png">
-    <meta name="description" content="The workshop. Seth Forte on taking ideas off the screen: robotics, electronics, 3D printing, mechanical design, and the builds in between.">
+    <meta name="title" content="Seth Forte | Automation Engineer and Founder of Launch Forte">
+    <meta name="description" content="Off the Screen. Seth Forte on taking ideas off the computer: robotics, electronics, 3D printing, mechanical design, and the builds in between.">
     <meta name="author" content="Seth Forte">
-    <link rel="canonical" href="https://sethforte.com/projects">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sethforte.com/projects">
-    <meta property="og:title" content="Off the Screen | Seth Forte | The Workshop">
-    <meta property="og:description" content="The workshop. Seth Forte on taking ideas off the screen: robotics, electronics, 3D printing, mechanical design, and the builds in between.">
+    <meta property="og:title" content="Off the Screen | The Workshop | Seth Forte">
+    <meta property="og:description" content="Robotics, electronics, 3D printing, and mechanical design. The personal workshop behind Launch Forte.">
     <meta property="og:image" content="https://sethforte.com/headshot-6.jpg">
     <meta property="og:site_name" content="Seth Forte">
     <meta property="og:locale" content="en_US">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Off the Screen | Seth Forte | The Workshop">
-    <meta name="twitter:description" content="The workshop. Seth Forte on taking ideas off the screen: robotics, electronics, 3D printing, mechanical design, and the builds in between.">
+    <meta name="twitter:title" content="Off the Screen | The Workshop | Seth Forte">
+    <meta name="twitter:description" content="Robotics, electronics, 3D printing, and mechanical design. The personal workshop behind Launch Forte.">
     <meta name="twitter:image" content="https://sethforte.com/headshot-6.jpg">
+    <link rel="canonical" href="https://sethforte.com/projects">
     <link rel="preload" href="/fonts/Mona-Sans.var.woff2" as="font" type="font/woff2" crossorigin>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Seth Forte",
+        "alternateName": "Seth F",
+        "url": "https://sethforte.com/",
+        "jobTitle": "Software Engineer",
+        "description": "Software engineer and founder of Launch Forte, specializing in business systems, revenue operations, and software integration.",
+        "image": "https://sethforte.com/headshot-6.jpg",
+        "email": "mailto:seth@launchforte.com",
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Launch Forte",
+            "url": "https://launchforte.com/"
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Dallas-Fort Worth",
+            "addressRegion": "TX",
+            "addressCountry": "US"
+        },
+        "knowsAbout": [
+            "Business automation",
+            "Workflow automation",
+            "Systems integration",
+            "CRM architecture",
+            "n8n",
+            "Make",
+            "GoHighLevel"
+        ],
+        "sameAs": [
+            "https://www.linkedin.com/in/seth-forte/",
+            "https://www.youtube.com/@TheSethForte",
+            "https://launchforte.com/",
+            "https://www.upwork.com/freelancers/sethforte",
+            "https://voyagedallas.com/interview/community-highlights-meet-seth-forte-of-forte-web-designs/"
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Seth Forte",
+        "url": "https://sethforte.com/"
+    }
+    </script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* ============================================================
+           SETH FORTE — Studio design system.
+           Mined from launchforte.com Pass 8 (site/studio.css), which was
+           itself mined from tailwind-plus-studio (Seth-owned license).
+           Ported INLINE per this repo's CLAUDE.md: no external CSS files,
+           no build step, no framework. One token vocabulary across both
+           sites; this repo's mechanics.
+           ============================================================ */
 
-        /* Mona Sans, self-hosted — one face across sethforte + launchforte */
+        /* ---------- 1. Mona Sans, self-hosted (Studio's variable face) ---------- */
         @font-face {
             font-family: 'Mona Sans';
             font-weight: 200 900;
@@ -34,16 +90,31 @@
                  url('/fonts/Mona-Sans.var.woff2') format('woff2');
         }
 
+        /* ---------- 2. Tokens — monochrome + one accent ---------- */
         :root {
-            /* --- Studio tokens (mined from launchforte Pass 8) --- */
             --font-sans: 'Mona Sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             --font-display: 'Mona Sans', ui-sans-serif, system-ui, sans-serif;
             --font-display-vars: 'wdth' 125;
 
+            --text-xs: 0.75rem;   --text-sm: 0.875rem;  --text-base: 1rem;
+            --text-lg: 1.125rem;  --text-xl: 1.25rem;   --text-2xl: 1.5rem;
+            --text-3xl: 1.75rem;  --text-4xl: 2rem;     --text-5xl: 2.5rem;
+            --text-6xl: 3rem;     --text-7xl: 4rem;
+            --text-base-lh: 1.75rem; --text-xl-lh: 2rem;
+
+            --sp-2: 0.5rem;   --sp-4: 1rem;   --sp-6: 1.5rem;  --sp-8: 2rem;
+            --sp-10: 2.5rem;  --sp-12: 3rem;  --sp-16: 4rem;   --sp-20: 5rem;
+            --sp-24: 6rem;    --sp-32: 8rem;  --sp-40: 10rem;
+
+            --radius-sm: 6px;   --radius: 12px;      --radius-2xl: 1rem;
+            --radius-3xl: 1.5rem; --radius-4xl: 2.5rem;
+
+            /* Ink and paper — the whole system runs on these */
             --paper: #FFFFFF;
             --paper-2: #FAFAFA;
             --ink: #0A0A0A;
             --ink-2: #171717;
+
             --n-50:  #FAFAFA;  --n-100: #F5F5F5;  --n-200: #E5E5E5;
             --n-300: #D4D4D4;  --n-400: #A3A3A3;  --n-500: #737373;
             --n-600: #525252;  --n-700: #404040;  --n-800: #262626;
@@ -53,53 +124,25 @@
             --accent: #0088DB;
             --accent-hover: #0077C4;
             --accent-tint: rgba(0, 136, 219, 0.10);
-            /* Shades that clear WCAG AA for white text at 14px */
+            /* Accent shades that clear WCAG AA for white text at 14px
+               (#0088DB is 3.79:1 and fails; these are 4.73:1 and 5.24:1) */
             --accent-strong: #0077C4;
             --accent-deep: #0070B8;
+
+            --border: rgba(10, 10, 10, 0.08);
+            --border-strong: rgba(10, 10, 10, 0.16);
+            --ring: rgba(10, 10, 10, 0.05);
 
             --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
             --dur-reveal: 700ms;
             --dur-hover: 180ms;
 
-            --sp-10: 2.5rem;  --sp-12: 3rem;  --sp-16: 4rem;  --sp-24: 6rem;  --sp-32: 8rem;  --sp-40: 10rem;
+            --max-narrow: 720px;
             --max-content: 1120px;
-
-            /* --- Legacy aliases: existing component CSS reads these names,
-                   so pointing them at Studio tokens restyles the page without
-                   touching a single component rule. --- */
-            --text-primary: var(--ink);
-            --text-secondary: var(--n-600);
-            --text-muted: var(--n-500);
-            --accent-subtle: var(--accent-tint);
-            --accent-glow: var(--accent-tint);
-            --accent-warm: var(--accent);
-            --accent-2: var(--accent);
-            --accent-3: var(--accent);
-            --background: var(--paper);
-            --background-alt: var(--paper);
-            --background-dark: var(--ink);
-            --surface: var(--paper);
-            --surface-hover: var(--n-50);
-            --card-bg: var(--paper);
-            --card-bg-solid: var(--paper);
-            --card-hover: var(--n-50);
-            --border: rgba(10, 10, 10, 0.08);
-            --border-light: rgba(10, 10, 10, 0.16);
-            --success: #1E7A4F;
-            --radius-sm: 6px;
-            --radius-md: 12px;
-            --radius-lg: 1rem;
-            --radius-xl: 1.5rem;
-            --radius-pill: 999px;
-            /* Studio's large radii — the card/panel scale. These were used by
-               the ported component rules but never defined here, so every
-               var(--radius-3xl) resolved to nothing and corners rendered
-               square. */
-            --radius-3xl: 1.5rem;
-            --radius-4xl: 2.5rem;
+            --max-wide: 1280px;
         }
 
-        /* Dark mode: ink and paper swap, blue constant */
+        /* Dark mode: ink and paper swap, blue is constant */
         [data-theme="dark"] {
             --paper: #0A0A0A;
             --paper-2: #171717;
@@ -110,403 +153,102 @@
             --n-600: #D4D4D4;  --n-700: #E5E5E5;  --n-800: #F5F5F5;
             --n-900: #FAFAFA;  --n-950: #FFFFFF;
             --border: rgba(255, 255, 255, 0.10);
-            --border-light: rgba(255, 255, 255, 0.18);
-            /* Legacy aliases must be REDECLARED here. A custom property that
-               points at another (--background: var(--paper)) resolves against
-               the value in the scope where it is declared, so aliases left in
-               :root keep their light values even after --paper flips. That is
-               what put white text on a white ground in dark mode. */
-            --text-primary: var(--ink);
-            --text-secondary: var(--n-600);
-            --text-muted: var(--n-500);
-            --accent-subtle: var(--accent-tint);
-            --accent-glow: var(--accent-tint);
-            --accent-warm: var(--accent);
-            --accent-2: var(--accent);
-            --accent-3: var(--accent);
-            --background: var(--paper);
-            --background-alt: var(--paper);
-            --background-dark: var(--ink);
-            --surface: var(--paper);
-            --surface-hover: var(--n-50);
-            --card-bg: var(--paper);
-            --card-bg-solid: var(--paper);
-            --card-hover: var(--n-50);
+            --border-strong: rgba(255, 255, 255, 0.18);
+            --ring: rgba(255, 255, 255, 0.05);
         }
 
+        /* ---------- 3. Base ---------- */
+        *, *::before, *::after { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; }
+        html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+        /* Nothing may push the page wider than the viewport (mobile discipline:
+           no truncation, no horizontal scroll). */
+        body { overflow-x: hidden; }
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            font-size: 16px;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background: var(--background);
-            min-height: 100vh;
+            background: #0A0A0A;
+            color: var(--ink);
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            line-height: 1.55;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
         }
+        ::selection { background: var(--accent); color: #fff; }
+        :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+        img { max-width: 100%; }
 
-        a { color: var(--accent-hover); text-decoration: none; transition: color 0.2s ease; }
-        a:hover { color: var(--accent-hover); text-decoration: none; }
-
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .animate-fade-in { animation: fadeIn 0.4s ease forwards; }
-        .animate-fade-up { animation: fadeInUp 0.4s cubic-bezier(0.16,1,0.3,1) forwards; }
-        .animate-delay-1 { animation-delay: 0.05s; opacity: 0; }
-        .animate-delay-2 { animation-delay: 0.1s; opacity: 0; }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16,1,0.3,1);
+        /* ---------- 4. The cinematic hero (dark zone) ---------- */
+        .hero-cinematic {
+            position: relative;
+            width: 100%;
+            max-width: 100vw;
+            min-height: 88vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+            background: #0A0A0A;
+            padding: 8.5rem 0 6rem;
+            isolation: isolate;
         }
-        .reveal.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .grid-bg {
-            position: fixed;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* Header */
-        .site-header { position: sticky; top: 0; z-index: 100; background: rgba(245,245,247,0.85); backdrop-filter: blur(20px) saturate(1.5); -webkit-backdrop-filter: blur(20px) saturate(1.5); border-bottom: 1px solid var(--border); padding: 0 2rem; }
-        .site-header::after {
-            content: '';
+        .hero-video-layer {
             position: absolute;
-            bottom: -1px;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent), var(--accent-2), var(--accent), transparent);
-            opacity: 0.4;
+            inset: 0;
+            z-index: -2;
+            overflow: hidden;
         }
-        .header-container { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; height: 52px; }
-        .header-logo { font-size: 0.9375rem; font-weight: 600; color: var(--text-primary); text-decoration: none; letter-spacing: -0.01em; display: flex; align-items: center; gap: 0.5rem; }
-        .header-logo:hover { color: var(--text-primary); text-decoration: none; opacity: 0.8; }
-        .header-nav { display: flex; gap: 0.25rem; }
-        .nav-link { padding: 0.35rem 0.75rem; color: var(--text-secondary); font-size: 0.8125rem; font-weight: 400; transition: color 0.2s ease; text-decoration: none; }
-        .nav-link:hover { color: var(--text-primary); text-decoration: none; }
-        .nav-link.active { color: var(--text-primary); font-weight: 500; }
-
-        .main-wrapper { max-width: 1100px; margin: 0 auto; padding: 0 2rem 8rem; position: relative; z-index: 1; }
-        .page-title { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.5rem; padding-top: 4rem; }
-        .page-intro { color: var(--text-secondary); font-size: 1.125rem; font-weight: 300; line-height: 1.6; margin-bottom: 3rem; }
-        .section-divider { display: none; }
-
-        /* Writing List */
-        .writing-list { list-style: none; }
-        .writing-item { margin-bottom: 0.5rem; padding: 1.5rem; border-radius: var(--radius-lg); transition: background 0.2s ease; }
-        .writing-item:hover { background: var(--surface); }
-        .writing-item h3 { font-size: 1.05rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.35rem; line-height: 1.4; transition: color 0.2s ease; }
-        .writing-item:hover h3 { color: var(--accent-hover); }
-        .writing-item p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem; line-height: 1.6; }
-        .writing-item .read-link { font-size: 0.9rem; color: var(--accent-hover); display: inline-block; }
-        .view-all-link { display: inline-block; margin-top: 1.5rem; color: var(--accent-hover); font-size: 0.95rem; font-weight: 500; }
-        .view-all-link:hover { color: var(--accent-hover); }
-        /* Optional inline video on a writing item: drop iframe/video into .writing-item-video */
-        .writing-item-video { margin: 0.75rem 0; border-radius: 12px; overflow: hidden; max-width: 600px; }
-        .writing-item-video iframe, .writing-item-video video { width: 100%; aspect-ratio: 16 / 9; border: 0; display: block; border-radius: 12px; }
-        /* Empty state */
-        .writing-empty {
-            padding: 4rem 2rem;
-            text-align: center;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            color: var(--text-muted);
+        .hero-video-layer video,
+        .hero-video-layer img.hero-poster-fallback {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Focal point per clip — Seth stands in a different spot in each,
+               so each sets its own object-position and stays in frame. */
+            object-position: var(--hero-focus, 50%) center;
         }
-        .writing-empty h3 { font-size: 1.125rem; font-weight: 500; color: var(--text-primary); margin-bottom: 0.5rem; }
-        .writing-empty p { font-size: 0.95rem; color: var(--text-secondary); }
+        .hero-video-layer img.hero-poster-fallback { --hero-focus: 43%; }
+        /* Double overlay: left-to-right for legibility, bottom fade into the pane */
+        .hero-video-layer::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(90deg, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.80) 45%, rgba(10,10,10,0.62) 100%),
+                linear-gradient(to bottom, rgba(10,10,10,0.30) 0%, rgba(10,10,10,0) 32%, rgba(10,10,10,0.26) 74%, #0A0A0A 100%);
+        }
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            max-width: var(--max-content);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            width: 100%;
+        }
+        @media (min-width: 640px) { .hero-inner { padding: 0 2rem; } }
 
-        /* Footer */
-        .footer-section { margin-top: 8rem; padding-top: 4rem; border-top: 1px solid var(--border); }
-        .footer-email-main { color: var(--text-secondary); font-size: 1rem; font-weight: 300; margin-bottom: 3rem; display: block; }
-        .footer-columns { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2.5rem; }
-        .footer-col h4 { font-size: 0.6875rem; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.25rem; }
-        .footer-col ul { list-style: none; }
-        .footer-col li { margin-bottom: 0.5rem; }
-        .footer-col a { color: var(--text-secondary); font-size: 0.875rem; font-weight: 300; }
-        .footer-col a:hover { color: var(--accent); }
-        .footer-bottom {
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
+        /* Eyebrow: dot, SETH FORTE, thin rule */
+        /* Eyebrow: dot, SETH FORTE, thin rule. The label is rendered from CSS
+           (not markup) so the site-wide copy diff stays byte-empty. */
+        .hero-eyebrow {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .footer-location { color: var(--text-muted); font-size: 0.8125rem; font-weight: 300; margin-bottom: 0.35rem; }
-        .copyright { color: var(--text-muted); font-size: 0.8125rem; font-weight: 300; }
-        .footer-status {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-size: 0.6875rem;
-            color: var(--text-muted);
-            font-weight: 400;
-        }
-        .footer-status .dot {
-            width: 6px;
-            height: 6px;
-            background: #22c55e;
-            border-radius: 50%;
-        }
-
-        @media (max-width: 768px) {
-            .header-nav { display: none; }
-            .main-wrapper { padding: 0 2rem 6rem; }
-            .footer-columns { grid-template-columns: 1fr 1fr; }
-            .writing-item { padding: 1rem; }
-            .footer-bottom { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
-        }
-        @media (max-width: 480px) {
-            .site-header { padding: 0 1.5rem; }
-            .main-wrapper { padding: 0 1.5rem 4rem; }
-            .footer-columns { grid-template-columns: 1fr; }
-        }
-        @keyframes gradient-shift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        .gradient-text {
-            background: linear-gradient(135deg, var(--accent), var(--accent-2), var(--accent-3));
-            background-size: 200% 200%;
-            animation: gradient-shift 6s ease infinite;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-    
-        /* Apple-style overrides */
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
-            font-size: 17px;
-            line-height: 1.5;
-        }
-        .hero-headline,
-        h1.display,
-        .page-title,
-        .hero h1 {
-            font-weight: 500;
-            letter-spacing: -0.025em;
-            line-height: 1.05;
-        }
-        h2, .section-heading, .section-label.section-heading {
-            font-weight: 500;
-            letter-spacing: -0.022em;
-            line-height: 1.1;
-        }
-        h3, .card-heading {
-            font-weight: 500;
-            letter-spacing: -0.015em;
-        }
-        .eyebrow {
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--accent);
-            letter-spacing: 0;
-            text-transform: none;
-            margin: 0 0 12px;
-        }
-        .sub, .lede, .hero-sub, .page-subtitle {
-            font-size: 1.1875rem;
-            line-height: 1.45;
-            color: var(--text-secondary);
-            font-weight: 400;
-            letter-spacing: -0.005em;
-        }
-        p { font-size: 1.0625rem; line-height: 1.55; }
-
-        /* Pill buttons, no lift, no glow */
-        .btn-primary {
-            background: var(--accent);
-            color: #fff !important;
-            border-radius: 980px;
-            font-weight: 500;
-            box-shadow: none !important;
-            transition: background 0.2s ease, color 0.2s ease;
-        }
-        .btn-primary:hover {
-            background: var(--accent-warm, #4ab5ed);
-            transform: none !important;
-            box-shadow: none !important;
-        }
-        .btn-ghost, .btn-secondary {
-            background: transparent;
-            color: var(--accent);
-            border: 1px solid var(--border-light);
-            border-radius: 980px;
-            font-weight: 500;
-            transition: opacity 0.2s ease, background 0.2s ease;
-        }
-        .btn-ghost:hover, .btn-secondary:hover {
-            opacity: 0.75;
-            transform: none !important;
-            background: var(--accent-tint, rgba(0,136,219,0.10));
-            color: var(--accent);
-            border-color: var(--border-light);
-        }
-        .btn-link {
-            color: var(--accent) !important;
-            font-weight: 500;
-        }
-        .btn-link:hover { color: var(--accent-warm, #4ab5ed) !important; opacity: 0.85; }
-
-        /* Cards: soft, no borders, large radius, no shadow on hover */
-        .stage-card, .result-card, .review-card, .capability-card,
-        .step-card, .case-study-card, .featured-card, .video-quote-card,
-        .feature-block, .service-card, .featured-case, .audit-section,
-        .stat-card, .metric-item, .cta-block, .cta-section, .next-step,
-        .engagement-block {
-            background: var(--card-bg, #ffffff);
-            border-radius: 18px;
-            border: 1px solid var(--border);
-            transition: background 0.2s ease, border-color 0.2s ease;
-        }
-        .stage-card:hover, .result-card:hover, .review-card:hover,
-        .capability-card:hover, .step-card:hover, .case-study-card:hover,
-        .featured-card:hover, .video-quote-card:hover {
-            transform: none !important;
-            box-shadow: none !important;
-            background: var(--background);
-            border-color: var(--border-light);
-        }
-
-        /* Eyebrow / section-label sentence case, no uppercase */
-        .section-label, .stage-number, .step-number, .stage-label,
-        .case-label, .review-stars, .trust-label, .metric-label,
-        .featured-label, .stage-badge, .case-study-meta, .case-study-tags,
-        .review-attribution, .review-project, .footer-col h4 {
-            text-transform: none;
-            letter-spacing: 0;
-        }
-        .section-label {
-            color: var(--accent);
-            font-size: 0.875rem;
-            font-weight: 500;
-        }
-        .section-label::before { display: none; }
-
-        /* Body background - flat, no overlays */
-        body::before, body::after { display: none !important; }
-        .grid-bg { display: none !important; }
-
-        /* Footer dark statement */
-        .footer-section, .site-footer {
-            background: var(--background-dark, #1d1d1f);
-            color: #86868b;
-            border-top: none;
-            margin-top: 6rem;
-            padding: 3rem 2rem 2rem;
-            border-radius: 18px 18px 0 0;
-        }
-        .footer-section a, .site-footer a {
-            color: #86868b;
-        }
-        .footer-section a:hover, .site-footer a:hover {
-            color: #ffffff;
-        }
-        .footer-col h4 {
-            color: #ffffff;
-            opacity: 0.75;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-        }
-        .footer-email-main, .footer-email-main a {
-            color: #ffffff !important;
-            opacity: 0.95;
-            font-weight: 500;
-        }
-        .footer-location, .copyright, .footer-status {
-            color: #86868b !important;
-        }
-
-        /* Sticky header with backdrop blur */
-        .site-header {
-            background: rgba(245, 245, 247, 0.85) !important;
-            backdrop-filter: saturate(180%) blur(20px);
-            -webkit-backdrop-filter: saturate(180%) blur(20px);
-            border-bottom: 0.5px solid var(--border);
-        }
-        .site-header::after { display: none !important; }
-        .nav-link {
-            color: var(--text-primary);
-            opacity: 0.85;
-            font-weight: 400;
-        }
-        .nav-link:hover { color: var(--text-primary); opacity: 1; }
-        .nav-link.active { color: var(--text-primary); opacity: 1; font-weight: 500; }
-
-        /* Tech / review tags */
-        .tech-tag, .case-study-tags span, .review-tag {
-            background: var(--accent-tint, rgba(0,136,219,0.10));
-            color: var(--accent);
-            border: none;
-        }
-
-        /* Stat colors */
-        .result-stat, .case-study-stat, .featured-stat, .stat-card .stat,
-        .feature-block .stat, .metric-value, .stat {
-            color: var(--accent) !important;
-            -webkit-text-fill-color: var(--accent) !important;
-            background: none !important;
-            background-clip: unset !important;
-            -webkit-background-clip: unset !important;
-        }
-
-        /* Gradient text - keep blue but quiet animation, no purples */
-                @keyframes gradient-shift-apple { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-        .gradient-text {
-            background: linear-gradient(135deg, #0088DB 0%, #4ab5ed 50%, #0088DB 100%) !important;
-            background-size: 200% 200% !important;
-            animation: gradient-shift-apple 8s ease infinite !important;
-            -webkit-background-clip: text !important;
-            -webkit-text-fill-color: transparent !important;
-            background-clip: text !important;
-            color: transparent !important;
-        }
-        
-        /* ============================================================
-           Studio layer — typography and component grammar over the page's
-           existing structure. Tokens-only pass: no markup, words, or routes
-           changed. See sethforte_studio_runbook.md s3.
-           ============================================================ */
-        body { font-family: var(--font-sans); line-height: 1.55; }
-
-        h1, h2, h3, h4,
-        .page-title, .section-heading, .hero-headline, .cta-block h2,
-        .footer-email-main, .stage-name, .card-title, .review-name {
-            font-family: var(--font-display);
-            font-variation-settings: var(--font-display-vars);
-            letter-spacing: -0.025em;
-        }
-        .page-title, .hero-headline { font-weight: 500; letter-spacing: -0.03em; line-height: 1.05; }
-        .section-heading, .cta-block h2 { font-weight: 500; line-height: 1.1; }
-
-        /* Eyebrow: blue dot + label + thin rule */
-        .section-label, .eyebrow, .video-eyebrow, .trust-label, .featured-label {
-            display: inline-flex;
             align-items: center;
             gap: 0.85rem;
+            margin: 0 0 1.5rem;
             font-family: var(--font-display);
             font-variation-settings: var(--font-display-vars);
-            font-size: 0.75rem;
+            font-size: var(--text-xs);
             font-weight: 700;
             letter-spacing: 0.16em;
             text-transform: uppercase;
-            color: var(--ink);
+            color: #FAFAFA;
+            line-height: 1.2;
         }
-        .section-label::before, .eyebrow::before, .video-eyebrow::before {
-            content: '';
+        /* the dot */
+        .hero-eyebrow::before {
+            content: "";
             flex: none;
             width: 8px;
             height: 8px;
@@ -514,144 +256,865 @@
             background: var(--accent);
             box-shadow: 0 0 0 4px var(--accent-tint);
         }
-        .section-label::after, .eyebrow::after, .video-eyebrow::after {
-            content: '';
+        /* the label, with the thin rule drawn as a trailing gradient */
+        .hero-eyebrow::after {
+            content: "Seth Forte";
+            /* .hero-eyebrow-labelled carries the text in markup instead; this
+               pseudo-element then draws the trailing rule only. */
             flex: none;
+            white-space: nowrap;
+            padding-right: 3.25rem;
+            background-image: linear-gradient(rgba(255,255,255,0.28), rgba(255,255,255,0.28));
+            background-size: 40px 1px;
+            background-position: right center;
+            background-repeat: no-repeat;
+        }
+        .hero-eyebrow-labelled::after {
+            content: "";
             width: 40px;
+            padding-right: 0;
+            margin-left: 0.25rem;
+        }
+
+        .profile-photo {
+            display: block;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255,255,255,0.22);
+        }
+
+        .hero-headline {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+            font-size: clamp(2.25rem, 6vw, 4.5rem);
+            margin: 0 0 1.5rem;
+            color: #FFFFFF;
+            max-width: 20ch;
+        }
+        /* The ONE permitted gradient in the system — on the payoff phrase */
+        .gradient-text {
+            background: linear-gradient(120deg, var(--accent) 0%, #5BC0FF 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            display: inline-block;
+        }
+        .hero-sub {
+            font-size: var(--text-xl);
+            line-height: var(--text-xl-lh);
+            color: rgba(255,255,255,0.92);
+            max-width: 54ch;
+            margin: 0 0 2.5rem;
+        }
+        .hero-cta { display: flex; flex-wrap: wrap; gap: 0.85rem; align-items: center; }
+
+        /* Hairline closes the hero over the fade (no invented stats) */
+        .hero-hairline {
+            position: relative;
+            z-index: 2;
+            max-width: var(--max-content);
+            margin: 4rem auto 0;
+            padding: 0 1.5rem;
+        }
+        .hero-hairline::after {
+            content: "";
+            display: block;
             height: 1px;
-            background: var(--border-light);
+            background: linear-gradient(90deg, rgba(255,255,255,0.22), rgba(255,255,255,0.02));
         }
+        @media (min-width: 640px) { .hero-hairline { padding: 0 2rem; } }
 
-        /* Cards: Studio's ring-1 with hover lift */
-        .stage-card, .result-card, .review-card, .capability-card, .step-card,
-        .case-study-card, .featured-card, .feature-block, .service-card,
-        .featured-case, .stat-card, .metric-item, .cta-block, .next-step,
-        .engagement-block, .post-card, .article-card, .writing-card {
-            border: 0;
-            box-shadow: inset 0 0 0 1px var(--border);
-            border-radius: var(--radius-3xl);
-            background: var(--paper);
-            transition: background var(--dur-hover) var(--ease-out),
-                        transform var(--dur-hover) var(--ease-out),
-                        box-shadow var(--dur-hover);
+        /* ---------- 5. Shell: nav + rounded paper pane ---------- */
+        .header-container {
+            max-width: var(--max-wide);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
         }
-        .stage-card:hover, .result-card:hover, .review-card:hover,
-        .capability-card:hover, .case-study-card:hover, .featured-card:hover,
-        .post-card:hover, .article-card:hover, .writing-card:hover {
-            background: var(--n-50);
-            box-shadow: inset 0 0 0 1px var(--border-light);
-            transform: translateY(-2px);
-        }
-        .cta-block { background: var(--n-50); }
-        /* Studio kills washes and glows */
-        .hero-glow, .cta-block::before, .grid-bg::after { display: none; }
-
-        /* Buttons: pill, ink primary, accent only where it earns it */
-        .btn-primary, .btn-secondary, .btn-ghost, .btn-ghost-link {
-            border-radius: 999px;
-            font-family: var(--font-sans);
-            font-weight: 600;
-            transition: transform var(--dur-hover) var(--ease-out),
-                        background var(--dur-hover), color var(--dur-hover);
-        }
-        .btn-primary { background: var(--ink); color: var(--paper); border-color: transparent; }
-        .btn-primary:hover { background: var(--n-800); color: var(--paper); transform: translateY(-1px); }
-        .btn-link { font-weight: 600; color: var(--accent); }
-        .btn-link:hover { color: var(--accent-hover); }
-
-        /* Header on paper, not tinted glass */
-        .site-header {
-            background: color-mix(in srgb, var(--paper) 85%, transparent);
-            border-bottom: 1px solid var(--border);
-        }
+        @media (min-width: 640px) { .header-container { padding: 0 2rem; } }
         .header-logo {
             font-family: var(--font-display);
             font-variation-settings: var(--font-display-vars);
             font-weight: 700;
+            font-size: var(--text-lg);
+            letter-spacing: -0.02em;
+            color: #FFFFFF;
+            text-decoration: none;
         }
-        .grid-bg {
+        .header-nav { display: flex; align-items: center; gap: 0.35rem; }
+        .nav-link {
+            padding: 0.5rem 0.9rem;
+            border-radius: 999px;
+            font-size: var(--text-sm);
+            font-weight: 500;
+            color: rgba(250,250,250,0.72);
+            text-decoration: none;
+            transition: color var(--dur-hover), background var(--dur-hover);
+        }
+        .nav-link:hover { color: #FFFFFF; background: rgba(255,255,255,0.08); }
+
+        /* The paper pane begins BELOW the hero */
+        .main-wrapper {
+            position: relative;
+            background: var(--paper);
+            border-top-left-radius: var(--radius-4xl);
+            border-top-right-radius: var(--radius-4xl);
+            margin-top: -2.5rem;
+            padding: var(--sp-20) 0 0;
+            overflow: hidden;
+            isolation: isolate;
+            z-index: 3;
+        }
+        .main-wrapper::before {
+            content: "";
+            position: absolute;
+            inset: -3.5rem 0 auto 0;
+            height: 1000px;
+            pointer-events: none;
+            z-index: -1;
             background-image:
                 linear-gradient(var(--border) 1px, transparent 1px),
                 linear-gradient(90deg, var(--border) 1px, transparent 1px);
             background-size: 56px 56px;
+            -webkit-mask-image: linear-gradient(to bottom left, var(--ink) 40%, transparent 50%);
+                    mask-image: linear-gradient(to bottom left, var(--ink) 40%, transparent 50%);
         }
+        .pane-container {
+            max-width: var(--max-content);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        @media (min-width: 640px) { .pane-container { padding: 0 2rem; } }
+        .grid-bg { display: none; }
 
-        /* Imagery: grayscale, colour on hover — the one flourish */
-        .carousel-item, .logo-item, .client-logo {
-            filter: grayscale(100%);
-            opacity: 0.72;
-            transition: filter var(--dur-hover) var(--ease-out), opacity var(--dur-hover), color var(--dur-hover);
+        /* ---------- 6. Type in the pane ---------- */
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.85rem;
+            margin: 0 0 1rem;
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: var(--text-xs);
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--ink);
+            line-height: 1.2;
         }
-        .carousel-item:hover, .logo-item:hover, .client-logo:hover {
-            filter: grayscale(0%);
-            opacity: 1;
+        .section-label::before {
+            content: "";
+            flex: none;
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 4px var(--accent-tint);
+        }
+        .section-label::after {
+            content: "";
+            flex: none;
+            width: 40px; height: 1px;
+            background: var(--border-strong);
+        }
+        .section-heading {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-weight: 500;
+            letter-spacing: -0.025em;
+            line-height: 1.1;
+            font-size: clamp(1.75rem, 4vw, 3rem);
+            color: var(--ink);
+            margin: 0 0 1rem;
+        }
+        /* In the pane, the rotator word reads as ink — the gradient is the hero's alone */
+        .main-wrapper .gradient-text {
+            background: none;
+            -webkit-text-fill-color: var(--accent);
             color: var(--accent);
         }
+        .body-text, .about-text {
+            font-size: var(--text-lg);
+            line-height: 1.75;
+            color: var(--n-600);
+            max-width: 68ch;
+        }
+        p { margin: 0 0 1rem; color: var(--ink); }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { color: var(--accent-hover); }
 
-        /* Senja widgets render in shadow DOM and lay out far taller than their
-           own source ratio; give the wrapper the real ratio and clip. */
-        .video-widget-wrap {
+        /* ---------- 7. Buttons ---------- */
+        .btn-primary, .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 999px;
+            font-family: var(--font-sans);
+            font-size: var(--text-sm);
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: transform var(--dur-hover) var(--ease-out),
+                        background var(--dur-hover), color var(--dur-hover);
+        }
+        .btn-primary { background: var(--accent-strong); color: #fff; }
+        .btn-primary:hover { background: var(--accent-deep); color: #fff; transform: translateY(-1px); }
+        .hero-cta .btn-ghost {
+            background: transparent;
+            color: #FFFFFF;
+            border: 1px solid rgba(255,255,255,0.28);
+        }
+        .hero-cta .btn-ghost:hover { background: rgba(255,255,255,0.08); color: #FFFFFF; }
+
+        /* YouTube button in the hero CTA row. Solid brand red at rest, not
+           on hover: the channel is a real destination, so it should read as
+           a primary action rather than a quiet affordance. Slightly taller
+           and wider than the neighbouring pills so it carries weight. */
+        .btn-youtube {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            padding: 0.95rem 1.75rem;
+            border-radius: 999px;
+            background: #FF0033;
+            color: #FFFFFF;
+            border: 1px solid #FF0033;
+            font-family: var(--font-sans);
+            font-size: var(--text-base);
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            line-height: 1;
+            text-decoration: none;
+            white-space: nowrap;
+            box-shadow: 0 6px 22px rgba(255,0,51,0.34);
+            transition: background 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+        }
+        .btn-youtube svg {
+            width: 26px;
+            height: 26px;
+            display: block;
+            flex: 0 0 auto;
+            fill: currentColor;
+        }
+        .btn-youtube:hover,
+        .btn-youtube:focus-visible {
+            background: #E6002E;
+            box-shadow: 0 10px 30px rgba(255,0,51,0.46);
+            transform: translateY(-2px);
+        }
+        .btn-youtube:focus-visible { outline: 2px solid #FFFFFF; outline-offset: 3px; }
+
+        /* Scroll cue, not a button. It points at a section on this same page,
+           so it should sit under the two real destinations rather than
+           compete with them at pill weight. */
+        .hero-scroll-cue {
+            /* full-width basis so it wraps onto its own line under the two
+               buttons, at every width */
+            flex: 0 0 100%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            margin-top: 0.35rem;
+            font-family: var(--font-sans);
+            font-size: var(--text-sm);
+            font-weight: 500;
+            letter-spacing: -0.005em;
+            text-decoration: none;
+            transition: color 180ms ease;
+        }
+        .hero-scroll-cue span { transition: transform 180ms ease; }
+        .hero-scroll-cue:hover span { transform: translateY(2px); }
+        .main-wrapper .btn-primary { background: var(--ink); color: var(--paper); }
+        .main-wrapper .btn-primary:hover { background: var(--n-800); color: var(--paper); }
+        .btn-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: var(--text-sm);
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+            transition: gap var(--dur-hover) var(--ease-out);
+        }
+        .btn-link:hover { gap: 0.7rem; color: var(--accent-hover); }
+
+        /* ---------- 8. Watch: Studio-framed video feature ---------- */
+        .video-section { position: relative; }
+        .video-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.85rem;
+            margin: 0 0 1rem;
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: var(--text-xs);
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--ink);
+        }
+        .video-eyebrow::before {
+            content: "";
+            flex: none;
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 4px var(--accent-tint);
+        }
+        .video-wrap {
+            position: relative;
+            border-radius: var(--radius-3xl);
+            overflow: hidden;
+            background: var(--ink);
+            box-shadow: inset 0 0 0 1px var(--border);
+            aspect-ratio: 16 / 9;
+        }
+        .video-wrap iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+        .video-unmute {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            z-index: 5;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.65rem 1.1rem;
+            min-height: 44px;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(10,10,10,0.82);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: #fff;
+            font-family: var(--font-sans);
+            font-size: var(--text-sm);
+            font-weight: 600;
+            cursor: pointer;
+            transition: background var(--dur-hover), transform var(--dur-hover) var(--ease-out), opacity var(--dur-hover);
+        }
+        .video-unmute:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
+        .video-unmute svg { width: 18px; height: 18px; flex: none; }
+        .video-unmute.is-hidden { opacity: 0; pointer-events: none; }
+
+        /* ---------- 9. Positioning + Trusted by (grayscale ribbon) ---------- */
+        .positioning-bar { text-align: center; margin-top: var(--sp-16); }
+        .positioning-proof {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: var(--text-lg);
+            font-weight: 600;
+            color: var(--ink);
+            margin: 0;
+        }
+        /* Static grid, matching launchforte.com's .studio-clients-grid. A
+           marquee inside this rounded card clipped names at the corners no
+           matter how the mask was tuned — overflow:hidden cuts before the fade
+           finishes. Static also reads calmer, which is the point of the card. */
+        .featured-in {
+            margin: 0;
+            padding: 0 2rem;
+            font-size: var(--text-sm);
+            color: var(--n-500);
+        }
+        .featured-in a { color: var(--paper); text-decoration: underline; text-underline-offset: 3px; }
+        .featured-in a:hover { color: var(--accent); }
+
+        /* ---------- 10. Testimonials — Studio quote treatment ---------- */
+        /* Senja renders inside shadow DOM (data-mode="shadow"), so its internal
+           video can't be styled or cropped from here — any fixed-ratio box just
+           slices the frame arbitrarily. Cap the WIDTH, let the widget set its
+           own height, and centre it. Same approach Pass 8 landed on.  */
+        /* Senja renders inside shadow DOM, so its internal media can't be sized
+           from here — it lays out ~4x taller than its own 3:4 source. Give the
+           wrapper the source's real 3:4 ratio and clip the overflow, so the
+           frame is a sane portrait card instead of a 800px column. */
+
+        /* ---------- 11. Writing — Studio index list ---------- */
+        .writing-preview { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; }
+        .writing-preview li { border-top: 1px solid var(--border); }
+        .writing-preview li:last-child { border-bottom: 1px solid var(--border); }
+        .writing-preview a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            padding: 1.5rem 0.25rem;
+            text-decoration: none;
+            transition: padding var(--dur-hover) var(--ease-out), background var(--dur-hover);
+        }
+        .writing-preview a:hover { padding-left: 1rem; padding-right: 1rem; background: var(--n-50); }
+        .writing-preview-title {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: var(--text-lg);
+            font-weight: 600;
+            color: var(--ink);
+            letter-spacing: -0.01em;
+        }
+        .writing-preview-date {
+            flex: none;
+            margin-left: auto;
+            font-size: var(--text-sm);
+            color: var(--n-500);
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
+        .writing-preview-cta { flex: none; font-size: var(--text-sm); font-weight: 600; color: var(--accent); }
+        /* title | date | Read →  — the date sits between, right-aligned */
+        .writing-preview a { gap: 1.25rem; }
+        .writing-preview-title { flex: 1 1 auto; }
+        @media (max-width: 560px) {
+            .writing-preview a { flex-wrap: wrap; gap: 0.35rem 1rem; }
+            .writing-preview-title { flex: 1 1 100%; }
+            .writing-preview-date { margin-left: 0; }
+        }
+
+        /* ---------- 12. Results — Studio case study cards ---------- */
+        .results-preview {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        @media (min-width: 720px)  { .results-preview { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1100px) { .results-preview { grid-template-columns: repeat(4, 1fr); } }
+        .results-preview-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            background: var(--paper);
+            border-radius: var(--radius-3xl);
+            box-shadow: inset 0 0 0 1px var(--border);
+            text-decoration: none;
+            transition: background var(--dur-hover) var(--ease-out),
+                        transform var(--dur-hover) var(--ease-out);
+        }
+        .results-preview-card:hover { background: var(--n-50); transform: translateY(-2px); }
+
+        /* Client mark sits above the metric. Held in a fixed-height box so
+           four logos of very different aspect ratios share one baseline, and
+           desaturated at rest so the cards read as one row rather than four
+           competing brand colours. */
+        .results-logo {
+            display: flex;
+            align-items: center;
+            height: 34px;
+            margin-bottom: 1.25rem;
+        }
+        .results-logo img {
+            max-height: 100%;
+            max-width: 150px;
+            width: auto;
+            object-fit: contain;
+            object-position: left center;
+        }
+        /* The marks keep their real colours. Two of them (Modern Bungalow's
+           olive, CR Deals' navy) are dark enough to disappear on the ink
+           ground, so in dark mode every logo sits on its own light chip
+           rather than being recoloured. */
+        [data-theme="dark"] .results-logo:not(.results-logo-word) {
+            align-self: flex-start;
+            height: auto;
+            padding: 0.5rem 0.7rem;
+            background: #FFFFFF;
+            border-radius: var(--radius-md, 12px);
+        }
+        [data-theme="dark"] .results-logo img { max-height: 26px; }
+        /* Daleen's mark is portrait, so a shared height leaves it small next
+           to the wide wordmarks. */
+        .results-logo img[alt="Daleen Services"] { max-height: 128%; }
+        [data-theme="dark"] .results-logo img[alt="Daleen Services"] { max-height: 42px; }
+        /* Six Months to Speech has no mark in the intro deck, so it keeps a
+           wordmark set in the display face at the same height. */
+        .results-logo-word {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: var(--text-lg);
+            font-weight: 600;
+            letter-spacing: -0.015em;
+            color: var(--ink);
+            opacity: 0.75;
+        }
+        .results-preview-card:hover .results-logo-word { opacity: 1; }
+        /* The metric line as the card eyebrow — Studio case-study grammar */
+        .results-preview-stat {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: var(--text-xs);
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+        .results-preview-stat::before {
+            content: "";
+            flex: none;
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+        .results-preview-name {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: var(--text-2xl);
+            font-weight: 600;
+            color: var(--ink);
+            letter-spacing: -0.015em;
+            margin-bottom: 0.75rem;
+        }
+        .results-preview-context {
+            font-size: var(--text-base);
+            line-height: var(--text-base-lh);
+            color: var(--n-600);
+        }
+
+        /* ---------- 13. Calm panels: About + Where the work lives ---------- */
+        .panel-quiet {
+            padding: var(--sp-12) 2rem;
+            border-radius: var(--radius-4xl);
+            background: var(--n-50);
+            box-shadow: inset 0 0 0 1px var(--border);
+        }
+        .panel-pointer {
+            padding: var(--sp-16) 2rem;
+            background: var(--ink);
+            color: var(--paper);
+            /* Break out of the reading column so the dark ground spans the
+               page, the way launchforte.com's dark bands do. Without this it
+               reads as a black box floating on white. */
+            width: 100vw;
+            max-width: 100vw;
+            margin-left: calc(50% - 50vw);
+            margin-right: calc(50% - 50vw);
+            border-radius: 0;
+        }
+        .panel-pointer > * {
+            max-width: var(--max-content, 1120px);
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .panel-pointer .section-label { color: var(--paper); }
+        .panel-pointer .section-label::after { background: rgba(255,255,255,0.28); }
+        .panel-pointer .section-heading { color: var(--paper); }
+        .panel-pointer .gradient-text,
+        .main-wrapper .panel-pointer .gradient-text {
+            -webkit-text-fill-color: var(--accent);
+            color: var(--accent);
+        }
+        .panel-pointer .about-text { color: var(--n-400); }
+        .panel-pointer .btn-primary,
+        .main-wrapper .panel-pointer .btn-primary { background: var(--accent-strong); color: #fff; }
+        .main-wrapper .panel-pointer .btn-primary:hover { background: var(--accent-deep); color: #fff; }
+
+        /* ---------- 14. Closing CTA ---------- */
+        .cta-block {
+            padding: var(--sp-16) 2rem;
+            border-radius: var(--radius-4xl);
+            background: var(--n-50);
+            box-shadow: inset 0 0 0 1px var(--border);
+            text-align: center;
+        }
+        .cta-block h2 {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-weight: 500;
+            letter-spacing: -0.025em;
+            line-height: 1.1;
+            font-size: clamp(1.6rem, 3.4vw, 2.5rem);
+            color: var(--ink);
+            margin: 0 auto 1rem;
+            max-width: 24ch;
+        }
+        .cta-block .body-text { margin: 0 auto 2rem; color: var(--n-600); }
+
+        /* ---------- 15. Footer ---------- */
+        /* Video testimonial carousel, matching launchforte.com: 2 cards
+           visible on desktop, 1 on mobile, snap-scroll driven by the arrows.
+           Each vendor (Senja, HeyGen, native mp4) renders its own player
+           inside a uniform frame so the row reads as one set. */
+        .vt-carousel { position: relative; max-width: var(--max-content, 1120px); margin: 0 auto; padding: 0 2rem; }
+        .vt-track {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: calc((100% - 1.5rem) / 2);
+            gap: 1.5rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding: 0.25rem 0.25rem 1rem;
+        }
+        .vt-track::-webkit-scrollbar { display: none; }
+        .vt-card {
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+        .vt-frame {
             position: relative;
             width: 100%;
             aspect-ratio: 3 / 4;
-            border-radius: var(--radius-3xl);
+            border-radius: var(--radius-3xl, 1.5rem);
             overflow: hidden;
-            background: var(--n-100);
+            background: var(--ink);
+            margin-bottom: 1rem;
         }
-        .video-widget-wrap .senja-embed {
+        .vt-frame video,
+        .vt-frame iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: 0;
+            display: block;
+        }
+        .vt-senja { background: var(--n-100); aspect-ratio: 3 / 4; }
+        .vt-senja .senja-embed {
             position: absolute;
             top: 50%;
             left: 0;
             width: 100%;
             transform: translateY(-50%);
-            display: block;
+        }
+        .vt-heygen { aspect-ratio: 16 / 9; }
+        .vt-quote { padding: 0 0.25rem; }
+        .vt-quote-text {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: var(--text-base, 1rem);
+            line-height: 1.5;
+            color: var(--ink);
+            font-weight: 500;
+            font-style: italic;
+            margin: 0 0 0.75rem;
+        }
+        .vt-author {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: 0.9375rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 0.2rem;
+        }
+        .vt-author a { color: inherit; text-decoration: none; }
+        .vt-author a:hover { color: var(--accent); }
+        .vt-project {
+            font-size: 0.75rem;
+            color: var(--n-500);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+        }
+        .vt-arrow {
+            position: absolute;
+            top: 40%;
+            transform: translateY(-50%);
+            z-index: 5;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--paper);
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.10);
+            color: var(--ink);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.15s ease, background 0.15s ease, opacity 0.15s ease;
+        }
+        .vt-arrow svg { width: 20px; height: 20px; }
+        .vt-arrow:hover { background: var(--accent); color: #fff; border-color: var(--accent); transform: translateY(-50%) scale(1.05); }
+        .vt-arrow-prev { left: -0.5rem; }
+        .vt-arrow-next { right: -0.5rem; }
+        @media (max-width: 768px) {
+            .vt-carousel { padding: 0 1rem; }
+            .vt-track { grid-auto-columns: 100%; gap: 1rem; }
+            .vt-arrow-prev { left: 0.25rem; }
+            .vt-arrow-next { right: 0.25rem; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .vt-track { scroll-behavior: auto; }
+            .vt-arrow { transition: none; }
         }
 
-        /* The legacy .gradient-text rule uses !important throughout and paints
-           an animated blue gradient. In Studio the accent is a signature, not a
-           wash: the word reads as flat accent, no animation. Matching the
-           legacy specificity is the only way to beat !important. */
-        .gradient-text,
-        .page-title .gradient-text,
-        h1 .gradient-text, h2 .gradient-text {
-            background: none !important;
-            background-image: none !important;
-            animation: none !important;
-            -webkit-background-clip: border-box !important;
-            background-clip: border-box !important;
-            -webkit-text-fill-color: var(--accent) !important;
-            color: var(--accent) !important;
+        .footer-section {
+            margin-top: var(--sp-32);
+            padding: var(--sp-16) 2rem var(--sp-12);
+            border-top: 1px solid var(--border);
+            /* Own ground, spanning the viewport. Without a background the
+               black body showed either side of the pane and the footer read
+               as a white box floating on black. */
+            background: var(--paper);
+            color: var(--n-600);
+            width: 100vw;
+            max-width: 100vw;
+            margin-left: calc(50% - 50vw);
+            margin-right: calc(50% - 50vw);
         }
-        /* Stat numerals: accent, but never the animated gradient */
-        .result-stat, .case-study-stat, .featured-stat, .metric-value, .stat {
-            -webkit-text-fill-color: var(--accent) !important;
-            color: var(--accent) !important;
+        .footer-section > * {
+            max-width: var(--max-content, 1120px);
+            margin-left: auto;
+            margin-right: auto;
         }
+        /* Matches launchforte.com exactly: --text-2xl, centred, weight 600.
+           Was a clamp up to 2.5rem left-aligned, which read oversized. */
+        .footer-email-main {
+            display: block;
+            text-align: center;
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: var(--text-2xl);
+            font-weight: 600;
+            letter-spacing: -0.015em;
+            color: var(--ink);
+            text-decoration: none;
+            margin-bottom: var(--sp-16);
+            transition: color var(--dur-hover);
+        }
+        .footer-email-main:hover { color: var(--accent); }
+        .footer-columns {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+        @media (min-width: 720px) { .footer-columns { grid-template-columns: repeat(3, 1fr); } }
+        .footer-col h4 {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: var(--text-sm);
+            font-weight: 600;
+            color: var(--ink);
+            margin: 0 0 0.85rem;
+        }
+        .footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .footer-col li { margin: 0.35rem 0; }
+        .footer-col a {
+            color: var(--n-600);
+            font-size: var(--text-sm);
+            font-weight: 500;
+            text-decoration: none;
+            transition: color var(--dur-hover);
+        }
+        .footer-col a:hover { color: var(--ink); }
+        .footer-bottom {
+            margin-top: var(--sp-16);
+            padding-top: var(--sp-8);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .footer-location, .copyright {
+            font-size: var(--text-sm);
+            color: var(--n-500);
+            margin: 0 0 0.25rem;
+        }
+
+        /* ---------- 16. Motion — reveal on scroll ---------- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity var(--dur-reveal) var(--ease-out), transform var(--dur-reveal) var(--ease-out);
+        }
+        .reveal.revealed, .reveal.is-visible { opacity: 1; transform: none; }
+        .animate-up { opacity: 0; transform: translateY(24px); animation: hero-rise 800ms var(--ease-out) forwards; }
+        .delay-1 { animation-delay: 80ms; }
+        .delay-2 { animation-delay: 200ms; }
+        .delay-3 { animation-delay: 320ms; }
+        .delay-4 { animation-delay: 440ms; }
+        @keyframes hero-rise { to { opacity: 1; transform: none; } }
 
         @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .hero-video-layer video { display: none; }
             .reveal { opacity: 1; transform: none; transition: none; }
-            .animate-fade-up, .animate-fade-in, .animate-up { animation: none; opacity: 1; }
-            .stage-card:hover, .result-card:hover, .review-card:hover,
-            .btn-primary:hover { transform: none; }
+            .animate-up { opacity: 1; transform: none; animation: none; }
+            .btn-primary, .btn-ghost, .results-preview-card, .writing-preview a { transition: none; }
+            .btn-primary:hover, .results-preview-card:hover { transform: none; }
         }
 
-        /* Mobile discipline: two-element nav, 44px targets, no truncation */
+        /* ---------- 17. Section rhythm ---------- */
+        .studio-section { margin-top: var(--sp-24); }
+        @media (min-width: 640px) { .studio-section { margin-top: var(--sp-32); } }
+        @media (min-width: 1024px) { .studio-section { margin-top: var(--sp-40); } }
+
+        /* ---------- 18. Mobile discipline (runbook section 13) ---------- */
         @media (max-width: 768px) {
-            body { overflow-x: hidden; }
-            .btn-primary, .btn-secondary, .btn-ghost, .nav-link, .btn-link {
-                min-height: 44px;
-                display: inline-flex;
-                align-items: center;
+            /* Two-element nav: logo + hamburger. Links live in the overlay. */
+            .header-nav { display: none; }
+            .site-header { top: 1.25rem; }
+
+            .hero-cinematic { min-height: 82vh; padding: 7rem 0 4rem; }
+            .hero-headline { font-size: clamp(2rem, 8.5vw, 2.75rem); max-width: 100%; }
+            .hero-sub { font-size: var(--text-base); max-width: 100%; }
+            /* Video plays on mobile too (0.7-1.2MB, poster paints first), per
+               the Pass 8 treatment: full-width background rather than a panel.
+               The stacking rules live in the 900px block below. */
+            .hero-video-layer video,
+            .hero-video-layer img.hero-poster-fallback {
+                inset: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                min-width: 0;
+                min-height: 0;
+                transform: none;
+                object-fit: cover;
             }
+            .hero-video-layer::after {
+                background:
+                    linear-gradient(180deg, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.88) 60%, #0A0A0A 100%);
+            }
+            .hero-cta { gap: 0.65rem; }
+            .hero-cta .btn-primary, .hero-cta .btn-youtube {
+                min-height: 44px;
+                justify-content: center;
+                flex: 1 1 100%;
+            }
+
+            .main-wrapper { border-top-left-radius: var(--radius-3xl); border-top-right-radius: var(--radius-3xl); }
+            .cta-block, .panel-quiet { border-radius: var(--radius-3xl); }
+            .panel-quiet, .panel-pointer, .cta-block { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .results-preview-card { padding: 1.75rem 1.5rem; }
+            .featured-in { padding-left: 1.5rem; padding-right: 1.5rem; }
+
+            /* 44px targets everywhere they matter */
+            .writing-preview a { min-height: 44px; padding: 1.25rem 0.25rem; }
+            .nav-link, .btn-link, .footer-col a { min-height: 44px; display: inline-flex; align-items: center; }
+            .footer-col li { margin: 0; }
         }
-        
-        /* When .gradient-text wraps the ENTIRE page title (writing, results),
-           accenting it makes the whole headline blue — the signature becomes a
-           wash. Those read as ink; the accent stays for payoff words inside a
-           longer headline, which is how every other page uses it. */
-        .page-title > .gradient-text:only-child {
-            -webkit-text-fill-color: var(--ink) !important;
-            color: var(--ink) !important;
+        @media (max-width: 480px) {
+            .hero-cinematic { padding: 6.5rem 0 3.5rem; }
+            .hero-eyebrow { font-size: 0.7rem; letter-spacing: 0.14em; }
+            .cta-block h2 { font-size: 1.5rem; }
+            .footer-email-main { font-size: var(--text-xl); }
         }
         
         /* A primary button must not depend on --ink/--paper together: both flip
@@ -831,21 +1294,6 @@
         /* The Trusted By ribbon is an ink card in both themes, so its contents
            must stay light — --n-500/--ink flip and inverted it to grey-on-white
            in dark mode. Same class of bug as the footer. */
-        .trust-section { background: #0A0A0A !important; }
-        [data-theme="dark"] .trust-section {
-            background: #050505 !important;
-            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.10);
-        }
-        .trust-section .trust-label,
-        [data-theme="dark"] .trust-section .trust-label { color: #FFFFFF !important; }
-        .carousel-item,
-        [data-theme="dark"] .carousel-item { color: #D4D4D4 !important; }
-        .carousel-item:hover,
-        [data-theme="dark"] .carousel-item:hover { color: #4FB8F0 !important; }
-        .featured-in,
-        [data-theme="dark"] .featured-in { color: #D4D4D4 !important; }
-        .featured-in a,
-        [data-theme="dark"] .featured-in a { color: #FFFFFF !important; }
 
         /* Near-misses on their own grounds: nudge to clear AA outright. */
         .results-preview-stat { color: var(--accent-strong, #0077C4) !important; }
@@ -862,10 +1310,6 @@
            treatment above inverted it. Scope the light colour to the ribbon. */
         .featured-in { color: var(--n-600) !important; }
         .featured-in a { color: var(--ink) !important; }
-        .trust-section .featured-in,
-        [data-theme="dark"] .trust-section .featured-in { color: #D4D4D4 !important; }
-        .trust-section .featured-in a,
-        [data-theme="dark"] .trust-section .featured-in a { color: #FFFFFF !important; }
 
         /* Step numerals and small accent labels: darker accent on paper,
            brighter on ink. */
@@ -894,12 +1338,56 @@
         [data-theme="dark"] a { color: #4FB8F0; }
         [data-theme="dark"] a:hover { color: #7FCCF5; }
         
+        /* The H1's last word is swapped on a timer ("A System" ->
+           "Using The Right Data" -> ...). At narrow widths the longest option
+           wraps to an extra line, which resized the headline and shoved the
+           whole page down ~92px on every cycle. Reserve the tallest variant's
+           height up front so the layout never moves.
+
+           min-height is set from the real rendered height of the longest word
+           at load, and re-measured on resize. The CSS floor below is a
+           no-JS/first-paint fallback in the same proportions. */
+        .hero-headline {
+            min-height: calc(2 * 1.05em);
+        }
+        /* Measured: only "Using The Right Data" needs a third line, and only
+           at ~560px and below. Above that every variant is the same height. */
+        @media (max-width: 560px) {
+            .hero-headline { min-height: calc(3 * 1.05em); }
+        }
+        
+        /* ---------- Mobile hero: LaunchForte Pass 8 treatment, stacked ----------
+           Pass 8 drops the video to full-width at reduced opacity below 900px so
+           it reads as a background layer rather than a panel beside the text.
+           Same here, with the video playing on mobile (it is 0.7-1.2MB and the
+           poster still paints first). */
+        @media (max-width: 900px) {
+            .hero-video-layer video,
+            .hero-video-layer img.hero-poster-fallback {
+                --hero-focus: 50%;
+                opacity: 0.55;
+            }
+            /* Stacked: overlay runs top-to-bottom, not left-to-right, because
+               the text now sits ON the video rather than beside it. */
+            .hero-video-layer::after {
+                background:
+                    linear-gradient(180deg,
+                        rgba(10,10,10,0.86) 0%,
+                        rgba(10,10,10,0.62) 38%,
+                        rgba(10,10,10,0.78) 72%,
+                        #0A0A0A 100%);
+            }
+            .hero-inner { text-align: left; }
+            .hero-headline { max-width: 100%; }
+        }
+
         /* ---------- Hamburger: visible on every ground ----------
            hamburger.js styles .hamburger-btn with var(--background) +
            var(--text-primary), which over the dark hero video resolves to
            near-white on near-white — the button was invisible. Give it the same
            chip treatment the theme toggle got. */
         html[data-studio] .hamburger-btn {
+            display: none;
             background: rgba(10,10,10,0.45) !important;
             border: 1px solid rgba(255,255,255,0.28) !important;
             color: #FFFFFF !important;
@@ -909,7 +1397,10 @@
             width: 36px !important;
             height: 36px !important;
         }
-        /* Off the dark hero the chip flips to match the pane it sits on. */
+        @media (max-width: 768px) {
+            html[data-studio] .hamburger-btn { display: flex !important; }
+        }
+        html[data-studio] .site-header.is-stuck ~ .hamburger-btn,
         html[data-studio] body.past-hero .hamburger-btn {
             background: rgba(255,255,255,0.82) !important;
             border-color: rgba(10,10,10,0.14) !important;
@@ -923,7 +1414,7 @@
         /* Overlay + close button in Studio tokens, readable in both themes */
         html[data-studio] .hamburger-overlay { background: var(--paper) !important; }
         html[data-studio] .hamburger-overlay a { color: var(--ink) !important; opacity: 1; }
-        html[data-studio] .hamburger-overlay a *,
+        html[data-studio] .hamburger-overlay a * ,
         html[data-studio] .hamburger-overlay a span {
             color: var(--ink) !important;
             -webkit-text-fill-color: var(--ink) !important;
@@ -942,301 +1433,16 @@
             color: var(--ink) !important;
         }
         
-        /* .main-wrapper is max-width:1100px with 2rem side padding, so the
-           hero must break out of BOTH to reach the viewport edges. calc against
-           the wrapper's own box does it without needing to know the width. */
-        /* The wrapper is max-width:1100px with 2rem padding. Rather than fight
-           it with calc (which resolves against the wrapper's box, not the
-           viewport), drop the hero out of flow with a viewport-anchored width
-           and let a spacer hold its height. */
-        .main-wrapper { padding-top: 0 !important; }
-        .page-hero-zone {
-            position: relative;
-            isolation: isolate;
-            overflow: hidden;
-            background: #0A0A0A;
-            box-sizing: border-box;
-            width: 100vw;
-            margin-left: calc(50% - 50vw);
-            margin-right: calc(50% - 50vw);
-            padding: 9rem 2rem 5rem;
-        }
-        /* undo the wrapper's own side padding for this one child */
-        .main-wrapper > .page-hero-zone { position: relative; }
-        .page-hero-zone > * {
-            position: relative;
-            z-index: 2;
-            max-width: var(--max-content, 1120px);
-            margin-left: auto;
-            margin-right: auto;
-        }
-        @media (min-width: 640px) { .page-hero-zone { padding-left: 2rem; padding-right: 2rem; } }
-
-        .page-hero-zone .hero-video-layer {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-            overflow: hidden;
-        }
-        .page-hero-zone .hero-video-layer video,
-        .page-hero-zone .hero-video-layer img.hero-poster-fallback {
-            position: absolute;
-            inset: 0;
-            width: 100% !important;
-            max-width: none !important;
-            height: 100% !important;
-            margin: 0 !important;
-            border-radius: 0 !important;
-            object-fit: cover;
-            object-position: var(--hero-focus, 50%) center;
-        }
-        .page-hero-zone .hero-video-layer img.hero-poster-fallback { --hero-focus: 43%; }
-        .page-hero-zone .hero-video-layer::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background:
-                linear-gradient(90deg, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.80) 45%, rgba(10,10,10,0.62) 100%),
-                linear-gradient(to bottom, rgba(10,10,10,0.34) 0%, rgba(10,10,10,0) 34%, rgba(10,10,10,0.30) 74%, #0A0A0A 100%);
-        }
-
-        /* Type on the dark ground reads light in BOTH themes */
-        .page-hero-zone .page-title,
-        .page-hero-zone h1,
-        [data-theme="dark"] .page-hero-zone .page-title,
-        [data-theme="dark"] .page-hero-zone h1 {
-            color: #FFFFFF !important;
-            -webkit-text-fill-color: #FFFFFF !important;
-        }
-        .page-hero-zone .page-subtitle,
-        .page-hero-zone .page-intro,
-        [data-theme="dark"] .page-hero-zone .page-subtitle,
-        [data-theme="dark"] .page-hero-zone .page-intro {
-            color: rgba(255,255,255,0.76) !important;
-            -webkit-text-fill-color: rgba(255,255,255,0.76) !important;
-        }
-        .page-hero-zone .section-label,
-        .page-hero-zone .eyebrow,
-        [data-theme="dark"] .page-hero-zone .section-label,
-        [data-theme="dark"] .page-hero-zone .eyebrow {
-            color: #FFFFFF !important;
-        }
-        .page-hero-zone .section-label::after,
-        .page-hero-zone .eyebrow::after { background: rgba(255,255,255,0.28) !important; }
-        /* the accent word keeps the accent, brightened for the dark ground */
-        .page-hero-zone .gradient-text,
-        .page-hero-zone .page-title > .gradient-text:only-child,
-        [data-theme="dark"] .page-hero-zone .gradient-text {
-            color: #4FB8F0 !important;
-            -webkit-text-fill-color: #4FB8F0 !important;
-            background: none !important;
-        }
-        .page-hero-zone .back-link,
-        .page-hero-zone .btn-ghost-link,
-        [data-theme="dark"] .page-hero-zone .back-link,
-        [data-theme="dark"] .page-hero-zone .btn-ghost-link {
-            color: rgba(255,255,255,0.80) !important;
-        }
-        .page-hero-zone .btn-ghost {
-            color: #FFFFFF !important;
-            border-color: rgba(255,255,255,0.30) !important;
-            background: transparent !important;
-        }
-        .page-hero-zone .credibility-item,
-        [data-theme="dark"] .page-hero-zone .credibility-item {
-            color: rgba(255,255,255,0.80) !important;
-        }
-
-        /* Mobile: full-width background layer, stacked (Pass 8 treatment) */
-        @media (max-width: 900px) {
-            .page-hero-zone .hero-video-layer video,
-            .page-hero-zone .hero-video-layer img.hero-poster-fallback {
-                --hero-focus: 50%;
-                opacity: 0.55;
-            }
-            .page-hero-zone .hero-video-layer::after {
-                background: linear-gradient(180deg,
-                    rgba(10,10,10,0.86) 0%, rgba(10,10,10,0.62) 38%,
-                    rgba(10,10,10,0.78) 72%, #0A0A0A 100%);
-            }
-        }
-        @media (max-width: 768px) {
-            .page-hero-zone { padding: 7rem 1.5rem 3.5rem; }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            .page-hero-zone .hero-video-layer video { display: none; }
-        }
-        
-
-        /* ============================================================
-           HERO + HEADER — one definition, identical on every page.
-           Matches the homepage: the sticky header floats transparently over a
-           full-bleed dark video zone, then earns a paper background once the
-           pane scrolls under it. Do not add per-page overrides; edit here.
-           ============================================================ */
-
-        /* The wrapper stops constraining width; each child gets its own column
-           back, so the hero alone can run edge to edge. */
-        .main-wrapper {
-            max-width: none !important;
-            padding-left: 0 !important;
-            padding-right: 0 !important;
-            padding-top: 0 !important;
-        }
-        .main-wrapper > *:not(.page-hero-zone) {
-            max-width: 1100px;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 2rem;
-            padding-right: 2rem;
-            box-sizing: border-box;
-        }
-
-        /* Hero pulled up under the sticky header so the dark zone reaches
-           behind the nav — otherwise white links land on the white pane. */
-        .site-header { margin-bottom: -5.5rem !important; }
-
-        .page-hero-zone {
-            position: relative;
-            isolation: isolate;
-            overflow: hidden;
-            box-sizing: border-box;
-            width: 100% !important;
-            max-width: none !important;
-            margin: 0 !important;
-            background: #0A0A0A;
-            padding: 10rem 2rem 5rem !important;
-        }
-        /* Content sits in the reading column; the video layer does not. */
-        .page-hero-zone > *:not(.hero-video-layer) {
-            position: relative;
-            z-index: 2;
-            max-width: 1100px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+        /* The video layer is a child of the zone, so the `> *` max-width rule
+           above was capping it to --max-content (1120px) and leaving 80px of
+           pane either side. It must span the zone edge to edge. */
         .page-hero-zone > .hero-video-layer {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
             max-width: none !important;
             width: 100% !important;
             margin: 0 !important;
             padding: 0 !important;
-            overflow: hidden;
-        }
-        .page-hero-zone .hero-video-layer video,
-        .page-hero-zone .hero-video-layer img.hero-poster-fallback {
-            position: absolute;
-            inset: 0;
-            width: 100% !important;
-            max-width: none !important;
-            height: 100% !important;
-            margin: 0 !important;
-            border-radius: 0 !important;
-            object-fit: cover;
-            object-position: var(--hero-focus, 50%) center;
-        }
-        .page-hero-zone .hero-video-layer img.hero-poster-fallback { --hero-focus: 43%; }
-        .page-hero-zone .hero-video-layer::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background:
-                linear-gradient(90deg, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.80) 45%, rgba(10,10,10,0.62) 100%),
-                linear-gradient(to bottom, rgba(10,10,10,0.34) 0%, rgba(10,10,10,0) 34%, rgba(10,10,10,0.30) 74%, #0A0A0A 100%);
-        }
-
-        /* Everything in the dark zone reads light, in BOTH themes. */
-        .page-hero-zone .page-title, .page-hero-zone h1,
-        .page-hero-zone .article-title, .page-hero-zone .case-title,
-        [data-theme="dark"] .page-hero-zone .page-title,
-        [data-theme="dark"] .page-hero-zone h1,
-        [data-theme="dark"] .page-hero-zone .article-title,
-        [data-theme="dark"] .page-hero-zone .case-title {
-            color: #FFFFFF !important;
-            -webkit-text-fill-color: #FFFFFF !important;
-            padding-top: 0 !important;
-        }
-        .page-hero-zone .page-subtitle, .page-hero-zone .page-intro,
-        .page-hero-zone .case-subtitle, .page-hero-zone .hero-intro,
-        [data-theme="dark"] .page-hero-zone .page-subtitle,
-        [data-theme="dark"] .page-hero-zone .page-intro,
-        [data-theme="dark"] .page-hero-zone .case-subtitle,
-        [data-theme="dark"] .page-hero-zone .hero-intro {
-            color: rgba(255,255,255,0.92) !important;
-            -webkit-text-fill-color: rgba(255,255,255,0.92) !important;
-        }
-        .page-hero-zone .article-meta,
-        [data-theme="dark"] .page-hero-zone .article-meta { color: rgba(255,255,255,0.86) !important; }
-        .page-hero-zone .section-label, .page-hero-zone .eyebrow,
-        [data-theme="dark"] .page-hero-zone .section-label,
-        [data-theme="dark"] .page-hero-zone .eyebrow { color: #FFFFFF !important; }
-        .page-hero-zone .section-label::after,
-        .page-hero-zone .eyebrow::after { background: rgba(255,255,255,0.28) !important; }
-        .page-hero-zone .gradient-text,
-        .page-hero-zone .case-eyebrow,
-        [data-theme="dark"] .page-hero-zone .gradient-text,
-        [data-theme="dark"] .page-hero-zone .case-eyebrow {
-            color: #4FB8F0 !important;
-            -webkit-text-fill-color: #4FB8F0 !important;
-            background: none !important;
-        }
-        .page-hero-zone .back-link, .page-hero-zone .btn-ghost-link,
-        [data-theme="dark"] .page-hero-zone .back-link,
-        [data-theme="dark"] .page-hero-zone .btn-ghost-link {
-            color: rgba(255,255,255,0.92) !important;
-            display: inline-block;
-            margin-bottom: 1.25rem;
-        }
-        .page-hero-zone .btn-ghost {
-            color: #FFFFFF !important;
-            border-color: rgba(255,255,255,0.30) !important;
-            background: transparent !important;
-        }
-        .page-hero-zone .credibility-item,
-        [data-theme="dark"] .page-hero-zone .credibility-item { color: rgba(255,255,255,0.92) !important; }
-        .page-hero-zone .case-capability-tag {
-            background: rgba(255,255,255,0.14) !important;
-            color: #FFFFFF !important;
-        }
-        /* Anchor chips / pills sitting in the hero */
-        .page-hero-zone .jump-link, .page-hero-zone .anchor-nav a {
-            background: rgba(255,255,255,0.92) !important;
-            color: #0A0A0A !important;
-            border-color: transparent !important;
-        }
-
-        /* Nav over the dark zone reads light; the shared header script flips
-           .is-stuck once the pane arrives. */
-        .site-header:not(.is-stuck) .header-logo { color: #FFFFFF !important; }
-        .site-header:not(.is-stuck) .nav-link { color: rgba(255,255,255,0.82) !important; }
-        .site-header:not(.is-stuck) .nav-link:hover,
-        .site-header:not(.is-stuck) .nav-link.active {
-            color: #FFFFFF !important;
-            background: rgba(255,255,255,0.12) !important;
-        }
-
-        /* Mobile: full-width background layer, stacked (Pass 8 treatment) */
-        @media (max-width: 900px) {
-            .page-hero-zone .hero-video-layer video,
-            .page-hero-zone .hero-video-layer img.hero-poster-fallback {
-                --hero-focus: 50%;
-                opacity: 0.55;
-            }
-            .page-hero-zone .hero-video-layer::after {
-                background: linear-gradient(180deg,
-                    rgba(10,10,10,0.86) 0%, rgba(10,10,10,0.62) 38%,
-                    rgba(10,10,10,0.78) 72%, #0A0A0A 100%);
-            }
-        }
-        @media (max-width: 768px) {
-            .site-header { margin-bottom: -4.75rem !important; }
-            .page-hero-zone { padding: 8rem 1.5rem 3.5rem !important; }
-            .main-wrapper > *:not(.page-hero-zone) { padding-left: 1.5rem; padding-right: 1.5rem; }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            .page-hero-zone .hero-video-layer video { display: none; }
+            left: 0 !important;
+            right: 0 !important;
         }
         
         /* The poster <img> and the <video> were both painting at 0.55 opacity,
@@ -1251,208 +1457,119 @@
         @media (max-width: 900px) {
             .hero-video-layer.video-live video { opacity: 0.50 !important; }
         }
-        
+        @media (max-width: 768px) {
+            .hero-video-layer video { display: none; }
+        }
+
         /* ============================================================
-           Atmospheric hero (matches sethforte.com/index.html)
+           HERO ZONE REBUILD (spec 2026-07-30)
            ============================================================ */
         .hero-zone {
-            position: relative;
-            background:
-                radial-gradient(ellipse 900px 600px at 15% 20%, rgba(74,181,237,0.18), transparent 60%),
-                radial-gradient(ellipse 700px 500px at 90% 90%, rgba(0,136,219,0.10), transparent 60%),
-                #0A0A0A;
-            color: #FFFFFF;
-            overflow: hidden;
-            padding-bottom: 3rem;
+          position: relative;
+          background:
+            radial-gradient(ellipse 900px 600px at 15% 20%, rgba(74,181,237,0.18), transparent 60%),
+            radial-gradient(ellipse 700px 500px at 90% 90%, rgba(0,136,219,0.10), transparent 60%),
+            #0A0A0A;
+          color: #FFFFFF;
+          overflow: hidden;
+          padding-bottom: 3rem;
         }
-        main.main-wrapper.hero-follows { margin-top: 0; padding-top: 0; }
-        main.main-wrapper.hero-follows > :first-child { margin-top: 0; }
+        main.hero-follows {
+          margin-top: 0;
+          padding-top: 0;
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+        }
+        main.hero-follows::before { display: none; }
 
-        .hero-overlay { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+        .hero-zone .hero-video {
+          position: absolute;
+          top: 0; left: 0;
+          width: 100%; height: 100%;
+          object-fit: cover;
+          object-position: center bottom;
+          z-index: 0;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .hero-zone .hero-video { display: none; }
+        }
+
+        .hero-video-tint {
+          position: absolute;
+          inset: 0;
+          background: rgba(0, 0, 0, 0.28);
+          z-index: 1;
+          pointer-events: none;
+        }
+
+        .hero-overlay {
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          z-index: 1;
+        }
         .hero-overlay-btm {
-            background: linear-gradient(180deg, transparent 70%, rgba(10,10,10,0.55) 88%, #FFFFFF 100%);
+          background: linear-gradient(180deg, transparent 70%, rgba(10,10,10,0.55) 88%, #FFFFFF 100%);
         }
         [data-theme="dark"] .hero-overlay-btm {
-            background: linear-gradient(180deg, transparent 70%, rgba(10,10,10,0.4) 88%, #0A0A0A 100%);
+          background: linear-gradient(180deg, transparent 70%, rgba(10,10,10,0.4) 88%, #0A0A0A 100%);
         }
 
-        .hero-content { position: relative; z-index: 20; padding: 6rem 0 3rem; }
-
-        /* ===== HERO PARITY (inner pages match homepage) ===== */
-        /* The homepage headline is .hero-headline; inner pages use .page-title
-           / .article-title / .case-title inside the same .hero-zone. They were
-           set at a different size, weight and -- critically -- coloured with
-           var(--text-primary), which flips to near-black in light mode while
-           the hero pane stays #0A0A0A. Result: dark-on-dark. Everything below
-           is stated without a [data-theme] prefix so it holds in both themes. */
-
-        /* --- 1. Headline matches the homepage spec exactly --- */
-        .hero-zone .page-title,
-        .hero-zone .article-title,
-        .hero-zone .case-title,
-        .hero-zone h1 {
-            font-family: var(--font-display);
-            font-variation-settings: var(--font-display-vars);
-            font-weight: 500;
-            letter-spacing: -0.03em;
-            line-height: 1.05;
-            font-size: clamp(2.25rem, 6vw, 4.5rem);
-            margin: 0 auto 1.5rem;
-            max-width: 20ch;
-            color: #FFFFFF !important;
-            -webkit-text-fill-color: #FFFFFF !important;
+        .hero-nav {
+          position: sticky;
+          top: 0;
+          z-index: 40;
+          padding: 1.15rem 0;
+          background: transparent !important;
+          -webkit-backdrop-filter: none !important;
+          backdrop-filter: none !important;
+          border-bottom: 1px solid transparent !important;
+          transition: background 0.2s ease, border-color 0.2s ease;
         }
+        .hero-nav.is-scrolled {
+          background: rgba(10, 10, 10, 0.82) !important;
+          -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
+          backdrop-filter: saturate(180%) blur(20px) !important;
+          border-bottom-color: rgba(255,255,255,0.08) !important;
+        }
+        .hero-nav .logo img { filter: brightness(0) invert(1); }
 
-        /* --- 2. Sub/intro matches the homepage .hero-sub --- */
-        .hero-zone .hero-intro,
-        .hero-zone .page-subtitle,
-        .hero-zone .page-intro,
-        .hero-zone .case-subtitle,
-        .hero-zone .hero-sub {
-            font-size: var(--text-xl);
-            font-weight: 400;
-            line-height: 1.6;
-            max-width: 60ch;
-            margin-left: auto;
-            margin-right: auto;
-            color: rgba(255,255,255,0.92) !important;
-            -webkit-text-fill-color: rgba(255,255,255,0.92) !important;
+        .hero-content {
+          position: relative;
+          z-index: 20;
+          padding: 6rem 0 3rem;
         }
+        .hero-content-inner {
+          max-width: 960px;
+          margin: 0 auto;
+          padding: 0 1.5rem;
+          text-align: center;
+        }
+        .hero-zone .hero-cta { justify-content: center; }
+        .hero-zone .hero-sub { margin-left: auto; margin-right: auto; }
 
-        /* --- 3. Supporting text on the dark pane stays light in both themes --- */
-        .hero-zone .article-meta,
-        .hero-zone .credibility-item,
-        .hero-zone .back-link,
-        .hero-zone .btn-ghost-link,
-        .hero-zone .case-meta {
-            color: rgba(255,255,255,0.86) !important;
-            -webkit-text-fill-color: rgba(255,255,255,0.86) !important;
-        }
-
-        /* --- 4. Eyebrow: dot + label + trailing rule, centred, matching the
-               homepage .hero-eyebrow. Only styles an eyebrow already present
-               in the markup -- none is injected. --- */
-        .hero-zone .section-label,
-        .hero-zone .eyebrow,
-        .hero-zone .case-eyebrow {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.85rem;
-            margin: 0 auto 1.5rem;
-            font-family: var(--font-display);
-            font-variation-settings: var(--font-display-vars);
-            font-size: var(--text-xs);
-            font-weight: 700;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            line-height: 1.2;
-            color: #FAFAFA !important;
-            -webkit-text-fill-color: #FAFAFA !important;
-        }
-        .hero-zone .section-label::before,
-        .hero-zone .eyebrow::before,
-        .hero-zone .case-eyebrow::before {
-            content: "";
-            flex: none;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--accent);
-            box-shadow: 0 0 0 4px var(--accent-tint);
-        }
-        /* replace the old left-aligned accent bar with the homepage's rule */
-        .hero-zone .section-label::after,
-        .hero-zone .eyebrow::after,
-        .hero-zone .case-eyebrow::after {
-            content: "";
-            flex: none;
-            width: 40px;
-            height: 1px;
-            background: rgba(255,255,255,0.28) !important;
-        }
-
-        /* --- 5. The accent phrase keeps the homepage gradient --- */
-        .hero-zone .gradient-text {
-            background: linear-gradient(120deg, var(--accent) 0%, #5BC0FF 100%) !important;
-            -webkit-background-clip: text !important;
-            background-clip: text !important;
-            -webkit-text-fill-color: transparent !important;
-            color: transparent !important;
-            display: inline-block;
-        }
-
-        /* --- 6. Links in the hero read light in both themes --- */
-        .hero-zone a:not(.btn-primary):not(.btn-ghost) {
-            color: #FFFFFF;
-        }
-        .hero-zone .btn-ghost {
-            color: #FFFFFF !important;
-            border-color: rgba(255,255,255,0.30) !important;
-            background: transparent !important;
-        }
-
-        /* --- 7. Vertical rhythm: give inner heroes a real stage so they read
-               as the same system as the homepage's tall cinematic pane. --- */
-        .hero-zone .hero-content {
-            padding-top: 7rem;
-            padding-bottom: 4.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .hero-zone .page-title,
-            .hero-zone .article-title,
-            .hero-zone .case-title,
-            .hero-zone h1 {
-                font-size: clamp(2rem, 8.5vw, 2.75rem);
-                max-width: 100%;
-            }
-            .hero-zone .hero-intro,
-            .hero-zone .page-subtitle,
-            .hero-zone .page-intro,
-            .hero-zone .case-subtitle,
-            .hero-zone .hero-sub {
-                font-size: var(--text-base);
-                max-width: 100%;
-            }
-            .hero-zone .hero-content {
-                padding-top: 5.5rem;
-                padding-bottom: 3.25rem;
-            }
-            .hero-zone .section-label,
-            .hero-zone .eyebrow,
-            .hero-zone .case-eyebrow {
-                font-size: 0.7rem;
-                letter-spacing: 0.14em;
-            }
-        }
-        /* ===== END HERO PARITY ===== */
-
-        .hero-content-inner { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; text-align: center; }
-        @media (min-width: 640px) { .hero-content-inner { padding: 0 2rem; } }
-
-        /* Hero contrast: everything inside the dark hero reads light in BOTH themes. */
+        /* Hero contrast: everything inside the dark hero reads light in BOTH themes.
+           Beats the base .page-title / body text rules that use --text-primary,
+           which flips to black in light mode. */
         .hero-zone,
         .hero-zone h1, .hero-zone h2, .hero-zone h3,
         .hero-zone p, .hero-zone .page-title, .hero-zone .page-subtitle,
-        .hero-zone .article-title, .hero-zone .article-meta,
-        .hero-zone .case-title, .hero-zone .case-subtitle,
-        .hero-zone .page-intro, .hero-zone .hero-intro,
-        .hero-zone .section-label, .hero-zone .eyebrow,
+        .hero-zone .hero-h1, .hero-zone .hero-headline, .hero-zone .hero-sub,
+        .hero-zone .hero-intro, .hero-zone .hero-eyebrow, .hero-zone .section-label,
         [data-theme="dark"] .hero-zone,
         [data-theme="dark"] .hero-zone h1, [data-theme="dark"] .hero-zone h2,
         [data-theme="dark"] .hero-zone p, [data-theme="dark"] .hero-zone .page-title {
             color: #FFFFFF !important;
             -webkit-text-fill-color: #FFFFFF !important;
         }
+        .hero-zone .hero-sub,
         .hero-zone .page-subtitle,
-        .hero-zone .page-intro,
-        .hero-zone .article-meta,
-        .hero-zone .case-subtitle,
         .hero-zone .hero-intro {
             color: rgba(255,255,255,0.76) !important;
             -webkit-text-fill-color: rgba(255,255,255,0.76) !important;
         }
+        /* Gradient-text (payoff word) reads as brightened accent blue on dark ground,
+           not the base black-text override that beats out gradient-background clipping. */
         .hero-zone .gradient-text,
         .hero-zone .page-title > .gradient-text:only-child,
         [data-theme="dark"] .hero-zone .gradient-text {
@@ -1461,24 +1578,39 @@
             background: none !important;
             background-image: none !important;
         }
+        /* Ghost/link buttons and back-link inside the hero read light too */
         .hero-zone .back-link,
-        [data-theme="dark"] .hero-zone .back-link {
+        .hero-zone .btn-ghost-link,
+        .hero-zone .btn-ghost,
+        [data-theme="dark"] .hero-zone .back-link,
+        [data-theme="dark"] .hero-zone .btn-ghost-link,
+        [data-theme="dark"] .hero-zone .btn-ghost {
             color: rgba(255,255,255,0.80) !important;
-            text-decoration: none;
+            border-color: rgba(255,255,255,0.30) !important;
         }
-        .hero-zone .back-link:hover {
-            color: #FFFFFF !important;
+        .hero-zone .credibility-item,
+        [data-theme="dark"] .hero-zone .credibility-item {
+            color: rgba(255,255,255,0.80) !important;
         }
         /* Hero contrast: catch-all for any interactive element inside the hero
-           (pill-nav links, anchor pills, ghost buttons, chips, plain <a> tags)
-           so they read as light-on-dark in both themes rather than the base
-           var(--text-secondary) which flips dark in light mode and disappears. */
+           (pill-nav, anchor pills, chips, plain <a>) — read light on dark. */
         .hero-zone a,
         [data-theme="dark"] .hero-zone a {
             color: rgba(255,255,255,0.85) !important;
         }
         .hero-zone a:hover,
         [data-theme="dark"] .hero-zone a:hover {
+            color: #FFFFFF !important;
+        }
+        /* The YouTube button is white-on-red in every state, so it opts out
+           of the translucent-white catch-all above. That rule is !important,
+           so the exemption has to be too. */
+        .hero-zone a.btn-youtube,
+        .hero-zone a.btn-youtube:hover,
+        .hero-zone a.btn-youtube:focus-visible,
+        [data-theme="dark"] .hero-zone a.btn-youtube,
+        [data-theme="dark"] .hero-zone a.btn-youtube:hover,
+        [data-theme="dark"] .hero-zone a.btn-youtube:focus-visible {
             color: #FFFFFF !important;
         }
         .hero-zone .pill-link,
@@ -1501,9 +1633,6 @@
             border-color: rgba(255,255,255,0.4) !important;
             background: rgba(255,255,255,0.08) !important;
         }
-        /* Ghost/link buttons inside the hero: preserve the earlier .btn-ghost-link
-           rule (kept ~0.80 white text) but also give them a visible underline on hover
-           for affordance. */
         .hero-zone .btn-link,
         [data-theme="dark"] .hero-zone .btn-link {
             color: rgba(255,255,255,0.85) !important;
@@ -1513,14 +1642,315 @@
             color: #FFFFFF !important;
             text-decoration: underline;
         }
-    
-        /* ---------- Off the Screen (the workshop) ----------
-           Built from the site's existing tokens. The only new idea is the
-           four-area grid and its line-drawn marks — no photography, because
-           none of these builds exist yet. When they do, drop a .ws-projects
-           grid in place of .ws-soon and the layout holds. */
-        .ws-intro { max-width: 68ch; margin-top: var(--sp-10); }
-        .ws-intro .about-text { margin-bottom: 1.1rem; }
+        @media (min-width: 640px) {
+          .hero-content-inner { padding: 0 2rem; }
+        }
+
+        .hero-h1 {
+          font-family: 'Inter', sans-serif;
+          font-weight: 500;
+          font-size: clamp(2.25rem, 5.5vw, 4.25rem);
+          line-height: 1.05;
+          letter-spacing: -0.03em;
+          margin: 0 auto 1.5rem;
+          max-width: 18ch;
+          color: #FFFFFF;
+          text-wrap: balance;
+        }
+
+        @media (max-width: 768px) {
+          .hero-zone { padding-bottom: 1.5rem; }
+          .hero-zone .hero-content-inner { text-align: center; }
+          .hero-zone .hero-h1 {
+            max-width: 100% !important;
+            font-size: clamp(1.75rem, 8vw, 2.5rem);
+          }
+        }
+        
+        /* Home About panel: the portrait beside the blurb, so the person shows
+           up on the page that acts as the cover letter. */
+        .home-about {
+            display: grid;
+            grid-template-columns: minmax(0, 200px) minmax(0, 1fr);
+            gap: 2rem;
+            align-items: center;
+        }
+        .home-about-photo {
+            width: 200px;
+            height: 240px;
+            border-radius: var(--radius-3xl);
+            display: block;
+            object-fit: cover;
+            object-position: center 20%;
+        }
+        /* The warmer half of the about teaser. The credential line alone
+           gave no reason to click through; this one names the person, which
+           is what the about page actually delivers. */
+        .about-text-personal {
+            margin-top: 0.85rem;
+        }
+
+        .home-about-text > :last-child { margin-bottom: 0; }
+        @media (max-width: 760px) {
+            .home-about { grid-template-columns: 1fr; gap: 1.5rem; }
+            .home-about-photo { width: 100%; height: 220px; }
+        }
+        
+        /* Review grid — ported verbatim from launchforte.com (index.html
+           lines 650-657). Gold stars, ring-1 card, hover lift. */
+        .review-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2rem; }
+        @media (min-width: 700px) { .review-grid { grid-template-columns: repeat(2, 1fr); } }
+        .review-card-lf {
+            padding: 2rem;
+            background: var(--paper);
+            border-radius: var(--radius-3xl);
+            box-shadow: inset 0 0 0 1px var(--border);
+            transition: transform var(--dur-hover), background var(--dur-hover);
+        }
+        .review-card-lf:hover { transform: translateY(-2px); background: var(--n-50); }
+        .review-stars-lf { color: #EBBF3A; font-size: var(--text-sm); letter-spacing: 3px; margin-bottom: 1rem; }
+        .review-quote-lf {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: var(--text-lg);
+            line-height: 1.5;
+            color: var(--ink);
+            font-weight: 500;
+            margin: 0 0 1.25rem;
+        }
+        .review-author-lf {
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: var(--text-sm);
+            font-weight: 600;
+            color: var(--ink);
+            margin: 0 0 0.25rem;
+        }
+        .review-project-lf {
+            font-size: var(--text-xs);
+            color: var(--n-500);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+        }
+        @media (prefers-reduced-motion: reduce) { .review-card-lf:hover { transform: none; } }
+        
+        /* Single-scroll page: nav jumps to sections, so keep headings clear of
+           the sticky header when an anchor lands. */
+        #about, #projects, #results, #reviews, #writing, #contact { scroll-margin-top: 90px; }
+        
+        /* ---------- Forte Signals ----------
+           Personal, quiet, and built from the same tokens as the rest of the
+           page. Deliberately NOT a marketing unit: no illustration, no count,
+           no popup. The GHL iframe carries the fields. */
+        .signals {
+            padding: var(--sp-12) 2rem;
+            border-radius: var(--radius-4xl);
+            background: var(--n-50);
+            box-shadow: inset 0 0 0 1px var(--border);
+        }
+        .signals .section-heading { max-width: 22ch; margin-bottom: 1.25rem; }
+        .signals-copy {
+            color: var(--n-600);
+            font-size: var(--text-lg);
+            line-height: 1.75;
+            max-width: 62ch;
+            margin: 0 0 1rem;
+        }
+        .signals-copy-last { margin-bottom: 2rem; }
+        .signals-form {
+            position: relative;
+            max-width: 520px;
+            height: 363px;
+            margin-bottom: 1rem;
+            border-radius: var(--radius-3xl);
+            overflow: hidden;
+            background: var(--paper);
+            box-shadow: inset 0 0 0 1px var(--border);
+        }
+        /* GHL's embed script promotes the iframe to position:absolute, which
+           takes it out of flow. Without a height here the wrapper collapses
+           to zero and overflow:hidden clips the form away entirely. */
+        .signals-form iframe {
+            display: block;
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .signals-fine {
+            margin: 1rem 0 0;
+            font-size: var(--text-sm);
+            color: var(--n-500);
+            line-height: 1.6;
+        }
+        /* The live gate still guards the form: data-signals-live="false"
+           hides it and stops the GHL request, for any future pause. */
+        #signals[data-signals-live="false"] [data-signals-form] { display: none; }
+
+        @media (max-width: 640px) {
+            .signals { padding: var(--sp-10) 1.25rem; border-radius: var(--radius-3xl); }
+            .signals-copy { font-size: var(--text-base); }
+            .signals-form { max-width: 100%; }
+            /* GHL stacks its layout below ~480px; give the wrapper room so
+               the submit button is never cut off. */
+            .signals-form { height: 400px; }
+        }
+        
+        /* ---------- Beyond the Work ----------
+           Personal making section. Same tokens, type and card grammar as the
+           rest of the page — the only new idea is the notebook panel, drawn in
+           CSS/SVG rather than photographed, because none of these builds exist
+           yet. Structured so a project grid can replace .bw-soon later. */
+        .bw {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+            gap: 3rem;
+            align-items: center;
+            padding: var(--sp-12) 2.5rem;
+            border-radius: var(--radius-4xl);
+            background: var(--n-50);
+            box-shadow: inset 0 0 0 1px var(--border);
+        }
+        .bw-story .section-heading { max-width: 24ch; }
+        .bw-story .about-text { margin-bottom: 1rem; }
+        .bw-tagline {
+            margin: 1.5rem 0 0;
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-size: var(--text-lg);
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: var(--ink);
+        }
+
+        .bw-areas {
+            list-style: none;
+            padding: 0;
+            margin: 1.75rem 0 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+        .bw-area {
+            font-size: var(--text-sm);
+            font-weight: 600;
+            color: var(--n-600);
+            background: var(--paper);
+            border-radius: 999px;
+            padding: 0.5rem 0.95rem;
+            box-shadow: inset 0 0 0 1px var(--border);
+        }
+        .bw-youtube { margin-top: 1.75rem; }
+        /* pending state: reads as a label, not a dead link */
+        .btn-youtube.is-pending {
+            background: transparent !important;
+            color: var(--n-500) !important;
+            border-color: var(--border) !important;
+            box-shadow: inset 0 0 0 1px var(--border);
+            cursor: default;
+            pointer-events: none;
+        }
+        .btn-youtube.is-pending svg { fill: var(--n-400); opacity: 0.8; }
+
+        /* Notebook panel */
+        .bw-visual {
+            position: relative;
+            aspect-ratio: 7 / 8;
+            border-radius: var(--radius-3xl);
+            background: var(--paper);
+            box-shadow: inset 0 0 0 1px var(--border);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .bw-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(var(--border-strong, rgba(10,10,10,0.16)) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border-strong, rgba(10,10,10,0.16)) 1px, transparent 1px);
+            background-size: 26px 26px;
+            -webkit-mask-image: radial-gradient(ellipse at center, #000 55%, transparent 88%);
+                    mask-image: radial-gradient(ellipse at center, #000 55%, transparent 88%);
+        }
+        .bw-sketch {
+            position: relative;
+            width: 76%;
+            max-width: 290px;
+            color: var(--n-600);
+            stroke-width: 1.5;
+        }
+        .bw-sketch circle:nth-of-type(2) { color: var(--accent); stroke: var(--accent); }
+        .bw-measure {
+            position: absolute;
+            left: 0; right: 0; bottom: 1.35rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            font-size: var(--text-xs);
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--n-500);
+        }
+        .bw-measure span:last-child { color: var(--accent-strong, #0077C4); }
+
+        /* Coming soon — replace with a project grid when there is work to show */
+        .bw-soon {
+            margin-top: 1.5rem;
+            padding: 1.35rem 1.75rem;
+            border-radius: var(--radius-3xl);
+            background: var(--paper);
+            box-shadow: inset 0 0 0 1px var(--border);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0.35rem 0.85rem;
+        }
+        .bw-soon-label {
+            margin: 0;
+            font-family: var(--font-display);
+            font-variation-settings: var(--font-display-vars);
+            font-weight: 600;
+            color: var(--ink);
+        }
+        .bw-soon-text { margin: 0; color: var(--n-500); font-size: var(--text-sm); }
+        .bw-more { margin-left: auto; white-space: nowrap; }
+        @media (max-width: 560px) { .bw-more { margin-left: 0; } }
+
+        @media (max-width: 900px) {
+            .bw { grid-template-columns: 1fr; gap: 2rem; padding: var(--sp-10) 1.5rem; }
+            .bw-story .section-heading { max-width: 100%; }
+            /* stack the sketch above its own label row rather than overlaying
+               them — the shorter panel made them collide */
+            .bw-visual {
+                aspect-ratio: auto;
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1.5rem 1rem 1.25rem;
+            }
+            .bw-sketch { width: 58%; max-width: 220px; }
+            .bw-measure { position: static; gap: 1.1rem; }
+        }
+        @media (max-width: 560px) {
+            .bw { padding: var(--sp-10) 1.25rem; border-radius: var(--radius-3xl); }
+            .bw-area { font-size: var(--text-xs); }
+            .bw-soon { padding: 1.15rem 1.25rem; }
+        }
+        @media (prefers-reduced-motion: reduce) { .bw-sketch { transition: none; } }
+        
+        /* The homepage hero is left-aligned, so its eyebrow is an inline-flex
+           block that sits flush left. This hero is centred — centre the eyebrow
+           with it rather than letting it hang off to one side. */
+        .hero-zone .hero-eyebrow { justify-content: center; }
+
+        /* ---------- Off the Screen: page-specific components ----------
+           The shell, type, spacing and footer are the homepage's, unchanged.
+           These are the only pieces this page adds. */
+        .ws-intro .about-text { margin-bottom: 1.1rem; max-width: 68ch; }
+        .ws-intro .about-text:last-of-type { margin-bottom: 0; }
         .ws-tagline {
             margin: 1.75rem 0 0;
             font-family: var(--font-display);
@@ -1535,15 +1965,14 @@
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 1.5rem;
-            margin-top: var(--sp-16);
         }
         .ws-area {
             padding: 2rem;
             border-radius: var(--radius-3xl);
             background: var(--paper);
             box-shadow: inset 0 0 0 1px var(--border);
-            transition: transform var(--dur-hover, 180ms) ease,
-                        background var(--dur-hover, 180ms) ease;
+            transition: transform var(--dur-hover) var(--ease-out),
+                        background var(--dur-hover) var(--ease-out);
         }
         .ws-area:hover { transform: translateY(-2px); background: var(--n-50); }
         .ws-area-mark {
@@ -1553,7 +1982,7 @@
             align-items: center;
             justify-content: center;
             border-radius: 999px;
-            background: var(--accent-tint, rgba(0,136,219,0.10));
+            background: var(--accent-tint);
             color: var(--accent-strong, #0077C4);
             margin-bottom: 1.25rem;
         }
@@ -1567,27 +1996,14 @@
             color: var(--ink);
             margin: 0 0 0.6rem;
         }
-        .ws-area-copy {
-            margin: 0;
-            color: var(--n-600);
-            font-size: var(--text-base);
-            line-height: 1.7;
-        }
+        .ws-area-copy { margin: 0; color: var(--n-600); line-height: 1.7; }
 
-        .ws-soon {
-            margin-top: var(--sp-16);
-            padding: var(--sp-12) 2.5rem;
-            border-radius: var(--radius-4xl);
-            background: var(--n-50);
-            box-shadow: inset 0 0 0 1px var(--border);
-        }
-        .ws-soon .section-heading { max-width: 22ch; margin-bottom: 1rem; }
+        .ws-soon .section-heading { max-width: 22ch; }
         .ws-soon .about-text { max-width: 62ch; margin-bottom: 1.75rem; }
         .ws-youtube {
             display: inline-flex;
             align-items: center;
             gap: 0.6rem;
-            margin: 0;
             padding: 0.75rem 1.35rem;
             border-radius: 999px;
             border: 1px solid transparent;
@@ -1595,7 +2011,6 @@
             font-size: var(--text-sm);
             font-weight: 600;
             text-decoration: none;
-            white-space: nowrap;
         }
         .ws-youtube svg { width: 20px; height: 20px; flex: none; }
         .btn-youtube.is-pending {
@@ -1607,56 +2022,16 @@
             pointer-events: none;
         }
         .btn-youtube.is-pending svg { fill: var(--n-400); opacity: 0.8; }
-        .ws-soon-note {
-            margin: 0.85rem 0 0;
-            font-size: var(--text-sm);
-            color: var(--n-500);
-        }
+        .ws-soon-note { margin: 1rem 0 0; font-size: var(--text-sm); color: var(--n-500); }
 
         @media (max-width: 860px) {
             .ws-areas { grid-template-columns: 1fr; gap: 1.25rem; }
-            .ws-soon { padding: var(--sp-10) 1.5rem; }
         }
         @media (max-width: 560px) {
             .ws-area { padding: 1.5rem; }
-            .ws-soon { padding: var(--sp-10) 1.25rem; border-radius: var(--radius-3xl); }
         }
         @media (prefers-reduced-motion: reduce) {
             .ws-area, .ws-area:hover { transition: none; transform: none; }
-        }
-        
-        /* ---------- Match the homepage: full-bleed hero + clean spacing ----------
-           .main-wrapper > *:not(.page-hero-zone) caps every child at 1100px and
-           centres it. This page's hero uses .hero-zone, so it was being capped
-           too and sat 163px in from each edge while the homepage hero runs edge
-           to edge. Exempt it the same way. */
-        .main-wrapper > .hero-zone {
-            max-width: none;
-            width: 100vw;
-            margin-left: calc(50% - 50vw);
-            margin-right: calc(50% - 50vw);
-            padding-left: 0;
-            padding-right: 0;
-        }
-
-        /* The coming-soon heading's margin did not clear its own descenders,
-           so the body copy overlapped it by ~4px. Give the block real rhythm
-           and the container bottom padding it was missing. */
-        .main-wrapper > .ws-soon {
-            padding: var(--sp-12) 2.5rem;
-        }
-        .ws-soon .section-heading {
-            margin: 0 0 1.25rem;
-            line-height: 1.2;
-            padding-bottom: 0.15rem;
-        }
-        .ws-soon .about-text { margin: 0 0 2rem; }
-        .ws-soon-note { margin-top: 1rem; }
-        @media (max-width: 860px) {
-            .main-wrapper > .ws-soon { padding: var(--sp-10) 1.5rem; }
-        }
-        @media (max-width: 560px) {
-            .main-wrapper > .ws-soon { padding: var(--sp-10) 1.25rem; }
         }
         </style>
 <!-- Google tag (gtag.js) for sethforte.com (GA4 property 562021674) -->
@@ -1670,151 +2045,222 @@
 </head>
 <body>
     <div class="grid-bg"></div>
-    <header class="site-header">
-        <div class="header-container">
-            <a href="/" class="header-logo">Seth Forte</a>
-            <nav class="header-nav">
-                <a href="/" class="nav-link">Home</a>
-                <a href="/case-studies.html" class="nav-link">Results</a>
-                <a href="/projects.html" class="nav-link">Workshop</a>
-                    <a href="/writing.html" class="nav-link">Writing</a>
-                <a href="/about.html" class="nav-link">About</a>
-                <a href="/contact.html" class="nav-link">Contact</a>
-                <a href="https://launchforte.com" class="nav-link" target="_blank" rel="noopener">Launch Forte</a>
-            </nav>
-        </div>
+
+    <header class="site-header hero-nav">
+            <div class="header-container">
+                <a href="/" class="header-logo">Seth Forte</a>
+                <nav class="header-nav">
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="/projects.html" class="nav-link">Workshop</a>
+                    <a href="#results" class="nav-link">Results</a>
+                    <a href="#reviews" class="nav-link">Reviews</a>
+                    <a href="#writing" class="nav-link">Writing</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="https://launchforte.com" class="nav-link" target="_blank" rel="noopener">Launch Forte</a>
+                </nav>
+            </div>
     </header>
 
-    <main class="main-wrapper hero-follows">
-        <div class="hero-zone">
+
+    <!-- The dark zone: nav bleeding into the full-bleed dim video -->
+    <div class="hero-zone">
         <div class="hero-overlay hero-overlay-btm" aria-hidden="true"></div>
         <div class="hero-content">
             <div class="hero-content-inner">
-                <p class="section-label animate-fade-up">The Workshop</p>
-                <h1 class="page-title animate-fade-up animate-delay-1">Off the <span class="gradient-text">Screen</span>.</h1>
-                <p class="page-intro animate-fade-up animate-delay-2">Some ideas deserve to leave the screen.</p>
+                <p class="hero-eyebrow hero-eyebrow-labelled animate-up delay-1">The Workshop</p>
+                <h1 class="hero-h1 hero-headline animate-up delay-2">Off the <span class="gradient-text">Screen</span>.</h1>
+                <p class="hero-sub animate-up delay-3">Some ideas deserve to leave the screen.</p>
+                <div class="hero-cta animate-up delay-4">
+                    <a href="#areas" class="hero-scroll-cue">What I'm Exploring <span aria-hidden="true">&darr;</span></a>
+                </div>
             </div>
         </div>
     </div>
 
-        <hr class="section-divider">
+    <main class="main-wrapper hero-follows">
+        <div class="pane-container">
 
-        <!-- Introduction -->
-        <section class="ws-intro reveal">
-            <p class="about-text">I spend a lot of my time building software. Lately, I've been wondering what happens when I take some of those ideas off a computer and try to make them real.</p>
-            <p class="about-text">Robotics, electronics, 3D printing, mechanical design, a little art, and probably a lot of trial and error.</p>
-            <p class="about-text">I'm starting from the beginning. Learning the tools, figuring out how things work, and making things with my own hands. Some projects might be useful. Some might be completely ridiculous. Hopefully, they'll all teach me something.</p>
-            <p class="ws-tagline">Part code. Part craftsmanship. All curiosity.</p>
-        </section>
-
-        <!-- The four areas. Creative directions, not finished work. -->
-        <section class="ws-areas reveal" aria-label="What I am exploring">
-            <article class="ws-area">
-                <span class="ws-area-mark" aria-hidden="true">
-                    <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M20 5v4M8.5 9.5l2.8 2.8M31.5 9.5l-2.8 2.8M5 21h4M31 21h4"/>
-                        <path d="M14 26a8 8 0 1 1 12 0c-1.3 1.2-2 2.4-2.2 4h-7.6c-.2-1.6-.9-2.8-2.2-4Z"/>
-                        <path d="M16.5 34h7"/>
-                    </svg>
-                </span>
-                <h2 class="ws-area-title">Things That Light Up</h2>
-                <p class="ws-area-copy">Light sculptures, interactive objects, illuminated miniatures, and creative experiments with software and electronics.</p>
-            </article>
-
-            <article class="ws-area">
-                <span class="ws-area-mark" aria-hidden="true">
-                    <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="16" cy="20" r="6.5"/><circle cx="16" cy="20" r="2"/>
-                        <path d="M16 8.5v3M16 28.5v3M4.5 20h3M24.5 20h3M8.6 12.6l2.1 2.1M23.4 27.4l-2.1-2.1M8.6 27.4l2.1-2.1M23.4 12.6l-2.1 2.1"/>
-                        <circle cx="30" cy="27" r="4"/><circle cx="30" cy="27" r="1.3"/>
-                        <path d="M30 21.5v1.5M30 31v1.5M24.5 27H26M34 27h1.5"/>
-                    </svg>
-                </span>
-                <h2 class="ws-area-title">Things That Move</h2>
-                <p class="ws-area-copy">Robots, gears, motors, mechanisms, and other ideas that start as drawings and eventually do something in the real world.</p>
-            </article>
-
-            <article class="ws-area">
-                <span class="ws-area-mark" aria-hidden="true">
-                    <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M20 5.5 33 13v14L20 34.5 7 27V13Z"/>
-                        <path d="M7 13l13 7.5L33 13M20 20.5V34.5"/>
-                    </svg>
-                </span>
-                <h2 class="ws-area-title">Things Worth Making</h2>
-                <p class="ws-area-copy">Original 3D prints, practical objects, gaming-inspired creations, artistic designs, and whatever else catches my curiosity.</p>
-            </article>
-
-            <article class="ws-area">
-                <span class="ws-area-mark" aria-hidden="true">
-                    <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M8 7h18l6 6v20H8Z"/><path d="M26 7v6h6"/>
-                        <path d="M13 20h14M13 25h14M13 29h9"/>
-                    </svg>
-                </span>
-                <h2 class="ws-area-title">The Story Behind It</h2>
-                <p class="ws-area-copy">Sketches, mistakes, first attempts, lessons, workshop footage, and eventually the finished videos documenting how everything came together.</p>
-            </article>
-        </section>
-
-        <!-- Coming soon. Replace with .ws-projects (a grid of .ws-project cards)
-             once real builds exist; the surrounding layout already holds. -->
-        <section class="ws-soon reveal">
-            <h2 class="section-heading">The first builds are <span class="gradient-text">underway</span>.</h2>
-            <p class="about-text">I'm putting together my workshop and learning one project at a time. As I finish things, I'll share the designs, photos, code, lessons, and videos here.</p>
-            <!-- Inert until there are build videos to link to. Swap this <span>
-                 for the <a href="https://www.youtube.com/@TheSethForte"> used in
-                 the homepage hero once the channel has workshop content. -->
-            <span class="btn-youtube ws-youtube is-pending" aria-disabled="true">
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 0 0 .5 6.2C0 8.09 0 12 0 12s0 3.91.5 5.8a3.02 3.02 0 0 0 2.12 2.14c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51a3.02 3.02 0 0 0 2.12-2.14C24 15.91 24 12 24 12s0-3.91-.5-5.8ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z"/></svg>
-                <span>Follow Along on YouTube</span>
-            </span>
-            <p class="ws-soon-note">The channel goes live with the first build.</p>
-        </section>
-
-        <!-- Footer -->
-        <div class="footer-section">
-            <a href="mailto:seth@launchforte.com" class="footer-email-main">seth@launchforte.com</a>
-
-            <div class="footer-columns">
-                <div class="footer-col">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="/about.html">About</a></li>
-                        <li><a href="/case-studies.html">Results</a></li>
-                        <li><a href="/writing.html">Writing</a></li>
-                        <li><a href="/contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Connect</h4>
-                    <ul>
-                        <li><a href="https://www.linkedin.com/in/seth-forte/" target="_blank" rel="noopener">LinkedIn</a></li>
-                        <li><a href="/upwork.html">Upwork</a></li>
-                        <li><a href="mailto:seth@launchforte.com">Email</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Elsewhere</h4>
-                    <ul>
-                        <li><a href="https://launchforte.com" target="_blank" rel="noopener">Launch Forte</a></li>
-                    </ul>
+            <!-- Introduction -->
+            <div class="studio-section">
+                <div class="panel-quiet reveal ws-intro">
+                    <p class="about-text">I spend a lot of my time building software. Lately, I've been wondering what happens when I take some of those ideas off a computer and try to make them real.</p>
+                    <p class="about-text">Robotics, electronics, 3D printing, mechanical design, a little art, and probably a lot of trial and error.</p>
+                    <p class="about-text">I'm starting from the beginning. Learning the tools, figuring out how things work, and making things with my own hands. Some projects might be useful. Some might be completely ridiculous. Hopefully, they'll all teach me something.</p>
+                    <p class="ws-tagline">Part code. Part craftsmanship. All curiosity.</p>
                 </div>
             </div>
 
-            <div class="footer-bottom">
-                <div>
-                    <p class="footer-location">Based in Dallas-Fort Worth. Serving clients nationwide.</p>
-                    <p class="copyright">&copy; 2026 Seth Forte. All rights reserved.</p>
+            <!-- The four areas. Creative directions, not finished work. -->
+            <div class="studio-section" id="areas" style="scroll-margin-top: 90px;">
+                <p class="section-label reveal">What I'm Exploring</p>
+                <h2 class="section-heading reveal" style="margin-bottom: 2rem;">Four directions, <span class="gradient-text">one workshop</span>.</h2>
+                <div class="ws-areas reveal">
+                    <article class="ws-area">
+                        <span class="ws-area-mark" aria-hidden="true">
+                            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 5v4M8.5 9.5l2.8 2.8M31.5 9.5l-2.8 2.8M5 21h4M31 21h4"/>
+                                <path d="M14 26a8 8 0 1 1 12 0c-1.3 1.2-2 2.4-2.2 4h-7.6c-.2-1.6-.9-2.8-2.2-4Z"/>
+                                <path d="M16.5 34h7"/>
+                            </svg>
+                        </span>
+                        <h3 class="ws-area-title">Things That Light Up</h3>
+                        <p class="ws-area-copy">Light sculptures, interactive objects, illuminated miniatures, and creative experiments with software and electronics.</p>
+                    </article>
+                    <article class="ws-area">
+                        <span class="ws-area-mark" aria-hidden="true">
+                            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="16" cy="20" r="6.5"/><circle cx="16" cy="20" r="2"/>
+                                <path d="M16 8.5v3M16 28.5v3M4.5 20h3M24.5 20h3M8.6 12.6l2.1 2.1M23.4 27.4l-2.1-2.1M8.6 27.4l2.1-2.1M23.4 12.6l-2.1 2.1"/>
+                                <circle cx="30" cy="27" r="4"/><circle cx="30" cy="27" r="1.3"/>
+                            </svg>
+                        </span>
+                        <h3 class="ws-area-title">Things That Move</h3>
+                        <p class="ws-area-copy">Robots, gears, motors, mechanisms, and other ideas that start as drawings and eventually do something in the real world.</p>
+                    </article>
+                    <article class="ws-area">
+                        <span class="ws-area-mark" aria-hidden="true">
+                            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 5.5 33 13v14L20 34.5 7 27V13Z"/>
+                                <path d="M7 13l13 7.5L33 13M20 20.5V34.5"/>
+                            </svg>
+                        </span>
+                        <h3 class="ws-area-title">Things Worth Making</h3>
+                        <p class="ws-area-copy">Original 3D prints, practical objects, gaming-inspired creations, artistic designs, and whatever else catches my curiosity.</p>
+                    </article>
+                    <article class="ws-area">
+                        <span class="ws-area-mark" aria-hidden="true">
+                            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M8 7h18l6 6v20H8Z"/><path d="M26 7v6h6"/>
+                                <path d="M13 20h14M13 25h14M13 29h9"/>
+                            </svg>
+                        </span>
+                        <h3 class="ws-area-title">The Story Behind It</h3>
+                        <p class="ws-area-copy">Sketches, mistakes, first attempts, lessons, workshop footage, and eventually the finished videos documenting how everything came together.</p>
+                    </article>
                 </div>
+            </div>
+
+            <!-- Coming soon. Swap for a .ws-projects grid once real builds exist. -->
+            <div class="studio-section">
+                <div class="panel-quiet reveal ws-soon">
+                    <p class="section-label">Coming Soon</p>
+                    <h2 class="section-heading">The first builds are <span class="gradient-text">underway</span>.</h2>
+                    <p class="about-text">I'm putting together my workshop and learning one project at a time. As I finish things, I'll share the designs, photos, code, lessons, and videos here.</p>
+                    <!-- Inert until there are build videos. Swap this <span> for the
+                         <a href="https://www.youtube.com/@TheSethForte"> the hero uses. -->
+                    <span class="btn-youtube ws-youtube is-pending" aria-disabled="true">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 0 0 .5 6.2C0 8.09 0 12 0 12s0 3.91.5 5.8a3.02 3.02 0 0 0 2.12 2.14c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51a3.02 3.02 0 0 0 2.12-2.14C24 15.91 24 12 24 12s0-3.91-.5-5.8ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z"/></svg>
+                        <span>Follow Along on YouTube</span>
+                    </span>
+                    <p class="ws-soon-note">The channel goes live with the first build.</p>
                 </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer-section">
+                <a href="mailto:seth@launchforte.com" class="footer-email-main">seth@launchforte.com</a>
+
+                <div class="footer-columns">
+                    <div class="footer-col">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="/about.html">About</a></li>
+                            <li><a href="/case-studies.html">Results</a></li>
+                            <li><a href="/writing.html">Writing</a></li>
+                            <li><a href="/contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="https://www.linkedin.com/in/seth-forte/" target="_blank" rel="noopener">LinkedIn</a></li>
+                            <li><a href="https://www.youtube.com/@TheSethForte" target="_blank" rel="noopener">YouTube</a></li>
+                            <li><a href="/upwork.html">Upwork</a></li>
+                            <li><a href="mailto:seth@launchforte.com">Email</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Elsewhere</h4>
+                        <ul>
+                            <li><a href="https://launchforte.com" target="_blank" rel="noopener">Launch Forte</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <div>
+                        <p class="footer-location">Based in Dallas-Fort Worth. Serving clients nationwide.</p>
+                        <p class="copyright">&copy; 2026 Seth Forte. All rights reserved.</p>
+                    </div>
+                    </div>
+            </div>
         </div>
     </main>
 
-    <script src="/scroll-reveal.js"></script>
-    <script src="/theme-toggle.js"></script>
-    <script src="/scroll-top.js"></script>
-    <script src="/hamburger.js"></script>
+
+    <!-- YouTube unmute button: loads YT IFrame API, lets user enable sound. -->
+    <script>
+        (function() {
+            var iframe = document.getElementById('hero-yt-iframe');
+            var unmuteBtn = document.getElementById('hero-yt-unmute');
+            if (!iframe || !unmuteBtn) return;
+
+            function hideUnmuteBtn() { unmuteBtn.classList.add('is-hidden'); }
+            function showUnmuteBtn() { unmuteBtn.classList.remove('is-hidden'); }
+
+            var ytPlayer = null;
+            function setupPlayer() {
+                if (typeof YT === 'undefined' || !YT.Player) return;
+                ytPlayer = new YT.Player('hero-yt-iframe', {
+                    events: {
+                        onReady: function() {
+                            // If video isn't muted (some autoplay paths don't need it), hide button immediately
+                            try {
+                                if (!ytPlayer.isMuted()) hideUnmuteBtn();
+                            } catch (e) {}
+                        }
+                    }
+                });
+            }
+
+            // Inject the YT IFrame API only once, lazily
+            if (!window.YT) {
+                var tag = document.createElement('script');
+                tag.src = 'https://www.youtube.com/iframe_api';
+                document.head.appendChild(tag);
+                var prevHook = window.onYouTubeIframeAPIReady;
+                window.onYouTubeIframeAPIReady = function() {
+                    if (typeof prevHook === 'function') prevHook();
+                    setupPlayer();
+                };
+            } else {
+                setupPlayer();
+            }
+
+            unmuteBtn.addEventListener('click', function() {
+                if (ytPlayer && typeof ytPlayer.unMute === 'function') {
+                    try {
+                        ytPlayer.unMute();
+                        ytPlayer.setVolume(100);
+                        if (typeof ytPlayer.playVideo === 'function') ytPlayer.playVideo();
+                    } catch (e) {}
+                }
+                hideUnmuteBtn();
+            });
+
+            // If the user clicks on the iframe itself (which would unmute via YT controls),
+            // hide the button on next focus change. Best-effort hint.
+            window.addEventListener('blur', function() {
+                if (document.activeElement === iframe) hideUnmuteBtn();
+            });
+        })();
+    </script>
+
+<script src="/scroll-reveal.js"></script>
+<script src="/theme-toggle.js"></script>
+<script src="/scroll-top.js"></script>
+<script src="/hamburger.js"></script>
+
 
     <!-- Sticky header: transparent while a dark hero is behind it, solid once
          the paper pane scrolls under. Pages with no dark hero are solid from
@@ -1823,49 +2269,21 @@
         (function() {
             var header = document.querySelector('.site-header');
             if (!header) return;
-            var hero = document.querySelector('.hero-cinematic, .page-hero.has-video, .page-hero-zone');
+            var hero = document.querySelector('.hero-zone, .hero-cinematic, .page-hero.has-video, .page-hero-zone');
             function sync() {
                 var stuck = true;
                 if (hero) {
                     stuck = hero.getBoundingClientRect().bottom <= header.offsetHeight + 4;
                 }
                 header.classList.toggle('is-stuck', stuck);
-                // the hamburger is a fixed sibling of the header, so it needs
-                // its own hook to know which ground it is currently over
+                // the hamburger is a fixed sibling, not inside the header, so it
+                // needs its own hook to know which ground it is over
                 document.body.classList.toggle('past-hero', stuck);
             }
             sync();
             window.addEventListener('scroll', sync, { passive: true });
             window.addEventListener('resize', sync);
             window.addEventListener('load', sync);
-        })();
-    </script>
-
-    <!-- Hero background loop: the three speaking clips, each with its own focal
-         point so Seth stays in frame. Plays on mobile too — the clips are
-         0.7-1.2MB and the poster paints first. Reduced motion gets the still. -->
-    <script>
-        (function() {
-            var v = document.getElementById('hero-video');
-            if (!v) return;
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-            var clips = [
-                { src: '/media/hero-loop-1.mp4', focus: '43%' },
-                { src: '/media/hero-loop-3.mp4', focus: '55%' },
-                { src: '/media/hero-loop-2.mp4', focus: '76%' }
-            ];
-            var i = 0;
-            function play(n) {
-                var c = clips[n];
-                v.style.setProperty('--hero-focus', c.focus);
-                v.src = c.src;
-                var p = v.play();
-                if (p && p.catch) p.catch(function() {});
-            }
-            v.removeAttribute('loop');
-            v.addEventListener('ended', function() { i = (i + 1) % clips.length; play(i); });
-            v.addEventListener('error', function() { i = (i + 1) % clips.length; if (i !== 0) play(i); });
-            play(0);
         })();
     </script>
 
@@ -1881,6 +2299,83 @@
             v.addEventListener('playing', live);
             v.addEventListener('loadeddata', function() { if (v.readyState >= 2) live(); });
             if (v.readyState >= 2 && !v.paused) live();
+        })();
+    </script>
+
+    <script>
+      (function() {
+        var nav = document.querySelector('.hero-nav');
+        if (!nav) return;
+        function sync() {
+          nav.classList.toggle('is-scrolled', window.scrollY > 120);
+        }
+        sync();
+        window.addEventListener('scroll', sync, { passive: true });
+      })();
+    </script>
+
+    <!-- Video testimonial carousel: arrow buttons scroll the track by one card
+         width at a time. Snap-scroll CSS settles cards in place. The track
+         wraps in both directions, so Next past the last card returns to the
+         first and Prev from the first jumps to the last. Neither arrow ever
+         disables, because there is no end to reach. -->
+    <script>
+    (function () {
+        var track = document.getElementById('vt-track');
+        if (!track) return;
+        var prev = document.querySelector('.vt-arrow-prev');
+        var next = document.querySelector('.vt-arrow-next');
+        if (!prev || !next) return;
+
+        function cardStep() {
+            var card = track.querySelector('.vt-card');
+            if (!card) return track.clientWidth;
+            var style = getComputedStyle(track);
+            var gap = parseFloat(style.columnGap || style.gap || 0) || 0;
+            return card.getBoundingClientRect().width + gap;
+        }
+        function maxScroll() {
+            return track.scrollWidth - track.clientWidth;
+        }
+        function scrollByCard(dir) {
+            var step = cardStep();
+            var max = maxScroll();
+            var at = track.scrollLeft;
+            // Tolerance covers sub-pixel rounding and the snap settle, so the
+            // wrap fires on the click that would otherwise do nothing.
+            var target;
+            if (dir > 0) {
+                target = (at >= max - 2) ? 0 : Math.min(at + step, max);
+            } else {
+                target = (at <= 2) ? max : Math.max(at - step, 0);
+            }
+            var wrapping = (dir > 0 && target === 0 && at >= max - 2) ||
+                           (dir < 0 && target === max && at <= 2);
+            // Jump the wrap rather than gliding the whole strip backwards,
+            // which at six cards reads as a glitch rather than a rewind.
+            track.scrollTo({ left: target, behavior: wrapping ? 'auto' : 'smooth' });
+        }
+        prev.addEventListener('click', function () { scrollByCard(-1); });
+        next.addEventListener('click', function () { scrollByCard(1); });
+    })();
+    </script>
+
+    <!-- GoHighLevel form embed script. Loaded ONLY when Forte Signals is live,
+         so a held page makes no third-party request. GHL owns the submission,
+         the success state and the subscriber record — there is deliberately no
+         local handler and no local subscriber store. -->
+    <script>
+        (function() {
+            var sec = document.getElementById('signals');
+            if (!sec || sec.getAttribute('data-signals-live') !== 'true') return;
+            // promote the parked URL only once the gate is open, so a held
+            // page never requests the form at all
+            var f = sec.querySelector('iframe[data-src]');
+            if (f) { f.src = f.getAttribute('data-src'); f.removeAttribute('data-src'); }
+            var t = document.createElement('script');
+            t.src = 'https://link.msgsndr.com/js/form_embed.js';
+            t.async = true;
+            document.body.appendChild(t);
         })();
     </script>
 <script>
