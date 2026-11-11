@@ -61,7 +61,7 @@
             --dur-reveal: 700ms;
             --dur-hover: 180ms;
 
-            --sp-16: 4rem;  --sp-24: 6rem;  --sp-32: 8rem;  --sp-40: 10rem;
+            --sp-10: 2.5rem;  --sp-12: 3rem;  --sp-16: 4rem;  --sp-24: 6rem;  --sp-32: 8rem;  --sp-40: 10rem;
             --max-content: 1120px;
 
             /* --- Legacy aliases: existing component CSS reads these names,
@@ -1623,6 +1623,40 @@
         }
         @media (prefers-reduced-motion: reduce) {
             .ws-area, .ws-area:hover { transition: none; transform: none; }
+        }
+        
+        /* ---------- Match the homepage: full-bleed hero + clean spacing ----------
+           .main-wrapper > *:not(.page-hero-zone) caps every child at 1100px and
+           centres it. This page's hero uses .hero-zone, so it was being capped
+           too and sat 163px in from each edge while the homepage hero runs edge
+           to edge. Exempt it the same way. */
+        .main-wrapper > .hero-zone {
+            max-width: none;
+            width: 100vw;
+            margin-left: calc(50% - 50vw);
+            margin-right: calc(50% - 50vw);
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        /* The coming-soon heading's margin did not clear its own descenders,
+           so the body copy overlapped it by ~4px. Give the block real rhythm
+           and the container bottom padding it was missing. */
+        .main-wrapper > .ws-soon {
+            padding: var(--sp-12) 2.5rem;
+        }
+        .ws-soon .section-heading {
+            margin: 0 0 1.25rem;
+            line-height: 1.2;
+            padding-bottom: 0.15rem;
+        }
+        .ws-soon .about-text { margin: 0 0 2rem; }
+        .ws-soon-note { margin-top: 1rem; }
+        @media (max-width: 860px) {
+            .main-wrapper > .ws-soon { padding: var(--sp-10) 1.5rem; }
+        }
+        @media (max-width: 560px) {
+            .main-wrapper > .ws-soon { padding: var(--sp-10) 1.25rem; }
         }
         </style>
 <!-- Google tag (gtag.js) for sethforte.com (GA4 property 562021674) -->
