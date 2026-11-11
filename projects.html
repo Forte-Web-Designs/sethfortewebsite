@@ -1958,11 +1958,6 @@
         }
         @media (prefers-reduced-motion: reduce) { .bw-sketch { transition: none; } }
         
-        /* The homepage hero is left-aligned, so its eyebrow is an inline-flex
-           block that sits flush left. This hero is centred — centre the eyebrow
-           with it rather than letting it hang off to one side. */
-        .hero-zone .hero-eyebrow { justify-content: center; }
-
         /* ---------- Softer paper on this page ----------
            Pure #FFFFFF under a dark hero reads as a glare. This warms the
            pane to a soft off-white and lifts the cards just above it, so the
@@ -1990,7 +1985,6 @@
             min-height: 0;
             margin-bottom: 0.75rem;
         }
-        .hero-eyebrow-under { margin-top: 0; margin-bottom: 1rem; }
         .hero-zone .hero-sub { margin-bottom: 1.75rem; }
         .hero-zone .hero-cta { gap: 0.5rem; }
 
@@ -2207,9 +2201,8 @@
         <div class="hero-content">
             <div class="hero-content-inner">
                 <h1 class="hero-h1 hero-headline animate-up delay-1">Off the <span class="gradient-text">Screen</span>.</h1>
-                <p class="hero-eyebrow hero-eyebrow-labelled hero-eyebrow-under animate-up delay-2">Creative Engineering</p>
-                <p class="hero-sub animate-up delay-3">Ideas made real. By hand and by code.</p>
-                <div class="hero-cta animate-up delay-4">
+                <p class="hero-sub animate-up delay-2">Ideas made real. By hand and by code.</p>
+                <div class="hero-cta animate-up delay-3">
                     <!-- Inert until the channel link is confirmed. To activate,
                          swap this <span> for:
                          <a href="CHANNEL_URL" class="btn-youtube" target="_blank" rel="noopener">
@@ -2229,6 +2222,7 @@
 
             <!-- Introduction -->
             <div class="studio-section">
+                <p class="section-label reveal">Creative Engineering</p>
                 <div class="panel-quiet reveal ws-intro">
                     <p class="about-text">I've spent years building things in software. Now I'm learning how to bring ideas into the physical world, too. Some ideas deserve to leave the screen.</p>
                     <p class="about-text">I want to understand how things work, not just what they do, but the individual pieces, materials, mechanisms, and decisions behind them. Then I want to sketch something of my own, figure out how to build it, and see what happens when I bring it to life.</p>
