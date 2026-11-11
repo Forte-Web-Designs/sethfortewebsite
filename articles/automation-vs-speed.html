@@ -1424,6 +1424,23 @@
             color: #FFFFFF !important;
             text-decoration: underline;
         }
+    
+        /* nav-label-nowrap: keep every nav label on one line. Without this the
+           flex row shrinks items and longer labels ("The Fun Stuff", "Launch
+           Forte") wrap mid-phrase in the narrow-desktop band just above the
+           768px hamburger breakpoint, stacking words and inflating the header. */
+        .header-nav a.nav-link { white-space: nowrap; }
+        /* Holding one line costs width, so give it back below 1024px: tighter
+           pills and gaps keep the row — and the theme toggle — inside the
+           viewport instead of pushing the toggle off the right edge. */
+        @media (max-width: 1023px) {
+            .header-nav { gap: 0.1rem; }
+            .header-nav a.nav-link { padding-left: 0.5rem; padding-right: 0.5rem; }
+        }
+        @media (max-width: 880px) {
+            .header-nav { gap: 0; }
+            .header-nav a.nav-link { padding-left: 0.35rem; padding-right: 0.35rem; font-size: 0.8125rem; }
+        }
     </style>
 <!-- Google tag (gtag.js) for sethforte.com (GA4 property 562021674) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-W5NDYYQTL2"></script>
