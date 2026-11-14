@@ -13,3 +13,6 @@
 /review.html         https://launchforte.com/#audit           301
 /audit               https://launchforte.com/#audit           301
 /audit.html          https://launchforte.com/#audit           301
+
+# 404 found in Search Console (last crawled Jun 20 2026). Closest live topic. (#478)
+/resources/what-is-business-automation  /articles/business-automation-cost.html  301
