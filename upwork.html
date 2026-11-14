@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seth Forte on Upwork | Seth Forte</title>
     <link rel="icon" href="/favicon.png" type="image/png">
-    <meta name="description" content="Found me as Seth Forte on Upwork? Same engineer, same engineering practice, same standards. 60+ systems built across 12 industries through Launch Forte.">
+    <meta name="description" content="Found me as Seth Forte on Upwork? Same person, same company. 60+ systems built through Launch Forte, an engineering led consulting company.">
     <meta name="author" content="Seth Forte">
 
     <meta property="og:type" content="profile">
     <meta property="og:url" content="https://sethforte.com/upwork">
     <meta property="og:title" content="Seth Forte on Upwork | Seth Forte">
-    <meta property="og:description" content="Found me as Seth Forte on Upwork? Same engineer, same engineering practice, same standards. 60+ systems built across 12 industries through Launch Forte.">
+    <meta property="og:description" content="Found me as Seth Forte on Upwork? Same person, same company. 60+ systems built through Launch Forte, an engineering led consulting company.">
     <meta property="og:image" content="https://sethforte.com/headshot-6.jpg">
     <meta property="og:site_name" content="Seth Forte">
     <meta property="og:locale" content="en_US">
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Seth Forte on Upwork | Seth Forte">
-    <meta name="twitter:description" content="Found me as Seth Forte on Upwork? Same engineer, same engineering practice, same standards. 60+ systems built across 12 industries through Launch Forte.">
+    <meta name="twitter:description" content="Found me as Seth Forte on Upwork? Same person, same company. 60+ systems built through Launch Forte, an engineering led consulting company.">
     <meta name="twitter:image" content="https://sethforte.com/headshot-6.jpg">
 
     <link rel="canonical" href="https://sethforte.com/upwork">
@@ -2502,6 +2502,38 @@
         .deck-callout p { margin: 0; color: var(--n-600); line-height: 1.7; }
         .deck-callout p strong { color: var(--ink); font-weight: 600; }
 
+        /* Two facts instead of three on the intro row. */
+        .deck-facts.deck-facts-two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        @media (max-width: 560px) { .deck-facts.deck-facts-two { grid-template-columns: 1fr; } }
+
+        /* Technology Partner: the review contents as a quiet card, and the
+           sample report image framed like the other media on the page. */
+        .tp-review {
+            margin: 2rem 0;
+            padding: 1.5rem 1.75rem;
+            border-radius: var(--radius-lg, 16px);
+            background: var(--accent-tint, rgba(0,136,219,0.08));
+        }
+        .tp-review-l {
+            margin: 0 0 0.75rem;
+            font-size: var(--text-xs, 0.75rem);
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--accent-strong, #0077C4);
+        }
+        [data-theme="dark"] .tp-review-l { color: #4FB8F0; }
+        .tp-review-list { margin: 0; padding-left: 1.2rem; }
+        .tp-review-list li { margin: 0.4rem 0; line-height: 1.6; color: var(--text-secondary); }
+        .tp-figure { margin: 2rem 0; }
+        .tp-figure img {
+            display: block;
+            width: 100%;
+            border-radius: var(--radius-lg, 16px);
+            box-shadow: inset 0 0 0 1px var(--border), 0 12px 40px rgba(10,10,10,0.10);
+        }
+        .tp-figure figcaption { margin-top: 0.75rem; font-size: var(--text-sm, 0.875rem); color: var(--n-500); }
+
         .deck-facts {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -2607,16 +2639,16 @@
         <div class="hero-content">
             <div class="hero-content-inner">
                 <img src="headshot-6.jpg" alt="Seth Forte, founder of Launch Forte" class="animate-fade-in" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 1.5rem; border: 2px solid var(--border-light); position: relative;" width="80" height="80">
-                <h1 class="hero-h1 page-title animate-fade-up animate-delay-1"><span class="gradient-text">Seth Forte</span> on Upwork.</h1>
-                <p class="page-subtitle animate-fade-up animate-delay-2">Same engineer. Same engineering practice. Same standards.</p>
-                <p class="hero-intro animate-fade-up animate-delay-3">If you found me on Upwork as Seth Forte, this is the same person and the same practice. Reach out there or right here, whichever you prefer. Launch Forte is the engineering practice I run. Top Rated. 100% Job Success. Seven years of engineering experience behind every project.</p>
+                <p class="eyebrow animate-fade-up animate-delay-1">Seth Forte on Upwork</p>
+                <h1 class="hero-h1 page-title animate-fade-up animate-delay-1">Found me on Upwork? <span class="gradient-text">You're in the right place.</span></h1>
+                <p class="hero-intro animate-fade-up animate-delay-3">Launch Forte is an engineering led consulting company. I design, build, and run the systems businesses use to win customers and run their operations. If you came from my Upwork profile, this is the same person and the same company. Reach me there or right here, whichever you prefer.</p>
                 <div class="credibility-row animate-fade-up animate-delay-3">
                     <span class="credibility-item">Top Rated</span>
                     <span class="credibility-item">100% Job Success</span>
                     <span class="credibility-item">60+ Systems Built</span>
                 </div>
                 <div class="hero-cta animate-fade-up animate-delay-4">
-                    <a href="https://www.upwork.com/freelancers/sethforte" target="_blank" rel="noopener" class="btn-primary">Hire Me on Upwork &rarr;</a>
+                    <a href="https://www.upwork.com/freelancers/sethforte" target="_blank" rel="noopener" class="btn-primary">Hire Me on Upwork</a>
                     <a href="mailto:seth@launchforte.com" class="btn-ghost-link">Or reach me directly</a>
                 </div>
             </div>
@@ -2625,11 +2657,11 @@
 
     <main class="main-wrapper hero-follows">
 
-        <!-- A Short Introduction (the intro deck, 1:1) -->
+        <!-- A Short Introduction -->
         <p class="section-label reveal" style="margin-top: 5rem;">A short introduction</p>
-        <h2 class="deck-lede reveal">Hi, I'm Seth Forte. I build and run the automation behind growing businesses.</h2>
+        <h2 class="deck-lede reveal">Hi, I'm Seth Forte. I build and run the systems behind growing businesses.</h2>
 
-        <div class="deck-facts reveal">
+        <div class="deck-facts deck-facts-two reveal">
             <div>
                 <div class="deck-fact-l">Based in</div>
                 <div class="deck-fact-v">Dallas Fort Worth, Texas</div>
@@ -2638,22 +2670,18 @@
                 <div class="deck-fact-l">Delivery</div>
                 <div class="deck-fact-v">Fixed price</div>
             </div>
-            <div>
-                <div class="deck-fact-l">Projects delivered</div>
-                <div class="deck-fact-v"><span class="accentv">50+</span></div>
-            </div>
         </div>
 
         <!-- Who I Am -->
         <p class="section-label reveal" style="margin-top: 5rem;">Who I am</p>
-        <h2 class="deck-lede reveal">I spent years keeping a national bank's critical systems standing. Now I build that same reliability for growing businesses.</h2>
+        <h2 class="deck-lede reveal">Built to keep running after I hand it over.</h2>
 
         <div class="deck-split reveal">
             <img src="/media/seth-portrait.jpg" alt="Seth Forte" class="deck-portrait" width="706" height="900" loading="lazy">
             <div>
-                <p>Before Launch Forte I was a <strong>senior software engineer and reliability engineer at a national bank</strong>, on the team responsible for systems that could not go down. That work is where I learned the habits I still build with today: monitor everything, alert before the customer notices, write it down so the next person can run it, and never ship something you cannot explain in one sentence.</p>
-                <p>I started Launch Forte because I kept meeting owners who had bought good tools and were still doing the work by hand. Proposals, invoices, follow ups, reports, moving information from one place to another. The busywork that keeps you in the business instead of growing it. <strong>That is what I take off your plate.</strong></p>
-                <p>I do this full time, I do not outsource it, and I keep the client list short on purpose. <strong>The person who scopes your build is the one who builds it.</strong></p>
+                <p>Every system I deliver is monitored, documented, and tested on your real data before it goes live. When something breaks, I want to know before your customers do.</p>
+                <p>I started Launch Forte because I kept meeting owners who had good tools and were still doing the work by hand: proposals, invoices, follow ups, reports, moving information from one place to another. <strong>That's the work I take off your plate.</strong></p>
+                <p>I keep the client list short on purpose. I don't outsource the work, so <strong>the person who scopes your build is the one who builds it.</strong></p>
             </div>
         </div>
 
@@ -2667,75 +2695,139 @@
             <p>I work from a small office in Dallas Fort Worth, Texas, with my wife and our daughter close enough to interrupt me at lunch. Off the clock it is the gym, whipping up meals, video games, board games, time with family, and <strong>a standing effort not to completely roast in the Texas heat!</strong></p>
         </div>
 
-        <!-- What Makes This Different -->
-        <p class="section-label reveal" style="margin-top: 5rem;">What makes this different</p>
-        <h2 class="deck-lede reveal">The whole business first. Then the smallest build that moves it.</h2>
-        <p class="section-body reveal">Most of what gets posted is a task. I read it for the business underneath: how the money comes in, where it leaks, which tool is the bottleneck, what has to run clean before anything else can. The task is usually one piece of a bigger picture, and the bigger picture is what I am building toward. We start with the smallest piece worth taking, prove it on real data, and stack the next one on it, so the system ends up running the business instead of becoming one more thing to manage.</p>
+        <!-- Watch -->
+        <section class="video-section reveal" style="margin: 1rem auto 4rem; max-width: 900px;">
+            <span class="video-eyebrow">Watch</span>
+            <h2 class="section-heading reveal" style="padding-top: 0; margin-bottom: 1.5rem;">See how I <span class="gradient-text">work</span>.</h2>
+            <div class="video-wrap">
+                <iframe src="https://www.youtube-nocookie.com/embed/Gy_jhWUUaOU?autoplay=1&amp;mute=1&amp;playsinline=1&amp;rel=0" title="Seth Forte: 2-minute intro" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            </div>
+        </section>
 
-        <div class="deck-principles reveal">
-            <div class="deck-principle">
-                <div class="deck-principle-n">01</div>
-                <div class="deck-principle-t">The bigger picture before the build</div>
-                <div class="deck-principle-d">Every engagement opens with a read of the whole operation and a number on what the problem is costing. The build is whatever that number points to, and it is scoped to fit the next one.</div>
+        <!-- What I Build -->
+        <p class="section-label reveal">What I Build</p>
+        <h2 class="section-heading reveal" style="padding-top: 0;">Systems for <span class="gradient-text">winning customers</span> and running the business.</h2>
+
+        <div class="capability-grid">
+            <a href="https://launchforte.com/what-we-build#lead-systems" target="_blank" rel="noopener" class="capability-card reveal">
+                <h3>Lead and Customer Systems</h3>
+                <p>Instant response on every form, routing that puts the right lead in front of the right person, and follow up that never drops a contact.</p>
+            </a>
+            <a href="https://launchforte.com/what-we-build#revenue-infrastructure" target="_blank" rel="noopener" class="capability-card reveal">
+                <h3>CRM and Revenue Infrastructure</h3>
+                <p>Pipelines that match how your team sells, with payments that tie back to where the customer came from.</p>
+            </a>
+            <a href="https://launchforte.com/what-we-build#ai-orchestration" target="_blank" rel="noopener" class="capability-card reveal">
+                <h3>AI Agents and Integrations</h3>
+                <p>Voice agents, booking agents, and the connections between platforms that don't talk to each other.</p>
+            </a>
+            <a href="https://launchforte.com/what-we-build#reporting" target="_blank" rel="noopener" class="capability-card reveal">
+                <h3>Reporting and Dashboards</h3>
+                <p>Clean data, pipeline visibility, and ad attribution your team trusts.</p>
+            </a>
+        </div>
+
+        <!-- How It Works -->
+        <p class="section-label reveal" style="margin-top: 6rem;">How It Works</p>
+        <h2 class="section-heading reveal" style="padding-top: 0; margin-bottom: 2rem;">How every <span class="gradient-text">engagement</span> runs.</h2>
+
+        <div class="steps-grid">
+            <div class="step-card reveal">
+                <span class="step-number">01</span>
+                <h3>Discovery</h3>
+                <p>We talk through your tools and what's broken. If there's a clean build, I'll tell you. If there isn't, I'll tell you that too.</p>
             </div>
-            <div class="deck-principle">
-                <div class="deck-principle-n">02</div>
-                <div class="deck-principle-t">Smallest win first</div>
-                <div class="deck-principle-d">One piece, shipped and watched, then the next. You pay for what moves the business, in the order it needs to move.</div>
+            <div class="step-card reveal">
+                <span class="step-number">02</span>
+                <h3>Architect</h3>
+                <p>I design the system before writing code, including data flow, integration points, and failure handling.</p>
             </div>
-            <div class="deck-principle">
-                <div class="deck-principle-n">03</div>
-                <div class="deck-principle-t">A few clients at a time</div>
-                <div class="deck-principle-d">The roster stays short on purpose. The person who scopes your build is the one who builds it, tests it, and answers you.</div>
+            <div class="step-card reveal">
+                <span class="step-number">03</span>
+                <h3>Build</h3>
+                <p>I write a clear scope, build it, test it on your real data, and keep you updated in plain language.</p>
             </div>
-            <div class="deck-principle">
-                <div class="deck-principle-n">04</div>
-                <div class="deck-principle-t">Built to stay up</div>
-                <div class="deck-principle-d">Monitoring, alerting, and a written runbook on every system, so it tells us before it tells your customers.</div>
-            </div>
-            <div class="deck-principle">
-                <div class="deck-principle-n">05</div>
-                <div class="deck-principle-t">Personalized approach</div>
-                <div class="deck-principle-d">Time up front to understand where you are trying to go, then a build shaped to that. Updates come often and read plain, so you never have to chase me or decode a status.</div>
+            <div class="step-card reveal">
+                <span class="step-number">04</span>
+                <h3>Handoff</h3>
+                <p>Every build includes handoff documentation, one walkthrough session, and thirty days of support after go live. You own everything I build.</p>
             </div>
         </div>
 
-        <div class="deck-callout reveal">
-            <p class="deck-callout-l">Who this is for</p>
-            <p>Owners doing real revenue who are still the bottleneck in their own operation, with tools already in place that do not talk to each other, who want the work off their plate for good. <strong>Fixed price, tested on your data.</strong></p>
+        <!-- Technology Partner -->
+        <p class="section-label reveal" style="margin-top: 6rem;">Technology Partner</p>
+        <h2 class="section-heading reveal" style="padding-top: 0;">Stay on <span class="gradient-text">after the build</span>.</h2>
+        <p class="section-body reveal">Once a system is live, I can stay on as your technology partner. I keep an eye on the systems we agree to cover, go through your software and access where I have permission, and send a dated monthly review showing what I checked, what I handled, and what I recommend next.</p>
+
+        <div class="tp-review reveal">
+            <p class="tp-review-l">What the monthly review shows</p>
+            <ul class="tp-review-list">
+                <li>What matters this month</li>
+                <li>What needs you, and what doesn't</li>
+                <li>What I'm handling, with dates</li>
+                <li>Ideas worth a conversation, split into what's already included and what would be a larger project</li>
+            </ul>
         </div>
 
-        <div class="deck-callout reveal">
-            <p class="deck-callout-l">Before you compare bids</p>
-            <p><strong>You will see all kinds of people and bids on Upwork, some at a fraction of my number.</strong> The difference is usually whether the person has put this in front of real customers before, or is about to learn on yours and your time, and the standard of professionalism and communication, with the intent of what you are asking matched to your vision.</p>
-        </div>
+        <!-- Sample report image. Waiting on the final "Synthetic Northline first
+             page" screenshot: the current one is from a run that failed Lead
+             review (8/9, PDF hash mismatch), so re-pull it after Fortress
+             resubmits, save it as /media/technology-partner-sample.png, and
+             uncomment this block. Use ONLY the synthetic Northline page; the
+             other screenshots in that thread show real client details.
+        <figure class="tp-figure reveal">
+            <img src="/media/technology-partner-sample.png" alt="A sample Technology Partner monthly review for a synthetic company" loading="lazy">
+            <figcaption>A sample monthly review. Sample data.</figcaption>
+        </figure>
+        -->
 
-        <!-- Three Ways In -->
-        <p class="section-label reveal" style="margin-top: 5rem;">Three ways in</p>
-        <h2 class="deck-lede reveal">Audit, build, or partnership. Start wherever the problem is.</h2>
-        <p class="section-body reveal">Most owners start with the audit: a short call, a written read of what is broken and what it is worth fixing, and a number on it. The audit fee credits toward the first build. If the job you posted already names the build, we skip straight to a fixed price proposal.</p>
+        <p class="section-body reveal">Everyday requests can come to me any time, whether that's a fix, an automation, a report, an integration, or a question. I work one active request at a time, and larger projects are quoted separately. How much I can cover depends on the access and tools your accounts allow, and I'll tell you up front which systems are in. It runs month to month and it's optional.</p>
+        <a href="https://www.upwork.com/freelancers/sethforte" target="_blank" rel="noopener" class="btn-primary reveal" style="margin-top: 0.5rem;">Ask About Technology Partner</a>
 
-        <div class="deck-ways reveal">
-            <div class="deck-way">
-                <div class="deck-way-t">Audit</div>
-                <p>I find what is costing you customers and put a number on it. Credits toward the build.</p>
+        <!-- Recent Work -->
+        <p class="section-label reveal" style="margin-top: 6rem;">Recent Work</p>
+        <h2 class="section-heading reveal" style="padding-top: 0;">A few <span class="gradient-text">recent builds</span>.</h2>
+
+        <div class="engagement-list">
+            <div class="engagement-item reveal">
+                <div class="engagement-client">CR Deals</div>
+                <div class="engagement-body">
+                    <h3>Court records automation</h3>
+                    <p>Replaced manual court records pulls with one automated pipeline.</p>
+                </div>
             </div>
-            <div class="deck-way">
-                <div class="deck-way-t">Build</div>
-                <p>The system the audit points to, built and tested on real data before it goes live.</p>
+            <div class="engagement-item reveal">
+                <div class="engagement-client">Modern Bungalow</div>
+                <div class="engagement-body">
+                    <h3>Shopify to Xero product sync</h3>
+                    <p>Shopify to Xero product sync that replaced a discontinued integration. Bulk fetch cut 157 API calls to 2.</p>
+                </div>
             </div>
-            <div class="deck-way">
-                <div class="deck-way-t">Partnership</div>
-                <p>I stay at the table after launch, with a monthly review and a result you can read in dollars.</p>
+            <div class="engagement-item reveal">
+                <div class="engagement-client">The 11R Shop</div>
+                <div class="engagement-body">
+                    <h3>GPS gated dispatch system</h3>
+                    <p>GPS gated dispatch for a mobile commercial tire service, from dynamic pricing through photo proof and automated invoicing.</p>
+                </div>
             </div>
-            <div class="deck-way">
-                <div class="deck-way-t">Reply here</div>
-                <p>Everything before a contract happens in this Upwork thread. Send a message and a call gets set up.</p>
+            <div class="engagement-item reveal">
+                <div class="engagement-client">Eden Medical</div>
+                <div class="engagement-body">
+                    <h3>AI booking agent</h3>
+                    <p>AI booking agent tied to the clinic's practice management system. Patients book, reschedule, and cancel on their own across 10+ locations.</p>
+                </div>
+            </div>
+            <div class="engagement-item reveal">
+                <div class="engagement-client">Kingfisher Ads</div>
+                <div class="engagement-body">
+                    <h3>Multi client ad reporting</h3>
+                    <p>Automated monthly ad reporting across multiple clients with different fee structures. It replaced a day of manual work per client each month.</p>
+                </div>
             </div>
         </div>
 
         <!-- Video Testimonials — every client video, straight under the hero -->
-        <p class="section-label reveal" style="margin-top: 3rem;">Testimonials</p>
+        <p class="section-label reveal" style="margin-top: 6rem;">Testimonials</p>
         <h2 class="section-heading reveal" style="padding-top: 0; margin-bottom: 0.75rem;">Straight from the <span class="gradient-text">clients</span>.</h2>
         <p class="section-body reveal" style="margin-bottom: 2rem;">Six clients on camera, in their own words. Every one of these is a build that shipped.</p>
 
@@ -2814,397 +2906,6 @@
             <span>across all platforms</span>
         </div>
 
-        <!-- Pricing -->
-        <p class="section-label reveal" style="margin-top: 6rem;">Pricing</p>
-        <h2 class="section-heading reveal" style="padding-top: 0;">Priced <span class="gradient-text">by the piece</span>, and you can add it up yourself.</h2>
-        <p class="section-body reveal">No floors, no packages you have to fit into, and no number that appears without a line behind it. Here is exactly what each part of a build costs and how a few real systems add up.</p>
-
-        <aside class="compare-bids reveal">
-            <p class="compare-bids-label">Before you compare bids</p>
-            <p class="compare-bids-body"><strong>You will see all kinds of people and bids on Upwork, some at a fraction of my number.</strong> The difference is usually whether the person has put this in front of real customers before, or is about to learn on yours and your time, and the standard of professionalism and communication, with the intent of what you are asking matched to your vision.</p>
-        </aside>
-
-        <!-- The Rate Card -->
-        <p class="section-label reveal" style="margin-top: 3.5rem;">The Rate Card</p>
-        <p class="section-body reveal" style="margin-bottom: 1.5rem;">Every build is made of six kinds of part. Count the parts your job needs, add them together, and that is the price. Same arithmetic whether the job takes two days or two months.</p>
-
-        <div class="rate-card reveal">
-            <div class="rate-row">
-                <div class="rate-what">
-                    <div class="rate-name">Getting two systems talking to each other</div>
-                    <div class="rate-eg">A sync, a webhook, an API call, a Zapier or Make scenario. Data moves one direction and nothing has to decide anything.</div>
-                </div>
-                <div class="rate-price">$400</div>
-            </div>
-            <div class="rate-row">
-                <div class="rate-what">
-                    <div class="rate-name">Setting something up inside a tool you already have</div>
-                    <div class="rate-eg">A form, a pipeline with all its stages, a follow up sequence with all its messages, the fields on a record, a calendar. One line per thing set up, however many parts are inside it. A pipeline with five stages is one line, not five.</div>
-                </div>
-                <div class="rate-price">$250</div>
-            </div>
-            <div class="rate-row">
-                <div class="rate-what">
-                    <div class="rate-name">Something that has to decide</div>
-                    <div class="rate-eg">Routing a lead to the right person, working out who counts as at risk, an approval step, an AI step, a duplicate check. Every separate rule counts as one.</div>
-                </div>
-                <div class="rate-price">$700</div>
-            </div>
-            <div class="rate-row">
-                <div class="rate-what">
-                    <div class="rate-name">A dashboard or a report</div>
-                    <div class="rate-eg">A live view someone opens, or a report that arrives on its own. If you need both, that is two.</div>
-                </div>
-                <div class="rate-price">$600</div>
-            </div>
-            <div class="rate-row">
-                <div class="rate-what">
-                    <div class="rate-name">Anything that moves money, or merges or deletes records</div>
-                    <div class="rate-eg">The build itself sends a charge, a payout or a refund, or it merges or deletes records you already have. That one gets tested harder. Charged once per build, however many places it touches. Reading orders or invoices into your accounting software is not this line; that is two systems talking.</div>
-                </div>
-                <div class="rate-price">$800</div>
-            </div>
-            <div class="rate-row">
-                <div class="rate-what">
-                    <div class="rate-name">Each system past the first two</div>
-                    <div class="rate-eg">The first two are already included in the prices above. Every one after that adds a line.</div>
-                </div>
-                <div class="rate-price">$300</div>
-            </div>
-        </div>
-
-        <div class="define-block reveal">
-            <div class="define-h">What counts as a system</div>
-            <p>A system is any app your business already uses that the build has to touch. Your CRM is one. Your accounting software is one. Your website forms, your phone system, your email, a spreadsheet you keep numbers in, each one is a system.</p>
-            <p>The tool doing the connecting does not count. Zapier, Make, or whatever runs the automation in the background is plumbing rather than a place your information lives, so you never pay a line for it.</p>
-            <p class="define-eg"><strong>Counting yours:</strong> a build that pulls website forms into your CRM and pushes paid invoices into QuickBooks touches three systems. The first two are already inside the prices above, so the third adds one line at $300.</p>
-        </div>
-
-        <div class="included-strip reveal">
-            <strong>Always inside the number, never billed on top.</strong> Testing on your real data rather than a sandbox, the handoff documentation so you own what was built, one walkthrough session, and thirty days of support after go live.
-        </div>
-
-        <div class="included-strip reveal">
-            <strong>When I have built it before, it costs about half.</strong> If a part is something I have already built on the tool you use, it prices at roughly half the card rate, and you will see that on the quote as a smaller number next to the same line. Most jobs on Upwork have at least one of these in them.
-        </div>
-
-        <div class="included-strip reveal">
-            <strong>Fixing something that already exists is one line.</strong> A broken sync, a follow up that stopped firing, a form that lands in the wrong place: that prices as the one or two parts it touches, usually $250, and if it turns into a rebuild the fee credits toward it.
-        </div>
-
-        <!-- Price It Yourself -->
-        <p class="section-label reveal" style="margin-top: 4rem;">Price It Yourself</p>
-        <p class="section-body reveal" style="margin-bottom: 1.5rem;">Count the parts your job needs. The total updates as you go, and it uses the same six numbers from the card above, so you can check the arithmetic by hand if you want to.</p>
-
-        <div class="calc reveal">
-            <div class="calc-rows">
-                <div class="calc-row" data-unit="connection">
-                    <div class="calc-what">
-                        <div class="calc-name">Getting two systems talking</div>
-                        <div class="calc-note">A sync, a webhook, an API call. Data moves, nothing decides.</div>
-                    </div>
-                    <div class="calc-price">$400</div>
-                    <div class="calc-stepper">
-                        <button type="button" class="calc-btn" data-step="-1" aria-label="Fewer: getting two systems talking">&minus;</button>
-                        <output class="calc-count" aria-live="polite">0</output>
-                        <button type="button" class="calc-btn" data-step="1" aria-label="More: getting two systems talking">+</button>
-                    </div>
-                </div>
-
-                <div class="calc-row" data-unit="setup">
-                    <div class="calc-what">
-                        <div class="calc-name">Setup inside a tool you already have</div>
-                        <div class="calc-note">A form, a pipeline with its stages, a follow up sequence with its messages, the fields on a record. One per thing set up, not one per part inside it.</div>
-                    </div>
-                    <div class="calc-price">$250</div>
-                    <div class="calc-stepper">
-                        <button type="button" class="calc-btn" data-step="-1" aria-label="Fewer: setup inside a tool you already have">&minus;</button>
-                        <output class="calc-count" aria-live="polite">0</output>
-                        <button type="button" class="calc-btn" data-step="1" aria-label="More: setup inside a tool you already have">+</button>
-                    </div>
-                </div>
-
-                <div class="calc-row" data-unit="decision">
-                    <div class="calc-what">
-                        <div class="calc-name">Something that has to decide</div>
-                        <div class="calc-note">Routing a lead, working out who counts as at risk, an approval step.</div>
-                    </div>
-                    <div class="calc-price">$700</div>
-                    <div class="calc-stepper">
-                        <button type="button" class="calc-btn" data-step="-1" aria-label="Fewer: something that has to decide">&minus;</button>
-                        <output class="calc-count" aria-live="polite">0</output>
-                        <button type="button" class="calc-btn" data-step="1" aria-label="More: something that has to decide">+</button>
-                    </div>
-                </div>
-
-                <div class="calc-row" data-unit="dashboard">
-                    <div class="calc-what">
-                        <div class="calc-name">A dashboard or a report</div>
-                        <div class="calc-note">A live view someone opens, or a report that arrives on its own. If you need both, that is two.</div>
-                    </div>
-                    <div class="calc-price">$600</div>
-                    <div class="calc-stepper">
-                        <button type="button" class="calc-btn" data-step="-1" aria-label="Fewer: a dashboard or a report">&minus;</button>
-                        <output class="calc-count" aria-live="polite">0</output>
-                        <button type="button" class="calc-btn" data-step="1" aria-label="More: a dashboard or a report">+</button>
-                    </div>
-                </div>
-
-                <div class="calc-row" data-unit="sensitive">
-                    <div class="calc-what">
-                        <div class="calc-name">Anything that moves money, or merges or deletes records</div>
-                        <div class="calc-note">The build sends a charge, payout or refund, or merges or deletes what you already have. Syncing invoices into your books is not this.</div>
-                    </div>
-                    <div class="calc-price">$800</div>
-                    <div class="calc-stepper">
-                        <button type="button" class="calc-toggle" id="calc-sensitive" role="switch" aria-checked="false" aria-label="Anything that moves money, or merges or deletes records">
-                            <span class="calc-toggle-track"><span class="calc-toggle-thumb"></span></span>
-                            <span class="calc-toggle-text">No</span>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="calc-row" data-unit="extra">
-                    <div class="calc-what">
-                        <div class="calc-name">Each system past the first two</div>
-                        <div class="calc-note">The first two are already in the prices above. Count only the extras.</div>
-                    </div>
-                    <div class="calc-price">$300</div>
-                    <div class="calc-stepper">
-                        <button type="button" class="calc-btn" data-step="-1" aria-label="Fewer: each system past the first two">&minus;</button>
-                        <output class="calc-count" aria-live="polite">0</output>
-                        <button type="button" class="calc-btn" data-step="1" aria-label="More: each system past the first two">+</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="calc-total">
-                <div class="calc-total-side">
-                    <div class="calc-total-label">Your build</div>
-                    <div class="calc-total-parts" id="calc-parts">Nothing counted yet</div>
-                </div>
-                <div class="calc-total-figure" id="calc-total" aria-live="polite">$0</div>
-            </div>
-
-            <p class="calc-fine">Fixed once we agree the list. If your job turns out to have more in it than you counted here, you see the new list and the new number before anything starts.</p>
-
-            <div class="calc-actions">
-                <a href="https://www.upwork.com/freelancers/sethforte" target="_blank" rel="noopener" class="btn-primary">Send me this on Upwork &rarr;</a>
-                <button type="button" class="btn-ghost-link" id="calc-reset">Start over</button>
-            </div>
-        </div>
-
-        <!-- How Real Systems Add Up -->
-        <p class="section-label reveal" style="margin-top: 4rem;">How Real Systems Add Up</p>
-        <p class="section-body reveal" style="margin-bottom: 1.5rem;">Five builds, smallest to largest, priced off the card above at the full rate. Every line is a thing that exists when the work is done. Any of these lands lower on a real quote when a part is something I have built before.</p>
-
-        <div class="pricing-example reveal">
-            <div class="pricing-example-cap">One piece</div>
-            <h3>A single connection</h3>
-            <p class="pricing-example-said">"I am copying the same handful of numbers from one place into another every single day."</p>
-            <p class="pricing-example-alt">Or: "I need my Make scenario writing into QuickBooks."</p>
-            <div class="pricing-tally">
-                <div class="tally-li"><div class="tally-l">Getting two systems talking <em>(Make into QuickBooks)</em></div><div class="tally-n">$400</div></div>
-                <div class="tally-sum"><div class="tally-sum-l">Total</div><div class="tally-sum-n">$400</div></div>
-            </div>
-        </div>
-
-        <div class="pricing-example reveal">
-            <div class="pricing-example-cap">Two pieces</div>
-            <h3>Orders into the books, with a daily view</h3>
-            <p class="pricing-example-said">"Every order gets typed into the books by hand, and I never know where the month stands until it closes."</p>
-            <p class="pricing-example-alt">Or: "Shopify to QuickBooks sync with a sales dashboard on top."</p>
-            <div class="pricing-tally">
-                <div class="tally-li"><div class="tally-l">Getting two systems talking <em>(Shopify into QuickBooks)</em></div><div class="tally-n">$400</div></div>
-                <div class="tally-li"><div class="tally-l">A dashboard <em>(sales and margin, refreshed each morning)</em></div><div class="tally-n">$600</div></div>
-                <div class="tally-sum"><div class="tally-sum-l">Total</div><div class="tally-sum-n">$1,000</div></div>
-            </div>
-        </div>
-
-        <div class="pricing-example reveal">
-            <div class="pricing-example-cap">Four pieces</div>
-            <h3>A CRM that runs itself</h3>
-            <p class="pricing-example-said">"Our pipeline stages mean different things to different people, and follow up only happens when somebody remembers."</p>
-            <p class="pricing-example-alt">Or: "Rebuild our CRM stages and set up the follow up messages."</p>
-            <div class="pricing-tally">
-                <div class="tally-li"><div class="tally-l">Setup inside your CRM &times; 3 <em>(your pipeline with its stages, the fields behind them, the follow up sequence with its messages and its stop-on-reply setting)</em></div><div class="tally-n">$750</div></div>
-                <div class="tally-li"><div class="tally-l">Decisions &times; 1 <em>(who a new lead goes to)</em></div><div class="tally-n">$700</div></div>
-                <div class="tally-sum"><div class="tally-sum-l">Total</div><div class="tally-sum-n">$1,450</div></div>
-            </div>
-        </div>
-
-        <div class="pricing-example reveal">
-            <div class="pricing-example-cap">Five pieces</div>
-            <h3>Speed to lead</h3>
-            <p class="pricing-example-said">"A missed call is a lost job. We call people back hours later and they have already booked somebody else."</p>
-            <p class="pricing-example-alt">Or: "Missed call text back with lead routing into the CRM."</p>
-            <div class="pricing-tally">
-                <div class="tally-li"><div class="tally-l">Getting two systems talking <em>(your phone system into your CRM)</em></div><div class="tally-n">$400</div></div>
-                <div class="tally-li"><div class="tally-l">Setup inside your existing tools &times; 2 <em>(the text back sequence, the round robin that assigns the lead)</em></div><div class="tally-n">$500</div></div>
-                <div class="tally-li"><div class="tally-l">Decisions &times; 1 <em>(is this a real lead or spam)</em></div><div class="tally-n">$700</div></div>
-                <div class="tally-li"><div class="tally-l">Systems past the first two &times; 1 <em>(three in all: your phone system, your CRM, your texting service)</em></div><div class="tally-n">$300</div></div>
-                <div class="tally-sum"><div class="tally-sum-l">Total</div><div class="tally-sum-n">$1,900</div></div>
-            </div>
-        </div>
-
-        <div class="pricing-example reveal">
-            <div class="pricing-example-cap">Seventeen pieces</div>
-            <h3>An inventory and reorder system</h3>
-            <p class="pricing-example-said">"Tell me what to reorder and when, across every product and every warehouse, so we stop running out and stop over ordering."</p>
-            <p class="pricing-example-alt">Or: "Inventory coverage and reorder engine across all locations."</p>
-            <div class="pricing-tally">
-                <div class="tally-li"><div class="tally-l">Getting systems talking &times; 3 <em>(inventory, the demand forecast, accounting)</em></div><div class="tally-n">$1,200</div></div>
-                <div class="tally-li"><div class="tally-l">Decisions &times; 10 <em>(listed below)</em></div><div class="tally-n">$7,000</div></div>
-                <div class="tally-li"><div class="tally-l">Dashboards and reports &times; 2 <em>(the live view, the weekly reorder list)</em></div><div class="tally-n">$1,200</div></div>
-                <div class="tally-li"><div class="tally-l">Setup inside your existing tools <em>(sign in and access)</em></div><div class="tally-n">$250</div></div>
-                <div class="tally-li"><div class="tally-l">Touches live stock and purchasing</div><div class="tally-n">$800</div></div>
-                <div class="tally-li"><div class="tally-l">Systems past the first two &times; 1 <em>(three in all: inventory, the forecast sheet, accounting)</em></div><div class="tally-n">$300</div></div>
-                <div class="tally-sum"><div class="tally-sum-l">Total</div><div class="tally-sum-n">$10,750</div></div>
-            </div>
-            <div class="pricing-why">
-                <strong>Why ten decisions and not one.</strong> "Work out what to reorder" sounds like a single feature. In a real warehouse it is ten separate rules, and each one is a place a system quietly gives you a wrong number if nobody built it.
-                <ol>
-                    <li>Deciding what one unit even is, when the same item is counted as singles and as cases</li>
-                    <li>Coverage measured against real demand rather than the calendar</li>
-                    <li>Every item measured against its own lead time</li>
-                    <li>Netting products that pull from one shared pool</li>
-                    <li>Rolling a case up through its parts to the limiting component</li>
-                    <li>Purchase orders past their date, flagged and held out of the count</li>
-                    <li>Healthy overall but short at one location, with a transfer suggested</li>
-                    <li>Missing or broken data flagged rather than quietly dropped</li>
-                    <li>Items with stock but no forecast, left neutral instead of guessed</li>
-                    <li>The reorder recommendation itself</li>
-                </ol>
-            </div>
-        </div>
-
-        <!-- Two Fixed Products -->
-        <p class="section-label reveal" style="margin-top: 4rem;">Two Fixed Products</p>
-
-        <div class="fixed-products reveal">
-            <div class="fixed-product">
-                <div class="fixed-price">$650</div>
-                <h3>The Audit</h3>
-                <p>A full end to end workup of what you are running, what is costing you, and what is worth fixing, with every fix scoped and priced off the card above. It credits toward the build, so if you go ahead it costs you nothing. This is the right first step when the answer is not obvious yet.</p>
-            </div>
-            <div class="fixed-product">
-                <div class="fixed-price">$500 <span class="fixed-price-sub">/ month</span></div>
-                <h3>Technology Partner</h3>
-                <p>Optional after launch. One plan, month to month, cancel anytime. I stay your technology partner, with everyday requests and fixes on the systems we agree to cover, plus monitoring for the ones we set up together. You own everything either way, and this is a choice rather than a contract you are locked into.</p>
-            </div>
-        </div>
-
-        <!-- Three Rules -->
-        <p class="section-label reveal" style="margin-top: 4rem;">Three Rules I Hold Myself To</p>
-
-        <div class="pricing-rules reveal">
-            <div class="pricing-rule">
-                <div class="pricing-rule-num">01</div>
-                <div class="pricing-rule-body">
-                    <h3>The prices never move, only the count does</h3>
-                    <p>A bigger job is more pieces at the same rates. If your build turns out to have more in it than the job description said, you see the full list and the new number before any work starts, never after.</p>
-                </div>
-            </div>
-            <div class="pricing-rule">
-                <div class="pricing-rule-num">02</div>
-                <div class="pricing-rule-body">
-                    <h3>The number is fixed before I start</h3>
-                    <p>No hourly billing, no meter running, no invoice at the end that is larger than the number you agreed to. If the scope genuinely changes, that is a conversation before it happens rather than a line item after.</p>
-                </div>
-            </div>
-            <div class="pricing-rule">
-                <div class="pricing-rule-num">03</div>
-                <div class="pricing-rule-body">
-                    <h3>If I cannot price it honestly, I will not price it</h3>
-                    <p>Some jobs do not have enough detail to quote without guessing. When that happens I will tell you exactly which two or three things I need to know instead of putting a made up number in front of you.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Watch -->
-        <section class="video-section reveal" style="margin: 1rem auto 4rem; max-width: 900px;">
-            <span class="video-eyebrow">Watch</span>
-            <h2 class="section-heading reveal" style="padding-top: 0; margin-bottom: 1.5rem;">See how I <span class="gradient-text">work</span>.</h2>
-            <div class="video-wrap">
-                <iframe src="https://www.youtube-nocookie.com/embed/Gy_jhWUUaOU?autoplay=1&amp;mute=1&amp;playsinline=1&amp;rel=0" title="Seth Forte: 2-minute intro" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-            </div>
-        </section>
-
-        <!-- What I Build -->
-        <p class="section-label reveal">What I Build</p>
-        <h2 class="section-heading reveal" style="padding-top: 0;"><span class="gradient-text">Engineering</span> engagements, built to last.</h2>
-        <p class="section-body reveal">Most Upwork projects get scoped as a task. I scope mine as an engineering engagement, ex: CRM builds that survive volume, lead systems that hold every contact, reporting your team trusts, and AI agents that earn their place. Same rigor whether you come through Upwork or direct.</p>
-
-        <div class="capability-grid">
-            <a href="https://launchforte.com/what-we-build#revenue-infrastructure" target="_blank" rel="noopener" class="capability-card reveal">
-                <h3>Revenue Infrastructure</h3>
-                <p>The operational foundation everything else compounds on. CRMs that match how the team sells. Payment infrastructure that closes the loop back to attribution. The architecture decisions most growing businesses skipped.</p>
-            </a>
-            <a href="https://launchforte.com/what-we-build#lead-systems" target="_blank" rel="noopener" class="capability-card reveal">
-                <h3>Lead and Customer Systems</h3>
-                <p>Turning marketing spend into revenue you can see. Instant response on every form, routing that puts the right lead in front of the right person, follow up that never drops a contact, and conversion that happens before the lead loses interest.</p>
-            </a>
-            <a href="https://launchforte.com/what-we-build#ai-orchestration" target="_blank" rel="noopener" class="capability-card reveal">
-                <h3>AI Agents and Orchestration</h3>
-                <p>AI that replaces the part of the work the team can't afford to do manually. Voice agents that qualify callers. Chatbots configured with the real sales process. Engineering past what the platform gives you.</p>
-            </a>
-            <a href="https://launchforte.com/what-we-build#reporting" target="_blank" rel="noopener" class="capability-card reveal">
-                <h3>Reporting and Dashboards</h3>
-                <p>The capability to make decisions from clean data. Pipeline visibility, ad attribution, operational dashboards from data the team trusts. Built on architecture that holds up under scrutiny.</p>
-            </a>
-            <a href="https://launchforte.com/what-we-build#custom-builds" target="_blank" rel="noopener" class="capability-card reveal">
-                <h3>Custom Builds and Integrations</h3>
-                <p>When the off the shelf answer doesn't fit. Standalone apps, financial data pipelines, dispatch systems. The integrations that connect platforms that don't otherwise talk.</p>
-            </a>
-            <a href="https://launchforte.com/what-we-build#engineering-reliability" target="_blank" rel="noopener" class="capability-card reveal">
-                <h3>Engineering and Reliability</h3>
-                <p>Monitoring, alerting, error handling, documentation. The operational rigor that separates a build that works on day one from a build that survives volume and team turnover.</p>
-            </a>
-        </div>
-
-        <!-- Recent Engagements -->
-        <p class="section-label reveal" style="margin-top: 6rem;">Recent Engagements</p>
-        <h2 class="section-heading reveal" style="padding-top: 0;">Engineering work that <span class="gradient-text">moved</span> businesses.</h2>
-        <p class="section-body reveal">A handful of recent builds across different industries. Outcomes are real.</p>
-
-        <div class="engagement-list">
-            <div class="engagement-item reveal">
-                <div class="engagement-client">CR Deals</div>
-                <div class="engagement-body">
-                    <h3>Court records automation</h3>
-                    <p>Replaced manual court records pulls with one automated pipeline.</p>
-                </div>
-            </div>
-            <div class="engagement-item reveal">
-                <div class="engagement-client">Modern Bungalow</div>
-                <div class="engagement-body">
-                    <h3>Shopify to Xero product sync</h3>
-                    <p>Engineered a Shopify to Xero sync that replaced a discontinued integration. Bulk fetch reduced 157 API calls to 2.</p>
-                </div>
-            </div>
-            <div class="engagement-item reveal">
-                <div class="engagement-client">The 11R Shop</div>
-                <div class="engagement-body">
-                    <h3>GPS gated dispatch system</h3>
-                    <p>Four phase dispatch system for a mobile commercial tire service. Dynamic pricing, GPS arrival verification, proof gate with photos and DOT verification, automated balance invoicing. Replaced manual phone dispatch.</p>
-                </div>
-            </div>
-            <div class="engagement-item reveal">
-                <div class="engagement-client">Eden Medical</div>
-                <div class="engagement-body">
-                    <h3>AI booking agent</h3>
-                    <p>AI booking agent integrated with the clinic's practice management system. Patients book, reschedule, and cancel without staff intervention. 24/7 availability across 10+ locations.</p>
-                </div>
-            </div>
-            <div class="engagement-item reveal">
-                <div class="engagement-client">Kingfisher Ads</div>
-                <div class="engagement-body">
-                    <h3>Multi client ad reporting</h3>
-                    <p>Automated monthly ad spend reporting for an agency managing multiple clients with different fee structures. Replaced a one day per month per client manual process. The visibility layer they couldn't get from the platforms directly.</p>
-                </div>
-            </div>
-        </div>
-
         <!-- What Clients Say -->
         <h2 class="section-heading reveal">What <span class="gradient-text">Clients</span> Say</h2>
 
@@ -3246,47 +2947,13 @@
 
         <a href="/reviews.html" class="btn-link reveal" style="margin-top: 0.75rem;">All reviews &rarr;</a>
 
-        <!-- How It Works -->
-        <p class="section-label reveal" style="margin-top: 6rem;">How It Works</p>
-        <h2 class="section-heading reveal" style="padding-top: 0; margin-bottom: 2rem;">How every <span class="gradient-text">engagement</span> runs.</h2>
-
-        <div class="steps-grid">
-            <div class="step-card reveal">
-                <span class="step-number">01</span>
-                <h3>Discovery</h3>
-                <p>We talk through what's going on. What tools you have, what's broken. If there's a clean build here, I'll tell you. If there isn't, I'll tell you that too.</p>
-            </div>
-            <div class="step-card reveal">
-                <span class="step-number">02</span>
-                <h3>Architect</h3>
-                <p>I design the system before writing code. Data flow, integration points, failure handling. The architecture decides whether the build survives volume.</p>
-            </div>
-            <div class="step-card reveal">
-                <span class="step-number">03</span>
-                <h3>Build</h3>
-                <p>I write a clear scope, build it, test with real data, and keep you in the loop. Fixed timeline, fixed price.</p>
-            </div>
-            <div class="step-card reveal">
-                <span class="step-number">04</span>
-                <h3>Handoff</h3>
-                <p>Every build includes testing on your real data, handoff documentation, one walkthrough session, and thirty days of support after go live. You own everything I build. Partnership picks up here if you want it.</p>
-            </div>
-        </div>
-
-        <!-- Launch Forte -->
-        <p class="section-label reveal" style="margin-top: 6rem;">Where the work lives</p>
-        <h2 class="section-heading reveal" style="padding-top: 0;"><span class="gradient-text">Launch Forte</span> is my company.</h2>
-        <p class="section-body reveal">The audits, the builds, and the partnerships all run through it, and Upwork is one door in. If you are ready to start, an Upwork message is the fastest way, and the full practice is at launchforte.com when you want the bigger picture.</p>
-        <a href="https://launchforte.com" target="_blank" rel="noopener" class="btn-link reveal" style="margin-top: 0.5rem;">Visit Launch Forte</a>
-
         <!-- Closing CTA -->
         <div class="cta-block reveal">
-            <h2>Found me on Upwork? <span class="gradient-text">Reach me either way</span>.</h2>
-            <p class="body-text">This page exists so that anyone who found me on Upwork can find me here too. If the platform is where you are comfortable hiring, use it. If you would rather book the audit or just email me, that is the same engineer and the same standards, with no platform in between. Your call which door.</p>
+            <h2><span class="gradient-text">Launch Forte</span> is my company.</h2>
+            <p class="body-text">Upwork is one door in. If you're ready to start, a message there is the fastest way. If you'd rather email me, that works too, and it's the same person either way.</p>
             <div class="cta-buttons">
-                <a href="https://www.upwork.com/freelancers/sethforte" target="_blank" rel="noopener" class="btn-primary">Hire Me on Upwork &rarr;</a>
-                <a href="https://api.leadconnectorhq.com/widget/bookings/launchforte-call" target="_blank" rel="noopener" class="btn-ghost">Book an Audit &rarr;</a>
-                <a href="mailto:seth@launchforte.com" class="btn-ghost">Email Me &rarr;</a>
+                <a href="https://www.upwork.com/freelancers/sethforte" target="_blank" rel="noopener" class="btn-primary">Hire Me on Upwork</a>
+                <a href="mailto:seth@launchforte.com" class="btn-ghost">Email Me</a>
             </div>
         </div>
 
@@ -3322,7 +2989,7 @@
 
             <div class="footer-bottom">
                 <div>
-                    <p class="footer-location">Based in Dallas-Fort Worth. Serving clients nationwide.</p>
+                    <p class="footer-location">Based in Dallas Fort Worth. Serving clients nationwide.</p>
                     <p class="copyright">&copy; 2026 Seth Forte. All rights reserved.</p>
                 </div>
                 </div>
@@ -3386,94 +3053,6 @@
       })();
     </script>
 
-    <!-- Price It Yourself: the six unit prices, in one place. These mirror the
-         rate card in the markup above; change both together. -->
-    <script>
-        (function() {
-            var calc = document.querySelector('.calc');
-            if (!calc) return;
-
-            var PRICES = {
-                connection: 400,
-                setup:      250,
-                decision:   700,
-                dashboard:  600,
-                sensitive:  800,
-                extra:      300
-            };
-            var MAX = 20;
-
-            var rows    = Array.prototype.slice.call(calc.querySelectorAll('.calc-row'));
-            var totalEl = document.getElementById('calc-total');
-            var partsEl = document.getElementById('calc-parts');
-            var reset   = document.getElementById('calc-reset');
-            var counts  = {};
-
-            function money(n) { return '$' + n.toLocaleString('en-US'); }
-
-            function render() {
-                var total = 0, pieces = 0, names = [];
-                rows.forEach(function(row) {
-                    var unit = row.getAttribute('data-unit');
-                    var n = counts[unit] || 0;
-                    if (row.querySelector('.calc-toggle')) n = n > 0 ? 1 : 0;
-                    counts[unit] = n;
-                    var price = PRICES[unit] || 0;
-                    total += n * price;
-                    pieces += n;
-                    row.classList.toggle('is-on', n > 0);
-                    var countEl = row.querySelector('.calc-count');
-                    if (countEl) countEl.textContent = n;
-                    var toggle = row.querySelector('.calc-toggle');
-                    if (toggle) {
-                        toggle.setAttribute('aria-checked', n > 0 ? 'true' : 'false');
-                        var txt = toggle.querySelector('.calc-toggle-text');
-                        if (txt) txt.textContent = n > 0 ? 'Yes' : 'No';
-                    }
-                    var minus = row.querySelector('[data-step="-1"]');
-                    var plus  = row.querySelector('[data-step="1"]');
-                    if (minus) minus.disabled = n <= 0;
-                    if (plus)  plus.disabled  = n >= MAX;
-                    if (n > 0) {
-                        var label = row.querySelector('.calc-name').textContent;
-                        names.push((n > 1 && !toggle) ? label + ' \u00d7 ' + n : label);
-                    }
-                });
-                totalEl.textContent = money(total);
-                partsEl.textContent = pieces
-                    ? names.join(' \u00b7 ')
-                    : 'Nothing counted yet';
-            }
-
-            calc.addEventListener('click', function(e) {
-                // The risk line is charged once per build however many places it
-                // touches, so it is a toggle, not a counter. Everything else steps.
-                var tog = e.target.closest('.calc-toggle');
-                if (tog) {
-                    var trow = tog.closest('.calc-row');
-                    var tunit = trow.getAttribute('data-unit');
-                    counts[tunit] = counts[tunit] ? 0 : 1;
-                    render();
-                    return;
-                }
-                var btn = e.target.closest('.calc-btn');
-                if (!btn) return;
-                var row  = btn.closest('.calc-row');
-                var unit = row.getAttribute('data-unit');
-                var step = parseInt(btn.getAttribute('data-step'), 10);
-                var next = (counts[unit] || 0) + step;
-                counts[unit] = Math.max(0, Math.min(MAX, next));
-                render();
-            });
-
-            if (reset) reset.addEventListener('click', function() {
-                counts = {};
-                render();
-            });
-
-            render();
-        })();
-    </script>
 <script>
 (function () {
   if (typeof gtag !== 'function') return;
